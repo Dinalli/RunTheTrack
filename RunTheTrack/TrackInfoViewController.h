@@ -16,6 +16,7 @@
     IBOutlet UILabel *laps;
     IBOutlet UILabel *trackDistance;
     IBOutlet UIImageView *trackMiniMap;
+    IBOutlet UIButton *selectBtn;
 }
 
 @property (nonatomic) NSMutableDictionary *trackInfo;

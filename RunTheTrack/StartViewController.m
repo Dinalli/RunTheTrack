@@ -113,13 +113,13 @@ enum TimerState : NSUInteger {
         
         self.timerState = timerStarted;
         self.gpsTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(blinkGPS) userInfo:nil repeats:YES];
-        
-        
+
         // Move the view down to show the map.
         [UIView animateWithDuration:1.5 delay:0.0
             options:UIViewAnimationOptionCurveEaseOut
             animations:^{
             runControlView.frame = CGRectMake(0, self.view.frame.size.height - 100, runControlView.frame.size.width, runControlView.frame.size.height);
+                startBtn.frame = CGRectMake(0, 5, 320, 44);
         } completion:^(BOOL finished) {
             trackBtn.hidden = YES;
             intervalSeg.hidden = YES;
@@ -131,7 +131,7 @@ enum TimerState : NSUInteger {
     else if(self.timerState == timerStarted)
     {
         [self.gpsTimer invalidate];
-        
+        [self.timeLabel stop];
         [self pauseTimer:timer];
         [startBtn setTitle:@"RESUME" forState:UIControlStateNormal];
         self.timerState = timerPaused;
@@ -150,6 +150,7 @@ enum TimerState : NSUInteger {
     }
     else if(self.timerState == timerPaused)
     {
+        [self.timeLabel start];
         [self resumeTimer:timer];
         [startBtn setTitle:@"STOP" forState:UIControlStateNormal];
         self.timerState = timerStarted;
@@ -175,7 +176,8 @@ enum TimerState : NSUInteger {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"HH:mm:ss.SS"];
     [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0.0]];
-    self.timeLabel.text = [dateFormatter stringFromDate:timerDate];
+    //self.timeLabel.text = [dateFormatter stringFromDate:timerDate];
+    [self.timeLabel setCurrentValue:timeInterval];
 }
 
 -(void) pauseTimer:(NSTimer *)pauseTimer
@@ -611,6 +613,8 @@ enum TimerState : NSUInteger {
                  sender:(id)sender {
     if ([segue.identifier isEqualToString:@"finishRunSegue"]) {
         
+        [self.timeLabel stop];
+        [self.timeLabel reset];
         [self.locationManager stopUpdatingLocation];
         
         RunFinishViewController *rfvc = segue.destinationViewController;
