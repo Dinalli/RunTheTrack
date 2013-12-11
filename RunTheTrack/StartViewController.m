@@ -176,7 +176,7 @@ enum TimerState : NSUInteger {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"HH:mm:ss.SS"];
     [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0.0]];
-    //self.timeLabel.text = [dateFormatter stringFromDate:timerDate];
+    totalRunTime = [dateFormatter stringFromDate:timerDate];
     [self.timeLabel setCurrentValue:timeInterval];
 }
 
@@ -618,7 +618,7 @@ enum TimerState : NSUInteger {
         [self.locationManager stopUpdatingLocation];
         
         RunFinishViewController *rfvc = segue.destinationViewController;
-        [self.trackInfo setObject:self.timeLabel.text forKey:@"runTime"];
+        [self.trackInfo setObject:totalRunTime forKey:@"runTime"];
         [self.trackInfo setObject:[NSString stringWithFormat:@"%d", (int)lapCounter] forKey:@"runLaps"];
         
         if(distanceUnit.selectedSegmentIndex == 1)
@@ -655,7 +655,8 @@ enum TimerState : NSUInteger {
     lapsLabel.text = @"Laps";
     startBtn.enabled = FALSE;
     timer = nil;
-    self.timeLabel.text = @"0:00:00:00";
+    totalRunTime = nil;
+    [self.timeLabel reset];
     [startBtn setTitle:@"START" forState:UIControlStateNormal];
     runTypeSeg.hidden = FALSE;
     trackBtn.titleLabel.text = @"CHOOSE TRACK TO START";

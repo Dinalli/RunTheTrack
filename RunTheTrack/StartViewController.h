@@ -63,6 +63,7 @@
     NSString *sector2Time;
     NSString *sector3Time;
     NSString *recordedlapTime;
+    NSString *totalRunTime;
     
     NSMutableDictionary *newRunAchievements;
     NSArray *currentAchievements;
