@@ -273,64 +273,48 @@ enum TimerState : NSUInteger {
 
 -(void)addTrackPoints
 {
-    NSDictionary *points = [_trackInfo objectForKey:@"trackpoints"];
+    [mv removeAnnotations:mv.annotations];
     CLLocationCoordinate2D poi;
-    
-    NSArray *sectorKeys = [points allKeys];
-    
-    int sectorTag = 1;
-    for (NSString *sectorKey in sectorKeys)
-    {
-        NSArray *sectorArray = [points objectForKey:sectorKey];
+
+    NSArray *sectorArray = [_trackInfo objectForKey:@"trackpoints"];
         
-        for(NSString *coordPoint in sectorArray)
+    for(NSString *coordPoint in sectorArray)
+    {
+        if([self.trackPointArray count] > 0)
         {
-            if([self.trackPointArray count] > 0)
-            {
-                NSArray *latlong = [coordPoint componentsSeparatedByString:@","];
-                NSString *lat = [latlong objectAtIndex:0];
-                NSString *lng = [latlong objectAtIndex:1];
-                
-                NSArray *oldlatlong = [[self.trackPointArray lastObject] componentsSeparatedByString:@","];
-                NSString *oldlat = [oldlatlong objectAtIndex:0];
-                NSString *oldlng = [oldlatlong objectAtIndex:1];
-                
-                CLLocationCoordinate2D oldpoi = CLLocationCoordinate2DMake([oldlat doubleValue], [oldlng doubleValue]);
-                poi = CLLocationCoordinate2DMake([lat doubleValue], [lng doubleValue]);
-                
-                CLLocationCoordinate2D coordinates[2];
-                coordinates[0] = oldpoi;
-                coordinates[1] = poi;
-                
-                [self.trackPointArray addObject:coordPoint];
-                
-                self.trackLine = [MKPolyline polylineWithCoordinates:coordinates count:2];
-                self.trackLine.title = [NSString stringWithFormat:@"Sector %d", sectorTag];
-                [mv addOverlay:self.trackLine];
-                
-                MKCoordinateRegion region;
-                MKCoordinateSpan span;
-                span.latitudeDelta = 0.0030;
-                span.longitudeDelta = 0.0030;
-                region.span = span;
-                region.center.latitude = [lat doubleValue];
-                region.center.longitude = [lng doubleValue];
-                [mv setRegion:region animated:YES];
-            }
-            else
-            {
-                [self.trackPointArray addObject:coordPoint];
-            }
+            NSArray *latlong = [coordPoint componentsSeparatedByString:@","];
+            NSString *lat = [latlong objectAtIndex:0];
+            NSString *lng = [latlong objectAtIndex:1];
+            
+            NSArray *oldlatlong = [[self.trackPointArray lastObject] componentsSeparatedByString:@","];
+            NSString *oldlat = [oldlatlong objectAtIndex:0];
+            NSString *oldlng = [oldlatlong objectAtIndex:1];
+            
+            CLLocationCoordinate2D oldpoi = CLLocationCoordinate2DMake([oldlat doubleValue], [oldlng doubleValue]);
+            poi = CLLocationCoordinate2DMake([lat doubleValue], [lng doubleValue]);
+            
+            CLLocationCoordinate2D coordinates[2];
+            coordinates[0] = oldpoi;
+            coordinates[1] = poi;
+            
+            [self.trackPointArray addObject:coordPoint];
+            
+            self.trackLine = [MKPolyline polylineWithCoordinates:coordinates count:2];
+            [mv addOverlay:self.trackLine];
+            
+            MKCoordinateRegion region;
+            MKCoordinateSpan span;
+            span.latitudeDelta = 0.0030;
+            span.longitudeDelta = 0.0030;
+            region.span = span;
+            region.center.latitude = [lat doubleValue];
+            region.center.longitude = [lng doubleValue];
+            [mv setRegion:region animated:YES];
         }
-        if (sectorTag == 1)
+        else
         {
-            sector1Count = (int)self.trackPointArray.count;
+            [self.trackPointArray addObject:coordPoint];
         }
-        else if(sectorTag == 2)
-        {
-             sector2Count = (int)self.trackPointArray.count;
-        }
-        sectorTag++;
     }
     
     MKRunnerAnnotation *runner = [[MKRunnerAnnotation alloc] init];
@@ -339,11 +323,11 @@ enum TimerState : NSUInteger {
     [mv addAnnotation:runner];
     
     // Add start finish indicator
-    NSDictionary *startFinishDict = [_trackInfo objectForKey:@"StartLine"];
-    MKPointAnnotation *startfinish = [[MKPointAnnotation alloc] init];
-    startfinish.coordinate = CLLocationCoordinate2DMake([[startFinishDict objectForKey:@"Long"] doubleValue], [[startFinishDict objectForKey:@"Lat"] doubleValue]);
-    startfinish.title = @"Start Finish";
-    [mv addAnnotation:startfinish];
+//    NSDictionary *startFinishDict = [_trackInfo objectForKey:@"StartLine"];
+//    MKPointAnnotation *startfinish = [[MKPointAnnotation alloc] init];
+//    startfinish.coordinate = CLLocationCoordinate2DMake([[startFinishDict objectForKey:@"Long"] doubleValue], [[startFinishDict objectForKey:@"Lat"] doubleValue]);
+//    startfinish.title = @"Start Finish";
+//    [mv addAnnotation:startfinish];
 }
 
 #pragma mark MapView Delegate
@@ -412,105 +396,117 @@ enum TimerState : NSUInteger {
         CLLocation *oldLocation = [self.runPointArray lastObject];
         CLLocationDistance distance;
         
-        if(oldLocation != nil)
-        {
-            if (newLocation.coordinate.latitude - oldLocation.coordinate.latitude < 1)
-            {
-                distance = [newLocation distanceFromLocation:oldLocation];
-                totalDistance = totalDistance + distance;
-                
-                if(distanceUnit.selectedSegmentIndex == 1)
-                {
-                    distanceLabel.text =  [NSString stringWithFormat:@"%.2f km", totalDistance * 1000];
-                }
-                else
-                {
-                    distanceLabel.text =  [NSString stringWithFormat:@"%.2f miles", totalDistance * 0.000621371192];
-                }
-            }
-        }
-        else{
-            totalDistance = 0;
-        }
-        
+        //Always add the real location to array so we can show the real route later on
         [self.runPointArray addObject:newLocation];
         
-        for (id<MKAnnotation> ann in mv.annotations)
+        // No need to do anything if old location is not set
+        if(oldLocation != nil)
         {
-            if ([ann.title isEqualToString:@"Runner"])
+            distance = [newLocation distanceFromLocation:oldLocation];
+            
+            // Move to a suitable spot on the track
+            for (id<MKAnnotation> ann in mv.annotations)
             {
-                NSArray *lastlatlong = [[self.trackPointArray objectAtIndex:runIndex] componentsSeparatedByString:@","];
-                NSString *lastlat = [lastlatlong objectAtIndex:0];
-                NSString *lastlng = [lastlatlong objectAtIndex:1];
-                
-                int nextRunIndex;
-                if(runIndex == self.trackPointArray.count-1)
+                if ([ann.title isEqualToString:@"Runner"])
                 {
-                    nextRunIndex = 0;
-                }
-                else{
-                    nextRunIndex = runIndex+1;
-                }
-                
-                NSArray *nextlatlong = [[self.trackPointArray objectAtIndex:nextRunIndex] componentsSeparatedByString:@","];
-                NSString *nextlat = [nextlatlong objectAtIndex:0];
-                NSString *nextlng = [nextlatlong objectAtIndex:1];
-                
-                CLLocation *startPoint = [[CLLocation alloc] initWithLatitude:[lastlat doubleValue] longitude:[lastlng doubleValue]];
-                CLLocation *endPoint = [[CLLocation alloc] initWithLatitude:[nextlat doubleValue] longitude:[nextlng doubleValue]];
-                
-                CLLocationDistance polyDistance = [startPoint distanceFromLocation:endPoint];
-                
-                if(distance < polyDistance)
-                {
-                    // move the annotation correct distance
-                    CLLocationCoordinate2D lastpoi = CLLocationCoordinate2DMake([lastlat doubleValue], [lastlng doubleValue]);
-                    CLLocationCoordinate2D nextpoi = CLLocationCoordinate2DMake([nextlat doubleValue], [nextlng doubleValue]);
+                    NSArray *lastlatlong = [[self.trackPointArray objectAtIndex:runIndex] componentsSeparatedByString:@","];
+                    NSString *lastlat = [lastlatlong objectAtIndex:0];
+                    NSString *lastlng = [lastlatlong objectAtIndex:1];
                     
-                    double latitudeModifier;    // Distance to add/subtract to each latitude point
-                    double longitudeModifier;   // Distance to add/subtract to each longitude point
+                    int nextRunIndex;
+                    if(runIndex == self.trackPointArray.count-1)
+                    {
+                        nextRunIndex = 0;
+                    }
+                    else{
+                        nextRunIndex = runIndex+1;
+                    }
                     
-                    int numberOfPoints = 250;   // The number of points you want between the two points
+                    NSArray *nextlatlong = [[self.trackPointArray objectAtIndex:nextRunIndex] componentsSeparatedByString:@","];
+                    NSString *nextlat = [nextlatlong objectAtIndex:0];
+                    NSString *nextlng = [nextlatlong objectAtIndex:1];
                     
-                    CLLocationCoordinate2D newPoint;
-                    // Determine the distance between the lats and divide by numberOfPoints
-                    latitudeModifier = (nextpoi.latitude - lastpoi.latitude) / numberOfPoints;
-                    // Same with lons
-                    longitudeModifier = (nextpoi.longitude - lastpoi.longitude) / numberOfPoints;
+                    CLLocation *startPoint = [[CLLocation alloc] initWithLatitude:[lastlat doubleValue] longitude:[lastlng doubleValue]];
+                    CLLocation *endPoint = [[CLLocation alloc] initWithLatitude:[nextlat doubleValue] longitude:[nextlng doubleValue]];
+                    CLLocationDistance polyDistance = [startPoint distanceFromLocation:endPoint];
                     
-                    // Loop through the points
-                    for (int i = 0; i < numberOfPoints; i++) {
-                        newPoint.latitude = lastpoi.latitude + (latitudeModifier * i);
-                        newPoint.longitude = lastpoi.longitude + (longitudeModifier * i);
+                    if(distance > 0 && distance < polyDistance)
+                    {
+                        // move the annotation correct distance
+                        CLLocationCoordinate2D lastpoi = CLLocationCoordinate2DMake([lastlat doubleValue], [lastlng doubleValue]);
+                        CLLocationCoordinate2D nextpoi = CLLocationCoordinate2DMake([nextlat doubleValue], [nextlng doubleValue]);
+                        
+                        double latitudeModifier;    // Distance to add/subtract to each latitude point
+                        double longitudeModifier;   // Distance to add/subtract to each longitude point
+                        
+                        int numberOfPoints = 250;   // The number of points you want between the two points
+                        
+                        CLLocationCoordinate2D newPoint;
+                        // Determine the distance between the lats and divide by numberOfPoints
+                        latitudeModifier = (nextpoi.latitude - lastpoi.latitude) / numberOfPoints;
+                        // Same with lons
+                        longitudeModifier = (nextpoi.longitude - lastpoi.longitude) / numberOfPoints;
+                        
+                        // Loop through the points
+                        for (int i = 0; i < numberOfPoints; i++)
+                        {
+                            
+                            newPoint.latitude = lastpoi.latitude + (latitudeModifier * i);
+                            newPoint.longitude = lastpoi.longitude + (longitudeModifier * i);
+                            MKCoordinateRegion region;
+                            MKCoordinateSpan span;
+                            span.latitudeDelta = 0.0070;
+                            span.longitudeDelta = 0.0070;
+                            region.span = span;
+                            region.center.latitude = newPoint.latitude;
+                            region.center.longitude = newPoint.longitude;
+                            [mv setRegion:region animated:YES];
+                            ann.coordinate = newPoint;
+                            
+                            CLLocation *pointLoc = [[CLLocation alloc] initWithLatitude:newPoint.latitude longitude:newPoint.longitude];
+                            if([startPoint distanceFromLocation:pointLoc] > distance)
+                            {
+                                //NSLog(@"Point Exit Distance %f", [startPoint distanceFromLocation:pointLoc]);
+                                totalPointsDistance = totalPointsDistance + [startPoint distanceFromLocation:pointLoc];
+                                NSLog([NSString stringWithFormat:@"Split Point %.2f miles", totalPointsDistance * 0.000621371192]);
+                                
+                                // eject at the point of the distance we need and set the old location to this point
+                                [self.trackPointArray insertObject:[NSString stringWithFormat:@"%f,%f", pointLoc.coordinate.latitude, pointLoc.coordinate.longitude] atIndex:nextRunIndex];
+                                break;
+                            }
+                        }
+                    }
+                    else // lets just move to the next point then
+                    {
                         MKCoordinateRegion region;
                         MKCoordinateSpan span;
-                        span.latitudeDelta = 0.0100;
-                        span.longitudeDelta = 0.0100;
+                        span.latitudeDelta = 0.0070;
+                        span.longitudeDelta = 0.0070;
                         region.span = span;
-                        region.center.latitude = newPoint.latitude;
-                        region.center.longitude = newPoint.longitude;
+                        region.center.latitude = endPoint.coordinate.latitude;
+                        region.center.longitude = endPoint.coordinate.longitude;
                         [mv setRegion:region animated:YES];
+                        ann.coordinate = endPoint.coordinate;
                         
-                        ann.coordinate = newPoint;
+                        totalPointsDistance = totalPointsDistance + [startPoint distanceFromLocation:endPoint];
+                        NSLog([NSString stringWithFormat:@"Next Point %.2f miles", totalPointsDistance * 0.000621371192]);
+                        
+                    }
+                    
+                    if(distanceUnit.selectedSegmentIndex == 1)
+                    {
+                        distanceLabel.text =  [NSString stringWithFormat:@"%.2f km", totalPointsDistance * 1000];
+                    }
+                    else
+                    {
+                        distanceLabel.text =  [NSString stringWithFormat:@"%.2f miles", totalPointsDistance * 0.000621371192];
                     }
                 }
                 runIndex++;
-                
-                if(runIndex == sector1Count || runIndex == sector2Count)
-                {
-                    [self playSound:@"button-35" :@"mp3"];
-                    if(runIndex == sector1Count)
-                    {
-                        sector1Time = lapTime.text;
-                        //Reset Sector Time
-                    }
-                    else if (runIndex == sector2Count)
-                    {
-                        sector2Time = lapTime.text;
-                    }
-                }
+                                
                 if(runIndex == self.trackPointArray.count)
                 {
+                    NSLog([NSString stringWithFormat:@"Lap Distance %.2f miles", totalPointsDistance * 0.000621371192]);
                     //End of lap
                     runIndex = 0;
                     lapCounter++;
@@ -536,8 +532,12 @@ enum TimerState : NSUInteger {
                 }
                 break;
             }
-        }
-    }
+        }// end Annotation Loop
+        else // no old location
+        {
+            totalPointsDistance = 0;
+        }// no Location
+    } // Timer not set
 }
 
 -(void)checkAchievement
@@ -580,21 +580,10 @@ enum TimerState : NSUInteger {
 {
     MKOverlayView* overlayView = nil;
     self.trackLineView = [[MKPolylineView alloc] initWithPolyline:[self trackLine]];
-    if([self.trackLine.title isEqualToString:@"Sector 1"])
-    {
-        [[self trackLineView] setFillColor:[UIColor colorWithRed:167/255.0f green:210/255.0f blue:244/255.0f alpha:1.0]];
-        [[self trackLineView] setStrokeColor:[UIColor colorWithRed:106/255.0f green:151/255.0f blue:232/255.0f alpha:1.0]];
-    }
-    else if([self.trackLine.title isEqualToString:@"Sector 2"])
-    {
-        [[self trackLineView] setFillColor:[UIColor redColor]];
-        [[self trackLineView] setStrokeColor:[UIColor redColor]];
-    }
-    else
-    {
-        [[self trackLineView] setFillColor:[UIColor yellowColor]];
-        [[self trackLineView] setStrokeColor:[UIColor yellowColor]];
-    }
+
+    [[self trackLineView] setFillColor:[UIColor colorWithRed:167/255.0f green:210/255.0f blue:244/255.0f alpha:1.0]];
+    [[self trackLineView] setStrokeColor:[UIColor colorWithRed:106/255.0f green:151/255.0f blue:232/255.0f alpha:1.0]];
+
     [[self trackLineView] setLineWidth:5.0];
     [[self trackLineView] setLineCap:kCGLineCapRound];
     overlayView = [self trackLineView];
@@ -623,11 +612,11 @@ enum TimerState : NSUInteger {
         
         if(distanceUnit.selectedSegmentIndex == 1)
         {
-            [self.trackInfo setObject:[NSString stringWithFormat:@"%.2f",totalDistance * 1000] forKey:@"runDistance"];
+            [self.trackInfo setObject:[NSString stringWithFormat:@"%.2f",totalPointsDistance * 1000] forKey:@"runDistance"];
         }
         else
         {
-            [self.trackInfo setObject:[NSString stringWithFormat:@"%.2f",totalDistance * 0.000621371192] forKey:@"runDistance"];
+            [self.trackInfo setObject:[NSString stringWithFormat:@"%.2f",totalPointsDistance * 0.000621371192] forKey:@"runDistance"];
         }
         
         //Add Laps and Sectors Dictionary

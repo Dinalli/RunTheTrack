@@ -24,6 +24,8 @@
     UIImage *mapImage;
     
     UIView *toastView;
+    
+    double totalDistance;
 }
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;

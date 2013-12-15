@@ -11,88 +11,143 @@
 			<string>-37.8475956</string>
 		</dict>
 		<key>trackpoints</key>
-		<dict>
-			<key>1</key>
 			<array>
-				<string>-37.8511199,144.9702644</string>
-				<string>-37.8475956,144.9659729</string>
-				<string>-37.8472567,144.9661231</string>
-				<string>-37.8467823,144.9662089</string>
-				<string>-37.8464265,144.9660802</string>
-				<string>-37.8460706,144.9657154</string>
-				<string>-37.8444609,144.9637628</string>
-				<string>-37.8437323,144.9630332</string>
-				<string>-37.8430206,144.9625397</string>
-				<string>-37.8423258,144.9621320</string>
-				<string>-37.8421395,144.9622393</string>
-				<string>-37.8419869,144.9634624</string>
-				<string>-37.8417667,144.9637198</string>
+                <string>-37.85004396907733,144.96899843215942</string>
+                <string>-37.84948907084496,144.96830105781555</string>
+                <string>-37.84892993252425,144.96760368347168</string>
+                <string>-37.848421621280615,144.96694386005402</string>
+                <string>-37.84798531800184,144.9664181470871</string>
+                <string>-37.847697271703964,144.9660748243332</string>
+                <string>-37.84760831600223,144.96601581573486</string>
+                <string>-37.84747276425037,144.96604800224304</string>
+                <string>-37.84731179622138,144.96616065502167</string>
+                <string>-37.84695808892332,144.96625989675522</string>
+                <string>-37.84663615026698,144.96622502803802</string>
+                <string>-37.846392577323286,144.9661123752594</string>
+                <string>-37.84612570517437,144.965860247612</string>
+                <string>-37.84592237336504,144.9655705690384</string>
+                <string>-37.84562584680479,144.9651736021042</string>
+                <string>-37.84523188824466,144.96468007564545</string>
+                <string>-37.844876052897526,144.96427237987518</string>
+                <string>-37.84428299017016,144.96365547180176</string>
+                <string>-37.84366026917343,144.9631029367447</string>
+                <string>-37.843124386011084,144.9626925587654</string>
+                <string>-37.84264780680492,144.96235191822052</string>
+                <string>-37.842406338831665,144.96219098567963</string>
+                <string>-37.84228560454858,144.96212929487228</string>
+                <string>-37.842190287869684,144.96215879917145</string>
+                <string>-37.84210344367722,144.96228218078613</string>
+                <string>-37.84207167138613,144.96253699064255</string>
+                <string>-37.842008126762906,144.96293127536774</string>
+                <string>-37.84195517286839,144.96328800916672</string>
+                <string>-37.84185350128435,144.96362060308456</string>
+                <string>-37.84170734813673,144.9637332558632</string>
+                <string>-37.84155060385946,144.96374934911728</string>
+                <string>-37.841366322999335,144.96373057365417</string>
+                <string>-37.84103588720059,144.96371984481812</string>
+                <string>-37.84063131314908,144.96369570493698</string>
+                <string>-37.84029663764918,144.96369034051895</string>
+                <string>-37.83993230563178,144.96371179819107</string>
+                <string>-37.83977767580133,144.9638083577156</string>
+                <string>-37.839610336304524,144.96404975652695</string>
+                <string>-37.83942181413817,144.96437698602676</string>
+                <string>-37.839212109139844,144.96476858854294</string>
+                <string>-37.83896639343374,144.96518164873123</string>
+                <string>-37.83880540683766,144.96560275554657</string>
+                <string>-37.838759864513165,144.9657328426838</string>
+                <string>-37.8385046151508,144.96661126613617</string>
+                <string>-37.838288552759614,144.96719598770142</string>
+                <string>-37.83803859743906,144.9676948785782</string>
+                <string>-37.83799623204654,144.96780216693878</string>
+                <string>-37.838013178206474,144.96796309947968</string>
+                <string>-37.83804707051464,144.96802747249603</string>
+                <string>-37.8381190916178,144.9681293964386</string>
+                <string>-37.83825042403665,144.96830105781555</string>
+                <string>-37.83846225002595,144.96875166893005</string>
+                <string>-37.83854274374238,144.96925055980682</string>
+                <string>-37.83857239929997,144.96971189975739</string>
+                <string>-37.83861052785651,144.9699103832245</string>
+                <string>-37.838695257911574,144.97021615505219</string>
+                <string>-37.83881387982516,144.97047901153564</string>
+                <string>-37.83897062991837,144.97073113918304</string>
+                <string>-37.83917398089427,144.97101545333862</string>
+                <string>-37.839398513612245,144.97121930122375</string>
+                <string>-37.839699301653894,144.97139632701874</string>
+                <string>-37.83998314276549,144.97148215770721</string>
+                <string>-37.84032205609487,144.97155725955963</string>
+                <string>-37.84072451365087,144.97164845466614</string>
+                <string>-37.84119475075015,144.9717664718628</string>
+                <string>-37.84158873087649,144.9718415737152</string>
+                <string>-37.84187256471703,144.97192203998566</string>
+                <string>-37.842020835691926,144.97197031974792</string>
+                <string>-37.84213521595461,144.97198104858398</string>
+                <string>-37.84224112344708,144.9719488620758</string>
+                <string>-37.842291958989456,144.97182548046112</string>
+                <string>-37.84235126707793,144.97159481048584</string>
+                <string>-37.842393629969074,144.97141778469086</string>
+                <string>-37.842435992835874,144.97128903865814</string>
+                <string>-37.84250377337216,144.97120320796967</string>
+                <string>-37.8426520430781,144.971085190773</string>
+                <string>-37.84293163656971,144.9709564447403</string>
+                <string>-37.84343998565708,144.97082769870758</string>
+                <string>-37.8440330551637,144.97069358825684</string>
+                <string>-37.84452445199904,144.9706131219864</string>
+                <string>-37.844935358907954,144.97060775756836</string>
+                <string>-37.84543945807092,144.97069358825684</string>
+                <string>-37.84584612379199,144.97084379196167</string>
+                <string>-37.84624007907074,144.97105836868286</string>
+                <string>-37.84661285202021,144.97133195400238</string>
+                <string>-37.847002567179814,144.97173428535461</string>
+                <string>-37.847375336274794,144.97223317623138</string>
+                <string>-37.84765914784494,144.97264623641968</string>
+                <string>-37.84796413816532,144.97315049171448</string>
+                <string>-37.84807850921023,144.97343480587006</string>
+                <string>-37.848112396893185,144.9737513065338</string>
+                <string>-37.84810816093367,144.974507689476</string>
+                <string>-37.84815475647497,144.97476518154144</string>
+                <string>-37.8482225317552,144.97500121593475</string>
+                <string>-37.84831995861139,144.97521579265594</string>
+                <string>-37.84850634006457,144.97550010681152</string>
+                <string>-37.84876473175443,144.97589707374573</string>
+                <string>-37.849323871327876,144.97670710086823</string>
+                <string>-37.84952295787964,144.97699677944183</string>
+                <string>-37.84977287427943,144.97723817825317</string>
+                <string>-37.850120214309655,144.97750103473663</string>
+                <string>-37.850505675110625,144.97770488262177</string>
+                <string>-37.85082759687264,144.97780680656433</string>
+                <string>-37.85128929799883,144.9779838323593</string>
+                <string>-37.85169169570491,144.9781447649002</string>
+                <string>-37.85225504880374,144.97833251953125</string>
+                <string>-37.85269979820952,144.9784880876541</string>
+                <string>-37.85300476768,144.97856855392456</string>
+                <string>-37.85312336657782,144.9785202741623</string>
+                <string>-37.85322502262411,144.97834861278534</string>
+                <string>-37.85339868471224,144.9778175354004</string>
+                <string>-37.85363164540753,144.97706651687622</string>
+                <string>-37.853796835272675,144.97651934623718</string>
+                <string>-37.85389849039032,144.97615456581116</string>
+                <string>-37.8539154328963,144.975945353508</string>
+                <string>-37.853902726017175,144.97580587863922</string>
+                <string>-37.85383495595821,144.9755698442459</string>
+                <string>-37.85369518001485,144.9753874540329</string>
+                <string>-37.85330973588894,144.97512996196747</string>
+                <string>-37.85286499016262,144.97481882572174</string>
+                <string>-37.85246259886032,144.97452914714813</string>
+                <string>-37.85221480943944,144.97433066368103</string>
+                <string>-37.8521110341354,144.97422069311142</string>
+                <string>-37.852077148290206,144.9741107225418</string>
+                <string>-37.852089855483975,144.97404098510742</string>
+                <string>-37.85215762714712,144.97393369674683</string>
+                <string>-37.852420241753364,144.9736386537552</string>
+                <string>-37.85268285542418,144.97335970401764</string>
+                <string>-37.85282263328686,144.97312366962433</string>
+                <string>-37.85286922584887,144.97287690639496</string>
+                <string>-37.85283957604009,144.97257113456726</string>
+                <string>-37.85266167693701,144.97227609157562</string>
+                <string>-37.852094091214745,144.97158408164978</string>
+                <string>-37.851221525537504,144.9704897403717</string>
+                <string>-37.85004502803943,144.96900044381618</string>
 			</array>
-			<key>2</key>
-			<array>
-				<string>-37.8414616,144.9638057</string>
-				<string>-37.8402416,144.9636984</string>
-				<string>-37.8400043,144.9636984</string>
-				<string>-37.8398349,144.9637842</string>
-				<string>-37.8391401,144.9648571</string>
-				<string>-37.8388012,144.9656296</string>
-				<string>-37.8384961,144.9667454</string>
-				<string>-37.8382081,144.9674964</string>
-				<string>-37.8380217,144.9678612</string>
-				<string>-37.8382589,144.9681830</string>
-				<string>-37.8384623,144.9686980</string>
-				<string>-37.8385639,144.9691916</string>
-				<string>-37.8385809,144.9697065</string>
-				<string>-37.8386995,144.9701786</string>
-				<string>-37.8389706,144.9706721</string>
-				<string>-37.8392587,144.9710155</string>
-				<string>-37.8396146,144.9712944</string>
-				<string>-37.8400382,144.9714231</string>
-				<string>-37.8414616,144.9717879</string>
-				<string>-37.8422072,144.9719596</string>
-				<string>-37.8422920,144.9718094</string>
-				<string>-37.8424445,144.9712515</string>
-				<string>-37.8426309,144.9711013</string>
-				<string>-37.8429020,144.9709511</string>
-				<string>-37.8432409,144.9708867</string>
-				<string>-37.8446134,144.9706078</string>
-				<string>-37.8450201,144.9706078</string>
-				<string>-37.8454437,144.9706721</string>
-				<string>-37.8457995,144.9707794</string>
-				<string>-37.8461215,144.9709725</string>
-				<string>-37.8463756,144.9711227</string>
-				<string>-37.8468501,144.9715090</string>
-				<string>-37.8472567,144.9720240</string>
-			</array>
-			<key>3</key>
-			<array>
-				<string>-37.8479006,144.9729681</string>
-				<string>-37.8481039,144.9733329</string>
-				<string>-37.8481209,144.9737191</string>
-				<string>-37.8481039,144.9744058</string>
-				<string>-37.8481717,144.9748564</string>
-				<string>-37.8484767,144.9754357</string>
-				<string>-37.8490358,144.9762082</string>
-				<string>-37.8496797,144.9770451</string>
-				<string>-37.8499000,144.9773240</string>
-				<string>-37.8502727,144.9775386</string>
-				<string>-37.8529328,144.9785471</string>
-				<string>-37.8531191,144.9785256</string>
-				<string>-37.8532208,144.9783754</string>
-				<string>-37.8538646,144.9762726</string>
-				<string>-37.8539324,144.9759936</string>
-				<string>-37.8538646,144.9756932</string>
-				<string>-37.8537460,144.9754357</string>
-				<string>-37.8522042,144.9742770</string>
-				<string>-37.8520856,144.9740410</string>
-				<string>-37.8527125,144.9733114</string>
-				<string>-37.8528819,144.9729896</string>
-				<string>-37.8528650,144.9725819</string>
-				<string>-37.8526786,144.9722815</string>
-				<string>-37.8524245,144.9718952</string>
-				<string>-37.8475956,144.9659729</string>
-			</array>
-		</dict>
 		<key>Race</key>
 		<string>Melbourne</string>
 		<key>mapimage</key>
@@ -121,81 +176,75 @@
 			<string>2.760448022331816</string>
 		</dict>
 		<key>trackpoints</key>
-		<dict>
-			<key>1</key>
-			<array/>
-			<key>2</key>
-			<array/>
-			<key>3</key>
-			<array>
-                <string>2.76075,101.73832</string>
-                <string>2.76067,101.73733</string>
-                <string>2.76061,101.73643</string>
-                <string>2.76053,101.73551</string>
-                <string>2.76044,101.73420</string>
-                <string>2.76037,101.73319</string>
-                <string>2.76036,101.73286</string>
-                <string>2.76041,101.73269</string>
-                <string>2.76058,101.73256</string>
-                <string>2.76081,101.73258</string>
-                <string>2.76095,101.73274</string>
-                <string>2.76096,101.73296</string>
-                <string>2.76088,101.73320</string>
-                <string>2.76081,101.73337</string>
-                <string>2.76092,101.73351</string>
-                <string>2.76117,101.73355</string>
-                <string>2.76132,101.73343</string>
-                <string>2.76154,101.73324</string>
-                <string>2.76185,101.73308</string>
-                <string>2.76230,101.73302</string>
-                <string>2.76284,101.73307</string>
-                <string>2.76329,101.73328</string>
-                <string>2.76366,101.73359</string>
-                <string>2.76392,101.73409</string>
-                <string>2.76415,101.73484</string>
-                <string>2.76446,101.73571</string>
-                <string>2.76471,101.73634</string>
-                <string>2.76491,101.73681</string>
-                <string>2.76508,101.73719</string>
-                <string>2.76516,101.73739</string>
-                <string>2.76516,101.73752</string>
-                <string>2.76504,101.73759</string>
-                <string>2.76468,101.73766</string>
-                <string>2.76403,101.73778</string>
-                <string>2.76343,101.73791</string>
-                <string>2.76273,101.73812</string>
-                <string>2.76245,101.73837</string>
-                <string>2.76226,101.73876</string>
-                <string>2.76224,101.73922</string>
-                <string>2.76239,101.73961</string>
-                <string>2.76265,101.73988</string>
-                <string>2.76292,101.74019</string>
-                <string>2.76301,101.74058</string>
-                <string>2.76291,101.74102</string>
-                <string>2.76258,101.74138</string>
-                <string>2.76211,101.74177</string>
-                <string>2.76168,101.74215</string>
-                <string>2.76099,101.74274</string>
-                <string>2.76076,101.74296</string>
-                <string>2.76062,101.74302</string>
-                <string>2.76027,101.74286</string>
-                <string>2.75985,101.74269</string>
-                <string>2.75972,101.74255</string>
-                <string>2.75970,101.74198</string>
-                <string>2.75965,101.74127</string>
-                <string>2.75961,101.74070</string>
-                <string>2.75952,101.73997</string>
-                <string>2.75945,101.73929</string>
-                <string>2.75935,101.73858</string>
-                <string>2.75925,101.73832</string>
-                <string>2.75914,101.73828</string>
-                <string>2.75900,101.73841</string>
-                <string>2.75873,101.73886</string>
-                <string>2.75845,101.73915</string>
-                <string>2.75787,101.73923</string>
-                <string>2.75741,101.73915</string>
-                <string>2.75690,101.73891</string>
-                <string>2.75667,101.73868</string>
+            <array>
+            <string>2.76075,101.73832</string>
+            <string>2.76067,101.73733</string>
+            <string>2.76061,101.73643</string>
+            <string>2.76053,101.73551</string>
+            <string>2.76044,101.73420</string>
+            <string>2.76037,101.73319</string>
+            <string>2.76036,101.73286</string>
+            <string>2.76041,101.73269</string>
+            <string>2.76058,101.73256</string>
+            <string>2.76081,101.73258</string>
+            <string>2.76095,101.73274</string>
+            <string>2.76096,101.73296</string>
+            <string>2.76088,101.73320</string>
+            <string>2.76081,101.73337</string>
+            <string>2.76092,101.73351</string>
+            <string>2.76117,101.73355</string>
+            <string>2.76132,101.73343</string>
+            <string>2.76154,101.73324</string>
+            <string>2.76185,101.73308</string>
+            <string>2.76230,101.73302</string>
+            <string>2.76284,101.73307</string>
+            <string>2.76329,101.73328</string>
+            <string>2.76366,101.73359</string>
+            <string>2.76392,101.73409</string>
+            <string>2.76415,101.73484</string>
+            <string>2.76446,101.73571</string>
+            <string>2.76471,101.73634</string>
+            <string>2.76491,101.73681</string>
+            <string>2.76508,101.73719</string>
+            <string>2.76516,101.73739</string>
+            <string>2.76516,101.73752</string>
+            <string>2.76504,101.73759</string>
+            <string>2.76468,101.73766</string>
+            <string>2.76403,101.73778</string>
+            <string>2.76343,101.73791</string>
+            <string>2.76273,101.73812</string>
+            <string>2.76245,101.73837</string>
+            <string>2.76226,101.73876</string>
+            <string>2.76224,101.73922</string>
+            <string>2.76239,101.73961</string>
+            <string>2.76265,101.73988</string>
+            <string>2.76292,101.74019</string>
+            <string>2.76301,101.74058</string>
+            <string>2.76291,101.74102</string>
+            <string>2.76258,101.74138</string>
+            <string>2.76211,101.74177</string>
+            <string>2.76168,101.74215</string>
+            <string>2.76099,101.74274</string>
+            <string>2.76076,101.74296</string>
+            <string>2.76062,101.74302</string>
+            <string>2.76027,101.74286</string>
+            <string>2.75985,101.74269</string>
+            <string>2.75972,101.74255</string>
+            <string>2.75970,101.74198</string>
+            <string>2.75965,101.74127</string>
+            <string>2.75961,101.74070</string>
+            <string>2.75952,101.73997</string>
+            <string>2.75945,101.73929</string>
+            <string>2.75935,101.73858</string>
+            <string>2.75925,101.73832</string>
+            <string>2.75914,101.73828</string>
+            <string>2.75900,101.73841</string>
+            <string>2.75873,101.73886</string>
+            <string>2.75845,101.73915</string>
+            <string>2.75787,101.73923</string>
+            <string>2.75741,101.73915</string>
+            <string>2.75690,101.73891</string>
+            <string>2.75667,101.73868</string>
                 <string>2.75663,101.73849</string>
                 <string>2.75682,101.73818</string>
                 <string>2.75723,101.73770</string>
@@ -229,7 +278,6 @@
                 <string>2.76083,101.73939</string>
                 <string>2.76075,101.73832</string>
             </array>
-		</dict>
 		<key>Race</key>
 		<string>Maylasia</string>
 		<key>mapimage</key>
@@ -258,75 +306,37 @@
 			<string>-1.0206127</string>
 		</dict>
 		<key>trackpoints</key>
-		<dict>
-			<key>1</key>
-			<array/>
-			<key>2</key>
-			<array/>
-			<key>3</key>
-			<array>
-                <string>31.33765,121.22216</string>
-                <string>31.33732,121.22060</string>
-                <string>31.33689,121.21845</string>
-                <string>31.33674,121.21781</string>
-                <string>31.33668,121.21750</string>
-                <string>31.33662,121.21718</string>
-                <string>31.33663,121.21691</string>
-                <string>31.33672,121.21663</string>
-                <string>31.33683,121.21644</string>
-                <string>31.33697,121.21629</string>
-                <string>31.33716,121.21618</string>
-                <string>31.33740,121.21612</string>
-                <string>31.33766,121.21614</string>
-                <string>31.33781,121.21623</string>
-                <string>31.33795,121.21639</string>
-                <string>31.33803,121.21658</string>
-                <string>31.33803,121.21677</string>
-                <string>31.33800,121.21696</string>
-                <string>31.33790,121.21707</string>
-                <string>31.33776,121.21714</string>
-                <string>31.33760,121.21709</string>
-                <string>31.33749,121.21704</string>
-                <string>31.33739,121.21701</string>
-                <string>31.33728,121.21703</string>
-                <string>31.33717,121.21711</string>
-                <string>31.33709,121.21727</string>
-                <string>31.33712,121.21751</string>
-                <string>31.33724,121.21766</string>
-                <string>31.33745,121.21779</string>
-                <string>31.33763,121.21785</string>
-                <string>31.33784,121.21783</string>
-                <string>31.33806,121.21775</string>
-                <string>31.33823,121.21760</string>
-                <string>31.33851,121.21731</string>
-                <string>31.33892,121.21689</string>
-                <string>31.33940,121.21640</string>
-                <string>31.33975,121.21604</string>
-                <string>31.34000,121.21578</string>
-                <string>31.34022,121.21564</string>
-                <string>31.34074,121.21544</string>
-                <string>31.34137,121.21518</string>
-                <string>31.34197,121.21494</string>
-                <string>31.34212,121.21494</string>
-                <string>31.34222,121.21503</string>
-                <string>31.34225,121.21512</string>
-                <string>31.34221,121.21524</string>
-                <string>31.34214,121.21537</string>
-                <string>31.34188,121.21574</string>
-                <string>31.34163,121.21600</string>
-                <string>31.34135,121.21620</string>
-                <string>31.34096,121.21647</string>
-                <string>31.34056,121.21673</string>
-                <string>31.34022,121.21695</string>
-                <string>31.33994,121.21716</string>
-                <string>31.33975,121.21739</string>
-                <string>31.33962,121.21761</string>
-                <string>31.33955,121.21787</string>
-                <string>31.33951,121.21823</string>
-                <string>31.33955,121.21858</string>
-                <string>31.33972,121.21895</string>
-                <string>31.33995,121.21924</string>
-                <string>31.34027,121.21945</string>
+
+            <array>
+            <string>31.33765,121.22216</string>
+            <string>31.33732,121.22060</string>
+            <string>31.33689,121.21845</string>
+            <string>31.33674,121.21781</string>
+            <string>31.33668,121.21750</string>
+            <string>31.33662,121.21718</string>
+            <string>31.33663,121.21691</string>
+            <string>31.33672,121.21663</string>
+            <string>31.33683,121.21644</string>
+            <string>31.33697,121.21629</string>
+            <string>31.33716,121.21618</string>
+            <string>31.33740,121.21612</string>
+            <string>31.33766,121.21614</string>
+            <string>31.33781,121.21623</string>
+            <string>31.33795,121.21639</string>
+            <string>31.33803,121.21658</string>
+            <string>31.33803,121.21677</string>
+            <string>31.33800,121.21696</string>
+            <string>31.33790,121.21707</string>
+            <string>31.33776,121.21714</string>
+            <string>31.33760,121.21709</string>
+            <string>31.33749,121.21704</string>
+            <string>31.33739,121.21701</string>
+            <string>31.33728,121.21703</string>
+            <string>31.33717,121.21711</string>
+            <string>31.33709,121.21727</string>
+            <string>31.33712,121.21751</string>
+            <string>31.33724,121.21766</string>
+                            <string>31.34027,121.21945</string>
                 <string>31.34059,121.21963</string>
                 <string>31.34090,121.21981</string>
                 <string>31.34112,121.22008</string>
@@ -411,7 +421,7 @@
                 <string>31.33778,121.22293</string>
                 <string>31.33765,121.22216</string>
 </array>
-		</dict>
+
 		<key>Race</key>
 		<string>China</string>
 		<key>mapimage</key>
@@ -440,12 +450,7 @@
 			<string>-1.0206127</string>
 		</dict>
 		<key>trackpoints</key>
-		<dict>
-			<key>1</key>
-			<array/>
-			<key>2</key>
-			<array/>
-			<key>3</key>
+	
 			<array>
                 <string>26.030939625934696,50.51038384437561</string>
                 <string>26.032511012483337,50.51045894622803</string>
@@ -535,7 +540,7 @@
                 <string>26.028423435539974,50.510276556015015</string>
                 <string>26.030929985461476,50.51037311553955</string>
 </array>
-		</dict>
+
 		<key>Race</key>
 		<string>Bahrain International Circuit</string>
 		<key>mapimage</key>
@@ -564,12 +569,7 @@
 			<string>-1.0206127</string>
 		</dict>
 		<key>trackpoints</key>
-		<dict>
-			<key>1</key>
-			<array/>
-			<key>2</key>
-			<array/>
-			<key>3</key>
+
 			<array>
 				<string>41.5723547,2.2631192</string>
 				<string>41.5658530,2.2576690</string>
@@ -647,7 +647,7 @@
 				<string>41.5727239,2.2634411</string>
 				<string>41.5721460,2.2629690</string>
 			</array>
-		</dict>
+	
 		<key>Race</key>
 		<string>Circuit de Catalunya</string>
 		<key>mapimage</key>
@@ -676,8 +676,7 @@
 			<string>-1.0206127</string>
 		</dict>
 		<key>trackpoints</key>
-		<dict>
-			<key>1</key>
+
 			<array>
 				<string>43.7351196,7.4212325</string>
 				<string>43.7355382,7.4211681</string>
@@ -692,9 +691,6 @@
 				<string>43.7373444,7.4238825</string>
 				<string>43.7374219,7.4243975</string>
 				<string>43.7374839,7.4249232</string>
-			</array>
-			<key>2</key>
-			<array>
 				<string>43.7374839,7.4249232</string>
 				<string>43.7377165,7.4256420</string>
 				<string>43.7378250,7.4260068</string>
@@ -733,9 +729,6 @@
 				<string>43.7376312,7.4271548</string>
 				<string>43.7374917,7.4267256</string>
 				<string>43.7374607,7.4265432</string>
-			</array>
-			<key>3</key>
-			<array>
 				<string>43.7374607,7.4265432</string>
 				<string>43.7373599,7.4265432</string>
 				<string>43.7372436,7.4255991</string>
@@ -770,7 +763,7 @@
 				<string>43.7344607,7.4213398</string>
 				<string>43.7355382,7.4211681</string>
 			</array>
-		</dict>
+	
 		<key>Race</key>
 		<string>Monaco</string>
 		<key>mapimage</key>
@@ -799,12 +792,7 @@
 			<string>-1.0206127</string>
 		</dict>
 		<key>trackpoints</key>
-		<dict>
-			<key>1</key>
-			<array/>
-			<key>2</key>
-			<array/>
-			<key>3</key>
+
 			<array>
 				<string>45.5014442,-73.5231364</string>
 				<string>45.4994440,-73.5225785</string>
@@ -887,7 +875,7 @@
 				<string>45.5023015,-73.5234046</string>
 				<string>45.4994440,-73.5225785</string>
 			</array>
-		</dict>
+
 		<key>Race</key>
 		<string>Circuit Gilles Villeneuve</string>
 		<key>mapimage</key>
@@ -916,8 +904,6 @@
 			<string>-1.0206127</string>
 		</dict>
 		<key>trackpoints</key>
-		<dict>
-			<key>1</key>
 			<array>
 				<string>52.0705906,-1.0206127</string>
 				<string>52.0712633,-1.0197544</string>
@@ -1021,9 +1007,108 @@
 				<string>52.0679262,-1.0238957</string>
 				<string>52.0700102,-1.0213423</string>
 				<string>52.0705576,-1.0206556</string>
-			</array>
-			<key>2</key>
-			<array>
+				<string>52.0705906,-1.0206127</string>
+				<string>52.0712633,-1.0197544</string>
+				<string>52.0714347,-1.0194755</string>
+				<string>52.0715270,-1.0191965</string>
+				<string>52.0715666,-1.0189176</string>
+				<string>52.0715798,-1.0184669</string>
+				<string>52.0715402,-1.0180378</string>
+				<string>52.0715402,-1.0175014</string>
+				<string>52.0716062,-1.0170293</string>
+				<string>52.0716194,-1.0166216</string>
+				<string>52.0717513,-1.0160637</string>
+				<string>52.0719623,-1.0156131</string>
+				<string>52.0722261,-1.0151196</string>
+				<string>52.0724503,-1.0147333</string>
+				<string>52.0725162,-1.0144544</string>
+				<string>52.0724767,-1.0141754</string>
+				<string>52.0723844,-1.0139608</string>
+				<string>52.0721601,-1.0138750</string>
+				<string>52.0719491,-1.0137677</string>
+				<string>52.0716721,-1.0137463</string>
+				<string>52.0714347,-1.0137463</string>
+				<string>52.0712896,-1.0135531</string>
+				<string>52.0713424,-1.0134029</string>
+				<string>52.0714479,-1.0131454</string>
+				<string>52.0716589,-1.0128665</string>
+				<string>52.0719359,-1.0125232</string>
+				<string>52.0721997,-1.0122442</string>
+				<string>52.0725162,-1.0121155</string>
+				<string>52.0728196,-1.0120511</string>
+				<string>52.0730966,-1.0120511</string>
+				<string>52.0733208,-1.0121799</string>
+				<string>52.0736241,-1.0124803</string>
+				<string>52.0764069,-1.0173726</string>
+				<string>52.0770267,-1.0185957</string>
+				<string>52.0771322,-1.0190034</string>
+				<string>52.0771322,-1.0193038</string>
+				<string>52.0770795,-1.0196471</string>
+				<string>52.0769608,-1.0199046</string>
+				<string>52.0767894,-1.0200548</string>
+				<string>52.0761168,-1.0201406</string>
+				<string>52.0759321,-1.0203123</string>
+				<string>52.0758266,-1.0204840</string>
+				<string>52.0757607,-1.0207844</string>
+				<string>52.0757871,-1.0211277</string>
+				<string>52.0759189,-1.0214281</string>
+				<string>52.0760640,-1.0216427</string>
+				<string>52.0763014,-1.0217071</string>
+				<string>52.0764992,-1.0215783</string>
+				<string>52.0776334,-1.0206985</string>
+				<string>52.0778971,-1.0204196</string>
+				<string>52.0781741,-1.0199261</string>
+				<string>52.0783851,-1.0194325</string>
+				<string>52.0785433,-1.0189176</string>
+				<string>52.0785829,-1.0185313</string>
+				<string>52.0789521,-1.0125232</string>
+				<string>52.0789126,-1.0120940</string>
+				<string>52.0787807,-1.0117292</string>
+				<string>52.0785829,-1.0112786</string>
+				<string>52.0783323,-1.0111284</string>
+				<string>52.0779235,-1.0108495</string>
+				<string>52.0764860,-1.0103989</string>
+				<string>52.0756024,-1.0102701</string>
+				<string>52.0745342,-1.0102057</string>
+				<string>52.0741649,-1.0100770</string>
+				<string>52.0737824,-1.0097980</string>
+				<string>52.0735186,-1.0095620</string>
+				<string>52.0731889,-1.0095620</string>
+				<string>52.0723844,-1.0100341</string>
+				<string>52.0720546,-1.0101199</string>
+				<string>52.0717117,-1.0099483</string>
+				<string>52.0713292,-1.0094118</string>
+				<string>52.0708939,-1.0092187</string>
+				<string>52.0705906,-1.0093904</string>
+				<string>52.0703532,-1.0099268</string>
+				<string>52.0700498,-1.0106993</string>
+				<string>52.0697596,-1.0111713</string>
+				<string>52.0664092,-1.0141754</string>
+				<string>52.0639292,-1.0165787</string>
+				<string>52.0636390,-1.0169864</string>
+				<string>52.0634939,-1.0174584</string>
+				<string>52.0634939,-1.0178018</string>
+				<string>52.0635335,-1.0181665</string>
+				<string>52.0636654,-1.0185099</string>
+				<string>52.0638369,-1.0188103</string>
+				<string>52.0641271,-1.0190463</string>
+				<string>52.0646284,-1.0194540</string>
+				<string>52.0649977,-1.0198832</string>
+				<string>52.0665147,-1.0219431</string>
+				<string>52.0665543,-1.0222220</string>
+				<string>52.0664224,-1.0225010</string>
+				<string>52.0662113,-1.0228658</string>
+				<string>52.0661586,-1.0231876</string>
+				<string>52.0662377,-1.0234880</string>
+				<string>52.0663828,-1.0238099</string>
+				<string>52.0666071,-1.0240674</string>
+				<string>52.0668181,-1.0242391</string>
+				<string>52.0671083,-1.0243678</string>
+				<string>52.0672798,-1.0243678</string>
+				<string>52.0676096,-1.0242176</string>
+				<string>52.0679262,-1.0238957</string>
+				<string>52.0700102,-1.0213423</string>
+				<string>52.0705576,-1.0206556</string>
 				<string>52.0705906,-1.0206127</string>
 				<string>52.0712633,-1.0197544</string>
 				<string>52.0714347,-1.0194755</string>
@@ -1127,113 +1212,7 @@
 				<string>52.0700102,-1.0213423</string>
 				<string>52.0705576,-1.0206556</string>
 			</array>
-			<key>3</key>
-			<array>
-				<string>52.0705906,-1.0206127</string>
-				<string>52.0712633,-1.0197544</string>
-				<string>52.0714347,-1.0194755</string>
-				<string>52.0715270,-1.0191965</string>
-				<string>52.0715666,-1.0189176</string>
-				<string>52.0715798,-1.0184669</string>
-				<string>52.0715402,-1.0180378</string>
-				<string>52.0715402,-1.0175014</string>
-				<string>52.0716062,-1.0170293</string>
-				<string>52.0716194,-1.0166216</string>
-				<string>52.0717513,-1.0160637</string>
-				<string>52.0719623,-1.0156131</string>
-				<string>52.0722261,-1.0151196</string>
-				<string>52.0724503,-1.0147333</string>
-				<string>52.0725162,-1.0144544</string>
-				<string>52.0724767,-1.0141754</string>
-				<string>52.0723844,-1.0139608</string>
-				<string>52.0721601,-1.0138750</string>
-				<string>52.0719491,-1.0137677</string>
-				<string>52.0716721,-1.0137463</string>
-				<string>52.0714347,-1.0137463</string>
-				<string>52.0712896,-1.0135531</string>
-				<string>52.0713424,-1.0134029</string>
-				<string>52.0714479,-1.0131454</string>
-				<string>52.0716589,-1.0128665</string>
-				<string>52.0719359,-1.0125232</string>
-				<string>52.0721997,-1.0122442</string>
-				<string>52.0725162,-1.0121155</string>
-				<string>52.0728196,-1.0120511</string>
-				<string>52.0730966,-1.0120511</string>
-				<string>52.0733208,-1.0121799</string>
-				<string>52.0736241,-1.0124803</string>
-				<string>52.0764069,-1.0173726</string>
-				<string>52.0770267,-1.0185957</string>
-				<string>52.0771322,-1.0190034</string>
-				<string>52.0771322,-1.0193038</string>
-				<string>52.0770795,-1.0196471</string>
-				<string>52.0769608,-1.0199046</string>
-				<string>52.0767894,-1.0200548</string>
-				<string>52.0761168,-1.0201406</string>
-				<string>52.0759321,-1.0203123</string>
-				<string>52.0758266,-1.0204840</string>
-				<string>52.0757607,-1.0207844</string>
-				<string>52.0757871,-1.0211277</string>
-				<string>52.0759189,-1.0214281</string>
-				<string>52.0760640,-1.0216427</string>
-				<string>52.0763014,-1.0217071</string>
-				<string>52.0764992,-1.0215783</string>
-				<string>52.0776334,-1.0206985</string>
-				<string>52.0778971,-1.0204196</string>
-				<string>52.0781741,-1.0199261</string>
-				<string>52.0783851,-1.0194325</string>
-				<string>52.0785433,-1.0189176</string>
-				<string>52.0785829,-1.0185313</string>
-				<string>52.0789521,-1.0125232</string>
-				<string>52.0789126,-1.0120940</string>
-				<string>52.0787807,-1.0117292</string>
-				<string>52.0785829,-1.0112786</string>
-				<string>52.0783323,-1.0111284</string>
-				<string>52.0779235,-1.0108495</string>
-				<string>52.0764860,-1.0103989</string>
-				<string>52.0756024,-1.0102701</string>
-				<string>52.0745342,-1.0102057</string>
-				<string>52.0741649,-1.0100770</string>
-				<string>52.0737824,-1.0097980</string>
-				<string>52.0735186,-1.0095620</string>
-				<string>52.0731889,-1.0095620</string>
-				<string>52.0723844,-1.0100341</string>
-				<string>52.0720546,-1.0101199</string>
-				<string>52.0717117,-1.0099483</string>
-				<string>52.0713292,-1.0094118</string>
-				<string>52.0708939,-1.0092187</string>
-				<string>52.0705906,-1.0093904</string>
-				<string>52.0703532,-1.0099268</string>
-				<string>52.0700498,-1.0106993</string>
-				<string>52.0697596,-1.0111713</string>
-				<string>52.0664092,-1.0141754</string>
-				<string>52.0639292,-1.0165787</string>
-				<string>52.0636390,-1.0169864</string>
-				<string>52.0634939,-1.0174584</string>
-				<string>52.0634939,-1.0178018</string>
-				<string>52.0635335,-1.0181665</string>
-				<string>52.0636654,-1.0185099</string>
-				<string>52.0638369,-1.0188103</string>
-				<string>52.0641271,-1.0190463</string>
-				<string>52.0646284,-1.0194540</string>
-				<string>52.0649977,-1.0198832</string>
-				<string>52.0665147,-1.0219431</string>
-				<string>52.0665543,-1.0222220</string>
-				<string>52.0664224,-1.0225010</string>
-				<string>52.0662113,-1.0228658</string>
-				<string>52.0661586,-1.0231876</string>
-				<string>52.0662377,-1.0234880</string>
-				<string>52.0663828,-1.0238099</string>
-				<string>52.0666071,-1.0240674</string>
-				<string>52.0668181,-1.0242391</string>
-				<string>52.0671083,-1.0243678</string>
-				<string>52.0672798,-1.0243678</string>
-				<string>52.0676096,-1.0242176</string>
-				<string>52.0679262,-1.0238957</string>
-				<string>52.0700102,-1.0213423</string>
-				<string>52.0705576,-1.0206556</string>
-			</array>
-		</dict>
-		<key>Race</key>
+        <key>Race</key>
 		<string>Silverstone</string>
 		<key>mapimage</key>
 		<string>silverstone.png</string>
@@ -1261,12 +1240,6 @@
 			<string>-1.0206127</string>
 		</dict>
 		<key>trackpoints</key>
-		<dict>
-			<key>1</key>
-			<array/>
-			<key>2</key>
-			<array/>
-			<key>3</key>
 			<array>
                 <string>50.33554,6.94781</string>
                 <string>50.33511,6.94715</string>
@@ -1416,7 +1389,6 @@
                 <string>50.33579,6.94819</string>
                 <string>50.33554,6.94781</string>
 </array>
-		</dict>
 		<key>Race</key>
 		<string>Nurburgring</string>
 		<key>mapimage</key>
@@ -1445,12 +1417,6 @@
 			<string>-1.0206127</string>
 		</dict>
 		<key>trackpoints</key>
-		<dict>
-			<key>1</key>
-			<array/>
-			<key>2</key>
-			<array/>
-			<key>3</key>
 			<array>
                 <string>47.57888154028372,19.24841433763504</string>
                 <string>47.579996087944345,19.24629807472229</string>
@@ -1609,7 +1575,6 @@
                 <string>47.57866079913348,19.248827397823334</string>
                 <string>47.57887611223381,19.248422384262085</string>
                 </array>
-		</dict>
 		<key>Race</key>
 		<string>Hungaroring</string>
 		<key>mapimage</key>
@@ -1638,12 +1603,6 @@
 			<string>-1.0206127</string>
 		</dict>
 		<key>trackpoints</key>
-		<dict>
-			<key>1</key>
-			<array/>
-			<key>2</key>
-			<array/>
-			<key>3</key>
 			<array>
                 <string>50.44388200803914,5.9685587882995605</string>
                 <string>50.444715563761775,5.967421531677246</string>
@@ -1797,7 +1756,6 @@
                 <string>50.44259748359103,5.970275402069092</string>
                 <string>50.44386834306892,5.96858024597168</string>
 </array>
-		</dict>
 		<key>Race</key>
 		<string>Spa-Francorchamps</string>
 		<key>mapimage</key>
@@ -1826,12 +1784,6 @@
 			<string>-1.0206127</string>
 		</dict>
 		<key>trackpoints</key>
-		<dict>
-			<key>1</key>
-			<array/>
-			<key>2</key>
-			<array/>
-			<key>3</key>
 			<array>
 				<string>45.6171893,9.2809153</string>
 				<string>45.6230573,9.2817199</string>
@@ -1924,7 +1876,6 @@
 				<string>45.6163413,9.2808187</string>
 				<string>45.6230573,9.2817199</string>
 			</array>
-		</dict>
 		<key>Race</key>
 		<string>Autodromo Nazionale Monza</string>
 		<key>mapimage</key>
@@ -1953,12 +1904,6 @@
 			<string>-1.0206127</string>
 		</dict>
 		<key>trackpoints</key>
-		<dict>
-			<key>1</key>
-			<array/>
-			<key>2</key>
-			<array/>
-			<key>3</key>
 			<array>
 				<string>1.2900121,103.8644886</string>
 				<string>1.2929618,103.8640487</string>
@@ -2065,7 +2010,6 @@
 				<string>1.2898405,103.8644886</string>
 				<string>1.2899692,103.8644886</string>
 			</array>
-		</dict>
 		<key>Race</key>
 		<string>Singapore street track</string>
 		<key>mapimage</key>
@@ -2094,12 +2038,6 @@
 			<string>-1.0206127</string>
 		</dict>
 		<key>trackpoints</key>
-		<dict>
-			<key>1</key>
-			<array/>
-			<key>2</key>
-			<array/>
-			<key>3</key>
 			<array>
                 <string>34.842985,136.540693</string>
                 <string>34.84216180422161,136.54153525829315</string>
@@ -2233,7 +2171,6 @@
                 <string>34.84338135238096,136.5402853488922</string>
                 <string>34.84298511127849,136.54068231582642</string>
                 </array>
-		</dict>
 		<key>Race</key>
 		<string>Suzuka</string>
 		<key>mapimage</key>
@@ -2262,12 +2199,6 @@
 			<string>-1.0206127</string>
 		</dict>
 		<key>trackpoints</key>
-		<dict>
-			<key>1</key>
-			<array/>
-			<key>2</key>
-			<array/>
-			<key>3</key>
 			<array>
                 <string>34.73076,126.41819</string>
                 <string>34.73051,126.41901</string>
@@ -2388,7 +2319,6 @@
                 <string>34.73076,126.41819</string>
 
 </array>
-		</dict>
 		<key>Race</key>
 		<string>Korea International Circuit</string>
 		<key>mapimage</key>
@@ -2417,12 +2347,6 @@
 			<string>-1.0206127</string>
 		</dict>
 		<key>trackpoints</key>
-		<dict>
-			<key>1</key>
-			<array/>
-			<key>2</key>
-			<array/>
-			<key>3</key>
 			<array>
                 <string>28.34993,77.53518</string>
                 <string>28.35116,77.53465</string>
@@ -2532,7 +2456,6 @@
                 <string>28.34932,77.53542</string>
                 <string>28.34993,77.53518</string>
 </array>
-		</dict>
 		<key>Race</key>
 		<string>Buddh International Circuit</string>
 		<key>mapimage</key>
@@ -2561,12 +2484,6 @@
 			<string>-1.0206127</string>
 		</dict>
 		<key>trackpoints</key>
-		<dict>
-			<key>1</key>
-			<array/>
-			<key>2</key>
-			<array/>
-			<key>3</key>
 			<array>
                 <string>24.469933765721944,54.60547864437103</string>
                 <string>24.470070477869207,54.60656762123108</string>
@@ -2705,7 +2622,6 @@
                 <string>24.469933765721944,54.60546791553497</string>
 
 </array>
-		</dict>
 		<key>Race</key>
 		<string>Yas Marina, Abu Dhab</string>
 		<key>mapimage</key>
@@ -2734,12 +2650,6 @@
 			<string>-1.0206127</string>
 		</dict>
 		<key>trackpoints</key>
-		<dict>
-			<key>1</key>
-			<array/>
-			<key>2</key>
-			<array/>
-			<key>3</key>
 			<array>
                 <string>30.13189,-97.63985</string>
                 <string>30.13126,-97.63893</string>
@@ -2855,7 +2765,6 @@
                 <string>30.13238,-97.64057</string>
                 <string>30.13189,-97.63985</string>
                 </array>
-		</dict>
 		<key>Race</key>
 		<string>Circuit of the Americas</string>
 		<key>mapimage</key>
@@ -2884,12 +2793,6 @@
 			<string>-1.0206127</string>
 		</dict>
 		<key>trackpoints</key>
-		<dict>
-			<key>1</key>
-			<array/>
-			<key>2</key>
-			<array/>
-			<key>3</key>
 			<array>
                 <string>-23.702443484764324,-46.69492542743683</string>
                 <string>-23.704005461195617,-46.69538140296936</string>
@@ -2994,8 +2897,7 @@
                 <string>-23.700660451082463,-46.69437289237976</string>
                 <string>-23.701470923957583,-46.69461965560913</string>
                 <string>-23.702443484764324,-46.69492542743683</string>
-</array>
-            </dict>
+            </array>
 		<key>Race</key>
 		<string>Autodromo Jose Carlos Pace Interlagos</string>
 		<key>mapimage</key>

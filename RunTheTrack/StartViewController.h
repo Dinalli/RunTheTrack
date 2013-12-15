@@ -68,7 +68,7 @@
     NSMutableDictionary *newRunAchievements;
     NSArray *currentAchievements;
     
-    double totalDistance;
+    double totalPointsDistance;
     
     AppDelegate *appDelegate;
 }

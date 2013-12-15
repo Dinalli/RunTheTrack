@@ -18,4 +18,5 @@
     #import "UIImageView+More.h"
     #import "UIView+More.h"
     #import <Crashlytics/Crashlytics.h>
+    #import "MessageBarManager.h"
 #endif

@@ -15,9 +15,6 @@
 - (void) setImageWithOptions:(NSString *)imgfileName options:(ImageOptionUnit)options use568h:(BOOL)use568h
 {
     NSString * strImage = [self getRealImageFileName:imgfileName options:options use568h:use568h];
-
-    NSLog(@"%@", strImage);
-    
     [self setImage:[UIImage imageNamed:strImage]];
 }
 

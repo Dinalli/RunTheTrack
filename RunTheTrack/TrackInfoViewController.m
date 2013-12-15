@@ -48,11 +48,9 @@
                    isLandscape:YES];
     
     
-    NSDictionary *trackPoints = [_trackInfo objectForKey:@"trackpoints"];
-    NSArray *points = [trackPoints objectForKey:@"3"];
+    NSArray *points = [_trackInfo objectForKey:@"trackpoints"];
     
     if(points.count == 0) selectBtn.hidden = YES;
-    
         
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]]];
 }

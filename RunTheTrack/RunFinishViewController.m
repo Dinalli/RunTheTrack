@@ -70,6 +70,13 @@
         CLLocationCoordinate2D coordinate = location.coordinate;
         
         coordinates[index] = coordinate;
+        
+        if(index > 0)
+        {
+            CLLocation *lastLocation = [points objectAtIndex:index-1];
+            totalDistance = totalDistance + [location distanceFromLocation:lastLocation];
+            NSLog([NSString stringWithFormat:@"Real %.2f miles", totalDistance * 0.000621371192]);
+        }
     }
 
     self.trackLine = [MKPolyline polylineWithCoordinates:coordinates count:numberOfSteps];
@@ -178,7 +185,9 @@
     
     [CoreDataHelper saveManagedObjectContext:self.managedObjectContext];
     
-    [self showToastAlert:@"Run has been saved."];
+    [[MessageBarManager sharedInstance] showMessageWithTitle:@"Run Saved"
+                                                 description:@"Well done, check out your timings now."
+                                                        type:MessageBarMessageTypeSuccess];
 }
 
 #pragma social sharing 

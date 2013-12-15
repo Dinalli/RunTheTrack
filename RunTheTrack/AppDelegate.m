@@ -19,11 +19,7 @@ NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:S
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-//    [[UILabel appearance] setFont:[UIFont fontWithName:@"Helvetica-Light" size:16.0]];
-//    [[UILabel appearance] setTextColor:[UIColor grayColor]];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
-    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     [FBProfilePictureView class];
     
     [Crashlytics startWithAPIKey:@"52f789dbfeee4af97bac9b49fd6414dc64175c2f"];

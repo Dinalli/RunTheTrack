@@ -101,6 +101,13 @@
 		409154D418538CB400CECEEC /* gps-on.png in Resources */ = {isa = PBXBuildFile; fileRef = 409154D218538CB400CECEEC /* gps-on.png */; };
 		409357A01855F372007EE900 /* search-icon-main@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4093579E1855F372007EE900 /* search-icon-main@2x.png */; };
 		409357A71855F7C6007EE900 /* UIImageView+More.m in Sources */ = {isa = PBXBuildFile; fileRef = 409357A61855F7C6007EE900 /* UIImageView+More.m */; };
+		40A3B3E1185B768F00BA85BB /* MessageBarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A3B3E0185B768F00BA85BB /* MessageBarManager.m */; };
+		40A3B3E9185B76CC00BA85BB /* icon-error.png in Resources */ = {isa = PBXBuildFile; fileRef = 40A3B3E3185B76CC00BA85BB /* icon-error.png */; };
+		40A3B3EA185B76CC00BA85BB /* icon-error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40A3B3E4185B76CC00BA85BB /* icon-error@2x.png */; };
+		40A3B3EB185B76CC00BA85BB /* icon-info.png in Resources */ = {isa = PBXBuildFile; fileRef = 40A3B3E5185B76CC00BA85BB /* icon-info.png */; };
+		40A3B3EC185B76CC00BA85BB /* icon-info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40A3B3E6185B76CC00BA85BB /* icon-info@2x.png */; };
+		40A3B3ED185B76CC00BA85BB /* icon-success.png in Resources */ = {isa = PBXBuildFile; fileRef = 40A3B3E7185B76CC00BA85BB /* icon-success.png */; };
+		40A3B3EE185B76CC00BA85BB /* icon-success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40A3B3E8185B76CC00BA85BB /* icon-success@2x.png */; };
 		40B8E71E17F9EA5F00005F09 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40B8E71D17F9EA5F00005F09 /* CoreLocation.framework */; };
 		40BAAD3D18203F7F00137E8C /* button-35.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 40BAAD3C18203F7F00137E8C /* button-35.mp3 */; };
 		40BAAD3F18203FB900137E8C /* beep-8.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 40BAAD3E18203FB900137E8C /* beep-8.mp3 */; };
@@ -267,6 +274,14 @@
 		409357A51855F7C6007EE900 /* UIImageView+More.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+More.h"; sourceTree = "<group>"; };
 		409357A61855F7C6007EE900 /* UIImageView+More.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+More.m"; sourceTree = "<group>"; };
 		409357AF1855FC6F007EE900 /* Global.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
+		40A3B3DF185B768F00BA85BB /* MessageBarManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageBarManager.h; sourceTree = "<group>"; };
+		40A3B3E0185B768F00BA85BB /* MessageBarManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageBarManager.m; sourceTree = "<group>"; };
+		40A3B3E3185B76CC00BA85BB /* icon-error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-error.png"; sourceTree = "<group>"; };
+		40A3B3E4185B76CC00BA85BB /* icon-error@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-error@2x.png"; sourceTree = "<group>"; };
+		40A3B3E5185B76CC00BA85BB /* icon-info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-info.png"; sourceTree = "<group>"; };
+		40A3B3E6185B76CC00BA85BB /* icon-info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-info@2x.png"; sourceTree = "<group>"; };
+		40A3B3E7185B76CC00BA85BB /* icon-success.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-success.png"; sourceTree = "<group>"; };
+		40A3B3E8185B76CC00BA85BB /* icon-success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-success@2x.png"; sourceTree = "<group>"; };
 		40B8E71D17F9EA5F00005F09 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		40BAAD3C18203F7F00137E8C /* button-35.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "button-35.mp3"; sourceTree = "<group>"; };
 		40BAAD3E18203FB900137E8C /* beep-8.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "beep-8.mp3"; sourceTree = "<group>"; };
@@ -373,6 +388,7 @@
 		4018F50417F82E26006F990E /* 3rdParty */ = {
 			isa = PBXGroup;
 			children = (
+				40A3B3DE185B765D00BA85BB /* MessageBarManager */,
 				409357A81855FBF1007EE900 /* TTCounterLabel */,
 				4018F50C17F832A7006F990E /* KeyBurnsLib */,
 			);
@@ -665,6 +681,29 @@
 			name = Overlay;
 			sourceTree = "<group>";
 		};
+		40A3B3DE185B765D00BA85BB /* MessageBarManager */ = {
+			isa = PBXGroup;
+			children = (
+				40A3B3E2185B76BE00BA85BB /* Icons */,
+				40A3B3DF185B768F00BA85BB /* MessageBarManager.h */,
+				40A3B3E0185B768F00BA85BB /* MessageBarManager.m */,
+			);
+			name = MessageBarManager;
+			sourceTree = "<group>";
+		};
+		40A3B3E2185B76BE00BA85BB /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				40A3B3E3185B76CC00BA85BB /* icon-error.png */,
+				40A3B3E4185B76CC00BA85BB /* icon-error@2x.png */,
+				40A3B3E5185B76CC00BA85BB /* icon-info.png */,
+				40A3B3E6185B76CC00BA85BB /* icon-info@2x.png */,
+				40A3B3E7185B76CC00BA85BB /* icon-success.png */,
+				40A3B3E8185B76CC00BA85BB /* icon-success@2x.png */,
+			);
+			name = Icons;
+			sourceTree = "<group>";
+		};
 		40BE1F671823C79F004C3FC3 /* MapAnnotations */ = {
 			isa = PBXGroup;
 			children = (
@@ -907,6 +946,7 @@
 				4046F771182FE8B600957CB5 /* profile-header-bg@2x.png in Resources */,
 				4018F52E17F83903006F990E /* Silverstone.jpg in Resources */,
 				407C4DFF180BF7E300F7B2FE /* routes-cup@2x.png in Resources */,
+				40A3B3E9185B76CC00BA85BB /* icon-error.png in Resources */,
 				4046F777182FE90200957CB5 /* tabbar-profile-normal@2x.png in Resources */,
 				4007A00D181B1456008EC227 /* japan-sec.png in Resources */,
 				4047939C182F736C004FEB73 /* tabbtn-history-normal@2x.png in Resources */,
@@ -929,6 +969,7 @@
 				40BAAD3F18203FB900137E8C /* beep-8.mp3 in Resources */,
 				407C4DFE180BF7E300F7B2FE /* routes-cup.png in Resources */,
 				409357A01855F372007EE900 /* search-icon-main@2x.png in Resources */,
+				40A3B3EE185B76CC00BA85BB /* icon-success@2x.png in Resources */,
 				4007A009181B1456008EC227 /* canada.png in Resources */,
 				4046F776182FE90200957CB5 /* tabbar-profile-normal.png in Resources */,
 				4018F52817F83903006F990E /* Korea.jpg in Resources */,
@@ -936,6 +977,7 @@
 				40C1657B17EB637900D4E093 /* Images.xcassets in Resources */,
 				4007A007181B1456008EC227 /* barcelona.png in Resources */,
 				4018F52317F83903006F990E /* canada.jpg in Resources */,
+				40A3B3EC185B76CC00BA85BB /* icon-info@2x.png in Resources */,
 				4007A006181B1456008EC227 /* bahrain.png in Resources */,
 				4007A012181B1456008EC227 /* monza.png in Resources */,
 				4002449517EF814F009ACC39 /* Silverstoneback.png in Resources */,
@@ -947,6 +989,7 @@
 				4018F53517F83AF5006F990E /* Brazil.jpg in Resources */,
 				4057A5C017EE596A00FE1E93 /* Icon@2x.png in Resources */,
 				4018F52F17F83903006F990E /* singapore.jpg in Resources */,
+				40A3B3EB185B76CC00BA85BB /* icon-info.png in Resources */,
 				4007A015181B1456008EC227 /* singapore.png in Resources */,
 				40F3E1E61814041C00785F27 /* buttonback.png in Resources */,
 				409154CE1852717300CECEEC /* cheq@2x.png in Resources */,
@@ -959,6 +1002,7 @@
 				4018F53317F83ADD006F990E /* Barcalona.jpg in Resources */,
 				409154CD1852717300CECEEC /* cheq.png in Resources */,
 				40479398182F72F2004FEB73 /* nav-rbtn@2x.png in Resources */,
+				40A3B3EA185B76CC00BA85BB /* icon-error@2x.png in Resources */,
 				4018F52B17F83903006F990E /* Monaco.jpg in Resources */,
 				4007A014181B1456008EC227 /* silverstone.png in Resources */,
 				4007A005181B1456008EC227 /* abu-sec.png in Resources */,
@@ -968,6 +1012,7 @@
 				4018F52517F83903006F990E /* hungary.jpg in Resources */,
 				4086419317F71E8A00E15000 /* Tracks.plist in Resources */,
 				409154CA1852640000CECEEC /* runnerDot@2x.png in Resources */,
+				40A3B3ED185B76CC00BA85BB /* icon-success.png in Resources */,
 				409154C91852640000CECEEC /* runnerDot.png in Resources */,
 				4057A5BB17EE596A00FE1E93 /* Icon-Small-50.png in Resources */,
 				40C1656D17EB637900D4E093 /* InfoPlist.strings in Resources */,
@@ -1030,6 +1075,7 @@
 				40C6B14C17F4CA880079ABAD /* Evaluate.m in Sources */,
 				40C1657317EB637900D4E093 /* AppDelegate.m in Sources */,
 				40E5A2EA1856504300E8E87E /* UIView+More.m in Sources */,
+				40A3B3E1185B768F00BA85BB /* MessageBarManager.m in Sources */,
 				407C4DF2180BF1C300F7B2FE /* TrackCell.m in Sources */,
 				40C1659E17EB658A00D4E093 /* RTT.xcdatamodeld in Sources */,
 				40E5A2F21856592000E8E87E /* TTTAttributedLabel.m in Sources */,
