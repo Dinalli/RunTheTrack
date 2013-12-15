@@ -21,6 +21,7 @@
     IBOutlet UILabel *runDate;
     IBOutlet UILabel *trackNameLabel;
     
+    UIImage *mapImage;
     
     IBOutlet MKMapView *mv;
 }

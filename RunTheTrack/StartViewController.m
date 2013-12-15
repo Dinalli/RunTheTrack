@@ -323,11 +323,28 @@ enum TimerState : NSUInteger {
     [mv addAnnotation:runner];
     
     // Add start finish indicator
-//    NSDictionary *startFinishDict = [_trackInfo objectForKey:@"StartLine"];
-//    MKPointAnnotation *startfinish = [[MKPointAnnotation alloc] init];
-//    startfinish.coordinate = CLLocationCoordinate2DMake([[startFinishDict objectForKey:@"Long"] doubleValue], [[startFinishDict objectForKey:@"Lat"] doubleValue]);
-//    startfinish.title = @"Start Finish";
-//    [mv addAnnotation:startfinish];
+    NSDictionary *startFinishDict = [_trackInfo objectForKey:@"StartLine"];
+    MKPointAnnotation *startfinish = [[MKPointAnnotation alloc] init];
+    CLLocationCoordinate2D startFinishPoi = CLLocationCoordinate2DMake([[startFinishDict objectForKey:@"Lat"] doubleValue], [[startFinishDict objectForKey:@"Long"] doubleValue]);
+    startfinish.coordinate = startFinishPoi;
+    startfinish.title = @"Start Finish";
+    [mv addAnnotation:startfinish];
+    
+//    // Add sector 2 start
+//    //NSDictionary *startFinishDict = [_trackInfo objectForKey:@"StartLine"];
+//    MKPointAnnotation *sector2Start = [[MKPointAnnotation alloc] init];
+//    sector2Start.coordinate = CLLocationCoordinate2DMake([[startFinishDict objectForKey:@"Long"] doubleValue], [[startFinishDict objectForKey:@"Lat"] doubleValue]);
+//    sector2Start.title = @"Sector 2";
+//    [mv addAnnotation:sector2Start];
+//    
+//    // Add sector 3 start
+//    //NSDictionary *startFinishDict = [_trackInfo objectForKey:@"StartLine"];
+//    MKPointAnnotation *sector3Start = [[MKPointAnnotation alloc] init];
+//    sector3Start.coordinate = CLLocationCoordinate2DMake([[startFinishDict objectForKey:@"Long"] doubleValue], [[startFinishDict objectForKey:@"Lat"] doubleValue]);
+//    sector3Start.title = @"Sector 3";
+//    [mv addAnnotation:sector3Start];
+    
+    
 }
 
 #pragma mark MapView Delegate
@@ -350,7 +367,7 @@ enum TimerState : NSUInteger {
         {
             MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation
                                                                             reuseIdentifier:RunnerAnnotationIdentifier];
-            UIImage *flagImage = [UIImage imageNamed:@"runnerDot"];
+            UIImage *flagImage = [UIImage imageNamed:@"runnerDot.png"];
             // You may need to resize the image here.
             annotationView.image = flagImage;
             return annotationView;
@@ -380,7 +397,24 @@ enum TimerState : NSUInteger {
         }
         return pinView;
     }
-    
+    else
+    {
+        static NSString *annotationId = @"ID";
+        MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation
+                                                                        reuseIdentifier:annotationId];
+        UIImage *annImage;
+        if([[annotation title] isEqualToString:@"Sector 1"])
+        {
+           annImage = [UIImage imageNamed:@"sector1.png"];
+        }
+        else
+        {
+            annImage = [UIImage imageNamed:@"sector2.png"];
+        }
+        annotationView.image = annImage;
+        return annotationView;
+
+    }
     return nil;
 }
 
@@ -526,9 +560,6 @@ enum TimerState : NSUInteger {
                     
                     //Set Lap Time
                     [self setLastLap];
-                    
-                    // Calculate if its an achivement.
-                    //[self checkAchievement];
                 }
                 break;
             }
@@ -538,26 +569,6 @@ enum TimerState : NSUInteger {
             totalPointsDistance = 0;
         }// no Location
     } // Timer not set
-}
-
--(void)checkAchievement
-{
-    for (RunAchievement *ra in currentAchievements)
-    {
-        if([ra.achievementTrigger isEqualToString:@"BestLap"])
-        {
-            // is the currentLap greater
-            ra.achievementText = @"";
-        }
-        else
-        {
-            
-        }
-        if([ra.achievementTrigger isEqualToString:@"FirstLap"])
-        {
-            
-        }
-    }
 }
 
 -(void)setLastLap
@@ -602,6 +613,8 @@ enum TimerState : NSUInteger {
                  sender:(id)sender {
     if ([segue.identifier isEqualToString:@"finishRunSegue"]) {
         
+        [self reset];
+        
         [self.timeLabel stop];
         [self.timeLabel reset];
         [self.locationManager stopUpdatingLocation];
@@ -632,24 +645,29 @@ enum TimerState : NSUInteger {
 - (IBAction)unwindToRunStart:(UIStoryboardSegue *)unwindSegue
 {
     // Put back to original state
-    self.timerState = timerStopped;
-    finishBtn.hidden = YES;
-    lapCounter = 0;
-    _trackInfo = nil;
-    drsLabel.hidden = FALSE;
-    trackBtn.hidden = FALSE;
-    trackNameLabel.text = @"Track Name";
-    distanceLabel.text = @"Track Distance";
-    trackImage.image = nil;
-    lapsLabel.text = @"Laps";
-    startBtn.enabled = FALSE;
-    timer = nil;
-    totalRunTime = nil;
-    [self.timeLabel reset];
-    [startBtn setTitle:@"START" forState:UIControlStateNormal];
-    runTypeSeg.hidden = FALSE;
-    trackBtn.titleLabel.text = @"CHOOSE TRACK TO START";
+    [self reset];
 }
+    
+-(void)reset
+    {
+        self.timerState = timerStopped;
+        finishBtn.hidden = YES;
+        lapCounter = 0;
+        _trackInfo = nil;
+        drsLabel.hidden = FALSE;
+        trackBtn.hidden = FALSE;
+        trackNameLabel.text = @"Track Name";
+        distanceLabel.text = @"Track Distance";
+        trackImage.image = nil;
+        lapsLabel.text = @"Laps";
+        startBtn.enabled = FALSE;
+        timer = nil;
+        totalRunTime = nil;
+        [self.timeLabel reset];
+        [startBtn setTitle:@"START" forState:UIControlStateNormal];
+        runTypeSeg.hidden = FALSE;
+        trackBtn.titleLabel.text = @"CHOOSE TRACK TO START";
+    }
 
 
 #pragma mark Sounds
