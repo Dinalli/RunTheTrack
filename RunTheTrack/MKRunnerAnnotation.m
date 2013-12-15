@@ -11,13 +11,6 @@
 @implementation MKRunnerAnnotation
 
 
-//- (CLLocationCoordinate2D)coordinate
-//{
-//    coordinate.latitude = [self.latitude doubleValue];
-//    coordinate.longitude = [self.longitude doubleValue];
-//    return coordinate;
-//}
-
 // required if you set the MKPinAnnotationView's "canShowCallout" property to YES
 //- (NSString *)title
 //{

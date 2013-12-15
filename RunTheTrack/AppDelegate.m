@@ -19,7 +19,6 @@ NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:S
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     [FBProfilePictureView class];
     
     [Crashlytics startWithAPIKey:@"52f789dbfeee4af97bac9b49fd6414dc64175c2f"];
@@ -32,7 +31,7 @@ NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:S
 
 -(UIStatusBarStyle)preferredStatusBarStyle
 {
-    return UIStatusBarStyleLightContent;
+    return UIStatusBarStyleDefault;
 }
 
 - (BOOL)application:(UIApplication *)application

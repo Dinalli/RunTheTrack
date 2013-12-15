@@ -9,6 +9,9 @@
 #import "StartViewController.h"
 #import "RunFinishViewController.h"
 #import "MKRunnerAnnotation.h"
+#import "StartFinishAnnotation.h"
+#import "Sector1Annotaion.h"
+#import "Sector2Annotation.h"
 #import "UIImage+ImageEffects.h"
 #import "CoreDataHelper.h"
 #import "RunAchievement.h"
@@ -44,7 +47,11 @@ enum TimerState : NSUInteger {
     }
     return self;
 }
-
+    
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
 
 - (void)viewDidLoad
 {
@@ -74,7 +81,6 @@ enum TimerState : NSUInteger {
     
     [self showMap];
 }
-
 
 - (void)customiseAppearance {
     [self.timeLabel setBoldFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:55]];
@@ -119,11 +125,13 @@ enum TimerState : NSUInteger {
             options:UIViewAnimationOptionCurveEaseOut
             animations:^{
             runControlView.frame = CGRectMake(0, self.view.frame.size.height - 100, runControlView.frame.size.width, runControlView.frame.size.height);
-                startBtn.frame = CGRectMake(0, 5, 320, 44);
         } completion:^(BOOL finished) {
             trackBtn.hidden = YES;
+            musicBtn.hidden = YES;
             intervalSeg.hidden = YES;
             runTypeSeg.hidden = YES;
+            runControlView.frame = CGRectMake(0, self.view.frame.size.height - 100, runControlView.frame.size.width, runControlView.frame.size.height);
+            startBtn.frame = CGRectMake(0, 5, 320, 44);
         }];
         
         [self.timeLabel start];
@@ -275,6 +283,8 @@ enum TimerState : NSUInteger {
 {
     [mv removeAnnotations:mv.annotations];
     CLLocationCoordinate2D poi;
+    CLLocationDistance totalDistance;
+    CLLocationDistance sectorCalcDistance;
 
     NSArray *sectorArray = [_trackInfo objectForKey:@"trackpoints"];
         
@@ -310,10 +320,54 @@ enum TimerState : NSUInteger {
             region.center.latitude = [lat doubleValue];
             region.center.longitude = [lng doubleValue];
             [mv setRegion:region animated:YES];
+            
+            CLLocation *lastLocation = [[CLLocation alloc] initWithLatitude:[oldlat doubleValue] longitude:[oldlng doubleValue]];
+            CLLocation *nextLocation = [[CLLocation alloc] initWithLatitude:[lat doubleValue] longitude:[lng doubleValue]];
+            totalDistance = totalDistance + [lastLocation distanceFromLocation:nextLocation];
+            
         }
         else
         {
             [self.trackPointArray addObject:coordPoint];
+        }
+    }
+    
+    // add the sector points for 1, 2
+    // divide the total track distance by 3
+    sectorCalcDistance = totalDistance / 3;
+    totalDistance = 0;
+    bool sector1Set = FALSE;
+    
+    for(NSString *coordPoint in sectorArray)
+    {
+        if([self.trackPointArray count] > 0)
+        {
+            NSArray *latlong = [coordPoint componentsSeparatedByString:@","];
+            NSString *lat = [latlong objectAtIndex:0];
+            NSString *lng = [latlong objectAtIndex:1];
+            
+            NSArray *oldlatlong = [[self.trackPointArray lastObject] componentsSeparatedByString:@","];
+            NSString *oldlat = [oldlatlong objectAtIndex:0];
+            NSString *oldlng = [oldlatlong objectAtIndex:1];
+            
+            CLLocation *lastLocation = [[CLLocation alloc] initWithLatitude:[oldlat doubleValue] longitude:[oldlng doubleValue]];
+            CLLocation *nextLocation = [[CLLocation alloc] initWithLatitude:[lat doubleValue] longitude:[lng doubleValue]];
+            totalDistance = totalDistance + [lastLocation distanceFromLocation:nextLocation];
+            
+            if(totalDistance > (sectorCalcDistance))
+            {
+                if(!sector1Set)
+                {
+                    sector1EndPoint = [[CLLocation alloc] initWithLatitude:[oldlat doubleValue] longitude:[oldlng doubleValue]];
+                    sector1Set = TRUE;
+                }
+            }
+            
+            if(totalDistance > (sectorCalcDistance * 2))
+            {
+                sector2EndPoint = [[CLLocation alloc] initWithLatitude:[oldlat doubleValue] longitude:[oldlng doubleValue]];
+                break;
+            }
         }
     }
     
@@ -324,27 +378,21 @@ enum TimerState : NSUInteger {
     
     // Add start finish indicator
     NSDictionary *startFinishDict = [_trackInfo objectForKey:@"StartLine"];
-    MKPointAnnotation *startfinish = [[MKPointAnnotation alloc] init];
+    StartFinishAnnotation *startfinish = [[StartFinishAnnotation alloc] init];
     CLLocationCoordinate2D startFinishPoi = CLLocationCoordinate2DMake([[startFinishDict objectForKey:@"Lat"] doubleValue], [[startFinishDict objectForKey:@"Long"] doubleValue]);
     startfinish.coordinate = startFinishPoi;
     startfinish.title = @"Start Finish";
     [mv addAnnotation:startfinish];
+
+    Sector1Annotaion *sector1Ann = [[Sector1Annotaion alloc] init];
+    sector1Ann.coordinate = CLLocationCoordinate2DMake(sector1EndPoint.coordinate.latitude, sector1EndPoint.coordinate.longitude);
+    sector1Ann.title = @"Sector1";
+    [mv addAnnotation:sector1Ann];
     
-//    // Add sector 2 start
-//    //NSDictionary *startFinishDict = [_trackInfo objectForKey:@"StartLine"];
-//    MKPointAnnotation *sector2Start = [[MKPointAnnotation alloc] init];
-//    sector2Start.coordinate = CLLocationCoordinate2DMake([[startFinishDict objectForKey:@"Long"] doubleValue], [[startFinishDict objectForKey:@"Lat"] doubleValue]);
-//    sector2Start.title = @"Sector 2";
-//    [mv addAnnotation:sector2Start];
-//    
-//    // Add sector 3 start
-//    //NSDictionary *startFinishDict = [_trackInfo objectForKey:@"StartLine"];
-//    MKPointAnnotation *sector3Start = [[MKPointAnnotation alloc] init];
-//    sector3Start.coordinate = CLLocationCoordinate2DMake([[startFinishDict objectForKey:@"Long"] doubleValue], [[startFinishDict objectForKey:@"Lat"] doubleValue]);
-//    sector3Start.title = @"Sector 3";
-//    [mv addAnnotation:sector3Start];
-    
-    
+    Sector2Annotation *sector2Ann = [[Sector2Annotation alloc] init];
+    sector2Ann.coordinate = sector2EndPoint.coordinate;
+    sector2Ann.title = @"Sector2";
+    [mv addAnnotation:sector2Ann];
 }
 
 #pragma mark MapView Delegate
@@ -378,14 +426,15 @@ enum TimerState : NSUInteger {
         }
         return pinView;
     }
-    else if ([annotation isKindOfClass:[MKPointAnnotation class]])
+    else if ([annotation isKindOfClass:[StartFinishAnnotation class]])
     {
-        static NSString *SFAnnotationIdentifier = @"SFAnnotationIdentifier";
+        static NSString *SFAnnotationIdentifier = @"StartFinishID";
         MKPinAnnotationView *pinView = (MKPinAnnotationView *)[mv dequeueReusableAnnotationViewWithIdentifier:SFAnnotationIdentifier];
         if (!pinView)
         {
             MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation
                                                                             reuseIdentifier:SFAnnotationIdentifier];
+            
             UIImage *flagImage = [UIImage imageNamed:@"cheq.png"];
             // You may need to resize the image here.
             annotationView.image = flagImage;
@@ -396,24 +445,42 @@ enum TimerState : NSUInteger {
             pinView.annotation = annotation;
         }
         return pinView;
-    }
-    else
+    } else if ([annotation isKindOfClass:[Sector1Annotaion class]])
     {
-        static NSString *annotationId = @"ID";
-        MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation
-                                                                        reuseIdentifier:annotationId];
-        UIImage *annImage;
-        if([[annotation title] isEqualToString:@"Sector 1"])
+        static NSString *sector1ID = @"Sector1ID";
+        MKPinAnnotationView *pinView = (MKPinAnnotationView *)[mv dequeueReusableAnnotationViewWithIdentifier:sector1ID];
+        if (!pinView)
         {
-           annImage = [UIImage imageNamed:@"sector1.png"];
+            MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation
+                                                                            reuseIdentifier:sector1ID];
+            UIImage *flagImage = [UIImage imageNamed:@"sector1.png"];
+            // You may need to resize the image here.
+            annotationView.image = flagImage;
+            return annotationView;
         }
         else
         {
-            annImage = [UIImage imageNamed:@"sector2.png"];
+            pinView.annotation = annotation;
         }
-        annotationView.image = annImage;
-        return annotationView;
-
+        return pinView;
+    } else if ([annotation isKindOfClass:[Sector2Annotation class]])
+    {
+        static NSString *sector2ID = @"Sector2ID";
+        MKPinAnnotationView *pinView = (MKPinAnnotationView *)[mv dequeueReusableAnnotationViewWithIdentifier:sector2ID];
+        if (!pinView)
+        {
+            MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation
+                                                                            reuseIdentifier:sector2ID];
+            UIImage *flagImage = [UIImage imageNamed:@"sector2.png"];
+            // You may need to resize the image here.
+            annotationView.image = flagImage;
+            return annotationView;
+        }
+        else
+        {
+            pinView.annotation = annotation;
+        }
+        return pinView;
     }
     return nil;
 }
@@ -437,7 +504,6 @@ enum TimerState : NSUInteger {
         if(oldLocation != nil)
         {
             distance = [newLocation distanceFromLocation:oldLocation];
-            
             // Move to a suitable spot on the track
             for (id<MKAnnotation> ann in mv.annotations)
             {
@@ -489,8 +555,8 @@ enum TimerState : NSUInteger {
                             newPoint.longitude = lastpoi.longitude + (longitudeModifier * i);
                             MKCoordinateRegion region;
                             MKCoordinateSpan span;
-                            span.latitudeDelta = 0.0070;
-                            span.longitudeDelta = 0.0070;
+                            span.latitudeDelta = 0.0150;
+                            span.longitudeDelta = 0.0150;
                             region.span = span;
                             region.center.latitude = newPoint.latitude;
                             region.center.longitude = newPoint.longitude;
@@ -508,14 +574,17 @@ enum TimerState : NSUInteger {
                                 [self.trackPointArray insertObject:[NSString stringWithFormat:@"%f,%f", pointLoc.coordinate.latitude, pointLoc.coordinate.longitude] atIndex:nextRunIndex];
                                 break;
                             }
+                            
+                            if(endPoint == sector1EndPoint) sector1Time = lapTime.text;
+                            if(endPoint == sector2EndPoint) sector2Time = lapTime.text;
                         }
                     }
                     else // lets just move to the next point then
                     {
                         MKCoordinateRegion region;
                         MKCoordinateSpan span;
-                        span.latitudeDelta = 0.0070;
-                        span.longitudeDelta = 0.0070;
+                        span.latitudeDelta = 0.0150;
+                        span.longitudeDelta = 0.0150;
                         region.span = span;
                         region.center.latitude = endPoint.coordinate.latitude;
                         region.center.longitude = endPoint.coordinate.longitude;
@@ -524,6 +593,14 @@ enum TimerState : NSUInteger {
                         
                         totalPointsDistance = totalPointsDistance + [startPoint distanceFromLocation:endPoint];
                         NSLog([NSString stringWithFormat:@"Next Point %.2f miles", totalPointsDistance * 0.000621371192]);
+                        
+                        if(endPoint == sector1EndPoint)
+                        {
+                            sector1Time = lapTime.text;
+                        }
+                        if(endPoint == sector2EndPoint) {
+                            sector2Time = lapTime.text;
+                        }
                         
                     }
                     
@@ -535,35 +612,37 @@ enum TimerState : NSUInteger {
                     {
                         distanceLabel.text =  [NSString stringWithFormat:@"%.2f miles", totalPointsDistance * 0.000621371192];
                     }
-                }
-                runIndex++;
-                                
-                if(runIndex == self.trackPointArray.count)
-                {
-                    NSLog([NSString stringWithFormat:@"Lap Distance %.2f miles", totalPointsDistance * 0.000621371192]);
-                    //End of lap
-                    runIndex = 0;
-                    lapCounter++;
-                    lapsLabel.text = [NSString stringWithFormat:@"%d Laps", (int)lapCounter];
-                    [self playSound:@"beep-8" :@"mp3"];
                     
-                    sector3Time = lapTime.text;
+                    runIndex++;
                     
-                    // Save Sectors and Lap Times
-                    NSDictionary *runLap = @{@"1": sector1Time,
-                                             @"2": sector2Time,
-                                             @"3": sector3Time,
-                                             @"Lap": lapTime.text};
-                    
-                    if(runLaps == nil) runLaps = [[NSMutableDictionary alloc] init];
-                    [runLaps setObject:runLap forKey:[NSString stringWithFormat:@"%d",(int)lapCounter]];
-                    
-                    //Set Lap Time
-                    [self setLastLap];
-                }
-                break;
-            }
-        }// end Annotation Loop
+                    if(runIndex == self.trackPointArray.count)
+                    {
+                        //NSLog([NSString stringWithFormat:@"Lap Distance %.2f miles", totalPointsDistance * 0.000621371192]);
+                        //End of lap
+                        runIndex = 0;
+                        lapCounter++;
+                        lapsLabel.text = [NSString stringWithFormat:@"%d Laps", (int)lapCounter];
+                        [self playSound:@"beep-8" :@"mp3"];
+                        
+                        sector3Time = lapTime.text;
+                        
+                        // Save Sectors and Lap Times
+                        NSDictionary *runLap = @{@"1": sector1Time,
+                                                 @"2": sector2Time,
+                                                 @"3": sector3Time,
+                                                 @"Lap": lapTime.text};
+                        
+                        if(runLaps == nil) runLaps = [[NSMutableDictionary alloc] init];
+                        [runLaps setObject:runLap forKey:[NSString stringWithFormat:@"%d",(int)lapCounter]];
+                        
+                        //Set Lap Time
+                        [self setLastLap];
+                    }
+
+                } // end if Runner
+                
+            } // end Annotation Loop
+        }
         else // no old location
         {
             totalPointsDistance = 0;
@@ -585,6 +664,10 @@ enum TimerState : NSUInteger {
     [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0.0]];
     lapTime.text = [dateFormatter stringFromDate:timerDate];
     lastLapDate = [NSDate date];
+    
+    [[MessageBarManager sharedInstance] showMessageWithTitle:@"Lap Complete"
+                                                 description:[NSString stringWithFormat:@"Timed at : %@", [dateFormatter stringFromDate:timerDate]]
+                                                        type:MessageBarMessageTypeInfo];
 }
 
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay
@@ -652,6 +735,7 @@ enum TimerState : NSUInteger {
     {
         self.timerState = timerStopped;
         finishBtn.hidden = YES;
+        musicBtn.hidden = NO;
         lapCounter = 0;
         _trackInfo = nil;
         drsLabel.hidden = FALSE;
@@ -667,6 +751,7 @@ enum TimerState : NSUInteger {
         [startBtn setTitle:@"START" forState:UIControlStateNormal];
         runTypeSeg.hidden = FALSE;
         trackBtn.titleLabel.text = @"CHOOSE TRACK TO START";
+        runControlView.frame = CGRectMake(0, self.view.frame.size.height - 150, runControlView.frame.size.width, runControlView.frame.size.height);
     }
 
 

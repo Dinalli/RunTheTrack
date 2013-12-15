@@ -30,7 +30,7 @@
     
     IBOutlet UIButton *startBtn;
     IBOutlet UIButton *finishBtn;
-    
+    IBOutlet UIButton *musicBtn;
     IBOutlet UIButton *trackBtn;
     
     IBOutlet UIView *runControlView;
@@ -71,6 +71,9 @@
     double totalPointsDistance;
     
     AppDelegate *appDelegate;
+    
+    CLLocation *sector1EndPoint;
+    CLLocation *sector2EndPoint;
 }
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;

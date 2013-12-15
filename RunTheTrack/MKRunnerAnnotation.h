@@ -11,10 +11,6 @@
 @interface MKRunnerAnnotation : NSObject <MKAnnotation>
 
 @property (nonatomic, strong) NSString *imageName;
-
-@property (nonatomic, strong) NSNumber *latitude;
-@property (nonatomic, strong) NSNumber *longitude;
-
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, assign) CLLocationCoordinate2D coordinate;
 

@@ -117,6 +117,9 @@
     {
         if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
         {
+            [[MessageBarManager sharedInstance] showMessageWithTitle:@"Share on facebook"
+                                                         description:@"Creating the post now"
+                                                                type:MessageBarMessageTypeInfo];
             [self composePost:SLServiceTypeFacebook];
         }
     }
@@ -125,6 +128,9 @@
     {
         if([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter])
         {
+            [[MessageBarManager sharedInstance] showMessageWithTitle:@"Share on twitter"
+                                                         description:@"Creating the post now"
+                                                                type:MessageBarMessageTypeInfo];
             [self composePost:SLServiceTypeTwitter];
         }
     }

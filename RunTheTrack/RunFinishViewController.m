@@ -75,7 +75,7 @@
         {
             CLLocation *lastLocation = [points objectAtIndex:index-1];
             totalDistance = totalDistance + [location distanceFromLocation:lastLocation];
-            NSLog([NSString stringWithFormat:@"Real %.2f miles", totalDistance * 0.000621371192]);
+            //NSLog([NSString stringWithFormat:@"Real %.2f miles", totalDistance * 0.000621371192]);
         }
     }
 
@@ -196,14 +196,20 @@
 {
     if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
     {
+        [[MessageBarManager sharedInstance] showMessageWithTitle:@"Share on facebook"
+                                                     description:@"Creating the post now"
+                                                            type:MessageBarMessageTypeInfo];
         [self composePost:SLServiceTypeFacebook];
     }
 }
-
+    
 -(IBAction)shareOnTwitter:(id)sender
 {
     if([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter])
     {
+        [[MessageBarManager sharedInstance] showMessageWithTitle:@"Share on twitter"
+                                                     description:@"Creating the post now"
+                                                            type:MessageBarMessageTypeInfo];
         [self composePost:SLServiceTypeTwitter];
     }
 }
@@ -268,75 +274,6 @@
         [self presentViewController:composeSheet animated:YES completion:nil];
         
     }];
-}
-
-
--(void)showToastAlert:(NSString *)message
-{
-    UILabel *networkAlertIcon;
-    UILabel *networkAlertLabel;
-    
-    if(toastView == nil)
-    {
-        toastView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 48)];
-        networkAlertLabel = [[UILabel alloc] initWithFrame:CGRectMake(45, 8, 280, 30)];
-        networkAlertIcon = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, 30, 30)];
-        CAGradientLayer *gradient = [CAGradientLayer layer];
-        gradient.frame = toastView.bounds;
-        gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:53/255.0 green:53/255.0 blue:53/255.0 alpha:1] CGColor], (id)[[UIColor colorWithRed:32/255.0 green:32/255.0 blue:32/255.0 alpha:1] CGColor], (id)[[UIColor colorWithRed:12/255.0 green:12/255.0 blue:12/255.0 alpha:1] CGColor], nil];
-        [toastView.layer insertSublayer:gradient atIndex:0];
-        toastView.layer.masksToBounds = NO;
-        toastView.layer.shadowOffset = CGSizeMake(0,-2);
-        toastView.layer.shadowRadius = 4;
-        toastView.layer.shadowOpacity = 0.3;
-        
-        [toastView addSubview:networkAlertIcon];
-        [toastView addSubview:networkAlertLabel];
-        toastView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
-        [self.view addSubview:toastView];
-        [self.view bringSubviewToFront:toastView];
-    }
-    
-    networkAlertIcon.text = @"\uF008";
-    networkAlertIcon.backgroundColor = [UIColor clearColor];
-    networkAlertIcon.font = [UIFont fontWithName:@"Skycons-Regular" size:22.0];
-    networkAlertIcon.textColor = [UIColor whiteColor];
-    
-    networkAlertLabel.text = message;
-    networkAlertLabel.backgroundColor = [UIColor clearColor];
-    networkAlertLabel.font = [UIFont fontWithName:@"SkyMedium-Regular" size:18.0];
-    networkAlertLabel.textColor = [UIColor whiteColor];
-    
-    [UIView animateWithDuration:1.0 delay:0
-                        options:UIViewAnimationOptionCurveEaseIn
-                     animations:^{
-                         toastView.frame = CGRectMake(0, self.view.frame.size.height-48, self.view.frame.size.width, 48);
-                     } completion:^(BOOL finished){
-                         // if you want to do something once the animation finishes, put it here
-                         [self hideToastAlert];
-                     }];
-}
-
--(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterface
-{
-    CAGradientLayer *gradient = [CAGradientLayer layer];
-    gradient.frame = toastView.bounds;
-    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:53/255.0 green:53/255.0 blue:53/255.0 alpha:1] CGColor], (id)[[UIColor colorWithRed:32/255.0 green:32/255.0 blue:32/255.0 alpha:1] CGColor], (id)[[UIColor colorWithRed:12/255.0 green:12/255.0 blue:12/255.0 alpha:1] CGColor], nil];
-    [toastView.layer insertSublayer:gradient atIndex:0];
-    toastView.layer.frame = CGRectMake(0, self.view.frame.size.height-48, self.view.frame.size.width, 48);
-}
-
--(void)hideToastAlert
-{
-    [UIView animateWithDuration:1.0 delay:0
-                        options:UIViewAnimationOptionCurveEaseIn
-                     animations:^{
-                         toastView.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 48);
-                     } completion:^(BOOL finished){
-                         // if you want to do something once the animation finishes, put it here
-                         [toastView removeFromSuperview];
-                         toastView = nil;
-                     }];
 }
 
 @end

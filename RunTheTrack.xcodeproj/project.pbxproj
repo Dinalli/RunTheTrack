@@ -82,6 +82,9 @@
 		405E5337185DEED400A8BD45 /* sector1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 405E5333185DEED400A8BD45 /* sector1@2x.png */; };
 		405E5338185DEED400A8BD45 /* sector2.png in Resources */ = {isa = PBXBuildFile; fileRef = 405E5334185DEED400A8BD45 /* sector2.png */; };
 		405E5339185DEED400A8BD45 /* sector2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 405E5335185DEED400A8BD45 /* sector2@2x.png */; };
+		405E533C185E10C000A8BD45 /* Sector1Annotaion.m in Sources */ = {isa = PBXBuildFile; fileRef = 405E533B185E10C000A8BD45 /* Sector1Annotaion.m */; };
+		405E533F185E112A00A8BD45 /* Sector2Annotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 405E533E185E112A00A8BD45 /* Sector2Annotation.m */; };
+		405E5342185E113D00A8BD45 /* StartFinishAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 405E5341185E113D00A8BD45 /* StartFinishAnnotation.m */; };
 		407710AC18453B3900882BBE /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 407710AB18453B3900882BBE /* ProfileViewController.m */; };
 		407710AF18453B6E00882BBE /* ProfileCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 407710AE18453B6E00882BBE /* ProfileCollectionCell.m */; };
 		407771E81815B74700A38AA1 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 407771E71815B74700A38AA1 /* UIImage+ImageEffects.m */; };
@@ -247,6 +250,12 @@
 		405E5333185DEED400A8BD45 /* sector1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sector1@2x.png"; sourceTree = "<group>"; };
 		405E5334185DEED400A8BD45 /* sector2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sector2.png; sourceTree = "<group>"; };
 		405E5335185DEED400A8BD45 /* sector2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sector2@2x.png"; sourceTree = "<group>"; };
+		405E533A185E10C000A8BD45 /* Sector1Annotaion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sector1Annotaion.h; sourceTree = "<group>"; };
+		405E533B185E10C000A8BD45 /* Sector1Annotaion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sector1Annotaion.m; sourceTree = "<group>"; };
+		405E533D185E112A00A8BD45 /* Sector2Annotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sector2Annotation.h; sourceTree = "<group>"; };
+		405E533E185E112A00A8BD45 /* Sector2Annotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sector2Annotation.m; sourceTree = "<group>"; };
+		405E5340185E113D00A8BD45 /* StartFinishAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartFinishAnnotation.h; sourceTree = "<group>"; };
+		405E5341185E113D00A8BD45 /* StartFinishAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartFinishAnnotation.m; sourceTree = "<group>"; };
 		407710AA18453B3900882BBE /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		407710AB18453B3900882BBE /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		407710AD18453B6E00882BBE /* ProfileCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileCollectionCell.h; sourceTree = "<group>"; };
@@ -721,6 +730,12 @@
 			children = (
 				40BE1F681823C7C2004C3FC3 /* MKRunnerAnnotation.h */,
 				40BE1F691823C7C2004C3FC3 /* MKRunnerAnnotation.m */,
+				405E533A185E10C000A8BD45 /* Sector1Annotaion.h */,
+				405E533B185E10C000A8BD45 /* Sector1Annotaion.m */,
+				405E533D185E112A00A8BD45 /* Sector2Annotation.h */,
+				405E533E185E112A00A8BD45 /* Sector2Annotation.m */,
+				405E5340185E113D00A8BD45 /* StartFinishAnnotation.h */,
+				405E5341185E113D00A8BD45 /* StartFinishAnnotation.m */,
 			);
 			name = MapAnnotations;
 			sourceTree = "<group>";
@@ -1074,10 +1089,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				405E5342185E113D00A8BD45 /* StartFinishAnnotation.m in Sources */,
 				40C6B14B17F4CA880079ABAD /* AccelerationAnimation.m in Sources */,
+				405E533C185E10C000A8BD45 /* Sector1Annotaion.m in Sources */,
 				403FA56A1854C670002A33DF /* RunAchievement.m in Sources */,
 				407710AF18453B6E00882BBE /* ProfileCollectionCell.m in Sources */,
 				40E5A2EF185655B100E8E87E /* TTCounterLabel.m in Sources */,
+				405E533F185E112A00A8BD45 /* Sector2Annotation.m in Sources */,
 				404793A2182F83BA004FEB73 /* RunDetailViewController.m in Sources */,
 				407771E81815B74700A38AA1 /* UIImage+ImageEffects.m in Sources */,
 				40F3E1E4180F194A00785F27 /* HistoryTableViewController.m in Sources */,
