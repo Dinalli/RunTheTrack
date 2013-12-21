@@ -320,12 +320,24 @@ static UIColor *descriptionColor = nil;
     }
     [titleColor set];
 	[self.titleString drawInRect:CGRectMake(xOffset, yOffset, titleLabelSize.width, titleLabelSize.height) withFont:titleFont lineBreakMode:NSLineBreakByTruncatingTail alignment:NSTextAlignmentLeft];
+    
+//    NSDictionary *titleAttributeDictionary = @{ NSFontAttributeName: titleFont,
+//                                  NSTex: paragraphStyle,
+//                                  NSForegroundColorAttributeName: self.textColor};
+    
+//    [self.titleString drawInRect:CGRectMake(xOffset, yOffset, titleLabelSize.width, titleLabelSize.height)  withAttributes:titleAttributeDictionary];
 
     yOffset += titleLabelSize.height;
     
     CGSize descriptionLabelSize = [self descriptionSize];
     [descriptionColor set];
 	[self.descriptionString drawInRect:CGRectMake(xOffset, yOffset, descriptionLabelSize.width, descriptionLabelSize.height) withFont:descriptionFont lineBreakMode:NSLineBreakByTruncatingTail alignment:NSTextAlignmentLeft];
+    
+//    NSDictionary *descAttributeDictionary = @{ NSFontAttributeName: self.font,
+//                                                NSParagraphStyleAttributeName: paragraphStyle,
+//                                                NSForegroundColorAttributeName: self.textColor};
+//    
+//    [self.descriptionString drawInRect:CGRectMake(xOffset, yOffset, titleLabelSize.width, titleLabelSize.height)  withAttributes:descAttributeDictionary];
 }
 
 #pragma mark - Getters

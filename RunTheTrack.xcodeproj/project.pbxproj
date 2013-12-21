@@ -135,9 +135,6 @@
 		40C1658C17EB637900D4E093 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 40C1658A17EB637900D4E093 /* InfoPlist.strings */; };
 		40C1658E17EB637900D4E093 /* RunTheTrackTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C1658D17EB637900D4E093 /* RunTheTrackTests.m */; };
 		40C1659E17EB658A00D4E093 /* RTT.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 40C1659C17EB658A00D4E093 /* RTT.xcdatamodeld */; };
-		40C6B14B17F4CA880079ABAD /* AccelerationAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C6B13E17F4CA880079ABAD /* AccelerationAnimation.m */; };
-		40C6B14C17F4CA880079ABAD /* Evaluate.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C6B14017F4CA880079ABAD /* Evaluate.m */; };
-		40C6B15117F4CA880079ABAD /* UIWindow+RESideMenuExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C6B14A17F4CA880079ABAD /* UIWindow+RESideMenuExtensions.m */; };
 		40CD535E182C0E2D00352499 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40CD535D182C0E2D00352499 /* FacebookSDK.framework */; };
 		40D35DC7182540B500D10899 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40D35DC6182540B500D10899 /* CoreData.framework */; };
 		40D35DCA182541E500D10899 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D35DC9182541E500D10899 /* CoreDataHelper.m */; };
@@ -149,7 +146,6 @@
 		40F3E1DF180F0EE000785F27 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F3E1DE180F0EE000785F27 /* StartViewController.m */; };
 		40F3E1E1180F0F4900785F27 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F3E1E0180F0F4900785F27 /* MediaPlayer.framework */; };
 		40F3E1E4180F194A00785F27 /* HistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F3E1E3180F194A00785F27 /* HistoryTableViewController.m */; };
-		40F3E1E61814041C00785F27 /* buttonback.png in Resources */ = {isa = PBXBuildFile; fileRef = 40F3E1E51814041C00785F27 /* buttonback.png */; };
 		40F9780C18391332005D7904 /* RunSectors.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F9780B18391332005D7904 /* RunSectors.m */; };
 		40F9780F18391332005D7904 /* RunLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F9780E18391332005D7904 /* RunLocations.m */; };
 		40F9781218391332005D7904 /* RunData.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F9781118391332005D7904 /* RunData.m */; };
@@ -324,12 +320,6 @@
 		40C1658B17EB637900D4E093 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		40C1658D17EB637900D4E093 /* RunTheTrackTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RunTheTrackTests.m; sourceTree = "<group>"; };
 		40C1659D17EB658A00D4E093 /* RTT.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RTT.xcdatamodel; sourceTree = "<group>"; };
-		40C6B13D17F4CA880079ABAD /* AccelerationAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccelerationAnimation.h; sourceTree = "<group>"; };
-		40C6B13E17F4CA880079ABAD /* AccelerationAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccelerationAnimation.m; sourceTree = "<group>"; };
-		40C6B13F17F4CA880079ABAD /* Evaluate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Evaluate.h; sourceTree = "<group>"; };
-		40C6B14017F4CA880079ABAD /* Evaluate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Evaluate.m; sourceTree = "<group>"; };
-		40C6B14917F4CA880079ABAD /* UIWindow+RESideMenuExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+RESideMenuExtensions.h"; sourceTree = "<group>"; };
-		40C6B14A17F4CA880079ABAD /* UIWindow+RESideMenuExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+RESideMenuExtensions.m"; sourceTree = "<group>"; };
 		40CD535D182C0E2D00352499 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		40D35DC6182540B500D10899 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		40D35DC8182541E500D10899 /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataHelper.h; sourceTree = "<group>"; };
@@ -347,7 +337,6 @@
 		40F3E1E0180F0F4900785F27 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		40F3E1E2180F194900785F27 /* HistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryTableViewController.h; sourceTree = "<group>"; };
 		40F3E1E3180F194A00785F27 /* HistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewController.m; sourceTree = "<group>"; };
-		40F3E1E51814041C00785F27 /* buttonback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonback.png; sourceTree = "<group>"; };
 		40F9780A18391332005D7904 /* RunSectors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunSectors.h; sourceTree = "<group>"; };
 		40F9780B18391332005D7904 /* RunSectors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunSectors.m; sourceTree = "<group>"; };
 		40F9780D18391332005D7904 /* RunLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunLocations.h; sourceTree = "<group>"; };
@@ -389,19 +378,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		400D3CD317F2153F0040A4A7 /* Menu */ = {
-			isa = PBXGroup;
-			children = (
-				40C6B13D17F4CA880079ABAD /* AccelerationAnimation.h */,
-				40C6B13E17F4CA880079ABAD /* AccelerationAnimation.m */,
-				40C6B13F17F4CA880079ABAD /* Evaluate.h */,
-				40C6B14017F4CA880079ABAD /* Evaluate.m */,
-				40C6B14917F4CA880079ABAD /* UIWindow+RESideMenuExtensions.h */,
-				40C6B14A17F4CA880079ABAD /* UIWindow+RESideMenuExtensions.m */,
-			);
-			name = Menu;
-			sourceTree = "<group>";
-		};
 		4018F50417F82E26006F990E /* 3rdParty */ = {
 			isa = PBXGroup;
 			children = (
@@ -424,6 +400,7 @@
 		4018F56417F84E0C006F990E /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				401E291A1862D8A7008CAB02 /* Notused */,
 				407710A918453B1D00882BBE /* Profile */,
 				407C4DF3180BF63B00F7B2FE /* Achivements */,
 				407C4DEC180BE3C600F7B2FE /* Settings */,
@@ -432,6 +409,15 @@
 				407C4DE9180BE3B100F7B2FE /* Run */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		401E291A1862D8A7008CAB02 /* Notused */ = {
+			isa = PBXGroup;
+			children = (
+				407C4E07180C002A00F7B2FE /* TrackInfoViewController.h */,
+				407C4E08180C002A00F7B2FE /* TrackInfoViewController.m */,
+			);
+			name = Notused;
 			sourceTree = "<group>";
 		};
 		405FD4B817EE3E72006F141F /* Images */ = {
@@ -606,8 +592,6 @@
 				407C4DF1180BF1C300F7B2FE /* TrackCell.m */,
 				407C4DED180BE6B700F7B2FE /* TracksCollectionViewController.h */,
 				407C4DEE180BE6B700F7B2FE /* TracksCollectionViewController.m */,
-				407C4E07180C002A00F7B2FE /* TrackInfoViewController.h */,
-				407C4E08180C002A00F7B2FE /* TrackInfoViewController.m */,
 			);
 			name = Tracks;
 			sourceTree = "<group>";
@@ -662,7 +646,6 @@
 			children = (
 				40479399182F736C004FEB73 /* tabbtn-history-normal.png */,
 				4047939A182F736C004FEB73 /* tabbtn-history-normal@2x.png */,
-				40F3E1E51814041C00785F27 /* buttonback.png */,
 				40479395182F72F2004FEB73 /* nav-rbtn.png */,
 				40479396182F72F2004FEB73 /* nav-rbtn@2x.png */,
 			);
@@ -786,7 +769,6 @@
 				407771E51815B73300A38AA1 /* Categories */,
 				4018F56417F84E0C006F990E /* ViewControllers */,
 				4018F50417F82E26006F990E /* 3rdParty */,
-				400D3CD317F2153F0040A4A7 /* Menu */,
 				405FD4B917EE3E7A006F141F /* AlertSounds */,
 				405FD4B817EE3E72006F141F /* Images */,
 				40C1659817EB654400D4E093 /* CoreData */,
@@ -1022,7 +1004,6 @@
 				4018F52F17F83903006F990E /* singapore.jpg in Resources */,
 				40A3B3EB185B76CC00BA85BB /* icon-info.png in Resources */,
 				4007A015181B1456008EC227 /* singapore.png in Resources */,
-				40F3E1E61814041C00785F27 /* buttonback.png in Resources */,
 				409154CE1852717300CECEEC /* cheq@2x.png in Resources */,
 				4018F52917F83903006F990E /* malaysia.jpg in Resources */,
 				405A15EE17EEF4E200684921 /* Icon-80.png in Resources */,
@@ -1090,7 +1071,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				405E5342185E113D00A8BD45 /* StartFinishAnnotation.m in Sources */,
-				40C6B14B17F4CA880079ABAD /* AccelerationAnimation.m in Sources */,
 				405E533C185E10C000A8BD45 /* Sector1Annotaion.m in Sources */,
 				403FA56A1854C670002A33DF /* RunAchievement.m in Sources */,
 				407710AF18453B6E00882BBE /* ProfileCollectionCell.m in Sources */,
@@ -1106,7 +1086,6 @@
 				4018F50F17F832B9006F990E /* JBKenBurnsView.m in Sources */,
 				408A7993182AE3AA0088D8AC /* SettingsViewController.m in Sources */,
 				4013EF141850686E00D6740F /* RunSectorsViewController.m in Sources */,
-				40C6B14C17F4CA880079ABAD /* Evaluate.m in Sources */,
 				40C1657317EB637900D4E093 /* AppDelegate.m in Sources */,
 				40E5A2EA1856504300E8E87E /* UIView+More.m in Sources */,
 				40A3B3E1185B768F00BA85BB /* MessageBarManager.m in Sources */,
@@ -1115,7 +1094,6 @@
 				40E5A2F21856592000E8E87E /* TTTAttributedLabel.m in Sources */,
 				407C4DEF180BE6B700F7B2FE /* TracksCollectionViewController.m in Sources */,
 				4047939F182F7AEC004FEB73 /* RunCell.m in Sources */,
-				40C6B15117F4CA880079ABAD /* UIWindow+RESideMenuExtensions.m in Sources */,
 				40D35DCA182541E500D10899 /* CoreDataHelper.m in Sources */,
 				40F3E1DF180F0EE000785F27 /* StartViewController.m in Sources */,
 				40F9781218391332005D7904 /* RunData.m in Sources */,

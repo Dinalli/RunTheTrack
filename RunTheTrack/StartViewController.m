@@ -39,15 +39,6 @@ enum TimerState : NSUInteger {
 
 @implementation StartViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-    
 -(UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
@@ -67,19 +58,18 @@ enum TimerState : NSUInteger {
     
     //Listen to notification of track playing changing
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(musicTrackChanged) name:MPMusicPlayerControllerNowPlayingItemDidChangeNotification object:musicPlayer];
-    
-    if(musicPlayer.nowPlayingItem)
-    {
-        currentTrack.text =  [NSString stringWithFormat:@"%@ - %@",[musicPlayer.nowPlayingItem valueForProperty:MPMediaItemPropertyArtist],[musicPlayer.nowPlayingItem valueForProperty:MPMediaItemPropertyTitle]];
-    }
-    
     [musicPlayer beginGeneratingPlaybackNotifications];
     
     self.timerState = timerStopped;
-    finishBtn.hidden = YES;
     lapCounter = 0;
     
-    [self showMap];
+    [self.navigationItem setTitle:[self.trackInfo objectForKey:@"Race"]];
+    lapsLabel.text = [NSString stringWithFormat:@"0/%@",[self.trackInfo objectForKey:@"Laps"]];
+    
+    [self startTracking];
+    [self addTrackPoints];
+    
+    currentAchievements = [CoreDataHelper searchObjectsInContextWithEntityName:@"RunAchievement" andPredicate:[NSPredicate predicateWithFormat:@"trackname = %@", [self.trackInfo objectForKey:@"Race"]] withSortKey:nil sortAscending:YES withManagedObjectContext:self.managedObjectContext];
 }
 
 - (void)customiseAppearance {
@@ -90,7 +80,7 @@ enum TimerState : NSUInteger {
     [self.timeLabel setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:25]];
     
     // Default label properties
-    self.timeLabel.textColor = [UIColor orangeColor];
+    self.timeLabel.textColor = [UIColor purpleColor];
     
     // After making any changes we need to call update appearance
     [self.timeLabel updateApperance];
@@ -99,7 +89,6 @@ enum TimerState : NSUInteger {
 #pragma mark start stop run
 - (IBAction)startStop:(id)sender
 {
-    finishBtn.hidden = YES;
     if(self.timerState == timerStopped)
     {
         // Start the timer
@@ -108,71 +97,25 @@ enum TimerState : NSUInteger {
         lastLapDate = startDate;
         timer = [NSTimer scheduledTimerWithTimeInterval:0.0001 target:self selector:@selector(timerTick:) userInfo:nil repeats:YES];
         [startBtn setTitle:@"STOP" forState:UIControlStateNormal];
-        if(intervalSeg.selectedSegmentIndex == 1)
-        {
-            drsLabel.hidden = FALSE;
-        }
-        else
-        {
-            drsLabel.hidden = TRUE;
-        }
-        
         self.timerState = timerStarted;
-        self.gpsTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(blinkGPS) userInfo:nil repeats:YES];
-
-        // Move the view down to show the map.
-        [UIView animateWithDuration:1.5 delay:0.0
-            options:UIViewAnimationOptionCurveEaseOut
-            animations:^{
-            runControlView.frame = CGRectMake(0, self.view.frame.size.height - 100, runControlView.frame.size.width, runControlView.frame.size.height);
-        } completion:^(BOOL finished) {
-            trackBtn.hidden = YES;
-            musicBtn.hidden = YES;
-            intervalSeg.hidden = YES;
-            runTypeSeg.hidden = YES;
-            runControlView.frame = CGRectMake(0, self.view.frame.size.height - 100, runControlView.frame.size.width, runControlView.frame.size.height);
-            startBtn.frame = CGRectMake(0, 5, 320, 44);
-        }];
-        
         [self.timeLabel start];
+        btnFinish.hidden = YES;
     }
     else if(self.timerState == timerStarted)
     {
-        [self.gpsTimer invalidate];
         [self.timeLabel stop];
         [self pauseTimer:timer];
         [startBtn setTitle:@"RESUME" forState:UIControlStateNormal];
-        self.timerState = timerPaused;
-        finishBtn.hidden = NO;
-        
-        // Move the view down to show the map.
-        [UIView animateWithDuration:0.5 delay:0.0
-                            options:UIViewAnimationOptionCurveEaseOut
-                         animations:^{
-                             runControlView.frame = CGRectMake(0, self.view.frame.size.height - 150, runControlView.frame.size.width, runControlView.frame.size.height);
-                         } completion:^(BOOL finished) {
-                             
-                         }];
-        
-        
+        self.timerState = timerStopped;
+        btnFinish.hidden = NO;
     }
-    else if(self.timerState == timerPaused)
-    {
-        [self.timeLabel start];
-        [self resumeTimer:timer];
-        [startBtn setTitle:@"STOP" forState:UIControlStateNormal];
-        self.timerState = timerStarted;
-        [self.gpsTimer invalidate];
-        
-        // Move the view down to show the map.
-        [UIView animateWithDuration:1.5 delay:0.0
-                            options:UIViewAnimationOptionCurveEaseOut
-                         animations:^{
-                             runControlView.frame = CGRectMake(0, self.view.frame.size.height - 100, runControlView.frame.size.width, runControlView.frame.size.height);
-                         } completion:^(BOOL finished) {
-                             
-                         }];
-    }
+//    else if(self.timerState == timerPaused)
+//    {
+//        [self.timeLabel start];
+//        [self resumeTimer:timer];
+//        [startBtn setTitle:@"STOP" forState:UIControlStateNormal];
+//        self.timerState = timerStarted;
+//    }
 }
 
 - (void)timerTick:(NSTimer *)timer
@@ -200,20 +143,6 @@ enum TimerState : NSUInteger {
     timer = [NSTimer scheduledTimerWithTimeInterval:0.0001 target:self selector:@selector(timerTick:) userInfo:nil repeats:YES];
 }
 
-- (IBAction)trackChosen:(UIStoryboardSegue *)segue
-{
-    // do any clean up you want
-    trackNameLabel.text = [self.trackInfo objectForKey:@"Race"];
-    lapsLabel.text = [NSString stringWithFormat:@"0/%@",[self.trackInfo objectForKey:@"Laps"]];
-    trackImage.image = [UIImage imageNamed:[self.trackInfo objectForKey:@"mapimage"]];
-    [self startTracking];
-    [self addTrackPoints];
-    startBtn.enabled = TRUE;
-    startBtn.hidden = FALSE;
-    [trackBtn setTitle:@"CHOOSE TRACK" forState:UIControlStateNormal];
-    currentAchievements = [CoreDataHelper searchObjectsInContextWithEntityName:@"RunAchievement" andPredicate:[NSPredicate predicateWithFormat:@"trackname = %@", [self.trackInfo objectForKey:@"Race"]] withSortKey:nil sortAscending:YES withManagedObjectContext:self.managedObjectContext];
-}
-
 #pragma mark choose track
 -(void)setTrackInfo:(NSMutableDictionary *)trackInfoDict
 {
@@ -238,7 +167,6 @@ enum TimerState : NSUInteger {
         [musicPlayer play];
     }
     [self dismissViewControllerAnimated:YES completion:nil];
-    currentTrack.text =  [NSString stringWithFormat:@"%@ - %@",[musicPlayer.nowPlayingItem valueForProperty:MPMediaItemPropertyArtist],[musicPlayer.nowPlayingItem valueForProperty:MPMediaItemPropertyTitle]];
 }
 
 - (void) mediaPickerDidCancel: (MPMediaPickerController *) mediaPicker
@@ -249,22 +177,10 @@ enum TimerState : NSUInteger {
 #pragma mark music player   
 -(void)musicTrackChanged
 {
-    currentTrack.text =  [NSString stringWithFormat:@"%@ - %@",[musicPlayer.nowPlayingItem valueForProperty:MPMediaItemPropertyArtist],[musicPlayer.nowPlayingItem valueForProperty:MPMediaItemPropertyTitle]];
+//    currentTrack.text =  [NSString stringWithFormat:@"%@ - %@",[musicPlayer.nowPlayingItem valueForProperty:MPMediaItemPropertyArtist],[musicPlayer.nowPlayingItem valueForProperty:MPMediaItemPropertyTitle]];
 }
 
 #pragma mark Map view
-
--(void)showMap
-{
-    MKCoordinateRegion region;
-    MKCoordinateSpan span;
-    span.latitudeDelta = 140;
-    span.longitudeDelta = 300;
-    region.span = span;
-    region.center.latitude = [[_trackInfo objectForKey:@"Lat"] doubleValue];
-    region.center.longitude = [[_trackInfo objectForKey:@"Long"] doubleValue];
-    [mv setRegion:region animated:YES];
-}
 
 -(void)startTracking
 {
@@ -393,6 +309,16 @@ enum TimerState : NSUInteger {
     sector2Ann.coordinate = sector2EndPoint.coordinate;
     sector2Ann.title = @"Sector2";
     [mv addAnnotation:sector2Ann];
+    
+    
+    MKCoordinateRegion region;
+    MKCoordinateSpan span;
+    span.latitudeDelta = 0.0100;
+    span.longitudeDelta = 0.0100;
+    region.span = span;
+    region.center.latitude = poi.latitude;
+    region.center.longitude = poi.longitude;
+    [mv setRegion:region animated:YES];
 }
 
 #pragma mark MapView Delegate
@@ -568,8 +494,6 @@ enum TimerState : NSUInteger {
                             {
                                 //NSLog(@"Point Exit Distance %f", [startPoint distanceFromLocation:pointLoc]);
                                 totalPointsDistance = totalPointsDistance + [startPoint distanceFromLocation:pointLoc];
-                                NSLog([NSString stringWithFormat:@"Split Point %.2f miles", totalPointsDistance * 0.000621371192]);
-                                
                                 // eject at the point of the distance we need and set the old location to this point
                                 [self.trackPointArray insertObject:[NSString stringWithFormat:@"%f,%f", pointLoc.coordinate.latitude, pointLoc.coordinate.longitude] atIndex:nextRunIndex];
                                 break;
@@ -592,8 +516,6 @@ enum TimerState : NSUInteger {
                         ann.coordinate = endPoint.coordinate;
                         
                         totalPointsDistance = totalPointsDistance + [startPoint distanceFromLocation:endPoint];
-                        NSLog([NSString stringWithFormat:@"Next Point %.2f miles", totalPointsDistance * 0.000621371192]);
-                        
                         if(endPoint == sector1EndPoint)
                         {
                             sector1Time = lapTime.text;
@@ -603,16 +525,8 @@ enum TimerState : NSUInteger {
                         }
                         
                     }
-                    
-                    if(distanceUnit.selectedSegmentIndex == 1)
-                    {
-                        distanceLabel.text =  [NSString stringWithFormat:@"%.2f km", totalPointsDistance * 1000];
-                    }
-                    else
-                    {
-                        distanceLabel.text =  [NSString stringWithFormat:@"%.2f miles", totalPointsDistance * 0.000621371192];
-                    }
-                    
+
+                    distanceLabel.text =  [NSString stringWithFormat:@"%.2f miles", totalPointsDistance * 0.000621371192];
                     runIndex++;
                     
                     if(runIndex == self.trackPointArray.count)
@@ -624,6 +538,8 @@ enum TimerState : NSUInteger {
                         lapsLabel.text = [NSString stringWithFormat:@"%d Laps", (int)lapCounter];
                         [self playSound:@"beep-8" :@"mp3"];
                         
+                        sector1Time = lapTime.text;
+                        sector2Time = lapTime.text;
                         sector3Time = lapTime.text;
                         
                         // Save Sectors and Lap Times
@@ -635,8 +551,28 @@ enum TimerState : NSUInteger {
                         if(runLaps == nil) runLaps = [[NSMutableDictionary alloc] init];
                         [runLaps setObject:runLap forKey:[NSString stringWithFormat:@"%d",(int)lapCounter]];
                         
-                        //Set Lap Time
-                        [self setLastLap];
+                        // Convert to Date
+                        NSDate *currentDate = [NSDate date];
+                        NSTimeInterval timeInterval = [currentDate timeIntervalSinceDate:lastLapDate];
+                        //timeInterval += secondsAlreadyRun;
+                        NSDate *timerDate = [NSDate dateWithTimeIntervalSince1970:timeInterval];
+                        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+                        [dateFormatter setDateFormat:@"mm:ss.SS"];
+                        [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0.0]];
+                        lapTime.text = [dateFormatter stringFromDate:timerDate];
+                        lastLapDate = [NSDate date];
+                        
+                        if([CoreDataHelper countObjectsInContextWithEntityName:@"RunAchievement" andPredicate:[NSPredicate predicateWithFormat:@"trackname = %@ AND achievementTrigger = %@", [self.trackInfo objectForKey:@"Race"], @"FastestLap"]  withManagedObjectContext:self.managedObjectContext] == 0)
+                        {
+                            // fastest lap
+                            [newRunAchievements setObject:@"New Fastest Lap" forKey:@"FastestLap"];
+                            [[MessageBarManager sharedInstance] showMessageWithTitle:@"New Fastest Lap"
+                                                                         description:[NSString stringWithFormat:@"Timed at : %@", [dateFormatter stringFromDate:timerDate]]
+                                                                                type:MessageBarMessageTypeInfo];
+                        }
+                        
+                        //Check any achivements
+                        [self checkAchivementsOnLapFinish];
                     }
 
                 } // end if Runner
@@ -650,24 +586,48 @@ enum TimerState : NSUInteger {
     } // Timer not set
 }
 
--(void)setLastLap
+-(void)checkAchivementsOnLapFinish
 {
-    // Compare to fastest Lap
+    if(newRunAchievements == nil) newRunAchievements = [[NSMutableDictionary alloc] init];
+    // First time the app has been run
     
-    // Convert to Date
-    NSDate *currentDate = [NSDate date];
-    NSTimeInterval timeInterval = [currentDate timeIntervalSinceDate:lastLapDate];
-    //timeInterval += secondsAlreadyRun;
-    NSDate *timerDate = [NSDate dateWithTimeIntervalSince1970:timeInterval];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"mm:ss.SS"];
-    [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0.0]];
-    lapTime.text = [dateFormatter stringFromDate:timerDate];
-    lastLapDate = [NSDate date];
+    if(lapCounter == 1)
+    {
+        if([CoreDataHelper countObjectsInContextWithEntityName:@"RunAchievement" andPredicate:[NSPredicate predicateWithFormat:@"trackname = %@ AND achievementTrigger = %@", [self.trackInfo objectForKey:@"Race"], @"FirstRun"] withManagedObjectContext:self.managedObjectContext] == 0)
+        {
+            [newRunAchievements setObject:@"Well done on starting your First Run" forKey:@"FirstRun"];
+            [[MessageBarManager sharedInstance] showMessageWithTitle:@"Congradulations"
+                                                         description:@"Started Your First Run"
+                                                                type:MessageBarMessageTypeInfo];
+        }
+        
+        if([CoreDataHelper countObjectsInContextWithEntityName:@"RunAchievement" andPredicate:[NSPredicate predicateWithFormat:@"trackname = %@ AND achievementTrigger = %@", [self.trackInfo objectForKey:@"Race"], @"FirstLap"]  withManagedObjectContext:self.managedObjectContext] == 0)
+        {
+            // First ever lap completed
+            [newRunAchievements setObject:@"You have Completed your First Lap" forKey:@"FirstLap"];
+            [[MessageBarManager sharedInstance] showMessageWithTitle:@"Congradulations"
+                                                         description:@"Completed Your First Lap"
+                                                                type:MessageBarMessageTypeInfo];
+        }
+        
+        if([CoreDataHelper countObjectsInContextWithEntityName:@"RunAchievement" andPredicate:[NSPredicate predicateWithFormat:@"trackname = %@ AND achievementTrigger = %@", [self.trackInfo objectForKey:@"Race"], @"FirstTrackLap"]  withManagedObjectContext:self.managedObjectContext] == 0)
+        {
+            // First lap of the track
+            [newRunAchievements setObject:@"You have completed your First Lap For" forKey:@"FirstTrackLap"];
+            [[MessageBarManager sharedInstance] showMessageWithTitle:@"Congradulations"
+                                                         description:[NSString stringWithFormat:@"Completed Your First Lap For %@", [self.trackInfo objectForKey:@"Race"]]
+                                                                type:MessageBarMessageTypeInfo];
+        }
+    } // end of check on first lap
     
-    [[MessageBarManager sharedInstance] showMessageWithTitle:@"Lap Complete"
-                                                 description:[NSString stringWithFormat:@"Timed at : %@", [dateFormatter stringFromDate:timerDate]]
-                                                        type:MessageBarMessageTypeInfo];
+    if([CoreDataHelper countObjectsInContextWithEntityName:@"RunAchievement" andPredicate:[NSPredicate predicateWithFormat:@"trackname = %@ AND achievementTrigger = %@", [self.trackInfo objectForKey:@"Race"], @"HalfRaceDistance"]  withManagedObjectContext:self.managedObjectContext] == 0)
+    {
+        [newRunAchievements setObject:@"You have completed half race distance for" forKey:@"HalfRaceDistance"];
+        [[MessageBarManager sharedInstance] showMessageWithTitle:@"Congradulations"
+                                                     description:[NSString stringWithFormat:@"Completed half the distance of %@", [self.trackInfo objectForKey:@"Race"]]
+                                                            type:MessageBarMessageTypeInfo];
+    }
+    
 }
 
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay
@@ -684,19 +644,11 @@ enum TimerState : NSUInteger {
     return overlayView;
 }
 
--(void)blinkGPS
-{
-    [gpsIcon setHidden:(!gpsIcon.hidden)];
-}
-
-
 #pragma mark Segue Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue
                  sender:(id)sender {
     if ([segue.identifier isEqualToString:@"finishRunSegue"]) {
-        
-        [self reset];
         
         [self.timeLabel stop];
         [self.timeLabel reset];
@@ -705,23 +657,14 @@ enum TimerState : NSUInteger {
         RunFinishViewController *rfvc = segue.destinationViewController;
         [self.trackInfo setObject:totalRunTime forKey:@"runTime"];
         [self.trackInfo setObject:[NSString stringWithFormat:@"%d", (int)lapCounter] forKey:@"runLaps"];
-        
-        if(distanceUnit.selectedSegmentIndex == 1)
-        {
-            [self.trackInfo setObject:[NSString stringWithFormat:@"%.2f",totalPointsDistance * 1000] forKey:@"runDistance"];
-        }
-        else
-        {
-            [self.trackInfo setObject:[NSString stringWithFormat:@"%.2f",totalPointsDistance * 0.000621371192] forKey:@"runDistance"];
-        }
-        
-        //Add Laps and Sectors Dictionary
+        [self.trackInfo setObject:[NSString stringWithFormat:@"%.2f",totalPointsDistance * 0.000621371192] forKey:@"runDistance"];
+
+        //Add Laps, achivements and Sectors Dictionary
         if (runLaps != nil)[self.trackInfo setObject:runLaps forKey:@"runLapsInfo"];
+        if (newRunAchievements != nil)[self.trackInfo setObject:newRunAchievements forKey:@"runAchivementsInfo"];
         
         [self.trackInfo setObject:self.runPointArray forKey:@"runPointArray"];
         rfvc.trackInfo = self.trackInfo;
-        
-        //Add achivements to the trackInfo
     }
 }
 
@@ -732,27 +675,18 @@ enum TimerState : NSUInteger {
 }
     
 -(void)reset
-    {
-        self.timerState = timerStopped;
-        finishBtn.hidden = YES;
-        musicBtn.hidden = NO;
-        lapCounter = 0;
-        _trackInfo = nil;
-        drsLabel.hidden = FALSE;
-        trackBtn.hidden = FALSE;
-        trackNameLabel.text = @"Track Name";
-        distanceLabel.text = @"Track Distance";
-        trackImage.image = nil;
-        lapsLabel.text = @"Laps";
-        startBtn.enabled = FALSE;
-        timer = nil;
-        totalRunTime = nil;
-        [self.timeLabel reset];
-        [startBtn setTitle:@"START" forState:UIControlStateNormal];
-        runTypeSeg.hidden = FALSE;
-        trackBtn.titleLabel.text = @"CHOOSE TRACK TO START";
-        runControlView.frame = CGRectMake(0, self.view.frame.size.height - 150, runControlView.frame.size.width, runControlView.frame.size.height);
-    }
+{
+    self.timerState = timerStopped;
+    lapCounter = 0;
+    _trackInfo = nil;
+    distanceLabel.text = @"Track Distance";
+    lapsLabel.text = @"Laps";
+    startBtn.enabled = FALSE;
+    timer = nil;
+    totalRunTime = nil;
+    [self.timeLabel reset];
+    [startBtn setTitle:@"START" forState:UIControlStateNormal];
+}
 
 
 #pragma mark Sounds

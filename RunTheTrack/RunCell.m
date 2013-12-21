@@ -10,6 +10,5 @@
 
 @implementation RunCell
 
-@synthesize trackLabel, runDistanceLabel, runTimeLabel, runDateLabel;
 
 @end

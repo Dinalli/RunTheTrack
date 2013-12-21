@@ -31,8 +31,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.managedObjectContext = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).managedObjectContext;
+    appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.managedObjectContext = appDelegate.managedObjectContext;
     
     runs = [CoreDataHelper getObjectsFromContextWithEntityName:@"RunData" andSortKey:nil andSortAscending:YES withManagedObjectContext:self.managedObjectContext];
     
@@ -88,6 +88,15 @@
     NSDate *runTimeDate = [df dateFromString:[NSString stringWithFormat:@"%@",runData.runtime]];
     cell.runTimeLabel.text = [df stringFromDate:runTimeDate];
     cell.runDateLabel.text = runData.rundate;
+    
+    for (NSDictionary *trackInfo in appDelegate.tracksArray) {
+        if([[trackInfo objectForKey:@"Race"] isEqualToString:runData.runtrackname])
+        {
+            cell.trackImage.image = [UIImage imageNamed:[trackInfo objectForKey:@"mapimage"]];
+            break;
+        }
+    }
+    
     return cell;
 }
 

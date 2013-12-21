@@ -18,31 +18,14 @@
 {
     MPMusicPlayerController *musicPlayer;
     
-    IBOutlet UILabel *currentTrack;
-    //IBOutlet TTCounterLabel *timeLabel;
-    
+    IBOutlet UINavigationItem *navigationItem;
+    IBOutlet UIButton *btnFinish;
     IBOutlet UILabel *lapTime;
     IBOutlet UILabel *distanceLabel;
     
     IBOutlet UILabel *lapsLabel;
-    IBOutlet UILabel *trackNameLabel;
-    
-    
     IBOutlet UIButton *startBtn;
-    IBOutlet UIButton *finishBtn;
-    IBOutlet UIButton *musicBtn;
-    IBOutlet UIButton *trackBtn;
-    
-    IBOutlet UIView *runControlView;
-    
-    IBOutlet UIImageView *trackImage;
-    
-    IBOutlet UISegmentedControl *intervalSeg;
-    IBOutlet UISegmentedControl *runTypeSeg;
-    IBOutlet UISegmentedControl *distanceUnit;
-    
-    IBOutlet UILabel *drsLabel;
-    IBOutlet UIImageView *gpsIcon;
+
     NSTimer *timer;
     
     NSDate *startDate;
@@ -77,12 +60,7 @@
 }
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-
-@property (strong, nonatomic) NSTimer *gpsTimer;
-
 @property (nonatomic) NSMutableDictionary *trackInfo;
-
-
 @property (nonatomic, strong) MKPolyline* trackLine;
 @property (nonatomic, strong) MKPolylineView* trackLineView;
 @property (nonatomic, strong) NSMutableArray *trackPointArray;
@@ -90,8 +68,6 @@
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, readwrite) MKMapRect routeRect;
 @property (nonatomic, strong) NSNumber *timeDuration;
-
-- (IBAction)trackChosen:(UIStoryboardSegue *)segue;
 
 - (IBAction)unwindToRunStart:(UIStoryboardSegue *)unwindSegue;
 @end

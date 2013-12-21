@@ -13,7 +13,4 @@
 {
     AppDelegate *appDelegate;
 }
-
-- (IBAction)unwindToTracksCollection:(UIStoryboardSegue *)unwindSegue;
-
 @end

@@ -35,6 +35,9 @@
 {
     [super viewDidLoad];
     
+    [self.navigationItem.backBarButtonItem setTitle:@"Run"];
+    [self.navigationItem setTitle:[self.trackInfo objectForKey:@"Race"]];
+    
     self.managedObjectContext = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).managedObjectContext;
     
     runTime.text = [NSString stringWithFormat:@"%@",[self.trackInfo objectForKey:@"runTime"]];
@@ -175,6 +178,33 @@
         }
     }
     
+//    if([CoreDataHelper countObjectsInContextWithEntityName:@"RunAchievement" andPredicate:[NSPredicate predicateWithFormat:@"trackname = %@ AND achievementTrigger = %@", [self.trackInfo objectForKey:@"Race"], @"LongestDistance"]  withManagedObjectContext:self.managedObjectContext])
+//    {
+//        // fastest lap
+//        [newRunAchievements setObject:@"New Fastest Lap" forKey:@"LongestDistance"];
+//        [[MessageBarManager sharedInstance] showMessageWithTitle:@"New Fastest Lap"
+//                                                     description:[NSString stringWithFormat:@"Timed at : %@", [dateFormatter stringFromDate:timerDate]]
+//                                                            type:MessageBarMessageTypeInfo];
+//    }
+//    
+//    if([CoreDataHelper countObjectsInContextWithEntityName:@"RunAchievement" andPredicate:[NSPredicate predicateWithFormat:@"trackname = %@ AND achievementTrigger = %@", [self.trackInfo objectForKey:@"Race"], @"FastestLap"]  withManagedObjectContext:self.managedObjectContext])
+//    {
+//        // fastest lap
+//        [newRunAchievements setObject:@"New Fastest Lap" forKey:@"FastestLap"];
+//        [[MessageBarManager sharedInstance] showMessageWithTitle:@"New Fastest Lap"
+//                                                     description:[NSString stringWithFormat:@"Timed at : %@", [dateFormatter stringFromDate:timerDate]]
+//                                                            type:MessageBarMessageTypeInfo];
+//    }
+//    
+//    if([CoreDataHelper countObjectsInContextWithEntityName:@"RunAchievement" andPredicate:[NSPredicate predicateWithFormat:@"trackname = %@ AND achievementTrigger = %@", [self.trackInfo objectForKey:@"Race"], @"FastestLap"]  withManagedObjectContext:self.managedObjectContext])
+//    {
+//        // fastest lap
+//        [newRunAchievements setObject:@"New Fastest Lap" forKey:@"FastestLap"];
+//        [[MessageBarManager sharedInstance] showMessageWithTitle:@"New Fastest Lap"
+//                                                     description:[NSString stringWithFormat:@"Timed at : %@", [dateFormatter stringFromDate:timerDate]]
+//                                                            type:MessageBarMessageTypeInfo];
+//    }
+    
     //Add Achivement
     RunAchievement *runAch = [NSEntityDescription insertNewObjectForEntityForName:@"RunAchievement" inManagedObjectContext:self.managedObjectContext];
     [runAch setRunId:runData.runid];
@@ -191,6 +221,69 @@
 }
 
 #pragma social sharing 
+
+-(IBAction)showActivityView:(id)sender
+{
+    NSString *textToShare = [NSString stringWithFormat:@"Just comepleted a run round the %@ GP track. Time %@ Distance %@", trackName.text, runTime.text, runDistance.text];
+    
+    MKMapSnapshotOptions *options = [[MKMapSnapshotOptions alloc] init];
+    options.region = mv.region;
+    options.scale = [UIScreen mainScreen].scale;
+    options.size = mv.frame.size;
+    
+    MKMapSnapshotter *snapshotter = [[MKMapSnapshotter alloc] initWithOptions:options];
+    [snapshotter startWithQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) completionHandler:^(MKMapSnapshot *snapshot, NSError *error) {
+        
+        // get the image associated with the snapshot
+        
+        UIImage *image = snapshot.image;
+        
+        // Get the size of the final image
+        
+        CGRect finalImageRect = CGRectMake(0, 0, image.size.width, image.size.height);
+        
+        // Get a standard annotation view pin. Clearly, Apple assumes that we'll only want to draw standard annotation pins!
+        
+        MKAnnotationView *pin = [[MKPinAnnotationView alloc] initWithAnnotation:nil reuseIdentifier:@""];
+        UIImage *pinImage = pin.image;
+        
+        // ok, let's start to create our final image
+        
+        UIGraphicsBeginImageContextWithOptions(image.size, YES, image.scale);
+        
+        // first, draw the image from the snapshotter
+        
+        [image drawAtPoint:CGPointMake(0, 0)];
+        
+        // now, let's iterate through the annotations and draw them, too
+        
+        for (id<MKAnnotation>annotation in mv.annotations)
+        {
+            CGPoint point = [snapshot pointForCoordinate:annotation.coordinate];
+            if (CGRectContainsPoint(finalImageRect, point)) // this is too conservative, but you get the idea
+            {
+                CGPoint pinCenterOffset = pin.centerOffset;
+                point.x -= pin.bounds.size.width / 2.0;
+                point.y -= pin.bounds.size.height / 2.0;
+                point.x += pinCenterOffset.x;
+                point.y += pinCenterOffset.y;
+                
+                [pinImage drawAtPoint:point];
+            }
+        }
+        
+        // grab the final image
+        mapImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        NSArray *itemsToShare = @[textToShare, mapImage];
+        
+        UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:itemsToShare applicationActivities:nil];
+        activityVC.excludedActivityTypes = @[UIActivityTypePrint, UIActivityTypeCopyToPasteboard, UIActivityTypeAssignToContact, UIActivityTypeSaveToCameraRoll, UIActivityTypeMail];
+        [self presentViewController:activityVC animated:YES completion:nil];
+    }];
+}
+
 
 -(IBAction)shareOnFacebook:(id)sender
 {

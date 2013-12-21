@@ -12,6 +12,25 @@
 @implementation CoreDataHelper
 
 
++(NSUInteger) countObjectsInContextWithEntityName: (NSString*) entityName andPredicate: (NSPredicate *) predicate  withManagedObjectContext: (NSManagedObjectContext *) managedObjectContext
+{
+	
+	NSFetchRequest *request = [[NSFetchRequest alloc] init];
+	NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:managedObjectContext];
+	[request setEntity:entity];
+	
+	// If a predicate was passed, pass it to the query
+	if(predicate != nil)
+	{
+		[request setPredicate:predicate];
+	}
+	
+	NSError *error;
+	
+    return [managedObjectContext countForFetchRequest:request error:&error];
+}
+
+
 +(NSMutableArray *) searchObjectsInContextWithEntityName: (NSString*) entityName andPredicate: (NSPredicate *) predicate withSortKey: (NSString*) sortKey sortAscending: (BOOL) sortAscending withManagedObjectContext: (NSManagedObjectContext *) managedObjectContext
 {
 	

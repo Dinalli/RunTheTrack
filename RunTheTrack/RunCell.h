@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface RunCell : UITableViewCell
-
+@property (nonatomic, strong) IBOutlet UIImageView *trackImage;
 @property (nonatomic, strong) IBOutlet UILabel *trackLabel;
 @property (nonatomic, strong) IBOutlet UILabel *runDistanceLabel;
 @property (nonatomic, strong) IBOutlet UILabel *runTimeLabel;

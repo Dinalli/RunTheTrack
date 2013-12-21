@@ -8,7 +8,7 @@
 
 #import "TracksCollectionViewController.h"
 #import "TrackCell.h"
-#import "TrackInfoViewController.h"
+#import "StartViewController.h"
 
 @interface TracksCollectionViewController ()
 
@@ -37,29 +37,17 @@
 #pragma mark - Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue
                  sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"TrackInfoSegue"]) {
+    if ([segue.identifier isEqualToString:@"TrackSelectedSegue"]) {
         NSArray *indexPaths = [self.collectionView indexPathsForSelectedItems];
-        TrackInfoViewController *tivc = segue.destinationViewController;
+        StartViewController *svc = segue.destinationViewController;
         
         NSIndexPath *index = [indexPaths objectAtIndex:0];
         NSDictionary *selectedTrackInfo = [appDelegate.tracksArray  objectAtIndex:index.row];
-        tivc.TrackInfo = [selectedTrackInfo mutableCopy];
+        svc.TrackInfo = [selectedTrackInfo mutableCopy];
         
         [self.collectionView
          deselectItemAtIndexPath:index animated:YES];
     }
-}
-
-#pragma mark - UICollectionViewDelegate
-- (void)collectionView:(UICollectionView *)collectionView
-didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-//    NSDictionary *TrackInfo = [tracksArray objectAtIndex:indexPath.row];
-//    
-//    [self performSegueWithIdentifier:@"TrackInfoSegue"
-//                              sender:TrackInfo];
-//    [self.collectionView
-//     deselectItemAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - UICollectionView Datasource
@@ -80,11 +68,49 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSMutableDictionary *TrackInfo = (NSMutableDictionary *)[appDelegate.tracksArray objectAtIndex:indexPath.row];
     
     TrackCell *cell = [cv
-                                  dequeueReusableCellWithReuseIdentifier:@"TrackCell"
+                                  dequeueReusableCellWithReuseIdentifier:@"TrackDetailCell"
                                   forIndexPath:indexPath];
+    
     cell.trackName.text = [TrackInfo objectForKey:@"Race"];
-    cell.imageView.image = [UIImage imageNamed:[TrackInfo objectForKey:@"mapimage"]];
+    cell.totalLaps.text = [NSString stringWithFormat:@"Laps : %@",[TrackInfo objectForKey:@"Laps"]];
+    cell.Distance.text = [NSString stringWithFormat:@"Distance : %@ miles",[TrackInfo objectForKey:@"Distance"]];
+    
+    cell.kenView.imagesArray = [[NSMutableArray alloc] init];
+    UIImage *trackImage = [UIImage imageNamed:[TrackInfo objectForKey:@"trackimage"]];
+    [cell.kenView.imagesArray addObject:trackImage];
+    [cell.kenView animateWithImages:cell.kenView.imagesArray
+            transitionDuration:20
+                          loop:YES
+                   isLandscape:YES];
+    
+    // Set vertical effect
+    UIInterpolatingMotionEffect *verticalMotionEffect =
+    [[UIInterpolatingMotionEffect alloc]
+     initWithKeyPath:@"center.y"
+     type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+    verticalMotionEffect.minimumRelativeValue = @(-30);
+    verticalMotionEffect.maximumRelativeValue = @(30);
+    
+    // Set horizontal effect
+    UIInterpolatingMotionEffect *horizontalMotionEffect =
+    [[UIInterpolatingMotionEffect alloc]
+     initWithKeyPath:@"center.x"
+     type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+    horizontalMotionEffect.minimumRelativeValue = @(-20);
+    horizontalMotionEffect.maximumRelativeValue = @(20);
+    
+    // Create group to combine both
+    UIMotionEffectGroup *group = [UIMotionEffectGroup new];
+    group.motionEffects = @[horizontalMotionEffect, verticalMotionEffect];
+    
+    // Add both effects to your view
+    [cell.kenView addMotionEffect:group];
+    
     return cell;
+}
+
+- (IBAction)unwindToTrackSelect:(UIStoryboardSegue *)unwindSegue
+{
 }
 
 - (void)didReceiveMemoryWarning
@@ -92,10 +118,4 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-#pragma mark unwind Segue
-- (IBAction)unwindToTracksCollection:(UIStoryboardSegue *)unwindSegue
-{
-}
-
 @end
