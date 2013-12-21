@@ -22,6 +22,8 @@ extern NSString *const SCSessionStateChangedNotification;
 @property (strong, nonatomic) FBSession *session;
 @property (strong, nonatomic) NSArray *tracksArray;
 
+@property (nonatomic) BOOL useMotion;
+
 - (void)openSession;
 
 @end

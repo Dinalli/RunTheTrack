@@ -26,6 +26,9 @@ NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:S
     NSBundle* bundle = [NSBundle mainBundle];
     NSString* plistPath = [bundle pathForResource:@"Tracks" ofType:@"plist"];
     self.tracksArray = [[NSArray alloc] initWithContentsOfFile:plistPath];
+    
+    self.useMotion = NO;
+    
     return YES;
 }
 

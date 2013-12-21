@@ -261,6 +261,120 @@
             </objects>
             <point key="canvasLocation" x="1263" y="702"/>
         </scene>
+        <!--Settings View Controller - Motion Settings-->
+        <scene sceneID="n6p-oc-gi9">
+            <objects>
+                <viewController id="j1Z-Tu-5ah" customClass="SettingsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="w7t-FO-pvf"/>
+                        <viewControllerLayoutGuide type="bottom" id="flf-01-3mi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8Lh-yV-ZfL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SZU-GA-9an">
+                                <rect key="frame" x="198" y="53" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="onTintColor" red="0.26274509800000001" green="0.1450980392" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="gpsSwitched:" destination="j1Z-Tu-5ah" eventType="valueChanged" id="0My-0k-RSJ"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Use GPS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56b-5Q-RhR">
+                                <rect key="frame" x="20" y="58" width="71" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Motion settings are not adjustable on devices that do not support M7." textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3W5-Us-atl">
+                                <rect key="frame" x="20" y="111" width="280" height="59"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kEY-Nk-9wT">
+                                <rect key="frame" x="13" y="106" width="292" height="198"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="272-ug-7rZ">
+                                        <rect key="frame" x="187" y="10" width="51" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="onTintColor" red="0.26274509800000001" green="0.1450980392" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="m7switched:" destination="j1Z-Tu-5ah" eventType="valueChanged" id="w1f-iQ-hvQ"/>
+                                        </connections>
+                                    </switch>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Use Motion" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XE5-JD-gNu">
+                                        <rect key="frame" x="8" y="15" width="89" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.5" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="TX0-qt-Xc8">
+                                        <rect key="frame" x="156" y="129" width="118" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="thumbTintColor" red="0.26274509800000001" green="0.1450980392" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="walkMetersChanged:" destination="j1Z-Tu-5ah" eventType="valueChanged" id="tHu-Uy-67i"/>
+                                        </connections>
+                                    </slider>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="2.5" translatesAutoresizingMaskIntoConstraints="NO" id="irZ-Jf-OvW">
+                                        <rect key="frame" x="156" y="70" width="118" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="thumbTintColor" red="0.26274509800000001" green="0.1450980392" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="runMetersChanged:" destination="j1Z-Tu-5ah" eventType="valueChanged" id="INL-Hy-o7n"/>
+                                        </connections>
+                                    </slider>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Walk Meters" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0FI-pC-UBV">
+                                        <rect key="frame" x="8" y="76" width="95" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Run Meters" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OjV-55-VLh">
+                                        <rect key="frame" x="8" y="135" width="89" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0.5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Se6-9E-pgl">
+                                        <rect key="frame" x="194" y="116" width="42" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8zl-Up-s8x">
+                                        <rect key="frame" x="194" y="56" width="42" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Motion Settings" id="JUR-iw-nTY"/>
+                    <connections>
+                        <outlet property="gpsSwitch" destination="SZU-GA-9an" id="rWR-dA-dvN"/>
+                        <outlet property="m7TextView" destination="3W5-Us-atl" id="dy2-ua-eXG"/>
+                        <outlet property="motionSwitch" destination="272-ug-7rZ" id="T6M-wz-xma"/>
+                        <outlet property="motionView" destination="kEY-Nk-9wT" id="axn-sK-0Sc"/>
+                        <outlet property="runMeters" destination="8zl-Up-s8x" id="Xv5-g8-8Kd"/>
+                        <outlet property="runSlider" destination="irZ-Jf-OvW" id="EUB-Ku-oVz"/>
+                        <outlet property="walkMeters" destination="Se6-9E-pgl" id="ahC-kb-EYA"/>
+                        <outlet property="walkSlider" destination="TX0-qt-Xc8" id="QmU-iN-IPj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8OR-x2-PNh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-296" y="-839"/>
+        </scene>
         <!--Navigation Controller - Run-->
         <scene sceneID="G7z-4Q-bwS">
             <objects>
@@ -275,7 +389,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C1H-RP-BZA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-114" y="-718"/>
+            <point key="canvasLocation" x="320" y="-737"/>
         </scene>
         <!--Tracks Collection View Controller - Choose your track-->
         <scene sceneID="29e-CU-8sY">
@@ -358,7 +472,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9w5-ya-Xvz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="517" y="-713"/>
+            <point key="canvasLocation" x="813" y="-737"/>
         </scene>
         <!--Start View Controller-->
         <scene sceneID="vYS-Sr-SVI">
@@ -516,7 +630,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" red="0.26274509800000001" green="0.1450980392" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="0DP-dM-b0g">
@@ -560,6 +674,7 @@
                         <segue destination="nrG-eV-KE2" kind="relationship" relationship="viewControllers" id="02j-nu-y7T"/>
                         <segue destination="K8l-bf-pJv" kind="relationship" relationship="viewControllers" id="IFW-4v-vrr"/>
                         <segue destination="ZDe-IT-rLM" kind="relationship" relationship="viewControllers" id="iIZ-1d-6uj"/>
+                        <segue destination="j1Z-Tu-5ah" kind="relationship" relationship="viewControllers" id="Ha4-Y7-Ncc"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UFP-FZ-1h7" userLabel="First Responder" sceneMemberID="firstResponder"/>

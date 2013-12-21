@@ -116,6 +116,7 @@
 		40A3B3ED185B76CC00BA85BB /* icon-success.png in Resources */ = {isa = PBXBuildFile; fileRef = 40A3B3E7185B76CC00BA85BB /* icon-success.png */; };
 		40A3B3EE185B76CC00BA85BB /* icon-success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40A3B3E8185B76CC00BA85BB /* icon-success@2x.png */; };
 		40B8E71E17F9EA5F00005F09 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40B8E71D17F9EA5F00005F09 /* CoreLocation.framework */; };
+		40BA418F1865C2D8007A6329 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40BA418E1865C2D8007A6329 /* CoreMotion.framework */; };
 		40BAAD3D18203F7F00137E8C /* button-35.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 40BAAD3C18203F7F00137E8C /* button-35.mp3 */; };
 		40BAAD3F18203FB900137E8C /* beep-8.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 40BAAD3E18203FB900137E8C /* beep-8.mp3 */; };
 		40BAAD411820509B00137E8C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40BAAD401820509B00137E8C /* AVFoundation.framework */; };
@@ -296,6 +297,7 @@
 		40A3B3E7185B76CC00BA85BB /* icon-success.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-success.png"; sourceTree = "<group>"; };
 		40A3B3E8185B76CC00BA85BB /* icon-success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-success@2x.png"; sourceTree = "<group>"; };
 		40B8E71D17F9EA5F00005F09 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		40BA418E1865C2D8007A6329 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		40BAAD3C18203F7F00137E8C /* button-35.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "button-35.mp3"; sourceTree = "<group>"; };
 		40BAAD3E18203FB900137E8C /* beep-8.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "beep-8.mp3"; sourceTree = "<group>"; };
 		40BAAD401820509B00137E8C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -350,6 +352,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40BA418F1865C2D8007A6329 /* CoreMotion.framework in Frameworks */,
 				40E5A2EC1856538A00E8E87E /* CoreText.framework in Frameworks */,
 				40CD535E182C0E2D00352499 /* FacebookSDK.framework in Frameworks */,
 				40DFDBE9182AE6C100554C58 /* Social.framework in Frameworks */,
@@ -381,6 +384,7 @@
 		4018F50417F82E26006F990E /* 3rdParty */ = {
 			isa = PBXGroup;
 			children = (
+				40BA41901865D3A4007A6329 /* UrbanAirship */,
 				40A3B3DE185B765D00BA85BB /* MessageBarManager */,
 				409357A81855FBF1007EE900 /* TTCounterLabel */,
 				4018F50C17F832A7006F990E /* KeyBurnsLib */,
@@ -708,6 +712,13 @@
 			name = Icons;
 			sourceTree = "<group>";
 		};
+		40BA41901865D3A4007A6329 /* UrbanAirship */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = UrbanAirship;
+			sourceTree = "<group>";
+		};
 		40BE1F671823C79F004C3FC3 /* MapAnnotations */ = {
 			isa = PBXGroup;
 			children = (
@@ -745,6 +756,7 @@
 		40C1656117EB637900D4E093 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				40BA418E1865C2D8007A6329 /* CoreMotion.framework */,
 				40E5A2EB1856538A00E8E87E /* CoreText.framework */,
 				40251C6A184E5EFF0088F8C9 /* Crashlytics.framework */,
 				40CD535D182C0E2D00352499 /* FacebookSDK.framework */,

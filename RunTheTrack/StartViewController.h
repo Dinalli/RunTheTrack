@@ -10,6 +10,7 @@
 #import <MapKit/MapKit.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import <AVFoundation/AVFoundation.h>
+#import <CoreMotion/CoreMotion.h>
 #import "AppDelegate.h"
 #import "TrackInfoViewController.h"
 #import "TTCounterLabel.h"
@@ -57,6 +58,9 @@
     
     CLLocation *sector1EndPoint;
     CLLocation *sector2EndPoint;
+    
+    CMMotionActivityManager *cmActivityMgr;
+    CMStepCounter *cmStepCounter;
 }
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;

@@ -7,6 +7,7 @@
 //
 
 #import "SettingsViewController.h"
+#import <CoreMotion/CoreMotion.h>
 
 @interface SettingsViewController ()
 
@@ -28,7 +29,35 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]]];
+//    if(![CMMotionActivityManager isActivityAvailable])
+//    {
+//        motionView.hidden = YES;
+//        m7TextView.hidden = NO;
+//    }
+}
+
+-(IBAction)walkMetersChanged:(id)sender
+{
+    walkMeters.text = [NSString stringWithFormat:@"%.1f",walkSlider.value];
+}
+
+-(IBAction)runMetersChanged:(id)sender
+{
+    runMeters.text = [NSString stringWithFormat:@"%.1f",runSlider.value];
+}
+
+-(IBAction)gpsSwitched:(id)sender
+{
+    motionSwitch.on = NO;
+    runSlider.enabled = NO;
+    walkSlider.enabled = NO;
+}
+
+-(IBAction)m7switched:(id)sender
+{
+    gpsSwitch.on = NO;
+    runSlider.enabled = YES;
+    walkSlider.enabled = YES;
 }
 
 - (void)didReceiveMemoryWarning

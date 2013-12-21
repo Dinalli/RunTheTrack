@@ -35,9 +35,6 @@
     self.managedObjectContext = appDelegate.managedObjectContext;
     
     runs = [CoreDataHelper getObjectsFromContextWithEntityName:@"RunData" andSortKey:nil andSortAscending:YES withManagedObjectContext:self.managedObjectContext];
-    
-    
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]]];
 }
 
 -(void)viewDidAppear:(BOOL)animated

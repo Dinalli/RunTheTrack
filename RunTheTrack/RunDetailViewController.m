@@ -94,10 +94,7 @@
         {
             trackMapImage.image = [UIImage imageNamed:[trackInfo objectForKey:@"mapimage"]];
         }
-    }
-    
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]]];
-    
+    }    
     [self addRouteToMap];
 }
 

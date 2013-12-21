@@ -38,7 +38,9 @@
     [self.navigationItem.backBarButtonItem setTitle:@"Run"];
     [self.navigationItem setTitle:[self.trackInfo objectForKey:@"Race"]];
     
-    self.managedObjectContext = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).managedObjectContext;
+    appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    self.managedObjectContext = appDelegate.managedObjectContext;
     
     runTime.text = [NSString stringWithFormat:@"%@",[self.trackInfo objectForKey:@"runTime"]];
     runLaps.text = [NSString stringWithFormat:@"Laps %@",[self.trackInfo objectForKey:@"runLaps"]];
@@ -46,9 +48,16 @@
     paceLabel.text = [NSString stringWithFormat:@"%@ mph",@"3.1"];
     trackMapImage.image = [UIImage imageNamed:[self.trackInfo objectForKey:@"mapimage"]];
     trackName.text = [self.trackInfo objectForKey:@"Race"];
-    [self addRouteToMap];
     
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]]];
+    if(appDelegate.useMotion)
+    {
+        self.trackPointArray = [[NSMutableArray alloc] init];
+        [self addTrackPoints];
+    }
+    else
+    {
+        [self addRouteToMap];
+    }
 }
 
 #pragma mark choose track
@@ -57,13 +66,135 @@
     _trackInfo = trackInfoDict;
 }
 
+-(void)addTrackPoints
+{
+    [mv removeAnnotations:mv.annotations];
+    CLLocationCoordinate2D poi;
+    
+    NSArray *sectorArray = [_trackInfo objectForKey:@"trackpoints"];
+    
+    for(NSString *coordPoint in sectorArray)
+    {
+        if([self.trackPointArray count] > 0)
+        {
+            NSArray *latlong = [coordPoint componentsSeparatedByString:@","];
+            NSString *lat = [latlong objectAtIndex:0];
+            NSString *lng = [latlong objectAtIndex:1];
+            
+            NSArray *oldlatlong = [[self.trackPointArray lastObject] componentsSeparatedByString:@","];
+            NSString *oldlat = [oldlatlong objectAtIndex:0];
+            NSString *oldlng = [oldlatlong objectAtIndex:1];
+            
+            CLLocationCoordinate2D oldpoi = CLLocationCoordinate2DMake([oldlat doubleValue], [oldlng doubleValue]);
+            poi = CLLocationCoordinate2DMake([lat doubleValue], [lng doubleValue]);
+            
+            CLLocationCoordinate2D coordinates[2];
+            coordinates[0] = oldpoi;
+            coordinates[1] = poi;
+            
+            [self.trackPointArray addObject:coordPoint];
+            
+            self.trackLine = [MKPolyline polylineWithCoordinates:coordinates count:2];
+            [mv addOverlay:self.trackLine];
+            
+            MKCoordinateRegion region;
+            MKCoordinateSpan span;
+            span.latitudeDelta = 0.0030;
+            span.longitudeDelta = 0.0030;
+            region.span = span;
+            region.center.latitude = [lat doubleValue];
+            region.center.longitude = [lng doubleValue];
+            [mv setRegion:region animated:YES];
+            
+//            CLLocation *lastLocation = [[CLLocation alloc] initWithLatitude:[oldlat doubleValue] longitude:[oldlng doubleValue]];
+//            CLLocation *nextLocation = [[CLLocation alloc] initWithLatitude:[lat doubleValue] longitude:[lng doubleValue]];
+//            totalDistance = totalDistance + [lastLocation distanceFromLocation:nextLocation];
+        }
+        else
+        {
+            [self.trackPointArray addObject:coordPoint];
+        }
+    }
+//    
+//    // add the sector points for 1, 2
+//    // divide the total track distance by 3
+//    sectorCalcDistance = totalDistance / 3;
+//    totalDistance = 0;
+//    bool sector1Set = FALSE;
+//    
+//    for(NSString *coordPoint in sectorArray)
+//    {
+//        if([self.trackPointArray count] > 0)
+//        {
+//            NSArray *latlong = [coordPoint componentsSeparatedByString:@","];
+//            NSString *lat = [latlong objectAtIndex:0];
+//            NSString *lng = [latlong objectAtIndex:1];
+//            
+//            NSArray *oldlatlong = [[self.trackPointArray lastObject] componentsSeparatedByString:@","];
+//            NSString *oldlat = [oldlatlong objectAtIndex:0];
+//            NSString *oldlng = [oldlatlong objectAtIndex:1];
+//            
+//            CLLocation *lastLocation = [[CLLocation alloc] initWithLatitude:[oldlat doubleValue] longitude:[oldlng doubleValue]];
+//            CLLocation *nextLocation = [[CLLocation alloc] initWithLatitude:[lat doubleValue] longitude:[lng doubleValue]];
+//            totalDistance = totalDistance + [lastLocation distanceFromLocation:nextLocation];
+//            
+//            if(totalDistance > (sectorCalcDistance))
+//            {
+//                if(!sector1Set)
+//                {
+//                    sector1EndPoint = [[CLLocation alloc] initWithLatitude:[oldlat doubleValue] longitude:[oldlng doubleValue]];
+//                    sector1Set = TRUE;
+//                }
+//            }
+//            
+//            if(totalDistance > (sectorCalcDistance * 2))
+//            {
+//                sector2EndPoint = [[CLLocation alloc] initWithLatitude:[oldlat doubleValue] longitude:[oldlng doubleValue]];
+//                break;
+//            }
+//        }
+//    }
+//    
+//    MKRunnerAnnotation *runner = [[MKRunnerAnnotation alloc] init];
+//    runner.coordinate = poi;
+//    runner.title = @"Runner";
+//    [mv addAnnotation:runner];
+//    
+//    // Add start finish indicator
+//    NSDictionary *startFinishDict = [_trackInfo objectForKey:@"StartLine"];
+//    StartFinishAnnotation *startfinish = [[StartFinishAnnotation alloc] init];
+//    CLLocationCoordinate2D startFinishPoi = CLLocationCoordinate2DMake([[startFinishDict objectForKey:@"Lat"] doubleValue], [[startFinishDict objectForKey:@"Long"] doubleValue]);
+//    startfinish.coordinate = startFinishPoi;
+//    startfinish.title = @"Start Finish";
+//    [mv addAnnotation:startfinish];
+//    
+//    Sector1Annotaion *sector1Ann = [[Sector1Annotaion alloc] init];
+//    sector1Ann.coordinate = CLLocationCoordinate2DMake(sector1EndPoint.coordinate.latitude, sector1EndPoint.coordinate.longitude);
+//    sector1Ann.title = @"Sector1";
+//    [mv addAnnotation:sector1Ann];
+//    
+//    Sector2Annotation *sector2Ann = [[Sector2Annotation alloc] init];
+//    sector2Ann.coordinate = sector2EndPoint.coordinate;
+//    sector2Ann.title = @"Sector2";
+//    [mv addAnnotation:sector2Ann];
+    
+    
+//    MKCoordinateRegion region;
+//    MKCoordinateSpan span;
+//    span.latitudeDelta = 0.0100;
+//    span.longitudeDelta = 0.0100;
+//    region.span = span;
+//    region.center.latitude = poi.latitude;
+//    region.center.longitude = poi.longitude;
+//    [mv setRegion:region animated:YES];
+}
+
+
 #pragma mark draw map route
 
 -(void)addRouteToMap
 {
-    
     // Get Run Locations
-    
     NSArray *points = [_trackInfo objectForKey:@"runPointArray"];    
     NSInteger numberOfSteps = points.count;
     
@@ -101,6 +232,20 @@
     lineView.strokeColor = [UIColor blueColor];
     lineView.lineWidth = 7;
     return lineView;
+}
+
+- (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay
+{
+    MKOverlayView* overlayView = nil;
+    self.trackLineView = [[MKPolylineView alloc] initWithPolyline:[self trackLine]];
+    
+    [[self trackLineView] setFillColor:[UIColor colorWithRed:167/255.0f green:210/255.0f blue:244/255.0f alpha:1.0]];
+    [[self trackLineView] setStrokeColor:[UIColor colorWithRed:106/255.0f green:151/255.0f blue:232/255.0f alpha:1.0]];
+    
+    [[self trackLineView] setLineWidth:5.0];
+    [[self trackLineView] setLineCap:kCGLineCapRound];
+    overlayView = [self trackLineView];
+    return overlayView;
 }
 
 - (void)didReceiveMemoryWarning
@@ -178,40 +323,49 @@
         }
     }
     
-//    if([CoreDataHelper countObjectsInContextWithEntityName:@"RunAchievement" andPredicate:[NSPredicate predicateWithFormat:@"trackname = %@ AND achievementTrigger = %@", [self.trackInfo objectForKey:@"Race"], @"LongestDistance"]  withManagedObjectContext:self.managedObjectContext])
-//    {
-//        // fastest lap
-//        [newRunAchievements setObject:@"New Fastest Lap" forKey:@"LongestDistance"];
-//        [[MessageBarManager sharedInstance] showMessageWithTitle:@"New Fastest Lap"
-//                                                     description:[NSString stringWithFormat:@"Timed at : %@", [dateFormatter stringFromDate:timerDate]]
-//                                                            type:MessageBarMessageTypeInfo];
-//    }
-//    
-//    if([CoreDataHelper countObjectsInContextWithEntityName:@"RunAchievement" andPredicate:[NSPredicate predicateWithFormat:@"trackname = %@ AND achievementTrigger = %@", [self.trackInfo objectForKey:@"Race"], @"FastestLap"]  withManagedObjectContext:self.managedObjectContext])
-//    {
-//        // fastest lap
-//        [newRunAchievements setObject:@"New Fastest Lap" forKey:@"FastestLap"];
-//        [[MessageBarManager sharedInstance] showMessageWithTitle:@"New Fastest Lap"
-//                                                     description:[NSString stringWithFormat:@"Timed at : %@", [dateFormatter stringFromDate:timerDate]]
-//                                                            type:MessageBarMessageTypeInfo];
-//    }
-//    
-//    if([CoreDataHelper countObjectsInContextWithEntityName:@"RunAchievement" andPredicate:[NSPredicate predicateWithFormat:@"trackname = %@ AND achievementTrigger = %@", [self.trackInfo objectForKey:@"Race"], @"FastestLap"]  withManagedObjectContext:self.managedObjectContext])
-//    {
-//        // fastest lap
-//        [newRunAchievements setObject:@"New Fastest Lap" forKey:@"FastestLap"];
-//        [[MessageBarManager sharedInstance] showMessageWithTitle:@"New Fastest Lap"
-//                                                     description:[NSString stringWithFormat:@"Timed at : %@", [dateFormatter stringFromDate:timerDate]]
-//                                                            type:MessageBarMessageTypeInfo];
-//    }
+    if([CoreDataHelper countObjectsInContextWithEntityName:@"RunAchievement" andPredicate:[NSPredicate predicateWithFormat:@"trackname = %@ AND achievementTrigger = %@", [self.trackInfo objectForKey:@"Race"], @"LongestRun"]  withManagedObjectContext:self.managedObjectContext])
+    {
+        RunAchievement *runAch = [NSEntityDescription insertNewObjectForEntityForName:@"RunAchievement" inManagedObjectContext:self.managedObjectContext];
+        [runAch setRunId:runData.runid];
+        [runAch setTrackname:runData.runtrackname];
+        [runAch setAchievementTrigger:@"LongestRunDistance"];
+        [runAch setAchievementText:@""];
+        [runData addRunAchievementObject:runAch];
+        [[MessageBarManager sharedInstance] showMessageWithTitle:@"Longest Run Distance Yet"
+                                                     description:@"Longest Run Distance Yet"
+                                                            type:MessageBarMessageTypeInfo];
+    }
     
-    //Add Achivement
-    RunAchievement *runAch = [NSEntityDescription insertNewObjectForEntityForName:@"RunAchievement" inManagedObjectContext:self.managedObjectContext];
-    [runAch setRunId:runData.runid];
-    [runAch setTrackname:runData.runtrackname];
-    [runAch setAchievementTrigger:@"Completed Circuit"];
-    [runAch setAchievementText:[NSString stringWithFormat:@"Completed Circuit %@ for the 1st time", runData.runtrackname]];
-    [runData addRunAchievementObject:runAch];
+    if([CoreDataHelper countObjectsInContextWithEntityName:@"RunAchievement" andPredicate:[NSPredicate predicateWithFormat:@"trackname = %@ AND achievementTrigger = %@", [self.trackInfo objectForKey:@"Race"], @"LongestRunTime"]  withManagedObjectContext:self.managedObjectContext])
+    {
+        RunAchievement *runAch = [NSEntityDescription insertNewObjectForEntityForName:@"RunAchievement" inManagedObjectContext:self.managedObjectContext];
+        [runAch setRunId:runData.runid];
+        [runAch setTrackname:runData.runtrackname];
+        [runAch setAchievementTrigger:@"LongestRunTime"];
+        [runAch setAchievementText:@""];
+        [runData addRunAchievementObject:runAch];
+        [[MessageBarManager sharedInstance] showMessageWithTitle:@"Longest Run Time Yet"
+                                                     description:@"Longest Run Time Yet"
+                                                            type:MessageBarMessageTypeInfo];
+    }
+    
+    NSDictionary *runAchivements = (NSDictionary *)[_trackInfo objectForKey:@"runAchivementsInfo"];
+    if(runAchivements.count > 0)
+    {
+        NSArray *achKeys = [runAchivements allKeys];
+        
+        for (NSString *achivementKey in achKeys)
+        {
+            NSDictionary *runADict = [runAchivements objectForKey:achivementKey];
+            //Add Achivement
+            RunAchievement *runAch = [NSEntityDescription insertNewObjectForEntityForName:@"RunAchievement" inManagedObjectContext:self.managedObjectContext];
+            [runAch setRunId:runData.runid];
+            [runAch setTrackname:runData.runtrackname];
+            [runAch setAchievementTrigger:achivementKey];
+            [runAch setAchievementText:[runADict objectForKey:achivementKey]];
+            [runData addRunAchievementObject:runAch];
+        }
+    }
     
     [CoreDataHelper saveManagedObjectContext:self.managedObjectContext];
     

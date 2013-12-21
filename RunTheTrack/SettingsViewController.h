@@ -9,10 +9,16 @@
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
 
-@interface SettingsViewController : UIViewController <UIActionSheetDelegate>
+@interface SettingsViewController : UIViewController
 {
-    IBOutlet UIButton *signInButton;
-    IBOutlet UILabel *userName;
+    IBOutlet UIView *motionView;
+    IBOutlet UITextView *m7TextView;
+    IBOutlet UISlider *walkSlider;
+    IBOutlet UISlider *runSlider;
+    IBOutlet UILabel *walkMeters;
+    IBOutlet UILabel *runMeters;
+    IBOutlet UISwitch *gpsSwitch;
+    IBOutlet UISwitch *motionSwitch;
 }
 
 @end

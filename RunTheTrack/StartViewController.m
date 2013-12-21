@@ -184,15 +184,23 @@ enum TimerState : NSUInteger {
 
 -(void)startTracking
 {
-    self.locationManager = [[CLLocationManager alloc] init];
-    self.locationManager.delegate = self;
-    self.locationManager.distanceFilter = 1.0; // setting this to 5.0 as it seems to be best and stop jitters.
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
-    self.locationManager.pausesLocationUpdatesAutomatically = NO;
     self.trackPointArray = [[NSMutableArray alloc] init];
     self.runPointArray  = [[NSMutableArray alloc] init];
     [self setTimeDuration:0];
-    [self.locationManager startUpdatingLocation];
+    
+    if(appDelegate.useMotion)
+    {
+        [self enableCoreMotion];
+    }
+    else
+    {
+        self.locationManager = [[CLLocationManager alloc] init];
+        self.locationManager.delegate = self;
+        self.locationManager.distanceFilter = 1.0; // setting this to 5.0 as it seems to be best and stop jitters.
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+        self.locationManager.pausesLocationUpdatesAutomatically = NO;
+        [self.locationManager startUpdatingLocation];
+    }
 }
 
 -(void)addTrackPoints
@@ -411,6 +419,197 @@ enum TimerState : NSUInteger {
     return nil;
 }
 
+#pragma mark CoreMotion 
+
+-(void)enableCoreMotion
+{
+    if([CMMotionActivityManager isActivityAvailable])
+    {
+        if(cmActivityMgr == nil) cmActivityMgr = [[CMMotionActivityManager alloc] init];
+        
+        [cmActivityMgr startActivityUpdatesToQueue:[NSOperationQueue mainQueue] withHandler:^(CMMotionActivity *activity) {
+            
+            if(activity.walking)
+            {
+                distanceLabel.text = @"Walking";
+            }else if (activity.running)
+            {
+                distanceLabel.text = @"Running";
+            }
+        }];
+    }
+    
+    if([CMStepCounter isStepCountingAvailable])
+    {
+        if(cmStepCounter == nil) cmStepCounter = [[CMStepCounter alloc] init];
+        
+//        [cmStepCounter queryStepCountStartingFrom:[NSDate dateWithTimeIntervalSinceNow:-7*24*60*60] to:[NSDate date] toQueue:[NSOperationQueue mainQueue] withHandler:^(NSInteger numberOfSteps, NSError *error) {
+//            
+//            todaysStepCounter.text = [NSString stringWithFormat:@"%ld steps for week", numberOfSteps];
+//        }];
+        
+        [cmStepCounter startStepCountingUpdatesToQueue:[NSOperationQueue mainQueue] updateOn:1 withHandler:^(NSInteger numberOfSteps, NSDate *timestamp, NSError *error) {
+            
+            if(self.timerState == timerStarted)
+            {
+                CGFloat distance = numberOfSteps * 2.5; // Running
+                [self moveAnnotaionWithDistance:distance];
+            }
+        }];
+    }
+}
+
+-(void)moveAnnotaionWithDistance:(CGFloat)distance
+{
+    for (id<MKAnnotation> ann in mv.annotations)
+    {
+        if ([ann.title isEqualToString:@"Runner"])
+        {
+            NSArray *lastlatlong = [[self.trackPointArray objectAtIndex:runIndex] componentsSeparatedByString:@","];
+            NSString *lastlat = [lastlatlong objectAtIndex:0];
+            NSString *lastlng = [lastlatlong objectAtIndex:1];
+            
+            int nextRunIndex;
+            if(runIndex == self.trackPointArray.count-1)
+            {
+                nextRunIndex = 0;
+            }
+            else{
+                nextRunIndex = runIndex+1;
+            }
+            
+            NSArray *nextlatlong = [[self.trackPointArray objectAtIndex:nextRunIndex] componentsSeparatedByString:@","];
+            NSString *nextlat = [nextlatlong objectAtIndex:0];
+            NSString *nextlng = [nextlatlong objectAtIndex:1];
+            
+            CLLocation *startPoint = [[CLLocation alloc] initWithLatitude:[lastlat doubleValue] longitude:[lastlng doubleValue]];
+            CLLocation *endPoint = [[CLLocation alloc] initWithLatitude:[nextlat doubleValue] longitude:[nextlng doubleValue]];
+            CLLocationDistance polyDistance = [startPoint distanceFromLocation:endPoint];
+            
+            if(distance > 0 && distance < polyDistance)
+            {
+                // move the annotation correct distance
+                CLLocationCoordinate2D lastpoi = CLLocationCoordinate2DMake([lastlat doubleValue], [lastlng doubleValue]);
+                CLLocationCoordinate2D nextpoi = CLLocationCoordinate2DMake([nextlat doubleValue], [nextlng doubleValue]);
+                
+                double latitudeModifier;    // Distance to add/subtract to each latitude point
+                double longitudeModifier;   // Distance to add/subtract to each longitude point
+                
+                int numberOfPoints = 250;   // The number of points you want between the two points
+                
+                CLLocationCoordinate2D newPoint;
+                // Determine the distance between the lats and divide by numberOfPoints
+                latitudeModifier = (nextpoi.latitude - lastpoi.latitude) / numberOfPoints;
+                // Same with lons
+                longitudeModifier = (nextpoi.longitude - lastpoi.longitude) / numberOfPoints;
+                
+                // Loop through the points
+                for (int i = 0; i < numberOfPoints; i++)
+                {
+                    
+                    newPoint.latitude = lastpoi.latitude + (latitudeModifier * i);
+                    newPoint.longitude = lastpoi.longitude + (longitudeModifier * i);
+                    MKCoordinateRegion region;
+                    MKCoordinateSpan span;
+                    span.latitudeDelta = 0.0150;
+                    span.longitudeDelta = 0.0150;
+                    region.span = span;
+                    region.center.latitude = newPoint.latitude;
+                    region.center.longitude = newPoint.longitude;
+                    [mv setRegion:region animated:YES];
+                    ann.coordinate = newPoint;
+                    
+                    CLLocation *pointLoc = [[CLLocation alloc] initWithLatitude:newPoint.latitude longitude:newPoint.longitude];
+                    if([startPoint distanceFromLocation:pointLoc] > distance)
+                    {
+                        //NSLog(@"Point Exit Distance %f", [startPoint distanceFromLocation:pointLoc]);
+                        totalPointsDistance = totalPointsDistance + [startPoint distanceFromLocation:pointLoc];
+                        // eject at the point of the distance we need and set the old location to this point
+                        [self.trackPointArray insertObject:[NSString stringWithFormat:@"%f,%f", pointLoc.coordinate.latitude, pointLoc.coordinate.longitude] atIndex:nextRunIndex];
+                        break;
+                    }
+                    
+                    if(endPoint == sector1EndPoint) sector1Time = lapTime.text;
+                    if(endPoint == sector2EndPoint) sector2Time = lapTime.text;
+                }
+            }
+            else // lets just move to the next point then
+            {
+                MKCoordinateRegion region;
+                MKCoordinateSpan span;
+                span.latitudeDelta = 0.0150;
+                span.longitudeDelta = 0.0150;
+                region.span = span;
+                region.center.latitude = endPoint.coordinate.latitude;
+                region.center.longitude = endPoint.coordinate.longitude;
+                [mv setRegion:region animated:YES];
+                ann.coordinate = endPoint.coordinate;
+                
+                totalPointsDistance = totalPointsDistance + [startPoint distanceFromLocation:endPoint];
+                if(endPoint == sector1EndPoint)
+                {
+                    sector1Time = lapTime.text;
+                }
+                if(endPoint == sector2EndPoint) {
+                    sector2Time = lapTime.text;
+                }
+                
+            }
+            
+            distanceLabel.text =  [NSString stringWithFormat:@"%.2f miles", totalPointsDistance * 0.000621371192];
+            runIndex++;
+            
+            if(runIndex == self.trackPointArray.count)
+            {
+                //NSLog([NSString stringWithFormat:@"Lap Distance %.2f miles", totalPointsDistance * 0.000621371192]);
+                //End of lap
+                runIndex = 0;
+                lapCounter++;
+                lapsLabel.text = [NSString stringWithFormat:@"%d Laps", (int)lapCounter];
+                [self playSound:@"beep-8" :@"mp3"];
+                
+                sector1Time = lapTime.text;
+                sector2Time = lapTime.text;
+                sector3Time = lapTime.text;
+                
+                // Save Sectors and Lap Times
+                NSDictionary *runLap = @{@"1": sector1Time,
+                                         @"2": sector2Time,
+                                         @"3": sector3Time,
+                                         @"Lap": lapTime.text};
+                
+                if(runLaps == nil) runLaps = [[NSMutableDictionary alloc] init];
+                [runLaps setObject:runLap forKey:[NSString stringWithFormat:@"%d",(int)lapCounter]];
+                
+                // Convert to Date
+                NSDate *currentDate = [NSDate date];
+                NSTimeInterval timeInterval = [currentDate timeIntervalSinceDate:lastLapDate];
+                //timeInterval += secondsAlreadyRun;
+                NSDate *timerDate = [NSDate dateWithTimeIntervalSince1970:timeInterval];
+                NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+                [dateFormatter setDateFormat:@"mm:ss.SS"];
+                [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0.0]];
+                lapTime.text = [dateFormatter stringFromDate:timerDate];
+                lastLapDate = [NSDate date];
+                
+                if([CoreDataHelper countObjectsInContextWithEntityName:@"RunAchievement" andPredicate:[NSPredicate predicateWithFormat:@"trackname = %@ AND achievementTrigger = %@", [self.trackInfo objectForKey:@"Race"], @"FastestLap"]  withManagedObjectContext:self.managedObjectContext] == 0)
+                {
+                    // fastest lap
+                    [newRunAchievements setObject:@"New Fastest Lap" forKey:@"FastestLap"];
+                    [[MessageBarManager sharedInstance] showMessageWithTitle:@"New Fastest Lap"
+                                                                 description:[NSString stringWithFormat:@"Timed at : %@", [dateFormatter stringFromDate:timerDate]]
+                                                                        type:MessageBarMessageTypeInfo];
+                }
+                
+                //Check any achivements
+                [self checkAchivementsOnLapFinish];
+            }
+            
+        } // end if Runner
+        
+    } // end Annotation Loop
+}
+
 #pragma mark CLLocationManager Delegate
 
 #pragma mark - MapKit
@@ -430,154 +629,156 @@ enum TimerState : NSUInteger {
         if(oldLocation != nil)
         {
             distance = [newLocation distanceFromLocation:oldLocation];
+            
+            [self moveAnnotaionWithDistance:distance];
             // Move to a suitable spot on the track
-            for (id<MKAnnotation> ann in mv.annotations)
-            {
-                if ([ann.title isEqualToString:@"Runner"])
-                {
-                    NSArray *lastlatlong = [[self.trackPointArray objectAtIndex:runIndex] componentsSeparatedByString:@","];
-                    NSString *lastlat = [lastlatlong objectAtIndex:0];
-                    NSString *lastlng = [lastlatlong objectAtIndex:1];
-                    
-                    int nextRunIndex;
-                    if(runIndex == self.trackPointArray.count-1)
-                    {
-                        nextRunIndex = 0;
-                    }
-                    else{
-                        nextRunIndex = runIndex+1;
-                    }
-                    
-                    NSArray *nextlatlong = [[self.trackPointArray objectAtIndex:nextRunIndex] componentsSeparatedByString:@","];
-                    NSString *nextlat = [nextlatlong objectAtIndex:0];
-                    NSString *nextlng = [nextlatlong objectAtIndex:1];
-                    
-                    CLLocation *startPoint = [[CLLocation alloc] initWithLatitude:[lastlat doubleValue] longitude:[lastlng doubleValue]];
-                    CLLocation *endPoint = [[CLLocation alloc] initWithLatitude:[nextlat doubleValue] longitude:[nextlng doubleValue]];
-                    CLLocationDistance polyDistance = [startPoint distanceFromLocation:endPoint];
-                    
-                    if(distance > 0 && distance < polyDistance)
-                    {
-                        // move the annotation correct distance
-                        CLLocationCoordinate2D lastpoi = CLLocationCoordinate2DMake([lastlat doubleValue], [lastlng doubleValue]);
-                        CLLocationCoordinate2D nextpoi = CLLocationCoordinate2DMake([nextlat doubleValue], [nextlng doubleValue]);
-                        
-                        double latitudeModifier;    // Distance to add/subtract to each latitude point
-                        double longitudeModifier;   // Distance to add/subtract to each longitude point
-                        
-                        int numberOfPoints = 250;   // The number of points you want between the two points
-                        
-                        CLLocationCoordinate2D newPoint;
-                        // Determine the distance between the lats and divide by numberOfPoints
-                        latitudeModifier = (nextpoi.latitude - lastpoi.latitude) / numberOfPoints;
-                        // Same with lons
-                        longitudeModifier = (nextpoi.longitude - lastpoi.longitude) / numberOfPoints;
-                        
-                        // Loop through the points
-                        for (int i = 0; i < numberOfPoints; i++)
-                        {
-                            
-                            newPoint.latitude = lastpoi.latitude + (latitudeModifier * i);
-                            newPoint.longitude = lastpoi.longitude + (longitudeModifier * i);
-                            MKCoordinateRegion region;
-                            MKCoordinateSpan span;
-                            span.latitudeDelta = 0.0150;
-                            span.longitudeDelta = 0.0150;
-                            region.span = span;
-                            region.center.latitude = newPoint.latitude;
-                            region.center.longitude = newPoint.longitude;
-                            [mv setRegion:region animated:YES];
-                            ann.coordinate = newPoint;
-                            
-                            CLLocation *pointLoc = [[CLLocation alloc] initWithLatitude:newPoint.latitude longitude:newPoint.longitude];
-                            if([startPoint distanceFromLocation:pointLoc] > distance)
-                            {
-                                //NSLog(@"Point Exit Distance %f", [startPoint distanceFromLocation:pointLoc]);
-                                totalPointsDistance = totalPointsDistance + [startPoint distanceFromLocation:pointLoc];
-                                // eject at the point of the distance we need and set the old location to this point
-                                [self.trackPointArray insertObject:[NSString stringWithFormat:@"%f,%f", pointLoc.coordinate.latitude, pointLoc.coordinate.longitude] atIndex:nextRunIndex];
-                                break;
-                            }
-                            
-                            if(endPoint == sector1EndPoint) sector1Time = lapTime.text;
-                            if(endPoint == sector2EndPoint) sector2Time = lapTime.text;
-                        }
-                    }
-                    else // lets just move to the next point then
-                    {
-                        MKCoordinateRegion region;
-                        MKCoordinateSpan span;
-                        span.latitudeDelta = 0.0150;
-                        span.longitudeDelta = 0.0150;
-                        region.span = span;
-                        region.center.latitude = endPoint.coordinate.latitude;
-                        region.center.longitude = endPoint.coordinate.longitude;
-                        [mv setRegion:region animated:YES];
-                        ann.coordinate = endPoint.coordinate;
-                        
-                        totalPointsDistance = totalPointsDistance + [startPoint distanceFromLocation:endPoint];
-                        if(endPoint == sector1EndPoint)
-                        {
-                            sector1Time = lapTime.text;
-                        }
-                        if(endPoint == sector2EndPoint) {
-                            sector2Time = lapTime.text;
-                        }
-                        
-                    }
-
-                    distanceLabel.text =  [NSString stringWithFormat:@"%.2f miles", totalPointsDistance * 0.000621371192];
-                    runIndex++;
-                    
-                    if(runIndex == self.trackPointArray.count)
-                    {
-                        //NSLog([NSString stringWithFormat:@"Lap Distance %.2f miles", totalPointsDistance * 0.000621371192]);
-                        //End of lap
-                        runIndex = 0;
-                        lapCounter++;
-                        lapsLabel.text = [NSString stringWithFormat:@"%d Laps", (int)lapCounter];
-                        [self playSound:@"beep-8" :@"mp3"];
-                        
-                        sector1Time = lapTime.text;
-                        sector2Time = lapTime.text;
-                        sector3Time = lapTime.text;
-                        
-                        // Save Sectors and Lap Times
-                        NSDictionary *runLap = @{@"1": sector1Time,
-                                                 @"2": sector2Time,
-                                                 @"3": sector3Time,
-                                                 @"Lap": lapTime.text};
-                        
-                        if(runLaps == nil) runLaps = [[NSMutableDictionary alloc] init];
-                        [runLaps setObject:runLap forKey:[NSString stringWithFormat:@"%d",(int)lapCounter]];
-                        
-                        // Convert to Date
-                        NSDate *currentDate = [NSDate date];
-                        NSTimeInterval timeInterval = [currentDate timeIntervalSinceDate:lastLapDate];
-                        //timeInterval += secondsAlreadyRun;
-                        NSDate *timerDate = [NSDate dateWithTimeIntervalSince1970:timeInterval];
-                        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-                        [dateFormatter setDateFormat:@"mm:ss.SS"];
-                        [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0.0]];
-                        lapTime.text = [dateFormatter stringFromDate:timerDate];
-                        lastLapDate = [NSDate date];
-                        
-                        if([CoreDataHelper countObjectsInContextWithEntityName:@"RunAchievement" andPredicate:[NSPredicate predicateWithFormat:@"trackname = %@ AND achievementTrigger = %@", [self.trackInfo objectForKey:@"Race"], @"FastestLap"]  withManagedObjectContext:self.managedObjectContext] == 0)
-                        {
-                            // fastest lap
-                            [newRunAchievements setObject:@"New Fastest Lap" forKey:@"FastestLap"];
-                            [[MessageBarManager sharedInstance] showMessageWithTitle:@"New Fastest Lap"
-                                                                         description:[NSString stringWithFormat:@"Timed at : %@", [dateFormatter stringFromDate:timerDate]]
-                                                                                type:MessageBarMessageTypeInfo];
-                        }
-                        
-                        //Check any achivements
-                        [self checkAchivementsOnLapFinish];
-                    }
-
-                } // end if Runner
-                
-            } // end Annotation Loop
+//            for (id<MKAnnotation> ann in mv.annotations)
+//            {
+//                if ([ann.title isEqualToString:@"Runner"])
+//                {
+//                    NSArray *lastlatlong = [[self.trackPointArray objectAtIndex:runIndex] componentsSeparatedByString:@","];
+//                    NSString *lastlat = [lastlatlong objectAtIndex:0];
+//                    NSString *lastlng = [lastlatlong objectAtIndex:1];
+//                    
+//                    int nextRunIndex;
+//                    if(runIndex == self.trackPointArray.count-1)
+//                    {
+//                        nextRunIndex = 0;
+//                    }
+//                    else{
+//                        nextRunIndex = runIndex+1;
+//                    }
+//                    
+//                    NSArray *nextlatlong = [[self.trackPointArray objectAtIndex:nextRunIndex] componentsSeparatedByString:@","];
+//                    NSString *nextlat = [nextlatlong objectAtIndex:0];
+//                    NSString *nextlng = [nextlatlong objectAtIndex:1];
+//                    
+//                    CLLocation *startPoint = [[CLLocation alloc] initWithLatitude:[lastlat doubleValue] longitude:[lastlng doubleValue]];
+//                    CLLocation *endPoint = [[CLLocation alloc] initWithLatitude:[nextlat doubleValue] longitude:[nextlng doubleValue]];
+//                    CLLocationDistance polyDistance = [startPoint distanceFromLocation:endPoint];
+//                    
+//                    if(distance > 0 && distance < polyDistance)
+//                    {
+//                        // move the annotation correct distance
+//                        CLLocationCoordinate2D lastpoi = CLLocationCoordinate2DMake([lastlat doubleValue], [lastlng doubleValue]);
+//                        CLLocationCoordinate2D nextpoi = CLLocationCoordinate2DMake([nextlat doubleValue], [nextlng doubleValue]);
+//                        
+//                        double latitudeModifier;    // Distance to add/subtract to each latitude point
+//                        double longitudeModifier;   // Distance to add/subtract to each longitude point
+//                        
+//                        int numberOfPoints = 250;   // The number of points you want between the two points
+//                        
+//                        CLLocationCoordinate2D newPoint;
+//                        // Determine the distance between the lats and divide by numberOfPoints
+//                        latitudeModifier = (nextpoi.latitude - lastpoi.latitude) / numberOfPoints;
+//                        // Same with lons
+//                        longitudeModifier = (nextpoi.longitude - lastpoi.longitude) / numberOfPoints;
+//                        
+//                        // Loop through the points
+//                        for (int i = 0; i < numberOfPoints; i++)
+//                        {
+//                            
+//                            newPoint.latitude = lastpoi.latitude + (latitudeModifier * i);
+//                            newPoint.longitude = lastpoi.longitude + (longitudeModifier * i);
+//                            MKCoordinateRegion region;
+//                            MKCoordinateSpan span;
+//                            span.latitudeDelta = 0.0150;
+//                            span.longitudeDelta = 0.0150;
+//                            region.span = span;
+//                            region.center.latitude = newPoint.latitude;
+//                            region.center.longitude = newPoint.longitude;
+//                            [mv setRegion:region animated:YES];
+//                            ann.coordinate = newPoint;
+//                            
+//                            CLLocation *pointLoc = [[CLLocation alloc] initWithLatitude:newPoint.latitude longitude:newPoint.longitude];
+//                            if([startPoint distanceFromLocation:pointLoc] > distance)
+//                            {
+//                                //NSLog(@"Point Exit Distance %f", [startPoint distanceFromLocation:pointLoc]);
+//                                totalPointsDistance = totalPointsDistance + [startPoint distanceFromLocation:pointLoc];
+//                                // eject at the point of the distance we need and set the old location to this point
+//                                [self.trackPointArray insertObject:[NSString stringWithFormat:@"%f,%f", pointLoc.coordinate.latitude, pointLoc.coordinate.longitude] atIndex:nextRunIndex];
+//                                break;
+//                            }
+//                            
+//                            if(endPoint == sector1EndPoint) sector1Time = lapTime.text;
+//                            if(endPoint == sector2EndPoint) sector2Time = lapTime.text;
+//                        }
+//                    }
+//                    else // lets just move to the next point then
+//                    {
+//                        MKCoordinateRegion region;
+//                        MKCoordinateSpan span;
+//                        span.latitudeDelta = 0.0150;
+//                        span.longitudeDelta = 0.0150;
+//                        region.span = span;
+//                        region.center.latitude = endPoint.coordinate.latitude;
+//                        region.center.longitude = endPoint.coordinate.longitude;
+//                        [mv setRegion:region animated:YES];
+//                        ann.coordinate = endPoint.coordinate;
+//                        
+//                        totalPointsDistance = totalPointsDistance + [startPoint distanceFromLocation:endPoint];
+//                        if(endPoint == sector1EndPoint)
+//                        {
+//                            sector1Time = lapTime.text;
+//                        }
+//                        if(endPoint == sector2EndPoint) {
+//                            sector2Time = lapTime.text;
+//                        }
+//                        
+//                    }
+//
+//                    distanceLabel.text =  [NSString stringWithFormat:@"%.2f miles", totalPointsDistance * 0.000621371192];
+//                    runIndex++;
+//                    
+//                    if(runIndex == self.trackPointArray.count)
+//                    {
+//                        //NSLog([NSString stringWithFormat:@"Lap Distance %.2f miles", totalPointsDistance * 0.000621371192]);
+//                        //End of lap
+//                        runIndex = 0;
+//                        lapCounter++;
+//                        lapsLabel.text = [NSString stringWithFormat:@"%d Laps", (int)lapCounter];
+//                        [self playSound:@"beep-8" :@"mp3"];
+//                        
+//                        sector1Time = lapTime.text;
+//                        sector2Time = lapTime.text;
+//                        sector3Time = lapTime.text;
+//                        
+//                        // Save Sectors and Lap Times
+//                        NSDictionary *runLap = @{@"1": sector1Time,
+//                                                 @"2": sector2Time,
+//                                                 @"3": sector3Time,
+//                                                 @"Lap": lapTime.text};
+//                        
+//                        if(runLaps == nil) runLaps = [[NSMutableDictionary alloc] init];
+//                        [runLaps setObject:runLap forKey:[NSString stringWithFormat:@"%d",(int)lapCounter]];
+//                        
+//                        // Convert to Date
+//                        NSDate *currentDate = [NSDate date];
+//                        NSTimeInterval timeInterval = [currentDate timeIntervalSinceDate:lastLapDate];
+//                        //timeInterval += secondsAlreadyRun;
+//                        NSDate *timerDate = [NSDate dateWithTimeIntervalSince1970:timeInterval];
+//                        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//                        [dateFormatter setDateFormat:@"mm:ss.SS"];
+//                        [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0.0]];
+//                        lapTime.text = [dateFormatter stringFromDate:timerDate];
+//                        lastLapDate = [NSDate date];
+//                        
+//                        if([CoreDataHelper countObjectsInContextWithEntityName:@"RunAchievement" andPredicate:[NSPredicate predicateWithFormat:@"trackname = %@ AND achievementTrigger = %@", [self.trackInfo objectForKey:@"Race"], @"FastestLap"]  withManagedObjectContext:self.managedObjectContext] == 0)
+//                        {
+//                            // fastest lap
+//                            [newRunAchievements setObject:@"New Fastest Lap" forKey:@"FastestLap"];
+//                            [[MessageBarManager sharedInstance] showMessageWithTitle:@"New Fastest Lap"
+//                                                                         description:[NSString stringWithFormat:@"Timed at : %@", [dateFormatter stringFromDate:timerDate]]
+//                                                                                type:MessageBarMessageTypeInfo];
+//                        }
+//                        
+//                        //Check any achivements
+//                        [self checkAchivementsOnLapFinish];
+//                    }
+//
+//                } // end if Runner
+//                
+//            } // end Annotation Loop
         }
         else // no old location
         {

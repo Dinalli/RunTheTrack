@@ -10,6 +10,8 @@
 #import <MapKit/MapKit.h>
 #import "JBKenBurnsView.h"
 
+@class AppDelegate;
+
 @interface RunFinishViewController : UIViewController<MKMapViewDelegate, CLLocationManagerDelegate>
 {
     IBOutlet UIImageView *trackMapImage;
@@ -26,13 +28,14 @@
     UIView *toastView;
     
     double totalDistance;
+    AppDelegate *appDelegate;
 }
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @property (nonatomic) NSMutableDictionary *trackInfo;
 @property (nonatomic) NSDictionary *runInfo;
-
+@property (nonatomic, strong) NSMutableArray *trackPointArray;
 @property (nonatomic, strong) MKPolyline* trackLine;
 @property (nonatomic, strong) MKPolylineView* trackLineView;
 

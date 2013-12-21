@@ -35,8 +35,6 @@
     self.managedObjectContext = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).managedObjectContext;
     
     runAchivements = [CoreDataHelper getObjectsFromContextWithEntityName:@"RunAchievement" andSortKey:nil andSortAscending:YES withManagedObjectContext:self.managedObjectContext];
-    
-    [self.collectionView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]]];
 }
 
 #pragma mark - UICollectionViewDelegate

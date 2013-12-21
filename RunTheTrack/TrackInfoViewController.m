@@ -51,8 +51,7 @@
     NSArray *points = [_trackInfo objectForKey:@"trackpoints"];
     
     if(points.count == 0) selectBtn.hidden = YES;
-        
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]]];
+
 }
 
 - (void)didReceiveMemoryWarning
