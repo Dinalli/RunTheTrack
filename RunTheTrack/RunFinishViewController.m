@@ -356,13 +356,12 @@
         
         for (NSString *achivementKey in achKeys)
         {
-            NSDictionary *runADict = [runAchivements objectForKey:achivementKey];
             //Add Achivement
             RunAchievement *runAch = [NSEntityDescription insertNewObjectForEntityForName:@"RunAchievement" inManagedObjectContext:self.managedObjectContext];
             [runAch setRunId:runData.runid];
             [runAch setTrackname:runData.runtrackname];
             [runAch setAchievementTrigger:achivementKey];
-            [runAch setAchievementText:[runADict objectForKey:achivementKey]];
+            [runAch setAchievementText:[runAchivements objectForKey:achivementKey]];
             [runData addRunAchievementObject:runAch];
         }
     }
