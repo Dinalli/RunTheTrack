@@ -282,14 +282,18 @@ enum TimerState : NSUInteger {
             {
                 if(!sector1Set)
                 {
-                    sector1EndPoint = [[CLLocation alloc] initWithLatitude:[oldlat doubleValue] longitude:[oldlng doubleValue]];
+                    NSLog(@"Set Sect1 Lat %f", [oldlat floatValue]);
+                    NSLog(@"Set Sect1 Long %f", [oldlng floatValue]);
+                    sector1EndPoint = [[CLLocation alloc] initWithLatitude:[oldlat floatValue] longitude:[oldlng floatValue]];
                     sector1Set = TRUE;
                 }
             }
             
             if(totalDistance > (sectorCalcDistance * 2))
             {
-                sector2EndPoint = [[CLLocation alloc] initWithLatitude:[oldlat doubleValue] longitude:[oldlng doubleValue]];
+                NSLog(@"Set Sect2 Lat %f", [oldlat doubleValue]);
+                NSLog(@"Set Sect2 Long %f", [oldlng doubleValue]);
+                sector2EndPoint = [[CLLocation alloc] initWithLatitude:[oldlat floatValue] longitude:[oldlng floatValue]];
                 break;
             }
         }
@@ -300,6 +304,9 @@ enum TimerState : NSUInteger {
     runner.title = @"Runner";
     [mv addAnnotation:runner];
     
+    NSLog(@"POI Lat %f", poi.latitude);
+    NSLog(@"POI Long %f", poi.longitude);
+    
     // Add start finish indicator
     NSDictionary *startFinishDict = [_trackInfo objectForKey:@"StartLine"];
     StartFinishAnnotation *startfinish = [[StartFinishAnnotation alloc] init];
@@ -307,16 +314,25 @@ enum TimerState : NSUInteger {
     startfinish.coordinate = startFinishPoi;
     startfinish.title = @"Start Finish";
     [mv addAnnotation:startfinish];
+    
+    NSLog(@"StartFinish Lat %f", startFinishPoi.latitude);
+    NSLog(@"StartFinish Long %f", startFinishPoi.longitude);
 
     Sector1Annotaion *sector1Ann = [[Sector1Annotaion alloc] init];
     sector1Ann.coordinate = CLLocationCoordinate2DMake(sector1EndPoint.coordinate.latitude, sector1EndPoint.coordinate.longitude);
     sector1Ann.title = @"Sector1";
     [mv addAnnotation:sector1Ann];
     
+    NSLog(@"Sect1 Lat %f", sector1EndPoint.coordinate.latitude);
+    NSLog(@"Sect1 Long %f", sector1EndPoint.coordinate.longitude);
+    
     Sector2Annotation *sector2Ann = [[Sector2Annotation alloc] init];
     sector2Ann.coordinate = sector2EndPoint.coordinate;
     sector2Ann.title = @"Sector2";
     [mv addAnnotation:sector2Ann];
+    
+    NSLog(@"Sect2 Lat %f", sector2EndPoint.coordinate.latitude);
+    NSLog(@"Sect2 Long %f", sector2EndPoint.coordinate.longitude);
     
     
     MKCoordinateRegion region;
@@ -529,8 +545,14 @@ enum TimerState : NSUInteger {
                         break;
                     }
                     
-                    if(endPoint == sector1EndPoint) sector1Time = lapTime.text;
-                    if(endPoint == sector2EndPoint) sector2Time = lapTime.text;
+                    if(endPoint == sector1EndPoint)
+                    {
+                        sector1Time = lapTime.text;
+                    }
+                    if(endPoint == sector2EndPoint)
+                    {
+                        sector2Time = lapTime.text;
+                    }
                 }
             }
             else // lets just move to the next point then
@@ -549,9 +571,15 @@ enum TimerState : NSUInteger {
                 if(endPoint == sector1EndPoint)
                 {
                     sector1Time = lapTime.text;
+                    [[MessageBarManager sharedInstance] showMessageWithTitle:@"Sector 1 Complete"
+                                                                 description:[NSString stringWithFormat:@"Timed at : %@", lapTime.text]
+                                                                        type:MessageBarMessageTypeInfo];
                 }
                 if(endPoint == sector2EndPoint) {
                     sector2Time = lapTime.text;
+                    [[MessageBarManager sharedInstance] showMessageWithTitle:@"Sector 2 Complete"
+                                                                 description:[NSString stringWithFormat:@"Timed at : %@", lapTime.text]
+                                                                        type:MessageBarMessageTypeInfo];
                 }
                 
             }
