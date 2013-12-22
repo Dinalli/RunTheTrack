@@ -207,8 +207,11 @@ enum TimerState : NSUInteger {
 {
     [mv removeAnnotations:mv.annotations];
     CLLocationCoordinate2D poi;
+    CLLocationDistance totalTrackDistance;
     CLLocationDistance totalDistance;
     CLLocationDistance sectorCalcDistance;
+    
+    totalTrackDistance = 0;
 
     NSArray *sectorArray = [_trackInfo objectForKey:@"trackpoints"];
         
@@ -247,8 +250,8 @@ enum TimerState : NSUInteger {
             
             CLLocation *lastLocation = [[CLLocation alloc] initWithLatitude:[oldlat doubleValue] longitude:[oldlng doubleValue]];
             CLLocation *nextLocation = [[CLLocation alloc] initWithLatitude:[lat doubleValue] longitude:[lng doubleValue]];
-            totalDistance = totalDistance + [lastLocation distanceFromLocation:nextLocation];
-            
+            totalTrackDistance = totalTrackDistance + [lastLocation distanceFromLocation:nextLocation];
+            NSLog(@"Total Track Distance %f",totalTrackDistance);
         }
         else
         {
@@ -258,44 +261,66 @@ enum TimerState : NSUInteger {
     
     // add the sector points for 1, 2
     // divide the total track distance by 3
-    sectorCalcDistance = totalDistance / 3;
+    sectorCalcDistance = totalTrackDistance / 3;
     totalDistance = 0;
     bool sector1Set = FALSE;
+    self.trackSectorPointArray = [[NSMutableArray alloc] init];
     
     for(NSString *coordPoint in sectorArray)
     {
-        if([self.trackPointArray count] > 0)
+        if([self.trackSectorPointArray count] > 0)
         {
             NSArray *latlong = [coordPoint componentsSeparatedByString:@","];
             NSString *lat = [latlong objectAtIndex:0];
             NSString *lng = [latlong objectAtIndex:1];
             
-            NSArray *oldlatlong = [[self.trackPointArray lastObject] componentsSeparatedByString:@","];
+            NSArray *oldlatlong = [[self.trackSectorPointArray lastObject] componentsSeparatedByString:@","];
             NSString *oldlat = [oldlatlong objectAtIndex:0];
             NSString *oldlng = [oldlatlong objectAtIndex:1];
+            
+            CLLocationCoordinate2D oldpoi = CLLocationCoordinate2DMake([oldlat doubleValue], [oldlng doubleValue]);
+            poi = CLLocationCoordinate2DMake([lat doubleValue], [lng doubleValue]);
+            
+            CLLocationCoordinate2D coordinates[2];
+            coordinates[0] = oldpoi;
+            coordinates[1] = poi;
+            
+            [self.trackSectorPointArray addObject:coordPoint];
             
             CLLocation *lastLocation = [[CLLocation alloc] initWithLatitude:[oldlat doubleValue] longitude:[oldlng doubleValue]];
             CLLocation *nextLocation = [[CLLocation alloc] initWithLatitude:[lat doubleValue] longitude:[lng doubleValue]];
             totalDistance = totalDistance + [lastLocation distanceFromLocation:nextLocation];
             
+            NSLog(@"Total Distance %f",totalDistance);
+            
             if(totalDistance > (sectorCalcDistance))
             {
                 if(!sector1Set)
                 {
-                    NSLog(@"Set Sect1 Lat %f", [oldlat floatValue]);
-                    NSLog(@"Set Sect1 Long %f", [oldlng floatValue]);
-                    sector1EndPoint = [[CLLocation alloc] initWithLatitude:[oldlat floatValue] longitude:[oldlng floatValue]];
+                    sector1EndPoint = [[CLLocation alloc] initWithLatitude:[lat floatValue] longitude:[lng floatValue]];
                     sector1Set = TRUE;
+                    
+                    Sector1Annotaion *sector1Ann = [[Sector1Annotaion alloc] init];
+                    sector1Ann.coordinate = CLLocationCoordinate2DMake(sector1EndPoint.coordinate.latitude, sector1EndPoint.coordinate.longitude);
+                    sector1Ann.title = @"Sector1";
+                    [mv addAnnotation:sector1Ann];
                 }
             }
             
             if(totalDistance > (sectorCalcDistance * 2))
             {
-                NSLog(@"Set Sect2 Lat %f", [oldlat doubleValue]);
-                NSLog(@"Set Sect2 Long %f", [oldlng doubleValue]);
-                sector2EndPoint = [[CLLocation alloc] initWithLatitude:[oldlat floatValue] longitude:[oldlng floatValue]];
+                sector2EndPoint = [[CLLocation alloc] initWithLatitude:[lat floatValue] longitude:[lng floatValue]];
+                
+                Sector2Annotation *sector2Ann = [[Sector2Annotation alloc] init];
+                sector2Ann.coordinate = sector2EndPoint.coordinate;
+                sector2Ann.title = @"Sector2";
+                [mv addAnnotation:sector2Ann];
                 break;
             }
+        }
+        else
+        {
+            [self.trackSectorPointArray addObject:coordPoint];
         }
     }
     
@@ -303,9 +328,6 @@ enum TimerState : NSUInteger {
     runner.coordinate = poi;
     runner.title = @"Runner";
     [mv addAnnotation:runner];
-    
-    NSLog(@"POI Lat %f", poi.latitude);
-    NSLog(@"POI Long %f", poi.longitude);
     
     // Add start finish indicator
     NSDictionary *startFinishDict = [_trackInfo objectForKey:@"StartLine"];
@@ -315,30 +337,10 @@ enum TimerState : NSUInteger {
     startfinish.title = @"Start Finish";
     [mv addAnnotation:startfinish];
     
-    NSLog(@"StartFinish Lat %f", startFinishPoi.latitude);
-    NSLog(@"StartFinish Long %f", startFinishPoi.longitude);
-
-    Sector1Annotaion *sector1Ann = [[Sector1Annotaion alloc] init];
-    sector1Ann.coordinate = CLLocationCoordinate2DMake(sector1EndPoint.coordinate.latitude, sector1EndPoint.coordinate.longitude);
-    sector1Ann.title = @"Sector1";
-    [mv addAnnotation:sector1Ann];
-    
-    NSLog(@"Sect1 Lat %f", sector1EndPoint.coordinate.latitude);
-    NSLog(@"Sect1 Long %f", sector1EndPoint.coordinate.longitude);
-    
-    Sector2Annotation *sector2Ann = [[Sector2Annotation alloc] init];
-    sector2Ann.coordinate = sector2EndPoint.coordinate;
-    sector2Ann.title = @"Sector2";
-    [mv addAnnotation:sector2Ann];
-    
-    NSLog(@"Sect2 Lat %f", sector2EndPoint.coordinate.latitude);
-    NSLog(@"Sect2 Long %f", sector2EndPoint.coordinate.longitude);
-    
-    
     MKCoordinateRegion region;
     MKCoordinateSpan span;
-    span.latitudeDelta = 0.0100;
-    span.longitudeDelta = 0.0100;
+    span.latitudeDelta = 0.0150;
+    span.longitudeDelta = 0.0150;
     region.span = span;
     region.center.latitude = poi.latitude;
     region.center.longitude = poi.longitude;
@@ -548,10 +550,15 @@ enum TimerState : NSUInteger {
                     if(endPoint == sector1EndPoint)
                     {
                         sector1Time = lapTime.text;
+                        [[MessageBarManager sharedInstance] showMessageWithTitle:@"Sector 1 Complete"
+                                                                     description:[NSString stringWithFormat:@"Timed at : %@", lapTime.text]
+                                                                            type:MessageBarMessageTypeInfo];
                     }
-                    if(endPoint == sector2EndPoint)
-                    {
+                    if(endPoint == sector2EndPoint) {
                         sector2Time = lapTime.text;
+                        [[MessageBarManager sharedInstance] showMessageWithTitle:@"Sector 2 Complete"
+                                                                     description:[NSString stringWithFormat:@"Timed at : %@", lapTime.text]
+                                                                            type:MessageBarMessageTypeInfo];
                     }
                 }
             }
@@ -568,19 +575,19 @@ enum TimerState : NSUInteger {
                 ann.coordinate = endPoint.coordinate;
                 
                 totalPointsDistance = totalPointsDistance + [startPoint distanceFromLocation:endPoint];
-                if(endPoint == sector1EndPoint)
-                {
-                    sector1Time = lapTime.text;
-                    [[MessageBarManager sharedInstance] showMessageWithTitle:@"Sector 1 Complete"
-                                                                 description:[NSString stringWithFormat:@"Timed at : %@", lapTime.text]
-                                                                        type:MessageBarMessageTypeInfo];
-                }
-                if(endPoint == sector2EndPoint) {
-                    sector2Time = lapTime.text;
-                    [[MessageBarManager sharedInstance] showMessageWithTitle:@"Sector 2 Complete"
-                                                                 description:[NSString stringWithFormat:@"Timed at : %@", lapTime.text]
-                                                                        type:MessageBarMessageTypeInfo];
-                }
+//                if(endPoint == sector1EndPoint)
+//                {
+//                    sector1Time = lapTime.text;
+//                    [[MessageBarManager sharedInstance] showMessageWithTitle:@"Sector 1 Complete"
+//                                                                 description:[NSString stringWithFormat:@"Timed at : %@", lapTime.text]
+//                                                                        type:MessageBarMessageTypeInfo];
+//                }
+//                if(endPoint == sector2EndPoint) {
+//                    sector2Time = lapTime.text;
+//                    [[MessageBarManager sharedInstance] showMessageWithTitle:@"Sector 2 Complete"
+//                                                                 description:[NSString stringWithFormat:@"Timed at : %@", lapTime.text]
+//                                                                        type:MessageBarMessageTypeInfo];
+//                }
                 
             }
             

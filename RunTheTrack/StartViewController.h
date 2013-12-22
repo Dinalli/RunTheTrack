@@ -68,6 +68,7 @@
 @property (nonatomic, strong) MKPolyline* trackLine;
 @property (nonatomic, strong) MKPolylineView* trackLineView;
 @property (nonatomic, strong) NSMutableArray *trackPointArray;
+@property (nonatomic, strong) NSMutableArray *trackSectorPointArray;
 @property (nonatomic, strong) NSMutableArray *runPointArray;
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, readwrite) MKMapRect routeRect;
