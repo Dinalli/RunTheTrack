@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
+#import "MessageBarManager.h"
 
 extern NSString *const SCSessionStateChangedNotification;
 

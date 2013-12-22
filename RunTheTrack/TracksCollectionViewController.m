@@ -63,7 +63,7 @@
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     NSMutableDictionary *TrackInfo = (NSMutableDictionary *)[appDelegate.tracksArray objectAtIndex:indexPath.row];
-    
+
     TrackCell *cell = [cv
                                   dequeueReusableCellWithReuseIdentifier:@"TrackDetailCell"
                                   forIndexPath:indexPath];
@@ -79,30 +79,6 @@
             transitionDuration:20
                           loop:YES
                    isLandscape:YES];
-    
-    // Set vertical effect
-    UIInterpolatingMotionEffect *verticalMotionEffect =
-    [[UIInterpolatingMotionEffect alloc]
-     initWithKeyPath:@"center.y"
-     type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
-    verticalMotionEffect.minimumRelativeValue = @(-30);
-    verticalMotionEffect.maximumRelativeValue = @(30);
-    
-    // Set horizontal effect
-    UIInterpolatingMotionEffect *horizontalMotionEffect =
-    [[UIInterpolatingMotionEffect alloc]
-     initWithKeyPath:@"center.x"
-     type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
-    horizontalMotionEffect.minimumRelativeValue = @(-20);
-    horizontalMotionEffect.maximumRelativeValue = @(20);
-    
-    // Create group to combine both
-    UIMotionEffectGroup *group = [UIMotionEffectGroup new];
-    group.motionEffects = @[horizontalMotionEffect, verticalMotionEffect];
-    
-    // Add both effects to your view
-    [cell.kenView addMotionEffect:group];
-    
     return cell;
 }
 

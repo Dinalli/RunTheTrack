@@ -8,13 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
-#import <Social/Social.h>
 
 @interface ProfileHeaderView : UICollectionReusableView
 {
-    IBOutlet UILabel *userName;
-    IBOutlet UIButton *facebookLoginBtn;
-    IBOutlet UIButton *twitterLoginBtn;
 }
 
 // typical outlet for the FBPriflePictureView
@@ -23,6 +19,5 @@
 @property (retain, nonatomic) IBOutlet UILabel *totalDistance;
 @property (retain, nonatomic) IBOutlet UILabel *totalTime;
 @property (retain, nonatomic) IBOutlet UILabel *totalTracks;
-
 
 @end

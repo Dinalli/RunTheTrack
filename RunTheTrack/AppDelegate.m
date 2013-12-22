@@ -60,6 +60,22 @@ NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:S
     NSLog(@"%@", deviceToken);
 }
 
+//- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+//{
+//    if([UIApplication sharedApplication].applicationState == UIApplicationStateActive)
+//    {
+//        NSString *messageText;
+//        NSDictionary *aps = [userInfo objectForKey:@"aps"];
+//        messageText = [aps objectForKey:@"alert"];
+//        [[MessageBarManager sharedInstance] showMessageWithTitle:@"Alert"
+//                                                     description:messageText
+//                                                            type:MessageBarMessageTypeInfo];
+//    }
+//}
+
+
+#pragma mark Login Facebook
+
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication

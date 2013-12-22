@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Social/Social.h>
+#import "ProfileHeaderView.h"
 
-@interface ProfileViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface ProfileViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UIActionSheetDelegate>
 {
     NSArray *tracksArray;
     NSMutableArray *trackRunsArray;
     NSMutableArray *runs;
+    ProfileHeaderView *headerView;
 }
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;

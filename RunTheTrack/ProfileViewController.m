@@ -30,7 +30,12 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+}
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
     NSBundle* bundle = [NSBundle mainBundle];
     NSString* plistPath = [bundle pathForResource:@"Tracks" ofType:@"plist"];
     tracksArray = [[NSArray alloc] initWithContentsOfFile:plistPath];
@@ -53,8 +58,6 @@
             }
         }
     }
-    
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]]];
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -67,7 +70,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionReusableView *reusableview = nil;
     
     if (kind == UICollectionElementKindSectionHeader) {
-        ProfileHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
+         headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
         reusableview = headerView;
         
         int laps = 0;
@@ -153,6 +156,157 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     cell.totalTime.text = [df stringFromDate:totalRunTime];
     
     return cell;
+}
+
+-(IBAction)showActivityView:(id)sender
+{
+    UIActionSheet *loginActionSheet = [[UIActionSheet alloc] initWithTitle:@"Login using" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"facebook" otherButtonTitles:@"twitter", nil];
+    [loginActionSheet showInView:self.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if (buttonIndex == 0) {
+        [self facebookSignIn];
+    }
+    else if (buttonIndex == 1) {
+        [self twitterSignIn];
+    }
+}
+
+-(void)setUpOnLoad
+{
+    AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
+    if (!appDelegate.session.isOpen) {
+        // create a fresh session object
+        appDelegate.session = [[FBSession alloc] init];
+        
+        // if we don't have a cached token, a call to open here would cause UX for login to
+        // occur; we don't want that to happen unless the user clicks the login button, and so
+        // we check here to make sure we have a token before calling open
+        if (appDelegate.session.state == FBSessionStateCreatedTokenLoaded) {
+            // even though we had a cached token, we need to login to make the session usable
+            [appDelegate.session openWithCompletionHandler:^(FBSession *session,
+                                                             FBSessionState status,
+                                                             NSError *error) {
+                // we recurse here, in order to update buttons and labels
+                [self updateView];
+            }];
+        }
+        [appDelegate openSession];
+    }
+    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(sessionStateChanged:)
+     name:SCSessionStateChangedNotification
+     object:nil];
+}
+
+
+
+-(void)facebookSignIn
+{
+    //Sign into facebook
+    
+    AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
+    
+    // this button's job is to flip-flop the session from open to closed
+    if (appDelegate.session.isOpen) {
+        // if a user logs out explicitly, we delete any cached token information, and next
+        // time they run the applicaiton they will be presented with log in UX again; most
+        // users will simply close the app or switch away, without logging out; this will
+        // cause the implicit cached-token login to occur on next launch of the application
+        [appDelegate.session closeAndClearTokenInformation];
+        
+    } else {
+        if (appDelegate.session.state != FBSessionStateCreated) {
+            // Create a new, logged out session.
+            appDelegate.session = [[FBSession alloc] init];
+        }
+        
+        // if the session isn't open, let's open it now and present the login UX to the user
+        [appDelegate.session openWithCompletionHandler:^(FBSession *session,
+                                                         FBSessionState status,
+                                                         NSError *error) {
+            // and here we make sure to update our UX according to the new session state
+            [self updateView];
+        }];
+    }
+}
+
+- (void)updateView {
+    // get the app delegate, so that we can reference the session property
+    AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
+    if (appDelegate.session.isOpen) {
+        // valid account UI is shown whenever the session is open
+        //[signInButton setTitle:@"Log out" forState:UIControlStateNormal];
+        [self populateUserDetails];
+        
+    } else {
+        // login-needed account UI is shown whenever the session is closed
+        //[signInButton setTitle:@"Sign in" forState:UIControlStateNormal];
+        [appDelegate.session closeAndClearTokenInformation];
+        [self populateUserDetails];
+    }
+}
+
+- (void)sessionStateChanged:(NSNotification*)notification {
+    [self populateUserDetails];
+}
+
+- (void)populateUserDetails
+{
+    AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
+    if (appDelegate.session.isOpen) {
+        [[FBRequest requestForMe] startWithCompletionHandler:
+         ^(FBRequestConnection *connection,
+           NSDictionary<FBGraphUser> *user,
+           NSError *error) {
+             if (!error) {
+                 [self.navigationItem setTitle:user.name];
+                 headerView.profilePictureView.profileID = user.id;
+             }
+             
+             if (error) {
+                 CLS_LOG(@"facebook populateUserDetails %@", error.localizedDescription);
+             }
+         }];
+    }
+}
+
+#pragma mark Twitter Sign In
+
+-(void)twitterSignIn
+{
+    ACAccountStore *accountStore = [[ACAccountStore alloc] init];
+    ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+    [accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
+        if (granted) {
+            NSArray *accounts = [accountStore accountsWithAccountType:accountType];
+            if (accounts.count > 0)
+            {
+                //for (ACAccount *twitterAccount in accounts) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    ACAccount *twitterAccount = [accounts objectAtIndex:0];
+
+                    [self.navigationItem setTitle:twitterAccount.username];
+                    for (NSObject *obj in [headerView.profilePictureView subviews]) {
+                        if ([obj isMemberOfClass:[UIImageView class]]) {
+                            UIImageView *objImg = (UIImageView *)obj;
+                            objImg.image = [UIImage imageNamed:@"search-icon-main"];
+                            break;
+                        }
+                    }
+                });
+                //}
+            }
+        }
+        else if (error)
+        {
+            CLS_LOG(@"twitter login failed %@", error.localizedDescription);
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning
