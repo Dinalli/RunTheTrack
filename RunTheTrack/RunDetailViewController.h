@@ -12,14 +12,13 @@
 #import "RunData.h"
 #import "RunLocations.h"
 
-@interface RunDetailViewController : UIViewController<MKMapViewDelegate, CLLocationManagerDelegate>
+@interface RunDetailViewController : UIViewController<MKMapViewDelegate, CLLocationManagerDelegate, UIActionSheetDelegate>
 {
     IBOutlet UILabel *runTime;
     IBOutlet UILabel *runLaps;
     IBOutlet UILabel *runDistance;
     IBOutlet UIImageView *trackMapImage;
     IBOutlet UILabel *runDate;
-    IBOutlet UILabel *trackNameLabel;
     
     UIImage *mapImage;
     

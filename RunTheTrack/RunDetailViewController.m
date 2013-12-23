@@ -82,7 +82,7 @@
     runLaps.text = [NSString stringWithFormat:@"Laps : %@",self.runData.runlaps];
     runDistance.text = [NSString stringWithFormat:@"Distance : %@ miles",self.runData.rundistance];
     runDate.text = [NSString stringWithFormat:@"Date : %@",self.runData.rundate];
-    trackNameLabel.text = self.runData.runtrackname;
+    self.navigationItem.title = self.runData.runtrackname;
     
     
     NSBundle* bundle = [NSBundle mainBundle];
@@ -109,8 +109,24 @@
 }
     
 #pragma social sharing
+
+-(IBAction)showActivityView:(id)sender
+{
+    UIActionSheet *loginActionSheet = [[UIActionSheet alloc] initWithTitle:@"Share using" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"facebook" otherButtonTitles:@"twitter", nil];
+    [loginActionSheet showInView:self.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     
--(IBAction)shareOnFacebook:(id)sender
+    if (buttonIndex == 0) {
+        [self shareOnFacebook];
+    }
+    else if (buttonIndex == 1) {
+        [self shareOnTwitter];
+    }
+}
+    
+-(void)shareOnFacebook
     {
         if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
         {
@@ -121,7 +137,7 @@
         }
     }
     
--(IBAction)shareOnTwitter:(id)sender
+-(void)shareOnTwitter
     {
         if([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter])
         {
@@ -136,7 +152,7 @@
     {
         SLComposeViewController *composeSheet=[[SLComposeViewController alloc]init];
         composeSheet=[SLComposeViewController composeViewControllerForServiceType:serviceType];
-        [composeSheet setInitialText:[NSString stringWithFormat:@"Just comepleted a run round the %@ GP track. Time %@ Distance %@", trackNameLabel.text, runTime.text, runDistance.text]];
+        [composeSheet setInitialText:[NSString stringWithFormat:@"Just comepleted a run round the %@ GP track. Time %@ Distance %@", self.navigationItem.title, runTime.text, runDistance.text]];
         
         MKMapSnapshotOptions *options = [[MKMapSnapshotOptions alloc] init];
         options.region = mv.region;
