@@ -7,6 +7,7 @@
 //
 
 #import "SettingsViewController.h"
+#import "AppDelegate.h"
 #import <CoreMotion/CoreMotion.h>
 
 @interface SettingsViewController ()
@@ -29,11 +30,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-//    if(![CMMotionActivityManager isActivityAvailable])
-//    {
-//        motionView.hidden = YES;
-//        m7TextView.hidden = NO;
-//    }
+    appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 }
 
 -(IBAction)walkMetersChanged:(id)sender
@@ -51,6 +48,8 @@
     motionSwitch.on = NO;
     runSlider.enabled = NO;
     walkSlider.enabled = NO;
+    
+    [appDelegate setUseMotion:NO];
 }
 
 -(IBAction)m7switched:(id)sender
@@ -58,6 +57,8 @@
     gpsSwitch.on = NO;
     runSlider.enabled = YES;
     walkSlider.enabled = YES;
+    
+    [appDelegate setUseMotion:YES];
 }
 
 - (void)didReceiveMemoryWarning

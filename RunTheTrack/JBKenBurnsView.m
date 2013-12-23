@@ -149,7 +149,6 @@
         
         if ( bufferIndex == self.imagesArray.count -1)
         {
-            NSLog(@"Wrapping!!");
             wrapping = YES;
             bufferIndex = -1;
         }
@@ -284,7 +283,6 @@
             break;
             
         default:
-            NSLog(@"def");
             break;
     }
     

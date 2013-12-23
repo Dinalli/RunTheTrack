@@ -60,18 +60,18 @@ NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:S
     NSLog(@"%@", deviceToken);
 }
 
-//- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
-//{
-//    if([UIApplication sharedApplication].applicationState == UIApplicationStateActive)
-//    {
-//        NSString *messageText;
-//        NSDictionary *aps = [userInfo objectForKey:@"aps"];
-//        messageText = [aps objectForKey:@"alert"];
-//        [[MessageBarManager sharedInstance] showMessageWithTitle:@"Alert"
-//                                                     description:messageText
-//                                                            type:MessageBarMessageTypeInfo];
-//    }
-//}
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    if([UIApplication sharedApplication].applicationState == UIApplicationStateActive)
+    {
+        NSString *messageText;
+        NSDictionary *aps = [userInfo objectForKey:@"aps"];
+        messageText = [aps objectForKey:@"alert"];
+        [[MessageBarManager sharedInstance] showMessageWithTitle:@"Alert"
+                                                     description:messageText
+                                                            type:MessageBarMessageTypeInfo];
+    }
+}
 
 
 #pragma mark Login Facebook
@@ -172,7 +172,7 @@ NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:S
         if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
             // Replace this implementation with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            CLSLog(@"Unresolved error %@, %@", error, [error userInfo]);
             abort();
         }
     }
@@ -244,7 +244,7 @@ NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:S
          Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
          
          */
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        CLSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
     

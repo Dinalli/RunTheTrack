@@ -26,6 +26,8 @@
     
     IBOutlet UILabel *lapsLabel;
     IBOutlet UIButton *startBtn;
+    
+    IBOutlet UILabel *motionActivityIndicator;
 
     NSTimer *timer;
     

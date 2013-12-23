@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
+@class AppDelegate;
 
 @interface SettingsViewController : UIViewController
 {
@@ -19,6 +20,8 @@
     IBOutlet UILabel *runMeters;
     IBOutlet UISwitch *gpsSwitch;
     IBOutlet UISwitch *motionSwitch;
+    
+    AppDelegate *appDelegate;
 }
 
 @end

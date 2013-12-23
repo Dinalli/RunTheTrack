@@ -209,7 +209,6 @@
         {
             CLLocation *lastLocation = [points objectAtIndex:index-1];
             totalDistance = totalDistance + [location distanceFromLocation:lastLocation];
-            //NSLog([NSString stringWithFormat:@"Real %.2f miles", totalDistance * 0.000621371192]);
         }
     }
 
