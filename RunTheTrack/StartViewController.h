@@ -15,7 +15,7 @@
 #import "TrackInfoViewController.h"
 #import "TTCounterLabel.h"
 
-@interface StartViewController : UIViewController <TTCounterLabelDelegate,MPMediaPickerControllerDelegate, MKMapViewDelegate, CLLocationManagerDelegate>
+@interface StartViewController : UIViewController <TTCounterLabelDelegate, MPMediaPickerControllerDelegate, MKMapViewDelegate, CLLocationManagerDelegate>
 {
     MPMusicPlayerController *musicPlayer;
     
