@@ -235,8 +235,8 @@ enum TimerState : NSUInteger {
             
             MKCoordinateRegion region;
             MKCoordinateSpan span;
-            span.latitudeDelta = 0.0030;
-            span.longitudeDelta = 0.0030;
+            span.latitudeDelta = 0.0150;
+            span.longitudeDelta = 0.0150;
             region.span = span;
             region.center.latitude = [lat doubleValue];
             region.center.longitude = [lng doubleValue];
@@ -580,7 +580,7 @@ enum TimerState : NSUInteger {
             
             distanceLabel.text =  [NSString stringWithFormat:@"%.2f miles", totalPointsDistance * 0.000621371192];
             runIndex++;
-            
+
             if(runIndex == self.trackPointArray.count)
             {
                 //End of lap
