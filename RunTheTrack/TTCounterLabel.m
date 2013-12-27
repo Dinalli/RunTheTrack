@@ -67,6 +67,11 @@
     [self setValue:startValue];
 }
 
+-(unsigned long)getValue
+{
+    return _startValue;
+}
+
 #pragma mark - Private
 
 - (void)updateDisplay {

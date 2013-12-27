@@ -63,6 +63,8 @@
     
     CMMotionActivityManager *cmActivityMgr;
     CMStepCounter *cmStepCounter;
+    
+    CLLocationDistance totalTrackDistance;
 }
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;

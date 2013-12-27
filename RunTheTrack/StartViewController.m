@@ -56,20 +56,30 @@ enum TimerState : NSUInteger {
 	// Do any additional setup after loading the view.
     musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
     
-    //Listen to notification of track playing changing
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(musicTrackChanged) name:MPMusicPlayerControllerNowPlayingItemDidChangeNotification object:musicPlayer];
-    [musicPlayer beginGeneratingPlaybackNotifications];
+//    //Listen to notification of track playing changing
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(musicTrackChanged) name:MPMusicPlayerControllerNowPlayingItemDidChangeNotification object:musicPlayer];
+//    [musicPlayer beginGeneratingPlaybackNotifications];
     
     self.timerState = timerStopped;
     lapCounter = 0;
     
     [self.navigationItem setTitle:[self.trackInfo objectForKey:@"Race"]];
-    lapsLabel.text = [NSString stringWithFormat:@"0/%@",[self.trackInfo objectForKey:@"Laps"]];
+    UILabel* tlabel=[[UILabel alloc] initWithFrame:CGRectMake(0,0, 300, 40)];
+    tlabel.text=self.navigationItem.title;
+    tlabel.textAlignment = NSTextAlignmentCenter;
+    tlabel.backgroundColor =[UIColor clearColor];
+    tlabel.adjustsFontSizeToFitWidth=YES;
+    
+    self.navigationItem.titleView=tlabel;
+    
+    lapsLabel.text = @"0 Laps";
     
     [self startTracking];
     [self addTrackPoints];
     
     currentAchievements = [CoreDataHelper searchObjectsInContextWithEntityName:@"RunAchievement" andPredicate:[NSPredicate predicateWithFormat:@"trackname = %@", [self.trackInfo objectForKey:@"Race"]] withSortKey:nil sortAscending:YES withManagedObjectContext:self.managedObjectContext];
+    
+    if(newRunAchievements == nil) newRunAchievements = [[NSMutableDictionary alloc] init];
 }
 
 - (void)customiseAppearance {
@@ -100,6 +110,14 @@ enum TimerState : NSUInteger {
         self.timerState = timerStarted;
         [self.timeLabel start];
         btnFinish.hidden = YES;
+        
+        if([CoreDataHelper countObjectsInContextWithEntityName:@"RunAchievement" andPredicate:[NSPredicate predicateWithFormat:@"trackname = %@ AND achievementTrigger = %@", [self.trackInfo objectForKey:@"Race"], @"FirstRun"] withManagedObjectContext:self.managedObjectContext] == 0)
+        {
+            [newRunAchievements setObject:@"Well done on starting your First Run" forKey:@"FirstRun"];
+            [[MessageBarManager sharedInstance] showMessageWithTitle:@"Congradulations"
+                                                         description:@"Started Your First Run"
+                                                                type:MessageBarMessageTypeInfo];
+        }
     }
     else if(self.timerState == timerStarted)
     {
@@ -167,12 +185,6 @@ enum TimerState : NSUInteger {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-#pragma mark music player   
--(void)musicTrackChanged
-{
-//    currentTrack.text =  [NSString stringWithFormat:@"%@ - %@",[musicPlayer.nowPlayingItem valueForProperty:MPMediaItemPropertyArtist],[musicPlayer.nowPlayingItem valueForProperty:MPMediaItemPropertyTitle]];
-}
-
 #pragma mark Map view
 
 -(void)startTracking
@@ -201,7 +213,6 @@ enum TimerState : NSUInteger {
 {
     [mv removeAnnotations:mv.annotations];
     CLLocationCoordinate2D poi;
-    CLLocationDistance totalTrackDistance;
     CLLocationDistance totalDistance;
     CLLocationDistance sectorCalcDistance;
     
@@ -662,23 +673,14 @@ enum TimerState : NSUInteger {
 
 -(void)checkAchivementsOnLapFinish
 {
-    if(newRunAchievements == nil) newRunAchievements = [[NSMutableDictionary alloc] init];
     // First time the app has been run
     
     if(lapCounter == 1)
     {
-        if([CoreDataHelper countObjectsInContextWithEntityName:@"RunAchievement" andPredicate:[NSPredicate predicateWithFormat:@"trackname = %@ AND achievementTrigger = %@", [self.trackInfo objectForKey:@"Race"], @"FirstRun"] withManagedObjectContext:self.managedObjectContext] == 0)
-        {
-            [newRunAchievements setObject:@"Well done on starting your First Run" forKey:@"FirstRun"];
-            [[MessageBarManager sharedInstance] showMessageWithTitle:@"Congradulations"
-                                                         description:@"Started Your First Run"
-                                                                type:MessageBarMessageTypeInfo];
-        }
-        
         if([CoreDataHelper countObjectsInContextWithEntityName:@"RunAchievement" andPredicate:[NSPredicate predicateWithFormat:@"trackname = %@ AND achievementTrigger = %@", [self.trackInfo objectForKey:@"Race"], @"FirstLap"]  withManagedObjectContext:self.managedObjectContext] == 0)
         {
             // First ever lap completed
-            [newRunAchievements setObject:@"You have Completed your First Lap" forKey:@"FirstLap"];
+            [newRunAchievements setObject:@"Congradulations, Completed your First Lap" forKey:@"FirstLap"];
             [[MessageBarManager sharedInstance] showMessageWithTitle:@"Congradulations"
                                                          description:@"Completed Your First Lap"
                                                                 type:MessageBarMessageTypeInfo];
@@ -687,19 +689,22 @@ enum TimerState : NSUInteger {
         if([CoreDataHelper countObjectsInContextWithEntityName:@"RunAchievement" andPredicate:[NSPredicate predicateWithFormat:@"trackname = %@ AND achievementTrigger = %@", [self.trackInfo objectForKey:@"Race"], @"FirstTrackLap"]  withManagedObjectContext:self.managedObjectContext] == 0)
         {
             // First lap of the track
-            [newRunAchievements setObject:@"You have completed your First Lap For" forKey:@"FirstTrackLap"];
+            [newRunAchievements setObject:[NSString stringWithFormat:@"Completed Your First Lap For %@", [self.trackInfo objectForKey:@"Race"]] forKey:@"FirstTrackLap"];
             [[MessageBarManager sharedInstance] showMessageWithTitle:@"Congradulations"
                                                          description:[NSString stringWithFormat:@"Completed Your First Lap For %@", [self.trackInfo objectForKey:@"Race"]]
                                                                 type:MessageBarMessageTypeInfo];
         }
     } // end of check on first lap
     
-    if([CoreDataHelper countObjectsInContextWithEntityName:@"RunAchievement" andPredicate:[NSPredicate predicateWithFormat:@"trackname = %@ AND achievementTrigger = %@", [self.trackInfo objectForKey:@"Race"], @"HalfRaceDistance"]  withManagedObjectContext:self.managedObjectContext] == 0)
+    if((totalPointsDistance * 0.000621371192) > (totalTrackDistance / 2))
     {
-        [newRunAchievements setObject:@"You have completed half race distance for" forKey:@"HalfRaceDistance"];
-        [[MessageBarManager sharedInstance] showMessageWithTitle:@"Congradulations"
-                                                     description:[NSString stringWithFormat:@"Completed half the distance of %@", [self.trackInfo objectForKey:@"Race"]]
-                                                            type:MessageBarMessageTypeInfo];
+        if([CoreDataHelper countObjectsInContextWithEntityName:@"RunAchievement" andPredicate:[NSPredicate predicateWithFormat:@"trackname = %@ AND achievementTrigger = %@", [self.trackInfo objectForKey:@"Race"], @"HalfRaceDistance"]  withManagedObjectContext:self.managedObjectContext] == 0)
+        {
+            [newRunAchievements setObject:[NSString stringWithFormat:@"Completed half the distance of %@", [self.trackInfo objectForKey:@"Race"]] forKey:@"HalfRaceDistance"];
+            [[MessageBarManager sharedInstance] showMessageWithTitle:@"Congradulations"
+                                                         description:[NSString stringWithFormat:@"Completed half the distance of %@", [self.trackInfo objectForKey:@"Race"]]
+                                                                type:MessageBarMessageTypeInfo];
+        }
     }
     
 }
@@ -725,11 +730,11 @@ enum TimerState : NSUInteger {
     if ([segue.identifier isEqualToString:@"finishRunSegue"]) {
         
         [self.timeLabel stop];
-        [self.timeLabel reset];
         [self.locationManager stopUpdatingLocation];
         
         RunFinishViewController *rfvc = segue.destinationViewController;
         [self.trackInfo setObject:totalRunTime forKey:@"runTime"];
+        [self.trackInfo setObject:[NSString stringWithFormat:@"%ld",[self.timeLabel getValue]] forKey:@"timeLabel"];
         [self.trackInfo setObject:[NSString stringWithFormat:@"%d", (int)lapCounter] forKey:@"runLaps"];
         [self.trackInfo setObject:[NSString stringWithFormat:@"%.2f",totalPointsDistance * 0.000621371192] forKey:@"runDistance"];
 
@@ -738,7 +743,9 @@ enum TimerState : NSUInteger {
         if (newRunAchievements != nil)[self.trackInfo setObject:newRunAchievements forKey:@"runAchivementsInfo"];
         
         [self.trackInfo setObject:self.runPointArray forKey:@"runPointArray"];
-        rfvc.trackInfo = self.trackInfo;
+        rfvc.trackInfo = self.trackInfo;        
+        [self.timeLabel reset];
+
     }
 }
 

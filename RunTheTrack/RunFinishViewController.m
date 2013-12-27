@@ -43,6 +43,7 @@
     self.managedObjectContext = appDelegate.managedObjectContext;
     
     runTime.text = [NSString stringWithFormat:@"%@",[self.trackInfo objectForKey:@"runTime"]];
+    [self.timeLabel setStartValue:(long)[self.trackInfo objectForKey:@"timeLabel"]];
     runLaps.text = [NSString stringWithFormat:@"Laps %@",[self.trackInfo objectForKey:@"runLaps"]];
     runDistance.text = [NSString stringWithFormat:@"Distance %@ miles",[self.trackInfo objectForKey:@"runDistance"]];
     paceLabel.text = [NSString stringWithFormat:@"%@ mph",@"3.1"];
@@ -58,6 +59,20 @@
     {
         [self addRouteToMap];
     }
+}
+
+- (void)customiseAppearance {
+    [self.timeLabel setBoldFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:55]];
+    [self.timeLabel setRegularFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:55]];
+    
+    // The font property of the label is used as the font for H,M,S and MS
+    [self.timeLabel setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:25]];
+    
+    // Default label properties
+    self.timeLabel.textColor = [UIColor purpleColor];
+    
+    // After making any changes we need to call update appearance
+    [self.timeLabel updateApperance];
 }
 
 #pragma mark choose track
@@ -252,10 +267,10 @@
         [runAch setRunId:runData.runid];
         [runAch setTrackname:runData.runtrackname];
         [runAch setAchievementTrigger:@"LongestRunDistance"];
-        [runAch setAchievementText:@""];
+        [runAch setAchievementText:[NSString stringWithFormat:@"Your longest run distance yet at %@",[self.trackInfo valueForKey:@"runDistance"]]];
         [runData addRunAchievementObject:runAch];
         [[MessageBarManager sharedInstance] showMessageWithTitle:@"Longest Run Distance Yet"
-                                                     description:@"Longest Run Distance Yet"
+                                                     description:[NSString stringWithFormat:@"Your longest run distance yet at %@",[self.trackInfo valueForKey:@"runDistance"]]
                                                             type:MessageBarMessageTypeInfo];
     }
     
@@ -265,10 +280,10 @@
         [runAch setRunId:runData.runid];
         [runAch setTrackname:runData.runtrackname];
         [runAch setAchievementTrigger:@"LongestRunTime"];
-        [runAch setAchievementText:@""];
+        [runAch setAchievementText:[NSString stringWithFormat:@"Your longest run yet at %@",[self.trackInfo valueForKey:@"runTime"]]];
         [runData addRunAchievementObject:runAch];
         [[MessageBarManager sharedInstance] showMessageWithTitle:@"Longest Run Time Yet"
-                                                     description:@"Longest Run Time Yet"
+                                                     description:[NSString stringWithFormat:@"Your longest run yet at %@",[self.trackInfo valueForKey:@"runTime"]]
                                                             type:MessageBarMessageTypeInfo];
     }
     

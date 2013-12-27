@@ -63,7 +63,6 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     RunAchievement *ra = (RunAchievement *)[runAchivements objectAtIndex:indexPath.row];
     
     cell.label.text =  ra.achievementText;
-    cell.imageView.image = [UIImage imageNamed:@"routes-cup.png"];
     return cell;
 }
 

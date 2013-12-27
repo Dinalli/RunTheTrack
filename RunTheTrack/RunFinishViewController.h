@@ -9,13 +9,14 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "JBKenBurnsView.h"
+#import "TTCounterLabel.h"
 
 @class AppDelegate;
 
-@interface RunFinishViewController : UIViewController<MKMapViewDelegate, CLLocationManagerDelegate>
+@interface RunFinishViewController : UIViewController<MKMapViewDelegate, CLLocationManagerDelegate, TTCounterLabelDelegate>
 {
     IBOutlet UIImageView *trackMapImage;
-    IBOutlet UILabel *runTime;
+    UILabel *runTime;
     IBOutlet UILabel *runLaps;
     IBOutlet UILabel *runDistance;
     IBOutlet UILabel *paceLabel;
@@ -38,5 +39,7 @@
 @property (nonatomic, strong) NSMutableArray *trackPointArray;
 @property (nonatomic, strong) MKPolyline* trackLine;
 @property (nonatomic, strong) MKPolylineView* trackLineView;
+
+@property (strong, nonatomic) IBOutlet TTCounterLabel *timeLabel;
 
 @end
