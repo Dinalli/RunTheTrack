@@ -13,7 +13,7 @@
 
 @class AppDelegate;
 
-@interface RunFinishViewController : UIViewController<MKMapViewDelegate, CLLocationManagerDelegate, TTCounterLabelDelegate>
+@interface RunFinishViewController : UIViewController<MKMapViewDelegate, CLLocationManagerDelegate, TTCounterLabelDelegate,UIActionSheetDelegate>
 {
     IBOutlet UIImageView *trackMapImage;
     UILabel *runTime;

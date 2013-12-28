@@ -863,6 +863,9 @@
                     <navigationItem key="navigationItem" id="Sfq-8O-MRj">
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="4B5-W2-APA">
                             <color key="tintColor" red="0.26274509800000001" green="0.1450980392" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="showActivityView:" destination="txt-p1-Zp1" id="Hm1-jT-BEu"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
