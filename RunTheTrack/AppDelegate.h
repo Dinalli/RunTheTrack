@@ -24,6 +24,8 @@ extern NSString *const SCSessionStateChangedNotification;
 @property (strong, nonatomic) NSArray *tracksArray;
 
 @property (nonatomic) BOOL useMotion;
+@property (nonatomic) CGFloat walkMotionDistance;
+@property (nonatomic) CGFloat runMotionDistance;
 
 - (void)openSession;
 

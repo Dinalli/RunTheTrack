@@ -36,11 +36,13 @@
 -(IBAction)walkMetersChanged:(id)sender
 {
     walkMeters.text = [NSString stringWithFormat:@"%.1f",walkSlider.value];
+    [appDelegate setWalkMotionDistance:walkSlider.value];
 }
 
 -(IBAction)runMetersChanged:(id)sender
 {
     runMeters.text = [NSString stringWithFormat:@"%.1f",runSlider.value];
+    [appDelegate setRunMotionDistance:runSlider.value];
 }
 
 -(IBAction)gpsSwitched:(id)sender
@@ -59,6 +61,8 @@
     walkSlider.enabled = YES;
     
     [appDelegate setUseMotion:YES];
+    [appDelegate setWalkMotionDistance:walkSlider.value];
+    [appDelegate setRunMotionDistance:runSlider.value];
 }
 
 - (void)didReceiveMemoryWarning

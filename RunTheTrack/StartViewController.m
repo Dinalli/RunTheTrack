@@ -443,14 +443,14 @@ enum TimerState : NSUInteger {
 
 -(void)enableCoreMotion
 {
+    __block CMMotionActivity *currentActivity = nil;
     if([CMMotionActivityManager isActivityAvailable])
     {
         motionActivityIndicator.hidden = NO;
         if(cmActivityMgr == nil) cmActivityMgr = [[CMMotionActivityManager alloc] init];
         
         [cmActivityMgr startActivityUpdatesToQueue:[NSOperationQueue mainQueue] withHandler:^(CMMotionActivity *activity) {
-            
-            
+            currentActivity = activity;
             if(activity.walking)
             {
                 motionActivityIndicator.text = @"walk";
@@ -469,7 +469,14 @@ enum TimerState : NSUInteger {
             
             if(self.timerState == timerStarted)
             {
-                CGFloat distance = numberOfSteps * 2.5; // Running
+                CGFloat distance = 0;
+                if(currentActivity.walking)
+                {
+                    distance = numberOfSteps * appDelegate.walkMotionDistance; // Walking
+                }else if (currentActivity.running)
+                {
+                    distance = numberOfSteps * appDelegate.runMotionDistance; // Running
+                }
                 [self moveAnnotaionWithDistance:distance];
             }
         }];
