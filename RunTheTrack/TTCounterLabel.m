@@ -67,9 +67,17 @@
     [self setValue:startValue];
 }
 
+- (void)setSavedValue:(unsigned long)startValue {
+    _startValue = startValue;
+    self.resetValue = _startValue;
+    self.startTime = CFAbsoluteTimeGetCurrent();
+    [self setValue:startValue];
+    [self updateApperance];
+}
+
 -(unsigned long)getValue
 {
-    return _startValue;
+    return self.value;
 }
 
 #pragma mark - Private

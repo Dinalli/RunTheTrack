@@ -43,7 +43,10 @@
     self.managedObjectContext = appDelegate.managedObjectContext;
     
     runTime.text = [NSString stringWithFormat:@"%@",[self.trackInfo objectForKey:@"runTime"]];
-    [self.timeLabel setStartValue:(long)[self.trackInfo objectForKey:@"timeLabel"]];
+    NSString *strTimeLong = [self.trackInfo objectForKey:@"timeLabel"];
+    unsigned long timeLong = strtoul([strTimeLong UTF8String], NULL, 0);
+    [self.timeLabel setSavedValue:timeLong];
+    [self.timeLabel updateApperance];
     runLaps.text = [NSString stringWithFormat:@"Laps %@",[self.trackInfo objectForKey:@"runLaps"]];
     runDistance.text = [NSString stringWithFormat:@"Distance %@ miles",[self.trackInfo objectForKey:@"runDistance"]];
     paceLabel.text = [NSString stringWithFormat:@"%@ mph",@"3.1"];
@@ -59,6 +62,8 @@
     {
         [self addRouteToMap];
     }
+    
+    [self customiseAppearance];
 }
 
 - (void)customiseAppearance {
