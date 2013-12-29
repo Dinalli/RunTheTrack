@@ -156,7 +156,7 @@
     int msperhour = 3600000;
     int mspermin = 60000;
     
-    int hrs = value / msperhour;
+    int hrs = (int)value / msperhour;
     int mins = (value % msperhour) / mspermin;
     int secs = ((value % msperhour) % mspermin) / 1000;
     int frac = value % 1000 / 10;

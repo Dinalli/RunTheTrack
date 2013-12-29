@@ -83,7 +83,13 @@
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"HH:mm:ss.SS"];
     NSDate *runTimeDate = [df dateFromString:[NSString stringWithFormat:@"%@",runData.runtime]];
-    cell.runTimeLabel.text = [df stringFromDate:runTimeDate];
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:runTimeDate];
+    
+    //cell.runTimeLabel.text = [df stringFromDate:runTimeDate];
+    NSString *dateString = [CommonUtils timeFormattedStringForValue:(int)[components hour] :(int)[components minute] :(int)[components second]];
+    cell.runTimeLabel.text = [NSString stringWithFormat:@"Time :%@", dateString];
     cell.runDateLabel.text = runData.rundate;
     
     for (NSDictionary *trackInfo in appDelegate.tracksArray) {
@@ -93,7 +99,6 @@
             break;
         }
     }
-    
     return cell;
 }
 

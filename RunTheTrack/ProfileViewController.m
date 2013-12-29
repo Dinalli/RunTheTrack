@@ -74,7 +74,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
         reusableview = headerView;
         
         int laps = 0;
-        float totalDistance;
+        float totalDistance = 0;
         
         NSDateFormatter *df = [[NSDateFormatter alloc] init];
         [df setDateFormat:@"HH:mm:ss.SS"];
@@ -93,8 +93,11 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
         headerView.totalDistance.text = [NSString stringWithFormat:@"%.02f miles", totalDistance];
         
         [df setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0.0]];
-        headerView.totalTime.text = [df stringFromDate:totalRunTime];
-
+        
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        NSDateComponents *components = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:totalRunTime];
+        NSString *dateString = [CommonUtils timeFormattedStringForValue:(int)[components hour] :(int)[components minute] :(int)[components second]];
+        headerView.totalTime.text = [NSString stringWithFormat:@"Time :%@", dateString];
         headerView.totalTracks.text = [NSString stringWithFormat:@"Tracks %d", (int)trackRunsArray.count];
     }
     
@@ -130,6 +133,9 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     cell.trackName.text = [TrackInfo objectForKey:@"Race"];
     cell.imageView.image = [UIImage imageNamed:[TrackInfo objectForKey:@"trackimage"]];
     
+    [cell initFlatWithIndicatorProgressBar];
+
+    int trackLaps = [[NSString stringWithFormat:@"%@",[TrackInfo objectForKey:@"Laps"]] intValue];
     int laps = 0;
     float totalDistance;
     
@@ -153,7 +159,22 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     cell.totalDistance.text = [NSString stringWithFormat:@"%.02f miles", totalDistance];
     
     [df setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0.0]];
-    cell.totalTime.text = [df stringFromDate:totalRunTime];
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:totalRunTime];
+    NSString *dateString = [CommonUtils timeFormattedStringForValue:(int)[components hour] :(int)[components minute] :(int)[components second]];
+    cell.totalTime.text = [NSString stringWithFormat:@"Time :%@", dateString];
+    
+    if(laps > 0)
+    {
+        CGFloat oneLapPercentFloat = (float)trackLaps / 100;
+        CGFloat lapsFloat = (float)laps;
+        CGFloat progress = (lapsFloat * oneLapPercentFloat) / 10.0;
+        [cell setProgress:progress animated:YES];
+    }
+    else{
+        [cell setProgress:0.01 animated:YES];
+    }
     
     return cell;
 }
@@ -167,6 +188,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     
     if (buttonIndex == 0) {
+        [self setUpOnLoad];
         [self facebookSignIn];
     }
     else if (buttonIndex == 1) {

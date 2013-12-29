@@ -70,6 +70,7 @@
 		4057A5BE17EE596A00FE1E93 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4057A5B617EE596A00FE1E93 /* Icon-Small@2x.png */; };
 		4057A5BF17EE596A00FE1E93 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4057A5B717EE596A00FE1E93 /* Icon.png */; };
 		4057A5C017EE596A00FE1E93 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4057A5B817EE596A00FE1E93 /* Icon@2x.png */; };
+		4057EB3118703BA800F52EF4 /* CommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4057EB3018703BA800F52EF4 /* CommonUtils.m */; };
 		405A15EE17EEF4E200684921 /* Icon-80.png in Resources */ = {isa = PBXBuildFile; fileRef = 405A15EB17EEF4E200684921 /* Icon-80.png */; };
 		405A15EF17EEF4E200684921 /* Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 405A15EC17EEF4E200684921 /* Icon-120.png */; };
 		405A15F017EEF4E200684921 /* Icon58.png in Resources */ = {isa = PBXBuildFile; fileRef = 405A15ED17EEF4E200684921 /* Icon58.png */; };
@@ -143,6 +144,7 @@
 		40CD535E182C0E2D00352499 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40CD535D182C0E2D00352499 /* FacebookSDK.framework */; };
 		40D35DC7182540B500D10899 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40D35DC6182540B500D10899 /* CoreData.framework */; };
 		40D35DCA182541E500D10899 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D35DC9182541E500D10899 /* CoreDataHelper.m */; };
+		40D42C9E18702DBD0057DF2D /* YLProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D42C9D18702DBD0057DF2D /* YLProgressBar.m */; };
 		40DFDBE9182AE6C100554C58 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40DFDBE8182AE6C100554C58 /* Social.framework */; };
 		40E5A2EA1856504300E8E87E /* UIView+More.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E5A2E91856504300E8E87E /* UIView+More.m */; };
 		40E5A2EC1856538A00E8E87E /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40E5A2EB1856538A00E8E87E /* CoreText.framework */; };
@@ -237,6 +239,8 @@
 		4057A5B617EE596A00FE1E93 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
 		4057A5B717EE596A00FE1E93 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		4057A5B817EE596A00FE1E93 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		4057EB2F18703BA800F52EF4 /* CommonUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtils.h; sourceTree = "<group>"; };
+		4057EB3018703BA800F52EF4 /* CommonUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtils.m; sourceTree = "<group>"; };
 		405A15EB17EEF4E200684921 /* Icon-80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-80.png"; sourceTree = "<group>"; };
 		405A15EC17EEF4E200684921 /* Icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-120.png"; sourceTree = "<group>"; };
 		405A15ED17EEF4E200684921 /* Icon58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon58.png; sourceTree = "<group>"; };
@@ -369,6 +373,8 @@
 		40D35DC6182540B500D10899 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		40D35DC8182541E500D10899 /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataHelper.h; sourceTree = "<group>"; };
 		40D35DC9182541E500D10899 /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
+		40D42C9C18702DBD0057DF2D /* YLProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLProgressBar.h; sourceTree = "<group>"; };
+		40D42C9D18702DBD0057DF2D /* YLProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLProgressBar.m; sourceTree = "<group>"; };
 		40DFDBE8182AE6C100554C58 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		40E5A2E81856504300E8E87E /* UIView+More.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+More.h"; sourceTree = "<group>"; };
 		40E5A2E91856504300E8E87E /* UIView+More.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+More.m"; sourceTree = "<group>"; };
@@ -435,6 +441,7 @@
 		4018F50417F82E26006F990E /* 3rdParty */ = {
 			isa = PBXGroup;
 			children = (
+				40D42C9B18702DAB0057DF2D /* YLProgressBar */,
 				40BA41901865D3A4007A6329 /* UrbanAirship */,
 				40A3B3DE185B765D00BA85BB /* MessageBarManager */,
 				409357A81855FBF1007EE900 /* TTCounterLabel */,
@@ -473,6 +480,15 @@
 				407C4E08180C002A00F7B2FE /* TrackInfoViewController.m */,
 			);
 			name = Notused;
+			sourceTree = "<group>";
+		};
+		4057EB2E18703B9300F52EF4 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				4057EB2F18703BA800F52EF4 /* CommonUtils.h */,
+				4057EB3018703BA800F52EF4 /* CommonUtils.m */,
+			);
+			name = Common;
 			sourceTree = "<group>";
 		};
 		405FD4B817EE3E72006F141F /* Images */ = {
@@ -875,6 +891,7 @@
 		40C1656817EB637900D4E093 /* RunTheTrack */ = {
 			isa = PBXGroup;
 			children = (
+				4057EB2E18703B9300F52EF4 /* Common */,
 				40BE1F671823C79F004C3FC3 /* MapAnnotations */,
 				407771E51815B73300A38AA1 /* Categories */,
 				4018F56417F84E0C006F990E /* ViewControllers */,
@@ -969,6 +986,15 @@
 				403FA5691854C670002A33DF /* RunAchievement.m */,
 			);
 			name = Classes;
+			sourceTree = "<group>";
+		};
+		40D42C9B18702DAB0057DF2D /* YLProgressBar */ = {
+			isa = PBXGroup;
+			children = (
+				40D42C9C18702DBD0057DF2D /* YLProgressBar.h */,
+				40D42C9D18702DBD0057DF2D /* YLProgressBar.m */,
+			);
+			name = YLProgressBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1181,6 +1207,7 @@
 				403FA56A1854C670002A33DF /* RunAchievement.m in Sources */,
 				407710AF18453B6E00882BBE /* ProfileCollectionCell.m in Sources */,
 				40E5A2EF185655B100E8E87E /* TTCounterLabel.m in Sources */,
+				4057EB3118703BA800F52EF4 /* CommonUtils.m in Sources */,
 				405E533F185E112A00A8BD45 /* Sector2Annotation.m in Sources */,
 				404793A2182F83BA004FEB73 /* RunDetailViewController.m in Sources */,
 				407771E81815B74700A38AA1 /* UIImage+ImageEffects.m in Sources */,
@@ -1201,6 +1228,7 @@
 				407C4DEF180BE6B700F7B2FE /* TracksCollectionViewController.m in Sources */,
 				4047939F182F7AEC004FEB73 /* RunCell.m in Sources */,
 				40D35DCA182541E500D10899 /* CoreDataHelper.m in Sources */,
+				40D42C9E18702DBD0057DF2D /* YLProgressBar.m in Sources */,
 				40F3E1DF180F0EE000785F27 /* StartViewController.m in Sources */,
 				40F9781218391332005D7904 /* RunData.m in Sources */,
 				40BE1F6A1823C7C2004C3FC3 /* MKRunnerAnnotation.m in Sources */,

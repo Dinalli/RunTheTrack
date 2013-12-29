@@ -8,6 +8,7 @@
 
 #import "ProfileCollectionCell.h"
 #import <QuartzCore/QuartzCore.h>
+#import "YLProgressBar.h"
 
 @implementation ProfileCollectionCell
 
@@ -19,5 +20,18 @@
     // Drawing code
 }
 */
+
+- (void)initFlatWithIndicatorProgressBar
+{
+    _progressBarFlatWithIndicator.type                     = YLProgressBarTypeFlat;
+    _progressBarFlatWithIndicator.indicatorTextDisplayMode = YLProgressBarIndicatorTextDisplayModeProgress;
+    _progressBarFlatWithIndicator.behavior                 = YLProgressBarBehaviorIndeterminate;
+    _progressBarFlatWithIndicator.stripesOrientation       = YLProgressBarStripesOrientationVertical;
+}
+
+- (void)setProgress:(CGFloat)progress animated:(BOOL)animated
+{
+    [_progressBarFlatWithIndicator setProgress:progress animated:animated];
+}
 
 @end

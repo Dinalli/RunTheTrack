@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+@class YLProgressBar;
 
 @interface ProfileCollectionCell : UICollectionViewCell
 
@@ -17,4 +18,8 @@
 @property (retain, nonatomic) IBOutlet UILabel *totalDistance;
 @property (retain, nonatomic) IBOutlet UILabel *totalTime;
 
+@property (nonatomic, strong) IBOutlet YLProgressBar      *progressBarFlatWithIndicator;
+
+- (void)initFlatWithIndicatorProgressBar;
+- (void)setProgress:(CGFloat)progress animated:(BOOL)animated;
 @end
