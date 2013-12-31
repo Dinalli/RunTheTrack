@@ -36,5 +36,6 @@ typedef NS_ENUM(NSInteger, kCountDirection){
 - (void)updateApperance;
 -(unsigned long)getValue;
 - (void)setSavedValue:(unsigned long)value;
+-(NSString *)getValueString;
 
 @end

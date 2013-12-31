@@ -156,9 +156,6 @@
     
     UIGraphicsBeginImageContext(mv.frame.size);
     CGContextRef currentContext = UIGraphicsGetCurrentContext();
-    CGContextTranslateCTM(currentContext, 0, mv.frame.size.height);
-    // passing negative values to flip the image
-    CGContextScaleCTM(currentContext, 1.0, -1.0);
     [mv.layer renderInContext:currentContext];
     UIImage *screenshot = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();

@@ -75,6 +75,11 @@
     [self updateApperance];
 }
 
+-(NSString *)getValueString
+{
+    return self.valueString;
+}
+
 -(unsigned long)getValue
 {
     return self.value;
