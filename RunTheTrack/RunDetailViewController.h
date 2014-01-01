@@ -20,9 +20,18 @@
     IBOutlet UIImageView *trackMapImage;
     IBOutlet UILabel *runDate;
     
+    IBOutlet UILabel *sector1Time;
+    IBOutlet UILabel *sector2Time;
+    IBOutlet UILabel *sector3Time;
+    IBOutlet UILabel *lapNumerTime;
+    
+    IBOutlet UISlider *lapSlider;
+    
     UIImage *mapImage;
     
     IBOutlet MKMapView *mv;
+    
+    NSMutableArray *runLapsArray;
 }
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;

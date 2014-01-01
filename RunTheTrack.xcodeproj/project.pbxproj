@@ -478,6 +478,10 @@
 			children = (
 				407C4E07180C002A00F7B2FE /* TrackInfoViewController.h */,
 				407C4E08180C002A00F7B2FE /* TrackInfoViewController.m */,
+				4013EF121850686E00D6740F /* RunSectorsViewController.h */,
+				4013EF131850686E00D6740F /* RunSectorsViewController.m */,
+				4013EF15185069A800D6740F /* RunSectorCell.h */,
+				4013EF16185069A800D6740F /* RunSectorCell.m */,
 			);
 			name = Notused;
 			sourceTree = "<group>";
@@ -669,10 +673,6 @@
 				4047939E182F7AEC004FEB73 /* RunCell.m */,
 				404793A0182F83BA004FEB73 /* RunDetailViewController.h */,
 				404793A1182F83BA004FEB73 /* RunDetailViewController.m */,
-				4013EF121850686E00D6740F /* RunSectorsViewController.h */,
-				4013EF131850686E00D6740F /* RunSectorsViewController.m */,
-				4013EF15185069A800D6740F /* RunSectorCell.h */,
-				4013EF16185069A800D6740F /* RunSectorCell.m */,
 			);
 			name = History;
 			sourceTree = "<group>";

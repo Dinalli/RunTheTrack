@@ -11,6 +11,7 @@
 #import "RunSectorsViewController.h"
 #import <Social/Social.h>
 #import "AppDelegate.h"
+#import "RunSectors.h"
 
 @interface RunDetailViewController ()
 
@@ -64,6 +65,8 @@
     region.center.latitude = coordinates[numberOfSteps-1].latitude;
     region.center.longitude = coordinates[numberOfSteps-1].longitude;
     [mv setRegion:region animated:YES];
+    
+    
 }
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id < MKOverlay >)overlay
@@ -106,6 +109,57 @@
         }
     }    
     [self addRouteToMap];
+    
+    [self showSectorTimes];
+}
+
+-(void)showSectorTimes
+{
+    if([self.runData.runlaps integerValue] > 0)
+    {
+        runLapsArray = [[self.runData.runSectors allObjects] mutableCopy];
+        [runLapsArray sortUsingComparator:^NSComparisonResult(id a, id b) {
+            RunSectors *aRunSector = (RunSectors *)a;
+            RunSectors *bRunSector = (RunSectors *)b;
+            NSInteger firstInteger = [aRunSector.lapNumber integerValue];
+            NSInteger secondInteger = [bRunSector.lapNumber integerValue];
+            
+            if (firstInteger > secondInteger)
+                return NSOrderedDescending;
+            if (firstInteger < secondInteger)
+                return NSOrderedAscending;
+            return [aRunSector.lapNumber localizedCompare: bRunSector.lapNumber];
+        }];
+        
+        RunSectors *runSector = (RunSectors *)[runLapsArray objectAtIndex:0];
+        lapNumerTime.text = [NSString stringWithFormat:@"Lap %@  Time %@", runSector.lapNumber, runSector.lapTime];
+
+        sector1Time.text = [NSString stringWithFormat:@"Sector1 : %@", runSector.sector1Time];
+        sector2Time.text = [NSString stringWithFormat:@"Sector2 : %@", runSector.sector2Time];
+        sector3Time.text = [NSString stringWithFormat:@"Sector3 : %@", runSector.sector3Time];
+
+        lapSlider.minimumValue = 1;
+        lapSlider.maximumValue = [self.runData.runlaps integerValue]-1;
+    }
+    else
+    {
+        sector1Time.hidden = YES;
+        sector2Time.hidden = YES;
+        sector3Time.hidden = YES;
+        lapSlider.hidden = YES;
+        lapNumerTime.hidden = YES;
+    }
+}
+
+-(IBAction)lapSliderChanged:(id)sender
+{
+    int sliderInt = roundf(lapSlider.value);
+    RunSectors *runSector = (RunSectors *)[runLapsArray objectAtIndex:sliderInt];
+    lapNumerTime.text = [NSString stringWithFormat:@"Lap %@  Time %@", runSector.lapNumber, runSector.lapTime];
+    
+    sector1Time.text = [NSString stringWithFormat:@"Sector1 : %@", runSector.sector1Time];
+    sector2Time.text = [NSString stringWithFormat:@"Sector2 : %@", runSector.sector2Time];
+    sector3Time.text = [NSString stringWithFormat:@"Sector3 : %@", runSector.sector3Time];
 }
 
 #pragma mark Segue Navigation

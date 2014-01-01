@@ -820,14 +820,14 @@
                                     <outlet property="delegate" destination="txt-p1-Zp1" id="eqb-L6-TQX"/>
                                 </connections>
                             </mapView>
-                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Sector 1: 1:05:58" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LF7-pe-WQe">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Sector 1: 1:05:58" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LF7-pe-WQe">
                                 <rect key="frame" x="1" y="506" width="107" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.98823535439999999" green="0.79215693470000004" blue="0.019607843829999999" alpha="1" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
-                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Sector2: 1:05:58" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PVk-66-fFT">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Sector2: 1:05:58" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PVk-66-fFT">
                                 <rect key="frame" x="108" y="506" width="107" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.95936451339999995" green="0.076167813210000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -835,7 +835,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
-                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Sector3: 1:05:58" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RpI-Rm-Dho">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Sector3: 1:05:58" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RpI-Rm-Dho">
                                 <rect key="frame" x="214" y="506" width="107" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.2001922136" green="0.72930695329999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -874,10 +874,21 @@
                                 <rect key="frame" x="0.0" y="66" width="67" height="68"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <slider hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="uDb-fp-XVm">
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="uDb-fp-XVm">
                                 <rect key="frame" x="9" y="529" width="305" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="lapSliderChanged:" destination="txt-p1-Zp1" eventType="valueChanged" id="esE-PT-TTG"/>
+                                </connections>
                             </slider>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pQp-gQ-t3h">
+                                <rect key="frame" x="0.0" y="485" width="320" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -892,11 +903,16 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="lapNumerTime" destination="pQp-gQ-t3h" id="9gx-HS-P0p"/>
+                        <outlet property="lapSlider" destination="uDb-fp-XVm" id="8Ia-m6-3Kp"/>
                         <outlet property="mv" destination="xFV-xv-1Yg" id="QDa-tG-xeG"/>
                         <outlet property="runDate" destination="IgD-rf-pRO" id="fn5-QN-Y9q"/>
                         <outlet property="runDistance" destination="Cmf-PZ-zaC" id="7M3-3R-a6J"/>
                         <outlet property="runLaps" destination="xWS-Fw-0r3" id="T2u-sK-XvM"/>
                         <outlet property="runTime" destination="fNT-Rk-FtH" id="LCK-ZH-Oo4"/>
+                        <outlet property="sector1Time" destination="LF7-pe-WQe" id="iyq-bL-vEK"/>
+                        <outlet property="sector2Time" destination="PVk-66-fFT" id="kr6-83-1LB"/>
+                        <outlet property="sector3Time" destination="RpI-Rm-Dho" id="oie-Tt-CNz"/>
                         <outlet property="trackMapImage" destination="viA-qt-mHB" id="3xy-W2-Q2V"/>
                     </connections>
                 </viewController>
