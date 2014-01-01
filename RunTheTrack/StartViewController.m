@@ -103,6 +103,11 @@ enum TimerState : NSUInteger {
     {
         // Start the timer
         [self playSound:@"beep-8" :@"mp3"];
+        
+        
+        [self textToSpeak:@"Start your run"];
+        
+        
         startDate = [NSDate date];
         lastLapDate = startDate;
         timer = [NSTimer scheduledTimerWithTimeInterval:0.0001 target:self selector:@selector(timerTick:) userInfo:nil repeats:YES];
@@ -117,6 +122,7 @@ enum TimerState : NSUInteger {
             [[MessageBarManager sharedInstance] showMessageWithTitle:@"Congradulations"
                                                          description:@"Started Your First Run"
                                                                 type:MessageBarMessageTypeInfo];
+            [self textToSpeak:@"Well done on starting your First Run"];
         }
     }
     else if(self.timerState == timerStarted)
@@ -521,7 +527,7 @@ enum TimerState : NSUInteger {
                 double latitudeModifier;    // Distance to add/subtract to each latitude point
                 double longitudeModifier;   // Distance to add/subtract to each longitude point
                 
-                int numberOfPoints = 250;   // The number of points you want between the two points
+                int numberOfPoints = 500;   // The number of points you want between the two points
                 
                 CLLocationCoordinate2D newPoint;
                 // Determine the distance between the lats and divide by numberOfPoints
@@ -553,21 +559,41 @@ enum TimerState : NSUInteger {
                         [self.trackPointArray insertObject:[NSString stringWithFormat:@"%f,%f", pointLoc.coordinate.latitude, pointLoc.coordinate.longitude] atIndex:nextRunIndex];
                         break;
                     }
-                    
-                    if(endPoint == sector1EndPoint)
-                    {
-                        sector1Time = lapTime.text;
-                        [[MessageBarManager sharedInstance] showMessageWithTitle:@"Sector 1 Complete"
-                                                                     description:[NSString stringWithFormat:@"Timed at : %@", lapTime.text]
-                                                                            type:MessageBarMessageTypeInfo];
-                    }
-                    if(endPoint == sector2EndPoint) {
-                        sector2Time = lapTime.text;
-                        [[MessageBarManager sharedInstance] showMessageWithTitle:@"Sector 2 Complete"
-                                                                     description:[NSString stringWithFormat:@"Timed at : %@", lapTime.text]
-                                                                            type:MessageBarMessageTypeInfo];
-                    }
                 }
+                
+                if([startPoint distanceFromLocation:sector1EndPoint] < 0.5)
+                {
+                    NSLog(@"Distance from sector 1 point %f", [endPoint distanceFromLocation:sector1EndPoint]);
+                    sector1Time = [self.timeLabel getValueString];
+                    [[MessageBarManager sharedInstance] showMessageWithTitle:@"Sector 1 Complete"
+                                                                 description:[NSString stringWithFormat:@"Timed at : %@", [self.timeLabel getValueString]]
+                                                                        type:MessageBarMessageTypeInfo];
+                    
+                    
+                    [self textToSpeak:[NSString stringWithFormat:@"Sector 1 time %@", [self.timeLabel getValueString]]];
+                    
+                    NSLog(@"End lat %f", endPoint.coordinate.latitude);
+                    NSLog(@"End long %f", endPoint.coordinate.latitude);
+                    NSLog(@"Sect1 lat %f", sector1EndPoint.coordinate.latitude);
+                    NSLog(@"Sect1 lon %f", sector1EndPoint.coordinate.latitude);
+                }
+                
+                if([startPoint distanceFromLocation:sector2EndPoint] < 0.5)
+                {
+                    
+                    sector2Time = [self.timeLabel getValueString];
+                    [[MessageBarManager sharedInstance] showMessageWithTitle:@"Sector 2 Complete"
+                                                                 description:[NSString stringWithFormat:@"Timed at : %@", [self.timeLabel getValueString]]
+                                                                        type:MessageBarMessageTypeInfo];
+                    
+                    [self textToSpeak:[NSString stringWithFormat:@"Sector 2 time %@",[self.timeLabel getValueString]]];
+                    
+                    NSLog(@"End lat %f", endPoint.coordinate.latitude);
+                    NSLog(@"End long %f", endPoint.coordinate.latitude);
+                    NSLog(@"Sect2 lat %f", sector2EndPoint.coordinate.latitude);
+                    NSLog(@"Sect2 lon %f", sector2EndPoint.coordinate.latitude);
+                }
+
             }
             else // lets just move to the next point then
             {
@@ -582,19 +608,39 @@ enum TimerState : NSUInteger {
                 ann.coordinate = endPoint.coordinate;
                 
                 totalPointsDistance = totalPointsDistance + [startPoint distanceFromLocation:endPoint];
-//                if(endPoint == sector1EndPoint)
-//                {
-//                    sector1Time = lapTime.text;
-//                    [[MessageBarManager sharedInstance] showMessageWithTitle:@"Sector 1 Complete"
-//                                                                 description:[NSString stringWithFormat:@"Timed at : %@", lapTime.text]
-//                                                                        type:MessageBarMessageTypeInfo];
-//                }
-//                if(endPoint == sector2EndPoint) {
-//                    sector2Time = lapTime.text;
-//                    [[MessageBarManager sharedInstance] showMessageWithTitle:@"Sector 2 Complete"
-//                                                                 description:[NSString stringWithFormat:@"Timed at : %@", lapTime.text]
-//                                                                        type:MessageBarMessageTypeInfo];
-//                }
+                
+                if([startPoint distanceFromLocation:sector1EndPoint] < 0.5)
+                {
+                     NSLog(@"Moved Distance from sector 1 point %f", [startPoint distanceFromLocation:sector1EndPoint]);
+                    sector1Time = [self.timeLabel getValueString];
+                    [[MessageBarManager sharedInstance] showMessageWithTitle:@"Sector 1 Complete"
+                                                                 description:[NSString stringWithFormat:@"Timed at : %@", [self.timeLabel getValueString]]
+                                                                        type:MessageBarMessageTypeInfo];
+                    
+                    
+                    [self textToSpeak:[NSString stringWithFormat:@"Sector 1 time %@",[self.timeLabel getValueString]]];
+                    
+                    NSLog(@"End lat %f", endPoint.coordinate.latitude);
+                    NSLog(@"End long %f", endPoint.coordinate.latitude);
+                    NSLog(@"Sect1 lat %f", sector1EndPoint.coordinate.latitude);
+                    NSLog(@"Sect1 lon %f", sector1EndPoint.coordinate.latitude);
+                }
+                
+                if([startPoint distanceFromLocation:sector2EndPoint] < 0.5)
+                {
+                     NSLog(@"Moved Distance from sector 2 point %f", [startPoint distanceFromLocation:sector2EndPoint]);
+                    sector2Time = [self.timeLabel getValueString];
+                    [[MessageBarManager sharedInstance] showMessageWithTitle:@"Sector 2 Complete"
+                                                                 description:[NSString stringWithFormat:@"Timed at : %@", [self.timeLabel getValueString]]
+                                                                        type:MessageBarMessageTypeInfo];
+                    
+                    [self textToSpeak:[NSString stringWithFormat:@"Sector 2 time %@",[self.timeLabel getValueString]]];
+                    
+                    NSLog(@"End lat %f", endPoint.coordinate.latitude);
+                    NSLog(@"End long %f", endPoint.coordinate.latitude);
+                    NSLog(@"Sect2 lat %f", sector2EndPoint.coordinate.latitude);
+                    NSLog(@"Sect2 lon %f", sector2EndPoint.coordinate.latitude);
+                }
                 
             }
 
@@ -620,10 +666,9 @@ enum TimerState : NSUInteger {
                 lapCounter++;
                 //lapsLabel.text = [NSString stringWithFormat:@"%d Laps", (int)lapCounter];
                 [self playSound:@"beep-8" :@"mp3"];
+                [self textToSpeak:[NSString stringWithFormat:@"Lap Complete %@",[self.timeLabel getValueString]]];
                 
-                sector1Time = lapTime.text;
-                sector2Time = lapTime.text;
-                sector3Time = lapTime.text;
+                sector3Time = [self.timeLabel getValueString];
                 
                 // Save Sectors and Lap Times
                 NSDictionary *runLap = @{@"1": sector1Time,
@@ -652,6 +697,8 @@ enum TimerState : NSUInteger {
                     [[MessageBarManager sharedInstance] showMessageWithTitle:@"New Fastest Lap"
                                                                  description:[NSString stringWithFormat:@"Timed at : %@", [dateFormatter stringFromDate:timerDate]]
                                                                         type:MessageBarMessageTypeInfo];
+                    
+                    [self textToSpeak:[NSString stringWithFormat:@"New Fastest Lap timed at %@", [dateFormatter stringFromDate:timerDate]]];
                 }
                 
                 //Check any achivements
@@ -683,7 +730,7 @@ enum TimerState : NSUInteger {
         {
             distance = [newLocation distanceFromLocation:oldLocation];
             totalLocationDistance = totalLocationDistance + distance;
-            NSLog(@"TOTAL LOCATION DISTANCE %.2f", totalLocationDistance / 1000);
+            //NSLog(@"TOTAL LOCATION DISTANCE %.2f", totalLocationDistance / 1000);
             [self moveAnnotaionWithDistance:distance];
         }
         else // no old location
@@ -811,6 +858,16 @@ enum TimerState : NSUInteger {
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark Speech
+
+-(void)textToSpeak:(NSString *)textToSpeak
+{
+    AVSpeechSynthesizer *synth = [[AVSpeechSynthesizer alloc] init];
+    
+    AVSpeechUtterance *utt = [[AVSpeechUtterance alloc] initWithString:textToSpeak];
+    [synth speakUtterance:utt];
 }
 
 @end
