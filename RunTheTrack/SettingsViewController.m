@@ -41,8 +41,13 @@
 {
     [walkSlider setValue:[[defaults valueForKey:@"walkSliderValue"] floatValue]];
     [runSlider setValue:[[defaults valueForKey:@"runSliderValue"] floatValue]];
-    [gpsSwitch setOn:[[defaults valueForKey:@"gps"] boolValue]];
-    [motionSwitch setOn:[[defaults valueForKey:@"motion"] boolValue]];
+    
+    if([defaults valueForKey:@"gps"])
+    {
+        [gpsSwitch setOn:[[defaults valueForKey:@"gps"] boolValue]];
+        [motionSwitch setOn:[[defaults valueForKey:@"motion"] boolValue]];
+    }
+    
     [units setSelectedSegmentIndex:[[defaults valueForKey:@"units"] integerValue]];
     
     runMeters.text = [NSString stringWithFormat:@"%.1f",runSlider.value];

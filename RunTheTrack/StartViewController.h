@@ -65,6 +65,9 @@
     CMStepCounter *cmStepCounter;
     
     CLLocationDistance totalTrackDistance;
+    
+    CLLocationDistance totalLocationDistance;
+    float runLapsFloat;
 }
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;

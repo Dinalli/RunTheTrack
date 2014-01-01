@@ -73,7 +73,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
          headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
         reusableview = headerView;
         
-        int laps = 0;
+        float laps = 0;
         float totalDistance = 0;
         
         NSDateFormatter *df = [[NSDateFormatter alloc] init];
@@ -82,14 +82,14 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
         NSDate *zeroRunTime = [df dateFromString:@"00:00:00.00"];
         
         for (RunData *rd in runs) {
-            laps = laps + [rd.runlaps intValue];
+            laps = laps + [rd.runlaps floatValue];
             totalDistance = totalDistance + [rd.rundistance floatValue];
             
             NSDate *runTimeDate = [df dateFromString:[NSString stringWithFormat:@"%@",rd.runtime]];
             NSTimeInterval interval = [runTimeDate timeIntervalSinceDate:zeroRunTime];
             totalRunTime = [totalRunTime dateByAddingTimeInterval:interval];
         }
-        headerView.totalLaps.text = [NSString stringWithFormat:@"Laps :%d", laps];
+        headerView.totalLaps.text = [NSString stringWithFormat:@"Laps :%.2f", laps];
         
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         if([appDelegate useKMasUnits])
@@ -145,7 +145,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [cell initFlatWithIndicatorProgressBar];
 
     int trackLaps = [[NSString stringWithFormat:@"%@",[TrackInfo objectForKey:@"Laps"]] intValue];
-    int laps = 0;
+    float laps = 0;
     float totalDistance;
     
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
@@ -156,7 +156,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     for (RunData *rd in runs) {
         if([rd.runtrackname isEqualToString:cell.trackName.text])
         {
-            laps = laps + [rd.runlaps intValue];
+            laps = laps + [rd.runlaps floatValue];
             totalDistance = totalDistance + [rd.rundistance floatValue];
             NSDate *runTimeDate = [df dateFromString:[NSString stringWithFormat:@"%@",rd.runtime]];
             NSTimeInterval interval = [runTimeDate timeIntervalSinceDate:zeroRunTime];
@@ -164,7 +164,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
         }
     }
     
-    cell.totalLaps.text = [NSString stringWithFormat:@"Laps :%d", laps];
+    cell.totalLaps.text = [NSString stringWithFormat:@"Laps :%f", laps];
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     if([appDelegate useKMasUnits])
@@ -186,9 +186,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
     if(laps > 0)
     {
-        CGFloat oneLapPercentFloat = (float)trackLaps / 100;
-        CGFloat lapsFloat = (float)laps;
-        CGFloat progress = (lapsFloat * oneLapPercentFloat) / 10.0;
+        CGFloat progress = (laps / trackLaps);
         [cell setProgress:progress animated:YES];
     }
     else{

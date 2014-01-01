@@ -607,6 +607,10 @@ enum TimerState : NSUInteger {
                 distanceLabel.text =  [NSString stringWithFormat:@"%.2f miles", totalPointsDistance * 0.000621371192];
             }
             
+            // Calculate the lap distance for the lap
+            runLapsFloat = totalPointsDistance / totalTrackDistance;
+            lapsLabel.text = [NSString stringWithFormat:@"%.2f Laps", runLapsFloat];
+            
             runIndex++;
 
             if(runIndex == self.trackPointArray.count)
@@ -614,7 +618,7 @@ enum TimerState : NSUInteger {
                 //End of lap
                 runIndex = 0;
                 lapCounter++;
-                lapsLabel.text = [NSString stringWithFormat:@"%d Laps", (int)lapCounter];
+                //lapsLabel.text = [NSString stringWithFormat:@"%d Laps", (int)lapCounter];
                 [self playSound:@"beep-8" :@"mp3"];
                 
                 sector1Time = lapTime.text;
@@ -678,12 +682,14 @@ enum TimerState : NSUInteger {
         if(oldLocation != nil)
         {
             distance = [newLocation distanceFromLocation:oldLocation];
-            
+            totalLocationDistance = totalLocationDistance + distance;
+            NSLog(@"TOTAL LOCATION DISTANCE %.2f", totalLocationDistance / 1000);
             [self moveAnnotaionWithDistance:distance];
         }
         else // no old location
         {
             totalPointsDistance = 0;
+            totalLocationDistance = 0;
         }// no Location
     } // Timer not set
 }
@@ -752,7 +758,7 @@ enum TimerState : NSUInteger {
         RunFinishViewController *rfvc = segue.destinationViewController;
         [self.trackInfo setObject:totalRunTime forKey:@"runTime"];
         [self.trackInfo setObject:[NSString stringWithFormat:@"%ld",[self.timeLabel getValue]] forKey:@"timeLabel"];
-        [self.trackInfo setObject:[NSString stringWithFormat:@"%d", (int)lapCounter] forKey:@"runLaps"];
+        [self.trackInfo setObject:[NSString stringWithFormat:@"%.2f", runLapsFloat] forKey:@"runLaps"];
         [self.trackInfo setObject:[NSString stringWithFormat:@"%.2f",totalPointsDistance] forKey:@"runDistance"];
 
         //Add Laps, achivements and Sectors Dictionary

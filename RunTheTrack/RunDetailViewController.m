@@ -162,7 +162,7 @@
 {
     SLComposeViewController *composeSheet=[[SLComposeViewController alloc]init];
     composeSheet=[SLComposeViewController composeViewControllerForServiceType:serviceType];
-    [composeSheet setInitialText:[NSString stringWithFormat:@"Just comepleted a run round the %@ GP track. Time %@ Distance %@", self.navigationItem.title, runTime.text, runDistance.text]];
+    [composeSheet setInitialText:[NSString stringWithFormat:@"Just comepleted a run round the %@ GP track. Time %@ %@", self.navigationItem.title, runTime.text, runDistance.text]];
     
     UIGraphicsBeginImageContext(mv.frame.size);
     CGContextRef currentContext = UIGraphicsGetCurrentContext();
