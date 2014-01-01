@@ -33,8 +33,6 @@
     [super viewDidLoad];
     appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.managedObjectContext = appDelegate.managedObjectContext;
-    
-    runs = [CoreDataHelper getObjectsFromContextWithEntityName:@"RunData" andSortKey:nil andSortAscending:YES withManagedObjectContext:self.managedObjectContext];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -42,6 +40,7 @@
     [super viewDidAppear:animated];
     
     runs = [CoreDataHelper getObjectsFromContextWithEntityName:@"RunData" andSortKey:nil andSortAscending:YES withManagedObjectContext:self.managedObjectContext];
+    runs = [[[runs reverseObjectEnumerator] allObjects] mutableCopy];
     
     [self.tableView reloadData];
 }
@@ -77,7 +76,15 @@
                                       dequeueReusableCellWithIdentifier:@"RunCell"];
     RunData *runData = (RunData *)[runs objectAtIndex:indexPath.row];
     cell.trackLabel.text = runData.runtrackname;
-    cell.runDistanceLabel.text = [NSString stringWithFormat:@"%.02f miles", [runData.rundistance floatValue]];
+    if([appDelegate useKMasUnits])
+    {
+        cell.runDistanceLabel.text = [NSString stringWithFormat:@"%.02f km", [runData.rundistance floatValue] / 1000];
+    }
+    else
+    {
+        cell.runDistanceLabel.text = [NSString stringWithFormat:@"Distance %.2f miles",[runData.rundistance floatValue] * 0.000621371192];
+    }
+    
     cell.runLaps.text = [NSString stringWithFormat:@"Laps :%@", runData.runlaps];
     
     NSDateFormatter *df = [[NSDateFormatter alloc] init];

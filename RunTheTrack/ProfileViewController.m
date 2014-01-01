@@ -90,8 +90,17 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
             totalRunTime = [totalRunTime dateByAddingTimeInterval:interval];
         }
         headerView.totalLaps.text = [NSString stringWithFormat:@"Laps :%d", laps];
-        headerView.totalDistance.text = [NSString stringWithFormat:@"%.02f miles", totalDistance];
         
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        if([appDelegate useKMasUnits])
+        {
+            headerView.totalDistance.text = [NSString stringWithFormat:@"%.02f km", totalDistance / 1000];
+        }
+        else
+        {
+            headerView.totalDistance.text = [NSString stringWithFormat:@"%.02f miles", totalDistance * 0.000621371192];
+        }
+
         [df setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0.0]];
         
         NSCalendar *calendar = [NSCalendar currentCalendar];
@@ -156,7 +165,17 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     }
     
     cell.totalLaps.text = [NSString stringWithFormat:@"Laps :%d", laps];
-    cell.totalDistance.text = [NSString stringWithFormat:@"%.02f miles", totalDistance];
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    if([appDelegate useKMasUnits])
+    {
+        cell.totalDistance.text = [NSString stringWithFormat:@"%.02f km", totalDistance / 1000];
+    }
+    else
+    {
+        cell.totalDistance.text = [NSString stringWithFormat:@"%.02f miles", totalDistance * 0.000621371192];
+    }
+    
     
     [df setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0.0]];
     

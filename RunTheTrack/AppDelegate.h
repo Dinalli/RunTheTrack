@@ -26,6 +26,7 @@ extern NSString *const SCSessionStateChangedNotification;
 @property (nonatomic) BOOL useMotion;
 @property (nonatomic) CGFloat walkMotionDistance;
 @property (nonatomic) CGFloat runMotionDistance;
+@property (nonatomic) BOOL useKMasUnits;
 
 - (void)openSession;
 

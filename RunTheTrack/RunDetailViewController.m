@@ -10,6 +10,7 @@
 #import "CoreDataHelper.h"
 #import "RunSectorsViewController.h"
 #import <Social/Social.h>
+#import "AppDelegate.h"
 
 @interface RunDetailViewController ()
 
@@ -80,7 +81,16 @@
     
     runTime.text = [NSString stringWithFormat:@"Time : %@", self.runData.runtime];
     runLaps.text = [NSString stringWithFormat:@"Laps : %@",self.runData.runlaps];
-    runDistance.text = [NSString stringWithFormat:@"Distance : %@ miles",self.runData.rundistance];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    if([appDelegate useKMasUnits])
+    {
+        runDistance.text = [NSString stringWithFormat:@"%.02f km", [self.runData.rundistance floatValue] / 1000];
+    }
+    else
+    {
+        runDistance.text = [NSString stringWithFormat:@"Distance %.2f miles",[self.runData.rundistance floatValue] * 0.000621371192];
+    }
+    
     runDate.text = [NSString stringWithFormat:@"Date : %@",self.runData.rundate];
     self.navigationItem.title = self.runData.runtrackname;
     

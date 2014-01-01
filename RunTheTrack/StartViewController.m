@@ -164,7 +164,7 @@ enum TimerState : NSUInteger {
 
 - (IBAction)showMediaPicker:(id)sender
 {
-    MPMediaPickerController *mediaPicker = [[MPMediaPickerController alloc] initWithMediaTypes: MPMediaTypeAny];
+    MPMediaPickerController *mediaPicker = [[MPMediaPickerController alloc] initWithMediaTypes: MPMediaTypeMovie];
     mediaPicker.delegate = self;
     mediaPicker.allowsPickingMultipleItems = YES;
     mediaPicker.prompt = @"Select songs to play";
@@ -262,6 +262,8 @@ enum TimerState : NSUInteger {
             [self.trackPointArray addObject:coordPoint];
         }
     }
+    
+    NSLog(@"TOTAL TRACK DISTANCE %.2f", totalTrackDistance / 1000);
     
     MKRunnerAnnotation *runner = [[MKRunnerAnnotation alloc] init];
     runner.coordinate = poi;
@@ -595,8 +597,16 @@ enum TimerState : NSUInteger {
 //                }
                 
             }
+
+            if([appDelegate useKMasUnits])
+            {
+                distanceLabel.text =  [NSString stringWithFormat:@"%.2f km", totalPointsDistance / 1000];
+            }
+            else
+            {
+                distanceLabel.text =  [NSString stringWithFormat:@"%.2f miles", totalPointsDistance * 0.000621371192];
+            }
             
-            distanceLabel.text =  [NSString stringWithFormat:@"%.2f miles", totalPointsDistance * 0.000621371192];
             runIndex++;
 
             if(runIndex == self.trackPointArray.count)
@@ -703,7 +713,7 @@ enum TimerState : NSUInteger {
         }
     } // end of check on first lap
     
-    if((totalPointsDistance * 0.000621371192) > (totalTrackDistance / 2))
+    if(totalPointsDistance > (totalTrackDistance / 2))
     {
         if([CoreDataHelper countObjectsInContextWithEntityName:@"RunAchievement" andPredicate:[NSPredicate predicateWithFormat:@"trackname = %@ AND achievementTrigger = %@", [self.trackInfo objectForKey:@"Race"], @"HalfRaceDistance"]  withManagedObjectContext:self.managedObjectContext] == 0)
         {
@@ -743,7 +753,7 @@ enum TimerState : NSUInteger {
         [self.trackInfo setObject:totalRunTime forKey:@"runTime"];
         [self.trackInfo setObject:[NSString stringWithFormat:@"%ld",[self.timeLabel getValue]] forKey:@"timeLabel"];
         [self.trackInfo setObject:[NSString stringWithFormat:@"%d", (int)lapCounter] forKey:@"runLaps"];
-        [self.trackInfo setObject:[NSString stringWithFormat:@"%.2f",totalPointsDistance * 0.000621371192] forKey:@"runDistance"];
+        [self.trackInfo setObject:[NSString stringWithFormat:@"%.2f",totalPointsDistance] forKey:@"runDistance"];
 
         //Add Laps, achivements and Sectors Dictionary
         if (runLaps != nil)[self.trackInfo setObject:runLaps forKey:@"runLapsInfo"];

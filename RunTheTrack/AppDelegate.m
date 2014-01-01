@@ -45,6 +45,8 @@ NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:S
     // Call takeOff (which creates the UAirship singleton)
     [UAirship takeOff:config];
     
+    [self setUpDefaultsOnLoad];
+    
     return YES;
 }
 
@@ -53,6 +55,20 @@ NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:S
     return UIStatusBarStyleDefault;
 }
 
+-(void)setUpDefaultsOnLoad
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSString *units = [defaults objectForKey:@"units"];
+    if(!units)
+    {
+        [self setUseKMasUnits:NO];
+    }
+    else
+    {
+        [self setUseKMasUnits:[units boolValue]];
+    }    
+}
 
 #pragma mark Push Notifications
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken

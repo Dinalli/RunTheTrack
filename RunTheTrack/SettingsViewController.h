@@ -20,8 +20,10 @@
     IBOutlet UILabel *runMeters;
     IBOutlet UISwitch *gpsSwitch;
     IBOutlet UISwitch *motionSwitch;
+    IBOutlet UISegmentedControl *units;
     
     AppDelegate *appDelegate;
+    NSUserDefaults *defaults;
 }
 
 @end

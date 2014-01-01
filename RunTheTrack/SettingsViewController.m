@@ -31,18 +31,47 @@
 	// Do any additional setup after loading the view.
     
     appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    defaults = [NSUserDefaults standardUserDefaults];
+    [self setUpDefaultsOnLoad];
+    
+}
+
+-(void)setUpDefaultsOnLoad
+{
+    [walkSlider setValue:[[defaults valueForKey:@"walkSliderValue"] floatValue]];
+    [runSlider setValue:[[defaults valueForKey:@"runSliderValue"] floatValue]];
+    [gpsSwitch setOn:[[defaults valueForKey:@"gps"] boolValue]];
+    [motionSwitch setOn:[[defaults valueForKey:@"motion"] boolValue]];
+    [units setSelectedSegmentIndex:[[defaults valueForKey:@"units"] integerValue]];
+    
+    runMeters.text = [NSString stringWithFormat:@"%.1f",runSlider.value];
+    walkMeters.text = [NSString stringWithFormat:@"%.1f",walkSlider.value];
+    
+}
+
+-(void)setDefaults
+{
+    [defaults setValue:[NSString stringWithFormat:@"%f",walkSlider.value] forKey:@"walkSliderValue"];
+    [defaults setValue:[NSString stringWithFormat:@"%f",runSlider.value] forKey:@"runSliderValue"];
+    [defaults setValue:[NSNumber numberWithBool:gpsSwitch.on] forKey:@"gps"];
+    [defaults setValue:[NSNumber numberWithBool:motionSwitch.on] forKey:@"motion"];
+    [defaults setValue:[NSNumber numberWithInteger:units.selectedSegmentIndex] forKey:@"units"];
+    [defaults synchronize];
 }
 
 -(IBAction)walkMetersChanged:(id)sender
 {
     walkMeters.text = [NSString stringWithFormat:@"%.1f",walkSlider.value];
     [appDelegate setWalkMotionDistance:walkSlider.value];
+    [self setDefaults];
 }
 
 -(IBAction)runMetersChanged:(id)sender
 {
     runMeters.text = [NSString stringWithFormat:@"%.1f",runSlider.value];
     [appDelegate setRunMotionDistance:runSlider.value];
+    [self setDefaults];
 }
 
 -(IBAction)gpsSwitched:(id)sender
@@ -52,6 +81,7 @@
     walkSlider.enabled = NO;
     
     [appDelegate setUseMotion:NO];
+    [self setDefaults];
 }
 
 -(IBAction)m7switched:(id)sender
@@ -63,6 +93,13 @@
     [appDelegate setUseMotion:YES];
     [appDelegate setWalkMotionDistance:walkSlider.value];
     [appDelegate setRunMotionDistance:runSlider.value];
+    [self setDefaults];
+}
+
+-(IBAction)unitSwitched:(id)sender
+{
+    [appDelegate setUseKMasUnits:units.selectedSegmentIndex];
+    [self setDefaults];
 }
 
 - (void)didReceiveMemoryWarning

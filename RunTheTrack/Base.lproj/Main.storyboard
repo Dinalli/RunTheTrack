@@ -266,7 +266,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SZU-GA-9an">
-                                <rect key="frame" x="198" y="53" width="51" height="31"/>
+                                <rect key="frame" x="251" y="48" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="onTintColor" red="0.26274509800000001" green="0.1450980392" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
@@ -274,25 +274,25 @@
                                 </connections>
                             </switch>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Use GPS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56b-5Q-RhR">
-                                <rect key="frame" x="20" y="58" width="71" height="21"/>
+                                <rect key="frame" x="15" y="58" width="71" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Motion settings are not adjustable on devices that do not support M7." textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3W5-Us-atl">
-                                <rect key="frame" x="20" y="111" width="280" height="59"/>
+                                <rect key="frame" x="15" y="155" width="280" height="59"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kEY-Nk-9wT">
-                                <rect key="frame" x="13" y="106" width="292" height="198"/>
+                                <rect key="frame" x="8" y="150" width="292" height="198"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="272-ug-7rZ">
-                                        <rect key="frame" x="187" y="10" width="51" height="31"/>
+                                        <rect key="frame" x="241" y="10" width="51" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="onTintColor" red="0.26274509800000001" green="0.1450980392" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
@@ -306,7 +306,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.5" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="TX0-qt-Xc8">
-                                        <rect key="frame" x="152" y="70" width="118" height="34"/>
+                                        <rect key="frame" x="152" y="70" width="138" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="thumbTintColor" red="0.26274509800000001" green="0.1450980392" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
@@ -314,7 +314,7 @@
                                         </connections>
                                     </slider>
                                     <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="2.5" translatesAutoresizingMaskIntoConstraints="NO" id="irZ-Jf-OvW">
-                                        <rect key="frame" x="152" y="129" width="118" height="34"/>
+                                        <rect key="frame" x="152" y="129" width="138" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="thumbTintColor" red="0.26274509800000001" green="0.1450980392" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
@@ -348,6 +348,17 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="uBm-D6-D9b">
+                                <rect key="frame" x="15" y="106" width="285" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Miles"/>
+                                    <segment title="Kilometers"/>
+                                </segments>
+                                <connections>
+                                    <action selector="unitSwitched:" destination="j1Z-Tu-5ah" eventType="valueChanged" id="ysw-LW-yLg"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -359,6 +370,7 @@
                         <outlet property="motionView" destination="kEY-Nk-9wT" id="axn-sK-0Sc"/>
                         <outlet property="runMeters" destination="8zl-Up-s8x" id="Xv5-g8-8Kd"/>
                         <outlet property="runSlider" destination="irZ-Jf-OvW" id="EUB-Ku-oVz"/>
+                        <outlet property="units" destination="uBm-D6-D9b" id="kIO-yj-5cb"/>
                         <outlet property="walkMeters" destination="Se6-9E-pgl" id="ahC-kb-EYA"/>
                         <outlet property="walkSlider" destination="TX0-qt-Xc8" id="QmU-iN-IPj"/>
                     </connections>
@@ -623,7 +635,7 @@
                                 </connections>
                             </mapView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="0:00:00:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8cx-zv-de6" customClass="TTCounterLabel">
-                                <rect key="frame" x="3" y="4" width="297" height="192"/>
+                                <rect key="frame" x="77" y="4" width="240" height="192"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="42"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>

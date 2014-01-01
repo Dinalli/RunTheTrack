@@ -48,7 +48,15 @@
     [self.timeLabel setSavedValue:timeLong];
     [self.timeLabel updateApperance];
     runLaps.text = [NSString stringWithFormat:@"Laps %@",[self.trackInfo objectForKey:@"runLaps"]];
-    runDistance.text = [NSString stringWithFormat:@"Distance %@ miles",[self.trackInfo objectForKey:@"runDistance"]];
+    if([appDelegate useKMasUnits])
+    {
+        runDistance.text = [NSString stringWithFormat:@"Distance %.2f km",[[self.trackInfo objectForKey:@"runDistance"] floatValue] / 1000];
+    }
+    else
+    {
+        runDistance.text = [NSString stringWithFormat:@"Distance %.2f miles",[[self.trackInfo objectForKey:@"runDistance"] floatValue] * 0.000621371192];
+    }
+    
     paceLabel.text = [NSString stringWithFormat:@"%@ mph",@"3.1"];
     trackMapImage.image = [UIImage imageNamed:[self.trackInfo objectForKey:@"mapimage"]];
     trackName.text = [self.trackInfo objectForKey:@"Race"];
