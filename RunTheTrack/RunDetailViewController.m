@@ -56,17 +56,17 @@
     
     self.trackLine = [MKPolyline polylineWithCoordinates:coordinates count:numberOfSteps];
     [mv addOverlay:self.trackLine level:MKOverlayLevelAboveLabels];
+    [self zoomToPolyLine:mv polyLine:self.trackLine animated:YES];
+}
+
+-(void)zoomToPolyLine: (MKMapView*)map polyLine: (MKPolyline*)polyLine
+             animated: (BOOL)animated
+{
+    MKPolygon* polygon =
+    [MKPolygon polygonWithPoints:polyLine.points count:polyLine.pointCount];
     
-    MKCoordinateRegion region;
-    MKCoordinateSpan span;
-    span.latitudeDelta = 0.0200;
-    span.longitudeDelta = 0.0200;
-    region.span = span;
-    region.center.latitude = coordinates[numberOfSteps-1].latitude;
-    region.center.longitude = coordinates[numberOfSteps-1].longitude;
-    [mv setRegion:region animated:YES];
-    
-    
+    [map setRegion:MKCoordinateRegionForMapRect([polygon boundingMapRect])
+          animated:animated];
 }
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id < MKOverlay >)overlay
@@ -81,6 +81,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    [lapSlider setThumbImage:[UIImage imageNamed:@"routes-man"] forState:UIControlStateNormal];
     
     runTime.text = [NSString stringWithFormat:@"Time : %@", self.runData.runtime];
     runLaps.text = [NSString stringWithFormat:@"Laps : %@",self.runData.runlaps];
