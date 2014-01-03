@@ -42,6 +42,8 @@
         NSDictionary *selectedTrackInfo = [appDelegate.tracksArray  objectAtIndex:index.row];
         svc.TrackInfo = [selectedTrackInfo mutableCopy];
         
+        TFLog(@"Track Chosen %@", [selectedTrackInfo objectForKey:@"Race"]);
+        
         [self.collectionView
          deselectItemAtIndexPath:index animated:YES];
     }

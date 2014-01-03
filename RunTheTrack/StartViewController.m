@@ -47,6 +47,14 @@ enum TimerState : NSUInteger {
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    }
+    
+    synth = [[AVSpeechSynthesizer alloc] init];
+    synth.delegate = self;
+    
     appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     self.managedObjectContext = appDelegate.managedObjectContext;
@@ -56,8 +64,8 @@ enum TimerState : NSUInteger {
 	// Do any additional setup after loading the view.
     musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
     
-//    //Listen to notification of track playing changing
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(musicTrackChanged) name:MPMusicPlayerControllerNowPlayingItemDidChangeNotification object:musicPlayer];
+    //Listen to notification of track playing changing
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(musicPlayerPlaybackStateDidChange) name:MPMusicPlayerControllerPlaybackStateDidChangeNotification object:musicPlayer];
 //    [musicPlayer beginGeneratingPlaybackNotifications];
     
     self.timerState = timerStopped;
@@ -81,6 +89,7 @@ enum TimerState : NSUInteger {
     
     if(newRunAchievements == nil) newRunAchievements = [[NSMutableDictionary alloc] init];
 }
+
 
 - (void)customiseAppearance {
     [self.timeLabel setBoldFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:55]];
@@ -106,6 +115,7 @@ enum TimerState : NSUInteger {
         
         
         [self textToSpeak:@"Start your run"];
+        TFLog(@"Run Started");
         
         
         startDate = [NSDate date];
@@ -182,6 +192,7 @@ enum TimerState : NSUInteger {
     if (mediaItemCollection) {
         [musicPlayer setQueueWithItemCollection: mediaItemCollection];
         [musicPlayer play];
+        appDelegate.musicIsPlaying = YES;
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -212,6 +223,8 @@ enum TimerState : NSUInteger {
         self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
         self.locationManager.pausesLocationUpdatesAutomatically = NO;
         [self.locationManager startUpdatingLocation];
+        
+        TFLog(@"Location Updates Started");
     }
 }
 
@@ -561,7 +574,7 @@ enum TimerState : NSUInteger {
                     }
                 }
                 
-                if([startPoint distanceFromLocation:sector1EndPoint] < 0.5)
+                if([startPoint distanceFromLocation:sector1EndPoint] < 1)
                 {
                     NSLog(@"Distance from sector 1 point %f", [endPoint distanceFromLocation:sector1EndPoint]);
                     sector1Time = [self.timeLabel getValueString];
@@ -578,7 +591,7 @@ enum TimerState : NSUInteger {
                     NSLog(@"Sect1 lon %f", sector1EndPoint.coordinate.latitude);
                 }
                 
-                if([startPoint distanceFromLocation:sector2EndPoint] < 0.5)
+                if([startPoint distanceFromLocation:sector2EndPoint] < 1)
                 {
                     
                     sector2Time = [self.timeLabel getValueString];
@@ -801,6 +814,7 @@ enum TimerState : NSUInteger {
         
         [self.timeLabel stop];
         [self.locationManager stopUpdatingLocation];
+        TFLog(@"Location Updates Stopped");
         
         RunFinishViewController *rfvc = segue.destinationViewController;
         [self.trackInfo setObject:totalRunTime forKey:@"runTime"];
@@ -815,6 +829,10 @@ enum TimerState : NSUInteger {
         [self.trackInfo setObject:self.runPointArray forKey:@"runPointArray"];
         rfvc.trackInfo = self.trackInfo;        
         [self.timeLabel reset];
+        
+        TFLog(@"Run Laps %.2f", runLapsFloat);
+        TFLog(@"Run Distance %.2f",totalPointsDistance);
+        TFLog(@"Run Real Distance %.2f",totalLocationDistance);
 
     }
 }
@@ -864,10 +882,15 @@ enum TimerState : NSUInteger {
 
 -(void)textToSpeak:(NSString *)textToSpeak
 {
-    AVSpeechSynthesizer *synth = [[AVSpeechSynthesizer alloc] init];
-    
     AVSpeechUtterance *utt = [[AVSpeechUtterance alloc] initWithString:textToSpeak];
+    utt.rate = 0.4;
+    //utt.voice = [AVSpeechSynthesisVoice voiceWithLanguage:@"en-au"];
     [synth speakUtterance:utt];
+}
+
+-(void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer didFinishSpeechUtterance:(AVSpeechUtterance *)utterance
+{
+    if(appDelegate.musicIsPlaying) [musicPlayer play];
 }
 
 @end

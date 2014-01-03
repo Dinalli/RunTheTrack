@@ -56,7 +56,21 @@
     
     self.trackLine = [MKPolyline polylineWithCoordinates:coordinates count:numberOfSteps];
     [mv addOverlay:self.trackLine level:MKOverlayLevelAboveLabels];
-    [self zoomToPolyLine:mv polyLine:self.trackLine animated:YES];
+    if(self.trackLine.pointCount > 0)
+    {
+        [self zoomToPolyLine:mv polyLine:self.trackLine animated:YES];
+    }
+    else
+    {
+        MKCoordinateRegion region;
+        MKCoordinateSpan span;
+        span.latitudeDelta = 0.0200;
+        span.longitudeDelta = 0.0200;
+        region.span = span;
+        region.center.latitude = coordinates[numberOfSteps-1].latitude;
+        region.center.longitude = coordinates[numberOfSteps-1].longitude;
+        [mv setRegion:region animated:YES];
+    }
 }
 
 -(void)zoomToPolyLine: (MKMapView*)map polyLine: (MKPolyline*)polyLine

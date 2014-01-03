@@ -15,7 +15,7 @@
 #import "TrackInfoViewController.h"
 #import "TTCounterLabel.h"
 
-@interface StartViewController : UIViewController <TTCounterLabelDelegate, MPMediaPickerControllerDelegate, MKMapViewDelegate, CLLocationManagerDelegate>
+@interface StartViewController : UIViewController <TTCounterLabelDelegate, MPMediaPickerControllerDelegate, MKMapViewDelegate, CLLocationManagerDelegate, AVSpeechSynthesizerDelegate>
 {
     MPMusicPlayerController *musicPlayer;
     
@@ -68,6 +68,8 @@
     
     CLLocationDistance totalLocationDistance;
     float runLapsFloat;
+    
+    AVSpeechSynthesizer *synth;
 }
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;

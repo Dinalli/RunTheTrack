@@ -26,6 +26,8 @@ NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:S
     
     [Crashlytics startWithAPIKey:@"52f789dbfeee4af97bac9b49fd6414dc64175c2f"];
     
+    [TestFlight takeOff:@"8d319ac4-7608-41e3-9826-189e7bf2b1d5"];
+    
     NSBundle* bundle = [NSBundle mainBundle];
     NSString* plistPath = [bundle pathForResource:@"Tracks" ofType:@"plist"];
     self.tracksArray = [[NSArray alloc] initWithContentsOfFile:plistPath];
@@ -33,6 +35,7 @@ NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:S
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert];
     
     self.useMotion = NO;
+    self.musicIsPlaying = NO;
     
     // Populate AirshipConfig.plist with your app's info from https://go.urbanairship.com
     // or set runtime properties here.

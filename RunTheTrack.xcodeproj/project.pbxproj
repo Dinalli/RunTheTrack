@@ -146,6 +146,9 @@
 		40D35DCA182541E500D10899 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D35DC9182541E500D10899 /* CoreDataHelper.m */; };
 		40D42C9E18702DBD0057DF2D /* YLProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D42C9D18702DBD0057DF2D /* YLProgressBar.m */; };
 		40DFDBE9182AE6C100554C58 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40DFDBE8182AE6C100554C58 /* Social.framework */; };
+		40E1606F18772D5D004C1B89 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 40E1606918772D5D004C1B89 /* libTestFlight.a */; };
+		40E1607018772D5D004C1B89 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 40E1606A18772D5D004C1B89 /* README.md */; };
+		40E1607118772D5D004C1B89 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 40E1606B18772D5D004C1B89 /* release_notes.md */; };
 		40E5A2EA1856504300E8E87E /* UIView+More.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E5A2E91856504300E8E87E /* UIView+More.m */; };
 		40E5A2EC1856538A00E8E87E /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40E5A2EB1856538A00E8E87E /* CoreText.framework */; };
 		40E5A2EF185655B100E8E87E /* TTCounterLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E5A2EE185655B100E8E87E /* TTCounterLabel.m */; };
@@ -376,6 +379,12 @@
 		40D42C9C18702DBD0057DF2D /* YLProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLProgressBar.h; sourceTree = "<group>"; };
 		40D42C9D18702DBD0057DF2D /* YLProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLProgressBar.m; sourceTree = "<group>"; };
 		40DFDBE8182AE6C100554C58 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		40E1606918772D5D004C1B89 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
+		40E1606A18772D5D004C1B89 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		40E1606B18772D5D004C1B89 /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
+		40E1606C18772D5D004C1B89 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
+		40E1606D18772D5D004C1B89 /* TestFlight+AsyncLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+AsyncLogging.h"; sourceTree = "<group>"; };
+		40E1606E18772D5D004C1B89 /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+ManualSessions.h"; sourceTree = "<group>"; };
 		40E5A2E81856504300E8E87E /* UIView+More.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+More.h"; sourceTree = "<group>"; };
 		40E5A2E91856504300E8E87E /* UIView+More.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+More.m"; sourceTree = "<group>"; };
 		40E5A2EB1856538A00E8E87E /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
@@ -414,6 +423,7 @@
 				40E5A2EC1856538A00E8E87E /* CoreText.framework in Frameworks */,
 				40CD535E182C0E2D00352499 /* FacebookSDK.framework in Frameworks */,
 				40DFDBE9182AE6C100554C58 /* Social.framework in Frameworks */,
+				40E1606F18772D5D004C1B89 /* libTestFlight.a in Frameworks */,
 				40D35DC7182540B500D10899 /* CoreData.framework in Frameworks */,
 				40BAAD411820509B00137E8C /* AVFoundation.framework in Frameworks */,
 				40F3E1E1180F0F4900785F27 /* MediaPlayer.framework in Frameworks */,
@@ -441,6 +451,7 @@
 		4018F50417F82E26006F990E /* 3rdParty */ = {
 			isa = PBXGroup;
 			children = (
+				40E1606818772D01004C1B89 /* TestFlight */,
 				40D42C9B18702DAB0057DF2D /* YLProgressBar */,
 				40BA41901865D3A4007A6329 /* UrbanAirship */,
 				40A3B3DE185B765D00BA85BB /* MessageBarManager */,
@@ -997,6 +1008,19 @@
 			name = YLProgressBar;
 			sourceTree = "<group>";
 		};
+		40E1606818772D01004C1B89 /* TestFlight */ = {
+			isa = PBXGroup;
+			children = (
+				40E1606918772D5D004C1B89 /* libTestFlight.a */,
+				40E1606A18772D5D004C1B89 /* README.md */,
+				40E1606B18772D5D004C1B89 /* release_notes.md */,
+				40E1606C18772D5D004C1B89 /* TestFlight.h */,
+				40E1606D18772D5D004C1B89 /* TestFlight+AsyncLogging.h */,
+				40E1606E18772D5D004C1B89 /* TestFlight+ManualSessions.h */,
+			);
+			name = TestFlight;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1124,11 +1148,13 @@
 				4007A007181B1456008EC227 /* barcelona.png in Resources */,
 				405E5336185DEED400A8BD45 /* sector1.png in Resources */,
 				4018F52317F83903006F990E /* canada.jpg in Resources */,
+				40E1607018772D5D004C1B89 /* README.md in Resources */,
 				40A3B3EC185B76CC00BA85BB /* icon-info@2x.png in Resources */,
 				4007A006181B1456008EC227 /* bahrain.png in Resources */,
 				4007A012181B1456008EC227 /* monza.png in Resources */,
 				4098A64B186E06CC0087EE50 /* trophy.png in Resources */,
 				4002449517EF814F009ACC39 /* Silverstoneback.png in Resources */,
+				40E1607118772D5D004C1B89 /* release_notes.md in Resources */,
 				4018F53117F83903006F990E /* Usa.jpg in Resources */,
 				4057A5BF17EE596A00FE1E93 /* Icon.png in Resources */,
 				4057A5B917EE596A00FE1E93 /* Icon-72.png in Resources */,
