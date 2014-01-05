@@ -113,10 +113,21 @@ enum TimerState : NSUInteger {
         // Start the timer
         [self playSound:@"beep-8" :@"mp3"];
         
-        
         [self textToSpeak:@"Start your run"];
         TFLog(@"Run Started");
         
+        if([startBtn.titleLabel.text isEqualToString:@"RESUME"])
+        {
+            if(appDelegate.useMotion)
+            {
+                [self enableCoreMotion];
+            }
+            else
+            {
+                [self.locationManager startUpdatingLocation];
+                TFLog(@"Restarted Location Updates");
+            }
+        }
         
         startDate = [NSDate date];
         lastLapDate = startDate;
@@ -884,7 +895,7 @@ enum TimerState : NSUInteger {
 {
     AVSpeechUtterance *utt = [[AVSpeechUtterance alloc] initWithString:textToSpeak];
     utt.rate = 0.4;
-    //utt.voice = [AVSpeechSynthesisVoice voiceWithLanguage:@"en-au"];
+    utt.voice = [AVSpeechSynthesisVoice voiceWithLanguage:@"en-au"];
     [synth speakUtterance:utt];
 }
 
