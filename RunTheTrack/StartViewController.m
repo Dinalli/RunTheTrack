@@ -843,7 +843,6 @@ enum TimerState : NSUInteger {
         
         [self.trackInfo setObject:self.runPointArray forKey:@"runPointArray"];
         rfvc.trackInfo = self.trackInfo;        
-        [self.timeLabel reset];
         
         TFLog(@"Run Laps %.2f", runLapsFloat);
         TFLog(@"Run Distance %.2f",totalPointsDistance);
