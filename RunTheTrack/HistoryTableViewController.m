@@ -42,6 +42,13 @@
     runs = [CoreDataHelper getObjectsFromContextWithEntityName:@"RunData" andSortKey:nil andSortAscending:YES withManagedObjectContext:self.managedObjectContext];
     runs = [[[runs reverseObjectEnumerator] allObjects] mutableCopy];
     
+    if (runs.count == 0)
+    {
+        [[MessageBarManager sharedInstance] showMessageWithTitle:@"No past runs available."
+                                                     description:[NSString stringWithFormat:@"Why not go for a run. You will be able to see details of your past runs here."]
+                                                            type:MessageBarMessageTypeInfo];
+    }
+    
     [self.tableView reloadData];
 }
 

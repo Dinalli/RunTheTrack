@@ -58,6 +58,13 @@
             }
         }
     }
+    
+    if (runs.count == 0)
+    {
+        [[MessageBarManager sharedInstance] showMessageWithTitle:@"No past runs available."
+                                                     description:[NSString stringWithFormat:@"Why not go for a run. You will see your progress on each track here."]
+                                                            type:MessageBarMessageTypeInfo];
+    }
 }
 
 #pragma mark - UICollectionViewDelegate

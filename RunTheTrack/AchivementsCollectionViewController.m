@@ -35,6 +35,13 @@
     self.managedObjectContext = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).managedObjectContext;
     
     runAchivements = [CoreDataHelper getObjectsFromContextWithEntityName:@"RunAchievement" andSortKey:nil andSortAscending:YES withManagedObjectContext:self.managedObjectContext];
+    
+    if (runAchivements.count == 0)
+    {
+        [[MessageBarManager sharedInstance] showMessageWithTitle:@"No challenges completed."
+                                                     description:[NSString stringWithFormat:@"Why not go for a run and your completed challenges will appear here."]
+                                                            type:MessageBarMessageTypeInfo];
+    }
 }
 
 #pragma mark - UICollectionViewDelegate
