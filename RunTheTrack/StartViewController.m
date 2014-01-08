@@ -743,25 +743,29 @@ enum TimerState : NSUInteger {
     if(self.timerState == timerStarted)
     {
         CLLocation *newLocation = [locations lastObject];
-        CLLocation *oldLocation = [self.runPointArray lastObject];
-        CLLocationDistance distance;
         
-        //Always add the real location to array so we can show the real route later on
-        [self.runPointArray addObject:newLocation];
-        
-        // No need to do anything if old location is not set
-        if(oldLocation != nil)
+        if(newLocation.horizontalAccuracy < 15 && newLocation.verticalAccuracy < 30)
         {
-            distance = [newLocation distanceFromLocation:oldLocation];
-            totalLocationDistance = totalLocationDistance + distance;
-            //NSLog(@"TOTAL LOCATION DISTANCE %.2f", totalLocationDistance / 1000);
-            [self moveAnnotaionWithDistance:distance];
+            CLLocation *oldLocation = [self.runPointArray lastObject];
+            CLLocationDistance distance;
+            
+            //Always add the real location to array so we can show the real route later on
+            [self.runPointArray addObject:newLocation];
+            
+            // No need to do anything if old location is not set
+            if(oldLocation != nil)
+            {
+                distance = [newLocation distanceFromLocation:oldLocation];
+                totalLocationDistance = totalLocationDistance + distance;
+                //NSLog(@"TOTAL LOCATION DISTANCE %.2f", totalLocationDistance / 1000);
+                [self moveAnnotaionWithDistance:distance];
+            }
+            else // no old location
+            {
+                totalPointsDistance = 0;
+                totalLocationDistance = 0;
+            }// no Location
         }
-        else // no old location
-        {
-            totalPointsDistance = 0;
-            totalLocationDistance = 0;
-        }// no Location
     } // Timer not set
 }
 
