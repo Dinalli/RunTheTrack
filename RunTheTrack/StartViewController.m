@@ -611,7 +611,7 @@ enum TimerState : NSUInteger {
                 double latitudeModifier;    // Distance to add/subtract to each latitude point
                 double longitudeModifier;   // Distance to add/subtract to each longitude point
                 
-                int numberOfPoints = 500;   // The number of points you want between the two points
+                int numberOfPoints = 25;   // The number of points you want between the two points
                 
                 CLLocationCoordinate2D newPoint;
                 // Determine the distance between the lats and divide by numberOfPoints
