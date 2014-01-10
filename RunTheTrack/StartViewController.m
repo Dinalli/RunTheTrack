@@ -88,6 +88,7 @@ enum TimerState : NSUInteger {
     currentAchievements = [CoreDataHelper searchObjectsInContextWithEntityName:@"RunAchievement" andPredicate:[NSPredicate predicateWithFormat:@"trackname = %@", [self.trackInfo objectForKey:@"Race"]] withSortKey:nil sortAscending:YES withManagedObjectContext:self.managedObjectContext];
     
     if(newRunAchievements == nil) newRunAchievements = [[NSMutableDictionary alloc] init];
+    if(runAltitudeArray == nil) runAltitudeArray = [[NSMutableArray alloc] init];
 }
 
 
@@ -112,8 +113,7 @@ enum TimerState : NSUInteger {
     {
         // Start the timer
         [self playSound:@"beep-8" :@"mp3"];
-        
-        [self textToSpeak:@"Start your run"];
+
         TFLog(@"Run Started");
         
         if([startBtn.titleLabel.text isEqualToString:@"RESUME"])
@@ -136,15 +136,6 @@ enum TimerState : NSUInteger {
         self.timerState = timerStarted;
         [self.timeLabel start];
         btnFinish.hidden = YES;
-        
-        if([CoreDataHelper countObjectsInContextWithEntityName:@"RunAchievement" andPredicate:[NSPredicate predicateWithFormat:@"trackname = %@ AND achievementTrigger = %@", [self.trackInfo objectForKey:@"Race"], @"FirstRun"] withManagedObjectContext:self.managedObjectContext] == 0)
-        {
-            [newRunAchievements setObject:@"Well done on starting your First Run" forKey:@"FirstRun"];
-            [[MessageBarManager sharedInstance] showMessageWithTitle:@"Congradulations"
-                                                         description:@"Started Your First Run"
-                                                                type:MessageBarMessageTypeInfo];
-            [self textToSpeak:@"Well done on starting your First Run"];
-        }
     }
     else if(self.timerState == timerStarted)
     {
@@ -521,7 +512,6 @@ enum TimerState : NSUInteger {
     {
         if ([ann.title isEqualToString:@"Runner"])
         {
-            NSLog(@"moveAnnotaionWithDistance %f", distance);
             NSArray *lastlatlong = [[self.trackPointArray objectAtIndex:runIndex] componentsSeparatedByString:@","];
             NSString *lastlat = [lastlatlong objectAtIndex:0];
             NSString *lastlng = [lastlatlong objectAtIndex:1];
@@ -649,8 +639,7 @@ enum TimerState : NSUInteger {
                                 insertIndex = insertIndex-1;
                                 lapCounter++;
                                 [self playSound:@"beep-8" :@"mp3"];
-                                [self textToSpeak:[NSString stringWithFormat:@"Lap Complete %@",[self.timeLabel getValueString]]];
-                                
+
                                 sector3Time = [self.timeLabel getValueString];
                                 
                                 // Save Sectors and Lap Times
@@ -673,20 +662,18 @@ enum TimerState : NSUInteger {
                                 lapTime.text = [dateFormatter stringFromDate:timerDate];
                                 lastLapDate = [NSDate date];
                                 
-                                if([CoreDataHelper countObjectsInContextWithEntityName:@"RunAchievement" andPredicate:[NSPredicate predicateWithFormat:@"trackname = %@ AND achievementTrigger = %@", [self.trackInfo objectForKey:@"Race"], @"FastestLap"]  withManagedObjectContext:self.managedObjectContext] == 0)
+                                if([CoreDataHelper countObjectsInContextWithEntityName:@"RunAchievement"
+                                                                          andPredicate:[NSPredicate
+                                                                                        predicateWithFormat:@"trackname = %@ AND achievementTrigger = %@",
+                                                                                        [self.trackInfo objectForKey:@"Race"], @"FastestLap"]
+                                                              withManagedObjectContext:self.managedObjectContext] == 0)
                                 {
                                     // fastest lap
                                     [newRunAchievements setObject:@"New Fastest Lap" forKey:@"FastestLap"];
                                     [[MessageBarManager sharedInstance] showMessageWithTitle:@"New Fastest Lap"
                                                                                  description:[NSString stringWithFormat:@"Timed at : %@", [dateFormatter stringFromDate:timerDate]]
                                                                                         type:MessageBarMessageTypeInfo];
-                                    
-                                    [self textToSpeak:[NSString stringWithFormat:@"New Fastest Lap timed at %@", [dateFormatter stringFromDate:timerDate]]];
                                 }
-                                
-                                //Check any achivements
-                                [self checkAchivementsOnLapFinish];
-
                         }
                         [self.trackPointArray insertObject:[NSString stringWithFormat:@"%f,%f", pointLoc.coordinate.latitude, pointLoc.coordinate.longitude] atIndex:insertIndex];
                         break;
@@ -701,10 +688,6 @@ enum TimerState : NSUInteger {
                     [[MessageBarManager sharedInstance] showMessageWithTitle:@"Sector 1 Complete"
                                                                  description:[NSString stringWithFormat:@"Timed at : %@", [self.timeLabel getValueString]]
                                                                         type:MessageBarMessageTypeInfo];
-                    
-                    
-                    [self textToSpeak:[NSString stringWithFormat:@"Sector 1 time %@", [self.timeLabel getValueString]]];
-
                 }
                 
                 if([startPoint distanceFromLocation:sector2EndPoint] < 1)
@@ -714,8 +697,6 @@ enum TimerState : NSUInteger {
                     [[MessageBarManager sharedInstance] showMessageWithTitle:@"Sector 2 Complete"
                                                                  description:[NSString stringWithFormat:@"Timed at : %@", [self.timeLabel getValueString]]
                                                                         type:MessageBarMessageTypeInfo];
-                    
-                    [self textToSpeak:[NSString stringWithFormat:@"Sector 2 time %@",[self.timeLabel getValueString]]];
 
                 }
                 
@@ -741,7 +722,6 @@ enum TimerState : NSUInteger {
                     nextRunIndex = 0;
                     lapCounter++;
                     [self playSound:@"beep-8" :@"mp3"];
-                    [self textToSpeak:[NSString stringWithFormat:@"Lap Complete %@",[self.timeLabel getValueString]]];
                     
                     sector3Time = [self.timeLabel getValueString];
                     
@@ -768,16 +748,20 @@ enum TimerState : NSUInteger {
                     if([CoreDataHelper countObjectsInContextWithEntityName:@"RunAchievement" andPredicate:[NSPredicate predicateWithFormat:@"trackname = %@ AND achievementTrigger = %@", [self.trackInfo objectForKey:@"Race"], @"FastestLap"]  withManagedObjectContext:self.managedObjectContext] == 0)
                     {
                         // fastest lap
-                        [newRunAchievements setObject:@"New Fastest Lap" forKey:@"FastestLap"];
-                        [[MessageBarManager sharedInstance] showMessageWithTitle:@"New Fastest Lap"
-                                                                     description:[NSString stringWithFormat:@"Timed at : %@", [dateFormatter stringFromDate:timerDate]]
-                                                                            type:MessageBarMessageTypeInfo];
+                        [newRunAchievements setObject:
+                         [NSString stringWithFormat:@"Fastest Lap for %@ Timed at : %@",[self.trackInfo objectForKey:@"Race"],
+                          [dateFormatter stringFromDate:timerDate]]
+                                               forKey:@"Fastest Lap"];
                         
-                        [self textToSpeak:[NSString stringWithFormat:@"New Fastest Lap timed at %@", [dateFormatter stringFromDate:timerDate]]];
+                        [[MessageBarManager sharedInstance]
+                         showMessageWithTitle:[NSString stringWithFormat:@"%@ Fastest Lap",
+                                               [self.trackInfo objectForKey:@"Race"]]
+                                                                     description:[NSString stringWithFormat:@"Timed at : %@",
+                                                                                  [dateFormatter stringFromDate:timerDate]]
+                                                                            type:MessageBarMessageTypeInfo];
+
                     }
-                    
-                    //Check any achivements
-                    [self checkAchivementsOnLapFinish];
+
                 }
             }
             
@@ -795,7 +779,13 @@ enum TimerState : NSUInteger {
     if(self.timerState == timerStarted)
     {
         CLLocation *newLocation = [locations lastObject];
+        NSLog(@"%f",newLocation.altitude);
         
+        if(newLocation.altitude != 0)
+        {
+            [runAltitudeArray addObject:[NSDictionary dictionaryWithObjects:@[[self.timeLabel getValueString],[NSNumber numberWithDouble:newLocation.altitude]] forKeys:@[@"time",@"altitude"]]];
+        }
+
 //        if(newLocation.horizontalAccuracy < 15 && newLocation.verticalAccuracy < 30)
 //        {
             CLLocation *oldLocation = [self.runPointArray lastObject];
@@ -823,44 +813,6 @@ enum TimerState : NSUInteger {
 //            TFLog(@"Location not accurate enough");
 //        }
     } // Timer not set
-}
-
--(void)checkAchivementsOnLapFinish
-{
-    // First time the app has been run
-    
-    if(lapCounter == 1)
-    {
-        if([CoreDataHelper countObjectsInContextWithEntityName:@"RunAchievement" andPredicate:[NSPredicate predicateWithFormat:@"trackname = %@ AND achievementTrigger = %@", [self.trackInfo objectForKey:@"Race"], @"FirstLap"]  withManagedObjectContext:self.managedObjectContext] == 0)
-        {
-            // First ever lap completed
-            [newRunAchievements setObject:@"Congradulations, Completed your First Lap" forKey:@"FirstLap"];
-            [[MessageBarManager sharedInstance] showMessageWithTitle:@"Congradulations"
-                                                         description:@"Completed Your First Lap"
-                                                                type:MessageBarMessageTypeInfo];
-        }
-        
-        if([CoreDataHelper countObjectsInContextWithEntityName:@"RunAchievement" andPredicate:[NSPredicate predicateWithFormat:@"trackname = %@ AND achievementTrigger = %@", [self.trackInfo objectForKey:@"Race"], @"FirstTrackLap"]  withManagedObjectContext:self.managedObjectContext] == 0)
-        {
-            // First lap of the track
-            [newRunAchievements setObject:[NSString stringWithFormat:@"Completed Your First Lap For %@", [self.trackInfo objectForKey:@"Race"]] forKey:@"FirstTrackLap"];
-            [[MessageBarManager sharedInstance] showMessageWithTitle:@"Congradulations"
-                                                         description:[NSString stringWithFormat:@"Completed Your First Lap For %@", [self.trackInfo objectForKey:@"Race"]]
-                                                                type:MessageBarMessageTypeInfo];
-        }
-    } // end of check on first lap
-    
-    if(totalPointsDistance > (totalTrackDistance / 2))
-    {
-        if([CoreDataHelper countObjectsInContextWithEntityName:@"RunAchievement" andPredicate:[NSPredicate predicateWithFormat:@"trackname = %@ AND achievementTrigger = %@", [self.trackInfo objectForKey:@"Race"], @"HalfRaceDistance"]  withManagedObjectContext:self.managedObjectContext] == 0)
-        {
-            [newRunAchievements setObject:[NSString stringWithFormat:@"Completed half the distance of %@", [self.trackInfo objectForKey:@"Race"]] forKey:@"HalfRaceDistance"];
-            [[MessageBarManager sharedInstance] showMessageWithTitle:@"Congradulations"
-                                                         description:[NSString stringWithFormat:@"Completed half the distance of %@", [self.trackInfo objectForKey:@"Race"]]
-                                                                type:MessageBarMessageTypeInfo];
-        }
-    }
-    
 }
 
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay
@@ -896,6 +848,7 @@ enum TimerState : NSUInteger {
         //Add Laps, achivements and Sectors Dictionary
         if (runLaps != nil)[self.trackInfo setObject:runLaps forKey:@"runLapsInfo"];
         if (newRunAchievements != nil)[self.trackInfo setObject:newRunAchievements forKey:@"runAchivementsInfo"];
+        if (runAltitudeArray != nil)[self.trackInfo setObject:runAltitudeArray forKey:@"runAltitude"];
         
         [self.trackInfo setObject:self.runPointArray forKey:@"runPointArray"];
         rfvc.trackInfo = self.trackInfo;        
@@ -946,21 +899,6 @@ enum TimerState : NSUInteger {
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma mark Speech
-
--(void)textToSpeak:(NSString *)textToSpeak
-{
-    AVSpeechUtterance *utt = [[AVSpeechUtterance alloc] initWithString:textToSpeak];
-    utt.rate = 0.4;
-    utt.voice = [AVSpeechSynthesisVoice voiceWithLanguage:@"en-au"];
-    [synth speakUtterance:utt];
-}
-
--(void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer didFinishSpeechUtterance:(AVSpeechUtterance *)utterance
-{
-    if(appDelegate.musicIsPlaying) [musicPlayer play];
 }
 
 @end

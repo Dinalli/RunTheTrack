@@ -38,8 +38,8 @@
     
     if (runAchivements.count == 0)
     {
-        [[MessageBarManager sharedInstance] showMessageWithTitle:@"No challenges completed."
-                                                     description:[NSString stringWithFormat:@"Why not go for a run and your completed challenges will appear here."]
+        [[MessageBarManager sharedInstance] showMessageWithTitle:@"No fastest laps."
+                                                     description:[NSString stringWithFormat:@"Why not go for a run and your completed fast laps will appear here."]
                                                             type:MessageBarMessageTypeInfo];
     }
 }

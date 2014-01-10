@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A598" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ruh-MY-veC">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller - Profile-->
@@ -180,11 +180,11 @@
             </objects>
             <point key="canvasLocation" x="1252" y="16"/>
         </scene>
-        <!--Navigation Controller - Challenges-->
+        <!--Navigation Controller - Lap Records-->
         <scene sceneID="ghN-vW-8Yz">
             <objects>
                 <navigationController definesPresentationContext="YES" id="2gz-D4-2cE" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Challenges" image="routes-cup.png" id="gJ9-5Z-dnc"/>
+                    <tabBarItem key="tabBarItem" title="Lap Records" image="routes-cup.png" id="gJ9-5Z-dnc"/>
                     <navigationItem key="navigationItem" id="4sX-39-qpp"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1sp-sk-qJu">
                         <autoresizingMask key="autoresizingMask"/>
@@ -197,7 +197,7 @@
             </objects>
             <point key="canvasLocation" x="863" y="702"/>
         </scene>
-        <!--Achivements Collection View Controller - Challenges-->
+        <!--Achivements Collection View Controller - Lap Records-->
         <scene sceneID="ayM-JX-404">
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="ZDe-IT-rLM" customClass="AchivementsCollectionViewController" sceneMemberID="viewController">
@@ -245,8 +245,8 @@
                             <outlet property="delegate" destination="ZDe-IT-rLM" id="QgY-4X-58r"/>
                         </connections>
                     </collectionView>
-                    <tabBarItem key="tabBarItem" title="Challenges" image="routes-cup.png" id="8fG-nM-dkT"/>
-                    <navigationItem key="navigationItem" title="Challenges" id="c82-Xo-xeB"/>
+                    <tabBarItem key="tabBarItem" title="Lap Records" image="routes-cup.png" id="8fG-nM-dkT"/>
+                    <navigationItem key="navigationItem" title="Lap Records" id="c82-Xo-xeB"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TcJ-UL-5Ug" userLabel="First Responder" sceneMemberID="firstResponder"/>

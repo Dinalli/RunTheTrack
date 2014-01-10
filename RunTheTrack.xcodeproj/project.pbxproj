@@ -71,6 +71,8 @@
 		4057A5BF17EE596A00FE1E93 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4057A5B717EE596A00FE1E93 /* Icon.png */; };
 		4057A5C017EE596A00FE1E93 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4057A5B817EE596A00FE1E93 /* Icon@2x.png */; };
 		4057EB3118703BA800F52EF4 /* CommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4057EB3018703BA800F52EF4 /* CommonUtils.m */; };
+		405974F0187FDE94006924CC /* RunData.m in Sources */ = {isa = PBXBuildFile; fileRef = 405974EF187FDE94006924CC /* RunData.m */; };
+		405974F3187FDE95006924CC /* RunAltitude.m in Sources */ = {isa = PBXBuildFile; fileRef = 405974F2187FDE95006924CC /* RunAltitude.m */; };
 		405A15EE17EEF4E200684921 /* Icon-80.png in Resources */ = {isa = PBXBuildFile; fileRef = 405A15EB17EEF4E200684921 /* Icon-80.png */; };
 		405A15EF17EEF4E200684921 /* Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 405A15EC17EEF4E200684921 /* Icon-120.png */; };
 		405A15F017EEF4E200684921 /* Icon58.png in Resources */ = {isa = PBXBuildFile; fileRef = 405A15ED17EEF4E200684921 /* Icon58.png */; };
@@ -158,7 +160,6 @@
 		40F3E1E4180F194A00785F27 /* HistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F3E1E3180F194A00785F27 /* HistoryTableViewController.m */; };
 		40F9780C18391332005D7904 /* RunSectors.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F9780B18391332005D7904 /* RunSectors.m */; };
 		40F9780F18391332005D7904 /* RunLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F9780E18391332005D7904 /* RunLocations.m */; };
-		40F9781218391332005D7904 /* RunData.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F9781118391332005D7904 /* RunData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -244,6 +245,12 @@
 		4057A5B817EE596A00FE1E93 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		4057EB2F18703BA800F52EF4 /* CommonUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtils.h; sourceTree = "<group>"; };
 		4057EB3018703BA800F52EF4 /* CommonUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtils.m; sourceTree = "<group>"; };
+		405974E1187FD713006924CC /* RTT v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RTT v2.xcdatamodel"; sourceTree = "<group>"; };
+		405974EE187FDE94006924CC /* RunData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunData.h; sourceTree = "<group>"; };
+		405974EF187FDE94006924CC /* RunData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunData.m; sourceTree = "<group>"; };
+		405974F1187FDE95006924CC /* RunAltitude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunAltitude.h; sourceTree = "<group>"; };
+		405974F2187FDE95006924CC /* RunAltitude.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunAltitude.m; sourceTree = "<group>"; };
+		405974F4187FDF16006924CC /* RTT v 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RTT v 3.xcdatamodel"; sourceTree = "<group>"; };
 		405A15EB17EEF4E200684921 /* Icon-80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-80.png"; sourceTree = "<group>"; };
 		405A15EC17EEF4E200684921 /* Icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-120.png"; sourceTree = "<group>"; };
 		405A15ED17EEF4E200684921 /* Icon58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon58.png; sourceTree = "<group>"; };
@@ -401,8 +408,6 @@
 		40F9780B18391332005D7904 /* RunSectors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunSectors.m; sourceTree = "<group>"; };
 		40F9780D18391332005D7904 /* RunLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunLocations.h; sourceTree = "<group>"; };
 		40F9780E18391332005D7904 /* RunLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunLocations.m; sourceTree = "<group>"; };
-		40F9781018391332005D7904 /* RunData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunData.h; sourceTree = "<group>"; };
-		40F9781118391332005D7904 /* RunData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -991,10 +996,12 @@
 				40F9780B18391332005D7904 /* RunSectors.m */,
 				40F9780D18391332005D7904 /* RunLocations.h */,
 				40F9780E18391332005D7904 /* RunLocations.m */,
-				40F9781018391332005D7904 /* RunData.h */,
-				40F9781118391332005D7904 /* RunData.m */,
 				403FA5681854C670002A33DF /* RunAchievement.h */,
 				403FA5691854C670002A33DF /* RunAchievement.m */,
+				405974EE187FDE94006924CC /* RunData.h */,
+				405974EF187FDE94006924CC /* RunData.m */,
+				405974F1187FDE95006924CC /* RunAltitude.h */,
+				405974F2187FDE95006924CC /* RunAltitude.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1231,6 +1238,7 @@
 				405E5342185E113D00A8BD45 /* StartFinishAnnotation.m in Sources */,
 				405E533C185E10C000A8BD45 /* Sector1Annotaion.m in Sources */,
 				403FA56A1854C670002A33DF /* RunAchievement.m in Sources */,
+				405974F3187FDE95006924CC /* RunAltitude.m in Sources */,
 				407710AF18453B6E00882BBE /* ProfileCollectionCell.m in Sources */,
 				40E5A2EF185655B100E8E87E /* TTCounterLabel.m in Sources */,
 				4057EB3118703BA800F52EF4 /* CommonUtils.m in Sources */,
@@ -1244,6 +1252,7 @@
 				407C4DF9180BF66500F7B2FE /* AchivementsCollectionViewController.m in Sources */,
 				4018F50F17F832B9006F990E /* JBKenBurnsView.m in Sources */,
 				408A7993182AE3AA0088D8AC /* SettingsViewController.m in Sources */,
+				405974F0187FDE94006924CC /* RunData.m in Sources */,
 				4013EF141850686E00D6740F /* RunSectorsViewController.m in Sources */,
 				40C1657317EB637900D4E093 /* AppDelegate.m in Sources */,
 				40E5A2EA1856504300E8E87E /* UIView+More.m in Sources */,
@@ -1256,7 +1265,6 @@
 				40D35DCA182541E500D10899 /* CoreDataHelper.m in Sources */,
 				40D42C9E18702DBD0057DF2D /* YLProgressBar.m in Sources */,
 				40F3E1DF180F0EE000785F27 /* StartViewController.m in Sources */,
-				40F9781218391332005D7904 /* RunData.m in Sources */,
 				40BE1F6A1823C7C2004C3FC3 /* MKRunnerAnnotation.m in Sources */,
 				407C4DF6180BF65300F7B2FE /* AchivementCell.m in Sources */,
 				4048167C1845D7D2000410C7 /* ProfileHeaderView.m in Sources */,
@@ -1354,6 +1362,7 @@
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "A64AD871-B6EA-496E-B2EE-3C6C9231F530";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1391,6 +1400,7 @@
 					"$(inherited)",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PROVISIONING_PROFILE = "A64AD871-B6EA-496E-B2EE-3C6C9231F530";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1421,7 +1431,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "A64AD871-B6EA-496E-B2EE-3C6C9231F530";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1451,7 +1461,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "A64AD871-B6EA-496E-B2EE-3C6C9231F530";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1534,9 +1544,11 @@
 		40C1659C17EB658A00D4E093 /* RTT.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				405974F4187FDF16006924CC /* RTT v 3.xcdatamodel */,
+				405974E1187FD713006924CC /* RTT v2.xcdatamodel */,
 				40C1659D17EB658A00D4E093 /* RTT.xcdatamodel */,
 			);
-			currentVersion = 40C1659D17EB658A00D4E093 /* RTT.xcdatamodel */;
+			currentVersion = 405974F4187FDF16006924CC /* RTT v 3.xcdatamodel */;
 			name = RTT.xcdatamodeld;
 			path = CoreData/RTT.xcdatamodeld;
 			sourceTree = "<group>";

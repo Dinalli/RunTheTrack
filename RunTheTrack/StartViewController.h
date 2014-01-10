@@ -54,6 +54,9 @@
     NSMutableDictionary *newRunAchievements;
     NSArray *currentAchievements;
     
+    NSMutableArray *runAltitudeArray;
+    NSString *fastestLap;
+    
     double totalPointsDistance;
     
     AppDelegate *appDelegate;

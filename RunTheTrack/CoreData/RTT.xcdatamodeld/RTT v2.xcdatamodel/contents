@@ -13,9 +13,8 @@
     </entity>
     <entity name="RunAltitude" representedClassName="RunAltitude" syncable="YES">
         <attribute name="altitude" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="altitudeTimeStamp" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="altitudeTimeStamp" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="runid" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RunData" inverseName="runAlt" inverseEntity="RunData" syncable="YES"/>
     </entity>
     <entity name="RunData" representedClassName="RunData" syncable="YES">
         <attribute name="rundate" optional="YES" attributeType="String" syncable="YES"/>
@@ -26,7 +25,7 @@
         <attribute name="runtime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="runtrackname" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="runAchievement" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="RunAchievement" inverseName="relationship" inverseEntity="RunAchievement" syncable="YES"/>
-        <relationship name="runAlt" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RunAltitude" inverseName="relationship" inverseEntity="RunAltitude" syncable="YES"/>
+        <relationship name="runAltitudes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="RunAltitude" syncable="YES"/>
         <relationship name="runDataLocations" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="RunLocations" inverseName="runLoactionsData" inverseEntity="RunLocations" syncable="YES"/>
         <relationship name="runSectors" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="RunSectors" inverseName="relationship" inverseEntity="RunSectors" syncable="YES"/>
     </entity>

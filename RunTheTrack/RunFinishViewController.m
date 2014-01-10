@@ -12,6 +12,7 @@
 #import "RunLocations.h"
 #import "RunSectors.h"
 #import "RunAchievement.h"
+#import "RunAltitude.h"
 #import "AppDelegate.h"
 #import "UIImage+ImageEffects.h"
 #import <Social/Social.h>
@@ -246,6 +247,7 @@
     [runData setRuntime:[self.trackInfo valueForKey:@"runTime"]];
     [runData setRunlaps:[self.trackInfo valueForKey:@"runLaps"]];
     [runData setRundistance:[self.trackInfo valueForKey:@"runDistance"]];
+    [runData setRunPace:@"0"];
     [runData setRundate:[NSDateFormatter localizedStringFromDate:[NSDate date]
                                                                               dateStyle:NSDateFormatterMediumStyle
                                                                               timeStyle:NSDateFormatterShortStyle]];
@@ -290,33 +292,7 @@
             [runData addRunSectorsObject:runSectors];
         }
     }
-    
-    if([CoreDataHelper countObjectsInContextWithEntityName:@"RunAchievement" andPredicate:[NSPredicate predicateWithFormat:@"trackname = %@ AND achievementTrigger = %@", [self.trackInfo objectForKey:@"Race"], @"LongestRun"]  withManagedObjectContext:self.managedObjectContext])
-    {
-        RunAchievement *runAch = [NSEntityDescription insertNewObjectForEntityForName:@"RunAchievement" inManagedObjectContext:self.managedObjectContext];
-        [runAch setRunId:runData.runid];
-        [runAch setTrackname:runData.runtrackname];
-        [runAch setAchievementTrigger:@"LongestRunDistance"];
-        [runAch setAchievementText:[NSString stringWithFormat:@"Your longest run distance yet at %@",[self.trackInfo valueForKey:@"runDistance"]]];
-        [runData addRunAchievementObject:runAch];
-        [[MessageBarManager sharedInstance] showMessageWithTitle:@"Longest Run Distance Yet"
-                                                     description:[NSString stringWithFormat:@"Your longest run distance yet at %@",[self.trackInfo valueForKey:@"runDistance"]]
-                                                            type:MessageBarMessageTypeInfo];
-    }
-    
-    if([CoreDataHelper countObjectsInContextWithEntityName:@"RunAchievement" andPredicate:[NSPredicate predicateWithFormat:@"trackname = %@ AND achievementTrigger = %@", [self.trackInfo objectForKey:@"Race"], @"LongestRunTime"]  withManagedObjectContext:self.managedObjectContext])
-    {
-        RunAchievement *runAch = [NSEntityDescription insertNewObjectForEntityForName:@"RunAchievement" inManagedObjectContext:self.managedObjectContext];
-        [runAch setRunId:runData.runid];
-        [runAch setTrackname:runData.runtrackname];
-        [runAch setAchievementTrigger:@"LongestRunTime"];
-        [runAch setAchievementText:[NSString stringWithFormat:@"Your longest run yet at %@",[self.trackInfo valueForKey:@"runTime"]]];
-        [runData addRunAchievementObject:runAch];
-        [[MessageBarManager sharedInstance] showMessageWithTitle:@"Longest Run Time Yet"
-                                                     description:[NSString stringWithFormat:@"Your longest run yet at %@",[self.trackInfo valueForKey:@"runTime"]]
-                                                            type:MessageBarMessageTypeInfo];
-    }
-    
+        
     NSDictionary *runAchivements = (NSDictionary *)[_trackInfo objectForKey:@"runAchivementsInfo"];
     if(runAchivements.count > 0)
     {
@@ -331,6 +307,20 @@
             [runAch setAchievementTrigger:achivementKey];
             [runAch setAchievementText:[runAchivements objectForKey:achivementKey]];
             [runData addRunAchievementObject:runAch];
+        }
+    }
+    
+    NSArray *runAlitiudes = (NSArray *)[_trackInfo objectForKey:@"runAltitude"];
+    if(runAlitiudes.count > 0)
+    {
+        for (NSDictionary *runAltDict in runAlitiudes)
+        {
+            //Add Achivement
+            RunAltitude *runAlt = [NSEntityDescription insertNewObjectForEntityForName:@"RunAltitude" inManagedObjectContext:self.managedObjectContext];
+            [runAlt setRunid:runData.runid];
+            [runAlt setAltitudeTimeStamp:[runAltDict objectForKey:@"time"]];
+            [runAlt setAltitude:[runAltDict objectForKey:@"altitude"]];
+            [runData addRunAltitudesObject:runAlt];
         }
     }
     

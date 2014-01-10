@@ -10,27 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RunTheTrack/StartViewController.m"
-            timestampString = "410908796.600836"
+            timestampString = "410993626.066289"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "913"
-            endingLineNumber = "913"
-            landmarkName = "-unwindToRunStart:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RunTheTrack/StartViewController.m"
-            timestampString = "410908796.600836"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "532"
-            endingLineNumber = "532"
+            startingLineNumber = "748"
+            endingLineNumber = "748"
             landmarkName = "-moveAnnotaionWithDistance:"
             landmarkType = "5">
          </BreakpointContent>
