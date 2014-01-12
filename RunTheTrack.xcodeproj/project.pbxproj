@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4002449517EF814F009ACC39 /* Silverstoneback.png in Resources */ = {isa = PBXBuildFile; fileRef = 4002449417EF814F009ACC39 /* Silverstoneback.png */; };
+		400522541880207D00B34DAD /* RunInfoSummary.m in Sources */ = {isa = PBXBuildFile; fileRef = 400522531880207D00B34DAD /* RunInfoSummary.m */; };
+		400522571880209600B34DAD /* RunInfoAltitudeGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 400522561880209600B34DAD /* RunInfoAltitudeGraph.m */; };
 		4007A005181B1456008EC227 /* abu-sec.png in Resources */ = {isa = PBXBuildFile; fileRef = 40079FF2181B1456008EC227 /* abu-sec.png */; };
 		4007A006181B1456008EC227 /* bahrain.png in Resources */ = {isa = PBXBuildFile; fileRef = 40079FF3181B1456008EC227 /* bahrain.png */; };
 		4007A007181B1456008EC227 /* barcelona.png in Resources */ = {isa = PBXBuildFile; fileRef = 40079FF4181B1456008EC227 /* barcelona.png */; };
@@ -174,6 +176,10 @@
 
 /* Begin PBXFileReference section */
 		4002449417EF814F009ACC39 /* Silverstoneback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Silverstoneback.png; sourceTree = "<group>"; };
+		400522521880207D00B34DAD /* RunInfoSummary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunInfoSummary.h; sourceTree = "<group>"; };
+		400522531880207D00B34DAD /* RunInfoSummary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunInfoSummary.m; sourceTree = "<group>"; };
+		400522551880209600B34DAD /* RunInfoAltitudeGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunInfoAltitudeGraph.h; sourceTree = "<group>"; };
+		400522561880209600B34DAD /* RunInfoAltitudeGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunInfoAltitudeGraph.m; sourceTree = "<group>"; };
 		40079FF2181B1456008EC227 /* abu-sec.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "abu-sec.png"; sourceTree = "<group>"; };
 		40079FF3181B1456008EC227 /* bahrain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bahrain.png; sourceTree = "<group>"; };
 		40079FF4181B1456008EC227 /* barcelona.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barcelona.png; sourceTree = "<group>"; };
@@ -245,12 +251,12 @@
 		4057A5B817EE596A00FE1E93 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		4057EB2F18703BA800F52EF4 /* CommonUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtils.h; sourceTree = "<group>"; };
 		4057EB3018703BA800F52EF4 /* CommonUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtils.m; sourceTree = "<group>"; };
-		405974E1187FD713006924CC /* RTT v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RTT v2.xcdatamodel"; sourceTree = "<group>"; };
+		405974E1187FD713006924CC /* RTT v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "RTT v2.xcdatamodel"; sourceTree = "<group>"; };
 		405974EE187FDE94006924CC /* RunData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunData.h; sourceTree = "<group>"; };
 		405974EF187FDE94006924CC /* RunData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunData.m; sourceTree = "<group>"; };
 		405974F1187FDE95006924CC /* RunAltitude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunAltitude.h; sourceTree = "<group>"; };
 		405974F2187FDE95006924CC /* RunAltitude.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunAltitude.m; sourceTree = "<group>"; };
-		405974F4187FDF16006924CC /* RTT v 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RTT v 3.xcdatamodel"; sourceTree = "<group>"; };
+		405974F4187FDF16006924CC /* RTT v 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "RTT v 3.xcdatamodel"; sourceTree = "<group>"; };
 		405A15EB17EEF4E200684921 /* Icon-80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-80.png"; sourceTree = "<group>"; };
 		405A15EC17EEF4E200684921 /* Icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-120.png"; sourceTree = "<group>"; };
 		405A15ED17EEF4E200684921 /* Icon58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon58.png; sourceTree = "<group>"; };
@@ -453,6 +459,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		400522511880205100B34DAD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				400522521880207D00B34DAD /* RunInfoSummary.h */,
+				400522531880207D00B34DAD /* RunInfoSummary.m */,
+				400522551880209600B34DAD /* RunInfoAltitudeGraph.h */,
+				400522561880209600B34DAD /* RunInfoAltitudeGraph.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		4018F50417F82E26006F990E /* 3rdParty */ = {
 			isa = PBXGroup;
 			children = (
@@ -907,6 +924,7 @@
 		40C1656817EB637900D4E093 /* RunTheTrack */ = {
 			isa = PBXGroup;
 			children = (
+				400522511880205100B34DAD /* Views */,
 				4057EB2E18703B9300F52EF4 /* Common */,
 				40BE1F671823C79F004C3FC3 /* MapAnnotations */,
 				407771E51815B73300A38AA1 /* Categories */,
@@ -1251,6 +1269,7 @@
 				40F9780F18391332005D7904 /* RunLocations.m in Sources */,
 				407C4DF9180BF66500F7B2FE /* AchivementsCollectionViewController.m in Sources */,
 				4018F50F17F832B9006F990E /* JBKenBurnsView.m in Sources */,
+				400522571880209600B34DAD /* RunInfoAltitudeGraph.m in Sources */,
 				408A7993182AE3AA0088D8AC /* SettingsViewController.m in Sources */,
 				405974F0187FDE94006924CC /* RunData.m in Sources */,
 				4013EF141850686E00D6740F /* RunSectorsViewController.m in Sources */,
@@ -1260,6 +1279,7 @@
 				407C4DF2180BF1C300F7B2FE /* TrackCell.m in Sources */,
 				40C1659E17EB658A00D4E093 /* RTT.xcdatamodeld in Sources */,
 				40E5A2F21856592000E8E87E /* TTTAttributedLabel.m in Sources */,
+				400522541880207D00B34DAD /* RunInfoSummary.m in Sources */,
 				407C4DEF180BE6B700F7B2FE /* TracksCollectionViewController.m in Sources */,
 				4047939F182F7AEC004FEB73 /* RunCell.m in Sources */,
 				40D35DCA182541E500D10899 /* CoreDataHelper.m in Sources */,
