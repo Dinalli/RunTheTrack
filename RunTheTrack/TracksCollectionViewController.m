@@ -78,7 +78,7 @@
     UIImage *trackImage = [UIImage imageNamed:[TrackInfo objectForKey:@"trackimage"]];
     [cell.kenView.imagesArray addObject:trackImage];
     [cell.kenView animateWithImages:cell.kenView.imagesArray
-            transitionDuration:20
+            transitionDuration:30
                           loop:YES
                    isLandscape:YES];
     return cell;

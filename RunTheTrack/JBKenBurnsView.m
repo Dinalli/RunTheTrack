@@ -26,7 +26,7 @@
 #import "UIImage+ImageEffects.h"
 #include <stdlib.h>
 
-#define enlargeRatio 1.5
+#define enlargeRatio 1.2
 #define imageBufer 3
 
 // Private interface

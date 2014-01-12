@@ -32,7 +32,6 @@
 		4013EF141850686E00D6740F /* RunSectorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4013EF131850686E00D6740F /* RunSectorsViewController.m */; };
 		4013EF17185069A800D6740F /* RunSectorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4013EF16185069A800D6740F /* RunSectorCell.m */; };
 		4018F50F17F832B9006F990E /* JBKenBurnsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4018F50E17F832B9006F990E /* JBKenBurnsView.m */; };
-		4018F52117F83903006F990E /* abu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4018F51017F83903006F990E /* abu.jpg */; };
 		4018F52217F83903006F990E /* Bahrain.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4018F51117F83903006F990E /* Bahrain.jpg */; };
 		4018F52317F83903006F990E /* canada.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4018F51217F83903006F990E /* canada.jpg */; };
 		4018F52417F83903006F990E /* china.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4018F51317F83903006F990E /* china.jpg */; };
@@ -161,6 +160,7 @@
 		40F3E1E4180F194A00785F27 /* HistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F3E1E3180F194A00785F27 /* HistoryTableViewController.m */; };
 		40F9780C18391332005D7904 /* RunSectors.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F9780B18391332005D7904 /* RunSectors.m */; };
 		40F9780F18391332005D7904 /* RunLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F9780E18391332005D7904 /* RunLocations.m */; };
+		40FA0ABA1883489C00EDB8AE /* abu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 40FA0AB91883489C00EDB8AE /* abu.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -204,7 +204,6 @@
 		4013EF16185069A800D6740F /* RunSectorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunSectorCell.m; sourceTree = "<group>"; };
 		4018F50D17F832B9006F990E /* JBKenBurnsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBKenBurnsView.h; sourceTree = "<group>"; };
 		4018F50E17F832B9006F990E /* JBKenBurnsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBKenBurnsView.m; sourceTree = "<group>"; };
-		4018F51017F83903006F990E /* abu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = abu.jpg; sourceTree = "<group>"; };
 		4018F51117F83903006F990E /* Bahrain.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Bahrain.jpg; sourceTree = "<group>"; };
 		4018F51217F83903006F990E /* canada.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = canada.jpg; sourceTree = "<group>"; };
 		4018F51317F83903006F990E /* china.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = china.jpg; sourceTree = "<group>"; };
@@ -412,6 +411,7 @@
 		40F9780B18391332005D7904 /* RunSectors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunSectors.m; sourceTree = "<group>"; };
 		40F9780D18391332005D7904 /* RunLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunLocations.h; sourceTree = "<group>"; };
 		40F9780E18391332005D7904 /* RunLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunLocations.m; sourceTree = "<group>"; };
+		40FA0AB91883489C00EDB8AE /* abu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = abu.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -620,7 +620,7 @@
 		405FD4BE17EE3EAC006F141F /* Backgrounds */ = {
 			isa = PBXGroup;
 			children = (
-				4018F51017F83903006F990E /* abu.jpg */,
+				40FA0AB91883489C00EDB8AE /* abu.jpg */,
 				4018F51117F83903006F990E /* Bahrain.jpg */,
 				4018F51217F83903006F990E /* canada.jpg */,
 				4018F51317F83903006F990E /* china.jpg */,
@@ -1132,7 +1132,6 @@
 				40479397182F72F2004FEB73 /* nav-rbtn.png in Resources */,
 				405E5337185DEED400A8BD45 /* sector1@2x.png in Resources */,
 				409154D018537D7E00CECEEC /* background.png in Resources */,
-				4018F52117F83903006F990E /* abu.jpg in Resources */,
 				4018F52A17F83903006F990E /* Melbourne.jpg in Resources */,
 				4007A013181B1456008EC227 /* nurburgring.png in Resources */,
 				407C4E01180BF7E300F7B2FE /* routes-man@2x.png in Resources */,
@@ -1159,6 +1158,7 @@
 				4057A5BD17EE596A00FE1E93 /* Icon-Small.png in Resources */,
 				4007A00B181B1456008EC227 /* hungary.png in Resources */,
 				4007A011181B1456008EC227 /* monaco.png in Resources */,
+				40FA0ABA1883489C00EDB8AE /* abu.jpg in Resources */,
 				40BAAD3F18203FB900137E8C /* beep-8.mp3 in Resources */,
 				407C4DFE180BF7E300F7B2FE /* routes-cup.png in Resources */,
 				40A3B3EE185B76CC00BA85BB /* icon-success@2x.png in Resources */,

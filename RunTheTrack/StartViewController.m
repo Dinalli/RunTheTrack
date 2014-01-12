@@ -617,8 +617,6 @@ enum TimerState : NSUInteger {
                 // Same with lons
                 longitudeModifier = (nextpoi.longitude - lastpoi.longitude) / numberOfPoints;
                 
-                oldPoint = lastpoi;
-                
                 // Loop through the points
                 for (int i = 0; i < numberOfPoints; i++)
                 {
@@ -633,24 +631,60 @@ enum TimerState : NSUInteger {
                     region.center.longitude = newPoint.longitude;
                     [mv setRegion:region animated:YES];
                     ann.coordinate = newPoint;
-                    
-                    CLLocation *oldPointLoc = [[CLLocation alloc] initWithLatitude:oldPoint.latitude longitude:oldPoint.longitude];
+
                     CLLocation *pointLoc = [[CLLocation alloc] initWithLatitude:newPoint.latitude longitude:newPoint.longitude];
-                    totalPointsDistance = totalPointsDistance + [oldPointLoc distanceFromLocation:pointLoc];
-                    
-                    runLapsFloat = totalPointsDistance / totalTrackDistance;
-                    lapsLabel.text = [NSString stringWithFormat:@"%.2f Laps", runLapsFloat];
-                    
-                    if([appDelegate useKMasUnits])
+                    if([startPoint distanceFromLocation:pointLoc] > distance)
                     {
-                        distanceLabel.text =  [NSString stringWithFormat:@"%.2f km", totalPointsDistance / 1000];
+                        totalPointsDistance = totalPointsDistance + [startPoint distanceFromLocation:pointLoc];
+                        // eject at the point of the distance we need and set the old location to this point
+                        int insertIndex = nextRunIndex;
+                        if (nextRunIndex == self.trackPointArray.count -1)
+                        {
+                                //End of lap
+                                runIndex = 0;
+                                nextRunIndex = 0;
+                                insertIndex = insertIndex-1;
+                                lapCounter++;
+                                [self playSound:@"beep-8" :@"mp3"];
+
+                                sector3Time = [self.timeLabel getValueString];
+                                
+                                // Save Sectors and Lap Times
+                                NSDictionary *runLap = @{@"1": sector1Time,
+                                                         @"2": sector2Time,
+                                                         @"3": sector3Time,
+                                                         @"Lap": lapTime.text};
+                                
+                                if(runLaps == nil) runLaps = [[NSMutableDictionary alloc] init];
+                                [runLaps setObject:runLap forKey:[NSString stringWithFormat:@"%d",(int)lapCounter]];
+                                
+                                // Convert to Date
+                                NSDate *currentDate = [NSDate date];
+                                NSTimeInterval timeInterval = [currentDate timeIntervalSinceDate:lastLapDate];
+                                //timeInterval += secondsAlreadyRun;
+                                NSDate *timerDate = [NSDate dateWithTimeIntervalSince1970:timeInterval];
+                                NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+                                [dateFormatter setDateFormat:@"mm:ss.SS"];
+                                [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0.0]];
+                                lapTime.text = [dateFormatter stringFromDate:timerDate];
+                                lastLapDate = [NSDate date];
+                                
+                                if([CoreDataHelper countObjectsInContextWithEntityName:@"RunAchievement"
+                                                                          andPredicate:[NSPredicate
+                                                                                        predicateWithFormat:@"trackname = %@ AND achievementTrigger = %@",
+                                                                                        [self.trackInfo objectForKey:@"Race"], @"FastestLap"]
+                                                              withManagedObjectContext:self.managedObjectContext] == 0)
+                                {
+                                    // fastest lap
+                                    [newRunAchievements setObject:@"New Fastest Lap" forKey:@"FastestLap"];
+                                    [[MessageBarManager sharedInstance] showMessageWithTitle:@"New Fastest Lap"
+                                                                                 description:[NSString stringWithFormat:@"Timed at : %@", [dateFormatter stringFromDate:timerDate]]
+                                                                                        type:MessageBarMessageTypeInfo];
+                                }
+                        }
+                        [self.trackPointArray insertObject:[NSString stringWithFormat:@"%f,%f", pointLoc.coordinate.latitude, pointLoc.coordinate.longitude] atIndex:insertIndex];
+                        break;
                     }
-                    else
-                    {
-                        distanceLabel.text =  [NSString stringWithFormat:@"%.2f miles", totalPointsDistance * 0.000621371192];
-                    }
-                    
-                    oldPoint = newPoint;
                 }
                 
                 if([startPoint distanceFromLocation:sector1EndPoint] < 1)
