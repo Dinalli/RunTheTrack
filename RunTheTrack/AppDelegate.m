@@ -70,8 +70,14 @@ NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:S
     else
     {
         [self setUseKMasUnits:[units boolValue]];
-    }    
+    }
+    
+    self.useMotion = [[defaults valueForKey:@"motion"] boolValue];
+    self.walkMotionDistance = [[defaults valueForKey:@"walkSliderValue"] floatValue];
+    self.runMotionDistance = [[defaults valueForKey:@"runSliderValue"] floatValue];
 }
+
+
 
 #pragma mark Push Notifications
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken

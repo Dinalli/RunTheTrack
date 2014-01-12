@@ -127,7 +127,6 @@
 		40BA419F1865E571007A6329 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 40BA419B1865E50C007A6329 /* libsqlite3.dylib */; };
 		40BA41A31865E5DB007A6329 /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 40BA41A21865E5DB007A6329 /* AirshipConfig.plist */; };
 		40BA42721865E6E1007A6329 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40BA42711865E6E1007A6329 /* SystemConfiguration.framework */; };
-		40BAAD3D18203F7F00137E8C /* button-35.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 40BAAD3C18203F7F00137E8C /* button-35.mp3 */; };
 		40BAAD3F18203FB900137E8C /* beep-8.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 40BAAD3E18203FB900137E8C /* beep-8.mp3 */; };
 		40BAAD411820509B00137E8C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40BAAD401820509B00137E8C /* AVFoundation.framework */; };
 		40BE1F6A1823C7C2004C3FC3 /* MKRunnerAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BE1F691823C7C2004C3FC3 /* MKRunnerAnnotation.m */; };
@@ -362,7 +361,6 @@
 		40BA41A21865E5DB007A6329 /* AirshipConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AirshipConfig.plist; sourceTree = "<group>"; };
 		40BA41D51865E639007A6329 /* libUAirship-3.0.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libUAirship-3.0.2.a"; sourceTree = "<group>"; };
 		40BA42711865E6E1007A6329 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		40BAAD3C18203F7F00137E8C /* button-35.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "button-35.mp3"; sourceTree = "<group>"; };
 		40BAAD3E18203FB900137E8C /* beep-8.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "beep-8.mp3"; sourceTree = "<group>"; };
 		40BAAD401820509B00137E8C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		40BE1F681823C7C2004C3FC3 /* MKRunnerAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKRunnerAnnotation.h; sourceTree = "<group>"; };
@@ -545,7 +543,6 @@
 			isa = PBXGroup;
 			children = (
 				40BAAD3E18203FB900137E8C /* beep-8.mp3 */,
-				40BAAD3C18203F7F00137E8C /* button-35.mp3 */,
 			);
 			name = AlertSounds;
 			sourceTree = "<group>";
@@ -1193,7 +1190,6 @@
 				4018F52917F83903006F990E /* malaysia.jpg in Resources */,
 				405A15EE17EEF4E200684921 /* Icon-80.png in Resources */,
 				4057A5BC17EE596A00FE1E93 /* Icon-Small-50@2x.png in Resources */,
-				40BAAD3D18203F7F00137E8C /* button-35.mp3 in Resources */,
 				4018F53317F83ADD006F990E /* Barcalona.jpg in Resources */,
 				409154CD1852717300CECEEC /* cheq.png in Resources */,
 				40479398182F72F2004FEB73 /* nav-rbtn@2x.png in Resources */,
