@@ -610,7 +610,6 @@ enum TimerState : NSUInteger {
                 
                 int numberOfPoints = 250;   // The number of points you want between the two points
                 
-                CLLocationCoordinate2D oldPoint;
                 CLLocationCoordinate2D newPoint;
                 // Determine the distance between the lats and divide by numberOfPoints
                 latitudeModifier = (nextpoi.latitude - lastpoi.latitude) / numberOfPoints;

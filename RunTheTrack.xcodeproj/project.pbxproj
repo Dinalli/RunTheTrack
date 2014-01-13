@@ -142,7 +142,6 @@
 		40C1658417EB637900D4E093 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40C1656617EB637900D4E093 /* UIKit.framework */; };
 		40C1658C17EB637900D4E093 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 40C1658A17EB637900D4E093 /* InfoPlist.strings */; };
 		40C1658E17EB637900D4E093 /* RunTheTrackTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C1658D17EB637900D4E093 /* RunTheTrackTests.m */; };
-		40C1659E17EB658A00D4E093 /* RTT.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 40C1659C17EB658A00D4E093 /* RTT.xcdatamodeld */; };
 		40CD535E182C0E2D00352499 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40CD535D182C0E2D00352499 /* FacebookSDK.framework */; };
 		40D35DC7182540B500D10899 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40D35DC6182540B500D10899 /* CoreData.framework */; };
 		40D35DCA182541E500D10899 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D35DC9182541E500D10899 /* CoreDataHelper.m */; };
@@ -161,6 +160,7 @@
 		40F9780C18391332005D7904 /* RunSectors.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F9780B18391332005D7904 /* RunSectors.m */; };
 		40F9780F18391332005D7904 /* RunLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F9780E18391332005D7904 /* RunLocations.m */; };
 		40FA0ABA1883489C00EDB8AE /* abu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 40FA0AB91883489C00EDB8AE /* abu.jpg */; };
+		40FA5CF91883CB9D0047C7EA /* RTT.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 40C1659C17EB658A00D4E093 /* RTT.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1273,7 +1273,6 @@
 				40E5A2EA1856504300E8E87E /* UIView+More.m in Sources */,
 				40A3B3E1185B768F00BA85BB /* MessageBarManager.m in Sources */,
 				407C4DF2180BF1C300F7B2FE /* TrackCell.m in Sources */,
-				40C1659E17EB658A00D4E093 /* RTT.xcdatamodeld in Sources */,
 				40E5A2F21856592000E8E87E /* TTTAttributedLabel.m in Sources */,
 				400522541880207D00B34DAD /* RunInfoSummary.m in Sources */,
 				407C4DEF180BE6B700F7B2FE /* TracksCollectionViewController.m in Sources */,
@@ -1284,6 +1283,7 @@
 				40BE1F6A1823C7C2004C3FC3 /* MKRunnerAnnotation.m in Sources */,
 				407C4DF6180BF65300F7B2FE /* AchivementCell.m in Sources */,
 				4048167C1845D7D2000410C7 /* ProfileHeaderView.m in Sources */,
+				40FA5CF91883CB9D0047C7EA /* RTT.xcdatamodeld in Sources */,
 				407710AC18453B3900882BBE /* ProfileViewController.m in Sources */,
 				409357A71855F7C6007EE900 /* UIImageView+More.m in Sources */,
 				40F9780C18391332005D7904 /* RunSectors.m in Sources */,
