@@ -24,6 +24,8 @@
     IBOutlet UILabel *lapTime;
     IBOutlet UILabel *distanceLabel;
     
+    IBOutlet UILabel *noOfSteps;
+    
     IBOutlet UILabel *lapsLabel;
     IBOutlet UIButton *startBtn;
     

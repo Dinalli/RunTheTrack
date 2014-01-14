@@ -92,6 +92,9 @@ enum TimerState : NSUInteger {
     [self startTracking];
     [self addTrackPoints];
     
+    sector1Time = @"";
+    sector2Time = @"";
+    
     currentAchievements = [CoreDataHelper searchObjectsInContextWithEntityName:@"RunAchievement" andPredicate:[NSPredicate predicateWithFormat:@"trackname = %@", [self.trackInfo objectForKey:@"Race"]] withSortKey:nil sortAscending:YES withManagedObjectContext:self.managedObjectContext];
     
     if(newRunAchievements == nil) newRunAchievements = [[NSMutableDictionary alloc] init];
@@ -497,6 +500,9 @@ enum TimerState : NSUInteger {
                 
         [cmStepCounter startStepCountingUpdatesToQueue:[NSOperationQueue mainQueue] updateOn:1 withHandler:^(NSInteger numberOfSteps, NSDate *timestamp, NSError *error) {
             
+            noOfSteps.hidden = NO;
+            noOfSteps.text = [NSString stringWithFormat:@"Steps %d", numberOfSteps];
+            
             if(self.timerState == timerStarted)
             {
                 CGFloat distance = 0;
@@ -540,6 +546,28 @@ enum TimerState : NSUInteger {
             CLLocation *endPoint = [[CLLocation alloc] initWithLatitude:[nextlat doubleValue] longitude:[nextlng doubleValue]];
             CLLocationDistance polyDistance = [startPoint distanceFromLocation:endPoint];
             //NSLog(@"Outside - Distance %f - Poly Distance %f", distance, polyDistance);
+            
+            NSLog(@"Distance from Sector 1 point %f",[startPoint distanceFromLocation:sector1EndPoint]);
+            NSLog(@"Distance from Sector 2 point %f",[startPoint distanceFromLocation:sector2EndPoint]);
+            
+            if([startPoint distanceFromLocation:sector1EndPoint] < 2.5)
+            {
+                sector1Time = [self.timeLabel getValueString];
+                NSLog(@"Sector 1 time %@", sector1Time);
+                [[MessageBarManager sharedInstance] showMessageWithTitle:@"Sector 1 Complete"
+                                                             description:[NSString stringWithFormat:@"Timed at : %@", [self.timeLabel getValueString]]
+                                                                    type:MessageBarMessageTypeInfo];
+            }
+            
+            if([startPoint distanceFromLocation:sector2EndPoint] < 2.5)
+            {
+                sector2Time = [self.timeLabel getValueString];
+                NSLog(@"Sector 2 time %@", sector2Time);
+                [[MessageBarManager sharedInstance] showMessageWithTitle:@"Sector 2 Complete"
+                                                             description:[NSString stringWithFormat:@"Timed at : %@", [self.timeLabel getValueString]]
+                                                                    type:MessageBarMessageTypeInfo];
+                
+            }
             
             if (distance > 0)
             {
@@ -647,12 +675,17 @@ enum TimerState : NSUInteger {
                                 [self playSound:@"beep-8" :@"mp3"];
 
                                 sector3Time = [self.timeLabel getValueString];
+                            
+                                NSLog(@"Lap Time %@", sector3Time);
                                 
                                 // Save Sectors and Lap Times
                                 NSDictionary *runLap = @{@"1": sector1Time,
                                                          @"2": sector2Time,
                                                          @"3": sector3Time,
                                                          @"Lap": lapTime.text};
+                            
+                                sector1Time = @"";
+                                sector2Time = @"";
                                 
                                 if(runLaps == nil) runLaps = [[NSMutableDictionary alloc] init];
                                 [runLaps setObject:runLap forKey:[NSString stringWithFormat:@"%d",(int)lapCounter]];
@@ -685,29 +718,8 @@ enum TimerState : NSUInteger {
                         break;
                     }
                 }
-                
-                if([startPoint distanceFromLocation:sector1EndPoint] < 1)
-                {
-                    NSLog(@"Distance from sector 1 point %f", [endPoint distanceFromLocation:sector1EndPoint]);
-                    sector1Time = [self.timeLabel getValueString];
-                    [[MessageBarManager sharedInstance] showMessageWithTitle:@"Sector 1 Complete"
-                                                                 description:[NSString stringWithFormat:@"Timed at : %@", [self.timeLabel getValueString]]
-                                                                        type:MessageBarMessageTypeInfo];
-                }
-                
-                if([startPoint distanceFromLocation:sector2EndPoint] < 1)
-                {
-                    
-                    sector2Time = [self.timeLabel getValueString];
-                    [[MessageBarManager sharedInstance] showMessageWithTitle:@"Sector 2 Complete"
-                                                                 description:[NSString stringWithFormat:@"Timed at : %@", [self.timeLabel getValueString]]
-                                                                        type:MessageBarMessageTypeInfo];
 
-                }
-                
                 runIndex++;
-                
-                NSLog(@"Run Index %d", runIndex);
                 
                 if([appDelegate useKMasUnits])
                 {
@@ -732,12 +744,16 @@ enum TimerState : NSUInteger {
                     [self playSound:@"beep-8" :@"mp3"];
                     
                     sector3Time = [self.timeLabel getValueString];
+                    NSLog(@"Lap Time %@", sector3Time);
                     
                     // Save Sectors and Lap Times
                     NSDictionary *runLap = @{@"1": sector1Time,
                                              @"2": sector2Time,
                                              @"3": sector3Time,
                                              @"Lap": lapTime.text};
+                    
+                    sector1Time = @"";
+                    sector2Time = @"";
                     
                     if(runLaps == nil) runLaps = [[NSMutableDictionary alloc] init];
                     [runLaps setObject:runLap forKey:[NSString stringWithFormat:@"%d",(int)lapCounter]];

@@ -573,6 +573,13 @@
                                     <segue destination="zHz-9E-9Py" kind="push" identifier="finishRunSegue" id="kZi-MY-36k"/>
                                 </connections>
                             </button>
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EJL-Fh-Uct">
+                                <rect key="frame" x="154" y="136" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -623,6 +630,7 @@
                         <outlet property="motionActivityIndicator" destination="g8c-SX-Wtf" id="lIw-VE-POH"/>
                         <outlet property="mv" destination="qbZ-Rr-rPW" id="305-KB-kPo"/>
                         <outlet property="navigationItem" destination="HxU-uw-D4a" id="Mo0-JZ-9qQ"/>
+                        <outlet property="noOfSteps" destination="EJL-Fh-Uct" id="uT0-tK-lEO"/>
                         <outlet property="startBtn" destination="Lt0-K8-zXd" id="jBi-RX-Jv0"/>
                         <outlet property="timeLabel" destination="cIh-vM-USw" id="Bjt-Gk-f8o"/>
                     </connections>
