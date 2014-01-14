@@ -188,7 +188,7 @@
     }
 }
     
-#pragma social sharing
+#pragma mark social sharing
 
 -(IBAction)showActivityView:(id)sender
 {
