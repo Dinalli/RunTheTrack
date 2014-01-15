@@ -11,8 +11,9 @@
 #import "JBKenBurnsView.h"
 #import "RunData.h"
 #import "RunLocations.h"
+#import "HistoryBaseViewController.h"
 
-@interface RunDetailViewController : UIViewController<MKMapViewDelegate, CLLocationManagerDelegate, UIActionSheetDelegate>
+@interface RunDetailViewController : HistoryBaseViewController <MKMapViewDelegate, CLLocationManagerDelegate, UIActionSheetDelegate>
 {
     IBOutlet UILabel *runTime;
     IBOutlet UILabel *runLaps;

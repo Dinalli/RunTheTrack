@@ -101,9 +101,8 @@
 		407C4E01180BF7E300F7B2FE /* routes-man@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 407C4DFD180BF7E300F7B2FE /* routes-man@2x.png */; };
 		407C4E09180C002A00F7B2FE /* TrackInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 407C4E08180C002A00F7B2FE /* TrackInfoViewController.m */; };
 		4086419317F71E8A00E15000 /* Tracks.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4086419217F71E8A00E15000 /* Tracks.plist */; };
-		40892C141885B307008F7D38 /* RunSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40892C131885B307008F7D38 /* RunSummaryViewController.m */; };
 		40892C171885B326008F7D38 /* RunTrackMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40892C161885B326008F7D38 /* RunTrackMapViewController.m */; };
-		40892C1A1885B336008F7D38 /* RunMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40892C191885B336008F7D38 /* RunMapViewController.m */; };
+		40892C1A1885B336008F7D38 /* RunOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40892C191885B336008F7D38 /* RunOverviewViewController.m */; };
 		40892C1D1885B34A008F7D38 /* RunAltitudeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40892C1C1885B34A008F7D38 /* RunAltitudeViewController.m */; };
 		40892C201885B437008F7D38 /* RunViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40892C1F1885B437008F7D38 /* RunViewController.m */; };
 		408A7993182AE3AA0088D8AC /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 408A7992182AE3AA0088D8AC /* SettingsViewController.m */; };
@@ -151,6 +150,8 @@
 		40D35DC7182540B500D10899 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40D35DC6182540B500D10899 /* CoreData.framework */; };
 		40D35DCA182541E500D10899 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D35DC9182541E500D10899 /* CoreDataHelper.m */; };
 		40D42C9E18702DBD0057DF2D /* YLProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D42C9D18702DBD0057DF2D /* YLProgressBar.m */; };
+		40D894621885DA3E00ABE44E /* RunSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D894611885DA3E00ABE44E /* RunSummaryViewController.m */; };
+		40D894651885EAC300ABE44E /* HistoryBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D894641885EAC300ABE44E /* HistoryBaseViewController.m */; };
 		40DFDBE9182AE6C100554C58 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40DFDBE8182AE6C100554C58 /* Social.framework */; };
 		40E1606F18772D5D004C1B89 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 40E1606918772D5D004C1B89 /* libTestFlight.a */; };
 		40E1607018772D5D004C1B89 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 40E1606A18772D5D004C1B89 /* README.md */; };
@@ -334,12 +335,10 @@
 		407E804618686A1A00FE72F2 /* UADeviceRegistrationPayload.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UADeviceRegistrationPayload.h; path = Push/UADeviceRegistrationPayload.h; sourceTree = "<group>"; };
 		407E804718686A1A00FE72F2 /* UAPush.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UAPush.h; path = Push/UAPush.h; sourceTree = "<group>"; };
 		4086419217F71E8A00E15000 /* Tracks.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Tracks.plist; sourceTree = "<group>"; };
-		40892C121885B307008F7D38 /* RunSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunSummaryViewController.h; sourceTree = "<group>"; };
-		40892C131885B307008F7D38 /* RunSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunSummaryViewController.m; sourceTree = "<group>"; };
 		40892C151885B326008F7D38 /* RunTrackMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunTrackMapViewController.h; sourceTree = "<group>"; };
 		40892C161885B326008F7D38 /* RunTrackMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunTrackMapViewController.m; sourceTree = "<group>"; };
-		40892C181885B336008F7D38 /* RunMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunMapViewController.h; sourceTree = "<group>"; };
-		40892C191885B336008F7D38 /* RunMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunMapViewController.m; sourceTree = "<group>"; };
+		40892C181885B336008F7D38 /* RunOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunOverviewViewController.h; sourceTree = "<group>"; };
+		40892C191885B336008F7D38 /* RunOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunOverviewViewController.m; sourceTree = "<group>"; };
 		40892C1B1885B34A008F7D38 /* RunAltitudeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunAltitudeViewController.h; sourceTree = "<group>"; };
 		40892C1C1885B34A008F7D38 /* RunAltitudeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunAltitudeViewController.m; sourceTree = "<group>"; };
 		40892C1E1885B437008F7D38 /* RunViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunViewController.h; sourceTree = "<group>"; };
@@ -403,6 +402,10 @@
 		40D35DC9182541E500D10899 /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
 		40D42C9C18702DBD0057DF2D /* YLProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLProgressBar.h; sourceTree = "<group>"; };
 		40D42C9D18702DBD0057DF2D /* YLProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLProgressBar.m; sourceTree = "<group>"; };
+		40D894601885DA3E00ABE44E /* RunSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunSummaryViewController.h; sourceTree = "<group>"; };
+		40D894611885DA3E00ABE44E /* RunSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunSummaryViewController.m; sourceTree = "<group>"; };
+		40D894631885EAC300ABE44E /* HistoryBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryBaseViewController.h; sourceTree = "<group>"; };
+		40D894641885EAC300ABE44E /* HistoryBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryBaseViewController.m; sourceTree = "<group>"; };
 		40DFDBE8182AE6C100554C58 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		40E1606918772D5D004C1B89 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
 		40E1606A18772D5D004C1B89 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
@@ -719,14 +722,16 @@
 				4047939E182F7AEC004FEB73 /* RunCell.m */,
 				404793A0182F83BA004FEB73 /* RunDetailViewController.h */,
 				404793A1182F83BA004FEB73 /* RunDetailViewController.m */,
-				40892C121885B307008F7D38 /* RunSummaryViewController.h */,
-				40892C131885B307008F7D38 /* RunSummaryViewController.m */,
 				40892C151885B326008F7D38 /* RunTrackMapViewController.h */,
 				40892C161885B326008F7D38 /* RunTrackMapViewController.m */,
-				40892C181885B336008F7D38 /* RunMapViewController.h */,
-				40892C191885B336008F7D38 /* RunMapViewController.m */,
+				40892C181885B336008F7D38 /* RunOverviewViewController.h */,
+				40892C191885B336008F7D38 /* RunOverviewViewController.m */,
 				40892C1B1885B34A008F7D38 /* RunAltitudeViewController.h */,
 				40892C1C1885B34A008F7D38 /* RunAltitudeViewController.m */,
+				40D894601885DA3E00ABE44E /* RunSummaryViewController.h */,
+				40D894611885DA3E00ABE44E /* RunSummaryViewController.m */,
+				40D894631885EAC300ABE44E /* HistoryBaseViewController.h */,
+				40D894641885EAC300ABE44E /* HistoryBaseViewController.m */,
 			);
 			name = History;
 			sourceTree = "<group>";
@@ -1274,6 +1279,7 @@
 				40E5A2EF185655B100E8E87E /* TTCounterLabel.m in Sources */,
 				4057EB3118703BA800F52EF4 /* CommonUtils.m in Sources */,
 				405E533F185E112A00A8BD45 /* Sector2Annotation.m in Sources */,
+				40D894651885EAC300ABE44E /* HistoryBaseViewController.m in Sources */,
 				404793A2182F83BA004FEB73 /* RunDetailViewController.m in Sources */,
 				407771E81815B74700A38AA1 /* UIImage+ImageEffects.m in Sources */,
 				40F3E1E4180F194A00785F27 /* HistoryTableViewController.m in Sources */,
@@ -1286,12 +1292,11 @@
 				400522571880209600B34DAD /* RunInfoAltitudeGraph.m in Sources */,
 				408A7993182AE3AA0088D8AC /* SettingsViewController.m in Sources */,
 				405974F0187FDE94006924CC /* RunData.m in Sources */,
-				40892C141885B307008F7D38 /* RunSummaryViewController.m in Sources */,
 				4013EF141850686E00D6740F /* RunSectorsViewController.m in Sources */,
 				40C1657317EB637900D4E093 /* AppDelegate.m in Sources */,
 				40E5A2EA1856504300E8E87E /* UIView+More.m in Sources */,
 				40A3B3E1185B768F00BA85BB /* MessageBarManager.m in Sources */,
-				40892C1A1885B336008F7D38 /* RunMapViewController.m in Sources */,
+				40892C1A1885B336008F7D38 /* RunOverviewViewController.m in Sources */,
 				407C4DF2180BF1C300F7B2FE /* TrackCell.m in Sources */,
 				40E5A2F21856592000E8E87E /* TTTAttributedLabel.m in Sources */,
 				400522541880207D00B34DAD /* RunInfoSummary.m in Sources */,
@@ -1301,6 +1306,7 @@
 				40D42C9E18702DBD0057DF2D /* YLProgressBar.m in Sources */,
 				40F3E1DF180F0EE000785F27 /* StartViewController.m in Sources */,
 				40BE1F6A1823C7C2004C3FC3 /* MKRunnerAnnotation.m in Sources */,
+				40D894621885DA3E00ABE44E /* RunSummaryViewController.m in Sources */,
 				407C4DF6180BF65300F7B2FE /* AchivementCell.m in Sources */,
 				4048167C1845D7D2000410C7 /* ProfileHeaderView.m in Sources */,
 				40892C171885B326008F7D38 /* RunTrackMapViewController.m in Sources */,

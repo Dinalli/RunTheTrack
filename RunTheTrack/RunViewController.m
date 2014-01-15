@@ -84,7 +84,8 @@ enum TimerState : NSUInteger {
     
     self.navigationItem.titleView=tlabel;
     
-    trackBackImage.image = [UIImage imageNamed:[self.trackInfo objectForKey:@"mapimage"]];
+    trackBackImage.image = [[UIImage imageNamed:[self.trackInfo objectForKey:@"mapimage"]] applyExtraLightEffect];
+                            
     lapsLabel.text = @"0 Laps";
     totalTrackDistance = [[self.trackInfo objectForKey:@"Distance"] floatValue];
     totalTrackDistance = totalTrackDistance / 0.000621371192;
@@ -319,6 +320,8 @@ enum TimerState : NSUInteger {
         runLapsFloat = totalLocationDistance / totalTrackDistance;
         lapsLabel.text = [NSString stringWithFormat:@"%.2f Laps", runLapsFloat];
         [self setProgress:runLapsFloat/100 animated:YES];
+        
+        
         
         // Have we passed a sector then save info
         // Have we completed a lap

@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 iphonemobileapp. All rights reserved.
 //
 
-#import "RunMapViewController.h"
+#import "RunOverviewViewController.h"
 
-@implementation RunMapViewController
+@implementation RunOverviewViewController
 
 @end

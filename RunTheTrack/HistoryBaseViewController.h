@@ -1,5 +1,5 @@
 //
-//  RunSummaryViewController.h
+//  HistoryBaseViewController.h
 //  RunTheTrack
 //
 //  Created by Andrew Donnelly on 14/01/2014.
@@ -7,13 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HistoryBaseViewController.h"
+#import "RunData.h"
 
-@interface RunSummaryViewController : UIPageViewController <UIPageViewControllerDataSource>
-{
-    NSArray *viewControllers;
-}
+@interface HistoryBaseViewController : UIViewController
 
 @property (nonatomic,strong) RunData *runData;
+@property NSUInteger pageIndex;
 
 @end

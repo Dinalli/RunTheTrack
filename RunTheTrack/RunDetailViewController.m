@@ -8,7 +8,6 @@
 
 #import "RunDetailViewController.h"
 #import "CoreDataHelper.h"
-#import "RunSectorsViewController.h"
 #import <Social/Social.h>
 #import "AppDelegate.h"
 #import "RunSectors.h"
@@ -147,6 +146,8 @@
             return [aRunSector.lapNumber localizedCompare: bRunSector.lapNumber];
         }];
         
+        if(runLapsArray.count > 0)
+        {
         RunSectors *runSector = (RunSectors *)[runLapsArray objectAtIndex:0];
         lapNumerTime.text = [NSString stringWithFormat:@"Lap %@  Time %@", runSector.lapNumber, runSector.lapTime];
 
@@ -156,6 +157,7 @@
 
         lapSlider.minimumValue = 1;
         lapSlider.maximumValue = [self.runData.runlaps integerValue]-1;
+        }
     }
     else
     {
@@ -182,10 +184,10 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue
                  sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"RunSectorsSegue"]) {
-        RunSectorsViewController *rsvc = segue.destinationViewController;
-        [rsvc setRunData:self.runData];
-    }
+//    if ([segue.identifier isEqualToString:@"RunSectorsSegue"]) {
+//        RunSectorsViewController *rsvc = segue.destinationViewController;
+//        [rsvc setRunData:self.runData];
+//    }
 }
     
 #pragma mark social sharing

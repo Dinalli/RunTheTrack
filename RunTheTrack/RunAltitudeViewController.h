@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "HistoryBaseViewController.h"
 
-@interface RunAltitudeViewController : UIViewController
+@interface RunAltitudeViewController : HistoryBaseViewController
 
 @end
