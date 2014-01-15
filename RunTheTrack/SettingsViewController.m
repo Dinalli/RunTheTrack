@@ -50,15 +50,15 @@
     
     [units setSelectedSegmentIndex:[[defaults valueForKey:@"units"] integerValue]];
     
-    runMeters.text = [NSString stringWithFormat:@"%.1f",runSlider.value];
-    walkMeters.text = [NSString stringWithFormat:@"%.1f",walkSlider.value];
+    runMeters.text = [NSString stringWithFormat:@"%.2f",runSlider.value];
+    walkMeters.text = [NSString stringWithFormat:@"%.2f",walkSlider.value];
     
 }
 
 -(void)setDefaults
 {
-    [defaults setValue:[NSString stringWithFormat:@"%f",walkSlider.value] forKey:@"walkSliderValue"];
-    [defaults setValue:[NSString stringWithFormat:@"%f",runSlider.value] forKey:@"runSliderValue"];
+    [defaults setValue:[NSString stringWithFormat:@"%.2f",walkSlider.value] forKey:@"walkSliderValue"];
+    [defaults setValue:[NSString stringWithFormat:@"%.2f",runSlider.value] forKey:@"runSliderValue"];
     [defaults setValue:[NSNumber numberWithBool:gpsSwitch.on] forKey:@"gps"];
     [defaults setValue:[NSNumber numberWithBool:motionSwitch.on] forKey:@"motion"];
     [defaults setValue:[NSNumber numberWithInteger:units.selectedSegmentIndex] forKey:@"units"];
@@ -67,14 +67,14 @@
 
 -(IBAction)walkMetersChanged:(id)sender
 {
-    walkMeters.text = [NSString stringWithFormat:@"%.1f",walkSlider.value];
+    walkMeters.text = [NSString stringWithFormat:@"%.2f",walkSlider.value];
     [appDelegate setWalkMotionDistance:walkSlider.value];
     [self setDefaults];
 }
 
 -(IBAction)runMetersChanged:(id)sender
 {
-    runMeters.text = [NSString stringWithFormat:@"%.1f",runSlider.value];
+    runMeters.text = [NSString stringWithFormat:@"%.2f",runSlider.value];
     [appDelegate setRunMotionDistance:runSlider.value];
     [self setDefaults];
 }
@@ -105,6 +105,11 @@
 {
     [appDelegate setUseKMasUnits:units.selectedSegmentIndex];
     [self setDefaults];
+}
+
+-(IBAction)feedback:(id)sender
+{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://runthetrack.uservoice.com/"]];
 }
 
 - (void)didReceiveMemoryWarning

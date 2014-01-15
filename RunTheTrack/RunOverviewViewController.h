@@ -10,5 +10,8 @@
 #import "HistoryBaseViewController.h"
 
 @interface RunOverviewViewController : HistoryBaseViewController
+{
+    IBOutlet UIView *detailsView;
+}
 
 @end

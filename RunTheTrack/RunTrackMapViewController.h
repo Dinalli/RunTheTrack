@@ -20,9 +20,12 @@
     IBOutlet UIImageView *trackMapImage;
     IBOutlet UILabel *runDate;
     
+    IBOutlet UIView *detailsView;
+    
     UIImage *mapImage;
     
     IBOutlet MKMapView *mv;
+    
     
     NSMutableArray *runLapsArray;
     
