@@ -8,10 +8,19 @@
 
 #import <Foundation/Foundation.h>
 #import "HistoryBaseViewController.h"
+#import "YLProgressBar.h"
 
 @interface RunOverviewViewController : HistoryBaseViewController
 {
-    IBOutlet UIView *detailsView;
+    IBOutlet UIView *timeView;
+    IBOutlet UIView *trackInfoView;
+    IBOutlet UIView *runDetailsView;
+    IBOutlet UIImageView *backgroundImageView;
 }
+
+@property (nonatomic, strong) IBOutlet YLProgressBar      *progressBarFlatWithIndicator;
+
+- (void)initFlatWithIndicatorProgressBar;
+- (void)setProgress:(CGFloat)progress animated:(BOOL)animated;
 
 @end
