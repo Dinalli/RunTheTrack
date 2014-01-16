@@ -78,6 +78,9 @@
     
     // Add both effects to your view
     [detailsView addMotionEffect:group];
+    
+    
+    mv.camera.pitch = 45;
 
 }
 
@@ -239,14 +242,6 @@
     [map setRegion:MKCoordinateRegionForMapRect([polygon boundingMapRect])
           animated:animated];
 }
-
-//- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id < MKOverlay >)overlay
-//{
-//    MKPolylineRenderer* lineView = [[MKPolylineRenderer alloc] initWithPolyline:self.trackLine];
-//    lineView.strokeColor = [UIColor blueColor];
-//    lineView.lineWidth = 7;
-//    return lineView;
-//}
 
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay
 {

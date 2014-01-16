@@ -7,6 +7,7 @@
 //
 
 #import "RunOverviewViewController.h"
+#import "UIImage+ImageEffects.h"
 
 @implementation RunOverviewViewController
 
@@ -64,6 +65,33 @@
     [runDetailsView addMotionEffect:group];
     [self initFlatWithIndicatorProgressBar];
     [self.progressBarFlatWithIndicator setProgress:0.4 animated:YES];
+    
+    [self setUpRunData];
+}
+
+-(void)setUpRunData
+{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    if([appDelegate useKMasUnits])
+    {
+        runDistance.text = [NSString stringWithFormat:@"%.02f km", [self.runData.rundistance floatValue] / 1000];
+    }
+    else
+    {
+        runDistance.text = [NSString stringWithFormat:@"Distance %.2f miles",[self.runData.rundistance floatValue] * 0.000621371192];
+    }
+    
+    runDate.text = [NSString stringWithFormat:@"Date : %@",self.runData.rundate];
+    self.navigationItem.title = self.runData.runtrackname;
+    
+    for (NSMutableDictionary *trackInfoDict in appDelegate.tracksArray) {
+        if([[trackInfoDict objectForKey:@"Race"] isEqualToString:self.runData.runtrackname])
+        {
+            self.trackInfo = trackInfoDict;
+            backgroundImageView.image = [[UIImage imageNamed:[trackInfoDict objectForKey:@"trackimage"]] applyExtraLightEffect];
+        }
+    }
+
 }
 
 - (void)initFlatWithIndicatorProgressBar

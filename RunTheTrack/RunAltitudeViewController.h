@@ -8,7 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "HistoryBaseViewController.h"
+#import "CorePlot-CocoaTouch.h"
 
-@interface RunAltitudeViewController : HistoryBaseViewController
+@interface RunAltitudeViewController : HistoryBaseViewController <CPTPlotDataSource>
+{
+    NSMutableArray *runAltArray;
+}
+
+@property (nonatomic, strong) CPTGraphHostingView *hostView;
 
 @end
