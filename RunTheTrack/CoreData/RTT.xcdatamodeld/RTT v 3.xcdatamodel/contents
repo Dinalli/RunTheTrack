@@ -25,6 +25,7 @@
         <attribute name="runPace" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="runtime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="runtrackname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="runtype" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="runAchievement" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="RunAchievement" inverseName="relationship" inverseEntity="RunAchievement" syncable="YES"/>
         <relationship name="runAltitudes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="RunAltitude" inverseName="runAlt" inverseEntity="RunAltitude" syncable="YES"/>
         <relationship name="runDataLocations" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="RunLocations" inverseName="runLoactionsData" inverseEntity="RunLocations" syncable="YES"/>

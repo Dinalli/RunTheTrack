@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="RTT4" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13A598" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="FastestLap" syncable="YES">
+        <attribute name="fastestLap" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="trackName" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="RunAchievement" representedClassName="RunAchievement" syncable="YES">
+        <attribute name="achievementText" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="achievementTrigger" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="runId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="trackname" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RunData" inverseName="runAchievement" inverseEntity="RunData" syncable="YES"/>
+    </entity>
+    <entity name="RunAltitude" representedClassName="RunAltitude" syncable="YES">
+        <attribute name="altitude" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="altitudeTimeStamp" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="runid" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="runAlt" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RunData" inverseName="runAltitudes" inverseEntity="RunData" syncable="YES"/>
+    </entity>
+    <entity name="RunData" representedClassName="RunData" syncable="YES">
+        <attribute name="rundate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rundistance" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="runid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="runlaps" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="runPace" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="runtime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="runtrackname" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="runAchievement" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="RunAchievement" inverseName="relationship" inverseEntity="RunAchievement" syncable="YES"/>
+        <relationship name="runAltitudes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="RunAltitude" inverseName="runAlt" inverseEntity="RunAltitude" syncable="YES"/>
+        <relationship name="runDataLocations" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="RunLocations" inverseName="runLoactionsData" inverseEntity="RunLocations" syncable="YES"/>
+        <relationship name="runSectors" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="RunSectors" inverseName="relationship" inverseEntity="RunSectors" syncable="YES"/>
+    </entity>
+    <entity name="RunLocations" representedClassName="RunLocations" syncable="YES">
+        <attribute name="lattitude" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="locationIndex" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="locationTimeStamp" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="runid" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="runLoactionsData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RunData" inverseName="runDataLocations" inverseEntity="RunData" syncable="YES"/>
+    </entity>
+    <entity name="RunSectors" representedClassName="RunSectors" syncable="YES">
+        <attribute name="lapNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lapTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="runId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sector1Time" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sector2Time" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sector3Time" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RunData" inverseName="runSectors" inverseEntity="RunData" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="FastestLap" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="RunAchievement" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="RunAltitude" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="RunData" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="RunLocations" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="RunSectors" positionX="0" positionY="0" width="0" height="0"/>
+    </elements>
+</model>
