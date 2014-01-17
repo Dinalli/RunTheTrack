@@ -14,6 +14,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.navigationController setNavigationBarHidden:NO];
     
     timeView.layer.masksToBounds = NO;
     timeView.layer.shadowOffset = CGSizeMake(0,-3);

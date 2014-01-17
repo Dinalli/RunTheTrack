@@ -36,4 +36,12 @@
 }
 
 
++(NSString *)formattedStringFromDate:(NSDate *)dateIn
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd/MMM/yyyy HH:mm:ss.SS"];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0.0]];
+    return [dateFormatter stringFromDate:dateIn];
+}
+
 @end

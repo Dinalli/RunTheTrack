@@ -248,9 +248,7 @@
     [runData setRunlaps:[self.trackInfo valueForKey:@"runLaps"]];
     [runData setRundistance:[self.trackInfo valueForKey:@"runDistance"]];
     [runData setRunPace:@"0"];
-    [runData setRundate:[NSDateFormatter localizedStringFromDate:[NSDate date]
-                                                                              dateStyle:NSDateFormatterMediumStyle
-                                                                              timeStyle:NSDateFormatterShortStyle]];
+    [runData setRundate:[CommonUtils formattedStringFromDate:[NSDate date]]];
     
     NSArray *points = [_trackInfo objectForKey:@"runPointArray"];
     NSInteger numberOfSteps = points.count;
@@ -266,6 +264,7 @@
         [runLocation setLocationIndex:[NSString stringWithFormat:@"%d",(int)index]];
         [runLocation setLattitude:[NSString stringWithFormat:@"%f",location.coordinate.latitude]];
         [runLocation setLongitude:[NSString stringWithFormat:@"%f",location.coordinate.longitude]];
+        [runLocation setLocationTimeStamp:[CommonUtils formattedStringFromDate:location.timestamp]];
         
         [runData addRunDataLocationsObject:runLocation];
     }

@@ -336,10 +336,10 @@ enum TimerState : NSUInteger {
     {
         CLLocation *newLocation = [locations lastObject];
         
-        if(newLocation.altitude != 0)
-        {
-            [runAltitudeArray addObject:[NSDictionary dictionaryWithObjects:@[[self.timeLabel getValueString],[NSString stringWithFormat:@"%f", newLocation.altitude]] forKeys:@[@"time",@"altitude"]]];
-        }
+//        if(newLocation.altitude != 0)
+//        {
+            [runAltitudeArray addObject:[NSDictionary dictionaryWithObjects:@[[CommonUtils formattedStringFromDate:[NSDate date]],[NSString stringWithFormat:@"%f", newLocation.altitude]] forKeys:@[@"time",@"altitude"]]];
+//        }
         
         CLLocation *oldLocation = [self.runPointArray lastObject];
         CLLocationDistance distance;
@@ -377,6 +377,15 @@ enum TimerState : NSUInteger {
         [self.trackInfo setObject:[NSString stringWithFormat:@"%ld",[self.timeLabel getValue]] forKey:@"timeLabel"];
         [self.trackInfo setObject:[NSString stringWithFormat:@"%.2f", runLapsFloat] forKey:@"runLaps"];
         [self.trackInfo setObject:[NSString stringWithFormat:@"%.2f",totalLocationDistance] forKey:@"runDistance"];
+        
+        if(appDelegate.useMotion)
+        {
+            [self.trackInfo setObject:@"MotionRun" forKey:@"runType"];
+        }
+        else
+        {
+            [self.trackInfo setObject:@"GPSRun" forKey:@"runType"];
+        }
         
         //Add Laps, achivements and Sectors Dictionary
         if (runLaps != nil)[self.trackInfo setObject:runLaps forKey:@"runLapsInfo"];

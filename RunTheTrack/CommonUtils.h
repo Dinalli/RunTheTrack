@@ -11,6 +11,6 @@
 @interface CommonUtils : NSObject
 
 + (NSString *)timeFormattedStringForValue:(int)hrs :(int)mins :(int)secs;
-
++ (NSString *)formattedStringFromDate:(NSDate *)dateIn;
 
 @end

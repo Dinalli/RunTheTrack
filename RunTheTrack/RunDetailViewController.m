@@ -95,6 +95,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    [self.navigationController setNavigationBarHidden:YES];
+    
     [lapSlider setThumbImage:[UIImage imageNamed:@"routes-man"] forState:UIControlStateNormal];
     
     runTime.text = [NSString stringWithFormat:@"Time : %@", self.runData.runtime];

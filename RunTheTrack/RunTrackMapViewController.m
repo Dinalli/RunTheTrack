@@ -22,6 +22,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    [self.navigationController setNavigationBarHidden:YES];
         
     runTime.text = [NSString stringWithFormat:@"Time : %@", self.runData.runtime];
     runLaps.text = [NSString stringWithFormat:@"Laps : %@",self.runData.runlaps];

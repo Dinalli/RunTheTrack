@@ -13,27 +13,25 @@
 
 - (void)viewDidLoad
 {
-    dispatch_async(dispatch_get_main_queue(), ^{
-
+    [self.navigationController setNavigationBarHidden:YES];
         runAltArray = [[self.runData.runAltitudes allObjects] mutableCopy];
         
-        [runAltArray sortUsingComparator:^NSComparisonResult(id a, id b) {
-            RunAltitude *aRunAlt = (RunAltitude *)a;
-            RunAltitude *bRunAlt = (RunAltitude *)b;
-            
-            NSDateFormatter *df = [[NSDateFormatter alloc] init];
-            [df setDateFormat:@"HH:mm:ss.SS"];
-            
-            NSDate *firstDate = [df dateFromString:aRunAlt.altitudeTimeStamp];
-            NSDate *secondDate = [df dateFromString:bRunAlt.altitudeTimeStamp];
-            
-            if ([firstDate compare:secondDate] == NSOrderedAscending)
-                return NSOrderedAscending;
-            if ([firstDate compare:secondDate] == NSOrderedDescending)
-                return NSOrderedDescending;
-            return [aRunAlt.altitudeTimeStamp localizedCompare: bRunAlt.altitudeTimeStamp];
-        }];
-    });
+//        [runAltArray sortUsingComparator:^NSComparisonResult(id a, id b) {
+//            RunAltitude *aRunAlt = (RunAltitude *)a;
+//            RunAltitude *bRunAlt = (RunAltitude *)b;
+//            
+//            NSDateFormatter *df = [[NSDateFormatter alloc] init];
+//            [df setDateFormat:@"HH:mm:ss.SS"];
+//            
+//            NSDate *firstDate = [df dateFromString:aRunAlt.altitudeTimeStamp];
+//            NSDate *secondDate = [df dateFromString:bRunAlt.altitudeTimeStamp];
+//            
+//            if ([firstDate compare:secondDate] == NSOrderedAscending)
+//                return NSOrderedAscending;
+//            if ([firstDate compare:secondDate] == NSOrderedDescending)
+//                return NSOrderedDescending;
+//            return [aRunAlt.altitudeTimeStamp localizedCompare: bRunAlt.altitudeTimeStamp];
+//        }];
     [self initPlot];
 }
 
@@ -57,7 +55,7 @@
     [graph applyTheme:[CPTTheme themeNamed:kCPTDarkGradientTheme]];
     self.hostView.hostedGraph = graph;
     // 2 - Set graph title
-    NSString *title = @"Altitude";
+    NSString *title = @"Run Altitude";
     graph.title = title;
     // 3 - Create and set text style
     CPTMutableTextStyle *titleStyle = [CPTMutableTextStyle textStyle];
@@ -161,7 +159,7 @@
     
     // 4 - Configure y-axis
     CPTAxis *y = axisSet.yAxis;
-    y.title = @"Price";
+    y.title = @"Altitude";
     y.titleTextStyle = axisTitleStyle;
     y.titleOffset = -40.0f;
     y.axisLineStyle = axisLineStyle;
@@ -205,7 +203,8 @@
 }
 
 -(NSNumber *)numberForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index {
-    return [NSDecimalNumber zero];
+    RunAltitude *ra = [runAltArray objectAtIndex:index];
+    return [NSNumber numberWithFloat:[ra.altitude floatValue]];
 }
 
 -(CPTLayer *)dataLabelForPlot:(CPTPlot *)plot recordIndex:(NSUInteger)index {

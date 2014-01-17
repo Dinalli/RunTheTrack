@@ -2,7 +2,7 @@
 //  RunData.m
 //  RunTheTrack
 //
-//  Created by Andrew Donnelly on 10/01/2014.
+//  Created by Andrew Donnelly on 17/01/2014.
 //  Copyright (c) 2014 iphonemobileapp. All rights reserved.
 //
 
@@ -23,8 +23,8 @@
 @dynamic runtime;
 @dynamic runtrackname;
 @dynamic runAchievement;
+@dynamic runAltitudes;
 @dynamic runDataLocations;
 @dynamic runSectors;
-@dynamic runAltitudes;
 
 @end
