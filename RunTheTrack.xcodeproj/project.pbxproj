@@ -31,7 +31,6 @@
 		4007A017181B1456008EC227 /* usa-sec.png in Resources */ = {isa = PBXBuildFile; fileRef = 4007A004181B1456008EC227 /* usa-sec.png */; };
 		4013EF141850686E00D6740F /* RunSectorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4013EF131850686E00D6740F /* RunSectorsViewController.m */; };
 		4013EF17185069A800D6740F /* RunSectorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4013EF16185069A800D6740F /* RunSectorCell.m */; };
-		4015F4C618888A06006C3DC8 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4015F4C518888A06006C3DC8 /* libCorePlot-CocoaTouch.a */; };
 		4015F4C818888A54006C3DC8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4015F4C718888A54006C3DC8 /* QuartzCore.framework */; };
 		4015F4CA18888A5B006C3DC8 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4015F4C918888A5B006C3DC8 /* Accelerate.framework */; };
 		4018F50F17F832B9006F990E /* JBKenBurnsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4018F50E17F832B9006F990E /* JBKenBurnsView.m */; };
@@ -89,6 +88,7 @@
 		405E533C185E10C000A8BD45 /* Sector1Annotaion.m in Sources */ = {isa = PBXBuildFile; fileRef = 405E533B185E10C000A8BD45 /* Sector1Annotaion.m */; };
 		405E533F185E112A00A8BD45 /* Sector2Annotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 405E533E185E112A00A8BD45 /* Sector2Annotation.m */; };
 		405E5342185E113D00A8BD45 /* StartFinishAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 405E5341185E113D00A8BD45 /* StartFinishAnnotation.m */; };
+		4060B89818891A1900B5039C /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4060B89718891A1900B5039C /* libCorePlot-CocoaTouch.a */; };
 		406B8AE718670A93008805C9 /* nurburg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 406B8AE618670A93008805C9 /* nurburg.jpg */; };
 		406B8AE918670F65008805C9 /* 31-ipod.png in Resources */ = {isa = PBXBuildFile; fileRef = 406B8AE818670F65008805C9 /* 31-ipod.png */; };
 		407710AC18453B3900882BBE /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 407710AB18453B3900882BBE /* ProfileViewController.m */; };
@@ -290,7 +290,6 @@
 		4015F4C2188889FA006C3DC8 /* NSCoderExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSCoderExtensions.h; sourceTree = "<group>"; };
 		4015F4C3188889FA006C3DC8 /* NSDecimalNumberExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDecimalNumberExtensions.h; sourceTree = "<group>"; };
 		4015F4C4188889FA006C3DC8 /* NSNumberExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSNumberExtensions.h; sourceTree = "<group>"; };
-		4015F4C518888A06006C3DC8 /* libCorePlot-CocoaTouch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libCorePlot-CocoaTouch.a"; sourceTree = "<group>"; };
 		4015F4C718888A54006C3DC8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4015F4C918888A5B006C3DC8 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		4018F50D17F832B9006F990E /* JBKenBurnsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBKenBurnsView.h; sourceTree = "<group>"; };
@@ -361,6 +360,7 @@
 		405E533E185E112A00A8BD45 /* Sector2Annotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sector2Annotation.m; sourceTree = "<group>"; };
 		405E5340185E113D00A8BD45 /* StartFinishAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartFinishAnnotation.h; sourceTree = "<group>"; };
 		405E5341185E113D00A8BD45 /* StartFinishAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartFinishAnnotation.m; sourceTree = "<group>"; };
+		4060B89718891A1900B5039C /* libCorePlot-CocoaTouch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libCorePlot-CocoaTouch.a"; sourceTree = "<group>"; };
 		406B8AE618670A93008805C9 /* nurburg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nurburg.jpg; sourceTree = "<group>"; };
 		406B8AE818670F65008805C9 /* 31-ipod.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "31-ipod.png"; sourceTree = "<group>"; };
 		407710AA18453B3900882BBE /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
@@ -526,13 +526,13 @@
 				4015F4C818888A54006C3DC8 /* QuartzCore.framework in Frameworks */,
 				404D0CE31868297400050BD7 /* libUAirship-3.0.2.a in Frameworks */,
 				40BA42721865E6E1007A6329 /* SystemConfiguration.framework in Frameworks */,
+				4060B89818891A1900B5039C /* libCorePlot-CocoaTouch.a in Frameworks */,
 				40C1656517EB637900D4E093 /* CoreGraphics.framework in Frameworks */,
 				40BA419F1865E571007A6329 /* libsqlite3.dylib in Frameworks */,
 				40BA419A1865E4FC007A6329 /* libz.dylib in Frameworks */,
 				40BA41981865E4E5007A6329 /* Security.framework in Frameworks */,
 				40BA41961865E4DB007A6329 /* MobileCoreServices.framework in Frameworks */,
 				40BA41941865E4CB007A6329 /* CoreTelephony.framework in Frameworks */,
-				4015F4C618888A06006C3DC8 /* libCorePlot-CocoaTouch.a in Frameworks */,
 				40BA41921865E4C1007A6329 /* CFNetwork.framework in Frameworks */,
 				40BA418F1865C2D8007A6329 /* CoreMotion.framework in Frameworks */,
 				40E5A2EC1856538A00E8E87E /* CoreText.framework in Frameworks */,
@@ -577,7 +577,7 @@
 		4015F4631888885D006C3DC8 /* CorePlot */ = {
 			isa = PBXGroup;
 			children = (
-				4015F4C518888A06006C3DC8 /* libCorePlot-CocoaTouch.a */,
+				4060B89718891A1900B5039C /* libCorePlot-CocoaTouch.a */,
 				4015F475188889FA006C3DC8 /* CorePlotHeaders */,
 			);
 			name = CorePlot;
@@ -1658,6 +1658,7 @@
 					"/Users/andrewdonnelly/downloads/libUAirship-latest/Airship",
 					/iphonedev/RunTheTrack/RunTheTrack,
 					/iphonedev/RunTheTrack/RunTheTrack/Airship,
+					"/Users/andrewdonnelly/Desktop/core-plot-master/build/Debug-iphoneos",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1688,6 +1689,7 @@
 					"/Users/andrewdonnelly/downloads/libUAirship-latest/Airship",
 					/iphonedev/RunTheTrack/RunTheTrack,
 					/iphonedev/RunTheTrack/RunTheTrack/Airship,
+					"/Users/andrewdonnelly/Desktop/core-plot-master/build/Debug-iphoneos",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
