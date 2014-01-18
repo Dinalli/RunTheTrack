@@ -16,6 +16,8 @@
     [super viewDidLoad];
     [self.navigationController setNavigationBarHidden:NO];
     
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
     timeView.layer.masksToBounds = NO;
     timeView.layer.shadowOffset = CGSizeMake(0,-3);
     timeView.layer.shadowRadius = 2;
@@ -67,32 +69,55 @@
     [self initFlatWithIndicatorProgressBar];
     [self.progressBarFlatWithIndicator setProgress:0.4 animated:YES];
     
+    for (NSMutableDictionary *trackInfoDict in appDelegate.tracksArray) {
+        if([[trackInfoDict objectForKey:@"Race"] isEqualToString:self.runData.runtrackname])
+        {
+            self.trackInfo = trackInfoDict;
+            trackMapImage.image = [UIImage imageNamed:[trackInfoDict objectForKey:@"mapimage"]];
+        }
+    }
+
+    
     [self setUpRunData];
 }
 
 -(void)setUpRunData
 {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    //Track Info
+    trackDistance.text = [self.trackInfo objectForKey:@"Distance"];
+    trackName.text = [self.trackInfo objectForKey:@"Race"];
+    trackLaps.text = [self.trackInfo objectForKey:@"Laps"];
+    
+    // Run Info
+    
+    runTime.text = self.runData.runtime;
+    runType.text = self.runData.runtype;
+    runLaps.text = self.runData.runlaps;
+    runSteps.text = self.runData.runSteps;
+    runPace.text = self.runData.runPace;
+    runClimb.text = @"-";
+    
     if([appDelegate useKMasUnits])
     {
         runDistance.text = [NSString stringWithFormat:@"%.02f km", [self.runData.rundistance floatValue] / 1000];
     }
     else
     {
-        runDistance.text = [NSString stringWithFormat:@"Distance %.2f miles",[self.runData.rundistance floatValue] * 0.000621371192];
+        runDistance.text = [NSString stringWithFormat:@"%.2f miles",[self.runData.rundistance floatValue] * 0.000621371192];
     }
     
-    runDate.text = [NSString stringWithFormat:@"Date : %@",self.runData.rundate];
+    runDate.text = [NSString stringWithFormat:@"%@",self.runData.rundate];
     self.navigationItem.title = self.runData.runtrackname;
     
     for (NSMutableDictionary *trackInfoDict in appDelegate.tracksArray) {
         if([[trackInfoDict objectForKey:@"Race"] isEqualToString:self.runData.runtrackname])
         {
             self.trackInfo = trackInfoDict;
-            backgroundImageView.image = [[UIImage imageNamed:[trackInfoDict objectForKey:@"trackimage"]] applyExtraLightEffect];
+            backgroundImageView.image = [[UIImage imageNamed:[trackInfoDict objectForKey:@"trackimage"]] applyDarkEffect];
         }
     }
-
 }
 
 - (void)initFlatWithIndicatorProgressBar

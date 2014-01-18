@@ -157,6 +157,31 @@
     }
 }
 
+-(int)getHours
+{
+    int msperhour = 3600000;
+    int hours = _value / msperhour;
+    return hours;
+}
+
+-(int)getMins
+{
+    int msperhour = 3600000;
+    int mspermin = 60000;
+
+    int mins = (_value % msperhour) / mspermin;
+    return mins;
+}
+
+-(int)getSecs
+{
+    int msperhour = 3600000;
+    int mspermin = 60000;
+    
+    int secs = ((_value % msperhour) % mspermin) / 1000;
+    return secs;
+}
+
 - (NSString *)timeFormattedStringForValue:(unsigned long)value {
     int msperhour = 3600000;
     int mspermin = 60000;

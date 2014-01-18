@@ -13,7 +13,11 @@
 @interface RunAltitudeViewController : HistoryBaseViewController <CPTPlotDataSource>
 {
     NSMutableArray *runAltArray;
+    NSUInteger currentIndex;
+    NSTimer *dataTimer;
 }
+
+-(void)newData:(NSTimer *)theTimer;
 
 @property (nonatomic, strong) CPTGraphHostingView *hostView;
 

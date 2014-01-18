@@ -50,38 +50,9 @@
     self.trackPointArray = [[NSMutableArray alloc] init];
     [self addTrackPoints];
     
-    detailsView.layer.masksToBounds = NO;
-    detailsView.layer.shadowOffset = CGSizeMake(0,-3);
-    detailsView.layer.shadowRadius = 2;
-    detailsView.layer.shadowOpacity = 0.7;
-    detailsView.layer.cornerRadius = 4;
-    detailsView.layer.borderColor = [[UIColor blackColor] CGColor];
-    detailsView.layer.borderWidth = 0.5;
-    
-    // Set vertical effect
-    UIInterpolatingMotionEffect *verticalMotionEffect =
-    [[UIInterpolatingMotionEffect alloc]
-     initWithKeyPath:@"center.y"
-     type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
-    verticalMotionEffect.minimumRelativeValue = @(-20);
-    verticalMotionEffect.maximumRelativeValue = @(20);
-    
-    // Set horizontal effect
-    UIInterpolatingMotionEffect *horizontalMotionEffect =
-    [[UIInterpolatingMotionEffect alloc]
-     initWithKeyPath:@"center.x"
-     type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
-    horizontalMotionEffect.minimumRelativeValue = @(-20);
-    horizontalMotionEffect.maximumRelativeValue = @(20);
-    
-    // Create group to combine both
-    UIMotionEffectGroup *group = [UIMotionEffectGroup new];
-    group.motionEffects = @[horizontalMotionEffect, verticalMotionEffect];
-    
-    // Add both effects to your view
-    [detailsView addMotionEffect:group];
-    
-    
+    [CommonUtils shadowAndRoundView:detailsView];
+    [CommonUtils addMotionEffectToView:detailsView];
+
     mv.camera.pitch = 45;
 
 }

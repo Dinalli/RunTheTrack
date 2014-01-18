@@ -23,14 +23,20 @@
     IBOutlet UIButton *btnFinish;
     IBOutlet UILabel *lapTime;
     IBOutlet UILabel *distanceLabel;
+    IBOutlet UILabel *distanceMeasure;
+    IBOutlet UILabel *runPace;
     
     IBOutlet UILabel *noOfSteps;
+    NSInteger stepCounter;
     
     IBOutlet UILabel *lapsLabel;
     IBOutlet UIButton *startBtn;
     
     IBOutlet UILabel *motionActivityIndicator;
     IBOutlet UIImageView *trackBackImage;
+    
+    IBOutlet UIView *runInfoView;
+    IBOutlet UIView *runTimeView;
     
     NSTimer *timer;
     
@@ -67,6 +73,8 @@
     float runLapsFloat;
     
     AVSpeechSynthesizer *synth;
+    
+    BOOL startCountdownShown;
 }
 
 @property (nonatomic, strong) NSMutableArray *runPointArray;

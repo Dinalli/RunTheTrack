@@ -12,5 +12,8 @@
 
 + (NSString *)timeFormattedStringForValue:(int)hrs :(int)mins :(int)secs;
 + (NSString *)formattedStringFromDate:(NSDate *)dateIn;
++ (void)shadowAndRoundView:(UIView *)view;
++ (void)addMotionEffectToView:(UIView *)view;
+
 
 @end

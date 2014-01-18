@@ -48,14 +48,14 @@
     unsigned long timeLong = strtoul([strTimeLong UTF8String], NULL, 0);
     [self.timeLabel setSavedValue:timeLong];
     [self.timeLabel updateApperance];
-    runLaps.text = [NSString stringWithFormat:@"Laps %@",[self.trackInfo objectForKey:@"runLaps"]];
+    runLaps.text = [NSString stringWithFormat:@"%@ laps",[self.trackInfo objectForKey:@"runLaps"]];
     if([appDelegate useKMasUnits])
     {
-        runDistance.text = [NSString stringWithFormat:@"Distance %.2f km",[[self.trackInfo objectForKey:@"runDistance"] floatValue] / 1000];
+        runDistance.text = [NSString stringWithFormat:@"%.2f km",[[self.trackInfo objectForKey:@"runDistance"] floatValue] / 1000];
     }
     else
     {
-        runDistance.text = [NSString stringWithFormat:@"Distance %.2f miles",[[self.trackInfo objectForKey:@"runDistance"] floatValue] * 0.000621371192];
+        runDistance.text = [NSString stringWithFormat:@"%.2f miles",[[self.trackInfo objectForKey:@"runDistance"] floatValue] * 0.000621371192];
     }
     
     paceLabel.text = [NSString stringWithFormat:@"%@ mph",@"3.1"];
@@ -64,6 +64,8 @@
     
     if(appDelegate.useMotion)
     {
+        runSteps.hidden = NO;
+        runSteps.text = [NSString stringWithFormat:@"Steps %@",[self.trackInfo objectForKey:@"runSteps"]];
         self.trackPointArray = [[NSMutableArray alloc] init];
         [self addTrackPoints];
     }
@@ -72,6 +74,7 @@
         [self addRouteToMap];
     }
     
+    [CommonUtils shadowAndRoundView:toastView];
     [self customiseAppearance];
 }
 
@@ -248,6 +251,8 @@
     [runData setRunlaps:[self.trackInfo valueForKey:@"runLaps"]];
     [runData setRundistance:[self.trackInfo valueForKey:@"runDistance"]];
     [runData setRunPace:@"0"];
+    [runData setRuntype:[self.trackInfo valueForKey:@"runType"]];
+    [runData setRunSteps:[self.trackInfo valueForKey:@"runSteps"]];
     [runData setRundate:[CommonUtils formattedStringFromDate:[NSDate date]]];
     
     NSArray *points = [_trackInfo objectForKey:@"runPointArray"];

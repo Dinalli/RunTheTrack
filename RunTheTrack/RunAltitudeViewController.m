@@ -52,7 +52,7 @@
 -(void)configureGraph {
     // 1 - Create the graph
     CPTGraph *graph = [[CPTXYGraph alloc] initWithFrame:self.hostView.bounds];
-    [graph applyTheme:[CPTTheme themeNamed:kCPTDarkGradientTheme]];
+    [graph applyTheme:[CPTTheme themeNamed:kCPTStocksTheme]];
     self.hostView.hostedGraph = graph;
     // 2 - Set graph title
     NSString *title = @"Run Altitude";
@@ -123,7 +123,7 @@
 	tickLineStyle.lineColor = [CPTColor whiteColor];
 	tickLineStyle.lineWidth = 2.0f;
 	CPTMutableLineStyle *gridLineStyle = [CPTMutableLineStyle lineStyle];
-	tickLineStyle.lineColor = [CPTColor blackColor];
+	tickLineStyle.lineColor = [CPTColor greenColor];
 	tickLineStyle.lineWidth = 1.0f;
 
     // 2 - Get axis set
@@ -139,9 +139,8 @@
     x.majorTickLineStyle = axisLineStyle;
     x.majorTickLength = 4.0f;
     x.tickDirection = CPTSignNegative;
-    CGFloat dateCount = self.runData.runAltitudes.count;
-    NSMutableSet *xLabels = [NSMutableSet setWithCapacity:dateCount];
-    NSMutableSet *xLocations = [NSMutableSet setWithCapacity:dateCount];
+    NSMutableSet *xLabels = [NSMutableSet setWithCapacity:runAltArray.count];
+    NSMutableSet *xLocations = [NSMutableSet setWithCapacity:runAltArray.count];
     NSInteger i = 0;
     for (RunAltitude *runAlt in runAltArray) {
         CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:runAlt.altitudeTimeStamp  textStyle:x.labelTextStyle];
@@ -171,9 +170,9 @@
     y.majorTickLength = 4.0f;
     y.minorTickLength = 2.0f;
     y.tickDirection = CPTSignPositive;
-    NSInteger majorIncrement = 100;
-    NSInteger minorIncrement = 50;
-    CGFloat yMax = 700.0f;  // should determine dynamically based on max price
+    NSInteger majorIncrement = 160;
+    NSInteger minorIncrement = 140;
+    CGFloat yMax = 200.0f;  // should determine dynamically based on max price
     NSMutableSet *yLabels = [NSMutableSet set];
     NSMutableSet *yMajorLocations = [NSMutableSet set];
     NSMutableSet *yMinorLocations = [NSMutableSet set];
@@ -204,6 +203,7 @@
 
 -(NSNumber *)numberForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index {
     RunAltitude *ra = [runAltArray objectAtIndex:index];
+    NSLog(@"Number plotted %f", [ra.altitude floatValue]);
     return [NSNumber numberWithFloat:[ra.altitude floatValue]];
 }
 

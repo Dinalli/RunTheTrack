@@ -44,6 +44,7 @@ enum TimerState : NSUInteger {
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    startCountdownShown = NO;
     
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
@@ -84,9 +85,9 @@ enum TimerState : NSUInteger {
     
     self.navigationItem.titleView=tlabel;
     
-    trackBackImage.image = [[UIImage imageNamed:[self.trackInfo objectForKey:@"mapimage"]] applyExtraLightEffect];
+    trackBackImage.image = [UIImage imageNamed:[self.trackInfo objectForKey:@"mapimage"]];
                             
-    lapsLabel.text = @"0 Laps";
+    lapsLabel.text = @"0";
     totalTrackDistance = [[self.trackInfo objectForKey:@"Distance"] floatValue];
     totalTrackDistance = totalTrackDistance / 0.000621371192;
     
@@ -100,6 +101,12 @@ enum TimerState : NSUInteger {
     
     [self initFlatWithIndicatorProgressBar];
     [self.progressBarFlatWithIndicator setProgress:0.0 animated:YES];
+    
+    [CommonUtils shadowAndRoundView:runInfoView];
+    [CommonUtils shadowAndRoundView:runTimeView];
+    [CommonUtils addMotionEffectToView:runInfoView];
+    [CommonUtils addMotionEffectToView:runTimeView];
+    [CommonUtils addMotionEffectToView:self.progressBarFlatWithIndicator];
 }
 
 - (void)initFlatWithIndicatorProgressBar
@@ -134,9 +141,6 @@ enum TimerState : NSUInteger {
 {
     if(self.timerState == timerStopped)
     {
-        // Start the timer
-        [self textToSpeak:@"3 2 1 Start your run"];
-        
         TFLog(@"Run Started");
         
         if([startBtn.titleLabel.text isEqualToString:@"RESUME"])
@@ -151,7 +155,6 @@ enum TimerState : NSUInteger {
                 TFLog(@"Restarted Location Updates");
             }
         }
-        
         startDate = [NSDate date];
         lastLapDate = startDate;
         timer = [NSTimer scheduledTimerWithTimeInterval:0.0001 target:self selector:@selector(timerTick:) userInfo:nil repeats:YES];
@@ -240,19 +243,26 @@ enum TimerState : NSUInteger {
     if(appDelegate.useMotion)
     {
         [self enableCoreMotion];
+        noOfSteps.hidden = NO;
     }
     else
     {
-        motionActivityIndicator.hidden = YES;
         self.locationManager = [[CLLocationManager alloc] init];
         self.locationManager.delegate = self;
         self.locationManager.distanceFilter = kCLDistanceFilterNone; // setting this to 5.0 as it seems to be best and stop jitters.
         self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
         self.locationManager.pausesLocationUpdatesAutomatically = NO;
         [self.locationManager startUpdatingLocation];
+        motionActivityIndicator.text = @"GPS Tracking";
         
         TFLog(@"Location Updates Started");
     }
+}
+
+
+-(void)startCountdown
+{
+    startCountdownShown = YES;
 }
 
 #pragma mark CoreMotion
@@ -283,6 +293,8 @@ enum TimerState : NSUInteger {
         
         [cmStepCounter startStepCountingUpdatesToQueue:[NSOperationQueue mainQueue] updateOn:1 withHandler:^(NSInteger numberOfSteps, NSDate *timestamp, NSError *error) {
             
+            stepCounter = numberOfSteps;
+            
             noOfSteps.hidden = NO;
             noOfSteps.text = [NSString stringWithFormat:@"Steps %d", numberOfSteps];
             
@@ -308,21 +320,33 @@ enum TimerState : NSUInteger {
     {
         if([appDelegate useKMasUnits])
         {
-            distanceLabel.text =  [NSString stringWithFormat:@"%.2f km", totalLocationDistance / 1000];
+            distanceLabel.text =  [NSString stringWithFormat:@"%.2f", totalLocationDistance / 1000];
+            distanceMeasure.text = @"km";
         }
         else
         {
-            distanceLabel.text =  [NSString stringWithFormat:@"%.2f miles", totalLocationDistance * 0.000621371192];
+            distanceLabel.text =  [NSString stringWithFormat:@"%.2f", totalLocationDistance * 0.000621371192];
+            distanceMeasure.text = @"mile";
         }
         
         // Calculate the lap distance for the lap
         
         runLapsFloat = totalLocationDistance / totalTrackDistance;
-        lapsLabel.text = [NSString stringWithFormat:@"%.2f Laps", runLapsFloat];
+        lapsLabel.text = [NSString stringWithFormat:@"%.2f", runLapsFloat];
         [self setProgress:runLapsFloat/100 animated:YES];
         
+        // Calculate the pace at this point
         
+        int hours = [self.timeLabel getHours];
+        int mins = [self.timeLabel getMins];
+        int secs = [self.timeLabel getSecs];
+        NSLog(@"Time Label value %d:%d:%d", hours, mins, secs);
+        float floatHourPace = hours / (totalLocationDistance * 0.000621371192);
+        float floatMinPace = mins / (totalLocationDistance * 0.000621371192);
+        float floatSecPace = secs / (totalLocationDistance * 0.000621371192);
         
+        runPace.text = [NSString stringWithFormat:@"%.0f:%.0f pm",floatHourPace, floatMinPace];
+
         // Have we passed a sector then save info
         // Have we completed a lap
     }
@@ -335,12 +359,8 @@ enum TimerState : NSUInteger {
     if(self.timerState == timerStarted)
     {
         CLLocation *newLocation = [locations lastObject];
-        
-//        if(newLocation.altitude != 0)
-//        {
-            [runAltitudeArray addObject:[NSDictionary dictionaryWithObjects:@[[CommonUtils formattedStringFromDate:[NSDate date]],[NSString stringWithFormat:@"%f", newLocation.altitude]] forKeys:@[@"time",@"altitude"]]];
-//        }
-        
+        [runAltitudeArray addObject:[NSDictionary dictionaryWithObjects:@[[CommonUtils formattedStringFromDate:[NSDate date]],[NSString stringWithFormat:@"%f", newLocation.altitude]] forKeys:@[@"time",@"altitude"]]];
+
         CLLocation *oldLocation = [self.runPointArray lastObject];
         CLLocationDistance distance;
         
@@ -381,10 +401,12 @@ enum TimerState : NSUInteger {
         if(appDelegate.useMotion)
         {
             [self.trackInfo setObject:@"MotionRun" forKey:@"runType"];
+            [self.trackInfo setObject:[NSString stringWithFormat:@"%d", stepCounter] forKey:@"runSteps"];
         }
         else
         {
             [self.trackInfo setObject:@"GPSRun" forKey:@"runType"];
+            [self.trackInfo setObject:[NSString stringWithFormat:@"%d", 0] forKey:@"runSteps"];
         }
         
         //Add Laps, achivements and Sectors Dictionary
@@ -411,8 +433,8 @@ enum TimerState : NSUInteger {
     self.timerState = timerStopped;
     lapCounter = 0;
     _trackInfo = nil;
-    distanceLabel.text = @"Track Distance";
-    lapsLabel.text = @"Laps";
+    distanceLabel.text = @"0";
+    lapsLabel.text = @"0";
     startBtn.enabled = FALSE;
     timer = nil;
     totalRunTime = nil;

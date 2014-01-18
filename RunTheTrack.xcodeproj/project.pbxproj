@@ -52,11 +52,12 @@
 		4018F53317F83ADD006F990E /* Barcalona.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4018F53217F83ADD006F990E /* Barcalona.jpg */; };
 		4018F53517F83AF5006F990E /* Brazil.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4018F53417F83AF5006F990E /* Brazil.jpg */; };
 		4018F56F17F85B7F006F990E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4018F56E17F85B7F006F990E /* MapKit.framework */; };
+		4022963F188A83FA00BF515F /* RunData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4022963E188A83FA00BF515F /* RunData.m */; };
+		40229641188A97AF00BF515F /* S02.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 40229640188A97AF00BF515F /* S02.WAV */; };
 		40251C6B184E5EFF0088F8C9 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40251C6A184E5EFF0088F8C9 /* Crashlytics.framework */; };
 		4042CA771889A1FE005EDEFD /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4042CA741889A12E005EDEFD /* libCorePlot-CocoaTouch.a */; };
 		4042CA7C1889A584005EDEFD /* RunLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 4042CA7B1889A584005EDEFD /* RunLocations.m */; };
 		4042CA7F1889A584005EDEFD /* RunSectors.m in Sources */ = {isa = PBXBuildFile; fileRef = 4042CA7E1889A584005EDEFD /* RunSectors.m */; };
-		4042CA821889A584005EDEFD /* RunData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4042CA811889A584005EDEFD /* RunData.m */; };
 		4042CA851889A584005EDEFD /* RunAchievement.m in Sources */ = {isa = PBXBuildFile; fileRef = 4042CA841889A584005EDEFD /* RunAchievement.m */; };
 		4042CA881889A585005EDEFD /* RunAltitude.m in Sources */ = {isa = PBXBuildFile; fileRef = 4042CA871889A585005EDEFD /* RunAltitude.m */; };
 		4046F776182FE90200957CB5 /* tabbar-profile-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 4046F774182FE90200957CB5 /* tabbar-profile-normal.png */; };
@@ -247,15 +248,16 @@
 		4018F53217F83ADD006F990E /* Barcalona.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Barcalona.jpg; sourceTree = "<group>"; };
 		4018F53417F83AF5006F990E /* Brazil.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Brazil.jpg; sourceTree = "<group>"; };
 		4018F56E17F85B7F006F990E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		4022963D188A83FA00BF515F /* RunData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunData.h; sourceTree = "<group>"; };
+		4022963E188A83FA00BF515F /* RunData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunData.m; sourceTree = "<group>"; };
+		40229640188A97AF00BF515F /* S02.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = S02.WAV; sourceTree = "<group>"; };
 		40251C6A184E5EFF0088F8C9 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		4042CA6A18899F35005EDEFD /* RTT4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = RTT4.xcdatamodel; sourceTree = "<group>"; };
+		4042CA6A18899F35005EDEFD /* RTT4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RTT4.xcdatamodel; sourceTree = "<group>"; };
 		4042CA6D1889A12D005EDEFD /* CorePlot-CocoaTouch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CorePlot-CocoaTouch.xcodeproj"; path = "../../CorePlot/framework/CorePlot-CocoaTouch.xcodeproj"; sourceTree = "<group>"; };
 		4042CA7A1889A584005EDEFD /* RunLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunLocations.h; sourceTree = "<group>"; };
 		4042CA7B1889A584005EDEFD /* RunLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunLocations.m; sourceTree = "<group>"; };
 		4042CA7D1889A584005EDEFD /* RunSectors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunSectors.h; sourceTree = "<group>"; };
 		4042CA7E1889A584005EDEFD /* RunSectors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunSectors.m; sourceTree = "<group>"; };
-		4042CA801889A584005EDEFD /* RunData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunData.h; sourceTree = "<group>"; };
-		4042CA811889A584005EDEFD /* RunData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunData.m; sourceTree = "<group>"; };
 		4042CA831889A584005EDEFD /* RunAchievement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunAchievement.h; sourceTree = "<group>"; };
 		4042CA841889A584005EDEFD /* RunAchievement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunAchievement.m; sourceTree = "<group>"; };
 		4042CA861889A585005EDEFD /* RunAltitude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunAltitude.h; sourceTree = "<group>"; };
@@ -604,6 +606,7 @@
 			isa = PBXGroup;
 			children = (
 				40BAAD3E18203FB900137E8C /* beep-8.mp3 */,
+				40229640188A97AF00BF515F /* S02.WAV */,
 			);
 			name = AlertSounds;
 			sourceTree = "<group>";
@@ -1076,12 +1079,12 @@
 				4042CA7B1889A584005EDEFD /* RunLocations.m */,
 				4042CA7D1889A584005EDEFD /* RunSectors.h */,
 				4042CA7E1889A584005EDEFD /* RunSectors.m */,
-				4042CA801889A584005EDEFD /* RunData.h */,
-				4042CA811889A584005EDEFD /* RunData.m */,
 				4042CA831889A584005EDEFD /* RunAchievement.h */,
 				4042CA841889A584005EDEFD /* RunAchievement.m */,
 				4042CA861889A585005EDEFD /* RunAltitude.h */,
 				4042CA871889A585005EDEFD /* RunAltitude.m */,
+				4022963D188A83FA00BF515F /* RunData.h */,
+				4022963E188A83FA00BF515F /* RunData.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1218,6 +1221,7 @@
 				4007A013181B1456008EC227 /* nurburgring.png in Resources */,
 				407C4E01180BF7E300F7B2FE /* routes-man@2x.png in Resources */,
 				4018F52E17F83903006F990E /* Silverstone.jpg in Resources */,
+				40229641188A97AF00BF515F /* S02.WAV in Resources */,
 				407C4DFF180BF7E300F7B2FE /* routes-cup@2x.png in Resources */,
 				40A3B3E9185B76CC00BA85BB /* icon-error.png in Resources */,
 				4046F777182FE90200957CB5 /* tabbar-profile-normal@2x.png in Resources */,
@@ -1357,8 +1361,8 @@
 				407C4DF2180BF1C300F7B2FE /* TrackCell.m in Sources */,
 				40E5A2F21856592000E8E87E /* TTTAttributedLabel.m in Sources */,
 				400522541880207D00B34DAD /* RunInfoSummary.m in Sources */,
-				4042CA821889A584005EDEFD /* RunData.m in Sources */,
 				407C4DEF180BE6B700F7B2FE /* TracksCollectionViewController.m in Sources */,
+				4022963F188A83FA00BF515F /* RunData.m in Sources */,
 				4042CA7F1889A584005EDEFD /* RunSectors.m in Sources */,
 				4047939F182F7AEC004FEB73 /* RunCell.m in Sources */,
 				40D35DCA182541E500D10899 /* CoreDataHelper.m in Sources */,

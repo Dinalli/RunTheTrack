@@ -2,7 +2,7 @@
 //  RunData.h
 //  RunTheTrack
 //
-//  Created by Andrew Donnelly on 17/01/2014.
+//  Created by Andrew Donnelly on 18/01/2014.
 //  Copyright (c) 2014 iphonemobileapp. All rights reserved.
 //
 
@@ -20,6 +20,8 @@
 @property (nonatomic, retain) NSString * runPace;
 @property (nonatomic, retain) NSString * runtime;
 @property (nonatomic, retain) NSString * runtrackname;
+@property (nonatomic, retain) NSString * runtype;
+@property (nonatomic, retain) NSString * runSteps;
 @property (nonatomic, retain) NSSet *runAchievement;
 @property (nonatomic, retain) NSSet *runAltitudes;
 @property (nonatomic, retain) NSSet *runDataLocations;

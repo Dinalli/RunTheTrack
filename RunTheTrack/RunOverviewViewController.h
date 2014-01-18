@@ -30,6 +30,7 @@
     IBOutlet UILabel *trackLaps;
     IBOutlet UILabel *trackName;
     IBOutlet UILabel *trackDistance;
+    IBOutlet UIImageView *trackMapImage;
     
 }
 

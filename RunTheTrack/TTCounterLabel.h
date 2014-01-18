@@ -37,5 +37,9 @@ typedef NS_ENUM(NSInteger, kCountDirection){
 -(unsigned long)getValue;
 - (void)setSavedValue:(unsigned long)value;
 -(NSString *)getValueString;
+-(int)getHours;
+-(int)getMins;
+-(int)getSecs;
+
 
 @end

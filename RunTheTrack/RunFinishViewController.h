@@ -21,12 +21,13 @@
     IBOutlet UILabel *runDistance;
     IBOutlet UILabel *paceLabel;
     IBOutlet UILabel *trackName;
+    IBOutlet UILabel *runSteps;
 
     IBOutlet MKMapView *mv;
     
     UIImage *mapImage;
     
-    UIView *toastView;
+    IBOutlet UIView *toastView;
     
     double totalDistance;
     AppDelegate *appDelegate;

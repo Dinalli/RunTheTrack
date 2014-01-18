@@ -44,4 +44,42 @@
     return [dateFormatter stringFromDate:dateIn];
 }
 
+
++ (void)shadowAndRoundView:(UIView *)view
+{
+    view.layer.masksToBounds = NO;
+    view.layer.shadowOffset = CGSizeMake(0,-3);
+    view.layer.shadowRadius = 2;
+    view.layer.shadowOpacity = 0.7;
+    view.layer.cornerRadius = 4;
+    view.layer.borderColor = [[UIColor blackColor] CGColor];
+    view.layer.borderWidth = 0.5;
+}
+
++ (void)addMotionEffectToView:(UIView *)view
+{
+    // Set vertical effect
+    UIInterpolatingMotionEffect *verticalMotionEffect =
+    [[UIInterpolatingMotionEffect alloc]
+     initWithKeyPath:@"center.y"
+     type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+    verticalMotionEffect.minimumRelativeValue = @(-20);
+    verticalMotionEffect.maximumRelativeValue = @(20);
+    
+    // Set horizontal effect
+    UIInterpolatingMotionEffect *horizontalMotionEffect =
+    [[UIInterpolatingMotionEffect alloc]
+     initWithKeyPath:@"center.x"
+     type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+    horizontalMotionEffect.minimumRelativeValue = @(-20);
+    horizontalMotionEffect.maximumRelativeValue = @(20);
+    
+    // Create group to combine both
+    UIMotionEffectGroup *group = [UIMotionEffectGroup new];
+    group.motionEffects = @[horizontalMotionEffect, verticalMotionEffect];
+    
+    // Add both effects to your view
+    [view addMotionEffect:group];
+}
+
 @end
