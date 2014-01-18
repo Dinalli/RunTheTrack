@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4002449517EF814F009ACC39 /* Silverstoneback.png in Resources */ = {isa = PBXBuildFile; fileRef = 4002449417EF814F009ACC39 /* Silverstoneback.png */; };
 		400522541880207D00B34DAD /* RunInfoSummary.m in Sources */ = {isa = PBXBuildFile; fileRef = 400522531880207D00B34DAD /* RunInfoSummary.m */; };
 		400522571880209600B34DAD /* RunInfoAltitudeGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 400522561880209600B34DAD /* RunInfoAltitudeGraph.m */; };
 		4007A005181B1456008EC227 /* abu-sec.png in Resources */ = {isa = PBXBuildFile; fileRef = 40079FF2181B1456008EC227 /* abu-sec.png */; };
@@ -55,6 +54,7 @@
 		4022963F188A83FA00BF515F /* RunData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4022963E188A83FA00BF515F /* RunData.m */; };
 		40229641188A97AF00BF515F /* S02.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 40229640188A97AF00BF515F /* S02.WAV */; };
 		40251C6B184E5EFF0088F8C9 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40251C6A184E5EFF0088F8C9 /* Crashlytics.framework */; };
+		402AB50C188AFB950068C52C /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 402AB50B188AFB950068C52C /* libGoogleAnalyticsServices.a */; };
 		4042CA771889A1FE005EDEFD /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4042CA741889A12E005EDEFD /* libCorePlot-CocoaTouch.a */; };
 		4042CA7C1889A584005EDEFD /* RunLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 4042CA7B1889A584005EDEFD /* RunLocations.m */; };
 		4042CA7F1889A584005EDEFD /* RunSectors.m in Sources */ = {isa = PBXBuildFile; fileRef = 4042CA7E1889A584005EDEFD /* RunSectors.m */; };
@@ -198,7 +198,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4002449417EF814F009ACC39 /* Silverstoneback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Silverstoneback.png; sourceTree = "<group>"; };
 		400522521880207D00B34DAD /* RunInfoSummary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunInfoSummary.h; sourceTree = "<group>"; };
 		400522531880207D00B34DAD /* RunInfoSummary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunInfoSummary.m; sourceTree = "<group>"; };
 		400522551880209600B34DAD /* RunInfoAltitudeGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunInfoAltitudeGraph.h; sourceTree = "<group>"; };
@@ -252,6 +251,13 @@
 		4022963E188A83FA00BF515F /* RunData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunData.m; sourceTree = "<group>"; };
 		40229640188A97AF00BF515F /* S02.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = S02.WAV; sourceTree = "<group>"; };
 		40251C6A184E5EFF0088F8C9 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		402AB505188AFB740068C52C /* GAI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
+		402AB506188AFB740068C52C /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
+		402AB507188AFB740068C52C /* GAIFields.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
+		402AB508188AFB740068C52C /* GAILogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
+		402AB509188AFB740068C52C /* GAITrackedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
+		402AB50A188AFB740068C52C /* GAITracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
+		402AB50B188AFB950068C52C /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		4042CA6A18899F35005EDEFD /* RTT4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RTT4.xcdatamodel; sourceTree = "<group>"; };
 		4042CA6D1889A12D005EDEFD /* CorePlot-CocoaTouch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CorePlot-CocoaTouch.xcodeproj"; path = "../../CorePlot/framework/CorePlot-CocoaTouch.xcodeproj"; sourceTree = "<group>"; };
 		4042CA7A1889A584005EDEFD /* RunLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunLocations.h; sourceTree = "<group>"; };
@@ -463,6 +469,7 @@
 				4042CA771889A1FE005EDEFD /* libCorePlot-CocoaTouch.a in Frameworks */,
 				4015F4CA18888A5B006C3DC8 /* Accelerate.framework in Frameworks */,
 				4015F4C818888A54006C3DC8 /* QuartzCore.framework in Frameworks */,
+				402AB50C188AFB950068C52C /* libGoogleAnalyticsServices.a in Frameworks */,
 				404D0CE31868297400050BD7 /* libUAirship-3.0.2.a in Frameworks */,
 				40BA42721865E6E1007A6329 /* SystemConfiguration.framework in Frameworks */,
 				40C1656517EB637900D4E093 /* CoreGraphics.framework in Frameworks */,
@@ -523,6 +530,7 @@
 		4018F50417F82E26006F990E /* 3rdParty */ = {
 			isa = PBXGroup;
 			children = (
+				402AB502188AFB5B0068C52C /* GoogleAnalytics */,
 				4015F4631888885D006C3DC8 /* CorePlot */,
 				40E1606818772D01004C1B89 /* TestFlight */,
 				40D42C9B18702DAB0057DF2D /* YLProgressBar */,
@@ -570,6 +578,20 @@
 				4013EF16185069A800D6740F /* RunSectorCell.m */,
 			);
 			name = Notused;
+			sourceTree = "<group>";
+		};
+		402AB502188AFB5B0068C52C /* GoogleAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				402AB50B188AFB950068C52C /* libGoogleAnalyticsServices.a */,
+				402AB505188AFB740068C52C /* GAI.h */,
+				402AB506188AFB740068C52C /* GAIDictionaryBuilder.h */,
+				402AB507188AFB740068C52C /* GAIFields.h */,
+				402AB508188AFB740068C52C /* GAILogger.h */,
+				402AB509188AFB740068C52C /* GAITrackedViewController.h */,
+				402AB50A188AFB740068C52C /* GAITracker.h */,
+			);
+			name = GoogleAnalytics;
 			sourceTree = "<group>";
 		};
 		4042CA6E1889A12D005EDEFD /* Products */ = {
@@ -703,7 +725,6 @@
 				4018F51E17F83903006F990E /* singapore.jpg */,
 				4018F51F17F83903006F990E /* Spa.jpg */,
 				4018F52017F83903006F990E /* Usa.jpg */,
-				4002449417EF814F009ACC39 /* Silverstoneback.png */,
 			);
 			name = Backgrounds;
 			sourceTree = "<group>";
@@ -1261,7 +1282,6 @@
 				4007A006181B1456008EC227 /* bahrain.png in Resources */,
 				4007A012181B1456008EC227 /* monza.png in Resources */,
 				4098A64B186E06CC0087EE50 /* trophy.png in Resources */,
-				4002449517EF814F009ACC39 /* Silverstoneback.png in Resources */,
 				40E1607118772D5D004C1B89 /* release_notes.md in Resources */,
 				4018F53117F83903006F990E /* Usa.jpg in Resources */,
 				4057A5BF17EE596A00FE1E93 /* Icon.png in Resources */,

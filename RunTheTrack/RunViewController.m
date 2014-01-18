@@ -62,7 +62,8 @@ enum TimerState : NSUInteger {
                                                             type:MessageBarMessageTypeError];
     }
     
-    self.managedObjectContext = appDelegate.managedObjectContext;
+    self.managedObjectContext = appDelegate.
+    managedObjectContext;
     
     [self customiseAppearance];
     
@@ -142,6 +143,7 @@ enum TimerState : NSUInteger {
     if(self.timerState == timerStopped)
     {
         TFLog(@"Run Started");
+        [musicPlayer play];
         
         if([startBtn.titleLabel.text isEqualToString:@"RESUME"])
         {
@@ -157,7 +159,7 @@ enum TimerState : NSUInteger {
         }
         startDate = [NSDate date];
         lastLapDate = startDate;
-        timer = [NSTimer scheduledTimerWithTimeInterval:0.0001 target:self selector:@selector(timerTick:) userInfo:nil repeats:YES];
+        timer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(timerTick:) userInfo:nil repeats:YES];
         [startBtn setTitle:@"STOP" forState:UIControlStateNormal];
         self.timerState = timerStarted;
         [self.timeLabel start];
@@ -165,6 +167,7 @@ enum TimerState : NSUInteger {
     }
     else if(self.timerState == timerStarted)
     {
+        [musicPlayer pause];
         [self.timeLabel stop];
         [self pauseTimer:timer];
         [startBtn setTitle:@"RESUME" forState:UIControlStateNormal];
@@ -219,7 +222,6 @@ enum TimerState : NSUInteger {
 {
     if (mediaItemCollection) {
         [musicPlayer setQueueWithItemCollection: mediaItemCollection];
-        [musicPlayer play];
         appDelegate.musicIsPlaying = YES;
     }
     [self dismissViewControllerAnimated:YES completion:nil];
