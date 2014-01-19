@@ -21,12 +21,7 @@
     IBOutlet UIImageView *trackMapImage;
     IBOutlet UILabel *runDate;
     
-    IBOutlet UILabel *sector1Time;
-    IBOutlet UILabel *sector2Time;
-    IBOutlet UILabel *sector3Time;
-    IBOutlet UILabel *lapNumerTime;
-    
-    IBOutlet UISlider *lapSlider;
+    IBOutlet UIView *detailsView;
     
     UIImage *mapImage;
     

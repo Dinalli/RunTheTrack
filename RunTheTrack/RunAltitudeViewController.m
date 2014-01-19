@@ -32,7 +32,11 @@
 //                return NSOrderedDescending;
 //            return [aRunAlt.altitudeTimeStamp localizedCompare: bRunAlt.altitudeTimeStamp];
 //        }];
-    [self initPlot];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self initPlot];
+    });
+    
 }
 
 #pragma mark - Chart behavior

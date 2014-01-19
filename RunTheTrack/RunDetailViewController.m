@@ -97,8 +97,6 @@
     
     [self.navigationController setNavigationBarHidden:YES];
     
-    [lapSlider setThumbImage:[UIImage imageNamed:@"routes-man"] forState:UIControlStateNormal];
-    
     runTime.text = [NSString stringWithFormat:@"Time : %@", self.runData.runtime];
     runLaps.text = [NSString stringWithFormat:@"Laps : %@",self.runData.runlaps];
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -126,8 +124,9 @@
         }
     }    
     [self addRouteToMap];
-    
-    [self showSectorTimes];
+
+    [CommonUtils shadowAndRoundView:detailsView];
+    [CommonUtils addMotionEffectToView:detailsView];
 }
 
 -(void)showSectorTimes
@@ -147,39 +146,7 @@
                 return NSOrderedAscending;
             return [aRunSector.lapNumber localizedCompare: bRunSector.lapNumber];
         }];
-        
-        if(runLapsArray.count > 0)
-        {
-        RunSectors *runSector = (RunSectors *)[runLapsArray objectAtIndex:0];
-        lapNumerTime.text = [NSString stringWithFormat:@"Lap %@  Time %@", runSector.lapNumber, runSector.lapTime];
-
-        sector1Time.text = [NSString stringWithFormat:@"Sector1 : %@", runSector.sector1Time];
-        sector2Time.text = [NSString stringWithFormat:@"Sector2 : %@", runSector.sector2Time];
-        sector3Time.text = [NSString stringWithFormat:@"Sector3 : %@", runSector.sector3Time];
-
-        lapSlider.minimumValue = 1;
-        lapSlider.maximumValue = [self.runData.runlaps integerValue]-1;
-        }
     }
-    else
-    {
-        sector1Time.hidden = YES;
-        sector2Time.hidden = YES;
-        sector3Time.hidden = YES;
-        lapSlider.hidden = YES;
-        lapNumerTime.hidden = YES;
-    }
-}
-
--(IBAction)lapSliderChanged:(id)sender
-{
-    int sliderInt = roundf(lapSlider.value);
-    RunSectors *runSector = (RunSectors *)[runLapsArray objectAtIndex:sliderInt];
-    lapNumerTime.text = [NSString stringWithFormat:@"Lap %@  Time %@", runSector.lapNumber, runSector.lapTime];
-    
-    sector1Time.text = [NSString stringWithFormat:@"Sector1 : %@", runSector.sector1Time];
-    sector2Time.text = [NSString stringWithFormat:@"Sector2 : %@", runSector.sector2Time];
-    sector3Time.text = [NSString stringWithFormat:@"Sector3 : %@", runSector.sector3Time];
 }
 
 #pragma mark Segue Navigation
