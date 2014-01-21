@@ -71,8 +71,8 @@ enum TimerState : NSUInteger {
     musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
     
     //Listen to notification of track playing changing
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playbackStateDidChanged:) name:MPMusicPlayerControllerPlaybackStateDidChangeNotification object:musicPlayer];
-    [musicPlayer beginGeneratingPlaybackNotifications];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playbackStateDidChanged:) name:MPMusicPlayerControllerPlaybackStateDidChangeNotification object:musicPlayer];
+//    [musicPlayer beginGeneratingPlaybackNotifications];
     
     self.timerState = timerStopped;
     lapCounter = 0;
@@ -97,6 +97,8 @@ enum TimerState : NSUInteger {
     [self startTracking];
     sector1Time = @"";
     sector2Time = @"";
+    sector1savedforLap = NO;
+    sector2savedforLap = NO;
     
     if(runAltitudeArray == nil) runAltitudeArray = [[NSMutableArray alloc] init];
     
@@ -143,7 +145,7 @@ enum TimerState : NSUInteger {
     if(self.timerState == timerStopped)
     {
         TFLog(@"Run Started");
-        [musicPlayer play];
+        //[musicPlayer play];
         
         if([startBtn.titleLabel.text isEqualToString:@"RESUME"])
         {
@@ -167,7 +169,7 @@ enum TimerState : NSUInteger {
     }
     else if(self.timerState == timerStarted)
     {
-        [musicPlayer pause];
+        //[musicPlayer pause];
         [self.timeLabel stop];
         [self pauseTimer:timer];
         [startBtn setTitle:@"RESUME" forState:UIControlStateNormal];
@@ -342,7 +344,7 @@ enum TimerState : NSUInteger {
         int hours = [self.timeLabel getHours];
         int mins = [self.timeLabel getMins];
         int secs = [self.timeLabel getSecs];
-        NSLog(@"Time Label value %d:%d:%d", hours, mins, secs);
+        //NSLog(@"Time Label value %d:%d:%d", hours, mins, secs);
         float floatHourPace = hours / (totalLocationDistance * 0.000621371192);
         float floatMinPace = mins / (totalLocationDistance * 0.000621371192);
         float floatSecPace = secs / (totalLocationDistance * 0.000621371192);
@@ -350,7 +352,96 @@ enum TimerState : NSUInteger {
         runPace.text = [NSString stringWithFormat:@"%.0f:%.0f pm",floatHourPace, floatMinPace];
 
         // Have we passed a sector then save info
+        
+        double integral;
+        double fractional = modf(runLapsFloat, &integral);
+        //NSLog(@"laps intergral %f", fractional);
+        
+
+        //Sector 1
+        if (fractional > 0.33333 && !sector1savedforLap)
+        {
+            sector1Date = [NSDate date];
+            sector1Loc = [self.runPointArray lastObject];
+            if(sector3Date == nil)
+            {
+                NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+
+                NSDateComponents *components = [gregorianCalendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit)
+                                                                    fromDate:startDate
+                                                                      toDate:sector1Date
+                                                                     options:0];
+                sector1Time = [CommonUtils timeFormattedStringForValue:(int)[components hour] :(int)[components minute] :(int)[components second]];
+            }
+            else{
+                NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+
+                NSDateComponents *components = [gregorianCalendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit)
+                                                                    fromDate:sector3Date
+                                                                      toDate:sector1Date
+                                                                     options:0];
+                sector1Time = [CommonUtils timeFormattedStringForValue:(int)[components hour] :(int)[components minute] :(int)[components second]];
+
+            }
+            sector1savedforLap = YES;
+        }
+        
+        
+        // Sector 2
+        if (fractional > 0.6666 && !sector2savedforLap)
+        {
+            sector2Date = [NSDate date];
+            sector2Loc = [self.runPointArray lastObject];
+            NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+            
+            NSDateComponents *components = [gregorianCalendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit)
+                                                                fromDate:sector1Date
+                                                                  toDate:[NSDate date]
+                                                                 options:0];
+            sector2Time = [NSString stringWithFormat:@"%d:%d:%d", [components hour], [components minute], [components second]];
+            
+            sector2savedforLap = YES;
+
+        }
+        
         // Have we completed a lap
+        if(lapCounter  != (int)floorf(runLapsFloat))
+        {
+            sector3Date = [NSDate date];
+            NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+
+            NSDateComponents *components = [gregorianCalendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit)
+                                                                fromDate:sector2Date
+                                                                  toDate:sector3Date
+                                                                 options:0];
+            sector3Time = [CommonUtils timeFormattedStringForValue:(int)[components hour] :(int)[components minute] :(int)[components second]];
+            
+            NSDateComponents *lapComponents = [gregorianCalendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit)
+                                                                fromDate:lastLapDate
+                                                                  toDate:sector3Date
+                                                                 options:0];
+            NSString *lapTimeDiff = [CommonUtils timeFormattedStringForValue:(int)[lapComponents hour] :(int)[lapComponents minute] :(int)[lapComponents second]];
+
+            CLLocation *lapLoc = [self.runPointArray lastObject];
+            
+            lapCounter = (int)floorf(runLapsFloat);
+            NSDictionary *runLap = @{@"1": sector1Time,
+                                     @"2": sector2Time,
+                                     @"3": sector3Time,
+                                     @"1Loc" : sector1Loc,
+                                     @"2Loc" : sector2Loc,
+                                     @"Lap": lapTimeDiff,
+                                     @"LapPace": runPace.text,
+                                     @"LapLat": [NSString stringWithFormat:@"%f",lapLoc.coordinate.latitude] ,
+                                     @"LapLong":[NSString stringWithFormat:@"%f",lapLoc.coordinate.longitude]};
+            
+            NSLog( @"%@", runLap);
+            
+            if(runLapsInfoDict == nil) runLapsInfoDict = [[NSMutableDictionary alloc] init];
+            [runLapsInfoDict setObject:runLap forKey:[NSString stringWithFormat:@"%d",lapCounter]];
+            sector1savedforLap = NO;
+            sector2savedforLap = NO;
+        }
     }
 }
 
@@ -412,7 +503,7 @@ enum TimerState : NSUInteger {
         }
         
         //Add Laps, achivements and Sectors Dictionary
-        if (runLaps != nil)[self.trackInfo setObject:runLaps forKey:@"runLapsInfo"];
+        if (runLapsInfoDict != nil)[self.trackInfo setObject:runLapsInfoDict forKey:@"runLapsInfo"];
         //if (newRunAchievements != nil)[self.trackInfo setObject:newRunAchievements forKey:@"runAchivementsInfo"];
         if (runAltitudeArray != nil)[self.trackInfo setObject:runAltitudeArray forKey:@"runAltitude"];
         
@@ -477,7 +568,6 @@ enum TimerState : NSUInteger {
 
 -(void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer didFinishSpeechUtterance:(AVSpeechUtterance *)utterance
 {
-    if(appDelegate.musicIsPlaying) [musicPlayer play];
 }
 
 @end

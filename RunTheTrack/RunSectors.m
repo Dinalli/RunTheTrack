@@ -2,7 +2,7 @@
 //  RunSectors.m
 //  RunTheTrack
 //
-//  Created by Andrew Donnelly on 17/01/2014.
+//  Created by Andrew Donnelly on 21/01/2014.
 //  Copyright (c) 2014 iphonemobileapp. All rights reserved.
 //
 
@@ -12,12 +12,19 @@
 
 @implementation RunSectors
 
+@dynamic lapLat;
+@dynamic lapLong;
 @dynamic lapNumber;
+@dynamic lapPace;
 @dynamic lapTime;
 @dynamic runId;
 @dynamic sector1Time;
 @dynamic sector2Time;
 @dynamic sector3Time;
+@dynamic sec1Lat;
+@dynamic sec1Long;
+@dynamic sec2Lat;
+@dynamic sec2Long;
 @dynamic relationship;
 
 @end

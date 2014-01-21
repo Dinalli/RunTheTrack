@@ -769,7 +769,6 @@
                     <connections>
                         <segue destination="wSd-LW-rzy" kind="relationship" relationship="viewControllers" id="EMc-HL-j0S"/>
                         <segue destination="nrG-eV-KE2" kind="relationship" relationship="viewControllers" id="02j-nu-y7T"/>
-                        <segue destination="2gz-D4-2cE" kind="relationship" relationship="viewControllers" id="3ga-b9-K9k"/>
                         <segue destination="K8l-bf-pJv" kind="relationship" relationship="viewControllers" id="IFW-4v-vrr"/>
                         <segue destination="j1Z-Tu-5ah" kind="relationship" relationship="viewControllers" id="Ha4-Y7-Ncc"/>
                     </connections>

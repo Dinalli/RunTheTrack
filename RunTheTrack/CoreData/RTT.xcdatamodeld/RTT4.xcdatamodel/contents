@@ -41,9 +41,16 @@
         <relationship name="runLoactionsData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RunData" inverseName="runDataLocations" inverseEntity="RunData" syncable="YES"/>
     </entity>
     <entity name="RunSectors" representedClassName="RunSectors" syncable="YES">
+        <attribute name="lapLat" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lapLong" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lapNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lapPace" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lapTime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="runId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sec1Lat" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sec1Long" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sec2Lat" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sec2Long" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sector1Time" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sector2Time" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sector3Time" optional="YES" attributeType="String" syncable="YES"/>

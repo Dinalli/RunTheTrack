@@ -51,10 +51,15 @@
     int sector1Count;
     int sector2Count;
     
-    NSMutableDictionary *runLaps;
+    NSMutableDictionary *runLapsInfoDict;
+    NSDate *sector1Date;
+    NSDate *sector2Date;
+    NSDate *sector3Date;
     NSString *sector1Time;
     NSString *sector2Time;
     NSString *sector3Time;
+    CLLocation *sector1Loc;
+    CLLocation *sector2Loc;
     NSString *recordedlapTime;
     NSString *totalRunTime;
     
@@ -75,6 +80,8 @@
     AVSpeechSynthesizer *synth;
     
     BOOL startCountdownShown;
+    BOOL sector1savedforLap;
+    BOOL sector2savedforLap;
 }
 
 @property (nonatomic, strong) NSMutableArray *runPointArray;

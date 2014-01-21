@@ -16,6 +16,7 @@
 #import "AppDelegate.h"
 #import "UIImage+ImageEffects.h"
 #import <Social/Social.h>
+#import "StartFinishAnnotation.h"
 
 @interface RunFinishViewController ()
 
@@ -186,6 +187,54 @@
         region.center.longitude = coordinates[numberOfSteps-1].longitude;
         [mv setRegion:region animated:YES];
     }
+    
+    // Add points to map for annotations
+    CLLocation *startRunLocation = (CLLocation *)[points objectAtIndex:0];
+    CLLocation *endRunLocation = (CLLocation *)[points objectAtIndex:points.count-1];
+
+    StartFinishAnnotation *startAnno = [[StartFinishAnnotation alloc] init];
+    startAnno.coordinate = endRunLocation.coordinate;
+    startAnno.title = @"Finish";
+    [mv addAnnotation:startAnno];
+    
+    
+    StartFinishAnnotation *finishAnno = [[StartFinishAnnotation alloc] init];
+    finishAnno.coordinate = startRunLocation.coordinate;
+    finishAnno.title = @"Start";
+    [mv addAnnotation:finishAnno];
+    
+    [self showSectorTimes];
+}
+
+-(void)showSectorTimes
+{
+    NSDictionary *runLapsDict = (NSDictionary *)[_trackInfo objectForKey:@"runLapsInfo"];
+    if(runLapsDict.count > 0)
+    {
+        for(NSDictionary *rSectorDictKey in runLapsDict)
+        {
+            
+            NSDictionary *rSectorDict = [runLapsDict objectForKey:rSectorDictKey];
+            CLLocationCoordinate2D lapCordinate =  CLLocationCoordinate2DMake([[rSectorDict objectForKey:@"LapLat"] doubleValue], [[rSectorDict objectForKey:@"LapLong"] doubleValue]);
+            
+            StartFinishAnnotation *finishAnno = [[StartFinishAnnotation alloc] init];
+            finishAnno.coordinate = lapCordinate;
+            finishAnno.title = [NSString stringWithFormat:@"Lap %@ time %@",[rSectorDict objectForKey:@"Lap"], [rSectorDict objectForKey:@"Lap"]];
+            [mv addAnnotation:finishAnno];
+            
+            CLLocation *sector1Location = (CLLocation *)[rSectorDict objectForKey:@"1Loc"];
+            StartFinishAnnotation *sector1Anno = [[StartFinishAnnotation alloc] init];
+            sector1Anno.coordinate = sector1Location.coordinate;
+            sector1Anno.title = [NSString stringWithFormat:@"Sector 1 %@",[rSectorDict objectForKey:@"1"]];
+            [mv addAnnotation:sector1Anno];
+            
+            CLLocation *sector2Location = (CLLocation *)[rSectorDict objectForKey:@"2Loc"];
+            StartFinishAnnotation *sector2Anno = [[StartFinishAnnotation alloc] init];
+            sector2Anno.coordinate = sector2Location.coordinate;
+            sector2Anno.title = [NSString stringWithFormat:@"Sector 2 %@",[rSectorDict objectForKey:@"2"]];
+            [mv addAnnotation:sector2Anno];
+        }
+    }
 }
 
 -(void)zoomToPolyLine: (MKMapView*)map polyLine: (MKPolyline*)polyLine
@@ -286,11 +335,21 @@
             NSDictionary *runLap = [runLapsDict objectForKey:lapNumberKey];
             RunSectors *runSectors = [NSEntityDescription insertNewObjectForEntityForName:@"RunSectors" inManagedObjectContext:self.managedObjectContext];
             
+            CLLocation *sect1Loc = (CLLocation *)[runLap objectForKey:@"1Loc"];
+            CLLocation *sect2Loc = (CLLocation *)[runLap objectForKey:@"2Loc"];
+            
             [runSectors setRunId:runData.runid];
             [runSectors setSector1Time:[runLap objectForKey:@"1"]];
             [runSectors setSector2Time:[runLap objectForKey:@"2"]];
             [runSectors setSector3Time:[runLap objectForKey:@"3"]];
             [runSectors setLapTime:[runLap objectForKey:@"Lap"]];
+            [runSectors setLapPace:[runLap objectForKey:@"LapPace"]];
+            [runSectors setLapLat:[runLap objectForKey:@"LapLat"]];
+            [runSectors setLapLong:[runLap objectForKey:@"LapLong"]];
+            [runSectors setSec1Lat:[NSString stringWithFormat:@"%f",sect1Loc.coordinate.latitude]];
+            [runSectors setSec1Long:[NSString stringWithFormat:@"%f",sect1Loc.coordinate.longitude]];
+            [runSectors setSec2Lat:[NSString stringWithFormat:@"%f",sect2Loc.coordinate.latitude]];
+            [runSectors setSec2Long:[NSString stringWithFormat:@"%f",sect2Loc.coordinate.longitude]];
             [runSectors setLapNumber:lapNumberKey];
             
             [runData addRunSectorsObject:runSectors];

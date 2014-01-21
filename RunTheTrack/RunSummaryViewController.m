@@ -37,7 +37,7 @@
     pageControl.currentPageIndicatorTintColor = [UIColor purpleColor];
     pageControl.backgroundColor = [UIColor clearColor];
     
-    viewControllers = @[@"RunOverview",@"RunTrack",@"RunDetail",@"RunAlt"];
+    viewControllers = @[@"RunOverview",@"RunTrack",@"RunDetail"];
     
     self.dataSource = self;
 
