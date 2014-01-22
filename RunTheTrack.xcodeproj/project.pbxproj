@@ -70,6 +70,8 @@
 		4048167C1845D7D2000410C7 /* ProfileHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4048167B1845D7D2000410C7 /* ProfileHeaderView.m */; };
 		404D0CE31868297400050BD7 /* libUAirship-3.0.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 40BA41D51865E639007A6329 /* libUAirship-3.0.2.a */; };
 		4057146F181D471800D0070B /* RunFinishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4057146E181D471800D0070B /* RunFinishViewController.m */; };
+		4057264B188FA3FF005DD240 /* LapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4057264A188FA3FF005DD240 /* LapAnnotation.m */; };
+		4057264F188FA47C005DD240 /* stopwatch.png in Resources */ = {isa = PBXBuildFile; fileRef = 4057264E188FA47C005DD240 /* stopwatch.png */; };
 		4057A5B917EE596A00FE1E93 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4057A5B117EE596A00FE1E93 /* Icon-72.png */; };
 		4057A5BA17EE596A00FE1E93 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4057A5B217EE596A00FE1E93 /* Icon-72@2x.png */; };
 		4057A5BB17EE596A00FE1E93 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 4057A5B317EE596A00FE1E93 /* Icon-Small-50.png */; };
@@ -280,6 +282,9 @@
 		4048167B1845D7D2000410C7 /* ProfileHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileHeaderView.m; sourceTree = "<group>"; };
 		4057146D181D471800D0070B /* RunFinishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunFinishViewController.h; sourceTree = "<group>"; };
 		4057146E181D471800D0070B /* RunFinishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunFinishViewController.m; sourceTree = "<group>"; };
+		40572649188FA3FF005DD240 /* LapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LapAnnotation.h; sourceTree = "<group>"; };
+		4057264A188FA3FF005DD240 /* LapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LapAnnotation.m; sourceTree = "<group>"; };
+		4057264E188FA47C005DD240 /* stopwatch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stopwatch.png; sourceTree = "<group>"; };
 		4057A5B117EE596A00FE1E93 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		4057A5B217EE596A00FE1E93 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
 		4057A5B317EE596A00FE1E93 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
@@ -843,6 +848,7 @@
 		409154C6185263E800CECEEC /* MapPins */ = {
 			isa = PBXGroup;
 			children = (
+				4057264E188FA47C005DD240 /* stopwatch.png */,
 				405E5332185DEED400A8BD45 /* sector1.png */,
 				405E5333185DEED400A8BD45 /* sector1@2x.png */,
 				405E5334185DEED400A8BD45 /* sector2.png */,
@@ -953,6 +959,8 @@
 				405E533E185E112A00A8BD45 /* Sector2Annotation.m */,
 				405E5340185E113D00A8BD45 /* StartFinishAnnotation.h */,
 				405E5341185E113D00A8BD45 /* StartFinishAnnotation.m */,
+				40572649188FA3FF005DD240 /* LapAnnotation.h */,
+				4057264A188FA3FF005DD240 /* LapAnnotation.m */,
 			);
 			name = MapAnnotations;
 			sourceTree = "<group>";
@@ -1263,6 +1271,7 @@
 				4047939B182F736C004FEB73 /* tabbtn-history-normal.png in Resources */,
 				40BA41A31865E5DB007A6329 /* AirshipConfig.plist in Resources */,
 				4057A5BD17EE596A00FE1E93 /* Icon-Small.png in Resources */,
+				4057264F188FA47C005DD240 /* stopwatch.png in Resources */,
 				4007A00B181B1456008EC227 /* hungary.png in Resources */,
 				4007A011181B1456008EC227 /* monaco.png in Resources */,
 				40FA0ABA1883489C00EDB8AE /* abu.jpg in Resources */,
@@ -1359,6 +1368,7 @@
 				405E533C185E10C000A8BD45 /* Sector1Annotaion.m in Sources */,
 				407710AF18453B6E00882BBE /* ProfileCollectionCell.m in Sources */,
 				40E5A2EF185655B100E8E87E /* TTCounterLabel.m in Sources */,
+				4057264B188FA3FF005DD240 /* LapAnnotation.m in Sources */,
 				4057EB3118703BA800F52EF4 /* CommonUtils.m in Sources */,
 				405E533F185E112A00A8BD45 /* Sector2Annotation.m in Sources */,
 				4042CA851889A584005EDEFD /* RunAchievement.m in Sources */,

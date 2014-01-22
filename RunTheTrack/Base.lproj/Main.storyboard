@@ -775,7 +775,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UFP-FZ-1h7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-301" y="85"/>
+            <point key="canvasLocation" x="-1009" y="53"/>
         </scene>
         <!--History Table View Controller - Runs-->
         <scene sceneID="xgI-wc-d22">

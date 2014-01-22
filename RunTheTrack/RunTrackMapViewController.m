@@ -12,6 +12,7 @@
 #import "StartFinishAnnotation.h"
 #import "Sector1Annotaion.h"
 #import "Sector2Annotation.h"
+#import "LapAnnotation.h"
 #import <Social/Social.h>
 #import "AppDelegate.h"
 
@@ -120,10 +121,10 @@
     
     NSLog(@"TOTAL TRACK DISTANCE %.2f", totalTrackDistance / 1000);
     
-    MKRunnerAnnotation *runner = [[MKRunnerAnnotation alloc] init];
-    runner.coordinate = poi;
-    runner.title = @"Runner";
-    [mv addAnnotation:runner];
+//    MKRunnerAnnotation *runner = [[MKRunnerAnnotation alloc] init];
+//    runner.coordinate = poi;
+//    runner.title = @"Runner";
+//    [mv addAnnotation:runner];
     
     // add the sector points for 1, 2
     // divide the total track distance by 3
@@ -242,26 +243,7 @@
     
     // handle our three custom annotations
     //
-    if ([annotation isKindOfClass:[MKRunnerAnnotation class]])
-    {
-        static NSString *RunnerAnnotationIdentifier = @"runnerID";
-        MKPinAnnotationView *pinView = (MKPinAnnotationView *)[mv dequeueReusableAnnotationViewWithIdentifier:RunnerAnnotationIdentifier];
-        if (!pinView)
-        {
-            MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation
-                                                                            reuseIdentifier:RunnerAnnotationIdentifier];
-            UIImage *flagImage = [UIImage imageNamed:@"runnerDot.png"];
-            // You may need to resize the image here.
-            annotationView.image = flagImage;
-            return annotationView;
-        }
-        else
-        {
-            pinView.annotation = annotation;
-        }
-        return pinView;
-    }
-    else if ([annotation isKindOfClass:[StartFinishAnnotation class]])
+    if ([annotation isKindOfClass:[StartFinishAnnotation class]])
     {
         static NSString *SFAnnotationIdentifier = @"StartFinishID";
         MKPinAnnotationView *pinView = (MKPinAnnotationView *)[mv dequeueReusableAnnotationViewWithIdentifier:SFAnnotationIdentifier];
@@ -273,6 +255,7 @@
             UIImage *flagImage = [UIImage imageNamed:@"cheq.png"];
             // You may need to resize the image here.
             annotationView.image = flagImage;
+            annotationView.canShowCallout = YES;
             return annotationView;
         }
         else
@@ -291,6 +274,7 @@
             UIImage *flagImage = [UIImage imageNamed:@"sector1.png"];
             // You may need to resize the image here.
             annotationView.image = flagImage;
+            annotationView.canShowCallout = YES;
             return annotationView;
         }
         else
@@ -309,6 +293,7 @@
             UIImage *flagImage = [UIImage imageNamed:@"sector2.png"];
             // You may need to resize the image here.
             annotationView.image = flagImage;
+            annotationView.canShowCallout = YES;
             return annotationView;
         }
         else
@@ -317,8 +302,31 @@
         }
         return pinView;
     }
+    else if ([annotation isKindOfClass:[LapAnnotation class]])
+    {
+        static NSString *lapID = @"LapID";
+        MKPinAnnotationView *pinView = (MKPinAnnotationView *)[mv dequeueReusableAnnotationViewWithIdentifier:lapID];
+        if (!pinView)
+        {
+            MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation
+                                                                            reuseIdentifier:lapID];
+            UIImage *flagImage = [UIImage imageNamed:@"stopwatch.png"];
+            // You may need to resize the image here.
+            annotationView.image = flagImage;
+            annotationView.canShowCallout = YES;
+            return annotationView;
+        }
+        else
+        {
+            pinView.annotation = annotation;
+        }
+        return pinView;
+    }
+    
     return nil;
 }
+
+
 
 
 @end

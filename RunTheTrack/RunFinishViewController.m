@@ -17,6 +17,10 @@
 #import "UIImage+ImageEffects.h"
 #import <Social/Social.h>
 #import "StartFinishAnnotation.h"
+#import "Sector1Annotaion.h"
+#import "Sector2Annotation.h"
+#import "LapAnnotation.h"
+
 
 @interface RunFinishViewController ()
 
@@ -211,25 +215,25 @@
     NSDictionary *runLapsDict = (NSDictionary *)[_trackInfo objectForKey:@"runLapsInfo"];
     if(runLapsDict.count > 0)
     {
-        for(NSDictionary *rSectorDictKey in runLapsDict)
+        for(NSString *rSectorDictKey in runLapsDict)
         {
             
             NSDictionary *rSectorDict = [runLapsDict objectForKey:rSectorDictKey];
             CLLocationCoordinate2D lapCordinate =  CLLocationCoordinate2DMake([[rSectorDict objectForKey:@"LapLat"] doubleValue], [[rSectorDict objectForKey:@"LapLong"] doubleValue]);
             
-            StartFinishAnnotation *finishAnno = [[StartFinishAnnotation alloc] init];
+            LapAnnotation *finishAnno = [[LapAnnotation alloc] init];
             finishAnno.coordinate = lapCordinate;
-            finishAnno.title = [NSString stringWithFormat:@"Lap %@ time %@",[rSectorDict objectForKey:@"Lap"], [rSectorDict objectForKey:@"Lap"]];
+            finishAnno.title = [NSString stringWithFormat:@"Lap %@ time %@",rSectorDictKey, [rSectorDict objectForKey:@"Lap"]];
             [mv addAnnotation:finishAnno];
             
             CLLocation *sector1Location = (CLLocation *)[rSectorDict objectForKey:@"1Loc"];
-            StartFinishAnnotation *sector1Anno = [[StartFinishAnnotation alloc] init];
+            Sector1Annotaion *sector1Anno = [[Sector1Annotaion alloc] init];
             sector1Anno.coordinate = sector1Location.coordinate;
             sector1Anno.title = [NSString stringWithFormat:@"Sector 1 %@",[rSectorDict objectForKey:@"1"]];
             [mv addAnnotation:sector1Anno];
             
             CLLocation *sector2Location = (CLLocation *)[rSectorDict objectForKey:@"2Loc"];
-            StartFinishAnnotation *sector2Anno = [[StartFinishAnnotation alloc] init];
+            Sector2Annotation *sector2Anno = [[Sector2Annotation alloc] init];
             sector2Anno.coordinate = sector2Location.coordinate;
             sector2Anno.title = [NSString stringWithFormat:@"Sector 2 %@",[rSectorDict objectForKey:@"2"]];
             [mv addAnnotation:sector2Anno];
@@ -393,6 +397,102 @@
                                                  description:@"Well done, check out your timings now."
                                                         type:MessageBarMessageTypeSuccess];
 }
+
+#pragma mark MapView Delegate
+
+- (MKAnnotationView *)mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>)annotation
+{
+    // in case it's the user location, we already have an annotation, so just return nil
+    if ([annotation isKindOfClass:[MKUserLocation class]])
+    {
+        return nil;
+    }
+    
+    // handle our three custom annotations
+    //
+    if ([annotation isKindOfClass:[StartFinishAnnotation class]])
+    {
+        static NSString *SFAnnotationIdentifier = @"StartFinishID";
+        MKPinAnnotationView *pinView = (MKPinAnnotationView *)[mv dequeueReusableAnnotationViewWithIdentifier:SFAnnotationIdentifier];
+        if (!pinView)
+        {
+            MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation
+                                                                            reuseIdentifier:SFAnnotationIdentifier];
+            
+            UIImage *flagImage = [UIImage imageNamed:@"cheq.png"];
+            // You may need to resize the image here.
+            annotationView.image = flagImage;
+            annotationView.canShowCallout = YES;
+            return annotationView;
+        }
+        else
+        {
+            pinView.annotation = annotation;
+        }
+        return pinView;
+    } else if ([annotation isKindOfClass:[Sector1Annotaion class]])
+    {
+        static NSString *sector1ID = @"Sector1ID";
+        MKPinAnnotationView *pinView = (MKPinAnnotationView *)[mv dequeueReusableAnnotationViewWithIdentifier:sector1ID];
+        if (!pinView)
+        {
+            MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation
+                                                                            reuseIdentifier:sector1ID];
+            UIImage *flagImage = [UIImage imageNamed:@"sector1.png"];
+            // You may need to resize the image here.
+            annotationView.image = flagImage;
+            annotationView.canShowCallout = YES;
+            return annotationView;
+        }
+        else
+        {
+            pinView.annotation = annotation;
+        }
+        return pinView;
+    } else if ([annotation isKindOfClass:[Sector2Annotation class]])
+    {
+        static NSString *sector2ID = @"Sector2ID";
+        MKPinAnnotationView *pinView = (MKPinAnnotationView *)[mv dequeueReusableAnnotationViewWithIdentifier:sector2ID];
+        if (!pinView)
+        {
+            MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation
+                                                                            reuseIdentifier:sector2ID];
+            UIImage *flagImage = [UIImage imageNamed:@"sector2.png"];
+            // You may need to resize the image here.
+            annotationView.image = flagImage;
+            annotationView.canShowCallout = YES;
+            return annotationView;
+        }
+        else
+        {
+            pinView.annotation = annotation;
+        }
+        return pinView;
+    }
+    else if ([annotation isKindOfClass:[LapAnnotation class]])
+    {
+        static NSString *lapID = @"LapID";
+        MKPinAnnotationView *pinView = (MKPinAnnotationView *)[mv dequeueReusableAnnotationViewWithIdentifier:lapID];
+        if (!pinView)
+        {
+            MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation
+                                                                            reuseIdentifier:lapID];
+            UIImage *flagImage = [UIImage imageNamed:@"stopwatch.png"];
+            // You may need to resize the image here.
+            annotationView.image = flagImage;
+            annotationView.canShowCallout = YES;
+            return annotationView;
+        }
+        else
+        {
+            pinView.annotation = annotation;
+        }
+        return pinView;
+    }
+
+    return nil;
+}
+
 
 #pragma social sharing 
 

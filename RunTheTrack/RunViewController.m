@@ -147,6 +147,8 @@ enum TimerState : NSUInteger {
         TFLog(@"Run Started");
         //[musicPlayer play];
         
+        [self textToSpeak:@"Start your run now "];
+        
         if([startBtn.titleLabel.text isEqualToString:@"RESUME"])
         {
             if(appDelegate.useMotion)
@@ -330,7 +332,7 @@ enum TimerState : NSUInteger {
         else
         {
             distanceLabel.text =  [NSString stringWithFormat:@"%.2f", totalLocationDistance * 0.000621371192];
-            distanceMeasure.text = @"mile";
+            distanceMeasure.text = @"miles";
         }
         
         // Calculate the lap distance for the lap
@@ -341,15 +343,15 @@ enum TimerState : NSUInteger {
         
         // Calculate the pace at this point
         
-        int hours = [self.timeLabel getHours];
-        int mins = [self.timeLabel getMins];
-        int secs = [self.timeLabel getSecs];
-        //NSLog(@"Time Label value %d:%d:%d", hours, mins, secs);
-        float floatHourPace = hours / (totalLocationDistance * 0.000621371192);
-        float floatMinPace = mins / (totalLocationDistance * 0.000621371192);
-        float floatSecPace = secs / (totalLocationDistance * 0.000621371192);
-        
-        runPace.text = [NSString stringWithFormat:@"%.0f:%.0f pm",floatHourPace, floatMinPace];
+//        int hours = [self.timeLabel getHours];
+//        int mins = [self.timeLabel getMins];
+//        int secs = [self.timeLabel getSecs];
+//        //NSLog(@"Time Label value %d:%d:%d", hours, mins, secs);
+//        float floatHourPace = hours / (totalLocationDistance * 0.000621371192);
+//        float floatMinPace = mins / (totalLocationDistance * 0.000621371192);
+//        float floatSecPace = secs / (totalLocationDistance * 0.000621371192);
+//        
+//        runPace.text = [NSString stringWithFormat:@"%.0f:%.0f pm",floatHourPace, floatMinPace];
 
         // Have we passed a sector then save info
         
@@ -460,6 +462,15 @@ enum TimerState : NSUInteger {
         //Always add the real location to array so we can show the real route later on
         [self.runPointArray addObject:newLocation];
         
+        if([appDelegate useKMasUnits])
+        {
+            runPace.text = [NSString stringWithFormat:@"%@ kph",[NSString stringWithFormat:@"%.2f", newLocation.speed]];
+        }
+        else
+        {
+            runPace.text = [NSString stringWithFormat:@"%@ mph",[NSString stringWithFormat:@"%.2f", (newLocation.speed * 1000) * 0.000621371192]];
+        }
+        
         // No need to do anything if old location is not set
         if(oldLocation != nil)
         {
@@ -561,7 +572,7 @@ enum TimerState : NSUInteger {
 -(void)textToSpeak:(NSString *)textToSpeak
 {
     AVSpeechUtterance *utt = [[AVSpeechUtterance alloc] initWithString:textToSpeak];
-    utt.rate = 0.4;
+    utt.rate = 0.2;
     utt.voice = [AVSpeechSynthesisVoice voiceWithLanguage:@"en-au"];
     [synth speakUtterance:utt];
 }
