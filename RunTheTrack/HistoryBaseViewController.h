@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "RunData.h"
+#import <Social/Social.h>
 
-@interface HistoryBaseViewController : UIViewController
+@interface HistoryBaseViewController : UIViewController <UIActionSheetDelegate>
 
 @property (nonatomic,strong) RunData *runData;
 @property NSUInteger pageIndex;

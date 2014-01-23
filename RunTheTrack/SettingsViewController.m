@@ -29,18 +29,21 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    if(![CMMotionActivityManager isActivityAvailable])
+    {
+        motionView.hidden = YES;
+        [gpsSwitch setOn:YES];
+    }
     
     appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     defaults = [NSUserDefaults standardUserDefaults];
     [self setUpDefaultsOnLoad];
-    
 }
 
 -(void)setUpDefaultsOnLoad
 {
-    [walkSlider setValue:[[defaults valueForKey:@"walkSliderValue"] floatValue]];
-    [runSlider setValue:[[defaults valueForKey:@"runSliderValue"] floatValue]];
+
     
     if([defaults valueForKey:@"gps"])
     {
@@ -50,6 +53,8 @@
     
     [units setSelectedSegmentIndex:[[defaults valueForKey:@"units"] integerValue]];
     
+    [walkSlider setValue:[[defaults valueForKey:@"walkSliderValue"] floatValue]];
+    [runSlider setValue:[[defaults valueForKey:@"runSliderValue"] floatValue]];
     runMeters.text = [NSString stringWithFormat:@"%.2f",runSlider.value];
     walkMeters.text = [NSString stringWithFormat:@"%.2f",walkSlider.value];
     

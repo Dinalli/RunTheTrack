@@ -13,7 +13,7 @@
 #import "RunLocations.h"
 #import "HistoryBaseViewController.h"
 
-@interface RunDetailViewController : HistoryBaseViewController <MKMapViewDelegate, CLLocationManagerDelegate, UIActionSheetDelegate>
+@interface RunDetailViewController : HistoryBaseViewController <MKMapViewDelegate, CLLocationManagerDelegate>
 {
     IBOutlet UILabel *runTime;
     IBOutlet UILabel *runLaps;

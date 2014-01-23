@@ -24,6 +24,8 @@
     
     AppDelegate *appDelegate;
     NSUserDefaults *defaults;
+    
+    BOOL motionEnabled;
 }
 
 @end
