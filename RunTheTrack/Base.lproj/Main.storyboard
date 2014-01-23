@@ -508,7 +508,7 @@
                                 <rect key="frame" x="0.0" y="66" width="325" height="413"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <view alpha="0.80000001192092896" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G3u-hu-yae">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G3u-hu-yae">
                                 <rect key="frame" x="10" y="76" width="300" height="108"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -566,7 +566,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
-                            <view alpha="0.80000001192092896" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yOu-VM-wLX">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yOu-VM-wLX">
                                 <rect key="frame" x="10" y="217" width="300" height="240"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -604,11 +604,6 @@
                                     <segue destination="zHz-9E-9Py" kind="push" identifier="finishRunSegue" id="kZi-MY-36k"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qDL-Ie-gJ7" customClass="YLProgressBar">
-                                <rect key="frame" x="10" y="187" width="300" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.95936451339999995" green="0.076167813210000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -632,7 +627,6 @@
                         <outlet property="motionActivityIndicator" destination="g8c-SX-Wtf" id="lIw-VE-POH"/>
                         <outlet property="navigationItem" destination="HxU-uw-D4a" id="Mo0-JZ-9qQ"/>
                         <outlet property="noOfSteps" destination="EJL-Fh-Uct" id="uT0-tK-lEO"/>
-                        <outlet property="progressBarFlatWithIndicator" destination="qDL-Ie-gJ7" id="9Bf-xo-X92"/>
                         <outlet property="runInfoView" destination="G3u-hu-yae" id="C8D-I4-gwr"/>
                         <outlet property="runPace" destination="sZU-Gw-7DS" id="OfZ-jr-qcd"/>
                         <outlet property="runTimeView" destination="yOu-VM-wLX" id="cJh-zI-d3w"/>
@@ -843,7 +837,7 @@
                                     <outlet property="runTimeLabel" destination="A3W-I7-Xai" id="EH2-P1-dMH"/>
                                     <outlet property="trackImage" destination="ZDP-RH-AQp" id="Nbf-DI-zK6"/>
                                     <outlet property="trackLabel" destination="Fas-fa-a8p" id="6GB-Gq-rBw"/>
-                                    <segue destination="PPC-jt-AE6" kind="push" identifier="RunDataSegue" id="DrV-Jb-UKb"/>
+                                    <segue destination="BHh-fI-w3E" kind="push" identifier="RunDataSegue" id="rYB-1r-QI3"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -881,18 +875,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xhW-5t-bPQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-271" y="1319"/>
-        </scene>
-        <!--Run Summary View Controller-->
-        <scene sceneID="1X7-X6-MoL">
-            <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" hidesBottomBarWhenPushed="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="PPC-jt-AE6" customClass="RunSummaryViewController" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="YzY-hH-KYY">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="XCe-hZ-hei"/>
-                    </navigationItem>
-                </pageViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gKz-e1-E7n" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="788" y="1400"/>
         </scene>
         <!--Run Detail View Controller - Detail-->
         <scene sceneID="MDq-s9-doS">
@@ -958,6 +940,10 @@
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="iW4-Xf-QbM" appends="YES" id="fK3-Pd-8jA"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -987,8 +973,14 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5sZ-wb-Gfd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Mz8-Rd-BpH" userLabel="Exit" sceneMemberID="exit"/>
+                <swipeGestureRecognizer direction="left" id="iW4-Xf-QbM">
+                    <connections>
+                        <segue destination="Mz8-Rd-BpH" kind="unwind" unwindAction="unwindToOverview:" id="EEZ-kf-Y9C"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1963" y="1400"/>
+            <point key="canvasLocation" x="2056" y="1400"/>
         </scene>
         <!--Run Track Map View Controller-->
         <scene sceneID="rLf-cT-i8a">
@@ -1005,8 +997,11 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="satellite" translatesAutoresizingMaskIntoConstraints="NO" id="pdt-iI-ipo">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <gestureRecognizers/>
                                 <connections>
                                     <outlet property="delegate" destination="Wvj-73-1KT" id="aYM-bN-kes"/>
+                                    <outletCollection property="gestureRecognizers" destination="S6s-05-b1X" appends="YES" id="YGb-5u-Zh1"/>
+                                    <outletCollection property="gestureRecognizers" destination="M0E-Zb-a9j" appends="YES" id="TTf-9i-Ak1"/>
                                 </connections>
                             </mapView>
                             <view alpha="0.85000002384185791" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zd3-eB-oev">
@@ -1054,10 +1049,16 @@
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="S6s-05-b1X" appends="YES" id="8jy-am-V78"/>
+                                    <outletCollection property="gestureRecognizers" destination="M0E-Zb-a9j" appends="YES" id="2WC-VS-drI"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                     </view>
+                    <navigationItem key="navigationItem" id="Bjf-NX-fYR"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="detailsView" destination="Zd3-eB-oev" id="CUX-P3-jdk"/>
@@ -1070,6 +1071,12 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AgC-U7-oAt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="left" id="S6s-05-b1X">
+                    <connections>
+                        <segue destination="txt-p1-Zp1" kind="push" identifier="RunMapSegue" id="gNR-yP-OxJ"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="M0E-Zb-a9j"/>
             </objects>
             <point key="canvasLocation" x="1566" y="1400"/>
         </scene>
@@ -1093,12 +1100,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4yk-ny-mcg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2347" y="1400"/>
+            <point key="canvasLocation" x="2494" y="1400"/>
         </scene>
         <!--Run Overview View Controller-->
         <scene sceneID="t87-PC-25D">
             <objects>
-                <viewController storyboardIdentifier="RunOverview" id="BHh-fI-w3E" customClass="RunOverviewViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RunOverview" hidesBottomBarWhenPushed="YES" id="BHh-fI-w3E" customClass="RunOverviewViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8Ln-g6-iZF"/>
                         <viewControllerLayoutGuide type="bottom" id="WNn-UE-mT3"/>
@@ -1107,12 +1114,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Brazil.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="5mv-zl-s6c">
+                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Brazil.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="5mv-zl-s6c">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="mhC-JH-q3a" appends="YES" id="EgL-p2-msr"/>
+                                    <outletCollection property="gestureRecognizers" destination="mhC-JH-q3a" appends="YES" id="YxF-1q-hpl"/>
+                                </connections>
                             </imageView>
                             <view alpha="0.80000000000000004" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t2o-Uf-GzO">
-                                <rect key="frame" x="10" y="20" width="300" height="96"/>
+                                <rect key="frame" x="10" y="75" width="300" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7UU-jS-0s6">
@@ -1131,9 +1143,12 @@
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="mhC-JH-q3a" appends="YES" id="0K3-Wq-tqT"/>
+                                </connections>
                             </view>
                             <view alpha="0.80000000000000004" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1qA-K0-mjZ">
-                                <rect key="frame" x="10" y="130" width="300" height="82"/>
+                                <rect key="frame" x="10" y="185" width="300" height="82"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="abu-sec.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ecc-cG-nny">
@@ -1181,7 +1196,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <view alpha="0.80000000000000004" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6OU-d6-KSJ">
-                                <rect key="frame" x="10" y="220" width="300" height="265"/>
+                                <rect key="frame" x="10" y="275" width="300" height="265"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Distance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4n5-xQ-CUX">
@@ -1271,12 +1286,21 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gbP-ZO-u5b">
+                                <rect key="frame" x="264" y="20" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Share">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                     </view>
                     <toolbarItems/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationItem key="navigationItem" id="VdW-5F-9Ks"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="backgroundImageView" destination="5mv-zl-s6c" id="rQO-Eq-CCh"/>
                         <outlet property="progressBarFlatWithIndicator" destination="GWO-KC-CzP" id="t0t-fh-Aag"/>
@@ -1298,8 +1322,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ewh-Iz-XFm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="left" id="mhC-JH-q3a">
+                    <connections>
+                        <segue destination="Wvj-73-1KT" kind="push" identifier="RunTrackSegue" id="RoW-Gn-vQC"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1177" y="1400"/>
+            <point key="canvasLocation" x="896" y="1370"/>
         </scene>
     </scenes>
     <resources>

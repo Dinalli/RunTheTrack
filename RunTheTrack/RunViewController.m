@@ -86,7 +86,7 @@ enum TimerState : NSUInteger {
     
     self.navigationItem.titleView=tlabel;
     
-    trackBackImage.image = [UIImage imageNamed:[self.trackInfo objectForKey:@"mapimage"]];
+    trackBackImage.image = [[UIImage imageNamed:[self.trackInfo objectForKey:@"mapimage"]] applyDarkEffect];
                             
     lapsLabel.text = @"0";
     totalTrackDistance = [[self.trackInfo objectForKey:@"Distance"] floatValue];
@@ -101,28 +101,9 @@ enum TimerState : NSUInteger {
     sector2savedforLap = NO;
     
     if(runAltitudeArray == nil) runAltitudeArray = [[NSMutableArray alloc] init];
-    
-    [self initFlatWithIndicatorProgressBar];
-    [self.progressBarFlatWithIndicator setProgress:0.0 animated:YES];
-    
+
     [CommonUtils shadowAndRoundView:runInfoView];
     [CommonUtils shadowAndRoundView:runTimeView];
-    [CommonUtils addMotionEffectToView:runInfoView];
-    [CommonUtils addMotionEffectToView:runTimeView];
-    [CommonUtils addMotionEffectToView:self.progressBarFlatWithIndicator];
-}
-
-- (void)initFlatWithIndicatorProgressBar
-{
-    _progressBarFlatWithIndicator.type                     = YLProgressBarTypeFlat;
-    _progressBarFlatWithIndicator.indicatorTextDisplayMode = YLProgressBarIndicatorTextDisplayModeProgress;
-    _progressBarFlatWithIndicator.behavior                 = YLProgressBarBehaviorIndeterminate;
-    _progressBarFlatWithIndicator.stripesOrientation       = YLProgressBarStripesOrientationVertical;
-}
-
-- (void)setProgress:(CGFloat)progress animated:(BOOL)animated
-{
-    [_progressBarFlatWithIndicator setProgress:progress animated:animated];
 }
 
 - (void)customiseAppearance {
@@ -339,7 +320,6 @@ enum TimerState : NSUInteger {
         
         runLapsFloat = totalLocationDistance / totalTrackDistance;
         lapsLabel.text = [NSString stringWithFormat:@"%.2f", runLapsFloat];
-        [self setProgress:runLapsFloat/100 animated:YES];
         
         // Calculate the pace at this point
         

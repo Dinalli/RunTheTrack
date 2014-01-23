@@ -8,6 +8,7 @@
 
 #import "RunOverviewViewController.h"
 #import "UIImage+ImageEffects.h"
+#import "RunTrackMapViewController.h"
 
 @implementation RunOverviewViewController
 
@@ -189,6 +190,18 @@
     [self presentViewController:composeSheet animated:YES completion:nil];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue
+                 sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"RunTrackSegue"]) {
+        RunTrackMapViewController *rsvc = segue.destinationViewController;
+        [rsvc setRunData:self.runData];
+    }
+}
+
+- (IBAction)unwindToOverview:(UIStoryboardSegue *)unwindSegue
+{
+    [self.navigationController.navigationBar setHidden:NO];
+}
 
 
 @end

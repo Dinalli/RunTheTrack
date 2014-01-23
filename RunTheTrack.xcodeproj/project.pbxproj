@@ -573,6 +573,10 @@
 		401E291A1862D8A7008CAB02 /* Notused */ = {
 			isa = PBXGroup;
 			children = (
+				40D894601885DA3E00ABE44E /* RunSummaryViewController.h */,
+				40D894611885DA3E00ABE44E /* RunSummaryViewController.m */,
+				40D894631885EAC300ABE44E /* HistoryBaseViewController.h */,
+				40D894641885EAC300ABE44E /* HistoryBaseViewController.m */,
 				40F3E1DD180F0EE000785F27 /* StartViewController.h */,
 				40F3E1DE180F0EE000785F27 /* StartViewController.m */,
 				407C4E07180C002A00F7B2FE /* TrackInfoViewController.h */,
@@ -798,10 +802,6 @@
 				40892C191885B336008F7D38 /* RunOverviewViewController.m */,
 				40892C1B1885B34A008F7D38 /* RunAltitudeViewController.h */,
 				40892C1C1885B34A008F7D38 /* RunAltitudeViewController.m */,
-				40D894601885DA3E00ABE44E /* RunSummaryViewController.h */,
-				40D894611885DA3E00ABE44E /* RunSummaryViewController.m */,
-				40D894631885EAC300ABE44E /* HistoryBaseViewController.h */,
-				40D894641885EAC300ABE44E /* HistoryBaseViewController.m */,
 			);
 			name = History;
 			sourceTree = "<group>";

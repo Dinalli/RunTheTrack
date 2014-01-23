@@ -382,4 +382,16 @@
     [self presentViewController:composeSheet animated:YES completion:nil];
 }
 
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue
+                 sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"RunMapSegue"]) {
+        RunTrackMapViewController *rsvc = segue.destinationViewController;
+        [rsvc setRunData:self.runData];
+    }
+    else
+    {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
 @end

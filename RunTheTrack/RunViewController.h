@@ -88,10 +88,6 @@
 @property (nonatomic) NSMutableDictionary *trackInfo;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) CLLocationManager *locationManager;
-@property (nonatomic, strong) IBOutlet YLProgressBar      *progressBarFlatWithIndicator;
-
-- (void)initFlatWithIndicatorProgressBar;
-- (void)setProgress:(CGFloat)progress animated:(BOOL)animated;
 
 - (IBAction)unwindToRunStart:(UIStoryboardSegue *)unwindSegue;
 
