@@ -86,7 +86,7 @@ enum TimerState : NSUInteger {
     
     self.navigationItem.titleView=tlabel;
     
-    trackBackImage.image = [[UIImage imageNamed:[self.trackInfo objectForKey:@"mapimage"]] applyDarkEffect];
+    trackBackImage.image = [[UIImage imageNamed:[self.trackInfo objectForKey:@"mapimage"]] applyExtraLightEffect];
                             
     lapsLabel.text = @"0";
     totalTrackDistance = [[self.trackInfo objectForKey:@"Distance"] floatValue];
@@ -423,6 +423,10 @@ enum TimerState : NSUInteger {
             [runLapsInfoDict setObject:runLap forKey:[NSString stringWithFormat:@"%d",lapCounter]];
             sector1savedforLap = NO;
             sector2savedforLap = NO;
+            sector1Time = @"";
+            sector2Time = @"";
+            sector1Loc = nil;
+            sector2Loc = nil;
         }
     }
 }
@@ -494,8 +498,28 @@ enum TimerState : NSUInteger {
         }
         
         //Add Laps, achivements and Sectors Dictionary
+        //Lets clear up any sectors on not complete laps then
+        
+        lapCounter = (int)floorf(runLapsFloat);
+            
+        NSMutableDictionary *runLap = [[NSMutableDictionary alloc] init];
+        
+        if(sector1Time && ![sector1Time isEqualToString:@""])
+        {
+            [runLap setObject:sector1Time forKey:@"1"];
+            [runLap setObject:sector1Loc forKey:@"1Loc"];
+        }
+  
+        if(sector2Time && ![sector2Time isEqualToString:@""])
+        {
+            [runLap setObject:sector2Time forKey:@"2"];
+            [runLap setObject:sector2Loc forKey:@"2Loc"];
+        }
+        
+        if(runLapsInfoDict == nil) runLapsInfoDict = [[NSMutableDictionary alloc] init];
+        [runLapsInfoDict setObject:runLap forKey:[NSString stringWithFormat:@"%d",lapCounter]];
+        
         if (runLapsInfoDict != nil)[self.trackInfo setObject:runLapsInfoDict forKey:@"runLapsInfo"];
-        //if (newRunAchievements != nil)[self.trackInfo setObject:newRunAchievements forKey:@"runAchivementsInfo"];
         if (runAltitudeArray != nil)[self.trackInfo setObject:runAltitudeArray forKey:@"runAltitude"];
         
         [self.trackInfo setObject:self.runPointArray forKey:@"runPointArray"];

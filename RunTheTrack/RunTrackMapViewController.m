@@ -10,11 +10,9 @@
 #import "CoreDataHelper.h"
 #import "MKRunnerAnnotation.h"
 #import "StartFinishAnnotation.h"
-#import "Sector1Annotaion.h"
-#import "Sector2Annotation.h"
-#import "LapAnnotation.h"
 #import <Social/Social.h>
 #import "AppDelegate.h"
+#import "RunSectors.h"
 
 @implementation RunTrackMapViewController
 
@@ -165,7 +163,7 @@
                     sector1EndPoint = [[CLLocation alloc] initWithLatitude:[lat floatValue] longitude:[lng floatValue]];
                     sector1Set = TRUE;
                     
-                    Sector1Annotaion *sector1Ann = [[Sector1Annotaion alloc] init];
+                    sector1Ann = [[Sector1Annotaion alloc] init];
                     sector1Ann.coordinate = CLLocationCoordinate2DMake(sector1EndPoint.coordinate.latitude, sector1EndPoint.coordinate.longitude);
                     sector1Ann.title = @"Sector1";
                     [mv addAnnotation:sector1Ann];
@@ -176,7 +174,7 @@
             {
                 sector2EndPoint = [[CLLocation alloc] initWithLatitude:[lat floatValue] longitude:[lng floatValue]];
                 
-                Sector2Annotation *sector2Ann = [[Sector2Annotation alloc] init];
+                sector2Ann = [[Sector2Annotation alloc] init];
                 sector2Ann.coordinate = sector2EndPoint.coordinate;
                 sector2Ann.title = @"Sector2";
                 [mv addAnnotation:sector2Ann];
@@ -191,11 +189,13 @@
     
     // Add start finish indicator
     NSDictionary *startFinishDict = [_trackInfo objectForKey:@"StartLine"];
-    StartFinishAnnotation *startfinish = [[StartFinishAnnotation alloc] init];
+    startfinish = [[StartFinishAnnotation alloc] init];
     CLLocationCoordinate2D startFinishPoi = CLLocationCoordinate2DMake([[startFinishDict objectForKey:@"Lat"] doubleValue], [[startFinishDict objectForKey:@"Long"] doubleValue]);
     startfinish.coordinate = startFinishPoi;
     startfinish.title = @"Start Finish";
     [mv addAnnotation:startfinish];
+    
+    [self showSectorTimes];
     
     MKCoordinateRegion region;
     MKCoordinateSpan span;
@@ -230,6 +230,36 @@
     overlayView = [self trackLineView];
     return overlayView;
 }
+
+-(void)showSectorTimes
+{
+    if(self.runData.runSectors.count > 0)
+    {
+        runLapsArray = [[self.runData.runSectors allObjects] mutableCopy];
+        [runLapsArray sortUsingComparator:^NSComparisonResult(id a, id b) {
+            RunSectors *aRunSector = (RunSectors *)a;
+            RunSectors *bRunSector = (RunSectors *)b;
+            NSInteger firstInteger = [aRunSector.lapNumber integerValue];
+            NSInteger secondInteger = [bRunSector.lapNumber integerValue];
+            
+            if (firstInteger > secondInteger)
+                return NSOrderedDescending;
+            if (firstInteger < secondInteger)
+                return NSOrderedAscending;
+            return [aRunSector.lapNumber localizedCompare: bRunSector.lapNumber];
+        }];
+        
+        for(RunSectors *rSector in runLapsArray)
+        {
+            startfinish.title = [NSString stringWithFormat:@"%@, Lap %@ time %@", startfinish.title,rSector.lapNumber, rSector.lapTime];
+            sector1Ann.title = [NSString stringWithFormat:@"%@ - %@",sector1Ann.title, rSector.sector1Time];
+            sector2Ann.title = [NSString stringWithFormat:@"%@ - %@",sector2Ann.title,rSector.sector2Time];
+            
+            
+        }
+    }
+}
+
 
 #pragma mark MapView Delegate
 
@@ -302,7 +332,7 @@
         }
         return pinView;
     }
-    else if ([annotation isKindOfClass:[LapAnnotation class]])
+    else if ([annotation isKindOfClass:[StartFinishAnnotation class]])
     {
         static NSString *lapID = @"LapID";
         MKPinAnnotationView *pinView = (MKPinAnnotationView *)[mv dequeueReusableAnnotationViewWithIdentifier:lapID];

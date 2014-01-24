@@ -156,7 +156,7 @@
 
 -(void)showSectorTimes
 {
-    if([self.runData.runlaps integerValue] > 0)
+    if(self.runData.runSectors.count > 0)
     {
         runLapsArray = [[self.runData.runSectors allObjects] mutableCopy];
         [runLapsArray sortUsingComparator:^NSComparisonResult(id a, id b) {

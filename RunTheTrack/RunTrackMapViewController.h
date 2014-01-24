@@ -11,6 +11,9 @@
 #import "RunData.h"
 #import "RunLocations.h"
 #import "HistoryBaseViewController.h"
+#import "Sector1Annotaion.h"
+#import "Sector2Annotation.h"
+#import "StartFinishAnnotation.h"
 
 @interface RunTrackMapViewController : HistoryBaseViewController <MKMapViewDelegate, UIActionSheetDelegate>
 {
@@ -31,6 +34,10 @@
     
     CLLocation *sector1EndPoint;
     CLLocation *sector2EndPoint;
+    
+    Sector1Annotaion *sector1Ann;
+    Sector2Annotation *sector2Ann;
+    StartFinishAnnotation *startfinish;
 }
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;

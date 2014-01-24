@@ -179,6 +179,23 @@
     if(self.trackLine.pointCount > 0)
     {
         [self zoomToPolyLine:mv polyLine:self.trackLine animated:YES];
+        
+        // Add points to map for annotations
+        CLLocation *startRunLocation = (CLLocation *)[points objectAtIndex:0];
+        CLLocation *endRunLocation = (CLLocation *)[points objectAtIndex:points.count-1];
+        
+        StartFinishAnnotation *startAnno = [[StartFinishAnnotation alloc] init];
+        startAnno.coordinate = endRunLocation.coordinate;
+        startAnno.title = @"Finish";
+        [mv addAnnotation:startAnno];
+        
+        
+        StartFinishAnnotation *finishAnno = [[StartFinishAnnotation alloc] init];
+        finishAnno.coordinate = startRunLocation.coordinate;
+        finishAnno.title = @"Start";
+        [mv addAnnotation:finishAnno];
+        
+        [self showSectorTimes];
     }
     else
     {
@@ -191,23 +208,6 @@
         region.center.longitude = coordinates[numberOfSteps-1].longitude;
         [mv setRegion:region animated:YES];
     }
-    
-    // Add points to map for annotations
-    CLLocation *startRunLocation = (CLLocation *)[points objectAtIndex:0];
-    CLLocation *endRunLocation = (CLLocation *)[points objectAtIndex:points.count-1];
-
-    StartFinishAnnotation *startAnno = [[StartFinishAnnotation alloc] init];
-    startAnno.coordinate = endRunLocation.coordinate;
-    startAnno.title = @"Finish";
-    [mv addAnnotation:startAnno];
-    
-    
-    StartFinishAnnotation *finishAnno = [[StartFinishAnnotation alloc] init];
-    finishAnno.coordinate = startRunLocation.coordinate;
-    finishAnno.title = @"Start";
-    [mv addAnnotation:finishAnno];
-    
-    [self showSectorTimes];
 }
 
 -(void)showSectorTimes
