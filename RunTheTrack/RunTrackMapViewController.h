@@ -38,6 +38,8 @@
     Sector1Annotaion *sector1Ann;
     Sector2Annotation *sector2Ann;
     StartFinishAnnotation *startfinish;
+    
+    IBOutlet UIButton *shareButton;
 }
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;

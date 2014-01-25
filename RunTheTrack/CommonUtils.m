@@ -35,7 +35,6 @@
     return formattedString;
 }
 
-
 +(NSString *)formattedStringFromDate:(NSDate *)dateIn
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -81,5 +80,7 @@
     // Add both effects to your view
     [view addMotionEffect:group];
 }
+
+
 
 @end

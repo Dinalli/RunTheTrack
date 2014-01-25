@@ -32,6 +32,8 @@
     IBOutlet UILabel *trackDistance;
     IBOutlet UIImageView *trackMapImage;
     
+    IBOutlet UIButton *shareButton;
+    
 }
 
 @property (nonatomic) NSMutableDictionary *trackInfo;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A598" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ruh-MY-veC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ruh-MY-veC">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
@@ -904,7 +904,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="startStop:" destination="BLA-J9-BnC" eventType="touchUpInside" id="Ddv-Rv-dEg"/>
+                                    <action selector="showActivityView:" destination="txt-p1-Zp1" eventType="touchUpInside" id="shA-vi-EOr"/>
                                 </connections>
                             </button>
                             <view alpha="0.84999999999999987" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HVv-xf-yk0">
@@ -981,6 +981,7 @@
                         <outlet property="runDistance" destination="Cmf-PZ-zaC" id="7M3-3R-a6J"/>
                         <outlet property="runLaps" destination="xWS-Fw-0r3" id="T2u-sK-XvM"/>
                         <outlet property="runTime" destination="fNT-Rk-FtH" id="LCK-ZH-Oo4"/>
+                        <outlet property="shareButton" destination="Fye-7c-Hcy" id="g5g-au-Vpb"/>
                         <outlet property="trackMapImage" destination="viA-qt-mHB" id="3xy-W2-Q2V"/>
                     </connections>
                 </viewController>
@@ -1025,7 +1026,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="startStop:" destination="BLA-J9-BnC" eventType="touchUpInside" id="Lxb-zI-GfO"/>
+                                    <action selector="showActivityView:" destination="Wvj-73-1KT" eventType="touchUpInside" id="O00-YK-LxB"/>
                                 </connections>
                             </button>
                             <view alpha="0.85000002384185791" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zd3-eB-oev">
@@ -1091,6 +1092,7 @@
                         <outlet property="runDistance" destination="jbP-Qo-voy" id="SSw-cm-NES"/>
                         <outlet property="runLaps" destination="71M-nC-cPZ" id="tm8-cr-k0T"/>
                         <outlet property="runTime" destination="A1Q-HM-UKT" id="LAj-oo-qmB"/>
+                        <outlet property="shareButton" destination="GMk-8h-cP6" id="CtY-Rq-Ti1"/>
                         <outlet property="trackMapImage" destination="w2i-qX-ltx" id="MgO-bg-SKb"/>
                     </connections>
                 </viewController>
@@ -1156,11 +1158,11 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="startStop:" destination="BLA-J9-BnC" eventType="touchUpInside" id="ZsC-WQ-C5h"/>
+                                    <action selector="showActivityView:" destination="BHh-fI-w3E" eventType="touchUpInside" id="XJx-pO-z9b"/>
                                 </connections>
                             </button>
                             <view alpha="0.80000000000000004" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t2o-Uf-GzO">
-                                <rect key="frame" x="10" y="60" width="300" height="96"/>
+                                <rect key="frame" x="10" y="66" width="300" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7UU-jS-0s6">
@@ -1342,6 +1344,7 @@
                         <outlet property="runSteps" destination="HHx-Ax-YaQ" id="Gkg-q9-0Xu"/>
                         <outlet property="runTime" destination="8DM-pg-lya" id="1VJ-Da-InX"/>
                         <outlet property="runType" destination="xvU-kc-ALr" id="ggu-Ed-ahh"/>
+                        <outlet property="shareButton" destination="0xn-Dl-znC" id="1z0-dp-Ia1"/>
                         <outlet property="timeView" destination="t2o-Uf-GzO" id="KAl-M3-G6C"/>
                         <outlet property="trackDistance" destination="zte-3w-ncw" id="YRp-a5-sUJ"/>
                         <outlet property="trackInfoView" destination="1qA-K0-mjZ" id="883-Cs-o7Q"/>

@@ -176,6 +176,7 @@
 
 -(void)composePost:(NSString *)serviceType
 {
+    shareButton.hidden = YES;
     SLComposeViewController *composeSheet=[[SLComposeViewController alloc]init];
     composeSheet=[SLComposeViewController composeViewControllerForServiceType:serviceType];
     [composeSheet setInitialText:[NSString stringWithFormat:@"Just comepleted a run round the %@ GP track. %@ %@ %@ @runthetracks", self.navigationItem.title, runTime.text, runDistance.text, runLaps.text]];
@@ -188,6 +189,7 @@
     
     [composeSheet addImage:screenshot];
     [self presentViewController:composeSheet animated:YES completion:nil];
+    shareButton.hidden = NO;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue

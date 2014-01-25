@@ -398,18 +398,20 @@
 
 -(void)composePost:(NSString *)serviceType
 {
+    shareButton.hidden = YES;
     SLComposeViewController *composeSheet=[[SLComposeViewController alloc]init];
     composeSheet=[SLComposeViewController composeViewControllerForServiceType:serviceType];
-    [composeSheet setInitialText:[NSString stringWithFormat:@"Just comepleted a run round the %@ GP track. %@ %@ %@ @runthetracks", self.navigationItem.title, runTime.text, runDistance.text, runLaps.text]];
+    [composeSheet setInitialText:[NSString stringWithFormat:@"Just comepleted a run round the %@ GP track. %@ %@ %@ @runthetracks", self.navigationItem.title, self.runData.runtime, runDistance.text, self.runData.runlaps]];
     
-    UIGraphicsBeginImageContext(mv.frame.size);
+    UIGraphicsBeginImageContext(self.view.frame.size);
     CGContextRef currentContext = UIGraphicsGetCurrentContext();
-    [mv.layer renderInContext:currentContext];
+    [self.view.layer renderInContext:currentContext];
     UIImage *screenshot = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
     [composeSheet addImage:screenshot];
     [self presentViewController:composeSheet animated:YES completion:nil];
+    shareButton.hidden = NO;
 }
 
 

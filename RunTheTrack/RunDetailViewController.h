@@ -28,6 +28,8 @@
     IBOutlet MKMapView *mv;
     
     NSMutableArray *runLapsArray;
+    
+    IBOutlet UIButton *shareButton;
 }
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
