@@ -11,7 +11,6 @@
 #import <AVFoundation/AVFoundation.h>
 #import <CoreMotion/CoreMotion.h>
 #import "AppDelegate.h"
-#import "TrackInfoViewController.h"
 #import "TTCounterLabel.h"
 #import "YLProgressBar.h"
 

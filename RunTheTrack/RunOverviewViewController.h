@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "HistoryBaseViewController.h"
 #import "YLProgressBar.h"
 #import "AppDelegate.h"
+#import "RunData.h"
+#import <Social/Social.h>
 
-@interface RunOverviewViewController : HistoryBaseViewController
+@interface RunOverviewViewController : UIViewController
 {
     IBOutlet UIView *timeView;
     IBOutlet UIView *trackInfoView;
@@ -34,7 +35,12 @@
     
     IBOutlet UIButton *shareButton;
     
+    NSMutableArray *runs;
+    
 }
+
+@property (nonatomic,strong) RunData *runData;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @property (nonatomic) NSMutableDictionary *trackInfo;
 @property (nonatomic, strong) IBOutlet YLProgressBar      *progressBarFlatWithIndicator;

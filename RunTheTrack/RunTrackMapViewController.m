@@ -24,8 +24,8 @@
     
     [self.navigationController setNavigationBarHidden:YES];
         
-    runTime.text = [NSString stringWithFormat:@"Time : %@", self.runData.runtime];
-    runLaps.text = [NSString stringWithFormat:@"Laps : %@",self.runData.runlaps];
+    runTime.text = [NSString stringWithFormat:@"%@", self.runData.runtime];
+    runLaps.text = [NSString stringWithFormat:@"%@",self.runData.runlaps];
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     if([appDelegate useKMasUnits])
     {
@@ -33,10 +33,10 @@
     }
     else
     {
-        runDistance.text = [NSString stringWithFormat:@"Distance %.2f miles",[self.runData.rundistance floatValue] * 0.000621371192];
+        runDistance.text = [NSString stringWithFormat:@"%.2f miles",[self.runData.rundistance floatValue] * 0.000621371192];
     }
     
-    runDate.text = [NSString stringWithFormat:@"Date : %@",self.runData.rundate];
+    runDate.text = [NSString stringWithFormat:@"%@",self.runData.rundate];
     self.navigationItem.title = self.runData.runtrackname;
 
     for (NSMutableDictionary *trackInfoDict in appDelegate.tracksArray) {

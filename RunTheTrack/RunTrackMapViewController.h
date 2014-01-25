@@ -10,12 +10,11 @@
 #import <MapKit/MapKit.h>
 #import "RunData.h"
 #import "RunLocations.h"
-#import "HistoryBaseViewController.h"
 #import "Sector1Annotaion.h"
 #import "Sector2Annotation.h"
 #import "StartFinishAnnotation.h"
 
-@interface RunTrackMapViewController : HistoryBaseViewController <MKMapViewDelegate, UIActionSheetDelegate>
+@interface RunTrackMapViewController : UIViewController <MKMapViewDelegate, UIActionSheetDelegate>
 {
     IBOutlet UILabel *runTime;
     IBOutlet UILabel *runLaps;

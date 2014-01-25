@@ -38,6 +38,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO];
     
     runs = [CoreDataHelper getObjectsFromContextWithEntityName:@"RunData" andSortKey:nil andSortAscending:YES withManagedObjectContext:self.managedObjectContext];
     runs = [[[runs reverseObjectEnumerator] allObjects] mutableCopy];
@@ -125,12 +126,12 @@
         RunData *runData = (RunData *)[runs objectAtIndex:selectedRowIndex.row];
         RunOverviewViewController *rovc = segue.destinationViewController;
         [rovc setRunData:runData];
+        [rovc setManagedObjectContext:self.managedObjectContext];
     }
 }
 
 - (IBAction)unwindToOverview:(UIStoryboardSegue *)unwindSegue
 {
-    //[self.navigationController.navigationBar setHidden:NO];
 }
 
 @end

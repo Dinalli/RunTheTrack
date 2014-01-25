@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "HistoryBaseViewController.h"
 #import "CorePlot-CocoaTouch.h"
+#import "RunData.h"
 
-@interface RunAltitudeViewController : HistoryBaseViewController <CPTPlotDataSource>
+@interface RunAltitudeViewController : UIViewController <CPTPlotDataSource>
 {
     NSMutableArray *runAltArray;
     NSUInteger currentIndex;
@@ -18,6 +18,9 @@
 }
 
 -(void)newData:(NSTimer *)theTimer;
+
+@property (nonatomic,strong) RunData *runData;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @property (nonatomic, strong) CPTGraphHostingView *hostView;
 

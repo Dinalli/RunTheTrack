@@ -453,11 +453,11 @@ enum TimerState : NSUInteger {
         
         if([appDelegate useKMasUnits])
         {
-            runPace.text = [NSString stringWithFormat:@"%@ kph",[NSString stringWithFormat:@"%.2f", newLocation.speed]];
+            runPace.text = [NSString stringWithFormat:@"%@ kph",[NSString stringWithFormat:@"%.2f", ((newLocation.speed * 60) * 60) *1000]];
         }
         else
         {
-            runPace.text = [NSString stringWithFormat:@"%@ mph",[NSString stringWithFormat:@"%.2f", (newLocation.speed * 1000) * 0.000621371192]];
+            runPace.text = [NSString stringWithFormat:@"%@ mph",[NSString stringWithFormat:@"%.2f", ((newLocation.speed * 60) * 60) * 0.000621371192]];
         }
         
         // No need to do anything if old location is not set

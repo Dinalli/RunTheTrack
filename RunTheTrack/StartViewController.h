@@ -12,7 +12,6 @@
 #import <AVFoundation/AVFoundation.h>
 #import <CoreMotion/CoreMotion.h>
 #import "AppDelegate.h"
-#import "TrackInfoViewController.h"
 #import "TTCounterLabel.h"
 
 @interface StartViewController : UIViewController <TTCounterLabelDelegate, MPMediaPickerControllerDelegate, MKMapViewDelegate, CLLocationManagerDelegate, AVSpeechSynthesizerDelegate>

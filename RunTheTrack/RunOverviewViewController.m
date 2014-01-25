@@ -9,6 +9,8 @@
 #import "RunOverviewViewController.h"
 #import "UIImage+ImageEffects.h"
 #import "RunTrackMapViewController.h"
+#import "CoreDataHelper.h"
+
 
 @implementation RunOverviewViewController
 
@@ -18,6 +20,8 @@
     [self.navigationController setNavigationBarHidden:NO];
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    runs = [CoreDataHelper getObjectsFromContextWithEntityName:@"RunData" andSortKey:nil andSortAscending:YES withManagedObjectContext:self.managedObjectContext];
     
     timeView.layer.masksToBounds = NO;
     timeView.layer.shadowOffset = CGSizeMake(0,-3);
@@ -68,7 +72,7 @@
     [trackInfoView addMotionEffect:group];
     [runDetailsView addMotionEffect:group];
     [self initFlatWithIndicatorProgressBar];
-    [self.progressBarFlatWithIndicator setProgress:0.4 animated:YES];
+    [self.progressBarFlatWithIndicator setProgress:0.0001 animated:YES];
     
     for (NSMutableDictionary *trackInfoDict in appDelegate.tracksArray) {
         if([[trackInfoDict objectForKey:@"Race"] isEqualToString:self.runData.runtrackname])
@@ -119,6 +123,27 @@
             backgroundImageView.image = [[UIImage imageNamed:[trackInfoDict objectForKey:@"trackimage"]] applyDarkEffect];
         }
     }
+    
+    float laps = 0;
+    int trackLapsCount = [[NSString stringWithFormat:@"%@",[self.trackInfo objectForKey:@"Laps"]] intValue];
+    for (RunData *rd in runs) {
+        if([rd.runtrackname isEqualToString:trackName.text])
+        {
+            laps = laps + [rd.runlaps floatValue];
+        }
+    }
+    
+    if(laps > 0)
+    {
+        CGFloat progress = (laps / trackLapsCount);
+        [self setProgress:progress animated:YES];
+    }
+    else{
+        [self setProgress:0.01 animated:YES];
+    }
+    
+    
+
 }
 
 - (void)initFlatWithIndicatorProgressBar

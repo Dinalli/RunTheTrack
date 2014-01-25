@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		400522541880207D00B34DAD /* RunInfoSummary.m in Sources */ = {isa = PBXBuildFile; fileRef = 400522531880207D00B34DAD /* RunInfoSummary.m */; };
 		400522571880209600B34DAD /* RunInfoAltitudeGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 400522561880209600B34DAD /* RunInfoAltitudeGraph.m */; };
-		4013EF141850686E00D6740F /* RunSectorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4013EF131850686E00D6740F /* RunSectorsViewController.m */; };
-		4013EF17185069A800D6740F /* RunSectorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4013EF16185069A800D6740F /* RunSectorCell.m */; };
 		4015F4C818888A54006C3DC8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4015F4C718888A54006C3DC8 /* QuartzCore.framework */; };
 		4015F4CA18888A5B006C3DC8 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4015F4C918888A5B006C3DC8 /* Accelerate.framework */; };
 		4018F50F17F832B9006F990E /* JBKenBurnsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4018F50E17F832B9006F990E /* JBKenBurnsView.m */; };
@@ -107,7 +105,6 @@
 		407C4DFF180BF7E300F7B2FE /* routes-cup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 407C4DFB180BF7E300F7B2FE /* routes-cup@2x.png */; };
 		407C4E00180BF7E300F7B2FE /* routes-man.png in Resources */ = {isa = PBXBuildFile; fileRef = 407C4DFC180BF7E300F7B2FE /* routes-man.png */; };
 		407C4E01180BF7E300F7B2FE /* routes-man@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 407C4DFD180BF7E300F7B2FE /* routes-man@2x.png */; };
-		407C4E09180C002A00F7B2FE /* TrackInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 407C4E08180C002A00F7B2FE /* TrackInfoViewController.m */; };
 		4086419317F71E8A00E15000 /* Tracks.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4086419217F71E8A00E15000 /* Tracks.plist */; };
 		40892C171885B326008F7D38 /* RunTrackMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40892C161885B326008F7D38 /* RunTrackMapViewController.m */; };
 		40892C1A1885B336008F7D38 /* RunOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40892C191885B336008F7D38 /* RunOverviewViewController.m */; };
@@ -158,8 +155,6 @@
 		40D35DC7182540B500D10899 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40D35DC6182540B500D10899 /* CoreData.framework */; };
 		40D35DCA182541E500D10899 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D35DC9182541E500D10899 /* CoreDataHelper.m */; };
 		40D42C9E18702DBD0057DF2D /* YLProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D42C9D18702DBD0057DF2D /* YLProgressBar.m */; };
-		40D894621885DA3E00ABE44E /* RunSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D894611885DA3E00ABE44E /* RunSummaryViewController.m */; };
-		40D894651885EAC300ABE44E /* HistoryBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D894641885EAC300ABE44E /* HistoryBaseViewController.m */; };
 		40DFDBE9182AE6C100554C58 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40DFDBE8182AE6C100554C58 /* Social.framework */; };
 		40E1606F18772D5D004C1B89 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 40E1606918772D5D004C1B89 /* libTestFlight.a */; };
 		40E1607018772D5D004C1B89 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 40E1606A18772D5D004C1B89 /* README.md */; };
@@ -204,10 +199,6 @@
 		400522531880207D00B34DAD /* RunInfoSummary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunInfoSummary.m; sourceTree = "<group>"; };
 		400522551880209600B34DAD /* RunInfoAltitudeGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunInfoAltitudeGraph.h; sourceTree = "<group>"; };
 		400522561880209600B34DAD /* RunInfoAltitudeGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunInfoAltitudeGraph.m; sourceTree = "<group>"; };
-		4013EF121850686E00D6740F /* RunSectorsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunSectorsViewController.h; sourceTree = "<group>"; };
-		4013EF131850686E00D6740F /* RunSectorsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunSectorsViewController.m; sourceTree = "<group>"; };
-		4013EF15185069A800D6740F /* RunSectorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunSectorCell.h; sourceTree = "<group>"; };
-		4013EF16185069A800D6740F /* RunSectorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunSectorCell.m; sourceTree = "<group>"; };
 		4015F4C718888A54006C3DC8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4015F4C918888A5B006C3DC8 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		4018F50D17F832B9006F990E /* JBKenBurnsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBKenBurnsView.h; sourceTree = "<group>"; };
@@ -333,8 +324,6 @@
 		407C4DFB180BF7E300F7B2FE /* routes-cup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "routes-cup@2x.png"; sourceTree = "<group>"; };
 		407C4DFC180BF7E300F7B2FE /* routes-man.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "routes-man.png"; sourceTree = "<group>"; };
 		407C4DFD180BF7E300F7B2FE /* routes-man@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "routes-man@2x.png"; sourceTree = "<group>"; };
-		407C4E07180C002A00F7B2FE /* TrackInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackInfoViewController.h; sourceTree = "<group>"; };
-		407C4E08180C002A00F7B2FE /* TrackInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackInfoViewController.m; sourceTree = "<group>"; };
 		407E802418686A0400FE72F2 /* NSJSONSerialization+UAAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSJSONSerialization+UAAdditions.h"; path = "Common/NSJSONSerialization+UAAdditions.h"; sourceTree = "<group>"; };
 		407E802518686A0400FE72F2 /* UAAnalytics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UAAnalytics.h; path = Common/UAAnalytics.h; sourceTree = "<group>"; };
 		407E802618686A0400FE72F2 /* UAAnalyticsDBManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UAAnalyticsDBManager.h; path = Common/UAAnalyticsDBManager.h; sourceTree = "<group>"; };
@@ -440,10 +429,6 @@
 		40D35DC9182541E500D10899 /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
 		40D42C9C18702DBD0057DF2D /* YLProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLProgressBar.h; sourceTree = "<group>"; };
 		40D42C9D18702DBD0057DF2D /* YLProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLProgressBar.m; sourceTree = "<group>"; };
-		40D894601885DA3E00ABE44E /* RunSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunSummaryViewController.h; sourceTree = "<group>"; };
-		40D894611885DA3E00ABE44E /* RunSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunSummaryViewController.m; sourceTree = "<group>"; };
-		40D894631885EAC300ABE44E /* HistoryBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryBaseViewController.h; sourceTree = "<group>"; };
-		40D894641885EAC300ABE44E /* HistoryBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryBaseViewController.m; sourceTree = "<group>"; };
 		40DFDBE8182AE6C100554C58 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		40E1606918772D5D004C1B89 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
 		40E1606A18772D5D004C1B89 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
@@ -573,18 +558,8 @@
 		401E291A1862D8A7008CAB02 /* Notused */ = {
 			isa = PBXGroup;
 			children = (
-				40D894601885DA3E00ABE44E /* RunSummaryViewController.h */,
-				40D894611885DA3E00ABE44E /* RunSummaryViewController.m */,
-				40D894631885EAC300ABE44E /* HistoryBaseViewController.h */,
-				40D894641885EAC300ABE44E /* HistoryBaseViewController.m */,
 				40F3E1DD180F0EE000785F27 /* StartViewController.h */,
 				40F3E1DE180F0EE000785F27 /* StartViewController.m */,
-				407C4E07180C002A00F7B2FE /* TrackInfoViewController.h */,
-				407C4E08180C002A00F7B2FE /* TrackInfoViewController.m */,
-				4013EF121850686E00D6740F /* RunSectorsViewController.h */,
-				4013EF131850686E00D6740F /* RunSectorsViewController.m */,
-				4013EF15185069A800D6740F /* RunSectorCell.h */,
-				4013EF16185069A800D6740F /* RunSectorCell.m */,
 			);
 			name = Notused;
 			sourceTree = "<group>";
@@ -1372,18 +1347,14 @@
 				4057EB3118703BA800F52EF4 /* CommonUtils.m in Sources */,
 				405E533F185E112A00A8BD45 /* Sector2Annotation.m in Sources */,
 				4042CA851889A584005EDEFD /* RunAchievement.m in Sources */,
-				40D894651885EAC300ABE44E /* HistoryBaseViewController.m in Sources */,
 				404793A2182F83BA004FEB73 /* RunDetailViewController.m in Sources */,
 				407771E81815B74700A38AA1 /* UIImage+ImageEffects.m in Sources */,
 				40F3E1E4180F194A00785F27 /* HistoryTableViewController.m in Sources */,
-				4013EF17185069A800D6740F /* RunSectorCell.m in Sources */,
-				407C4E09180C002A00F7B2FE /* TrackInfoViewController.m in Sources */,
 				40892C1D1885B34A008F7D38 /* RunAltitudeViewController.m in Sources */,
 				407C4DF9180BF66500F7B2FE /* AchivementsCollectionViewController.m in Sources */,
 				4018F50F17F832B9006F990E /* JBKenBurnsView.m in Sources */,
 				400522571880209600B34DAD /* RunInfoAltitudeGraph.m in Sources */,
 				408A7993182AE3AA0088D8AC /* SettingsViewController.m in Sources */,
-				4013EF141850686E00D6740F /* RunSectorsViewController.m in Sources */,
 				40C1657317EB637900D4E093 /* AppDelegate.m in Sources */,
 				40E5A2EA1856504300E8E87E /* UIView+More.m in Sources */,
 				40A3B3E1185B768F00BA85BB /* MessageBarManager.m in Sources */,
@@ -1399,7 +1370,6 @@
 				40D42C9E18702DBD0057DF2D /* YLProgressBar.m in Sources */,
 				40F3E1DF180F0EE000785F27 /* StartViewController.m in Sources */,
 				40BE1F6A1823C7C2004C3FC3 /* MKRunnerAnnotation.m in Sources */,
-				40D894621885DA3E00ABE44E /* RunSummaryViewController.m in Sources */,
 				407C4DF6180BF65300F7B2FE /* AchivementCell.m in Sources */,
 				4042CA7C1889A584005EDEFD /* RunLocations.m in Sources */,
 				4048167C1845D7D2000410C7 /* ProfileHeaderView.m in Sources */,
@@ -1510,7 +1480,7 @@
 					"-ObjC",
 					"-all_load",
 				);
-				PROVISIONING_PROFILE = "A64AD871-B6EA-496E-B2EE-3C6C9231F530";
+				PROVISIONING_PROFILE = "E31278DC-5845-41CD-8198-88F4AFC59F28";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1553,7 +1523,7 @@
 					"-ObjC",
 					"-all_load",
 				);
-				PROVISIONING_PROFILE = "A64AD871-B6EA-496E-B2EE-3C6C9231F530";
+				PROVISIONING_PROFILE = "E31278DC-5845-41CD-8198-88F4AFC59F28";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1589,7 +1559,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "A64AD871-B6EA-496E-B2EE-3C6C9231F530";
+				PROVISIONING_PROFILE = "E31278DC-5845-41CD-8198-88F4AFC59F28";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1624,7 +1594,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "A64AD871-B6EA-496E-B2EE-3C6C9231F530";
+				PROVISIONING_PROFILE = "E31278DC-5845-41CD-8198-88F4AFC59F28";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
