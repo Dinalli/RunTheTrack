@@ -82,6 +82,8 @@
     BOOL startCountdownShown;
     BOOL sector1savedforLap;
     BOOL sector2savedforLap;
+    
+    BOOL haveMusicToPlay;
 }
 
 @property (nonatomic, strong) NSMutableArray *runPointArray;

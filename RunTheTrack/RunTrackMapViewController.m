@@ -233,6 +233,7 @@
 
 -(void)showSectorTimes
 {
+    NSLog(@"Sectors count Track %d", self.runData.runSectors.count);
     if(self.runData.runSectors.count > 0)
     {
         runLapsArray = [[self.runData.runSectors allObjects] mutableCopy];

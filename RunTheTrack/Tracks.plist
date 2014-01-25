@@ -1864,7 +1864,7 @@
 			<string>45.6144051,9.2807114</string>
 			<string>45.6154032,9.2807221</string>
 			<string>45.6163413,9.2808187</string>
-            <string>45.6171893,9.2809153</string>
+			<string>45.6171893,9.2809153</string>
 		</array>
 		<key>Race</key>
 		<string>Autodromo Nazionale Monza</string>
@@ -2164,7 +2164,7 @@
 		<key>Race</key>
 		<string>Suzuka</string>
 		<key>mapimage</key>
-		<string>japan-sec.png</string>
+		<string>japan.png</string>
 		<key>trackimage</key>
 		<string>japan.jpg</string>
 		<key>flag</key>
@@ -2311,7 +2311,7 @@
 		<key>Race</key>
 		<string>Korea International Circuit</string>
 		<key>mapimage</key>
-		<string>Korea.png</string>
+		<string>korea.png</string>
 		<key>trackimage</key>
 		<string>Korea.jpg</string>
 		<key>flag</key>
@@ -2448,7 +2448,7 @@
 		<key>Race</key>
 		<string>Buddh International Circuit</string>
 		<key>mapimage</key>
-		<string>india-sec.png</string>
+		<string>india.png</string>
 		<key>trackimage</key>
 		<string>India.jpg</string>
 		<key>flag</key>
@@ -2613,7 +2613,7 @@
 		<key>Race</key>
 		<string>Yas Marina, Abu Dhab</string>
 		<key>mapimage</key>
-		<string>abu-sec.png</string>
+		<string>abu.png</string>
 		<key>trackimage</key>
 		<string>abu.jpg</string>
 		<key>flag</key>
@@ -2756,7 +2756,7 @@
 		<key>Race</key>
 		<string>Circuit of the Americas</string>
 		<key>mapimage</key>
-		<string>usa-sec.png</string>
+		<string>usa.png</string>
 		<key>trackimage</key>
 		<string>Usa.jpg</string>
 		<key>flag</key>
@@ -2889,7 +2889,7 @@
 		<key>Race</key>
 		<string>Autodromo Jose Carlos Pace Interlagos</string>
 		<key>mapimage</key>
-		<string>bra-sec.png</string>
+		<string>bra.png</string>
 		<key>trackimage</key>
 		<string>Brazil.jpg</string>
 		<key>flag</key>

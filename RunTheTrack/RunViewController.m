@@ -45,6 +45,7 @@ enum TimerState : NSUInteger {
 {
     [super viewDidLoad];
     startCountdownShown = NO;
+    haveMusicToPlay = NO;
     
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
@@ -71,8 +72,8 @@ enum TimerState : NSUInteger {
     musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
     
     //Listen to notification of track playing changing
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playbackStateDidChanged:) name:MPMusicPlayerControllerPlaybackStateDidChangeNotification object:musicPlayer];
-//    [musicPlayer beginGeneratingPlaybackNotifications];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playbackStateDidChanged:) name:MPMusicPlayerControllerPlaybackStateDidChangeNotification object:musicPlayer];
+    [musicPlayer beginGeneratingPlaybackNotifications];
     
     self.timerState = timerStopped;
     lapCounter = 0;
@@ -86,7 +87,7 @@ enum TimerState : NSUInteger {
     
     self.navigationItem.titleView=tlabel;
     
-    trackBackImage.image = [[UIImage imageNamed:[self.trackInfo objectForKey:@"mapimage"]] applyExtraLightEffect];
+    trackBackImage.image = [UIImage imageNamed:[self.trackInfo objectForKey:@"mapimage"]];
                             
     lapsLabel.text = @"0";
     totalTrackDistance = [[self.trackInfo objectForKey:@"Distance"] floatValue];
@@ -103,7 +104,6 @@ enum TimerState : NSUInteger {
     if(runAltitudeArray == nil) runAltitudeArray = [[NSMutableArray alloc] init];
 
     [CommonUtils shadowAndRoundView:runInfoView];
-    [CommonUtils shadowAndRoundView:runTimeView];
 }
 
 - (void)customiseAppearance {
@@ -126,9 +126,10 @@ enum TimerState : NSUInteger {
     if(self.timerState == timerStopped)
     {
         TFLog(@"Run Started");
-        //[musicPlayer play];
         
-        [self textToSpeak:@"Start your run now "];
+        [self textToSpeak:@"Start your run now"];
+        
+        if(haveMusicToPlay) [musicPlayer play];
         
         if([startBtn.titleLabel.text isEqualToString:@"RESUME"])
         {
@@ -208,6 +209,7 @@ enum TimerState : NSUInteger {
     if (mediaItemCollection) {
         [musicPlayer setQueueWithItemCollection: mediaItemCollection];
         appDelegate.musicIsPlaying = YES;
+        haveMusicToPlay = YES;
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -343,6 +345,7 @@ enum TimerState : NSUInteger {
         //Sector 1
         if (fractional > 0.33333 && !sector1savedforLap)
         {
+            [self playSound:@"S02" :@"WAV"];
             sector1Date = [NSDate date];
             sector1Loc = [self.runPointArray lastObject];
             if(sector3Date == nil)
@@ -372,6 +375,7 @@ enum TimerState : NSUInteger {
         // Sector 2
         if (fractional > 0.6666 && !sector2savedforLap)
         {
+            [self playSound:@"S02" :@"WAV"];
             sector2Date = [NSDate date];
             sector2Loc = [self.runPointArray lastObject];
             NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
@@ -389,6 +393,7 @@ enum TimerState : NSUInteger {
         // Have we completed a lap
         if(lapCounter  != (int)floorf(runLapsFloat))
         {
+            [self playSound:@"f1_sms" :@"mp3"];
             sector3Date = [NSDate date];
             NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
 
@@ -476,6 +481,7 @@ enum TimerState : NSUInteger {
                  sender:(id)sender {
     if ([segue.identifier isEqualToString:@"finishRunSegue"]) {
         
+        [musicPlayer stop];
         [self.timeLabel stop];
         [self.locationManager stopUpdatingLocation];
         TFLog(@"Location Updates Stopped");
