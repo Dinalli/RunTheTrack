@@ -77,24 +77,59 @@
     
     
     // Add points to map for annotations
-    RunLocations *startRunLocation = (RunLocations *)[points objectAtIndex:0];
-    RunLocations *endRunLocation = (RunLocations *)[points objectAtIndex:points.count-1];
-    CLLocationCoordinate2D startCoordinate = CLLocationCoordinate2DMake([startRunLocation.lattitude doubleValue], [startRunLocation.longitude doubleValue]);
-    CLLocationCoordinate2D endCoordinate = CLLocationCoordinate2DMake([endRunLocation.lattitude doubleValue], [endRunLocation.longitude doubleValue]);
+    RunLocations *endRunLocation = (RunLocations *)[points objectAtIndex:0];
+    RunLocations *startRunLocation = (RunLocations *)[points objectAtIndex:points.count-1];
+    startCoordinate = CLLocationCoordinate2DMake([startRunLocation.lattitude doubleValue], [startRunLocation.longitude doubleValue]);
+    endCoordinate = CLLocationCoordinate2DMake([endRunLocation.lattitude doubleValue], [endRunLocation.longitude doubleValue]);
     
     StartFinishAnnotation *startAnno = [[StartFinishAnnotation alloc] init];
     startAnno.coordinate = startCoordinate;
-    startAnno.title = @"Finish";
+    startAnno.title = @"Start";
     [mv addAnnotation:startAnno];
     
     
     StartFinishAnnotation *finishAnno = [[StartFinishAnnotation alloc] init];
     finishAnno.coordinate = endCoordinate;
-    finishAnno.title = @"Start";
+    finishAnno.title = @"Finish";
     [mv addAnnotation:finishAnno];
     
-    [self showSectorTimes];
+    // Add Map Cameras
     
+    MKMapCamera *camera1 = [MKMapCamera
+                            cameraLookingAtCenterCoordinate:startCoordinate
+                            fromEyeCoordinate:startCoordinate
+                            eyeAltitude:150.0];
+    
+    [mv setCamera:camera1];
+    runCameras = [[NSMutableArray alloc] init];
+    [runCameras addObject:camera1];
+    cameraIndex = 0;
+    
+    [self showSectorTimes];
+}
+
+
+-(IBAction)threeDeeSelected:(id)sender
+{
+    (mv.pitchEnabled) ? [mv setPitchEnabled:NO] : [mv setPitchEnabled:YES];
+}
+
+- (IBAction)goToNextCamera:(id)sender {
+    if ([runCameras count] == 0) {
+        return;
+    }
+    cameraIndex++;
+    if(cameraIndex == runCameras.count)
+    {
+        cameraIndex = 0;
+    }
+    MKMapCamera *nextCamera = [runCameras objectAtIndex:cameraIndex];
+    
+    [UIView animateWithDuration:1.5
+                          delay:.5
+                        options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^{[mv setCamera:nextCamera];}
+                     completion:NULL];
 }
 
 -(void)zoomToPolyLine: (MKMapView*)map polyLine: (MKPolyline*)polyLine
@@ -174,13 +209,6 @@
         
         for(RunSectors *rSector in runLapsArray)
         {
-            CLLocationCoordinate2D lapCordinate =  CLLocationCoordinate2DMake([rSector.lapLat doubleValue], [rSector.lapLong doubleValue]);
-
-            LapAnnotation *finishAnno = [[LapAnnotation alloc] init];
-            finishAnno.coordinate = lapCordinate;
-            finishAnno.title = [NSString stringWithFormat:@"Lap %@ time %@",rSector.lapNumber, rSector.lapTime];
-            [mv addAnnotation:finishAnno];
-
             CLLocationCoordinate2D sect1Cordinate =  CLLocationCoordinate2DMake([rSector.sec1Lat doubleValue], [rSector.sec1Long doubleValue]);
             
             Sector1Annotaion *sector1Anno = [[Sector1Annotaion alloc] init];
@@ -188,12 +216,39 @@
             sector1Anno.title = [NSString stringWithFormat:@"Sector 1 %@",rSector.sector1Time];
             [mv addAnnotation:sector1Anno];
             
+            MKMapCamera *camera1 = [MKMapCamera
+                                    cameraLookingAtCenterCoordinate:sect1Cordinate
+                                    fromEyeCoordinate:startCoordinate
+                                    eyeAltitude:50.0];
+            
             CLLocationCoordinate2D sect2Cordinate =  CLLocationCoordinate2DMake([rSector.sec2Lat doubleValue], [rSector.sec2Long doubleValue]);
             
             Sector2Annotation *sector2Anno = [[Sector2Annotation alloc] init];
             sector2Anno.coordinate = sect2Cordinate;
             sector2Anno.title = [NSString stringWithFormat:@"Sector 2 %@",rSector.sector2Time];
             [mv addAnnotation:sector2Anno];
+            
+            MKMapCamera *camera2 = [MKMapCamera
+                                    cameraLookingAtCenterCoordinate:sect2Cordinate
+                                    fromEyeCoordinate:sect1Cordinate
+                                    eyeAltitude:50.0];
+            
+                        CLLocationCoordinate2D lapCordinate =  CLLocationCoordinate2DMake([rSector.lapLat doubleValue], [rSector.lapLong doubleValue]);
+            
+            LapAnnotation *finishAnno = [[LapAnnotation alloc] init];
+            finishAnno.coordinate = lapCordinate;
+            finishAnno.title = [NSString stringWithFormat:@"Lap %@ time %@",rSector.lapNumber, rSector.lapTime];
+            [mv addAnnotation:finishAnno];
+            
+            MKMapCamera *camera3 = [MKMapCamera
+                                    cameraLookingAtCenterCoordinate:lapCordinate
+                                    fromEyeCoordinate:sect2Cordinate
+                                    eyeAltitude:50.0];
+            
+            [runCameras addObject:camera1];
+            [runCameras addObject:camera2];
+            [runCameras addObject:camera3];
+            
         }
     }
 }
@@ -294,16 +349,6 @@
 }
 
 
-#pragma mark Segue Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue
-                 sender:(id)sender {
-//    if ([segue.identifier isEqualToString:@"RunSectorsSegue"]) {
-//        RunSectorsViewController *rsvc = segue.destinationViewController;
-//        [rsvc setRunData:self.runData];
-//    }
-}
-    
 #pragma mark social sharing
 
 -(IBAction)showActivityView:(id)sender

@@ -92,6 +92,7 @@
 		405E5342185E113D00A8BD45 /* StartFinishAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 405E5341185E113D00A8BD45 /* StartFinishAnnotation.m */; };
 		406B253A18953B1900F03B23 /* credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 406B253918953B1900F03B23 /* credits.rtf */; };
 		406B253C18953C6700F03B23 /* beep_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 406B253B18953C6700F03B23 /* beep_2.mp3 */; };
+		406B253E18954A6100F03B23 /* 86-camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 406B253D18954A6100F03B23 /* 86-camera.png */; };
 		406B8AE718670A93008805C9 /* nurburg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 406B8AE618670A93008805C9 /* nurburg.jpg */; };
 		406B8AE918670F65008805C9 /* 31-ipod.png in Resources */ = {isa = PBXBuildFile; fileRef = 406B8AE818670F65008805C9 /* 31-ipod.png */; };
 		407710AC18453B3900882BBE /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 407710AB18453B3900882BBE /* ProfileViewController.m */; };
@@ -304,6 +305,7 @@
 		405E5341185E113D00A8BD45 /* StartFinishAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartFinishAnnotation.m; sourceTree = "<group>"; };
 		406B253918953B1900F03B23 /* credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = credits.rtf; sourceTree = "<group>"; };
 		406B253B18953C6700F03B23 /* beep_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beep_2.mp3; sourceTree = "<group>"; };
+		406B253D18954A6100F03B23 /* 86-camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "86-camera.png"; sourceTree = "<group>"; };
 		406B8AE618670A93008805C9 /* nurburg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nurburg.jpg; sourceTree = "<group>"; };
 		406B8AE818670F65008805C9 /* 31-ipod.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "31-ipod.png"; sourceTree = "<group>"; };
 		407710AA18453B3900882BBE /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
@@ -621,6 +623,7 @@
 		405FD4BA17EE3E8D006F141F /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				406B253D18954A6100F03B23 /* 86-camera.png */,
 				4098A64A186E06CC0087EE50 /* trophy.png */,
 				4046F774182FE90200957CB5 /* tabbar-profile-normal.png */,
 				4046F775182FE90200957CB5 /* tabbar-profile-normal@2x.png */,
@@ -1250,6 +1253,7 @@
 				4057264F188FA47C005DD240 /* stopwatch.png in Resources */,
 				40343AFE18940D6000881CC6 /* barcelona.png in Resources */,
 				40FA0ABA1883489C00EDB8AE /* abu.jpg in Resources */,
+				406B253E18954A6100F03B23 /* 86-camera.png in Resources */,
 				40BAAD3F18203FB900137E8C /* beep-8.mp3 in Resources */,
 				407C4DFE180BF7E300F7B2FE /* routes-cup.png in Resources */,
 				40A3B3EE185B76CC00BA85BB /* icon-success@2x.png in Resources */,

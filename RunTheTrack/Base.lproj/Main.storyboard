@@ -966,6 +966,30 @@
                                     <outletCollection property="gestureRecognizers" destination="iW4-Xf-QbM" appends="YES" id="UYp-Og-I1U"/>
                                 </connections>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xGP-bs-5KG">
+                                <rect key="frame" x="0.0" y="524" width="46" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.90509647650000002" green="0.071859255159999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="3D">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="threeDeeSelected:" destination="txt-p1-Zp1" eventType="touchUpInside" id="9gF-2h-Tky"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zsf-G9-fW3">
+                                <rect key="frame" x="274" y="524" width="46" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.90509647650000002" green="0.071859255159999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="86-camera.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="goToNextCamera:" destination="txt-p1-Zp1" eventType="touchUpInside" id="Mqx-2u-51Z"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1411,6 +1435,7 @@
     </scenes>
     <resources>
         <image name="31-ipod.png" width="17" height="29"/>
+        <image name="86-camera.png" width="24" height="18"/>
         <image name="Brazil.jpg" width="1680" height="1050"/>
         <image name="abu-sec.png" width="600" height="420"/>
         <image name="nav-rbtn.png" width="20" height="20"/>

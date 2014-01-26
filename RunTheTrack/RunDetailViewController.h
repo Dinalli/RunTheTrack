@@ -29,6 +29,12 @@
     NSMutableArray *runLapsArray;
     
     IBOutlet UIButton *shareButton;
+    
+    NSMutableArray *runCameras;
+    
+    CLLocationCoordinate2D startCoordinate;
+    CLLocationCoordinate2D endCoordinate;
+    int cameraIndex;
 }
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
