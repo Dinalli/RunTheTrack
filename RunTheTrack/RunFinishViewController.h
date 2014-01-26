@@ -19,8 +19,6 @@
     UILabel *runTime;
     IBOutlet UILabel *runLaps;
     IBOutlet UILabel *runDistance;
-    IBOutlet UILabel *paceLabel;
-    IBOutlet UILabel *trackName;
     IBOutlet UILabel *runSteps;
 
     IBOutlet MKMapView *mv;

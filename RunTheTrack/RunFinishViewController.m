@@ -63,10 +63,6 @@
         runDistance.text = [NSString stringWithFormat:@"%.2f miles",[[self.trackInfo objectForKey:@"runDistance"] floatValue] * 0.000621371192];
     }
     
-    paceLabel.text = [NSString stringWithFormat:@"%@ mph",@"3.1"];
-    trackMapImage.image = [UIImage imageNamed:[self.trackInfo objectForKey:@"mapimage"]];
-    trackName.text = [self.trackInfo objectForKey:@"Race"];
-    
     if(appDelegate.useMotion)
     {
         runSteps.hidden = NO;
@@ -303,7 +299,7 @@
     [runData setRuntime:[self.trackInfo valueForKey:@"runTime"]];
     [runData setRunlaps:[self.trackInfo valueForKey:@"runLaps"]];
     [runData setRundistance:[self.trackInfo valueForKey:@"runDistance"]];
-    [runData setRunPace:@"0"];
+    [runData setRunPace:[self.trackInfo valueForKey:@"runPace"]];
     [runData setRuntype:[self.trackInfo valueForKey:@"runType"]];
     [runData setRunSteps:[self.trackInfo valueForKey:@"runSteps"]];
     [runData setRundate:[CommonUtils formattedStringFromDate:[NSDate date]]];

@@ -35,6 +35,50 @@
     return formattedString;
 }
 
++ (NSString *)timeFormattedStringForSpeech:(int)hrs :(int)mins :(int)secs {
+    
+    NSString *formattedString = @"";
+    
+    if (hrs == 0) {
+        if (mins == 0) {
+            formattedString = [NSString stringWithFormat:@"%02d seconds", secs];
+        } else {
+            formattedString = [NSString stringWithFormat:@"%02d minutes %02d seconds", mins, secs];
+        }
+    } else {
+        formattedString = [NSString stringWithFormat:@"%02d hours %02d minutes %02d seconds", hrs, mins, secs];
+    }
+    
+    return formattedString;
+}
+
++ (NSString *)paceFromTimeAndDistanceKm:(int)hrs :(int)mins :(int)secs :(float)kilometers
+{
+    int timeInMins;
+    
+    timeInMins = (hrs / 60) + mins;
+    
+    float pace = timeInMins / kilometers;
+    
+    NSLog(@"time in mins %d  distance %f pace %f", timeInMins, kilometers, pace);
+    
+    return [NSString stringWithFormat:@"%.2f", pace];
+    
+}
+
++ (NSString *)paceFromTimeAndDistanceMiles:(int)hrs :(int)mins :(int)secs :(float)miles
+{
+    int timeInMins;
+    
+    timeInMins = (hrs / 60) + mins;
+    
+    float pace = timeInMins / miles;
+    
+    NSLog(@"time in mins %d  distance %f pace %f", timeInMins, miles, pace);
+    
+    return [NSString stringWithFormat:@"%.2f", pace];
+}
+
 +(NSString *)formattedStringFromDate:(NSDate *)dateIn
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -62,16 +106,16 @@
     [[UIInterpolatingMotionEffect alloc]
      initWithKeyPath:@"center.y"
      type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
-    verticalMotionEffect.minimumRelativeValue = @(-20);
-    verticalMotionEffect.maximumRelativeValue = @(20);
+    verticalMotionEffect.minimumRelativeValue = @(-10);
+    verticalMotionEffect.maximumRelativeValue = @(10);
     
     // Set horizontal effect
     UIInterpolatingMotionEffect *horizontalMotionEffect =
     [[UIInterpolatingMotionEffect alloc]
      initWithKeyPath:@"center.x"
      type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
-    horizontalMotionEffect.minimumRelativeValue = @(-20);
-    horizontalMotionEffect.maximumRelativeValue = @(20);
+    horizontalMotionEffect.minimumRelativeValue = @(-10);
+    horizontalMotionEffect.maximumRelativeValue = @(10);
     
     // Create group to combine both
     UIMotionEffectGroup *group = [UIMotionEffectGroup new];

@@ -153,12 +153,12 @@ enum TimerState : NSUInteger {
     }
     else if(self.timerState == timerStarted)
     {
-        //[musicPlayer pause];
         [self.timeLabel stop];
         [self pauseTimer:timer];
         [startBtn setTitle:@"RESUME" forState:UIControlStateNormal];
         self.timerState = timerStopped;
         btnFinish.hidden = NO;
+        finishDate = [NSDate date];
     }
 }
 
@@ -323,29 +323,15 @@ enum TimerState : NSUInteger {
         runLapsFloat = totalLocationDistance / totalTrackDistance;
         lapsLabel.text = [NSString stringWithFormat:@"%.2f", runLapsFloat];
         
-        // Calculate the pace at this point
-        
-//        int hours = [self.timeLabel getHours];
-//        int mins = [self.timeLabel getMins];
-//        int secs = [self.timeLabel getSecs];
-//        //NSLog(@"Time Label value %d:%d:%d", hours, mins, secs);
-//        float floatHourPace = hours / (totalLocationDistance * 0.000621371192);
-//        float floatMinPace = mins / (totalLocationDistance * 0.000621371192);
-//        float floatSecPace = secs / (totalLocationDistance * 0.000621371192);
-//        
-//        runPace.text = [NSString stringWithFormat:@"%.0f:%.0f pm",floatHourPace, floatMinPace];
-
         // Have we passed a sector then save info
         
         double integral;
         double fractional = modf(runLapsFloat, &integral);
-        //NSLog(@"laps intergral %f", fractional);
-        
 
         //Sector 1
         if (fractional > 0.33333 && !sector1savedforLap)
         {
-            [self playSound:@"S02" :@"WAV"];
+            [self playSound:@"beep-8" :@"mp3"];
             sector1Date = [NSDate date];
             sector1Loc = [self.runPointArray lastObject];
             if(sector3Date == nil)
@@ -357,6 +343,18 @@ enum TimerState : NSUInteger {
                                                                       toDate:sector1Date
                                                                      options:0];
                 sector1Time = [CommonUtils timeFormattedStringForValue:(int)[components hour] :(int)[components minute] :(int)[components second]];
+                [self textToSpeak:[NSString stringWithFormat:@"Sector One Time %@",[CommonUtils timeFormattedStringForSpeech:(int)[components hour] :(int)[components minute] :(int)[components second]]]];
+                
+                if([appDelegate useKMasUnits])
+                {
+                    runPace.text = [NSString stringWithFormat:@"%@ kph",
+                                    [CommonUtils paceFromTimeAndDistanceKm:(int)[components hour] :(int)[components minute] :(int)[components second] :distance]];
+                }
+                else
+                {
+                    runPace.text = [NSString stringWithFormat:@"%@ mph",
+                                    [CommonUtils paceFromTimeAndDistanceKm:(int)[components hour] :(int)[components minute] :(int)[components second] :(distance * 0.000621371192)]];
+                }
             }
             else{
                 NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
@@ -366,8 +364,21 @@ enum TimerState : NSUInteger {
                                                                       toDate:sector1Date
                                                                      options:0];
                 sector1Time = [CommonUtils timeFormattedStringForValue:(int)[components hour] :(int)[components minute] :(int)[components second]];
+                [self textToSpeak:[NSString stringWithFormat:@"Sector One Time %@",[CommonUtils timeFormattedStringForSpeech:(int)[components hour] :(int)[components minute] :(int)[components second]]]];
+                
+                if([appDelegate useKMasUnits])
+                {
+                    runPace.text = [NSString stringWithFormat:@"%@ kph",
+                                    [CommonUtils paceFromTimeAndDistanceKm:(int)[components hour] :(int)[components minute] :(int)[components second] :distance]];
+                }
+                else
+                {
+                    runPace.text = [NSString stringWithFormat:@"%@ mph",
+                                    [CommonUtils paceFromTimeAndDistanceKm:(int)[components hour] :(int)[components minute] :(int)[components second] :(distance * 0.000621371192)]];
+                }
 
             }
+            
             sector1savedforLap = YES;
         }
         
@@ -375,7 +386,7 @@ enum TimerState : NSUInteger {
         // Sector 2
         if (fractional > 0.6666 && !sector2savedforLap)
         {
-            [self playSound:@"S02" :@"WAV"];
+            [self playSound:@"beep-8" :@"mp3"];
             sector2Date = [NSDate date];
             sector2Loc = [self.runPointArray lastObject];
             NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
@@ -384,7 +395,20 @@ enum TimerState : NSUInteger {
                                                                 fromDate:sector1Date
                                                                   toDate:[NSDate date]
                                                                  options:0];
-            sector2Time = [NSString stringWithFormat:@"%d:%d:%d", [components hour], [components minute], [components second]];
+            sector2Time = [CommonUtils timeFormattedStringForValue:(int)[components hour] :(int)[components minute] :(int)[components second]];
+            
+            [self textToSpeak:[NSString stringWithFormat:@"Sector Two Time %@",[CommonUtils timeFormattedStringForSpeech:(int)[components hour] :(int)[components minute] :(int)[components second]]]];
+            
+            if([appDelegate useKMasUnits])
+            {
+                runPace.text = [NSString stringWithFormat:@"%@ kph",
+                                [CommonUtils paceFromTimeAndDistanceKm:(int)[components hour] :(int)[components minute] :(int)[components second] :distance]];
+            }
+            else
+            {
+                runPace.text = [NSString stringWithFormat:@"%@ mph",
+                                [CommonUtils paceFromTimeAndDistanceKm:(int)[components hour] :(int)[components minute] :(int)[components second] :(distance * 0.000621371192)]];
+            }
             
             sector2savedforLap = YES;
 
@@ -409,6 +433,17 @@ enum TimerState : NSUInteger {
                                                                  options:0];
             NSString *lapTimeDiff = [CommonUtils timeFormattedStringForValue:(int)[lapComponents hour] :(int)[lapComponents minute] :(int)[lapComponents second]];
 
+            if([appDelegate useKMasUnits])
+            {
+                runPace.text = [NSString stringWithFormat:@"%@ kph",
+                                [CommonUtils paceFromTimeAndDistanceKm:(int)[components hour] :(int)[components minute] :(int)[components second] :distance]];
+            }
+            else
+            {
+                runPace.text = [NSString stringWithFormat:@"%@ mph",
+                                [CommonUtils paceFromTimeAndDistanceKm:(int)[components hour] :(int)[components minute] :(int)[components second] :(distance * 0.000621371192)]];
+            }
+            
             CLLocation *lapLoc = [self.runPointArray lastObject];
             
             lapCounter = (int)floorf(runLapsFloat);
@@ -423,6 +458,8 @@ enum TimerState : NSUInteger {
                                      @"LapLong":[NSString stringWithFormat:@"%f",lapLoc.coordinate.longitude]};
             
             NSLog( @"%@", runLap);
+            
+            [self textToSpeak:[NSString stringWithFormat:@"Lap %d Time %@", lapCounter,[CommonUtils timeFormattedStringForSpeech:(int)[lapComponents hour] :(int)[lapComponents minute] :(int)[lapComponents second]]]];
             
             if(runLapsInfoDict == nil) runLapsInfoDict = [[NSMutableDictionary alloc] init];
             [runLapsInfoDict setObject:runLap forKey:[NSString stringWithFormat:@"%d",lapCounter]];
@@ -451,15 +488,6 @@ enum TimerState : NSUInteger {
         //Always add the real location to array so we can show the real route later on
         [self.runPointArray addObject:newLocation];
         
-        if([appDelegate useKMasUnits])
-        {
-            runPace.text = [NSString stringWithFormat:@"%@ kph",[NSString stringWithFormat:@"%.2f", ((newLocation.speed * 60) * 60) *1000]];
-        }
-        else
-        {
-            runPace.text = [NSString stringWithFormat:@"%@ mph",[NSString stringWithFormat:@"%.2f", ((newLocation.speed * 60) * 60) * 0.000621371192]];
-        }
-        
         // No need to do anything if old location is not set
         if(oldLocation != nil)
         {
@@ -481,7 +509,7 @@ enum TimerState : NSUInteger {
                  sender:(id)sender {
     if ([segue.identifier isEqualToString:@"finishRunSegue"]) {
         
-        [musicPlayer stop];
+        if (haveMusicToPlay)[musicPlayer stop];
         [self.timeLabel stop];
         [self.locationManager stopUpdatingLocation];
         TFLog(@"Location Updates Stopped");
@@ -491,6 +519,26 @@ enum TimerState : NSUInteger {
         [self.trackInfo setObject:[NSString stringWithFormat:@"%ld",[self.timeLabel getValue]] forKey:@"timeLabel"];
         [self.trackInfo setObject:[NSString stringWithFormat:@"%.2f", runLapsFloat] forKey:@"runLaps"];
         [self.trackInfo setObject:[NSString stringWithFormat:@"%.2f",totalLocationDistance] forKey:@"runDistance"];
+        
+        NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        
+        NSDateComponents *components = [gregorianCalendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit)
+                                                            fromDate:startDate
+                                                              toDate:finishDate
+                                                             options:0];
+        
+        if([appDelegate useKMasUnits])
+        {
+            runPace.text = [NSString stringWithFormat:@"%@ kph",
+                            [CommonUtils paceFromTimeAndDistanceKm:(int)[components hour] :(int)[components minute] :(int)[components second] :totalLocationDistance]];
+        }
+        else
+        {
+            runPace.text = [NSString stringWithFormat:@"%@ mph",
+                            [CommonUtils paceFromTimeAndDistanceKm:(int)[components hour] :(int)[components minute] :(int)[components second] :(totalLocationDistance * 0.000621371192)]];
+        }
+        
+        [self.trackInfo setObject:runPace.text forKey:@"runPace"];
         
         if(appDelegate.useMotion)
         {
@@ -559,6 +607,9 @@ enum TimerState : NSUInteger {
 
 #pragma mark Sounds
 - (void)playSound :(NSString *)fName :(NSString *) ext{
+    
+    NSLog(@"atempting to play %@", fName);
+    
     SystemSoundID audioEffect;
     NSString *path = [[NSBundle mainBundle] pathForResource : fName ofType :ext];
     if ([[NSFileManager defaultManager] fileExistsAtPath : path]) {
@@ -581,14 +632,15 @@ enum TimerState : NSUInteger {
 
 -(void)textToSpeak:(NSString *)textToSpeak
 {
+    NSLog(@"Speaking %@", textToSpeak);
     AVSpeechUtterance *utt = [[AVSpeechUtterance alloc] initWithString:textToSpeak];
     utt.rate = 0.2;
-    utt.voice = [AVSpeechSynthesisVoice voiceWithLanguage:@"en-au"];
     [synth speakUtterance:utt];
 }
 
 -(void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer didFinishSpeechUtterance:(AVSpeechUtterance *)utterance
 {
+    if(haveMusicToPlay) [musicPlayer play];
 }
 
 @end

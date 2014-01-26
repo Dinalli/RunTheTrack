@@ -43,6 +43,7 @@
     NSDate *lapDate;
     NSDate *lastLapDate;
     NSDate *sectorDate;
+    NSDate *finishDate;
     NSTimeInterval secondsAlreadyRun;
     NSInteger lapCounter;
     
