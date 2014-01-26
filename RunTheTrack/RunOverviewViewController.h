@@ -12,7 +12,7 @@
 #import "RunData.h"
 #import <Social/Social.h>
 
-@interface RunOverviewViewController : UIViewController
+@interface RunOverviewViewController : UIViewController <UIActionSheetDelegate>
 {
     IBOutlet UIView *timeView;
     IBOutlet UIView *trackInfoView;

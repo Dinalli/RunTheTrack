@@ -999,10 +999,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5sZ-wb-Gfd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="Mz8-Rd-BpH" userLabel="Exit" sceneMemberID="exit"/>
                 <swipeGestureRecognizer direction="left" id="iW4-Xf-QbM">
                     <connections>
-                        <segue destination="Mz8-Rd-BpH" kind="unwind" unwindAction="unwindToOverview:" id="ziM-I9-6Mj"/>
+                        <segue destination="lCd-63-AUS" kind="push" id="ShX-zw-TQQ"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
@@ -1129,18 +1128,36 @@
                         <viewControllerLayoutGuide type="bottom" id="fJd-S2-zAz"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Yqs-0o-j6p">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yzu-So-OCI">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="xUA-fK-cdM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showActivityView:" destination="txt-p1-Zp1" eventType="touchUpInside" id="WFH-0h-XuC"/>
+                                    <segue destination="cs1-L8-XLF" kind="unwind" unwindAction="unwindToOverview:" id="GIG-cG-CTu"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="0.21881998659999999" green="0.81097944629999996" blue="0.27459551329999998" alpha="1" colorSpace="calibratedRGB"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" id="2kP-xZ-1Sj"/>
                     <nil key="simulatedTopBarMetrics"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4yk-ny-mcg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="cs1-L8-XLF" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2494" y="1400"/>
+            <point key="canvasLocation" x="2430" y="1400"/>
         </scene>
         <!--Run Overview View Controller-->
         <scene sceneID="t87-PC-25D">

@@ -417,7 +417,7 @@ enum TimerState : NSUInteger {
         // Have we completed a lap
         if(lapCounter  != (int)floorf(runLapsFloat))
         {
-            [self playSound:@"f1_sms" :@"mp3"];
+            [self playSound:@"beep_2" :@"mp3"];
             sector3Date = [NSDate date];
             NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
 

@@ -52,7 +52,6 @@
 		40343B0D18940D6000881CC6 /* singapore.png in Resources */ = {isa = PBXBuildFile; fileRef = 40343AFA18940D6000881CC6 /* singapore.png */; };
 		40343B0E18940D6000881CC6 /* spa.png in Resources */ = {isa = PBXBuildFile; fileRef = 40343AFB18940D6000881CC6 /* spa.png */; };
 		40343B0F18940D6000881CC6 /* usa.png in Resources */ = {isa = PBXBuildFile; fileRef = 40343AFC18940D6000881CC6 /* usa.png */; };
-		40343B111894182E00881CC6 /* f1_sms.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 40343B101894182E00881CC6 /* f1_sms.mp3 */; };
 		4042CA771889A1FE005EDEFD /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4042CA741889A12E005EDEFD /* libCorePlot-CocoaTouch.a */; };
 		4042CA7C1889A584005EDEFD /* RunLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 4042CA7B1889A584005EDEFD /* RunLocations.m */; };
 		4042CA851889A584005EDEFD /* RunAchievement.m in Sources */ = {isa = PBXBuildFile; fileRef = 4042CA841889A584005EDEFD /* RunAchievement.m */; };
@@ -91,6 +90,8 @@
 		405E533C185E10C000A8BD45 /* Sector1Annotaion.m in Sources */ = {isa = PBXBuildFile; fileRef = 405E533B185E10C000A8BD45 /* Sector1Annotaion.m */; };
 		405E533F185E112A00A8BD45 /* Sector2Annotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 405E533E185E112A00A8BD45 /* Sector2Annotation.m */; };
 		405E5342185E113D00A8BD45 /* StartFinishAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 405E5341185E113D00A8BD45 /* StartFinishAnnotation.m */; };
+		406B253A18953B1900F03B23 /* credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 406B253918953B1900F03B23 /* credits.rtf */; };
+		406B253C18953C6700F03B23 /* beep_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 406B253B18953C6700F03B23 /* beep_2.mp3 */; };
 		406B8AE718670A93008805C9 /* nurburg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 406B8AE618670A93008805C9 /* nurburg.jpg */; };
 		406B8AE918670F65008805C9 /* 31-ipod.png in Resources */ = {isa = PBXBuildFile; fileRef = 406B8AE818670F65008805C9 /* 31-ipod.png */; };
 		407710AC18453B3900882BBE /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 407710AB18453B3900882BBE /* ProfileViewController.m */; };
@@ -249,7 +250,6 @@
 		40343AFA18940D6000881CC6 /* singapore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = singapore.png; sourceTree = "<group>"; };
 		40343AFB18940D6000881CC6 /* spa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spa.png; sourceTree = "<group>"; };
 		40343AFC18940D6000881CC6 /* usa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = usa.png; sourceTree = "<group>"; };
-		40343B101894182E00881CC6 /* f1_sms.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = f1_sms.mp3; sourceTree = "<group>"; };
 		4042CA6A18899F35005EDEFD /* RTT4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RTT4.xcdatamodel; sourceTree = "<group>"; };
 		4042CA6D1889A12D005EDEFD /* CorePlot-CocoaTouch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CorePlot-CocoaTouch.xcodeproj"; path = "../../CorePlot/framework/CorePlot-CocoaTouch.xcodeproj"; sourceTree = "<group>"; };
 		4042CA7A1889A584005EDEFD /* RunLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunLocations.h; sourceTree = "<group>"; };
@@ -302,6 +302,8 @@
 		405E533E185E112A00A8BD45 /* Sector2Annotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sector2Annotation.m; sourceTree = "<group>"; };
 		405E5340185E113D00A8BD45 /* StartFinishAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartFinishAnnotation.h; sourceTree = "<group>"; };
 		405E5341185E113D00A8BD45 /* StartFinishAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartFinishAnnotation.m; sourceTree = "<group>"; };
+		406B253918953B1900F03B23 /* credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = credits.rtf; sourceTree = "<group>"; };
+		406B253B18953C6700F03B23 /* beep_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beep_2.mp3; sourceTree = "<group>"; };
 		406B8AE618670A93008805C9 /* nurburg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nurburg.jpg; sourceTree = "<group>"; };
 		406B8AE818670F65008805C9 /* 31-ipod.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "31-ipod.png"; sourceTree = "<group>"; };
 		407710AA18453B3900882BBE /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
@@ -610,7 +612,7 @@
 		405FD4B917EE3E7A006F141F /* AlertSounds */ = {
 			isa = PBXGroup;
 			children = (
-				40343B101894182E00881CC6 /* f1_sms.mp3 */,
+				406B253B18953C6700F03B23 /* beep_2.mp3 */,
 				40BAAD3E18203FB900137E8C /* beep-8.mp3 */,
 			);
 			name = AlertSounds;
@@ -941,6 +943,7 @@
 		40C1655617EB637900D4E093 = {
 			isa = PBXGroup;
 			children = (
+				406B253918953B1900F03B23 /* credits.rtf */,
 				409403CA189442A3009E8805 /* Location.gpx */,
 				40C1656817EB637900D4E093 /* RunTheTrack */,
 				40C1658717EB637900D4E093 /* RunTheTrackTests */,
@@ -1256,12 +1259,12 @@
 				4018F52717F83903006F990E /* japan.jpg in Resources */,
 				40C1657B17EB637900D4E093 /* Images.xcassets in Resources */,
 				40343B0518940D6000881CC6 /* japan.png in Resources */,
-				40343B111894182E00881CC6 /* f1_sms.mp3 in Resources */,
 				405E5336185DEED400A8BD45 /* sector1.png in Resources */,
 				4018F52317F83903006F990E /* canada.jpg in Resources */,
 				40E1607018772D5D004C1B89 /* README.md in Resources */,
 				40A3B3EC185B76CC00BA85BB /* icon-info@2x.png in Resources */,
 				4098A64B186E06CC0087EE50 /* trophy.png in Resources */,
+				406B253C18953C6700F03B23 /* beep_2.mp3 in Resources */,
 				40E1607118772D5D004C1B89 /* release_notes.md in Resources */,
 				40343B0C18940D6000881CC6 /* silverstone.png in Resources */,
 				40343AFF18940D6000881CC6 /* bahrain.png in Resources */,
@@ -1284,6 +1287,7 @@
 				40479398182F72F2004FEB73 /* nav-rbtn@2x.png in Resources */,
 				40343B0F18940D6000881CC6 /* usa.png in Resources */,
 				40A3B3EA185B76CC00BA85BB /* icon-error@2x.png in Resources */,
+				406B253A18953B1900F03B23 /* credits.rtf in Resources */,
 				40343B0318940D6000881CC6 /* hungary.png in Resources */,
 				4018F52B17F83903006F990E /* Monaco.jpg in Resources */,
 				405A15F417EEF5A200684921 /* Default@2x.png in Resources */,

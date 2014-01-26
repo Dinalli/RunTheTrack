@@ -48,7 +48,7 @@
 }
 
 -(void)configureHost {
-    self.hostView = [(CPTGraphHostingView *) [CPTGraphHostingView alloc] initWithFrame:self.view.bounds];
+    self.hostView = [(CPTGraphHostingView *) [CPTGraphHostingView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.bounds.size.height-44)];
     self.hostView.allowPinchScaling = YES;
     [self.view addSubview:self.hostView];
 }
