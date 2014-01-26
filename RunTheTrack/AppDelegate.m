@@ -29,7 +29,7 @@ NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:S
     [TestFlight takeOff:@"8d319ac4-7608-41e3-9826-189e7bf2b1d5"];
     
     // Initialize tracker.
-    id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-47282955-1"];
+    id<GAITracker> tracker __unused = [[GAI sharedInstance] trackerWithTrackingId:@"UA-47282955-1"];
     
     NSBundle* bundle = [NSBundle mainBundle];
     NSString* plistPath = [bundle pathForResource:@"Tracks" ofType:@"plist"];

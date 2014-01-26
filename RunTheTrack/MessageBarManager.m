@@ -319,25 +319,26 @@ static UIColor *descriptionColor = nil;
         yOffset = ceil(rect.size.height * 0.5) - ceil(titleLabelSize.height * 0.5) - kMessageBarTextOffset;
     }
     [titleColor set];
-	[self.titleString drawInRect:CGRectMake(xOffset, yOffset, titleLabelSize.width, titleLabelSize.height) withFont:titleFont lineBreakMode:NSLineBreakByTruncatingTail alignment:NSTextAlignmentLeft];
     
-//    NSDictionary *titleAttributeDictionary = @{ NSFontAttributeName: titleFont,
-//                                  NSTex: paragraphStyle,
-//                                  NSForegroundColorAttributeName: self.textColor};
+    /// Make a copy of the default paragraph style
+    NSMutableParagraphStyle *paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    /// Set line break mode
+    paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
+    /// Set text alignment
+    paragraphStyle.alignment = NSTextAlignmentLeft;
     
-//    [self.titleString drawInRect:CGRectMake(xOffset, yOffset, titleLabelSize.width, titleLabelSize.height)  withAttributes:titleAttributeDictionary];
+    NSDictionary *attributes = @{ NSFontAttributeName: titleFont,
+                                  NSParagraphStyleAttributeName: paragraphStyle };
+
+    
+    [self.titleString drawInRect:CGRectMake(xOffset, yOffset, titleLabelSize.width, titleLabelSize.height) withAttributes:attributes];
 
     yOffset += titleLabelSize.height;
     
     CGSize descriptionLabelSize = [self descriptionSize];
     [descriptionColor set];
-	[self.descriptionString drawInRect:CGRectMake(xOffset, yOffset, descriptionLabelSize.width, descriptionLabelSize.height) withFont:descriptionFont lineBreakMode:NSLineBreakByTruncatingTail alignment:NSTextAlignmentLeft];
     
-//    NSDictionary *descAttributeDictionary = @{ NSFontAttributeName: self.font,
-//                                                NSParagraphStyleAttributeName: paragraphStyle,
-//                                                NSForegroundColorAttributeName: self.textColor};
-//    
-//    [self.descriptionString drawInRect:CGRectMake(xOffset, yOffset, titleLabelSize.width, titleLabelSize.height)  withAttributes:descAttributeDictionary];
+    [self.titleString drawInRect:CGRectMake(xOffset, yOffset, descriptionLabelSize.width, descriptionLabelSize.height)  withAttributes:attributes];
 }
 
 #pragma mark - Getters
@@ -373,18 +374,11 @@ static UIColor *descriptionColor = nil;
     CGSize boundedSize = CGSizeMake([self availableWidth], CGFLOAT_MAX);
     CGSize titleLabelSize;
     
-    if ([self isRunningiOS7OrLater])
-    {
-        NSDictionary *titleStringAttributes = [NSDictionary dictionaryWithObject:titleFont forKey: NSFontAttributeName];
-        titleLabelSize = [self.titleString boundingRectWithSize:boundedSize
-                                                        options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin
-                                                     attributes:titleStringAttributes
-                                                        context:nil].size;
-    }
-    else
-    {
-        titleLabelSize = [_titleString sizeWithFont:titleFont constrainedToSize:boundedSize lineBreakMode:NSLineBreakByTruncatingTail];
-    }
+    NSDictionary *titleStringAttributes = [NSDictionary dictionaryWithObject:titleFont forKey: NSFontAttributeName];
+    titleLabelSize = [self.titleString boundingRectWithSize:boundedSize
+                                                    options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin
+                                                 attributes:titleStringAttributes
+                                                    context:nil].size;
     
     return titleLabelSize;
 }
@@ -394,19 +388,13 @@ static UIColor *descriptionColor = nil;
     CGSize boundedSize = CGSizeMake([self availableWidth], CGFLOAT_MAX);
     CGSize descriptionLabelSize;
     
-    if ([self isRunningiOS7OrLater])
-    {
-        NSDictionary *descriptionStringAttributes = [NSDictionary dictionaryWithObject:descriptionFont forKey: NSFontAttributeName];
-        descriptionLabelSize = [self.descriptionString boundingRectWithSize:boundedSize
-                                                                    options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin
-                                                                 attributes:descriptionStringAttributes
-                                                                    context:nil].size;
-    }
-    else
-    {
-        descriptionLabelSize = [_descriptionString sizeWithFont:descriptionFont constrainedToSize:boundedSize lineBreakMode:NSLineBreakByTruncatingTail];
-    }
-    
+
+    NSDictionary *descriptionStringAttributes = [NSDictionary dictionaryWithObject:descriptionFont forKey: NSFontAttributeName];
+    descriptionLabelSize = [self.descriptionString boundingRectWithSize:boundedSize
+                                                                options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin
+                                                             attributes:descriptionStringAttributes
+                                                                context:nil].size;
+
     return descriptionLabelSize;
 }
 

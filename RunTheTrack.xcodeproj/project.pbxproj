@@ -52,7 +52,6 @@
 		40343B0D18940D6000881CC6 /* singapore.png in Resources */ = {isa = PBXBuildFile; fileRef = 40343AFA18940D6000881CC6 /* singapore.png */; };
 		40343B0E18940D6000881CC6 /* spa.png in Resources */ = {isa = PBXBuildFile; fileRef = 40343AFB18940D6000881CC6 /* spa.png */; };
 		40343B0F18940D6000881CC6 /* usa.png in Resources */ = {isa = PBXBuildFile; fileRef = 40343AFC18940D6000881CC6 /* usa.png */; };
-		4042CA771889A1FE005EDEFD /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4042CA741889A12E005EDEFD /* libCorePlot-CocoaTouch.a */; };
 		4042CA7C1889A584005EDEFD /* RunLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 4042CA7B1889A584005EDEFD /* RunLocations.m */; };
 		4042CA851889A584005EDEFD /* RunAchievement.m in Sources */ = {isa = PBXBuildFile; fileRef = 4042CA841889A584005EDEFD /* RunAchievement.m */; };
 		4042CA881889A585005EDEFD /* RunAltitude.m in Sources */ = {isa = PBXBuildFile; fileRef = 4042CA871889A585005EDEFD /* RunAltitude.m */; };
@@ -109,7 +108,6 @@
 		4086419317F71E8A00E15000 /* Tracks.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4086419217F71E8A00E15000 /* Tracks.plist */; };
 		40892C171885B326008F7D38 /* RunTrackMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40892C161885B326008F7D38 /* RunTrackMapViewController.m */; };
 		40892C1A1885B336008F7D38 /* RunOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40892C191885B336008F7D38 /* RunOverviewViewController.m */; };
-		40892C1D1885B34A008F7D38 /* RunAltitudeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40892C1C1885B34A008F7D38 /* RunAltitudeViewController.m */; };
 		40892C201885B437008F7D38 /* RunViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40892C1F1885B437008F7D38 /* RunViewController.m */; };
 		408A7993182AE3AA0088D8AC /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 408A7992182AE3AA0088D8AC /* SettingsViewController.m */; };
 		409154C91852640000CECEEC /* runnerDot.png in Resources */ = {isa = PBXBuildFile; fileRef = 409154C71852640000CECEEC /* runnerDot.png */; };
@@ -172,20 +170,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		4042CA731889A12E005EDEFD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4042CA6D1889A12D005EDEFD /* CorePlot-CocoaTouch.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BC9B83470FB8A0A40035D8DA;
-			remoteInfo = "CorePlot-CocoaTouch";
-		};
-		4042CA781889A37E005EDEFD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4042CA6D1889A12D005EDEFD /* CorePlot-CocoaTouch.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = BC9B83460FB8A0A40035D8DA;
-			remoteInfo = "CorePlot-CocoaTouch";
-		};
 		40C1658517EB637900D4E093 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 40C1655717EB637900D4E093 /* Project object */;
@@ -252,7 +236,6 @@
 		40343AFB18940D6000881CC6 /* spa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spa.png; sourceTree = "<group>"; };
 		40343AFC18940D6000881CC6 /* usa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = usa.png; sourceTree = "<group>"; };
 		4042CA6A18899F35005EDEFD /* RTT4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RTT4.xcdatamodel; sourceTree = "<group>"; };
-		4042CA6D1889A12D005EDEFD /* CorePlot-CocoaTouch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CorePlot-CocoaTouch.xcodeproj"; path = "../../CorePlot/framework/CorePlot-CocoaTouch.xcodeproj"; sourceTree = "<group>"; };
 		4042CA7A1889A584005EDEFD /* RunLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunLocations.h; sourceTree = "<group>"; };
 		4042CA7B1889A584005EDEFD /* RunLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunLocations.m; sourceTree = "<group>"; };
 		4042CA831889A584005EDEFD /* RunAchievement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunAchievement.h; sourceTree = "<group>"; };
@@ -367,8 +350,6 @@
 		40892C161885B326008F7D38 /* RunTrackMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunTrackMapViewController.m; sourceTree = "<group>"; };
 		40892C181885B336008F7D38 /* RunOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunOverviewViewController.h; sourceTree = "<group>"; };
 		40892C191885B336008F7D38 /* RunOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunOverviewViewController.m; sourceTree = "<group>"; };
-		40892C1B1885B34A008F7D38 /* RunAltitudeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunAltitudeViewController.h; sourceTree = "<group>"; };
-		40892C1C1885B34A008F7D38 /* RunAltitudeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunAltitudeViewController.m; sourceTree = "<group>"; };
 		40892C1E1885B437008F7D38 /* RunViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunViewController.h; sourceTree = "<group>"; };
 		40892C1F1885B437008F7D38 /* RunViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunViewController.m; sourceTree = "<group>"; };
 		408A7991182AE3AA0088D8AC /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
@@ -459,7 +440,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4042CA771889A1FE005EDEFD /* libCorePlot-CocoaTouch.a in Frameworks */,
 				4015F4CA18888A5B006C3DC8 /* Accelerate.framework in Frameworks */,
 				4015F4C818888A54006C3DC8 /* QuartzCore.framework in Frameworks */,
 				402AB50C188AFB950068C52C /* libGoogleAnalyticsServices.a in Frameworks */,
@@ -515,7 +495,6 @@
 		4015F4631888885D006C3DC8 /* CorePlot */ = {
 			isa = PBXGroup;
 			children = (
-				4042CA6D1889A12D005EDEFD /* CorePlot-CocoaTouch.xcodeproj */,
 			);
 			name = CorePlot;
 			sourceTree = "<group>";
@@ -579,14 +558,6 @@
 				402AB50A188AFB740068C52C /* GAITracker.h */,
 			);
 			name = GoogleAnalytics;
-			sourceTree = "<group>";
-		};
-		4042CA6E1889A12D005EDEFD /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				4042CA741889A12E005EDEFD /* libCorePlot-CocoaTouch.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		4057EB2E18703B9300F52EF4 /* Common */ = {
@@ -779,8 +750,6 @@
 				40892C161885B326008F7D38 /* RunTrackMapViewController.m */,
 				40892C181885B336008F7D38 /* RunOverviewViewController.h */,
 				40892C191885B336008F7D38 /* RunOverviewViewController.m */,
-				40892C1B1885B34A008F7D38 /* RunAltitudeViewController.h */,
-				40892C1C1885B34A008F7D38 /* RunAltitudeViewController.m */,
 			);
 			name = History;
 			sourceTree = "<group>";
@@ -1135,7 +1104,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				4042CA791889A37E005EDEFD /* PBXTargetDependency */,
 			);
 			name = RunTheTrack;
 			productName = RunTheTrack;
@@ -1193,12 +1161,6 @@
 			mainGroup = 40C1655617EB637900D4E093;
 			productRefGroup = 40C1656017EB637900D4E093 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 4042CA6E1889A12D005EDEFD /* Products */;
-					ProjectRef = 4042CA6D1889A12D005EDEFD /* CorePlot-CocoaTouch.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				40C1655E17EB637900D4E093 /* RunTheTrack */,
@@ -1206,16 +1168,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		4042CA741889A12E005EDEFD /* libCorePlot-CocoaTouch.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libCorePlot-CocoaTouch.a";
-			remoteRef = 4042CA731889A12E005EDEFD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		40C1655D17EB637900D4E093 /* Resources */ = {
@@ -1356,7 +1308,6 @@
 				404793A2182F83BA004FEB73 /* RunDetailViewController.m in Sources */,
 				407771E81815B74700A38AA1 /* UIImage+ImageEffects.m in Sources */,
 				40F3E1E4180F194A00785F27 /* HistoryTableViewController.m in Sources */,
-				40892C1D1885B34A008F7D38 /* RunAltitudeViewController.m in Sources */,
 				407C4DF9180BF66500F7B2FE /* AchivementsCollectionViewController.m in Sources */,
 				4018F50F17F832B9006F990E /* JBKenBurnsView.m in Sources */,
 				400522571880209600B34DAD /* RunInfoAltitudeGraph.m in Sources */,
@@ -1401,11 +1352,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		4042CA791889A37E005EDEFD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "CorePlot-CocoaTouch";
-			targetProxy = 4042CA781889A37E005EDEFD /* PBXContainerItemProxy */;
-		};
 		40C1658617EB637900D4E093 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 40C1655E17EB637900D4E093 /* RunTheTrack */;
@@ -1478,7 +1424,6 @@
 					"/Airship/**",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(inherited)",
-					"../CorePlot/framework/**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1522,7 +1467,6 @@
 					"/Airship/**",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(inherited)",
-					"../CorePlot/framework/**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = (
@@ -1550,7 +1494,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"../../CorePlot/Framework/**",
 				);
 				INFOPLIST_FILE = "RunTheTrack/RunTheTrack-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
@@ -1558,7 +1501,6 @@
 					"/Users/andrewdonnelly/downloads/libUAirship-latest/Airship",
 					/iphonedev/RunTheTrack/RunTheTrack,
 					/iphonedev/RunTheTrack/RunTheTrack/Airship,
-					"/Users/andrewdonnelly/Desktop/core-plot-master/build/Debug-iphoneos",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1585,7 +1527,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"../../CorePlot/Framework/**",
 				);
 				INFOPLIST_FILE = "RunTheTrack/RunTheTrack-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
@@ -1593,7 +1534,6 @@
 					"/Users/andrewdonnelly/downloads/libUAirship-latest/Airship",
 					/iphonedev/RunTheTrack/RunTheTrack,
 					/iphonedev/RunTheTrack/RunTheTrack/Airship,
-					"/Users/andrewdonnelly/Desktop/core-plot-master/build/Debug-iphoneos",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
