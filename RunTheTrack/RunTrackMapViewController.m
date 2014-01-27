@@ -47,15 +47,49 @@
         }
     }
     self.trackPointArray = [[NSMutableArray alloc] init];
+    
+    // Add Map Cameras
+    
+    MKMapCamera *camera1 = [MKMapCamera
+                            cameraLookingAtCenterCoordinate:startCoordinate
+                            fromEyeCoordinate:startCoordinate
+                            eyeAltitude:150.0];
+    
+    [mv setCamera:camera1];
+    runCameras = [[NSMutableArray alloc] init];
+    [runCameras addObject:camera1];
+    cameraIndex = 0;
+    
     [self addTrackPoints];
     
     [CommonUtils shadowAndRoundView:detailsView];
     [CommonUtils addMotionEffectToView:detailsView];
-
-    mv.camera.pitch = 45;
-
 }
 
+-(IBAction)threeDeeSelected:(id)sender
+{
+    (mv.pitchEnabled) ? [mv setPitchEnabled:NO] : [mv setPitchEnabled:YES];
+    MKMapCamera *nextCamera = [runCameras objectAtIndex:cameraIndex];
+    [mv setCamera:nextCamera animated:YES];
+}
+
+- (IBAction)goToNextCamera:(id)sender {
+    if ([runCameras count] == 0) {
+        return;
+    }
+    cameraIndex++;
+    if(cameraIndex == runCameras.count)
+    {
+        cameraIndex = 0;
+    }
+    MKMapCamera *nextCamera = [runCameras objectAtIndex:cameraIndex];
+    
+    [UIView animateWithDuration:1.5
+                          delay:.5
+                        options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^{[mv setCamera:nextCamera];}
+                     completion:NULL];
+}
 
 #pragma mark choose track
 -(void)setTrackInfo:(NSMutableDictionary *)trackInfoDict
@@ -110,6 +144,13 @@
             CLLocation *lastLocation = [[CLLocation alloc] initWithLatitude:[oldlat doubleValue] longitude:[oldlng doubleValue]];
             CLLocation *nextLocation = [[CLLocation alloc] initWithLatitude:[lat doubleValue] longitude:[lng doubleValue]];
             totalTrackDistance = totalTrackDistance + [lastLocation distanceFromLocation:nextLocation];
+            
+            MKMapCamera *camera = [MKMapCamera
+                                    cameraLookingAtCenterCoordinate:poi
+                                    fromEyeCoordinate:oldpoi
+                                    eyeAltitude:150.0];
+            
+            [runCameras addObject:camera];
         }
         else
         {

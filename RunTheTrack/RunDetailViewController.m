@@ -112,6 +112,8 @@
 -(IBAction)threeDeeSelected:(id)sender
 {
     (mv.pitchEnabled) ? [mv setPitchEnabled:NO] : [mv setPitchEnabled:YES];
+    MKMapCamera *nextCamera = [runCameras objectAtIndex:cameraIndex];
+    [mv setCamera:nextCamera animated:YES];
 }
 
 - (IBAction)goToNextCamera:(id)sender {

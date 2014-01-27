@@ -1022,6 +1022,30 @@
                                     <action selector="showActivityView:" destination="Wvj-73-1KT" eventType="touchUpInside" id="O00-YK-LxB"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nI7-TI-3Cd">
+                                <rect key="frame" x="0.0" y="524" width="46" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.90509647650000002" green="0.071859255159999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="3D">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="threeDeeSelected:" destination="Wvj-73-1KT" eventType="touchUpInside" id="Yco-xg-T4M"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5SD-mk-ARe">
+                                <rect key="frame" x="274" y="524" width="46" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.90509647650000002" green="0.071859255159999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="86-camera.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="goToNextCamera:" destination="Wvj-73-1KT" eventType="touchUpInside" id="I31-dq-pc6"/>
+                                </connections>
+                            </button>
                             <view alpha="0.85000002384185791" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zd3-eB-oev">
                                 <rect key="frame" x="10" y="20" width="300" height="85"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
