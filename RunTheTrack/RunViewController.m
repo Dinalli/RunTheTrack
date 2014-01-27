@@ -280,8 +280,7 @@ enum TimerState : NSUInteger {
     {
         if(cmStepCounter == nil) cmStepCounter = [[CMStepCounter alloc] init];
         
-        [cmStepCounter startStepCountingUpdatesToQueue:[NSOperationQueue mainQueue] updateOn:1 withHandler:^(NSInteger numberOfSteps, NSDate *timestamp, NSError *error) {
-            
+        [cmStepCounter queryStepCountStartingFrom:startDate to:[NSDate date] toQueue:[NSOperationQueue mainQueue] withHandler:^(NSInteger numberOfSteps, NSError *error) {
             stepCounter = numberOfSteps;
             
             noOfSteps.hidden = NO;
@@ -300,6 +299,27 @@ enum TimerState : NSUInteger {
                 [self moveAnnotaionWithDistance:distance];
             }
         }];
+        
+//        [cmStepCounter startStepCountingUpdatesToQueue:[NSOperationQueue mainQueue] updateOn:1 withHandler:^(NSInteger numberOfSteps, NSDate *timestamp, NSError *error) {
+//            
+//            stepCounter = numberOfSteps;
+//            
+//            noOfSteps.hidden = NO;
+//            noOfSteps.text = [NSString stringWithFormat:@"Steps %d", numberOfSteps];
+//            
+//            if(self.timerState == timerStarted)
+//            {
+//                CGFloat distance = 0;
+//                if(currentActivity.walking)
+//                {
+//                    distance = numberOfSteps * appDelegate.walkMotionDistance; // Walking
+//                }else if (currentActivity.running)
+//                {
+//                    distance = numberOfSteps * appDelegate.runMotionDistance; // Running
+//                }
+//                [self moveAnnotaionWithDistance:distance];
+//            }
+//        }];
     }
 }
 

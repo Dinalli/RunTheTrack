@@ -1124,7 +1124,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Brazil.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="5mv-zl-s6c">
+                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5mv-zl-s6c">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <gestureRecognizers/>
@@ -1173,7 +1173,7 @@
                                 <rect key="frame" x="10" y="167" width="300" height="82"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="abu-sec.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ecc-cG-nny">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ecc-cG-nny">
                                         <rect key="frame" x="0.0" y="-6" width="67" height="68"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -1350,8 +1350,6 @@
     <resources>
         <image name="31-ipod.png" width="17" height="29"/>
         <image name="86-camera.png" width="24" height="18"/>
-        <image name="Brazil.jpg" width="1680" height="1050"/>
-        <image name="abu-sec.png" width="600" height="420"/>
         <image name="nav-rbtn.png" width="20" height="20"/>
         <image name="routes-cup.png" width="13" height="13"/>
         <image name="routes-man.png" width="12" height="14"/>
