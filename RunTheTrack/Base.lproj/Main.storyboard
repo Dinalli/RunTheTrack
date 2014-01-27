@@ -8,7 +8,7 @@
         <scene sceneID="utB-ai-dzs">
             <objects>
                 <navigationController definesPresentationContext="YES" id="K8l-bf-pJv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="tabbar-profile-normal.png" id="GaG-Fi-VBw"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile.png" id="GaG-Fi-VBw"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Wwz-f7-wWj">
                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
@@ -375,7 +375,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <color key="tintColor" red="0.26274509800000001" green="0.1450980392" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" image="nav-rbtn.png" id="JUR-iw-nTY"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings.png" id="JUR-iw-nTY"/>
                     <connections>
                         <outlet property="gpsSwitch" destination="SZU-GA-9an" id="rWR-dA-dvN"/>
                         <outlet property="m7TextView" destination="3W5-Us-atl" id="dy2-ua-eXG"/>
@@ -396,7 +396,7 @@
         <scene sceneID="G7z-4Q-bwS">
             <objects>
                 <navigationController definesPresentationContext="YES" id="wSd-LW-rzy" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Run" image="routes-man.png" id="aT0-lH-43R"/>
+                    <tabBarItem key="tabBarItem" title="Run" image="run.png" id="aT0-lH-43R"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="PyC-ZN-6a5">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.26274509800000001" green="0.1450980392" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -515,12 +515,6 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="walk" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g8c-SX-Wtf">
-                                        <rect key="frame" x="194" y="8" width="99" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="0.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3xM-0O-2w7">
                                         <rect key="frame" x="7" y="30" width="132" height="58"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -559,6 +553,10 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A5s-Q9-ubw">
+                                        <rect key="frame" x="258" y="0.0" width="35" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
@@ -624,7 +622,7 @@
                         <outlet property="distanceMeasure" destination="gHr-6m-afN" id="XKt-2G-TwM"/>
                         <outlet property="lapTime" destination="N6H-WH-fGv" id="hSc-FK-wZE"/>
                         <outlet property="lapsLabel" destination="Zpm-dC-wT0" id="C55-F3-kDe"/>
-                        <outlet property="motionActivityIndicator" destination="g8c-SX-Wtf" id="lIw-VE-POH"/>
+                        <outlet property="motionActivityIndicator" destination="A5s-Q9-ubw" id="kpk-hR-XRX"/>
                         <outlet property="navigationItem" destination="HxU-uw-D4a" id="Mo0-JZ-9qQ"/>
                         <outlet property="noOfSteps" destination="EJL-Fh-Uct" id="uT0-tK-lEO"/>
                         <outlet property="runInfoView" destination="G3u-hu-yae" id="C8D-I4-gwr"/>
@@ -850,7 +848,7 @@
         <scene sceneID="Rhx-Cz-ZUg">
             <objects>
                 <navigationController definesPresentationContext="YES" id="nrG-eV-KE2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="History" image="tabbtn-history-normal.png" id="gf1-tS-YXx"/>
+                    <tabBarItem key="tabBarItem" title="History" image="history.png" id="gf1-tS-YXx"/>
                     <navigationItem key="navigationItem" id="UDe-6g-OId"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="PfK-8q-hWs">
@@ -1350,12 +1348,13 @@
     <resources>
         <image name="31-ipod.png" width="17" height="29"/>
         <image name="86-camera.png" width="24" height="18"/>
-        <image name="nav-rbtn.png" width="20" height="20"/>
+        <image name="history.png" width="35" height="35"/>
+        <image name="profile.png" width="35" height="35"/>
         <image name="routes-cup.png" width="13" height="13"/>
-        <image name="routes-man.png" width="12" height="14"/>
+        <image name="run.png" width="35" height="35"/>
+        <image name="settings.png" width="35" height="35"/>
         <image name="silverstone.png" width="600" height="420"/>
         <image name="tabbar-profile-normal.png" width="25" height="30"/>
-        <image name="tabbtn-history-normal.png" width="23" height="35"/>
         <image name="trophy.png" width="50" height="76"/>
     </resources>
     <color key="tintColor" red="0.26274509800000001" green="0.1450980392" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>

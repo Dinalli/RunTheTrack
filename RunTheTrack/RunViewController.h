@@ -31,7 +31,7 @@
     IBOutlet UILabel *lapsLabel;
     IBOutlet UIButton *startBtn;
     
-    IBOutlet UILabel *motionActivityIndicator;
+    IBOutlet UIImageView *motionActivityIndicator;
     IBOutlet UIImageView *trackBackImage;
     
     IBOutlet UIView *runInfoView;

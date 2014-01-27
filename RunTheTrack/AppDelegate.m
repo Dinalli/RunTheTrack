@@ -28,6 +28,15 @@ NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:S
     
     [TestFlight takeOff:@"8d319ac4-7608-41e3-9826-189e7bf2b1d5"];
     
+    
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    
+    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
+    [GAI sharedInstance].dispatchInterval = 20;
+    
+    // Optional: set Logger to VERBOSE for debug information.
+    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+    
     // Initialize tracker.
     id<GAITracker> tracker __unused = [[GAI sharedInstance] trackerWithTrackingId:@"UA-47282955-1"];
     

@@ -242,7 +242,7 @@ enum TimerState : NSUInteger {
         self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
         self.locationManager.pausesLocationUpdatesAutomatically = NO;
         [self.locationManager startUpdatingLocation];
-        motionActivityIndicator.text = @"GPS Tracking";
+        motionActivityIndicator.image = [UIImage imageNamed:@"gps.png"];
         
         TFLog(@"Location Updates Started");
     }
@@ -268,10 +268,10 @@ enum TimerState : NSUInteger {
             currentActivity = activity;
             if(activity.walking)
             {
-                motionActivityIndicator.text = @"walk";
+                motionActivityIndicator.image = [UIImage imageNamed:@"motionwalk.png"];
             }else if (activity.running)
             {
-                motionActivityIndicator.text = @"run";
+                motionActivityIndicator.image = [UIImage imageNamed:@"motionrun.png"];
             }
         }];
     }
@@ -280,25 +280,25 @@ enum TimerState : NSUInteger {
     {
         if(cmStepCounter == nil) cmStepCounter = [[CMStepCounter alloc] init];
         
-        [cmStepCounter queryStepCountStartingFrom:startDate to:[NSDate date] toQueue:[NSOperationQueue mainQueue] withHandler:^(NSInteger numberOfSteps, NSError *error) {
-            stepCounter = numberOfSteps;
-            
-            noOfSteps.hidden = NO;
-            noOfSteps.text = [NSString stringWithFormat:@"Steps %d", numberOfSteps];
-            
-            if(self.timerState == timerStarted)
-            {
-                CGFloat distance = 0;
-                if(currentActivity.walking)
-                {
-                    distance = numberOfSteps * appDelegate.walkMotionDistance; // Walking
-                }else if (currentActivity.running)
-                {
-                    distance = numberOfSteps * appDelegate.runMotionDistance; // Running
-                }
-                [self moveAnnotaionWithDistance:distance];
-            }
-        }];
+//        [cmStepCounter queryStepCountStartingFrom:startDate to:[NSDate date] toQueue:[NSOperationQueue mainQueue] withHandler:^(NSInteger numberOfSteps, NSError *error) {
+//            stepCounter = numberOfSteps;
+//            
+//            noOfSteps.hidden = NO;
+//            noOfSteps.text = [NSString stringWithFormat:@"Steps %d", numberOfSteps];
+//            
+//            if(self.timerState == timerStarted)
+//            {
+//                CGFloat distance = 0;
+//                if(currentActivity.walking)
+//                {
+//                    distance = numberOfSteps * appDelegate.walkMotionDistance; // Walking
+//                }else if (currentActivity.running)
+//                {
+//                    distance = numberOfSteps * appDelegate.runMotionDistance; // Running
+//                }
+//                [self moveAnnotaionWithDistance:distance];
+//            }
+//        }];
         
 //        [cmStepCounter startStepCountingUpdatesToQueue:[NSOperationQueue mainQueue] updateOn:1 withHandler:^(NSInteger numberOfSteps, NSDate *timestamp, NSError *error) {
 //            

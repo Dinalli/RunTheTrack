@@ -223,33 +223,45 @@
                                     fromEyeCoordinate:startCoordinate
                                     eyeAltitude:50.0];
             
-            CLLocationCoordinate2D sect2Cordinate =  CLLocationCoordinate2DMake([rSector.sec2Lat doubleValue], [rSector.sec2Long doubleValue]);
-            
-            Sector2Annotation *sector2Anno = [[Sector2Annotation alloc] init];
-            sector2Anno.coordinate = sect2Cordinate;
-            sector2Anno.title = [NSString stringWithFormat:@"Sector 2 %@",rSector.sector2Time];
-            [mv addAnnotation:sector2Anno];
-            
-            MKMapCamera *camera2 = [MKMapCamera
-                                    cameraLookingAtCenterCoordinate:sect2Cordinate
-                                    fromEyeCoordinate:sect1Cordinate
-                                    eyeAltitude:50.0];
-            
-                        CLLocationCoordinate2D lapCordinate =  CLLocationCoordinate2DMake([rSector.lapLat doubleValue], [rSector.lapLong doubleValue]);
-            
-            LapAnnotation *finishAnno = [[LapAnnotation alloc] init];
-            finishAnno.coordinate = lapCordinate;
-            finishAnno.title = [NSString stringWithFormat:@"Lap %@ time %@",rSector.lapNumber, rSector.lapTime];
-            [mv addAnnotation:finishAnno];
-            
-            MKMapCamera *camera3 = [MKMapCamera
-                                    cameraLookingAtCenterCoordinate:lapCordinate
-                                    fromEyeCoordinate:sect2Cordinate
-                                    eyeAltitude:50.0];
-            
             [runCameras addObject:camera1];
-            [runCameras addObject:camera2];
-            [runCameras addObject:camera3];
+            
+            if(![rSector.sec2Lat isEqualToString:@"0.000000"])
+            {
+            
+                CLLocationCoordinate2D sect2Cordinate =  CLLocationCoordinate2DMake([rSector.sec2Lat doubleValue], [rSector.sec2Long doubleValue]);
+                
+                Sector2Annotation *sector2Anno = [[Sector2Annotation alloc] init];
+                sector2Anno.coordinate = sect2Cordinate;
+                sector2Anno.title = [NSString stringWithFormat:@"Sector 2 %@",rSector.sector2Time];
+                [mv addAnnotation:sector2Anno];
+                
+                MKMapCamera *camera2 = [MKMapCamera
+                                        cameraLookingAtCenterCoordinate:sect2Cordinate
+                                        fromEyeCoordinate:sect1Cordinate
+                                        eyeAltitude:50.0];
+                
+                [runCameras addObject:camera2];
+
+            
+                if(![rSector.lapLat isEqualToString:@"0.000000"])
+                {
+                    CLLocationCoordinate2D lapCordinate =  CLLocationCoordinate2DMake([rSector.lapLat doubleValue], [rSector.lapLong doubleValue]);
+                    
+                    LapAnnotation *finishAnno = [[LapAnnotation alloc] init];
+                    finishAnno.coordinate = lapCordinate;
+                    finishAnno.title = [NSString stringWithFormat:@"Lap %@ time %@",rSector.lapNumber, rSector.lapTime];
+                    [mv addAnnotation:finishAnno];
+                    
+                    MKMapCamera *camera3 = [MKMapCamera
+                                            cameraLookingAtCenterCoordinate:lapCordinate
+                                            fromEyeCoordinate:sect2Cordinate
+                                            eyeAltitude:50.0];
+                    
+                    
+                    
+                    [runCameras addObject:camera3];
+                }
+            }
             
         }
     }

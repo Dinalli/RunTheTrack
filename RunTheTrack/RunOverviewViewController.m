@@ -141,9 +141,6 @@
     else{
         [self setProgress:0.01 animated:YES];
     }
-    
-    
-
 }
 
 - (void)initFlatWithIndicatorProgressBar
