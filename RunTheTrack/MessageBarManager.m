@@ -323,22 +323,27 @@ static UIColor *descriptionColor = nil;
     /// Make a copy of the default paragraph style
     NSMutableParagraphStyle *paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     /// Set line break mode
-    paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
+    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
     /// Set text alignment
     paragraphStyle.alignment = NSTextAlignmentLeft;
     
     NSDictionary *attributes = @{ NSFontAttributeName: titleFont,
-                                  NSParagraphStyleAttributeName: paragraphStyle };
+                                  NSParagraphStyleAttributeName: paragraphStyle,
+                                  NSForegroundColorAttributeName:titleColor};
 
     
     [self.titleString drawInRect:CGRectMake(xOffset, yOffset, titleLabelSize.width, titleLabelSize.height) withAttributes:attributes];
 
     yOffset += titleLabelSize.height;
     
+    NSDictionary *descAttributes = @{ NSFontAttributeName: descriptionFont,
+                                      NSParagraphStyleAttributeName: paragraphStyle,
+                                      NSForegroundColorAttributeName:titleColor };
+    
     CGSize descriptionLabelSize = [self descriptionSize];
     [descriptionColor set];
     
-    [self.titleString drawInRect:CGRectMake(xOffset, yOffset, descriptionLabelSize.width, descriptionLabelSize.height)  withAttributes:attributes];
+    [self.descriptionString drawInRect:CGRectMake(xOffset, yOffset, descriptionLabelSize.width, descriptionLabelSize.height)  withAttributes:descAttributes];
 }
 
 #pragma mark - Getters
