@@ -21,7 +21,6 @@
 		4018F52817F83903006F990E /* Korea.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4018F51717F83903006F990E /* Korea.jpg */; };
 		4018F52917F83903006F990E /* malaysia.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4018F51817F83903006F990E /* malaysia.jpg */; };
 		4018F52A17F83903006F990E /* Melbourne.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4018F51917F83903006F990E /* Melbourne.jpg */; };
-		4018F52B17F83903006F990E /* Monaco.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4018F51A17F83903006F990E /* Monaco.jpg */; };
 		4018F52C17F83903006F990E /* Monza.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4018F51B17F83903006F990E /* Monza.jpg */; };
 		4018F52E17F83903006F990E /* Silverstone.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4018F51D17F83903006F990E /* Silverstone.jpg */; };
 		4018F52F17F83903006F990E /* singapore.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4018F51E17F83903006F990E /* singapore.jpg */; };
@@ -52,6 +51,7 @@
 		40343B0D18940D6000881CC6 /* singapore.png in Resources */ = {isa = PBXBuildFile; fileRef = 40343AFA18940D6000881CC6 /* singapore.png */; };
 		40343B0E18940D6000881CC6 /* spa.png in Resources */ = {isa = PBXBuildFile; fileRef = 40343AFB18940D6000881CC6 /* spa.png */; };
 		40343B0F18940D6000881CC6 /* usa.png in Resources */ = {isa = PBXBuildFile; fileRef = 40343AFC18940D6000881CC6 /* usa.png */; };
+		403EA6341897E0CE0042A12E /* Monaco.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 403EA6331897E0CE0042A12E /* Monaco.jpg */; };
 		4042CA7C1889A584005EDEFD /* RunLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 4042CA7B1889A584005EDEFD /* RunLocations.m */; };
 		4042CA851889A584005EDEFD /* RunAchievement.m in Sources */ = {isa = PBXBuildFile; fileRef = 4042CA841889A584005EDEFD /* RunAchievement.m */; };
 		4042CA881889A585005EDEFD /* RunAltitude.m in Sources */ = {isa = PBXBuildFile; fileRef = 4042CA871889A585005EDEFD /* RunAltitude.m */; };
@@ -191,7 +191,6 @@
 		4018F51717F83903006F990E /* Korea.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Korea.jpg; sourceTree = "<group>"; };
 		4018F51817F83903006F990E /* malaysia.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = malaysia.jpg; sourceTree = "<group>"; };
 		4018F51917F83903006F990E /* Melbourne.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Melbourne.jpg; sourceTree = "<group>"; };
-		4018F51A17F83903006F990E /* Monaco.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Monaco.jpg; sourceTree = "<group>"; };
 		4018F51B17F83903006F990E /* Monza.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Monza.jpg; sourceTree = "<group>"; };
 		4018F51D17F83903006F990E /* Silverstone.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Silverstone.jpg; sourceTree = "<group>"; };
 		4018F51E17F83903006F990E /* singapore.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = singapore.jpg; sourceTree = "<group>"; };
@@ -229,6 +228,7 @@
 		40343AFA18940D6000881CC6 /* singapore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = singapore.png; sourceTree = "<group>"; };
 		40343AFB18940D6000881CC6 /* spa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spa.png; sourceTree = "<group>"; };
 		40343AFC18940D6000881CC6 /* usa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = usa.png; sourceTree = "<group>"; };
+		403EA6331897E0CE0042A12E /* Monaco.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Monaco.jpg; sourceTree = "<group>"; };
 		4042CA6A18899F35005EDEFD /* RTT4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RTT4.xcdatamodel; sourceTree = "<group>"; };
 		4042CA7A1889A584005EDEFD /* RunLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunLocations.h; sourceTree = "<group>"; };
 		4042CA7B1889A584005EDEFD /* RunLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunLocations.m; sourceTree = "<group>"; };
@@ -643,6 +643,7 @@
 		405FD4BE17EE3EAC006F141F /* Backgrounds */ = {
 			isa = PBXGroup;
 			children = (
+				403EA6331897E0CE0042A12E /* Monaco.jpg */,
 				40FA0AB91883489C00EDB8AE /* abu.jpg */,
 				4018F51117F83903006F990E /* Bahrain.jpg */,
 				4018F51217F83903006F990E /* canada.jpg */,
@@ -656,7 +657,6 @@
 				4018F51717F83903006F990E /* Korea.jpg */,
 				4018F51817F83903006F990E /* malaysia.jpg */,
 				4018F51917F83903006F990E /* Melbourne.jpg */,
-				4018F51A17F83903006F990E /* Monaco.jpg */,
 				4018F51B17F83903006F990E /* Monza.jpg */,
 				4018F51D17F83903006F990E /* Silverstone.jpg */,
 				4018F51E17F83903006F990E /* singapore.jpg */,
@@ -1156,6 +1156,7 @@
 				4018F52A17F83903006F990E /* Melbourne.jpg in Resources */,
 				4018F52E17F83903006F990E /* Silverstone.jpg in Resources */,
 				40A3B3E9185B76CC00BA85BB /* icon-error.png in Resources */,
+				403EA6341897E0CE0042A12E /* Monaco.jpg in Resources */,
 				406B8AE718670A93008805C9 /* nurburg.jpg in Resources */,
 				405E5339185DEED400A8BD45 /* sector2@2x.png in Resources */,
 				4018F52617F83903006F990E /* India.jpg in Resources */,
@@ -1212,7 +1213,6 @@
 				408735C41896FFAC00C79C06 /* achieve.png in Resources */,
 				406B253A18953B1900F03B23 /* credits.rtf in Resources */,
 				40343B0318940D6000881CC6 /* hungary.png in Resources */,
-				4018F52B17F83903006F990E /* Monaco.jpg in Resources */,
 				405A15F417EEF5A200684921 /* Default@2x.png in Resources */,
 				4057A5BA17EE596A00FE1E93 /* Icon-72@2x.png in Resources */,
 				40343B0E18940D6000881CC6 /* spa.png in Resources */,
