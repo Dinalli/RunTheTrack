@@ -25,10 +25,11 @@ extern NSString *const SCSessionStateChangedNotification;
 @property (strong, nonatomic) NSArray *tracksArray;
 
 @property (nonatomic) BOOL useMotion;
-@property (nonatomic) CGFloat walkMotionDistance;
 @property (nonatomic) CGFloat runMotionDistance;
 @property (nonatomic) BOOL useKMasUnits;
 @property (nonatomic) BOOL musicIsPlaying;
+
+@property (nonatomic) BOOL soundEnabled;
 
 - (void)openSession;
 

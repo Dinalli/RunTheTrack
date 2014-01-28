@@ -158,13 +158,6 @@
         }
     }
     
-    NSLog(@"TOTAL TRACK DISTANCE %.2f", totalTrackDistance / 1000);
-    
-//    MKRunnerAnnotation *runner = [[MKRunnerAnnotation alloc] init];
-//    runner.coordinate = poi;
-//    runner.title = @"Runner";
-//    [mv addAnnotation:runner];
-    
     // add the sector points for 1, 2
     // divide the total track distance by 3
     sectorCalcDistance = totalTrackDistance / 3;
@@ -274,7 +267,6 @@
 
 -(void)showSectorTimes
 {
-    NSLog(@"Sectors count Track %d", self.runData.runSectors.count);
     if(self.runData.runSectors.count > 0)
     {
         runLapsArray = [[self.runData.runSectors allObjects] mutableCopy];

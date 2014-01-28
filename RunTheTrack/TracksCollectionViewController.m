@@ -8,7 +8,7 @@
 
 #import "TracksCollectionViewController.h"
 #import "TrackCell.h"
-#import "StartViewController.h"
+#import "RunViewController.h"
 
 @interface TracksCollectionViewController ()
 
@@ -36,13 +36,11 @@
                  sender:(id)sender {
     if ([segue.identifier isEqualToString:@"TrackSelectedSegue"]) {
         NSArray *indexPaths = [self.collectionView indexPathsForSelectedItems];
-        StartViewController *svc = segue.destinationViewController;
+        RunViewController *rvc = segue.destinationViewController;
         
         NSIndexPath *index = [indexPaths objectAtIndex:0];
         NSDictionary *selectedTrackInfo = [appDelegate.tracksArray  objectAtIndex:index.row];
-        svc.TrackInfo = [selectedTrackInfo mutableCopy];
-        
-        TFLog(@"Track Chosen %@", [selectedTrackInfo objectForKey:@"Race"]);
+        rvc.TrackInfo = [selectedTrackInfo mutableCopy];
         
         [self.collectionView
          deselectItemAtIndexPath:index animated:YES];

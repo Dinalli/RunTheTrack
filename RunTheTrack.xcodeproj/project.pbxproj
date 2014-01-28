@@ -153,13 +153,10 @@
 		40D42C9E18702DBD0057DF2D /* YLProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D42C9D18702DBD0057DF2D /* YLProgressBar.m */; };
 		40DFDBE9182AE6C100554C58 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40DFDBE8182AE6C100554C58 /* Social.framework */; };
 		40E1606F18772D5D004C1B89 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 40E1606918772D5D004C1B89 /* libTestFlight.a */; };
-		40E1607018772D5D004C1B89 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 40E1606A18772D5D004C1B89 /* README.md */; };
-		40E1607118772D5D004C1B89 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 40E1606B18772D5D004C1B89 /* release_notes.md */; };
 		40E5A2EA1856504300E8E87E /* UIView+More.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E5A2E91856504300E8E87E /* UIView+More.m */; };
 		40E5A2EC1856538A00E8E87E /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40E5A2EB1856538A00E8E87E /* CoreText.framework */; };
 		40E5A2EF185655B100E8E87E /* TTCounterLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E5A2EE185655B100E8E87E /* TTCounterLabel.m */; };
 		40E5A2F21856592000E8E87E /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E5A2F11856592000E8E87E /* TTTAttributedLabel.m */; };
-		40F3E1DF180F0EE000785F27 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F3E1DE180F0EE000785F27 /* StartViewController.m */; };
 		40F3E1E1180F0F4900785F27 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F3E1E0180F0F4900785F27 /* MediaPlayer.framework */; };
 		40F3E1E4180F194A00785F27 /* HistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F3E1E3180F194A00785F27 /* HistoryTableViewController.m */; };
 		40FA0ABA1883489C00EDB8AE /* abu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 40FA0AB91883489C00EDB8AE /* abu.jpg */; };
@@ -409,8 +406,6 @@
 		40D42C9D18702DBD0057DF2D /* YLProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLProgressBar.m; sourceTree = "<group>"; };
 		40DFDBE8182AE6C100554C58 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		40E1606918772D5D004C1B89 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
-		40E1606A18772D5D004C1B89 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		40E1606B18772D5D004C1B89 /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
 		40E1606C18772D5D004C1B89 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		40E1606D18772D5D004C1B89 /* TestFlight+AsyncLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+AsyncLogging.h"; sourceTree = "<group>"; };
 		40E1606E18772D5D004C1B89 /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+ManualSessions.h"; sourceTree = "<group>"; };
@@ -421,8 +416,6 @@
 		40E5A2EE185655B100E8E87E /* TTCounterLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTCounterLabel.m; sourceTree = "<group>"; };
 		40E5A2F01856592000E8E87E /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
 		40E5A2F11856592000E8E87E /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
-		40F3E1DD180F0EE000785F27 /* StartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartViewController.h; sourceTree = "<group>"; };
-		40F3E1DE180F0EE000785F27 /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
 		40F3E1E0180F0F4900785F27 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		40F3E1E2180F194900785F27 /* HistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryTableViewController.h; sourceTree = "<group>"; };
 		40F3E1E3180F194A00785F27 /* HistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewController.m; sourceTree = "<group>"; };
@@ -520,7 +513,6 @@
 		4018F56417F84E0C006F990E /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				401E291A1862D8A7008CAB02 /* Notused */,
 				407710A918453B1D00882BBE /* Profile */,
 				407C4DF3180BF63B00F7B2FE /* Achivements */,
 				407C4DEC180BE3C600F7B2FE /* Settings */,
@@ -529,15 +521,6 @@
 				407C4DE9180BE3B100F7B2FE /* Run */,
 			);
 			name = ViewControllers;
-			sourceTree = "<group>";
-		};
-		401E291A1862D8A7008CAB02 /* Notused */ = {
-			isa = PBXGroup;
-			children = (
-				40F3E1DD180F0EE000785F27 /* StartViewController.h */,
-				40F3E1DE180F0EE000785F27 /* StartViewController.m */,
-			);
-			name = Notused;
 			sourceTree = "<group>";
 		};
 		402AB502188AFB5B0068C52C /* GoogleAnalytics */ = {
@@ -1071,8 +1054,6 @@
 			isa = PBXGroup;
 			children = (
 				40E1606918772D5D004C1B89 /* libTestFlight.a */,
-				40E1606A18772D5D004C1B89 /* README.md */,
-				40E1606B18772D5D004C1B89 /* release_notes.md */,
 				40E1606C18772D5D004C1B89 /* TestFlight.h */,
 				40E1606D18772D5D004C1B89 /* TestFlight+AsyncLogging.h */,
 				40E1606E18772D5D004C1B89 /* TestFlight+ManualSessions.h */,
@@ -1201,12 +1182,10 @@
 				40343B0518940D6000881CC6 /* japan.png in Resources */,
 				405E5336185DEED400A8BD45 /* sector1.png in Resources */,
 				4018F52317F83903006F990E /* canada.jpg in Resources */,
-				40E1607018772D5D004C1B89 /* README.md in Resources */,
 				40A3B3EC185B76CC00BA85BB /* icon-info@2x.png in Resources */,
 				408735CA1896FFAC00C79C06 /* run.png in Resources */,
 				406B253C18953C6700F03B23 /* beep_2.mp3 in Resources */,
 				408735C81896FFAC00C79C06 /* motionwalk.png in Resources */,
-				40E1607118772D5D004C1B89 /* release_notes.md in Resources */,
 				40343B0C18940D6000881CC6 /* silverstone.png in Resources */,
 				40343AFF18940D6000881CC6 /* bahrain.png in Resources */,
 				4018F53117F83903006F990E /* Usa.jpg in Resources */,
@@ -1313,7 +1292,6 @@
 				40A2AA6D188F023800F5E263 /* RunSectors.m in Sources */,
 				40D35DCA182541E500D10899 /* CoreDataHelper.m in Sources */,
 				40D42C9E18702DBD0057DF2D /* YLProgressBar.m in Sources */,
-				40F3E1DF180F0EE000785F27 /* StartViewController.m in Sources */,
 				40BE1F6A1823C7C2004C3FC3 /* MKRunnerAnnotation.m in Sources */,
 				407C4DF6180BF65300F7B2FE /* AchivementCell.m in Sources */,
 				4042CA7C1889A584005EDEFD /* RunLocations.m in Sources */,

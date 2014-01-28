@@ -93,8 +93,6 @@ enum TimerState : NSUInteger {
     totalTrackDistance = [[self.trackInfo objectForKey:@"Distance"] floatValue];
     totalTrackDistance = totalTrackDistance / 0.000621371192;
     
-    NSLog(@"Total Track Distance %f", totalTrackDistance);
-    
     [self startTracking];
     sector1Time = @"";
     sector2Time = @"";
@@ -125,8 +123,6 @@ enum TimerState : NSUInteger {
 {
     if(self.timerState == timerStopped)
     {
-        TFLog(@"Run Started");
-        
         [self textToSpeak:@"Start your run now"];
         
         if(haveMusicToPlay) [musicPlayer play];
@@ -140,7 +136,6 @@ enum TimerState : NSUInteger {
             else
             {
                 [self.locationManager startUpdatingLocation];
-                TFLog(@"Restarted Location Updates");
             }
         }
         startDate = [NSDate date];
@@ -150,6 +145,11 @@ enum TimerState : NSUInteger {
         self.timerState = timerStarted;
         [self.timeLabel start];
         btnFinish.hidden = YES;
+        
+        if(appDelegate.useMotion)
+        {
+            [self enableCoreMotion];
+        }
     }
     else if(self.timerState == timerStarted)
     {
@@ -231,11 +231,12 @@ enum TimerState : NSUInteger {
     
     if(appDelegate.useMotion)
     {
-        [self enableCoreMotion];
         noOfSteps.hidden = NO;
+        runPace.hidden = YES;
     }
     else
     {
+        runPace.hidden = NO;
         self.locationManager = [[CLLocationManager alloc] init];
         self.locationManager.delegate = self;
         self.locationManager.distanceFilter = kCLDistanceFilterNone; // setting this to 5.0 as it seems to be best and stop jitters.
@@ -243,8 +244,6 @@ enum TimerState : NSUInteger {
         self.locationManager.pausesLocationUpdatesAutomatically = NO;
         [self.locationManager startUpdatingLocation];
         motionActivityIndicator.image = [UIImage imageNamed:@"gps.png"];
-        
-        TFLog(@"Location Updates Started");
     }
 }
 
@@ -280,46 +279,23 @@ enum TimerState : NSUInteger {
     {
         if(cmStepCounter == nil) cmStepCounter = [[CMStepCounter alloc] init];
         
-//        [cmStepCounter queryStepCountStartingFrom:startDate to:[NSDate date] toQueue:[NSOperationQueue mainQueue] withHandler:^(NSInteger numberOfSteps, NSError *error) {
-//            stepCounter = numberOfSteps;
-//            
-//            noOfSteps.hidden = NO;
-//            noOfSteps.text = [NSString stringWithFormat:@"Steps %d", numberOfSteps];
-//            
-//            if(self.timerState == timerStarted)
-//            {
-//                CGFloat distance = 0;
-//                if(currentActivity.walking)
-//                {
-//                    distance = numberOfSteps * appDelegate.walkMotionDistance; // Walking
-//                }else if (currentActivity.running)
-//                {
-//                    distance = numberOfSteps * appDelegate.runMotionDistance; // Running
-//                }
-//                [self moveAnnotaionWithDistance:distance];
-//            }
-//        }];
-        
-//        [cmStepCounter startStepCountingUpdatesToQueue:[NSOperationQueue mainQueue] updateOn:1 withHandler:^(NSInteger numberOfSteps, NSDate *timestamp, NSError *error) {
-//            
-//            stepCounter = numberOfSteps;
-//            
-//            noOfSteps.hidden = NO;
-//            noOfSteps.text = [NSString stringWithFormat:@"Steps %d", numberOfSteps];
-//            
-//            if(self.timerState == timerStarted)
-//            {
-//                CGFloat distance = 0;
-//                if(currentActivity.walking)
-//                {
-//                    distance = numberOfSteps * appDelegate.walkMotionDistance; // Walking
-//                }else if (currentActivity.running)
-//                {
-//                    distance = numberOfSteps * appDelegate.runMotionDistance; // Running
-//                }
-//                [self moveAnnotaionWithDistance:distance];
-//            }
-//        }];
+        [cmStepCounter startStepCountingUpdatesToQueue:[NSOperationQueue mainQueue] updateOn:1 withHandler:^(NSInteger numberOfSteps, NSDate *timestamp, NSError *error) {
+            
+            
+//            [cmStepCounter queryStepCountStartingFrom:startDate to:[NSDate date] toQueue:[NSOperationQueue mainQueue] withHandler:^(NSInteger numberOfSteps, NSError *error) {
+                stepCounter = stepCounter + numberOfSteps;
+                
+                noOfSteps.hidden = NO;
+                noOfSteps.text = [NSString stringWithFormat:@"Steps %d", numberOfSteps];
+                
+                if(self.timerState == timerStarted)
+                {
+                    CGFloat distance = 0;
+                    distance = numberOfSteps * appDelegate.runMotionDistance;
+                    [self moveAnnotaionWithDistance:distance];
+                }
+//            }];
+        }];
     }
 }
 
@@ -476,8 +452,7 @@ enum TimerState : NSUInteger {
                                      @"LapPace": runPace.text,
                                      @"LapLat": [NSString stringWithFormat:@"%f",lapLoc.coordinate.latitude] ,
                                      @"LapLong":[NSString stringWithFormat:@"%f",lapLoc.coordinate.longitude]};
-            
-            NSLog( @"%@", runLap);
+
             
             [self textToSpeak:[NSString stringWithFormat:@"Lap %d Time %@", lapCounter,[CommonUtils timeFormattedStringForSpeech:(int)[lapComponents hour] :(int)[lapComponents minute] :(int)[lapComponents second]]]];
             
@@ -532,7 +507,6 @@ enum TimerState : NSUInteger {
         if (haveMusicToPlay)[musicPlayer stop];
         [self.timeLabel stop];
         [self.locationManager stopUpdatingLocation];
-        TFLog(@"Location Updates Stopped");
         
         RunFinishViewController *rfvc = segue.destinationViewController;
         [self.trackInfo setObject:totalRunTime forKey:@"runTime"];
@@ -598,9 +572,6 @@ enum TimerState : NSUInteger {
         
         [self.trackInfo setObject:self.runPointArray forKey:@"runPointArray"];
         rfvc.trackInfo = self.trackInfo;
-        
-        TFLog(@"Run Laps %.2f", runLapsFloat);
-        TFLog(@"Run Real Distance %.2f",totalLocationDistance);
     }
 }
 
@@ -627,18 +598,19 @@ enum TimerState : NSUInteger {
 
 #pragma mark Sounds
 - (void)playSound :(NSString *)fName :(NSString *) ext{
-    
-    NSLog(@"atempting to play %@", fName);
-    
-    SystemSoundID audioEffect;
-    NSString *path = [[NSBundle mainBundle] pathForResource : fName ofType :ext];
-    if ([[NSFileManager defaultManager] fileExistsAtPath : path]) {
-        NSURL *pathURL = [NSURL fileURLWithPath: path];
-        AudioServicesCreateSystemSoundID((__bridge CFURLRef) pathURL, &audioEffect);
-        AudioServicesPlaySystemSound(audioEffect);
-    }
-    else {
-        CLSLog(@"error, file not found: %@", path);
+   
+    if(appDelegate.soundEnabled)
+    {
+        SystemSoundID audioEffect;
+        NSString *path = [[NSBundle mainBundle] pathForResource : fName ofType :ext];
+        if ([[NSFileManager defaultManager] fileExistsAtPath : path]) {
+            NSURL *pathURL = [NSURL fileURLWithPath: path];
+            AudioServicesCreateSystemSoundID((__bridge CFURLRef) pathURL, &audioEffect);
+            AudioServicesPlaySystemSound(audioEffect);
+        }
+        else {
+            CLSLog(@"error, file not found: %@", path);
+        }
     }
 }
 
@@ -652,10 +624,12 @@ enum TimerState : NSUInteger {
 
 -(void)textToSpeak:(NSString *)textToSpeak
 {
-    NSLog(@"Speaking %@", textToSpeak);
-    AVSpeechUtterance *utt = [[AVSpeechUtterance alloc] initWithString:textToSpeak];
-    utt.rate = 0.2;
-    [synth speakUtterance:utt];
+    if(appDelegate.soundEnabled)
+    {
+        AVSpeechUtterance *utt = [[AVSpeechUtterance alloc] initWithString:textToSpeak];
+        utt.rate = 0.2;
+        [synth speakUtterance:utt];
+    }
 }
 
 -(void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer didFinishSpeechUtterance:(AVSpeechUtterance *)utterance

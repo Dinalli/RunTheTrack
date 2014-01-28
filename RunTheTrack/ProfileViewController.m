@@ -332,7 +332,6 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
             NSArray *accounts = [accountStore accountsWithAccountType:accountType];
             if (accounts.count > 0)
             {
-                //for (ACAccount *twitterAccount in accounts) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     ACAccount *twitterAccount = [accounts objectAtIndex:0];
 
@@ -345,7 +344,6 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
                         }
                     }
                 });
-                //}
             }
         }
         else if (error)

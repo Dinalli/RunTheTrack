@@ -43,8 +43,6 @@
 
 -(void)setUpDefaultsOnLoad
 {
-
-    
     if([defaults valueForKey:@"gps"])
     {
         [gpsSwitch setOn:[[defaults valueForKey:@"gps"] boolValue]];
@@ -53,34 +51,34 @@
     
     [units setSelectedSegmentIndex:[[defaults valueForKey:@"units"] integerValue]];
     
-    [walkSlider setValue:[[defaults valueForKey:@"walkSliderValue"] floatValue]];
     [runSlider setValue:[[defaults valueForKey:@"runSliderValue"] floatValue]];
     runMeters.text = [NSString stringWithFormat:@"%.2f",runSlider.value];
     walkMeters.text = [NSString stringWithFormat:@"%.2f",walkSlider.value];
+    
+    [soundEnabled setOn:[[defaults valueForKey:@"sound"] boolValue]];
     
 }
 
 -(void)setDefaults
 {
-    [defaults setValue:[NSString stringWithFormat:@"%.2f",walkSlider.value] forKey:@"walkSliderValue"];
     [defaults setValue:[NSString stringWithFormat:@"%.2f",runSlider.value] forKey:@"runSliderValue"];
     [defaults setValue:[NSNumber numberWithBool:gpsSwitch.on] forKey:@"gps"];
     [defaults setValue:[NSNumber numberWithBool:motionSwitch.on] forKey:@"motion"];
     [defaults setValue:[NSNumber numberWithInteger:units.selectedSegmentIndex] forKey:@"units"];
+    [defaults setValue:[NSNumber numberWithBool:motionSwitch.on] forKey:@"sound"];
     [defaults synchronize];
-}
-
--(IBAction)walkMetersChanged:(id)sender
-{
-    walkMeters.text = [NSString stringWithFormat:@"%.2f",walkSlider.value];
-    [appDelegate setWalkMotionDistance:walkSlider.value];
-    [self setDefaults];
 }
 
 -(IBAction)runMetersChanged:(id)sender
 {
     runMeters.text = [NSString stringWithFormat:@"%.2f",runSlider.value];
     [appDelegate setRunMotionDistance:runSlider.value];
+    [self setDefaults];
+}
+
+-(IBAction)soundSwitched:(id)sender
+{
+    [appDelegate setSoundEnabled:soundEnabled.on];
     [self setDefaults];
 }
 
@@ -101,7 +99,6 @@
     walkSlider.enabled = YES;
     
     [appDelegate setUseMotion:YES];
-    [appDelegate setWalkMotionDistance:walkSlider.value];
     [appDelegate setRunMotionDistance:runSlider.value];
     [self setDefaults];
 }

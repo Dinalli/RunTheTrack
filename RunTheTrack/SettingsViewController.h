@@ -21,6 +21,7 @@
     IBOutlet UISwitch *gpsSwitch;
     IBOutlet UISwitch *motionSwitch;
     IBOutlet UISegmentedControl *units;
+    IBOutlet UISwitch *soundEnabled;
     
     AppDelegate *appDelegate;
     NSUserDefaults *defaults;
