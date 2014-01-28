@@ -155,10 +155,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    
-    [self.navigationController setNavigationBarHidden:YES];
-    
+	// Do any additional setup after loading the view.    
     runTime.text = [NSString stringWithFormat:@"%@", self.runData.runtime];
     runLaps.text = [NSString stringWithFormat:@"%@",self.runData.runlaps];
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
