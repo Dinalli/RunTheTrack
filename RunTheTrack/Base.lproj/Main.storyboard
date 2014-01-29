@@ -1003,9 +1003,10 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5SD-mk-ARe">
                                 <rect key="frame" x="274" y="524" width="46" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <size key="titleShadowOffset" width="1" height="1"/>
                                 <state key="normal" image="86-camera.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="goToNextCamera:" destination="Wvj-73-1KT" eventType="touchUpInside" id="I31-dq-pc6"/>
@@ -1067,6 +1068,7 @@
                         <outlet property="runLaps" destination="71M-nC-cPZ" id="tm8-cr-k0T"/>
                         <outlet property="runTime" destination="A1Q-HM-UKT" id="LAj-oo-qmB"/>
                         <outlet property="trackMapImage" destination="w2i-qX-ltx" id="MgO-bg-SKb"/>
+                        <segue destination="txt-p1-Zp1" kind="push" identifier="RunMapSegue" id="oBl-bb-vcs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AgC-U7-oAt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1282,6 +1284,7 @@
                         <outlet property="trackLaps" destination="tjA-qg-ruh" id="Ntl-oU-dkV"/>
                         <outlet property="trackMapImage" destination="Ecc-cG-nny" id="72v-Ak-ClE"/>
                         <outlet property="trackName" destination="lel-Yd-pzI" id="8d6-zs-TsA"/>
+                        <segue destination="Wvj-73-1KT" kind="push" identifier="RunTrackSegue" id="Kuc-aD-hbx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ewh-Iz-XFm" userLabel="First Responder" sceneMemberID="firstResponder"/>

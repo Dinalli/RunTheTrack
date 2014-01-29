@@ -392,7 +392,7 @@
 
 -(IBAction)showActivityView:(id)sender
 {
-    UIActionSheet *loginActionSheet = [[UIActionSheet alloc] initWithTitle:@"Share using" delegate:self cancelButtonTitle:@"Cancel"  destructiveButtonTitle:@"share on facebook" otherButtonTitles:@"share on twitter", @"View Run Map", nil];
+    UIActionSheet *loginActionSheet = [[UIActionSheet alloc] initWithTitle:@"Share using" delegate:self cancelButtonTitle:@"Cancel"  destructiveButtonTitle:@"share on facebook" otherButtonTitles:@"share on twitter", @"go to run", nil];
 
     [loginActionSheet showInView:self.view];
 }
@@ -405,7 +405,17 @@
     else if (buttonIndex == 1) {
         [self shareOnTwitter];
     }
+    else if (buttonIndex == 2)
+    {
+        [self goToTrack];
+    }
 }
+
+-(void)goToTrack
+{
+    [self performSegueWithIdentifier:@"RunMapSegue" sender:self];
+}
+
 
 -(void)shareOnFacebook
 {
