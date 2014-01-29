@@ -60,7 +60,7 @@
     
     float pace = timeInMins / kilometers;
     
-    NSLog(@"time in mins %d  distance %f pace %f", timeInMins, kilometers, pace);
+    NSLog(@"time in mins %d  distance km %f pace %f", timeInMins, kilometers, pace);
     
     return [NSString stringWithFormat:@"%.2f", pace];
     
@@ -74,7 +74,7 @@
     
     float pace = timeInMins / miles;
     
-    NSLog(@"time in mins %d  distance %f pace %f", timeInMins, miles, pace);
+    NSLog(@"time in mins %d  distance miles %f pace %f", timeInMins, miles, pace);
     
     return [NSString stringWithFormat:@"%.2f", pace];
 }

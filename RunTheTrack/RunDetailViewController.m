@@ -218,7 +218,7 @@
             MKMapCamera *camera1 = [MKMapCamera
                                     cameraLookingAtCenterCoordinate:sect1Cordinate
                                     fromEyeCoordinate:startCoordinate
-                                    eyeAltitude:50.0];
+                                    eyeAltitude:150.0];
             
             [runCameras addObject:camera1];
             
@@ -235,7 +235,7 @@
                 MKMapCamera *camera2 = [MKMapCamera
                                         cameraLookingAtCenterCoordinate:sect2Cordinate
                                         fromEyeCoordinate:sect1Cordinate
-                                        eyeAltitude:50.0];
+                                        eyeAltitude:150.0];
                 
                 [runCameras addObject:camera2];
 
@@ -252,7 +252,7 @@
                     MKMapCamera *camera3 = [MKMapCamera
                                             cameraLookingAtCenterCoordinate:lapCordinate
                                             fromEyeCoordinate:sect2Cordinate
-                                            eyeAltitude:50.0];
+                                            eyeAltitude:150.0];
                     
                     
                     

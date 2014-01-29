@@ -63,6 +63,8 @@
         runDistance.text = [NSString stringWithFormat:@"%.2f miles",[[self.trackInfo objectForKey:@"runDistance"] floatValue] * 0.000621371192];
     }
     
+    runPace.text = [self.trackInfo objectForKey:@"runPace"];
+    
     if(appDelegate.useMotion)
     {
         runSteps.hidden = NO;

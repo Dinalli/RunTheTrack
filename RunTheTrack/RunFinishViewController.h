@@ -20,6 +20,7 @@
     IBOutlet UILabel *runLaps;
     IBOutlet UILabel *runDistance;
     IBOutlet UILabel *runSteps;
+    IBOutlet UILabel *runPace;
 
     IBOutlet MKMapView *mv;
     

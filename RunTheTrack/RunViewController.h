@@ -20,7 +20,6 @@
     
     IBOutlet UINavigationItem *navigationItem;
     IBOutlet UIButton *btnFinish;
-    IBOutlet UILabel *lapTime;
     IBOutlet UILabel *distanceLabel;
     IBOutlet UILabel *distanceMeasure;
     IBOutlet UILabel *runPace;

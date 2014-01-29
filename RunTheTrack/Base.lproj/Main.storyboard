@@ -397,7 +397,7 @@
         <scene sceneID="G7z-4Q-bwS">
             <objects>
                 <navigationController definesPresentationContext="YES" id="wSd-LW-rzy" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Run" image="run.png" id="aT0-lH-43R"/>
+                    <tabBarItem key="tabBarItem" title="Run" image="man.png" id="aT0-lH-43R"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="PyC-ZN-6a5">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.26274509800000001" green="0.1450980392" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -523,12 +523,6 @@
                                         <color key="textColor" red="0.26274509800000001" green="0.1450980392" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Lap Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N6H-WH-fGv">
-                                        <rect key="frame" x="6" y="8" width="104" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="28.12" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zpm-dC-wT0">
                                         <rect key="frame" x="178" y="30" width="115" height="58"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -548,7 +542,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Speed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sZU-Gw-7DS">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sZU-Gw-7DS">
                                         <rect key="frame" x="81" y="82" width="138" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -621,7 +615,6 @@
                         <outlet property="btnFinish" destination="8h5-R0-8ML" id="pXx-zy-KRZ"/>
                         <outlet property="distanceLabel" destination="3xM-0O-2w7" id="jps-vZ-30b"/>
                         <outlet property="distanceMeasure" destination="gHr-6m-afN" id="XKt-2G-TwM"/>
-                        <outlet property="lapTime" destination="N6H-WH-fGv" id="hSc-FK-wZE"/>
                         <outlet property="lapsLabel" destination="Zpm-dC-wT0" id="C55-F3-kDe"/>
                         <outlet property="motionActivityIndicator" destination="A5s-Q9-ubw" id="kpk-hR-XRX"/>
                         <outlet property="navigationItem" destination="HxU-uw-D4a" id="Mo0-JZ-9qQ"/>
@@ -674,16 +667,18 @@
                                 <rect key="frame" x="10" y="76" width="300" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pace" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vgo-Qq-gGJ">
+                                        <rect key="frame" x="10" y="1" width="93" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Distance" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4LO-xG-gbi">
                                         <rect key="frame" x="117" y="59" width="171" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dnd-b3-2D6">
-                                        <rect key="frame" x="0.0" y="5" width="67" height="68"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Laps" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VB0-a1-PCn">
                                         <rect key="frame" x="186" y="0.0" width="102" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -691,14 +686,14 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="0:00:00:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8cx-zv-de6" customClass="TTCounterLabel">
-                                        <rect key="frame" x="15" y="-62" width="285" height="192"/>
+                                        <rect key="frame" x="-26" y="-56" width="285" height="192"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="42"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Steps" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CDV-Ip-U0j">
-                                        <rect key="frame" x="75" y="59" width="45" height="21"/>
+                                        <rect key="frame" x="10" y="59" width="45" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -724,10 +719,10 @@
                         <outlet property="mv" destination="NNd-7w-FaO" id="JOg-gy-7A9"/>
                         <outlet property="runDistance" destination="4LO-xG-gbi" id="3Tj-Sc-EES"/>
                         <outlet property="runLaps" destination="VB0-a1-PCn" id="k2Y-eR-baR"/>
+                        <outlet property="runPace" destination="Vgo-Qq-gGJ" id="3GV-XQ-2Pe"/>
                         <outlet property="runSteps" destination="CDV-Ip-U0j" id="gBs-JG-RbI"/>
                         <outlet property="timeLabel" destination="8cx-zv-de6" id="dM2-9Q-BVl"/>
                         <outlet property="toastView" destination="m7f-mL-JAg" id="DWW-Xl-nbn"/>
-                        <outlet property="trackMapImage" destination="dnd-b3-2D6" id="cmf-mo-5EZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AYN-6f-LqX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -922,7 +917,8 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xGP-bs-5KG">
                                 <rect key="frame" x="0.0" y="524" width="46" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <size key="titleShadowOffset" width="1" height="1"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                <size key="titleShadowOffset" width="2" height="2"/>
                                 <state key="normal" title="3D">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -991,10 +987,11 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nI7-TI-3Cd">
                                 <rect key="frame" x="0.0" y="524" width="46" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <size key="titleShadowOffset" width="1" height="1"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                <size key="titleShadowOffset" width="2" height="2"/>
                                 <state key="normal" title="3D">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="threeDeeSelected:" destination="Wvj-73-1KT" eventType="touchUpInside" id="Yco-xg-T4M"/>
@@ -1296,9 +1293,9 @@
         <image name="31-ipod.png" width="17" height="29"/>
         <image name="86-camera.png" width="24" height="18"/>
         <image name="history.png" width="35" height="35"/>
+        <image name="man.png" width="35" height="34"/>
         <image name="profile.png" width="35" height="35"/>
         <image name="routes-cup.png" width="13" height="13"/>
-        <image name="run.png" width="35" height="35"/>
         <image name="settings.png" width="35" height="35"/>
         <image name="silverstone.png" width="600" height="420"/>
         <image name="tabbar-profile-normal.png" width="25" height="30"/>

@@ -146,6 +146,8 @@
 		40C1658417EB637900D4E093 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40C1656617EB637900D4E093 /* UIKit.framework */; };
 		40C1658C17EB637900D4E093 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 40C1658A17EB637900D4E093 /* InfoPlist.strings */; };
 		40C1658E17EB637900D4E093 /* RunTheTrackTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C1658D17EB637900D4E093 /* RunTheTrackTests.m */; };
+		40C5D7F318998B64002BBF14 /* man.png in Resources */ = {isa = PBXBuildFile; fileRef = 40C5D7F118998B64002BBF14 /* man.png */; };
+		40C5D7F418998B64002BBF14 /* man@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40C5D7F218998B64002BBF14 /* man@2x.png */; };
 		40CADFA9189860C400BC8411 /* run.png in Resources */ = {isa = PBXBuildFile; fileRef = 40CADFA8189860C400BC8411 /* run.png */; };
 		40CD535E182C0E2D00352499 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40CD535D182C0E2D00352499 /* FacebookSDK.framework */; };
 		40D35DC7182540B500D10899 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40D35DC6182540B500D10899 /* CoreData.framework */; };
@@ -397,6 +399,8 @@
 		40C1658B17EB637900D4E093 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		40C1658D17EB637900D4E093 /* RunTheTrackTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RunTheTrackTests.m; sourceTree = "<group>"; };
 		40C1659D17EB658A00D4E093 /* RTT.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RTT.xcdatamodel; sourceTree = "<group>"; };
+		40C5D7F118998B64002BBF14 /* man.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = man.png; sourceTree = "<group>"; };
+		40C5D7F218998B64002BBF14 /* man@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "man@2x.png"; sourceTree = "<group>"; };
 		40CADFA8189860C400BC8411 /* run.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = run.png; sourceTree = "<group>"; };
 		40CD535D182C0E2D00352499 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		40D35DC6182540B500D10899 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -571,6 +575,8 @@
 		405FD4BA17EE3E8D006F141F /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				40C5D7F118998B64002BBF14 /* man.png */,
+				40C5D7F218998B64002BBF14 /* man@2x.png */,
 				408735BC1896FFAC00C79C06 /* achieve.png */,
 				40CADFA8189860C400BC8411 /* run.png */,
 				408735BD1896FFAC00C79C06 /* gps.png */,
@@ -1177,6 +1183,7 @@
 				40BAAD3F18203FB900137E8C /* beep-8.mp3 in Resources */,
 				40A3B3EE185B76CC00BA85BB /* icon-success@2x.png in Resources */,
 				4018F52817F83903006F990E /* Korea.jpg in Resources */,
+				40C5D7F318998B64002BBF14 /* man.png in Resources */,
 				40343B0D18940D6000881CC6 /* singapore.png in Resources */,
 				4018F52717F83903006F990E /* japan.jpg in Resources */,
 				40C1657B17EB637900D4E093 /* Images.xcassets in Resources */,
@@ -1194,6 +1201,7 @@
 				4057A5BE17EE596A00FE1E93 /* Icon-Small@2x.png in Resources */,
 				408735C51896FFAC00C79C06 /* gps.png in Resources */,
 				4018F53517F83AF5006F990E /* Brazil.jpg in Resources */,
+				40C5D7F418998B64002BBF14 /* man@2x.png in Resources */,
 				4057A5C017EE596A00FE1E93 /* Icon@2x.png in Resources */,
 				4018F52F17F83903006F990E /* singapore.jpg in Resources */,
 				40A3B3EB185B76CC00BA85BB /* icon-info.png in Resources */,
@@ -1397,7 +1405,7 @@
 					"-ObjC",
 					"-all_load",
 				);
-				PROVISIONING_PROFILE = "E31278DC-5845-41CD-8198-88F4AFC59F28";
+				PROVISIONING_PROFILE = "122B3B42-784B-4191-8345-6EBA3697AD63";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1439,7 +1447,7 @@
 					"-ObjC",
 					"-all_load",
 				);
-				PROVISIONING_PROFILE = "E31278DC-5845-41CD-8198-88F4AFC59F28";
+				PROVISIONING_PROFILE = "122B3B42-784B-4191-8345-6EBA3697AD63";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1473,7 +1481,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "E31278DC-5845-41CD-8198-88F4AFC59F28";
+				PROVISIONING_PROFILE = "122B3B42-784B-4191-8345-6EBA3697AD63";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1506,7 +1514,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "E31278DC-5845-41CD-8198-88F4AFC59F28";
+				PROVISIONING_PROFILE = "122B3B42-784B-4191-8345-6EBA3697AD63";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
