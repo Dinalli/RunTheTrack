@@ -103,7 +103,6 @@
 		408735C61896FFAC00C79C06 /* history.png in Resources */ = {isa = PBXBuildFile; fileRef = 408735BE1896FFAC00C79C06 /* history.png */; };
 		408735C71896FFAC00C79C06 /* motionrun.png in Resources */ = {isa = PBXBuildFile; fileRef = 408735BF1896FFAC00C79C06 /* motionrun.png */; };
 		408735C81896FFAC00C79C06 /* motionwalk.png in Resources */ = {isa = PBXBuildFile; fileRef = 408735C01896FFAC00C79C06 /* motionwalk.png */; };
-		408735C91896FFAC00C79C06 /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 408735C11896FFAC00C79C06 /* profile.png */; };
 		40892C171885B326008F7D38 /* RunTrackMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40892C161885B326008F7D38 /* RunTrackMapViewController.m */; };
 		40892C1A1885B336008F7D38 /* RunOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40892C191885B336008F7D38 /* RunOverviewViewController.m */; };
 		40892C201885B437008F7D38 /* RunViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40892C1F1885B437008F7D38 /* RunViewController.m */; };
@@ -122,6 +121,8 @@
 		40A3B3ED185B76CC00BA85BB /* icon-success.png in Resources */ = {isa = PBXBuildFile; fileRef = 40A3B3E7185B76CC00BA85BB /* icon-success.png */; };
 		40A3B3EE185B76CC00BA85BB /* icon-success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40A3B3E8185B76CC00BA85BB /* icon-success@2x.png */; };
 		40B8E71E17F9EA5F00005F09 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40B8E71D17F9EA5F00005F09 /* CoreLocation.framework */; };
+		40B8EF7D18999E140060B6E0 /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B8EF7B18999E140060B6E0 /* profile.png */; };
+		40B8EF7E18999E140060B6E0 /* profile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B8EF7C18999E140060B6E0 /* profile@2x.png */; };
 		40BA418F1865C2D8007A6329 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40BA418E1865C2D8007A6329 /* CoreMotion.framework */; };
 		40BA41921865E4C1007A6329 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40BA41911865E4C1007A6329 /* CFNetwork.framework */; };
 		40BA41941865E4CB007A6329 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40BA41931865E4CB007A6329 /* CoreTelephony.framework */; };
@@ -340,7 +341,6 @@
 		408735BE1896FFAC00C79C06 /* history.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = history.png; sourceTree = "<group>"; };
 		408735BF1896FFAC00C79C06 /* motionrun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = motionrun.png; sourceTree = "<group>"; };
 		408735C01896FFAC00C79C06 /* motionwalk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = motionwalk.png; sourceTree = "<group>"; };
-		408735C11896FFAC00C79C06 /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
 		40892C151885B326008F7D38 /* RunTrackMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunTrackMapViewController.h; sourceTree = "<group>"; };
 		40892C161885B326008F7D38 /* RunTrackMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunTrackMapViewController.m; sourceTree = "<group>"; };
 		40892C181885B336008F7D38 /* RunOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunOverviewViewController.h; sourceTree = "<group>"; };
@@ -368,6 +368,8 @@
 		40A3B3E7185B76CC00BA85BB /* icon-success.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-success.png"; sourceTree = "<group>"; };
 		40A3B3E8185B76CC00BA85BB /* icon-success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-success@2x.png"; sourceTree = "<group>"; };
 		40B8E71D17F9EA5F00005F09 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		40B8EF7B18999E140060B6E0 /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
+		40B8EF7C18999E140060B6E0 /* profile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile@2x.png"; sourceTree = "<group>"; };
 		40BA418E1865C2D8007A6329 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		40BA41911865E4C1007A6329 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		40BA41931865E4CB007A6329 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -577,6 +579,8 @@
 		405FD4BA17EE3E8D006F141F /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				40B8EF7B18999E140060B6E0 /* profile.png */,
+				40B8EF7C18999E140060B6E0 /* profile@2x.png */,
 				40C5D7F118998B64002BBF14 /* man.png */,
 				40C5D7F218998B64002BBF14 /* man@2x.png */,
 				408735BC1896FFAC00C79C06 /* achieve.png */,
@@ -585,7 +589,6 @@
 				408735BE1896FFAC00C79C06 /* history.png */,
 				408735BF1896FFAC00C79C06 /* motionrun.png */,
 				408735C01896FFAC00C79C06 /* motionwalk.png */,
-				408735C11896FFAC00C79C06 /* profile.png */,
 				406EF5241899991400193D5C /* settings.png */,
 				406EF5251899991400193D5C /* settings@2x.png */,
 				406B253D18954A6100F03B23 /* 86-camera.png */,
@@ -1177,6 +1180,7 @@
 				40343B0218940D6000881CC6 /* china.png in Resources */,
 				40BA41A31865E5DB007A6329 /* AirshipConfig.plist in Resources */,
 				40343B0418940D6000881CC6 /* india.png in Resources */,
+				40B8EF7D18999E140060B6E0 /* profile.png in Resources */,
 				4057A5BD17EE596A00FE1E93 /* Icon-Small.png in Resources */,
 				40343B0118940D6000881CC6 /* canada.png in Resources */,
 				4057264F188FA47C005DD240 /* stopwatch.png in Resources */,
@@ -1214,8 +1218,8 @@
 				405A15EE17EEF4E200684921 /* Icon-80.png in Resources */,
 				4057A5BC17EE596A00FE1E93 /* Icon-Small-50@2x.png in Resources */,
 				4018F53317F83ADD006F990E /* Barcalona.jpg in Resources */,
+				40B8EF7E18999E140060B6E0 /* profile@2x.png in Resources */,
 				409154CD1852717300CECEEC /* cheq.png in Resources */,
-				408735C91896FFAC00C79C06 /* profile.png in Resources */,
 				40343B0F18940D6000881CC6 /* usa.png in Resources */,
 				408735C71896FFAC00C79C06 /* motionrun.png in Resources */,
 				40A3B3EA185B76CC00BA85BB /* icon-error@2x.png in Resources */,
