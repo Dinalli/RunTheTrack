@@ -102,7 +102,6 @@
 		408735C71896FFAC00C79C06 /* motionrun.png in Resources */ = {isa = PBXBuildFile; fileRef = 408735BF1896FFAC00C79C06 /* motionrun.png */; };
 		408735C81896FFAC00C79C06 /* motionwalk.png in Resources */ = {isa = PBXBuildFile; fileRef = 408735C01896FFAC00C79C06 /* motionwalk.png */; };
 		408735C91896FFAC00C79C06 /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 408735C11896FFAC00C79C06 /* profile.png */; };
-		408735CA1896FFAC00C79C06 /* run.png in Resources */ = {isa = PBXBuildFile; fileRef = 408735C21896FFAC00C79C06 /* run.png */; };
 		408735CB1896FFAC00C79C06 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 408735C31896FFAC00C79C06 /* settings.png */; };
 		40892C171885B326008F7D38 /* RunTrackMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40892C161885B326008F7D38 /* RunTrackMapViewController.m */; };
 		40892C1A1885B336008F7D38 /* RunOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40892C191885B336008F7D38 /* RunOverviewViewController.m */; };
@@ -147,6 +146,7 @@
 		40C1658417EB637900D4E093 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40C1656617EB637900D4E093 /* UIKit.framework */; };
 		40C1658C17EB637900D4E093 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 40C1658A17EB637900D4E093 /* InfoPlist.strings */; };
 		40C1658E17EB637900D4E093 /* RunTheTrackTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C1658D17EB637900D4E093 /* RunTheTrackTests.m */; };
+		40CADFA9189860C400BC8411 /* run.png in Resources */ = {isa = PBXBuildFile; fileRef = 40CADFA8189860C400BC8411 /* run.png */; };
 		40CD535E182C0E2D00352499 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40CD535D182C0E2D00352499 /* FacebookSDK.framework */; };
 		40D35DC7182540B500D10899 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40D35DC6182540B500D10899 /* CoreData.framework */; };
 		40D35DCA182541E500D10899 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D35DC9182541E500D10899 /* CoreDataHelper.m */; };
@@ -336,7 +336,6 @@
 		408735BF1896FFAC00C79C06 /* motionrun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = motionrun.png; sourceTree = "<group>"; };
 		408735C01896FFAC00C79C06 /* motionwalk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = motionwalk.png; sourceTree = "<group>"; };
 		408735C11896FFAC00C79C06 /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
-		408735C21896FFAC00C79C06 /* run.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = run.png; sourceTree = "<group>"; };
 		408735C31896FFAC00C79C06 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		40892C151885B326008F7D38 /* RunTrackMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunTrackMapViewController.h; sourceTree = "<group>"; };
 		40892C161885B326008F7D38 /* RunTrackMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunTrackMapViewController.m; sourceTree = "<group>"; };
@@ -398,6 +397,7 @@
 		40C1658B17EB637900D4E093 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		40C1658D17EB637900D4E093 /* RunTheTrackTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RunTheTrackTests.m; sourceTree = "<group>"; };
 		40C1659D17EB658A00D4E093 /* RTT.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RTT.xcdatamodel; sourceTree = "<group>"; };
+		40CADFA8189860C400BC8411 /* run.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = run.png; sourceTree = "<group>"; };
 		40CD535D182C0E2D00352499 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		40D35DC6182540B500D10899 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		40D35DC8182541E500D10899 /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataHelper.h; sourceTree = "<group>"; };
@@ -572,12 +572,12 @@
 			isa = PBXGroup;
 			children = (
 				408735BC1896FFAC00C79C06 /* achieve.png */,
+				40CADFA8189860C400BC8411 /* run.png */,
 				408735BD1896FFAC00C79C06 /* gps.png */,
 				408735BE1896FFAC00C79C06 /* history.png */,
 				408735BF1896FFAC00C79C06 /* motionrun.png */,
 				408735C01896FFAC00C79C06 /* motionwalk.png */,
 				408735C11896FFAC00C79C06 /* profile.png */,
-				408735C21896FFAC00C79C06 /* run.png */,
 				408735C31896FFAC00C79C06 /* settings.png */,
 				406B253D18954A6100F03B23 /* 86-camera.png */,
 				405A15EB17EEF4E200684921 /* Icon-80.png */,
@@ -1184,7 +1184,6 @@
 				405E5336185DEED400A8BD45 /* sector1.png in Resources */,
 				4018F52317F83903006F990E /* canada.jpg in Resources */,
 				40A3B3EC185B76CC00BA85BB /* icon-info@2x.png in Resources */,
-				408735CA1896FFAC00C79C06 /* run.png in Resources */,
 				406B253C18953C6700F03B23 /* beep_2.mp3 in Resources */,
 				408735C81896FFAC00C79C06 /* motionwalk.png in Resources */,
 				40343B0C18940D6000881CC6 /* silverstone.png in Resources */,
@@ -1222,6 +1221,7 @@
 				409154CA1852640000CECEEC /* runnerDot@2x.png in Resources */,
 				40A3B3ED185B76CC00BA85BB /* icon-success.png in Resources */,
 				40343B0018940D6000881CC6 /* brazil.png in Resources */,
+				40CADFA9189860C400BC8411 /* run.png in Resources */,
 				409154C91852640000CECEEC /* runnerDot.png in Resources */,
 				4057A5BB17EE596A00FE1E93 /* Icon-Small-50.png in Resources */,
 				40C1656D17EB637900D4E093 /* InfoPlist.strings in Resources */,
