@@ -23,7 +23,6 @@
 		4018F52A17F83903006F990E /* Melbourne.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4018F51917F83903006F990E /* Melbourne.jpg */; };
 		4018F52C17F83903006F990E /* Monza.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4018F51B17F83903006F990E /* Monza.jpg */; };
 		4018F52E17F83903006F990E /* Silverstone.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4018F51D17F83903006F990E /* Silverstone.jpg */; };
-		4018F52F17F83903006F990E /* singapore.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4018F51E17F83903006F990E /* singapore.jpg */; };
 		4018F53017F83903006F990E /* Spa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4018F51F17F83903006F990E /* Spa.jpg */; };
 		4018F53117F83903006F990E /* Usa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4018F52017F83903006F990E /* Usa.jpg */; };
 		4018F53317F83ADD006F990E /* Barcalona.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4018F53217F83ADD006F990E /* Barcalona.jpg */; };
@@ -88,6 +87,9 @@
 		406B253E18954A6100F03B23 /* 86-camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 406B253D18954A6100F03B23 /* 86-camera.png */; };
 		406B8AE718670A93008805C9 /* nurburg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 406B8AE618670A93008805C9 /* nurburg.jpg */; };
 		406B8AE918670F65008805C9 /* 31-ipod.png in Resources */ = {isa = PBXBuildFile; fileRef = 406B8AE818670F65008805C9 /* 31-ipod.png */; };
+		406EF5261899991400193D5C /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 406EF5241899991400193D5C /* settings.png */; };
+		406EF5271899991400193D5C /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 406EF5251899991400193D5C /* settings@2x.png */; };
+		406EF52918999A0F00193D5C /* singapore.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 406EF52818999A0F00193D5C /* singapore.jpg */; };
 		407710AC18453B3900882BBE /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 407710AB18453B3900882BBE /* ProfileViewController.m */; };
 		407710AF18453B6E00882BBE /* ProfileCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 407710AE18453B6E00882BBE /* ProfileCollectionCell.m */; };
 		407771E81815B74700A38AA1 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 407771E71815B74700A38AA1 /* UIImage+ImageEffects.m */; };
@@ -102,7 +104,6 @@
 		408735C71896FFAC00C79C06 /* motionrun.png in Resources */ = {isa = PBXBuildFile; fileRef = 408735BF1896FFAC00C79C06 /* motionrun.png */; };
 		408735C81896FFAC00C79C06 /* motionwalk.png in Resources */ = {isa = PBXBuildFile; fileRef = 408735C01896FFAC00C79C06 /* motionwalk.png */; };
 		408735C91896FFAC00C79C06 /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 408735C11896FFAC00C79C06 /* profile.png */; };
-		408735CB1896FFAC00C79C06 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 408735C31896FFAC00C79C06 /* settings.png */; };
 		40892C171885B326008F7D38 /* RunTrackMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40892C161885B326008F7D38 /* RunTrackMapViewController.m */; };
 		40892C1A1885B336008F7D38 /* RunOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40892C191885B336008F7D38 /* RunOverviewViewController.m */; };
 		40892C201885B437008F7D38 /* RunViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40892C1F1885B437008F7D38 /* RunViewController.m */; };
@@ -195,7 +196,6 @@
 		4018F51917F83903006F990E /* Melbourne.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Melbourne.jpg; sourceTree = "<group>"; };
 		4018F51B17F83903006F990E /* Monza.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Monza.jpg; sourceTree = "<group>"; };
 		4018F51D17F83903006F990E /* Silverstone.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Silverstone.jpg; sourceTree = "<group>"; };
-		4018F51E17F83903006F990E /* singapore.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = singapore.jpg; sourceTree = "<group>"; };
 		4018F51F17F83903006F990E /* Spa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Spa.jpg; sourceTree = "<group>"; };
 		4018F52017F83903006F990E /* Usa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Usa.jpg; sourceTree = "<group>"; };
 		4018F53217F83ADD006F990E /* Barcalona.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Barcalona.jpg; sourceTree = "<group>"; };
@@ -281,6 +281,9 @@
 		406B253D18954A6100F03B23 /* 86-camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "86-camera.png"; sourceTree = "<group>"; };
 		406B8AE618670A93008805C9 /* nurburg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nurburg.jpg; sourceTree = "<group>"; };
 		406B8AE818670F65008805C9 /* 31-ipod.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "31-ipod.png"; sourceTree = "<group>"; };
+		406EF5241899991400193D5C /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		406EF5251899991400193D5C /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
+		406EF52818999A0F00193D5C /* singapore.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = singapore.jpg; sourceTree = "<group>"; };
 		407710AA18453B3900882BBE /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		407710AB18453B3900882BBE /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		407710AD18453B6E00882BBE /* ProfileCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileCollectionCell.h; sourceTree = "<group>"; };
@@ -338,7 +341,6 @@
 		408735BF1896FFAC00C79C06 /* motionrun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = motionrun.png; sourceTree = "<group>"; };
 		408735C01896FFAC00C79C06 /* motionwalk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = motionwalk.png; sourceTree = "<group>"; };
 		408735C11896FFAC00C79C06 /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
-		408735C31896FFAC00C79C06 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		40892C151885B326008F7D38 /* RunTrackMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunTrackMapViewController.h; sourceTree = "<group>"; };
 		40892C161885B326008F7D38 /* RunTrackMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunTrackMapViewController.m; sourceTree = "<group>"; };
 		40892C181885B336008F7D38 /* RunOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunOverviewViewController.h; sourceTree = "<group>"; };
@@ -584,7 +586,8 @@
 				408735BF1896FFAC00C79C06 /* motionrun.png */,
 				408735C01896FFAC00C79C06 /* motionwalk.png */,
 				408735C11896FFAC00C79C06 /* profile.png */,
-				408735C31896FFAC00C79C06 /* settings.png */,
+				406EF5241899991400193D5C /* settings.png */,
+				406EF5251899991400193D5C /* settings@2x.png */,
 				406B253D18954A6100F03B23 /* 86-camera.png */,
 				405A15EB17EEF4E200684921 /* Icon-80.png */,
 				405A15EC17EEF4E200684921 /* Icon-120.png */,
@@ -655,6 +658,7 @@
 				4018F51217F83903006F990E /* canada.jpg */,
 				4018F51317F83903006F990E /* china.jpg */,
 				4018F51417F83903006F990E /* hungary.jpg */,
+				406EF52818999A0F00193D5C /* singapore.jpg */,
 				4018F51517F83903006F990E /* India.jpg */,
 				4018F51617F83903006F990E /* japan.jpg */,
 				4018F53217F83ADD006F990E /* Barcalona.jpg */,
@@ -665,7 +669,6 @@
 				4018F51917F83903006F990E /* Melbourne.jpg */,
 				4018F51B17F83903006F990E /* Monza.jpg */,
 				4018F51D17F83903006F990E /* Silverstone.jpg */,
-				4018F51E17F83903006F990E /* singapore.jpg */,
 				4018F51F17F83903006F990E /* Spa.jpg */,
 				4018F52017F83903006F990E /* Usa.jpg */,
 			);
@@ -1156,8 +1159,8 @@
 				40343AFD18940D6000881CC6 /* abu.png in Resources */,
 				40343B0918940D6000881CC6 /* monaco.png in Resources */,
 				405E5338185DEED400A8BD45 /* sector2.png in Resources */,
+				406EF5271899991400193D5C /* settings@2x.png in Resources */,
 				405E5337185DEED400A8BD45 /* sector1@2x.png in Resources */,
-				408735CB1896FFAC00C79C06 /* settings.png in Resources */,
 				40343B0818940D6000881CC6 /* melbourne.png in Resources */,
 				4018F52A17F83903006F990E /* Melbourne.jpg in Resources */,
 				4018F52E17F83903006F990E /* Silverstone.jpg in Resources */,
@@ -1203,7 +1206,6 @@
 				4018F53517F83AF5006F990E /* Brazil.jpg in Resources */,
 				40C5D7F418998B64002BBF14 /* man@2x.png in Resources */,
 				4057A5C017EE596A00FE1E93 /* Icon@2x.png in Resources */,
-				4018F52F17F83903006F990E /* singapore.jpg in Resources */,
 				40A3B3EB185B76CC00BA85BB /* icon-info.png in Resources */,
 				409154CE1852717300CECEEC /* cheq@2x.png in Resources */,
 				4018F52917F83903006F990E /* malaysia.jpg in Resources */,
@@ -1223,6 +1225,7 @@
 				405A15F417EEF5A200684921 /* Default@2x.png in Resources */,
 				4057A5BA17EE596A00FE1E93 /* Icon-72@2x.png in Resources */,
 				40343B0E18940D6000881CC6 /* spa.png in Resources */,
+				406EF52918999A0F00193D5C /* singapore.jpg in Resources */,
 				4018F52517F83903006F990E /* hungary.jpg in Resources */,
 				4086419317F71E8A00E15000 /* Tracks.plist in Resources */,
 				406B8AE918670F65008805C9 /* 31-ipod.png in Resources */,
@@ -1233,6 +1236,7 @@
 				409154C91852640000CECEEC /* runnerDot.png in Resources */,
 				4057A5BB17EE596A00FE1E93 /* Icon-Small-50.png in Resources */,
 				40C1656D17EB637900D4E093 /* InfoPlist.strings in Resources */,
+				406EF5261899991400193D5C /* settings.png in Resources */,
 				405A15F317EEF5A200684921 /* Default-568h@2x.png in Resources */,
 				4018F52C17F83903006F990E /* Monza.jpg in Resources */,
 				408735C61896FFAC00C79C06 /* history.png in Resources */,
