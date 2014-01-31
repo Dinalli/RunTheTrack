@@ -536,8 +536,8 @@
                                         <color key="textColor" red="0.26274509800000001" green="0.1450980392" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Laps" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JRo-WM-KIn">
-                                        <rect key="frame" x="251" y="82" width="42" height="21"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Laps" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JRo-WM-KIn">
+                                        <rect key="frame" x="251" y="82" width="42" height="0.0"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
@@ -557,20 +557,17 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A5s-Q9-ubw">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gps.png" translatesAutoresizingMaskIntoConstraints="NO" id="A5s-Q9-ubw">
                                         <rect key="frame" x="258" y="0.0" width="35" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="A5s-Q9-ubw" firstAttribute="top" secondItem="G3u-hu-yae" secondAttribute="top" id="4GV-7s-mr0"/>
                                     <constraint firstItem="3xM-0O-2w7" firstAttribute="leading" secondItem="G3u-hu-yae" secondAttribute="leading" constant="7" id="4t6-Ia-pGc"/>
                                     <constraint firstItem="sZU-Gw-7DS" firstAttribute="leading" secondItem="gHr-6m-afN" secondAttribute="trailing" constant="34" id="744-Vn-6l4"/>
                                     <constraint firstItem="gHr-6m-afN" firstAttribute="baseline" secondItem="sZU-Gw-7DS" secondAttribute="baseline" id="DNI-T4-RNW"/>
-                                    <constraint firstItem="JRo-WM-KIn" firstAttribute="top" secondItem="A5s-Q9-ubw" secondAttribute="bottom" constant="47" id="F68-oL-DdL"/>
                                     <constraint firstItem="EJL-Fh-Uct" firstAttribute="leading" secondItem="G3u-hu-yae" secondAttribute="leading" constant="88" id="FfJ-TA-vU6"/>
-                                    <constraint firstItem="A5s-Q9-ubw" firstAttribute="leading" secondItem="EJL-Fh-Uct" secondAttribute="trailing" constant="46" id="FjK-lA-mTZ"/>
                                     <constraint firstItem="sZU-Gw-7DS" firstAttribute="centerX" secondItem="G3u-hu-yae" secondAttribute="centerX" id="LGK-rH-6cf"/>
                                     <constraint firstItem="Zpm-dC-wT0" firstAttribute="top" secondItem="3xM-0O-2w7" secondAttribute="top" id="MNx-ik-Xrb"/>
                                     <constraint firstItem="EJL-Fh-Uct" firstAttribute="centerX" secondItem="sZU-Gw-7DS" secondAttribute="centerX" id="OOZ-zz-V79"/>
@@ -579,7 +576,6 @@
                                     <constraint firstItem="JRo-WM-KIn" firstAttribute="leading" secondItem="sZU-Gw-7DS" secondAttribute="trailing" constant="32" id="TmQ-Pq-M9L"/>
                                     <constraint firstItem="Zpm-dC-wT0" firstAttribute="leading" secondItem="3xM-0O-2w7" secondAttribute="trailing" constant="39" id="Udf-sk-EIj"/>
                                     <constraint firstItem="3xM-0O-2w7" firstAttribute="top" secondItem="EJL-Fh-Uct" secondAttribute="bottom" constant="1" id="Zkn-6l-RtR"/>
-                                    <constraint firstItem="A5s-Q9-ubw" firstAttribute="trailing" secondItem="Zpm-dC-wT0" secondAttribute="trailing" id="hPJ-Rm-Iaz"/>
                                     <constraint firstItem="Zpm-dC-wT0" firstAttribute="trailing" secondItem="JRo-WM-KIn" secondAttribute="trailing" id="lHi-0p-Eoq"/>
                                     <constraint firstItem="gHr-6m-afN" firstAttribute="leading" secondItem="G3u-hu-yae" secondAttribute="leading" constant="6" id="lrw-JM-yM5"/>
                                     <constraint firstAttribute="bottom" secondItem="gHr-6m-afN" secondAttribute="bottom" constant="5" id="neK-YS-ci5"/>
@@ -1433,6 +1429,7 @@
     <resources>
         <image name="31-ipod.png" width="17" height="29"/>
         <image name="86-camera.png" width="24" height="18"/>
+        <image name="gps.png" width="135" height="135"/>
         <image name="history.png" width="35" height="35"/>
         <image name="man.png" width="35" height="34"/>
         <image name="profile.png" width="35" height="35"/>
