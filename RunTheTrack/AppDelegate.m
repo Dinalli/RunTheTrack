@@ -25,10 +25,7 @@ NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:S
     [FBProfilePictureView class];
     
     [Crashlytics startWithAPIKey:@"52f789dbfeee4af97bac9b49fd6414dc64175c2f"];
-    
-    [TestFlight takeOff:@"8d319ac4-7608-41e3-9826-189e7bf2b1d5"];
-    
-    
+
     [GAI sharedInstance].trackUncaughtExceptions = YES;
     
     // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.

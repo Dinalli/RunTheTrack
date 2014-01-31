@@ -936,7 +936,7 @@
                             <outlet property="delegate" destination="cH9-M5-JKI" id="ekN-qu-UPV"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="History" id="Ebm-BM-6R0"/>
+                    <tabBarItem key="tabBarItem" title="History" image="history.png" id="Ebm-BM-6R0"/>
                     <navigationItem key="navigationItem" title="Past Runs" id="qDp-aw-sja"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>

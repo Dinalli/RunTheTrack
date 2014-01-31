@@ -20,5 +20,4 @@
     #import <Crashlytics/Crashlytics.h>
     #import "MessageBarManager.h"
     #import "CommonUtils.h"
-    #import  "TestFlight.h"
 #endif

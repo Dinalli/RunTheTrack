@@ -372,7 +372,7 @@
         {
             MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation
                                                                             reuseIdentifier:lapID];
-            UIImage *flagImage = [UIImage imageNamed:@"stopwatch.png"];
+            UIImage *flagImage = [UIImage imageNamed:@"runnerLap.png"];
             // You may need to resize the image here.
             annotationView.image = flagImage;
             annotationView.canShowCallout = YES;
