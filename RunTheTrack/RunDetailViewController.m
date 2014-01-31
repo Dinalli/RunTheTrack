@@ -426,4 +426,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)dealloc
+{
+    mv.delegate = nil;
+}
+
 @end

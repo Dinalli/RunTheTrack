@@ -469,4 +469,9 @@
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
+
+- (void)dealloc
+{
+    mv.delegate = nil;
+}
 @end
