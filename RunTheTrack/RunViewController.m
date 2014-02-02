@@ -108,6 +108,7 @@ enum TimerState : NSUInteger {
 {
     if(appDelegate.useMotion)
     {
+        NSLog(@"update motion from ViewWillAppear");
         [[MessageBarManager sharedInstance] showMessageWithTitle:@"Updating Motion Updates"
                                                      description:@"Please wait while we update your motion progress."
                                                             type:MessageBarMessageTypeInfo];
@@ -121,6 +122,8 @@ enum TimerState : NSUInteger {
 
                 CGFloat distance = 0;
                 distance = numberOfSteps * appDelegate.runMotionDistance;
+            NSLog(@"updating distance in viewWillAppear motion %f", distance);
+                totalLocationDistance = totalLocationDistance + distance;
                 [self moveAnnotaionWithDistance:distance];
         }];
 
@@ -307,6 +310,8 @@ enum TimerState : NSUInteger {
             
             
 //            [cmStepCounter queryStepCountStartingFrom:startDate to:[NSDate date] toQueue:[NSOperationQueue mainQueue] withHandler:^(NSInteger numberOfSteps, NSError *error) {
+            
+            NSLog(@"updating steps in enable motion");
                 stepCounter = stepCounter + numberOfSteps;
                 
                 noOfSteps.hidden = NO;
@@ -314,8 +319,11 @@ enum TimerState : NSUInteger {
                 
                 if(self.timerState == timerStarted)
                 {
+                    
                     CGFloat distance = 0;
                     distance = numberOfSteps * appDelegate.runMotionDistance;
+                    NSLog(@"updating distance in enable motion %f", distance);
+                    totalLocationDistance = totalLocationDistance + distance;
                     [self moveAnnotaionWithDistance:distance];
                 }
 //            }];

@@ -14,6 +14,9 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
+				<string>ios7_settings_icon</string>
+				<string>ios7_spotlight_icon</string>
+				<string>ios7_app_icon_iphone</string>
 				<string>Icon58</string>
 				<string>Icon-80</string>
 				<string>Icon-120</string>
