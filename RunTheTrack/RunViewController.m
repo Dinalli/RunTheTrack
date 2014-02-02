@@ -554,13 +554,16 @@ enum TimerState : NSUInteger {
     self.timerState = timerStopped;
     btnFinish.hidden = NO;
     finishDate = [NSDate date];
-    
-    [[MessageBarManager sharedInstance] showMessageWithTitle:@"Paused Location Updates"
-                                                 description:@"No movement has been detected for a while. Resume if you wish to continue."
-                                                        type:MessageBarMessageTypeError];
-    
-    
     NSLog(@"Locations paused");
+}
+
+- (void)locationManagerDidResumeLocationUpdates:(CLLocationManager *)manager
+{
+    NSLog(@"Resuming location Updates");
+    
+    [[MessageBarManager sharedInstance] showMessageWithTitle:@"Location Updates Resumed"
+                                                 description:@"No movement had been detected for a while, so updates were paused."
+                                                        type:MessageBarMessageTypeError];
 }
 
 #pragma mark Segue Navigation

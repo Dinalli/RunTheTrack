@@ -388,6 +388,20 @@
     return nil;
 }
 
+//- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
+//{
+//
+//        CGSize  calloutSize = CGSizeMake(100.0, 80.0);
+//        UIView *calloutView = [[UIView alloc] initWithFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y-calloutSize.height, calloutSize.width, calloutSize.height)];
+//        calloutView.backgroundColor = [UIColor whiteColor];
+//        UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//        button.frame = CGRectMake(5.0, 5.0, calloutSize.width - 10.0, calloutSize.height - 10.0);
+//        [button setTitle:@"OK" forState:UIControlStateNormal];
+//        [button addTarget:self action:@selector(checkin) forControlEvents:UIControlEventTouchUpInside];
+//        [calloutView addSubview:button];
+//        [view.superview addSubview:calloutView];
+//}
+
 #pragma mark social sharing
 
 -(IBAction)showActivityView:(id)sender
