@@ -392,7 +392,16 @@
 
 -(IBAction)showActivityView:(id)sender
 {
-    UIActionSheet *loginActionSheet = [[UIActionSheet alloc] initWithTitle:@"Share using" delegate:self cancelButtonTitle:@"Cancel"  destructiveButtonTitle:@"share on facebook" otherButtonTitles:@"share on twitter", @"go to run", nil];
+    UIActionSheet *loginActionSheet;
+    if([self.runData.runtype isEqualToString:@"GPSRun"])
+    {
+    
+     loginActionSheet = [[UIActionSheet alloc] initWithTitle:@"Share using" delegate:self cancelButtonTitle:@"Cancel"  destructiveButtonTitle:@"share on facebook" otherButtonTitles:@"share on twitter", @"go to run", nil];
+    }
+    else
+    {
+     loginActionSheet = [[UIActionSheet alloc] initWithTitle:@"Share using" delegate:self cancelButtonTitle:@"Cancel"  destructiveButtonTitle:@"share on facebook" otherButtonTitles:@"share on twitter", nil];
+    }
 
     [loginActionSheet showInView:self.view];
 }
@@ -444,7 +453,7 @@
     shareButton.hidden = YES;
     SLComposeViewController *composeSheet=[[SLComposeViewController alloc]init];
     composeSheet=[SLComposeViewController composeViewControllerForServiceType:serviceType];
-    [composeSheet setInitialText:[NSString stringWithFormat:@"Just comepleted a run round the %@ GP track. %@ %@ %@ @runthetracks", self.navigationItem.title, self.runData.runtime, runDistance.text, self.runData.runlaps]];
+    [composeSheet setInitialText:[NSString stringWithFormat:@"Comepleted a run round the %@ GP track. %@ %@ %@ @runthetracks", self.navigationItem.title, self.runData.runtime, runDistance.text, self.runData.runlaps]];
     
     UIGraphicsBeginImageContext(self.view.frame.size);
     CGContextRef currentContext = UIGraphicsGetCurrentContext();

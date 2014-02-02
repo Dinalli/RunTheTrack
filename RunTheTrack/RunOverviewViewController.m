@@ -186,7 +186,7 @@
     shareButton.hidden = YES;
     SLComposeViewController *composeSheet=[[SLComposeViewController alloc]init];
     composeSheet=[SLComposeViewController composeViewControllerForServiceType:serviceType];
-    [composeSheet setInitialText:[NSString stringWithFormat:@"Just comepleted a run round the %@ GP track. %@ %@ %@ @runthetracks", self.navigationItem.title, runTime.text, runDistance.text, runLaps.text]];
+    [composeSheet setInitialText:[NSString stringWithFormat:@"Comepleted a run round the %@ GP track. %@ %@ %@ @runthetracks", self.navigationItem.title, runTime.text, runDistance.text, runLaps.text]];
     
     UIGraphicsBeginImageContext(self.view.frame.size);
     CGContextRef currentContext = UIGraphicsGetCurrentContext();
