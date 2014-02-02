@@ -15,6 +15,8 @@
 @property (nonatomic, strong) IBOutlet UILabel *runTimeLabel;
 @property (nonatomic, strong) IBOutlet UILabel *runDateLabel;
 @property (nonatomic, strong) IBOutlet UILabel *runLaps;
+@property (nonatomic, strong) IBOutlet UIImageView *runType;
+
 
 
 @end

@@ -114,6 +114,15 @@
             break;
         }
     }
+    
+    if([runData.runtype isEqualToString:@"GPSRun"])
+    {
+        cell.runType.image = [UIImage imageNamed:@"gps.png"];
+    }
+    else
+    {
+        cell.runType.image = [UIImage imageNamed:@"motionrun.png"];
+    }
     return cell;
 }
 

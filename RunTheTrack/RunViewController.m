@@ -128,11 +128,11 @@ enum TimerState : NSUInteger {
 }
 
 - (void)customiseAppearance {
-    [self.timeLabel setBoldFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:75]];
-    [self.timeLabel setRegularFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:75]];
+    [self.timeLabel setBoldFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:65]];
+    [self.timeLabel setRegularFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:65]];
     
     // The font property of the label is used as the font for H,M,S and MS
-    [self.timeLabel setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:25]];
+    [self.timeLabel setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:15]];
     
     // Default label properties
     self.timeLabel.textColor = [UIColor blackColor];
