@@ -33,6 +33,7 @@
     {
         motionView.hidden = YES;
         [gpsSwitch setOn:YES];
+        [gpsSwitch setEnabled:NO];
     }
     
     appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];

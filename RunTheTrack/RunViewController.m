@@ -104,6 +104,29 @@ enum TimerState : NSUInteger {
     [CommonUtils shadowAndRoundView:runInfoView];
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    if(appDelegate.useMotion)
+    {
+        [[MessageBarManager sharedInstance] showMessageWithTitle:@"Updating Motion Updates"
+                                                     description:@"Please wait while we update your motion progress."
+                                                            type:MessageBarMessageTypeInfo];
+        
+        [cmStepCounter startStepCountingUpdatesToQueue:[NSOperationQueue mainQueue] updateOn:1 withHandler:^(NSInteger numberOfSteps, NSDate *timestamp, NSError *error) {
+            
+            stepCounter = stepCounter + numberOfSteps;
+            
+            noOfSteps.hidden = NO;
+            noOfSteps.text = [NSString stringWithFormat:@"Steps %d", numberOfSteps];
+
+                CGFloat distance = 0;
+                distance = numberOfSteps * appDelegate.runMotionDistance;
+                [self moveAnnotaionWithDistance:distance];
+        }];
+
+    }
+}
+
 - (void)customiseAppearance {
     [self.timeLabel setBoldFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:75]];
     [self.timeLabel setRegularFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:75]];
@@ -241,7 +264,8 @@ enum TimerState : NSUInteger {
         self.locationManager.delegate = self;
         self.locationManager.distanceFilter = kCLDistanceFilterNone; // setting this to 5.0 as it seems to be best and stop jitters.
         self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
-        self.locationManager.pausesLocationUpdatesAutomatically = NO;
+        self.locationManager.pausesLocationUpdatesAutomatically = YES;
+        self.locationManager.activityType = CLActivityTypeFitness;
         [self.locationManager startUpdatingLocation];
         motionActivityIndicator.image = [UIImage imageNamed:@"gps.png"];
     }
@@ -343,12 +367,12 @@ enum TimerState : NSUInteger {
                 
                 if([appDelegate useKMasUnits])
                 {
-                    runPace.text = [NSString stringWithFormat:@"%@ kph",
+                    runPace.text = [NSString stringWithFormat:@"%@ pk",
                                     [CommonUtils paceFromTimeAndDistanceKm:(int)[components hour] :(int)[components minute] :(int)[components second] :totalLocationDistance]];
                 }
                 else
                 {
-                    runPace.text = [NSString stringWithFormat:@"%@ mph",
+                    runPace.text = [NSString stringWithFormat:@"%@ pm",
                                     [CommonUtils paceFromTimeAndDistanceMiles:(int)[components hour] :(int)[components minute] :(int)[components second] :(totalLocationDistance * 0.000621371192)]];
                 }
             }
@@ -369,12 +393,12 @@ enum TimerState : NSUInteger {
                 
                 if([appDelegate useKMasUnits])
                 {
-                    runPace.text = [NSString stringWithFormat:@"%@ kph",
+                    runPace.text = [NSString stringWithFormat:@"%@ pk",
                                     [CommonUtils paceFromTimeAndDistanceKm:(int)[paceComponents hour] :(int)[paceComponents minute] :(int)[paceComponents second] :totalLocationDistance]];
                 }
                 else
                 {
-                    runPace.text = [NSString stringWithFormat:@"%@ mph",
+                    runPace.text = [NSString stringWithFormat:@"%@ pm",
                                     [CommonUtils paceFromTimeAndDistanceMiles:(int)[paceComponents hour] :(int)[paceComponents minute] :(int)[paceComponents second] :(totalLocationDistance * 0.000621371192)]];
                 }
 
@@ -407,12 +431,12 @@ enum TimerState : NSUInteger {
             
             if([appDelegate useKMasUnits])
             {
-                runPace.text = [NSString stringWithFormat:@"%@ kph",
+                runPace.text = [NSString stringWithFormat:@"%@ pk",
                                 [CommonUtils paceFromTimeAndDistanceKm:(int)[paceComponents hour] :(int)[paceComponents minute] :(int)[paceComponents second] :totalLocationDistance]];
             }
             else
             {
-                runPace.text = [NSString stringWithFormat:@"%@ mph",
+                runPace.text = [NSString stringWithFormat:@"%@ pm",
                                 [CommonUtils paceFromTimeAndDistanceMiles:(int)[paceComponents hour] :(int)[paceComponents minute] :(int)[paceComponents second] :(totalLocationDistance * 0.000621371192)]];
             }
             
@@ -447,12 +471,12 @@ enum TimerState : NSUInteger {
 
             if([appDelegate useKMasUnits])
             {
-                runPace.text = [NSString stringWithFormat:@"%@ kph",
+                runPace.text = [NSString stringWithFormat:@"%@ pk",
                                 [CommonUtils paceFromTimeAndDistanceKm:(int)[paceComponents hour] :(int)[paceComponents minute] :(int)[paceComponents second] :totalLocationDistance]];
             }
             else
             {
-                runPace.text = [NSString stringWithFormat:@"%@ mph",
+                runPace.text = [NSString stringWithFormat:@"%@ pm",
                                 [CommonUtils paceFromTimeAndDistanceMiles:(int)[paceComponents hour] :(int)[paceComponents minute] :(int)[paceComponents second] :(totalLocationDistance * 0.000621371192)]];
             }
             
@@ -514,6 +538,23 @@ enum TimerState : NSUInteger {
     } // Timer not set
 }
 
+-(void)locationManagerDidPauseLocationUpdates:(CLLocationManager *)manager
+{
+    [self.timeLabel stop];
+    [self pauseTimer:timer];
+    [startBtn setTitle:@"RESUME" forState:UIControlStateNormal];
+    self.timerState = timerStopped;
+    btnFinish.hidden = NO;
+    finishDate = [NSDate date];
+    
+    [[MessageBarManager sharedInstance] showMessageWithTitle:@"Paused Location Updates"
+                                                 description:@"No movement has been detected for a while. Resume if you wish to continue."
+                                                        type:MessageBarMessageTypeError];
+    
+    
+    NSLog(@"Locations paused");
+}
+
 #pragma mark Segue Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue
@@ -539,12 +580,12 @@ enum TimerState : NSUInteger {
         
         if([appDelegate useKMasUnits])
         {
-            runPace.text = [NSString stringWithFormat:@"%@ kph",
+            runPace.text = [NSString stringWithFormat:@"%@ pk",
                             [CommonUtils paceFromTimeAndDistanceKm:(int)[components hour] :(int)[components minute] :(int)[components second] :totalLocationDistance]];
         }
         else
         {
-            runPace.text = [NSString stringWithFormat:@"%@ mph",
+            runPace.text = [NSString stringWithFormat:@"%@ pm",
                             [CommonUtils paceFromTimeAndDistanceMiles:(int)[components hour] :(int)[components minute] :(int)[components second] :(totalLocationDistance * 0.000621371192)]];
         }
         
