@@ -15,6 +15,7 @@
 #import "Sector1Annotaion.h"
 #import "Sector2Annotation.h"
 #import "LapAnnotation.h"
+#import "TimeCalloutView.h"
 
 @interface RunDetailViewController ()
 
@@ -247,6 +248,11 @@
                     LapAnnotation *finishAnno = [[LapAnnotation alloc] init];
                     finishAnno.coordinate = lapCordinate;
                     finishAnno.title = [NSString stringWithFormat:@"Lap %@ time %@",rSector.lapNumber, rSector.lapTime];
+                    
+                    finishAnno.trackName = self.runData.runtrackname;
+                    finishAnno.time = rSector.lapTime;
+                    finishAnno.lap = rSector.lapNumber;
+                    finishAnno.sectorNumber = @"3";
                     [mv addAnnotation:finishAnno];
                     
                     MKMapCamera *camera3 = [MKMapCamera
@@ -288,7 +294,7 @@
             UIImage *flagImage = [UIImage imageNamed:@"cheq.png"];
             // You may need to resize the image here.
             annotationView.image = flagImage;
-            annotationView.canShowCallout = YES;
+            annotationView.canShowCallout = NO;
             return annotationView;
         }
         else
@@ -307,7 +313,7 @@
             UIImage *flagImage = [UIImage imageNamed:@"sector1.png"];
             // You may need to resize the image here.
             annotationView.image = flagImage;
-            annotationView.canShowCallout = YES;
+            annotationView.canShowCallout = NO;
             return annotationView;
         }
         else
@@ -326,7 +332,7 @@
             UIImage *flagImage = [UIImage imageNamed:@"sector2.png"];
             // You may need to resize the image here.
             annotationView.image = flagImage;
-            annotationView.canShowCallout = YES;
+            annotationView.canShowCallout = NO;
             return annotationView;
         }
         else
@@ -346,7 +352,7 @@
             UIImage *flagImage = [UIImage imageNamed:@"runnerLap.png"];
             // You may need to resize the image here.
             annotationView.image = flagImage;
-            annotationView.canShowCallout = YES;
+            annotationView.canShowCallout = NO;
             return annotationView;
         }
         else
@@ -357,6 +363,27 @@
     }
     
     return nil;
+}
+
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
+{
+    if([view.annotation isKindOfClass:[LapAnnotation class]])
+    {
+        LapAnnotation *la = (LapAnnotation *)view.annotation;
+        UIView *backView  = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-140, 320 ,120)];
+        [backView setBackgroundColor:[UIColor blackColor]];
+        [backView setAlpha:0.35];
+        TimeCalloutView *calloutView = [[TimeCalloutView alloc] initWithFrame:CGRectMake(0, 0, 320 ,120)];
+        [calloutView setBackgroundColor:[UIColor clearColor]];
+        
+        [calloutView setTrackNameText:la.trackName];
+        [calloutView setLapText:la.lap];
+        [calloutView setTimeText:la.time];
+        [calloutView setSectorText:la.sectorNumber];
+        
+        [backView addSubview:calloutView];
+        [view.superview addSubview:backView];
+    }
 }
 
 

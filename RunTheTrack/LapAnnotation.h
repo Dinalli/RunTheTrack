@@ -6,12 +6,8 @@
 //  Copyright (c) 2014 iphonemobileapp. All rights reserved.
 //
 
-#import <MapKit/MapKit.h>
-
-@interface LapAnnotation : NSObject <MKAnnotation>
+@interface LapAnnotation : RTTBaseAnnotation
 
 @property (nonatomic, strong) NSString *imageName;
-@property (nonatomic, copy) NSString *title;
-@property (nonatomic, assign) CLLocationCoordinate2D coordinate;
 
 @end

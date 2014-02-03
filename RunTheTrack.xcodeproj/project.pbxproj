@@ -11,6 +11,7 @@
 		400522571880209600B34DAD /* RunInfoAltitudeGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 400522561880209600B34DAD /* RunInfoAltitudeGraph.m */; };
 		4015F4C818888A54006C3DC8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4015F4C718888A54006C3DC8 /* QuartzCore.framework */; };
 		4015F4CA18888A5B006C3DC8 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4015F4C918888A5B006C3DC8 /* Accelerate.framework */; };
+		4017D217189F7EDD00ADA8B1 /* TimeCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4017D216189F7EDD00ADA8B1 /* TimeCalloutView.m */; };
 		4018F50F17F832B9006F990E /* JBKenBurnsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4018F50E17F832B9006F990E /* JBKenBurnsView.m */; };
 		4018F52217F83903006F990E /* Bahrain.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4018F51117F83903006F990E /* Bahrain.jpg */; };
 		4018F52317F83903006F990E /* canada.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4018F51217F83903006F990E /* canada.jpg */; };
@@ -138,7 +139,6 @@
 		40BA42721865E6E1007A6329 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40BA42711865E6E1007A6329 /* SystemConfiguration.framework */; };
 		40BAAD3F18203FB900137E8C /* beep-8.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 40BAAD3E18203FB900137E8C /* beep-8.mp3 */; };
 		40BAAD411820509B00137E8C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40BAAD401820509B00137E8C /* AVFoundation.framework */; };
-		40BE1F6A1823C7C2004C3FC3 /* MKRunnerAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BE1F691823C7C2004C3FC3 /* MKRunnerAnnotation.m */; };
 		40C1656317EB637900D4E093 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40C1656217EB637900D4E093 /* Foundation.framework */; };
 		40C1656517EB637900D4E093 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40C1656417EB637900D4E093 /* CoreGraphics.framework */; };
 		40C1656717EB637900D4E093 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40C1656617EB637900D4E093 /* UIKit.framework */; };
@@ -171,6 +171,7 @@
 		40F3E1E4180F194A00785F27 /* HistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F3E1E3180F194A00785F27 /* HistoryTableViewController.m */; };
 		40FA0ABA1883489C00EDB8AE /* abu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 40FA0AB91883489C00EDB8AE /* abu.jpg */; };
 		40FA5CF91883CB9D0047C7EA /* RTT.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 40C1659C17EB658A00D4E093 /* RTT.xcdatamodeld */; };
+		40FFC29218A0145A00E5D8D3 /* RTTBaseAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FFC29118A0145A00E5D8D3 /* RTTBaseAnnotation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -190,6 +191,8 @@
 		400522561880209600B34DAD /* RunInfoAltitudeGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunInfoAltitudeGraph.m; sourceTree = "<group>"; };
 		4015F4C718888A54006C3DC8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4015F4C918888A5B006C3DC8 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		4017D215189F7EDD00ADA8B1 /* TimeCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeCalloutView.h; sourceTree = "<group>"; };
+		4017D216189F7EDD00ADA8B1 /* TimeCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeCalloutView.m; sourceTree = "<group>"; };
 		4018F50D17F832B9006F990E /* JBKenBurnsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBKenBurnsView.h; sourceTree = "<group>"; };
 		4018F50E17F832B9006F990E /* JBKenBurnsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBKenBurnsView.m; sourceTree = "<group>"; };
 		4018F51117F83903006F990E /* Bahrain.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Bahrain.jpg; sourceTree = "<group>"; };
@@ -393,8 +396,6 @@
 		40BA42711865E6E1007A6329 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		40BAAD3E18203FB900137E8C /* beep-8.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "beep-8.mp3"; sourceTree = "<group>"; };
 		40BAAD401820509B00137E8C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		40BE1F681823C7C2004C3FC3 /* MKRunnerAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKRunnerAnnotation.h; sourceTree = "<group>"; };
-		40BE1F691823C7C2004C3FC3 /* MKRunnerAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKRunnerAnnotation.m; sourceTree = "<group>"; };
 		40C1655F17EB637900D4E093 /* RunTheTrack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunTheTrack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40C1656217EB637900D4E093 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		40C1656417EB637900D4E093 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -437,6 +438,8 @@
 		40F3E1E2180F194900785F27 /* HistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryTableViewController.h; sourceTree = "<group>"; };
 		40F3E1E3180F194A00785F27 /* HistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewController.m; sourceTree = "<group>"; };
 		40FA0AB91883489C00EDB8AE /* abu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = abu.jpg; sourceTree = "<group>"; };
+		40FFC29018A0145A00E5D8D3 /* RTTBaseAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTTBaseAnnotation.h; sourceTree = "<group>"; };
+		40FFC29118A0145A00E5D8D3 /* RTTBaseAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTTBaseAnnotation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -501,6 +504,15 @@
 			children = (
 			);
 			name = CorePlot;
+			sourceTree = "<group>";
+		};
+		4017D214189F7EB000ADA8B1 /* MapCallouts */ = {
+			isa = PBXGroup;
+			children = (
+				4017D215189F7EDD00ADA8B1 /* TimeCalloutView.h */,
+				4017D216189F7EDD00ADA8B1 /* TimeCalloutView.m */,
+			);
+			name = MapCallouts;
 			sourceTree = "<group>";
 		};
 		4018F50417F82E26006F990E /* 3rdParty */ = {
@@ -906,8 +918,6 @@
 		40BE1F671823C79F004C3FC3 /* MapAnnotations */ = {
 			isa = PBXGroup;
 			children = (
-				40BE1F681823C7C2004C3FC3 /* MKRunnerAnnotation.h */,
-				40BE1F691823C7C2004C3FC3 /* MKRunnerAnnotation.m */,
 				405E533A185E10C000A8BD45 /* Sector1Annotaion.h */,
 				405E533B185E10C000A8BD45 /* Sector1Annotaion.m */,
 				405E533D185E112A00A8BD45 /* Sector2Annotation.h */,
@@ -916,6 +926,8 @@
 				405E5341185E113D00A8BD45 /* StartFinishAnnotation.m */,
 				40572649188FA3FF005DD240 /* LapAnnotation.h */,
 				4057264A188FA3FF005DD240 /* LapAnnotation.m */,
+				40FFC29018A0145A00E5D8D3 /* RTTBaseAnnotation.h */,
+				40FFC29118A0145A00E5D8D3 /* RTTBaseAnnotation.m */,
 			);
 			name = MapAnnotations;
 			sourceTree = "<group>";
@@ -976,6 +988,7 @@
 		40C1656817EB637900D4E093 /* RunTheTrack */ = {
 			isa = PBXGroup;
 			children = (
+				4017D214189F7EB000ADA8B1 /* MapCallouts */,
 				400522511880205100B34DAD /* Views */,
 				4057EB2E18703B9300F52EF4 /* Common */,
 				40BE1F671823C79F004C3FC3 /* MapAnnotations */,
@@ -1303,6 +1316,7 @@
 				407710AF18453B6E00882BBE /* ProfileCollectionCell.m in Sources */,
 				40E5A2EF185655B100E8E87E /* TTCounterLabel.m in Sources */,
 				4057264B188FA3FF005DD240 /* LapAnnotation.m in Sources */,
+				4017D217189F7EDD00ADA8B1 /* TimeCalloutView.m in Sources */,
 				4057EB3118703BA800F52EF4 /* CommonUtils.m in Sources */,
 				405E533F185E112A00A8BD45 /* Sector2Annotation.m in Sources */,
 				4042CA851889A584005EDEFD /* RunAchievement.m in Sources */,
@@ -1326,7 +1340,6 @@
 				40A2AA6D188F023800F5E263 /* RunSectors.m in Sources */,
 				40D35DCA182541E500D10899 /* CoreDataHelper.m in Sources */,
 				40D42C9E18702DBD0057DF2D /* YLProgressBar.m in Sources */,
-				40BE1F6A1823C7C2004C3FC3 /* MKRunnerAnnotation.m in Sources */,
 				407C4DF6180BF65300F7B2FE /* AchivementCell.m in Sources */,
 				4042CA7C1889A584005EDEFD /* RunLocations.m in Sources */,
 				4048167C1845D7D2000410C7 /* ProfileHeaderView.m in Sources */,
@@ -1336,6 +1349,7 @@
 				409357A71855F7C6007EE900 /* UIImageView+More.m in Sources */,
 				4057146F181D471800D0070B /* RunFinishViewController.m in Sources */,
 				40C1656F17EB637900D4E093 /* main.m in Sources */,
+				40FFC29218A0145A00E5D8D3 /* RTTBaseAnnotation.m in Sources */,
 				40892C201885B437008F7D38 /* RunViewController.m in Sources */,
 				4042CA881889A585005EDEFD /* RunAltitude.m in Sources */,
 			);
