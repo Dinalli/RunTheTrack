@@ -13,8 +13,10 @@
 #import "Sector1Annotaion.h"
 #import "Sector2Annotation.h"
 #import "StartFinishAnnotation.h"
+#import "SectorTickerView.h"
+#import "SectorTicker.h"
 
-@interface RunTrackMapViewController : UIViewController <MKMapViewDelegate, UIActionSheetDelegate>
+@interface RunTrackMapViewController : UIViewController <MKMapViewDelegate, UIActionSheetDelegate, SectorTickerDelegate>
 {
     IBOutlet UILabel *runTime;
     IBOutlet UILabel *runLaps;
@@ -45,6 +47,8 @@
     CLLocationCoordinate2D startCoordinate;
     CLLocationCoordinate2D endCoordinate;
     int cameraIndex;
+    
+    NSMutableArray *sectorTickerArray;
 }
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;

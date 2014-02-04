@@ -11,8 +11,9 @@
 #import "JBKenBurnsView.h"
 #import "RunData.h"
 #import "RunLocations.h"
+#import "SectorTicker.h"
 
-@interface RunDetailViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate, UIActionSheetDelegate>
+@interface RunDetailViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate, UIActionSheetDelegate, SectorTickerDelegate>
 {
     IBOutlet UILabel *runTime;
     IBOutlet UILabel *runLaps;
@@ -35,6 +36,8 @@
     CLLocationCoordinate2D startCoordinate;
     CLLocationCoordinate2D endCoordinate;
     int cameraIndex;
+    
+    NSMutableArray *sectorArray;
 }
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;

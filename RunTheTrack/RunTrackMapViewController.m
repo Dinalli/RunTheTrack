@@ -12,6 +12,11 @@
 #import <Social/Social.h>
 #import "AppDelegate.h"
 #import "RunSectors.h"
+#import "StartFinishAnnotation.h"
+#import "Sector1Annotaion.h"
+#import "Sector2Annotation.h"
+#import "LapAnnotation.h"
+#import "SectorTicker.h"
 
 @implementation RunTrackMapViewController
 
@@ -280,16 +285,152 @@
             return [aRunSector.lapNumber localizedCompare: bRunSector.lapNumber];
         }];
         
+        if(sectorTickerArray == nil) sectorTickerArray = [[NSMutableArray alloc] init];
+        
         for(RunSectors *rSector in runLapsArray)
         {
             startfinish.title = [NSString stringWithFormat:@"%@, Lap %@ time %@", startfinish.title,rSector.lapNumber, rSector.lapTime];
             sector1Ann.title = [NSString stringWithFormat:@"%@ - %@",sector1Ann.title, rSector.sector1Time];
             sector2Ann.title = [NSString stringWithFormat:@"%@ - %@",sector2Ann.title,rSector.sector2Time];
             
+            SectorTickerView *lapTickerView = [[SectorTickerView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)
+                                                                                   andLap:rSector.lapNumber andSector:@"0" andTime:rSector.lapTime andPurpleSector:NO];
+            
+            [sectorTickerArray addObject:lapTickerView];
+            
+            SectorTickerView *sector1TickerView = [[SectorTickerView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)
+                                                                            andLap:rSector.lapNumber andSector:@"1" andTime:rSector.sector1Time andPurpleSector:NO];
+            
+            [sectorTickerArray addObject:sector1TickerView];
+            
+            SectorTickerView *sector2TickerView = [[SectorTickerView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)
+                                                                                   andLap:rSector.lapNumber andSector:@"2" andTime:rSector.sector2Time andPurpleSector:NO];
+            
+            [sectorTickerArray addObject:sector2TickerView];
+            
+            SectorTickerView *sector3TickerView = [[SectorTickerView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)
+                                                                                   andLap:rSector.lapNumber andSector:@"3" andTime:rSector.sector3Time andPurpleSector:NO];
+            
+            [sectorTickerArray addObject:sector3TickerView];
+            
             
         }
+        
+        SectorTicker *stkticker=[[SectorTicker alloc] initWithFrame:CGRectMake(0, 125, 320, 20)];
+        stkticker.sectorDelegate=self;
+        [stkticker setBackgroundColor:[UIColor clearColor]];
+        [mv addSubview:stkticker];
+        [stkticker start];
     }
 }
+
+#pragma mark- UITickerView delegate method
+
+- (NSInteger)numberOfRowsintickerView:(SectorTicker *)tickerView
+{
+    return [sectorTickerArray count];
+}
+
+- (id)tickerView:(SectorTicker*)tickerView cellForRowAtIndex:(int)index
+{
+    return [sectorTickerArray objectAtIndex:index];
+}
+
+//-(void)showSectorTimes
+//{
+//    if(self.runData.runSectors.count > 0)
+//    {
+//        runLapsArray = [[self.runData.runSectors allObjects] mutableCopy];
+//        [runLapsArray sortUsingComparator:^NSComparisonResult(id a, id b) {
+//            RunSectors *aRunSector = (RunSectors *)a;
+//            RunSectors *bRunSector = (RunSectors *)b;
+//            NSInteger firstInteger = [aRunSector.lapNumber integerValue];
+//            NSInteger secondInteger = [bRunSector.lapNumber integerValue];
+//            
+//            if (firstInteger > secondInteger)
+//                return NSOrderedDescending;
+//            if (firstInteger < secondInteger)
+//                return NSOrderedAscending;
+//            return [aRunSector.lapNumber localizedCompare: bRunSector.lapNumber];
+//        }];
+//        
+//        for(RunSectors *rSector in runLapsArray)
+//        {
+//            CLLocationCoordinate2D sect1Cordinate =  CLLocationCoordinate2DMake([rSector.sec1Lat doubleValue], [rSector.sec1Long doubleValue]);
+//            
+//            Sector1Annotaion *sector1Anno = [[Sector1Annotaion alloc] init];
+//            sector1Anno.coordinate = sect1Cordinate;
+//            sector1Anno.title = [NSString stringWithFormat:@"Sector 1 %@",rSector.sector1Time];
+//            sector1Anno.trackName = self.runData.runtrackname;
+//            sector1Anno.time = rSector.lapTime;
+//            sector1Anno.lap = rSector.lapNumber;
+//            sector1Anno.sectorNumber = @"1";
+//            sector1Anno.sectorTime = rSector.sector1Time;
+//            
+//            [mv addAnnotation:sector1Anno];
+//            
+//            MKMapCamera *camera1 = [MKMapCamera
+//                                    cameraLookingAtCenterCoordinate:sect1Cordinate
+//                                    fromEyeCoordinate:startCoordinate
+//                                    eyeAltitude:150.0];
+//            
+//            [runCameras addObject:camera1];
+//            
+//            if(![rSector.sec2Lat isEqualToString:@"0.000000"])
+//            {
+//                
+//                CLLocationCoordinate2D sect2Cordinate =  CLLocationCoordinate2DMake([rSector.sec2Lat doubleValue], [rSector.sec2Long doubleValue]);
+//                
+//                Sector2Annotation *sector2Anno = [[Sector2Annotation alloc] init];
+//                sector2Anno.coordinate = sect2Cordinate;
+//                sector2Anno.title = [NSString stringWithFormat:@"Sector 2 %@",rSector.sector2Time];
+//                
+//                sector2Anno.trackName = self.runData.runtrackname;
+//                sector2Anno.time = rSector.lapTime;
+//                sector2Anno.lap = rSector.lapNumber;
+//                sector2Anno.sectorNumber = @"2";
+//                sector2Anno.sectorTime = rSector.sector2Time;
+//                
+//                [mv addAnnotation:sector2Anno];
+//                
+//                MKMapCamera *camera2 = [MKMapCamera
+//                                        cameraLookingAtCenterCoordinate:sect2Cordinate
+//                                        fromEyeCoordinate:sect1Cordinate
+//                                        eyeAltitude:150.0];
+//                
+//                [runCameras addObject:camera2];
+//                
+//                
+//                if(![rSector.lapLat isEqualToString:@"0.000000"])
+//                {
+//                    CLLocationCoordinate2D lapCordinate =  CLLocationCoordinate2DMake([rSector.lapLat doubleValue], [rSector.lapLong doubleValue]);
+//                    
+//                    LapAnnotation *finishAnno = [[LapAnnotation alloc] init];
+//                    finishAnno.coordinate = lapCordinate;
+//                    finishAnno.title = [NSString stringWithFormat:@"Lap %@ time %@",rSector.lapNumber, rSector.lapTime];
+//                    
+//                    finishAnno.trackName = self.runData.runtrackname;
+//                    finishAnno.time = rSector.lapTime;
+//                    finishAnno.lap = rSector.lapNumber;
+//                    finishAnno.sectorTime = rSector.sector3Time;
+//                    finishAnno.sectorNumber = @"3";
+//                    [mv addAnnotation:finishAnno];
+//                    
+//                    MKMapCamera *camera3 = [MKMapCamera
+//                                            cameraLookingAtCenterCoordinate:lapCordinate
+//                                            fromEyeCoordinate:sect2Cordinate
+//                                            eyeAltitude:150.0];
+//                    
+//                    
+//                    
+//                    [runCameras addObject:camera3];
+//                }
+//            }
+//            
+//        }
+//    }
+//}
+
 
 
 #pragma mark MapView Delegate
@@ -374,7 +515,7 @@
             UIImage *flagImage = [UIImage imageNamed:@"runnerLap.png"];
             // You may need to resize the image here.
             annotationView.image = flagImage;
-            annotationView.canShowCallout = YES;
+            annotationView.canShowCallout = NO;
             return annotationView;
         }
         else

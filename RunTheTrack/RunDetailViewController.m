@@ -15,7 +15,8 @@
 #import "Sector1Annotaion.h"
 #import "Sector2Annotation.h"
 #import "LapAnnotation.h"
-#import "TimeCalloutView.h"
+#import "SectorTicker.h"
+#import "SectorTickerView.h"
 
 @interface RunDetailViewController ()
 
@@ -184,9 +185,6 @@
         }
     }    
     [self addRouteToMap];
-
-    [CommonUtils shadowAndRoundView:detailsView];
-    [CommonUtils addMotionEffectToView:detailsView];
 }
 
 -(void)showSectorTimes
@@ -214,6 +212,12 @@
             Sector1Annotaion *sector1Anno = [[Sector1Annotaion alloc] init];
             sector1Anno.coordinate = sect1Cordinate;
             sector1Anno.title = [NSString stringWithFormat:@"Sector 1 %@",rSector.sector1Time];
+            sector1Anno.trackName = self.runData.runtrackname;
+            sector1Anno.time = rSector.lapTime;
+            sector1Anno.lap = rSector.lapNumber;
+            sector1Anno.sectorNumber = @"1";
+            sector1Anno.sectorTime = rSector.sector1Time;
+            
             [mv addAnnotation:sector1Anno];
             
             MKMapCamera *camera1 = [MKMapCamera
@@ -231,6 +235,13 @@
                 Sector2Annotation *sector2Anno = [[Sector2Annotation alloc] init];
                 sector2Anno.coordinate = sect2Cordinate;
                 sector2Anno.title = [NSString stringWithFormat:@"Sector 2 %@",rSector.sector2Time];
+                
+                sector2Anno.trackName = self.runData.runtrackname;
+                sector2Anno.time = rSector.lapTime;
+                sector2Anno.lap = rSector.lapNumber;
+                sector2Anno.sectorNumber = @"2";
+                sector2Anno.sectorTime = rSector.sector2Time;
+                
                 [mv addAnnotation:sector2Anno];
                 
                 MKMapCamera *camera2 = [MKMapCamera
@@ -252,6 +263,7 @@
                     finishAnno.trackName = self.runData.runtrackname;
                     finishAnno.time = rSector.lapTime;
                     finishAnno.lap = rSector.lapNumber;
+                    finishAnno.sectorTime = rSector.sector3Time;
                     finishAnno.sectorNumber = @"3";
                     [mv addAnnotation:finishAnno];
                     
@@ -353,6 +365,7 @@
             // You may need to resize the image here.
             annotationView.image = flagImage;
             annotationView.canShowCallout = NO;
+            
             return annotationView;
         }
         else
@@ -367,23 +380,37 @@
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
-    if([view.annotation isKindOfClass:[LapAnnotation class]])
-    {
-        LapAnnotation *la = (LapAnnotation *)view.annotation;
-        UIView *backView  = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-140, 320 ,120)];
-        [backView setBackgroundColor:[UIColor blackColor]];
-        [backView setAlpha:0.35];
-        TimeCalloutView *calloutView = [[TimeCalloutView alloc] initWithFrame:CGRectMake(0, 0, 320 ,120)];
-        [calloutView setBackgroundColor:[UIColor clearColor]];
+    [mv deselectAnnotation:view.annotation animated:YES];
+    
+
+        RTTBaseAnnotation *la = (RTTBaseAnnotation *)view.annotation;
         
-        [calloutView setTrackNameText:la.trackName];
-        [calloutView setLapText:la.lap];
-        [calloutView setTimeText:la.time];
-        [calloutView setSectorText:la.sectorNumber];
-        
-        [backView addSubview:calloutView];
-        [view.superview addSubview:backView];
-    }
+        if(sectorArray == nil) sectorArray = [[NSMutableArray alloc] init];
+    
+    SectorTickerView *tickerView = [[SectorTickerView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)
+                                                                    andLap:la.lap andSector:la.sectorNumber andTime:la.sectorTime andPurpleSector:NO];
+    [sectorArray addObject:tickerView];
+    [sectorArray addObject:tickerView];
+    [sectorArray addObject:tickerView];
+    
+        SectorTicker *stkticker=[[SectorTicker alloc] initWithFrame:CGRectMake(0, 125, 320, 40)];
+        stkticker.sectorDelegate=self;
+        [stkticker setBackgroundColor:[UIColor orangeColor]];
+        [mv addSubview:stkticker];
+    [stkticker start];
+
+}
+
+#pragma mark- UITickerView delegate method
+
+- (NSInteger)numberOfRowsintickerView:(SectorTicker *)tickerView
+{
+    return [sectorArray count];
+}
+
+- (id)tickerView:(SectorTicker*)tickerView cellForRowAtIndex:(int)index
+{
+    return [sectorArray objectAtIndex:index];
 }
 
 

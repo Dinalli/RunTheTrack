@@ -15,6 +15,7 @@
 @property (nonatomic) NSString *lap;
 @property (nonatomic) NSString *time;
 @property (nonatomic) NSString *sectorNumber;
+@property (nonatomic) NSString *sectorTime;
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, assign) CLLocationCoordinate2D coordinate;

@@ -11,7 +11,6 @@
 		400522571880209600B34DAD /* RunInfoAltitudeGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 400522561880209600B34DAD /* RunInfoAltitudeGraph.m */; };
 		4015F4C818888A54006C3DC8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4015F4C718888A54006C3DC8 /* QuartzCore.framework */; };
 		4015F4CA18888A5B006C3DC8 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4015F4C918888A5B006C3DC8 /* Accelerate.framework */; };
-		4017D217189F7EDD00ADA8B1 /* TimeCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4017D216189F7EDD00ADA8B1 /* TimeCalloutView.m */; };
 		4018F50F17F832B9006F990E /* JBKenBurnsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4018F50E17F832B9006F990E /* JBKenBurnsView.m */; };
 		4018F52217F83903006F990E /* Bahrain.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4018F51117F83903006F990E /* Bahrain.jpg */; };
 		4018F52317F83903006F990E /* canada.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4018F51217F83903006F990E /* canada.jpg */; };
@@ -56,6 +55,8 @@
 		4042CA7C1889A584005EDEFD /* RunLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 4042CA7B1889A584005EDEFD /* RunLocations.m */; };
 		4042CA851889A584005EDEFD /* RunAchievement.m in Sources */ = {isa = PBXBuildFile; fileRef = 4042CA841889A584005EDEFD /* RunAchievement.m */; };
 		4042CA881889A585005EDEFD /* RunAltitude.m in Sources */ = {isa = PBXBuildFile; fileRef = 4042CA871889A585005EDEFD /* RunAltitude.m */; };
+		40438EA318A1584500BC6966 /* SectorTicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 40438EA218A1584500BC6966 /* SectorTicker.m */; };
+		40438EA618A15F0D00BC6966 /* SectorTickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40438EA518A15F0D00BC6966 /* SectorTickerView.m */; };
 		4047939F182F7AEC004FEB73 /* RunCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4047939E182F7AEC004FEB73 /* RunCell.m */; };
 		404793A2182F83BA004FEB73 /* RunDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 404793A1182F83BA004FEB73 /* RunDetailViewController.m */; };
 		4048167C1845D7D2000410C7 /* ProfileHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4048167B1845D7D2000410C7 /* ProfileHeaderView.m */; };
@@ -191,8 +192,6 @@
 		400522561880209600B34DAD /* RunInfoAltitudeGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunInfoAltitudeGraph.m; sourceTree = "<group>"; };
 		4015F4C718888A54006C3DC8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4015F4C918888A5B006C3DC8 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
-		4017D215189F7EDD00ADA8B1 /* TimeCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeCalloutView.h; sourceTree = "<group>"; };
-		4017D216189F7EDD00ADA8B1 /* TimeCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeCalloutView.m; sourceTree = "<group>"; };
 		4018F50D17F832B9006F990E /* JBKenBurnsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBKenBurnsView.h; sourceTree = "<group>"; };
 		4018F50E17F832B9006F990E /* JBKenBurnsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBKenBurnsView.m; sourceTree = "<group>"; };
 		4018F51117F83903006F990E /* Bahrain.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Bahrain.jpg; sourceTree = "<group>"; };
@@ -249,6 +248,10 @@
 		4042CA841889A584005EDEFD /* RunAchievement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunAchievement.m; sourceTree = "<group>"; };
 		4042CA861889A585005EDEFD /* RunAltitude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunAltitude.h; sourceTree = "<group>"; };
 		4042CA871889A585005EDEFD /* RunAltitude.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunAltitude.m; sourceTree = "<group>"; };
+		40438EA118A1584500BC6966 /* SectorTicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectorTicker.h; sourceTree = "<group>"; };
+		40438EA218A1584500BC6966 /* SectorTicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectorTicker.m; sourceTree = "<group>"; };
+		40438EA418A15F0D00BC6966 /* SectorTickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectorTickerView.h; sourceTree = "<group>"; };
+		40438EA518A15F0D00BC6966 /* SectorTickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectorTickerView.m; sourceTree = "<group>"; };
 		4047939D182F7AEC004FEB73 /* RunCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunCell.h; sourceTree = "<group>"; };
 		4047939E182F7AEC004FEB73 /* RunCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunCell.m; sourceTree = "<group>"; };
 		404793A0182F83BA004FEB73 /* RunDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunDetailViewController.h; sourceTree = "<group>"; };
@@ -509,8 +512,10 @@
 		4017D214189F7EB000ADA8B1 /* MapCallouts */ = {
 			isa = PBXGroup;
 			children = (
-				4017D215189F7EDD00ADA8B1 /* TimeCalloutView.h */,
-				4017D216189F7EDD00ADA8B1 /* TimeCalloutView.m */,
+				40438EA118A1584500BC6966 /* SectorTicker.h */,
+				40438EA218A1584500BC6966 /* SectorTicker.m */,
+				40438EA418A15F0D00BC6966 /* SectorTickerView.h */,
+				40438EA518A15F0D00BC6966 /* SectorTickerView.m */,
 			);
 			name = MapCallouts;
 			sourceTree = "<group>";
@@ -1316,7 +1321,6 @@
 				407710AF18453B6E00882BBE /* ProfileCollectionCell.m in Sources */,
 				40E5A2EF185655B100E8E87E /* TTCounterLabel.m in Sources */,
 				4057264B188FA3FF005DD240 /* LapAnnotation.m in Sources */,
-				4017D217189F7EDD00ADA8B1 /* TimeCalloutView.m in Sources */,
 				4057EB3118703BA800F52EF4 /* CommonUtils.m in Sources */,
 				405E533F185E112A00A8BD45 /* Sector2Annotation.m in Sources */,
 				4042CA851889A584005EDEFD /* RunAchievement.m in Sources */,
@@ -1338,11 +1342,13 @@
 				4022963F188A83FA00BF515F /* RunData.m in Sources */,
 				4047939F182F7AEC004FEB73 /* RunCell.m in Sources */,
 				40A2AA6D188F023800F5E263 /* RunSectors.m in Sources */,
+				40438EA318A1584500BC6966 /* SectorTicker.m in Sources */,
 				40D35DCA182541E500D10899 /* CoreDataHelper.m in Sources */,
 				40D42C9E18702DBD0057DF2D /* YLProgressBar.m in Sources */,
 				407C4DF6180BF65300F7B2FE /* AchivementCell.m in Sources */,
 				4042CA7C1889A584005EDEFD /* RunLocations.m in Sources */,
 				4048167C1845D7D2000410C7 /* ProfileHeaderView.m in Sources */,
+				40438EA618A15F0D00BC6966 /* SectorTickerView.m in Sources */,
 				40892C171885B326008F7D38 /* RunTrackMapViewController.m in Sources */,
 				40FA5CF91883CB9D0047C7EA /* RTT.xcdatamodeld in Sources */,
 				407710AC18453B3900882BBE /* ProfileViewController.m in Sources */,
