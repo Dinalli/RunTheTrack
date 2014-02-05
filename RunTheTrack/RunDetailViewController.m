@@ -206,6 +206,8 @@
             return [aRunSector.lapNumber localizedCompare: bRunSector.lapNumber];
         }];
         
+        if(sectorArray == nil) sectorArray = [[NSMutableArray alloc] init];
+        
         for(RunSectors *rSector in runLapsArray)
         {
             CLLocationCoordinate2D sect1Cordinate =  CLLocationCoordinate2DMake([rSector.sec1Lat doubleValue], [rSector.sec1Long doubleValue]);
@@ -227,6 +229,11 @@
                                     eyeAltitude:150.0];
             
             [runCameras addObject:camera1];
+            
+            SectorTickerView *sector1TickerView = [[SectorTickerView alloc] initWithFrame:CGRectMake(0, 0, 150, 20)
+                                                                                   andLap:rSector.lapNumber andSector:@"1" andTime:rSector.sector1Time andPurpleSector:NO];
+            
+            [sectorArray addObject:sector1TickerView];
             
             if(![rSector.sec2Lat isEqualToString:@"0.000000"])
             {
@@ -251,6 +258,11 @@
                                         eyeAltitude:150.0];
                 
                 [runCameras addObject:camera2];
+                
+                SectorTickerView *sector2TickerView = [[SectorTickerView alloc] initWithFrame:CGRectMake(0, 0, 150, 20)
+                                                                                       andLap:rSector.lapNumber andSector:@"2" andTime:rSector.sector2Time andPurpleSector:NO];
+                
+                [sectorArray addObject:sector2TickerView];
 
             
                 if(![rSector.lapLat isEqualToString:@"0.000000"])
@@ -273,13 +285,22 @@
                                             fromEyeCoordinate:sect2Cordinate
                                             eyeAltitude:150.0];
                     
-                    
-                    
                     [runCameras addObject:camera3];
+                    
+                    SectorTickerView *lapTickerView = [[SectorTickerView alloc] initWithFrame:CGRectMake(0, 0, 150, 20)
+                                                                                       andLap:rSector.lapNumber andSector:@"0" andTime:rSector.lapTime andPurpleSector:NO];
+                    
+                    [sectorArray addObject:lapTickerView];
                 }
             }
             
         }
+        
+        stkticker=[[SectorTicker alloc] initWithFrame:CGRectMake(0, 123, 320, 30)];
+        stkticker.sectorDelegate=self;
+        [stkticker setBackgroundColor:[UIColor clearColor]];
+        [mv addSubview:stkticker];
+        [stkticker start];
     }
 }
 
@@ -379,26 +400,6 @@
     return nil;
 }
 
-- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
-{
-    [mv deselectAnnotation:view.annotation animated:YES];
-    RTTBaseAnnotation *la = (RTTBaseAnnotation *)view.annotation;
-    if(sectorArray == nil) sectorArray = [[NSMutableArray alloc] init];
-    
-    SectorTickerView *tickerView = [[SectorTickerView alloc] initWithFrame:CGRectMake(0, 0, 150, 24)
-                                                                    andLap:la.lap andSector:la.sectorNumber andTime:la.sectorTime andPurpleSector:NO];
-    [sectorArray addObject:tickerView];
-    [sectorArray addObject:tickerView];
-    [sectorArray addObject:tickerView];
-    
-    SectorTicker *stkticker=[[SectorTicker alloc] initWithFrame:CGRectMake(0, 123, 320, 30)];
-    stkticker.sectorDelegate=self;
-    
-    [mv addSubview:stkticker];
-    [stkticker start];
-
-}
-
 #pragma mark- UITickerView delegate method
 
 - (NSInteger)numberOfRowsintickerView:(SectorTicker *)tickerView
@@ -481,6 +482,8 @@
 - (void)dealloc
 {
     mv.delegate = nil;
+    stkticker.sectorDelegate = nil;
+    
 }
 
 @end

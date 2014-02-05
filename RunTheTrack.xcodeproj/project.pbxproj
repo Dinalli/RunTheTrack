@@ -372,7 +372,6 @@
 		409357A51855F7C6007EE900 /* UIImageView+More.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+More.h"; sourceTree = "<group>"; };
 		409357A61855F7C6007EE900 /* UIImageView+More.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+More.m"; sourceTree = "<group>"; };
 		409357AF1855FC6F007EE900 /* Global.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
-		409403CA189442A3009E8805 /* Location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Location.gpx; sourceTree = "<group>"; };
 		40A2AA6B188F023800F5E263 /* RunSectors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunSectors.h; sourceTree = "<group>"; };
 		40A2AA6C188F023800F5E263 /* RunSectors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunSectors.m; sourceTree = "<group>"; };
 		40A3B3DF185B768F00BA85BB /* MessageBarManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageBarManager.h; sourceTree = "<group>"; };
@@ -941,7 +940,6 @@
 			isa = PBXGroup;
 			children = (
 				406B253918953B1900F03B23 /* credits.rtf */,
-				409403CA189442A3009E8805 /* Location.gpx */,
 				40C1656817EB637900D4E093 /* RunTheTrack */,
 				40C1658717EB637900D4E093 /* RunTheTrackTests */,
 				40C1656117EB637900D4E093 /* Frameworks */,

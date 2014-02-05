@@ -38,6 +38,7 @@
     int cameraIndex;
     
     NSMutableArray *sectorArray;
+    SectorTicker *stkticker;
 }
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;

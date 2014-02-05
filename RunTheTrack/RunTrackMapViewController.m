@@ -316,7 +316,7 @@
             
         }
         
-        SectorTicker *stkticker=[[SectorTicker alloc] initWithFrame:CGRectMake(0, 123, 320, 30)];
+        stkticker=[[SectorTicker alloc] initWithFrame:CGRectMake(0, 123, 320, 30)];
         stkticker.sectorDelegate=self;
         [stkticker setBackgroundColor:[UIColor clearColor]];
         [mv addSubview:stkticker];
@@ -622,5 +622,6 @@
 - (void)dealloc
 {
     mv.delegate = nil;
+    stkticker.sectorDelegate = nil;
 }
 @end
