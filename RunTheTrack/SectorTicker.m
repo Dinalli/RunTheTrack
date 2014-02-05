@@ -15,8 +15,13 @@
     count=0;
     numberOfObjects=[self. sectorDelegate numberOfRowsintickerView:self];
     
-    [NSTimer scheduledTimerWithTimeInterval:0.002 target:self selector:@selector(moveObjects) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:0.001 target:self selector:@selector(moveObjects) userInfo:nil repeats:YES];
     [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(checkPosition) userInfo:nil repeats:YES];
+    
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame = self.bounds;
+    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor darkGrayColor]CGColor], (id)[[UIColor blackColor]CGColor], nil];
+    [self.layer addSublayer:gradient];
 }
 
 

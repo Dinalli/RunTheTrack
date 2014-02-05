@@ -64,8 +64,8 @@
     
     [self addTrackPoints];
     
-    [CommonUtils shadowAndRoundView:detailsView];
-    [CommonUtils addMotionEffectToView:detailsView];
+//    [CommonUtils shadowAndRoundView:detailsView];
+//    [CommonUtils addMotionEffectToView:detailsView];
 }
 
 -(IBAction)threeDeeSelected:(id)sender
@@ -293,22 +293,22 @@
             sector1Ann.title = [NSString stringWithFormat:@"%@ - %@",sector1Ann.title, rSector.sector1Time];
             sector2Ann.title = [NSString stringWithFormat:@"%@ - %@",sector2Ann.title,rSector.sector2Time];
             
-            SectorTickerView *lapTickerView = [[SectorTickerView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)
+            SectorTickerView *lapTickerView = [[SectorTickerView alloc] initWithFrame:CGRectMake(0, 0, 150, 20)
                                                                                    andLap:rSector.lapNumber andSector:@"0" andTime:rSector.lapTime andPurpleSector:NO];
             
             [sectorTickerArray addObject:lapTickerView];
             
-            SectorTickerView *sector1TickerView = [[SectorTickerView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)
+            SectorTickerView *sector1TickerView = [[SectorTickerView alloc] initWithFrame:CGRectMake(0, 0, 150, 20)
                                                                             andLap:rSector.lapNumber andSector:@"1" andTime:rSector.sector1Time andPurpleSector:NO];
             
             [sectorTickerArray addObject:sector1TickerView];
             
-            SectorTickerView *sector2TickerView = [[SectorTickerView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)
+            SectorTickerView *sector2TickerView = [[SectorTickerView alloc] initWithFrame:CGRectMake(0, 0, 150, 20)
                                                                                    andLap:rSector.lapNumber andSector:@"2" andTime:rSector.sector2Time andPurpleSector:NO];
             
             [sectorTickerArray addObject:sector2TickerView];
             
-            SectorTickerView *sector3TickerView = [[SectorTickerView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)
+            SectorTickerView *sector3TickerView = [[SectorTickerView alloc] initWithFrame:CGRectMake(0, 0, 150, 20)
                                                                                    andLap:rSector.lapNumber andSector:@"3" andTime:rSector.sector3Time andPurpleSector:NO];
             
             [sectorTickerArray addObject:sector3TickerView];
@@ -316,7 +316,7 @@
             
         }
         
-        SectorTicker *stkticker=[[SectorTicker alloc] initWithFrame:CGRectMake(0, 125, 320, 20)];
+        SectorTicker *stkticker=[[SectorTicker alloc] initWithFrame:CGRectMake(0, 123, 320, 30)];
         stkticker.sectorDelegate=self;
         [stkticker setBackgroundColor:[UIColor clearColor]];
         [mv addSubview:stkticker];

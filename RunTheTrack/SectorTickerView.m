@@ -30,30 +30,61 @@
 }
 
 -(void)setUpViewWithLap:(NSString *)lap andSector:(NSString *)sector andTime:(NSString *)sectorTime andPurpler:(BOOL)purpleSector
-{
-    // add black gradient background
+{    
+    NSString *lapSectorString = [NSString stringWithFormat:@"Lap %@ Sector %@ %@", lap, sector,sectorTime];
+    NSMutableAttributedString *textToDraw = [[NSMutableAttributedString alloc] initWithString:lapSectorString];
     
-    CAGradientLayer *gradient = [CAGradientLayer layer];
-    gradient.frame = self.bounds;
-    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor darkGrayColor]CGColor], (id)[[UIColor blackColor]CGColor], nil];
-    [self.layer addSublayer:gradient];
+    NSRange allRange = NSMakeRange(0, textToDraw.length);
+    NSRange lapRange = [[textToDraw string] rangeOfString:[NSString stringWithFormat:@"Lap %@", lap]];
+    NSRange sectorNumberRange = [[textToDraw string] rangeOfString:[NSString stringWithFormat:@"Sector %@", sector]];
     
-    // add yellow lap number
-    UILabel *lapLabel = [[UILabel alloc] initWithFrame:CGRectMake(2, 2, 25, 20)];
-    lapLabel.text = lap;
+    [textToDraw beginEditing];
+    [textToDraw addAttribute:NSFontAttributeName
+                       value:[UIFont fontWithName:@"Helvetica-Bold" size:12.0]
+                       range:allRange];
     
-    // add sector Number
-    UILabel *sectorNumberLabel = [[UILabel alloc] initWithFrame:CGRectMake(27, 2, 25, 20)];
-    sectorNumberLabel.text = sector;
+    [textToDraw addAttribute:NSForegroundColorAttributeName
+                       value:[UIColor whiteColor]
+                       range:allRange];
+
+    [textToDraw addAttribute:NSFontAttributeName
+                       value:[UIFont fontWithName:@"Helvetica-Bold" size:12.0]
+                       range:lapRange];
     
-    // add time
-    UILabel *sectorTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 2, 100, 20)];
-    sectorTimeLabel.text = lap;
+    [textToDraw addAttribute:NSForegroundColorAttributeName
+                       value:[UIColor yellowColor]
+                       range:lapRange];
+
+    [textToDraw addAttribute:NSFontAttributeName
+                       value:[UIFont fontWithName:@"Helvetica-Bold" size:12.0]
+                       range:sectorNumberRange];
     
-    [self addSubview:lapLabel];
-    [self addSubview:sectorNumberLabel];
-    [self addSubview:sectorTimeLabel];
+    [textToDraw addAttribute:NSForegroundColorAttributeName
+                       value:[UIColor greenColor]
+                       range:sectorNumberRange];
     
+    if(sectorTime)
+    {
+        NSRange sectorTimeRange = [[textToDraw string] rangeOfString:sectorTime];
+        
+        [textToDraw addAttribute:NSFontAttributeName
+                           value:[UIFont fontWithName:@"Helvetica-Bold" size:12.0]
+                           range:sectorTimeRange];
+        
+        [textToDraw addAttribute:NSForegroundColorAttributeName
+                           value:[UIColor purpleColor]
+                           range:sectorTimeRange];
+    }
+    [textToDraw endEditing];
+
+    UITextView *tvSector = [[UITextView alloc] initWithFrame:self.frame];
+    [tvSector setBackgroundColor:[UIColor clearColor]];
+    tvSector.attributedText = textToDraw;
+    tvSector.editable = NO;
+    tvSector.scrollEnabled = NO;
+    tvSector.textAlignment = NSTextAlignmentCenter;
+    
+    [self addSubview:tvSector];
 }
 
 

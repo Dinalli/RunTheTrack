@@ -7,6 +7,7 @@
 //
 
 #import "RunDetailViewController.h"
+#import <QuartzCore/QuartzCore.h>
 #import "CoreDataHelper.h"
 #import <Social/Social.h>
 #import "AppDelegate.h"
@@ -381,22 +382,19 @@
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
     [mv deselectAnnotation:view.annotation animated:YES];
+    RTTBaseAnnotation *la = (RTTBaseAnnotation *)view.annotation;
+    if(sectorArray == nil) sectorArray = [[NSMutableArray alloc] init];
     
-
-        RTTBaseAnnotation *la = (RTTBaseAnnotation *)view.annotation;
-        
-        if(sectorArray == nil) sectorArray = [[NSMutableArray alloc] init];
-    
-    SectorTickerView *tickerView = [[SectorTickerView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)
+    SectorTickerView *tickerView = [[SectorTickerView alloc] initWithFrame:CGRectMake(0, 0, 150, 24)
                                                                     andLap:la.lap andSector:la.sectorNumber andTime:la.sectorTime andPurpleSector:NO];
     [sectorArray addObject:tickerView];
     [sectorArray addObject:tickerView];
     [sectorArray addObject:tickerView];
     
-        SectorTicker *stkticker=[[SectorTicker alloc] initWithFrame:CGRectMake(0, 125, 320, 40)];
-        stkticker.sectorDelegate=self;
-        [stkticker setBackgroundColor:[UIColor orangeColor]];
-        [mv addSubview:stkticker];
+    SectorTicker *stkticker=[[SectorTicker alloc] initWithFrame:CGRectMake(0, 123, 320, 30)];
+    stkticker.sectorDelegate=self;
+    
+    [mv addSubview:stkticker];
     [stkticker start];
 
 }
