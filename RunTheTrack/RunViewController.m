@@ -102,9 +102,13 @@ enum TimerState : NSUInteger {
     if(runAltitudeArray == nil) runAltitudeArray = [[NSMutableArray alloc] init];
 
     [CommonUtils shadowAndRoundView:runInfoView];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:@"willEnterForeground"];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fromForeground) name:@"willEnterForeground" object:nil];
 }
 
--(void)viewWillAppear:(BOOL)animated
+
+-(void)fromForeground
 {
     if(appDelegate.useMotion)
     {
@@ -311,7 +315,7 @@ enum TimerState : NSUInteger {
             
 //            [cmStepCounter queryStepCountStartingFrom:startDate to:[NSDate date] toQueue:[NSOperationQueue mainQueue] withHandler:^(NSInteger numberOfSteps, NSError *error) {
             
-            NSLog(@"updating steps in enable motion");
+            NSLog(@"updating steps %d in enable motion", numberOfSteps);
                 stepCounter = stepCounter + numberOfSteps;
                 
                 noOfSteps.hidden = NO;
