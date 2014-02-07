@@ -29,13 +29,18 @@ NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:S
     [GAI sharedInstance].trackUncaughtExceptions = YES;
     
     // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
-    [GAI sharedInstance].dispatchInterval = 20;
+    [GAI sharedInstance].dispatchInterval = 5;
     
     // Optional: set Logger to VERBOSE for debug information.
     [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
     
     // Initialize tracker.
     id<GAITracker> tracker __unused = [[GAI sharedInstance] trackerWithTrackingId:@"UA-47282955-1"];
+    
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"     // Event category (required)
+                                                          action:@"app_opened"  // Event action (required)
+                                                           label:@"loaded"          // Event label
+                                                           value:nil] build]];
     
     NSBundle* bundle = [NSBundle mainBundle];
     NSString* plistPath = [bundle pathForResource:@"Tracks" ofType:@"plist"];

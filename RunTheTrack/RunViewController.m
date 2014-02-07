@@ -240,6 +240,8 @@ enum TimerState : NSUInteger {
         [musicPlayer setQueueWithItemCollection: mediaItemCollection];
         appDelegate.musicIsPlaying = YES;
         haveMusicToPlay = YES;
+        
+        if(self.timerState == timerStarted) [musicPlayer play];
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }

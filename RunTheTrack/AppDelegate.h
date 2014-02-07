@@ -10,6 +10,7 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import "MessageBarManager.h"
 #import "GAI.h"
+#import "GAIDictionaryBuilder.h"
 
 extern NSString *const SCSessionStateChangedNotification;
 
