@@ -110,7 +110,7 @@ enum TimerState : NSUInteger {
 
 -(void)fromForeground
 {
-    if(appDelegate.useMotion)
+    if(appDelegate.useMotion && self.timerState == timerStarted)
     {
         NSLog(@"update motion from ViewWillAppear");
         [[MessageBarManager sharedInstance] showMessageWithTitle:@"Updating Motion Updates"
