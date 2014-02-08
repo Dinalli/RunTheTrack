@@ -116,8 +116,8 @@ enum TimerState : NSUInteger {
         [[MessageBarManager sharedInstance] showMessageWithTitle:@"Updating Motion Updates"
                                                      description:@"Please wait while we update your motion progress."
                                                             type:MessageBarMessageTypeInfo];
-        
-        [cmStepCounter startStepCountingUpdatesToQueue:[NSOperationQueue mainQueue] updateOn:1 withHandler:^(NSInteger numberOfSteps, NSDate *timestamp, NSError *error) {
+
+        [cmStepCounter queryStepCountStartingFrom:startDate to:[NSDate date] toQueue:[NSOperationQueue mainQueue] withHandler:^(NSInteger numberOfSteps, NSError *error) {
             
             stepCounter = stepCounter + numberOfSteps;
             
@@ -313,11 +313,8 @@ enum TimerState : NSUInteger {
         if(cmStepCounter == nil) cmStepCounter = [[CMStepCounter alloc] init];
         
         [cmStepCounter startStepCountingUpdatesToQueue:[NSOperationQueue mainQueue] updateOn:1 withHandler:^(NSInteger numberOfSteps, NSDate *timestamp, NSError *error) {
-            
-            
-//            [cmStepCounter queryStepCountStartingFrom:startDate to:[NSDate date] toQueue:[NSOperationQueue mainQueue] withHandler:^(NSInteger numberOfSteps, NSError *error) {
-            
-            NSLog(@"updating steps %d in enable motion", numberOfSteps);
+
+                        NSLog(@"updating steps %d in enable motion", numberOfSteps);
                 stepCounter = stepCounter + numberOfSteps;
                 
                 noOfSteps.hidden = NO;
@@ -325,14 +322,12 @@ enum TimerState : NSUInteger {
                 
                 if(self.timerState == timerStarted)
                 {
-                    
                     CGFloat distance = 0;
                     distance = numberOfSteps * appDelegate.runMotionDistance;
                     NSLog(@"updating distance in enable motion %f", distance);
-                    totalLocationDistance = totalLocationDistance + distance;
+                    totalLocationDistance = distance;
                     [self moveAnnotaionWithDistance:distance];
                 }
-//            }];
         }];
     }
 }

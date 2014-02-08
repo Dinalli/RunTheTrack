@@ -63,9 +63,6 @@
     cameraIndex = 0;
     
     [self addTrackPoints];
-    
-//    [CommonUtils shadowAndRoundView:detailsView];
-//    [CommonUtils addMotionEffectToView:detailsView];
 }
 
 -(IBAction)threeDeeSelected:(id)sender

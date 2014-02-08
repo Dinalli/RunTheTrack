@@ -279,11 +279,11 @@
 			<string>2.76075,101.73832</string>
 		</array>
 		<key>Race</key>
-		<string>Maylasia</string>
+		<string>Malaysia</string>
 		<key>mapimage</key>
 		<string>malaysia.png</string>
 		<key>trackimage</key>
-		<string>malaysia.jpg</string>
+		<string>temptrack.jpg</string>
 		<key>flag</key>
 		<string></string>
 		<key>trackname</key>
@@ -425,7 +425,7 @@
 		<key>mapimage</key>
 		<string>china.png</string>
 		<key>trackimage</key>
-		<string>china.jpg</string>
+		<string>temptrack.jpg</string>
 		<key>flag</key>
 		<string></string>
 		<key>trackname</key>
@@ -542,7 +542,7 @@
 		<key>mapimage</key>
 		<string>bahrain.png</string>
 		<key>trackimage</key>
-		<string>Bahrain.jpg</string>
+		<string>temptrack.jpg</string>
 		<key>flag</key>
 		<string></string>
 		<key>trackname</key>
@@ -647,7 +647,7 @@
 		<key>mapimage</key>
 		<string>barcelona.png</string>
 		<key>trackimage</key>
-		<string>Barcalona.jpg</string>
+		<string>temptrack.jpg</string>
 		<key>flag</key>
 		<string></string>
 		<key>trackname</key>
@@ -871,7 +871,7 @@
 		<key>mapimage</key>
 		<string>canada.png</string>
 		<key>trackimage</key>
-		<string>canada.jpg</string>
+		<string>temptrack.jpg</string>
 		<key>flag</key>
 		<string></string>
 		<key>trackname</key>
@@ -1570,7 +1570,7 @@
 		<key>mapimage</key>
 		<string>hungary.png</string>
 		<key>trackimage</key>
-		<string>hungary.jpg</string>
+		<string>temptrack.jpg</string>
 		<key>flag</key>
 		<string></string>
 		<key>trackname</key>
@@ -2166,7 +2166,7 @@
 		<key>mapimage</key>
 		<string>japan.png</string>
 		<key>trackimage</key>
-		<string>japan.jpg</string>
+		<string>temptrack.jpg</string>
 		<key>flag</key>
 		<string></string>
 		<key>trackname</key>
@@ -2313,7 +2313,7 @@
 		<key>mapimage</key>
 		<string>korea.png</string>
 		<key>trackimage</key>
-		<string>Korea.jpg</string>
+		<string>temptrack.jpg</string>
 		<key>flag</key>
 		<string></string>
 		<key>trackname</key>
@@ -2450,7 +2450,7 @@
 		<key>mapimage</key>
 		<string>india.png</string>
 		<key>trackimage</key>
-		<string>India.jpg</string>
+		<string>temptrack.jpg</string>
 		<key>flag</key>
 		<string></string>
 		<key>trackname</key>
@@ -2758,7 +2758,7 @@
 		<key>mapimage</key>
 		<string>usa.png</string>
 		<key>trackimage</key>
-		<string>Usa.jpg</string>
+		<string>temptrack.jpg</string>
 		<key>flag</key>
 		<string></string>
 		<key>trackname</key>
@@ -2891,7 +2891,7 @@
 		<key>mapimage</key>
 		<string>brazil.png</string>
 		<key>trackimage</key>
-		<string>Brazil.jpg</string>
+		<string>temptrack.jpg</string>
 		<key>flag</key>
 		<string></string>
 		<key>trackname</key>

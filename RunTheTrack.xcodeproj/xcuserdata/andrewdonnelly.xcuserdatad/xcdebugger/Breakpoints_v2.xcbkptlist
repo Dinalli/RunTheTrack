@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RunTheTrack/RunViewController.m"
-            timestampString = "413497865.34715"
+            filePath = "RunTheTrack/RunDetailViewController.m"
+            timestampString = "413562204.648552"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "240"
-            endingLineNumber = "240"
-            landmarkName = "-mediaPicker:didPickMediaItems:"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
+            landmarkName = "-showSectorTimes"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
