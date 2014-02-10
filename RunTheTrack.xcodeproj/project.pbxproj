@@ -1382,7 +1382,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Andrew DONNELLY (TV62A7K9VP)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Andrew DONNELLY (TV62A7K9VP)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1409,7 +1409,7 @@
 					"-ObjC",
 					"-all_load",
 				);
-				PROVISIONING_PROFILE = "4A4C843C-0980-4F42-BFD7-190C04CBE569";
+				PROVISIONING_PROFILE = "7835D74B-3777-4D0A-95FE-E1AC16081B25";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1431,7 +1431,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Andrew DONNELLY (TV62A7K9VP)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1451,7 +1451,7 @@
 					"-ObjC",
 					"-all_load",
 				);
-				PROVISIONING_PROFILE = "4A4C843C-0980-4F42-BFD7-190C04CBE569";
+				PROVISIONING_PROFILE = "7835D74B-3777-4D0A-95FE-E1AC16081B25";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1460,7 +1460,7 @@
 		40C1659217EB637900D4E093 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Andrew DONNELLY (TV62A7K9VP)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1485,7 +1485,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = RunTheTrack;
-				PROVISIONING_PROFILE = "4A4C843C-0980-4F42-BFD7-190C04CBE569";
+				PROVISIONING_PROFILE = "7835D74B-3777-4D0A-95FE-E1AC16081B25";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1493,7 +1493,7 @@
 		40C1659317EB637900D4E093 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Andrew DONNELLY (TV62A7K9VP)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1518,7 +1518,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = RunTheTrack;
-				PROVISIONING_PROFILE = "4A4C843C-0980-4F42-BFD7-190C04CBE569";
+				PROVISIONING_PROFILE = "7835D74B-3777-4D0A-95FE-E1AC16081B25";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

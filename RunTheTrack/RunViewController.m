@@ -112,7 +112,6 @@ enum TimerState : NSUInteger {
 {
     if(appDelegate.useMotion && self.timerState == timerStarted)
     {
-        NSLog(@"update motion from ViewWillAppear");
         [[MessageBarManager sharedInstance] showMessageWithTitle:@"Updating Motion Updates"
                                                      description:@"Please wait while we update your motion progress."
                                                             type:MessageBarMessageTypeInfo];
@@ -126,7 +125,6 @@ enum TimerState : NSUInteger {
 
                 CGFloat distance = 0;
                 distance = numberOfSteps * appDelegate.runMotionDistance;
-            NSLog(@"updating distance in viewWillAppear motion %f", distance);
                 totalLocationDistance = totalLocationDistance + distance;
                 [self moveAnnotaionWithDistance:distance];
         }];
@@ -313,8 +311,6 @@ enum TimerState : NSUInteger {
         if(cmStepCounter == nil) cmStepCounter = [[CMStepCounter alloc] init];
         
         [cmStepCounter startStepCountingUpdatesToQueue:[NSOperationQueue mainQueue] updateOn:1 withHandler:^(NSInteger numberOfSteps, NSDate *timestamp, NSError *error) {
-
-                        NSLog(@"updating steps %d in enable motion", numberOfSteps);
                 stepCounter = stepCounter + numberOfSteps;
                 
                 noOfSteps.hidden = NO;
@@ -324,7 +320,6 @@ enum TimerState : NSUInteger {
                 {
                     CGFloat distance = 0;
                     distance = numberOfSteps * appDelegate.runMotionDistance;
-                    NSLog(@"updating distance in enable motion %f", distance);
                     totalLocationDistance = distance;
                     [self moveAnnotaionWithDistance:distance];
                 }
@@ -555,13 +550,10 @@ enum TimerState : NSUInteger {
     self.timerState = timerStopped;
     btnFinish.hidden = NO;
     finishDate = [NSDate date];
-    NSLog(@"Locations paused");
 }
 
 - (void)locationManagerDidResumeLocationUpdates:(CLLocationManager *)manager
 {
-    NSLog(@"Resuming location Updates");
-    
     [[MessageBarManager sharedInstance] showMessageWithTitle:@"Location Updates Resumed"
                                                  description:@"No movement had been detected for a while, so updates were paused."
                                                         type:MessageBarMessageTypeError];

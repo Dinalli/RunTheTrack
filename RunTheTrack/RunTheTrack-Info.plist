@@ -17,14 +17,11 @@
 				<string>ios7_settings_icon</string>
 				<string>ios7_spotlight_icon</string>
 				<string>ios7_app_icon_iphone</string>
-				<string>Icon58</string>
-				<string>Icon-80</string>
-				<string>Icon-120</string>
 			</array>
 		</dict>
 	</dict>
 	<key>CFBundleIdentifier</key>
-	<string>com.dinalli.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>com.dinalli.RunTheTrack</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -38,6 +35,8 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>fb636662449718679</string>
@@ -45,7 +44,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>9</string>
+	<string>10</string>
 	<key>FacebookAppID</key>
 	<string>636662449718679</string>
 	<key>FacebookDisplayName</key>

@@ -311,7 +311,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
            NSError *error) {
              if (!error) {
                  [self.navigationItem setTitle:user.name];
-                 headerView.profilePictureView.profileID = user.id;
+                 headerView.profilePictureView.profileID = [user objectForKey:@"id"];
              }
              
              if (error) {
