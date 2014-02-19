@@ -379,6 +379,8 @@ enum TimerState : NSUInteger {
                     runPace.text = [NSString stringWithFormat:@"%@ pm",
                                     [CommonUtils paceFromTimeAndDistanceMiles:(int)[components hour] :(int)[components minute] :(int)[components second] :(totalLocationDistance * 0.000621371192)]];
                 }
+                
+                NSLog(@"Sector 1 time %@",[CommonUtils timeFormattedStringForSpeech:(int)[components hour] :(int)[components minute] :(int)[components second]]);
             }
             else{
                 NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
@@ -405,10 +407,13 @@ enum TimerState : NSUInteger {
                     runPace.text = [NSString stringWithFormat:@"%@ pm",
                                     [CommonUtils paceFromTimeAndDistanceMiles:(int)[paceComponents hour] :(int)[paceComponents minute] :(int)[paceComponents second] :(totalLocationDistance * 0.000621371192)]];
                 }
+                
+                NSLog(@"Sector 1 time %@",[CommonUtils timeFormattedStringForSpeech:(int)[components hour] :(int)[components minute] :(int)[components second]]);
 
             }
             
             sector1savedforLap = YES;
+
         }
         
         
@@ -445,6 +450,7 @@ enum TimerState : NSUInteger {
             }
             
             sector2savedforLap = YES;
+            NSLog(@"Sector 2 time %@",[CommonUtils timeFormattedStringForSpeech:(int)[components hour] :(int)[components minute] :(int)[components second]]);
 
         }
         
@@ -508,6 +514,8 @@ enum TimerState : NSUInteger {
             sector2Time = @"";
             sector1Loc = nil;
             sector2Loc = nil;
+            
+            NSLog(@"Sector 3 time %@",[CommonUtils timeFormattedStringForSpeech:(int)[components hour] :(int)[components minute] :(int)[components second]]);
         }
     }
 }
@@ -611,22 +619,22 @@ enum TimerState : NSUInteger {
         
         lapCounter = (int)floorf(runLapsFloat);
             
-        NSMutableDictionary *runLap = [[NSMutableDictionary alloc] init];
-        
-        if(sector1Time && ![sector1Time isEqualToString:@""])
-        {
-            [runLap setObject:sector1Time forKey:@"1"];
-            [runLap setObject:sector1Loc forKey:@"1Loc"];
-        }
-  
-        if(sector2Time && ![sector2Time isEqualToString:@""])
-        {
-            [runLap setObject:sector2Time forKey:@"2"];
-            [runLap setObject:sector2Loc forKey:@"2Loc"];
-        }
-        
-        if(runLapsInfoDict == nil) runLapsInfoDict = [[NSMutableDictionary alloc] init];
-        [runLapsInfoDict setObject:runLap forKey:[NSString stringWithFormat:@"%d",lapCounter]];
+//        NSMutableDictionary *runLap = [[NSMutableDictionary alloc] init];
+//        
+//        if(sector1Time && ![sector1Time isEqualToString:@""])
+//        {
+//            [runLap setObject:sector1Time forKey:@"1"];
+//            [runLap setObject:sector1Loc forKey:@"1Loc"];
+//        }
+//  
+//        if(sector2Time && ![sector2Time isEqualToString:@""])
+//        {
+//            [runLap setObject:sector2Time forKey:@"2"];
+//            [runLap setObject:sector2Loc forKey:@"2Loc"];
+//        }
+//        
+//        //if(runLapsInfoDict == nil) runLapsInfoDict = [[NSMutableDictionary alloc] init];
+//        [runLapsInfoDict setObject:runLap forKey:[NSString stringWithFormat:@"%d",lapCounter]];
         
         if (runLapsInfoDict != nil)[self.trackInfo setObject:runLapsInfoDict forKey:@"runLapsInfo"];
         if (runAltitudeArray != nil)[self.trackInfo setObject:runAltitudeArray forKey:@"runAltitude"];

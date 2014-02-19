@@ -160,7 +160,10 @@
     }
     else if (buttonIndex == 2)
     {
-        [self goToTrack];
+        if([self.runData.runtype isEqualToString:@"GPSRun"])
+        {
+            [self goToTrack];
+        }
     }
 }
 
