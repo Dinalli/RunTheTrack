@@ -208,6 +208,8 @@
         
         if(sectorArray == nil) sectorArray = [[NSMutableArray alloc] init];
         
+        BOOL showTicker = FALSE;
+        
         for(RunSectors *rSector in runLapsArray)
         {
             CLLocationCoordinate2D sect1Cordinate =  CLLocationCoordinate2DMake([rSector.sec1Lat doubleValue], [rSector.sec1Long doubleValue]);
@@ -230,10 +232,24 @@
             
             [runCameras addObject:camera1];
             
-            SectorTickerView *sector1TickerView = [[SectorTickerView alloc] initWithFrame:CGRectMake(0, 0, 150, 20)
-                                                                                   andLap:rSector.lapNumber andSector:@"1" andTime:rSector.sector1Time andPurpleSector:NO];
+            if(rSector.lapTime != nil)
+            {
+                SectorTickerView *lapTickerView = [[SectorTickerView alloc] initWithFrame:CGRectMake(0, 0, 150, 20)
+                                                                                   andLap:rSector.lapNumber andSector:@"0" andTime:rSector.lapTime andPurpleSector:NO];
+                
+                [sectorArray addObject:lapTickerView];
+                showTicker = TRUE;
+            }
+
             
-            [sectorArray addObject:sector1TickerView];
+            if(rSector.sector1Time != nil)
+            {
+                SectorTickerView *sector1TickerView = [[SectorTickerView alloc] initWithFrame:CGRectMake(0, 0, 150, 20)
+                                                                                       andLap:rSector.lapNumber andSector:@"1" andTime:rSector.sector1Time andPurpleSector:NO];
+                
+                [sectorArray addObject:sector1TickerView];
+                showTicker = TRUE;
+            }
             
             if(![rSector.sec2Lat isEqualToString:@"0.000000"])
             {
@@ -259,10 +275,14 @@
                 
                 [runCameras addObject:camera2];
                 
-                SectorTickerView *sector2TickerView = [[SectorTickerView alloc] initWithFrame:CGRectMake(0, 0, 150, 20)
-                                                                                       andLap:rSector.lapNumber andSector:@"2" andTime:rSector.sector2Time andPurpleSector:NO];
-                
-                [sectorArray addObject:sector2TickerView];
+                if(rSector.sector2Time != nil)
+                {
+                    SectorTickerView *sector2TickerView = [[SectorTickerView alloc] initWithFrame:CGRectMake(0, 0, 150, 20)
+                                                                                           andLap:rSector.lapNumber andSector:@"2" andTime:rSector.sector2Time andPurpleSector:NO];
+                    
+                    [sectorArray addObject:sector2TickerView];
+                    showTicker = TRUE;
+                }
 
             
                 if(![rSector.lapLat isEqualToString:@"0.000000"])
@@ -287,20 +307,27 @@
                     
                     [runCameras addObject:camera3];
                     
-                    SectorTickerView *lapTickerView = [[SectorTickerView alloc] initWithFrame:CGRectMake(0, 0, 150, 20)
-                                                                                       andLap:rSector.lapNumber andSector:@"0" andTime:rSector.lapTime andPurpleSector:NO];
-                    
-                    [sectorArray addObject:lapTickerView];
+                    if(rSector.sector3Time != nil)
+                    {
+                        SectorTickerView *lapTickerView = [[SectorTickerView alloc] initWithFrame:CGRectMake(0, 0, 150, 20)
+                                                                                           andLap:rSector.lapNumber andSector:@"3" andTime:rSector.sector3Time andPurpleSector:NO];
+                        
+                        [sectorArray addObject:lapTickerView];
+                        showTicker = TRUE;
+                    }
                 }
             }
             
         }
         
-        stkticker=[[SectorTicker alloc] initWithFrame:CGRectMake(0, 123, 320, 30)];
-        stkticker.sectorDelegate=self;
-        [stkticker setBackgroundColor:[UIColor clearColor]];
-        [mv addSubview:stkticker];
-        [stkticker start];
+        if(showTicker)
+        {
+            stkticker=[[SectorTicker alloc] initWithFrame:CGRectMake(0, 123, 320, 30)];
+            stkticker.sectorDelegate=self;
+            [stkticker setBackgroundColor:[UIColor clearColor]];
+            [mv addSubview:stkticker];
+            [stkticker start];
+        }
     }
 }
 

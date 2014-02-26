@@ -64,6 +64,9 @@ NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:S
     
     [self setUpDefaultsOnLoad];
     
+    //Cancel any Notificaitons we have set
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    
     return YES;
 }
 
@@ -187,6 +190,8 @@ NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:S
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+    
+    [FBSettings setDefaultAppID:@"636662449718679"];
     [FBAppEvents activateApp];
     
     /*

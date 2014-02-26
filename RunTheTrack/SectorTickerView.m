@@ -30,8 +30,16 @@
 }
 
 -(void)setUpViewWithLap:(NSString *)lap andSector:(NSString *)sector andTime:(NSString *)sectorTime andPurpler:(BOOL)purpleSector
-{    
-    NSString *lapSectorString = [NSString stringWithFormat:@"Lap %@ Sector %@ %@", lap, sector,sectorTime];
+{
+    NSString *lapSectorString;
+    if(![sector isEqualToString:@"0"])
+    {
+        lapSectorString = [NSString stringWithFormat:@"Lap %@ Sector %@ %@", lap, sector,sectorTime];
+    }
+    else
+    {
+        lapSectorString = [NSString stringWithFormat:@"Lap %@ Time %@", lap,sectorTime];
+    }
     NSMutableAttributedString *textToDraw = [[NSMutableAttributedString alloc] initWithString:lapSectorString];
     
     NSRange allRange = NSMakeRange(0, textToDraw.length);
@@ -72,7 +80,7 @@
                            range:sectorTimeRange];
         
         [textToDraw addAttribute:NSForegroundColorAttributeName
-                           value:[UIColor purpleColor]
+                           value:[UIColor cyanColor]
                            range:sectorTimeRange];
     }
     [textToDraw endEditing];

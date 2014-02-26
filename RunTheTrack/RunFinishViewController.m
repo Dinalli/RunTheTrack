@@ -394,9 +394,21 @@
     [[MessageBarManager sharedInstance] showMessageWithTitle:@"Run Saved"
                                                  description:@"Well done, check out your timings now."
                                                         type:MessageBarMessageTypeSuccess];
+    
+    
+    [self addNotification];
 }
 
 
+-(void)addNotification
+{
+    UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+    localNotification.alertBody = [NSString stringWithFormat:@"Can you beat your time of %@ set at %@", [self.trackInfo valueForKey:@"runTime"], self.navigationItem.title];
+    localNotification.alertAction = @"Time to hit the track?";
+    localNotification.soundName = @"beep_2.mp3";
+    localNotification.fireDate = [[NSDate alloc] initWithTimeIntervalSinceNow:3600*24*7];
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+}
 
 #pragma mark MapView Delegate
 

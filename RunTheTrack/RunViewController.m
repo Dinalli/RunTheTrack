@@ -618,23 +618,23 @@ enum TimerState : NSUInteger {
         //Lets clear up any sectors on not complete laps then
         
         lapCounter = (int)floorf(runLapsFloat);
+        if(runLapsInfoDict == nil) runLapsInfoDict = [[NSMutableDictionary alloc] init];
             
-//        NSMutableDictionary *runLap = [[NSMutableDictionary alloc] init];
-//        
-//        if(sector1Time && ![sector1Time isEqualToString:@""])
-//        {
-//            [runLap setObject:sector1Time forKey:@"1"];
-//            [runLap setObject:sector1Loc forKey:@"1Loc"];
-//        }
-//  
-//        if(sector2Time && ![sector2Time isEqualToString:@""])
-//        {
-//            [runLap setObject:sector2Time forKey:@"2"];
-//            [runLap setObject:sector2Loc forKey:@"2Loc"];
-//        }
-//        
-//        //if(runLapsInfoDict == nil) runLapsInfoDict = [[NSMutableDictionary alloc] init];
-//        [runLapsInfoDict setObject:runLap forKey:[NSString stringWithFormat:@"%d",lapCounter]];
+        NSMutableDictionary *incompleteLap = [[NSMutableDictionary alloc] init];
+        
+        if(sector1Time && ![sector1Time isEqualToString:@""])
+        {
+            [incompleteLap setObject:sector1Time forKey:@"1"];
+            [incompleteLap setObject:sector1Loc forKey:@"1Loc"];
+        }
+  
+        if(sector2Time && ![sector2Time isEqualToString:@""])
+        {
+            [incompleteLap setObject:sector2Time forKey:@"2"];
+            [incompleteLap setObject:sector2Loc forKey:@"2Loc"];
+        }
+
+        [runLapsInfoDict setObject:incompleteLap forKey:[NSString stringWithFormat:@"%d",lapCounter+1]];
         
         if (runLapsInfoDict != nil)[self.trackInfo setObject:runLapsInfoDict forKey:@"runLapsInfo"];
         if (runAltitudeArray != nil)[self.trackInfo setObject:runAltitudeArray forKey:@"runAltitude"];

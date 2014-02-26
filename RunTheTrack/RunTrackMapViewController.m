@@ -284,40 +284,60 @@
         
         if(sectorTickerArray == nil) sectorTickerArray = [[NSMutableArray alloc] init];
         
+        BOOL showTicker = FALSE;
+        
         for(RunSectors *rSector in runLapsArray)
         {
             startfinish.title = [NSString stringWithFormat:@"%@, Lap %@ time %@", startfinish.title,rSector.lapNumber, rSector.lapTime];
             sector1Ann.title = [NSString stringWithFormat:@"%@ - %@",sector1Ann.title, rSector.sector1Time];
             sector2Ann.title = [NSString stringWithFormat:@"%@ - %@",sector2Ann.title,rSector.sector2Time];
             
-            SectorTickerView *lapTickerView = [[SectorTickerView alloc] initWithFrame:CGRectMake(0, 0, 150, 20)
+            if(rSector.lapTime != nil)
+            {
+                SectorTickerView *lapTickerView = [[SectorTickerView alloc] initWithFrame:CGRectMake(0, 0, 150, 20)
                                                                                    andLap:rSector.lapNumber andSector:@"0" andTime:rSector.lapTime andPurpleSector:NO];
             
-            [sectorTickerArray addObject:lapTickerView];
+                [sectorTickerArray addObject:lapTickerView];
+                showTicker = TRUE;
+            }
             
-            SectorTickerView *sector1TickerView = [[SectorTickerView alloc] initWithFrame:CGRectMake(0, 0, 150, 20)
+            if(rSector.sector1Time != nil)
+            {
+                SectorTickerView *sector1TickerView = [[SectorTickerView alloc] initWithFrame:CGRectMake(0, 0, 150, 20)
                                                                             andLap:rSector.lapNumber andSector:@"1" andTime:rSector.sector1Time andPurpleSector:NO];
             
-            [sectorTickerArray addObject:sector1TickerView];
+                [sectorTickerArray addObject:sector1TickerView];
+                showTicker = TRUE;
+            }
             
-            SectorTickerView *sector2TickerView = [[SectorTickerView alloc] initWithFrame:CGRectMake(0, 0, 150, 20)
+            if(rSector.sector2Time != nil)
+            {
+            
+                SectorTickerView *sector2TickerView = [[SectorTickerView alloc] initWithFrame:CGRectMake(0, 0, 150, 20)
                                                                                    andLap:rSector.lapNumber andSector:@"2" andTime:rSector.sector2Time andPurpleSector:NO];
             
-            [sectorTickerArray addObject:sector2TickerView];
+                [sectorTickerArray addObject:sector2TickerView];
+                showTicker = TRUE;
+            }
             
-            SectorTickerView *sector3TickerView = [[SectorTickerView alloc] initWithFrame:CGRectMake(0, 0, 150, 20)
+            if(rSector.sector3Time != nil)
+            {
+                SectorTickerView *sector3TickerView = [[SectorTickerView alloc] initWithFrame:CGRectMake(0, 0, 150, 20)
                                                                                    andLap:rSector.lapNumber andSector:@"3" andTime:rSector.sector3Time andPurpleSector:NO];
             
-            [sectorTickerArray addObject:sector3TickerView];
-            
-            
+                [sectorTickerArray addObject:sector3TickerView];
+                showTicker = TRUE;
+            }
         }
         
-        stkticker=[[SectorTicker alloc] initWithFrame:CGRectMake(0, 123, 320, 30)];
-        stkticker.sectorDelegate=self;
-        [stkticker setBackgroundColor:[UIColor clearColor]];
-        [mv addSubview:stkticker];
-        [stkticker start];
+        if(showTicker)
+        {
+            stkticker=[[SectorTicker alloc] initWithFrame:CGRectMake(0, 123, 320, 30)];
+            stkticker.sectorDelegate=self;
+            [stkticker setBackgroundColor:[UIColor clearColor]];
+            [mv addSubview:stkticker];
+            [stkticker start];
+        }
     }
 }
 

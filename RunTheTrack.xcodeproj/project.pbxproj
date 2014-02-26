@@ -17,6 +17,7 @@
 		4018F52E17F83903006F990E /* Silverstone.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4018F51D17F83903006F990E /* Silverstone.jpg */; };
 		4018F53017F83903006F990E /* Spa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4018F51F17F83903006F990E /* Spa.jpg */; };
 		4018F56F17F85B7F006F990E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4018F56E17F85B7F006F990E /* MapKit.framework */; };
+		401F8F1418BD49DC00F67A32 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40CD535D182C0E2D00352499 /* FacebookSDK.framework */; };
 		4022963F188A83FA00BF515F /* RunData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4022963E188A83FA00BF515F /* RunData.m */; };
 		40251C6B184E5EFF0088F8C9 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40251C6A184E5EFF0088F8C9 /* Crashlytics.framework */; };
 		4027543A189B94F50015A79F /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40275439189B94F50015A79F /* AdSupport.framework */; };
@@ -149,7 +150,6 @@
 		40CA9A30189ACB2F00946124 /* runnerLap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40CA9A2E189ACB2F00946124 /* runnerLap@2x.png */; };
 		40CA9A33189B894300946124 /* history.png in Resources */ = {isa = PBXBuildFile; fileRef = 40CA9A31189B894300946124 /* history.png */; };
 		40CA9A34189B894300946124 /* history@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40CA9A32189B894300946124 /* history@2x.png */; };
-		40CD535E182C0E2D00352499 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40CD535D182C0E2D00352499 /* FacebookSDK.framework */; };
 		40D35DC7182540B500D10899 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40D35DC6182540B500D10899 /* CoreData.framework */; };
 		40D35DCA182541E500D10899 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D35DC9182541E500D10899 /* CoreDataHelper.m */; };
 		40D42C9E18702DBD0057DF2D /* YLProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D42C9D18702DBD0057DF2D /* YLProgressBar.m */; };
@@ -429,6 +429,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				401F8F1418BD49DC00F67A32 /* FacebookSDK.framework in Frameworks */,
 				4027543A189B94F50015A79F /* AdSupport.framework in Frameworks */,
 				402AB50C188AFB950068C52C /* libGoogleAnalyticsServices.a in Frameworks */,
 				4015F4CA18888A5B006C3DC8 /* Accelerate.framework in Frameworks */,
@@ -444,7 +445,6 @@
 				40BA41921865E4C1007A6329 /* CFNetwork.framework in Frameworks */,
 				40BA418F1865C2D8007A6329 /* CoreMotion.framework in Frameworks */,
 				40E5A2EC1856538A00E8E87E /* CoreText.framework in Frameworks */,
-				40CD535E182C0E2D00352499 /* FacebookSDK.framework in Frameworks */,
 				40DFDBE9182AE6C100554C58 /* Social.framework in Frameworks */,
 				40D35DC7182540B500D10899 /* CoreData.framework in Frameworks */,
 				40BAAD411820509B00137E8C /* AVFoundation.framework in Frameworks */,
