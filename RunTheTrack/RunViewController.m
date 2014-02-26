@@ -275,6 +275,11 @@ enum TimerState : NSUInteger {
         self.locationManager.activityType = CLActivityTypeFitness;
         [self.locationManager startUpdatingLocation];
         motionActivityIndicator.image = [UIImage imageNamed:@"gps.png"];
+        
+        if([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied)
+        {
+            [[MessageBarManager sharedInstance] showMessageWithTitle:@"Location Error" description:@"Location Services for the app is disabled. Please enable this in settings." type:MessageBarMessageTypeInfo duration:5.0];
+        }
     }
 }
 
