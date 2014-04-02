@@ -61,6 +61,9 @@
 		405E533C185E10C000A8BD45 /* Sector1Annotaion.m in Sources */ = {isa = PBXBuildFile; fileRef = 405E533B185E10C000A8BD45 /* Sector1Annotaion.m */; };
 		405E533F185E112A00A8BD45 /* Sector2Annotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 405E533E185E112A00A8BD45 /* Sector2Annotation.m */; };
 		405E5342185E113D00A8BD45 /* StartFinishAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 405E5341185E113D00A8BD45 /* StartFinishAnnotation.m */; };
+		4064EB1118EC6ABA00F1D0E9 /* austria.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4064EB1018EC6ABA00F1D0E9 /* austria.jpg */; };
+		4064EB1318EC6FB300F1D0E9 /* sochi.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4064EB1218EC6FB300F1D0E9 /* sochi.jpg */; };
+		4064EB1518EC739B00F1D0E9 /* malaysia.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4064EB1418EC739B00F1D0E9 /* malaysia.jpg */; };
 		406B253A18953B1900F03B23 /* credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 406B253918953B1900F03B23 /* credits.rtf */; };
 		406B253C18953C6700F03B23 /* beep_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 406B253B18953C6700F03B23 /* beep_2.mp3 */; };
 		406B253E18954A6100F03B23 /* 86-camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 406B253D18954A6100F03B23 /* 86-camera.png */; };
@@ -255,6 +258,9 @@
 		405E533E185E112A00A8BD45 /* Sector2Annotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sector2Annotation.m; sourceTree = "<group>"; };
 		405E5340185E113D00A8BD45 /* StartFinishAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartFinishAnnotation.h; sourceTree = "<group>"; };
 		405E5341185E113D00A8BD45 /* StartFinishAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartFinishAnnotation.m; sourceTree = "<group>"; };
+		4064EB1018EC6ABA00F1D0E9 /* austria.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = austria.jpg; sourceTree = "<group>"; };
+		4064EB1218EC6FB300F1D0E9 /* sochi.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sochi.jpg; sourceTree = "<group>"; };
+		4064EB1418EC739B00F1D0E9 /* malaysia.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = malaysia.jpg; sourceTree = "<group>"; };
 		406B253918953B1900F03B23 /* credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = credits.rtf; sourceTree = "<group>"; };
 		406B253B18953C6700F03B23 /* beep_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beep_2.mp3; sourceTree = "<group>"; };
 		406B253D18954A6100F03B23 /* 86-camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "86-camera.png"; sourceTree = "<group>"; };
@@ -651,7 +657,10 @@
 			children = (
 				408B1BD518A67F1E0021D033 /* nurburg.jpg */,
 				408B1BD318A67E460021D033 /* temptrack.jpg */,
+				4064EB1218EC6FB300F1D0E9 /* sochi.jpg */,
+				4064EB1418EC739B00F1D0E9 /* malaysia.jpg */,
 				403EA6331897E0CE0042A12E /* Monaco.jpg */,
+				4064EB1018EC6ABA00F1D0E9 /* austria.jpg */,
 				40FA0AB91883489C00EDB8AE /* abu.jpg */,
 				406EF52818999A0F00193D5C /* singapore.jpg */,
 				4018F51917F83903006F990E /* Melbourne.jpg */,
@@ -1174,6 +1183,7 @@
 				403EA6341897E0CE0042A12E /* Monaco.jpg in Resources */,
 				408B1BD418A67E460021D033 /* temptrack.jpg in Resources */,
 				408167E6189E908C00843B98 /* Icon.png in Resources */,
+				4064EB1118EC6ABA00F1D0E9 /* austria.jpg in Resources */,
 				405E5339185DEED400A8BD45 /* sector2@2x.png in Resources */,
 				408167F3189E910F00843B98 /* Default-568h@2x.png in Resources */,
 				408167EA189E908C00843B98 /* ios7_app_icon_iphone.png in Resources */,
@@ -1189,12 +1199,14 @@
 				40FA0ABA1883489C00EDB8AE /* abu.jpg in Resources */,
 				408167E9189E908C00843B98 /* ios7_app_icon_ipad@2x.png in Resources */,
 				406B253E18954A6100F03B23 /* 86-camera.png in Resources */,
+				4064EB1518EC739B00F1D0E9 /* malaysia.jpg in Resources */,
 				408167EF189E908C00843B98 /* ios7_spotlight_icon@2x.png in Resources */,
 				40BAAD3F18203FB900137E8C /* beep-8.mp3 in Resources */,
 				408167E3189E908C00843B98 /* Icon-Small-50@2x.png in Resources */,
 				40A3B3EE185B76CC00BA85BB /* icon-success@2x.png in Resources */,
 				40C5D7F318998B64002BBF14 /* man.png in Resources */,
 				40343B0D18940D6000881CC6 /* singapore.png in Resources */,
+				4064EB1318EC6FB300F1D0E9 /* sochi.jpg in Resources */,
 				40C1657B17EB637900D4E093 /* Images.xcassets in Resources */,
 				40343B0518940D6000881CC6 /* japan.png in Resources */,
 				405E5336185DEED400A8BD45 /* sector1.png in Resources */,
