@@ -11,6 +11,7 @@
 #import "MessageBarManager.h"
 #import "GAI.h"
 #import "GAIDictionaryBuilder.h"
+#import <iAd/iAd.h>
 
 extern NSString *const SCSessionStateChangedNotification;
 

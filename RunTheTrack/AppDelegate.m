@@ -67,6 +67,9 @@ NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:S
     //Cancel any Notificaitons we have set
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
     
+    // Set up for using iAd
+    [UIViewController prepareInterstitialAds];
+    
     return YES;
 }
 

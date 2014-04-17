@@ -16,11 +16,27 @@
 
 @implementation TracksCollectionViewController
 
+    
+-(id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        // Custom initialization
+//        // On iOS 6 ADBannerView introduces a new initializer, use it when available.
+//        if ([ADBannerView instancesRespondToSelector:@selector(initWithAdType:)]) {
+//            adView = [[ADBannerView alloc] initWithAdType:ADAdTypeBanner];
+//        } else {
+//            adView = [[ADBannerView alloc] init];
+//        }
+//        adView.delegate = self;
+    }
+    return self;
+}
+    
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -29,6 +45,12 @@
 {
     [super viewDidLoad];
     appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    self.canDisplayBannerAds = YES;
+    
+    adView = [[ADBannerView alloc] initWithAdType:ADAdTypeBanner];
+    adView.delegate = self;
+    [self.view addSubview:adView];
 }
 
 #pragma mark - Segue
@@ -91,4 +113,42 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+    
+- (void)viewDidLayoutSubviews {
+    CGRect contentFrame = self.view.bounds, bannerFrame = CGRectZero;
+    
+    // All we need to do is ask the banner for a size that fits into the layout area we are using.
+    // At this point in this method contentFrame=self.view.bounds, so we'll use that size for the layout.
+    bannerFrame.size = [adView sizeThatFits:contentFrame.size];
+    
+    if (adView.bannerLoaded) {
+        contentFrame.size.height -= bannerFrame.size.height;
+        bannerFrame.origin.y = contentFrame.size.height;
+    } else {
+        bannerFrame.origin.y = contentFrame.size.height-100;
+    }
+    adView.frame = bannerFrame;
+}
+
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner
+    {
+        NSLog(@"Banner View Did load Ad");
+    }
+    
+- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
+    {
+        NSLog(@"Banner Error %@", error.localizedDescription);
+    }
+
+- (BOOL)bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave
+    {
+        NSLog(@"Banner View Should begin YES");
+        return YES;
+    }
+    
+- (void)bannerViewActionDidFinish:(ADBannerView *)banner
+    {
+        NSLog(@"Banner Action Did Finish");
+    }
+
 @end
