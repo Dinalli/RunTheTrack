@@ -271,7 +271,7 @@ enum TimerState : NSUInteger {
         self.locationManager.delegate = self;
         self.locationManager.distanceFilter = kCLDistanceFilterNone; // setting this to 5.0 as it seems to be best and stop jitters.
         self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
-        self.locationManager.pausesLocationUpdatesAutomatically = YES;
+        self.locationManager.pausesLocationUpdatesAutomatically = NO;
         self.locationManager.activityType = CLActivityTypeFitness;
         [self.locationManager startUpdatingLocation];
         motionActivityIndicator.image = [UIImage imageNamed:@"gps.png"];
@@ -563,6 +563,8 @@ enum TimerState : NSUInteger {
     self.timerState = timerStopped;
     btnFinish.hidden = NO;
     finishDate = [NSDate date];
+    NSLog(@"locMan: locationManagerDidPauseLocationUpdates");
+
 }
 
 - (void)locationManagerDidResumeLocationUpdates:(CLLocationManager *)manager
@@ -570,6 +572,8 @@ enum TimerState : NSUInteger {
     [[MessageBarManager sharedInstance] showMessageWithTitle:@"Location Updates Resumed"
                                                  description:@"No movement had been detected for a while, so updates were paused."
                                                         type:MessageBarMessageTypeError];
+    
+    NSLog(@"locMan: locationManagerDidResumeLocationUpdates");
 }
 
 #pragma mark Segue Navigation
