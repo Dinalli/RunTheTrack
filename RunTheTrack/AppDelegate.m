@@ -205,6 +205,15 @@ NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:S
     // We need to properly handle activation of the application with regards to SSO
     //  (e.g., returning from iOS 6.0 authorization dialog or from fast app switching).
     [FBAppCall handleDidBecomeActiveWithSession:self.session];
+    
+    // Check application background refresh
+    
+    if([[UIApplication sharedApplication] backgroundRefreshStatus] == UIBackgroundRefreshStatusDenied)
+    {
+        [[MessageBarManager sharedInstance] showMessageWithTitle:@"Background App Refresh Is Switched Off"
+                                                     description:@"You will need to enable Background App Refresh to use this App."
+                                                            type:MessageBarMessageTypeInfo];
+    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

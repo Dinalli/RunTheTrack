@@ -9,6 +9,7 @@
 #import "SettingsViewController.h"
 #import "AppDelegate.h"
 #import <CoreMotion/CoreMotion.h>
+#import <Social/Social.h>
 
 @interface SettingsViewController ()
 
@@ -110,10 +111,52 @@
     [self setDefaults];
 }
 
+#pragma mark social sharing
+
 -(IBAction)feedback:(id)sender
+{
+    UIActionSheet *loginActionSheet = [[UIActionSheet alloc] initWithTitle:@"Contact using" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Uservoice" otherButtonTitles:@"twitter", nil];
+    
+    [loginActionSheet showInView:self.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if (buttonIndex == 0) {
+        [self contactUserVoice];
+    }
+    else if (buttonIndex == 1) {
+        [self shareOnTwitter];
+    }
+}
+
+-(void)contactUserVoice
 {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://runthetrack.uservoice.com/"]];
 }
+
+-(void)shareOnTwitter
+{
+    if([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter])
+    {
+        [self composePost:SLServiceTypeTwitter];
+    }
+    else{
+        [[MessageBarManager sharedInstance] showMessageWithTitle:@"Cannot load twitter"
+                                                     description:@"Check your twitter settings now"
+                                                            type:MessageBarMessageTypeInfo];
+    }
+}
+
+-(void)composePost:(NSString *)serviceType
+{
+    SLComposeViewController *composeSheet=[[SLComposeViewController alloc]init];
+    composeSheet=[SLComposeViewController composeViewControllerForServiceType:serviceType];
+    [composeSheet setInitialText:@"@runthetracks - add your message here "];
+
+    [self presentViewController:composeSheet animated:YES completion:nil];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
