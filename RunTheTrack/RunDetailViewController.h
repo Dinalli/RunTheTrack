@@ -13,7 +13,7 @@
 #import "RunLocations.h"
 #import "SectorTicker.h"
 
-@interface RunDetailViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate, UIActionSheetDelegate, SectorTickerDelegate>
+@interface RunDetailViewController : RTTBaseViewController <MKMapViewDelegate, CLLocationManagerDelegate, UIActionSheetDelegate, SectorTickerDelegate>
 {
     IBOutlet UILabel *runTime;
     IBOutlet UILabel *runLaps;

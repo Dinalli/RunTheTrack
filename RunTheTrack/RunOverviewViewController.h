@@ -11,8 +11,9 @@
 #import "AppDelegate.h"
 #import "RunData.h"
 #import <Social/Social.h>
+#import <GPX/GPX.h>
 
-@interface RunOverviewViewController : UIViewController <UIActionSheetDelegate>
+@interface RunOverviewViewController : RTTBaseViewController <UIActionSheetDelegate, UIWebViewDelegate>
 {
     IBOutlet UIView *timeView;
     IBOutlet UIView *trackInfoView;
@@ -36,6 +37,12 @@
     IBOutlet UIButton *shareButton;
     
     NSMutableArray *runs;
+    
+    UIWebView *stravaWebView;
+    
+    AppDelegate *appDelegate;
+    
+    NSString *filePath;
     
 }
 

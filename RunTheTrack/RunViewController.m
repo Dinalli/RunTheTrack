@@ -101,7 +101,7 @@ enum TimerState : NSUInteger {
     
     if(runAltitudeArray == nil) runAltitudeArray = [[NSMutableArray alloc] init];
 
-    [CommonUtils shadowAndRoundView:runInfoView];
+    //[CommonUtils shadowAndRoundView:runInfoView];
     
     [[NSNotificationCenter defaultCenter] removeObserver:@"willEnterForeground"];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fromForeground) name:@"willEnterForeground" object:nil];

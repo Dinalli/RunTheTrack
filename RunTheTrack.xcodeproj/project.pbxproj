@@ -9,8 +9,11 @@
 /* Begin PBXBuildFile section */
 		400522541880207D00B34DAD /* RunInfoSummary.m in Sources */ = {isa = PBXBuildFile; fileRef = 400522531880207D00B34DAD /* RunInfoSummary.m */; };
 		400522571880209600B34DAD /* RunInfoAltitudeGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 400522561880209600B34DAD /* RunInfoAltitudeGraph.m */; };
+		40110739192BEDF2009E0604 /* RTTBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40110738192BEDF2009E0604 /* RTTBaseViewController.m */; };
+		4011073B192BEE02009E0604 /* RTTBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 4011073A192BEE02009E0604 /* RTTBackground.png */; };
 		4015F4C818888A54006C3DC8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4015F4C718888A54006C3DC8 /* QuartzCore.framework */; };
 		4015F4CA18888A5B006C3DC8 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4015F4C918888A5B006C3DC8 /* Accelerate.framework */; };
+		40174AE01906CBE900E0BB73 /* GPX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40174ADF1906CBE900E0BB73 /* GPX.framework */; };
 		4018F50F17F832B9006F990E /* JBKenBurnsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4018F50E17F832B9006F990E /* JBKenBurnsView.m */; };
 		4018F52A17F83903006F990E /* Melbourne.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4018F51917F83903006F990E /* Melbourne.jpg */; };
 		4018F52C17F83903006F990E /* Monza.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4018F51B17F83903006F990E /* Monza.jpg */; };
@@ -121,6 +124,7 @@
 		40A3B3EC185B76CC00BA85BB /* icon-info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40A3B3E6185B76CC00BA85BB /* icon-info@2x.png */; };
 		40A3B3ED185B76CC00BA85BB /* icon-success.png in Resources */ = {isa = PBXBuildFile; fileRef = 40A3B3E7185B76CC00BA85BB /* icon-success.png */; };
 		40A3B3EE185B76CC00BA85BB /* icon-success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40A3B3E8185B76CC00BA85BB /* icon-success@2x.png */; };
+		40A525151907BE4D00DA4398 /* AFOAuth2Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A525141907BE4D00DA4398 /* AFOAuth2Client.m */; };
 		40B8E71E17F9EA5F00005F09 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40B8E71D17F9EA5F00005F09 /* CoreLocation.framework */; };
 		40B8EF7D18999E140060B6E0 /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B8EF7B18999E140060B6E0 /* profile.png */; };
 		40B8EF7E18999E140060B6E0 /* profile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B8EF7C18999E140060B6E0 /* profile@2x.png */; };
@@ -162,11 +166,14 @@
 		40E5A2EC1856538A00E8E87E /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40E5A2EB1856538A00E8E87E /* CoreText.framework */; };
 		40E5A2EF185655B100E8E87E /* TTCounterLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E5A2EE185655B100E8E87E /* TTCounterLabel.m */; };
 		40E5A2F21856592000E8E87E /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E5A2F11856592000E8E87E /* TTTAttributedLabel.m */; };
+		40F2260D190D3C990053BABF /* clientsecret in Resources */ = {isa = PBXBuildFile; fileRef = 40F2260B190D3C990053BABF /* clientsecret */; };
+		40F2260E190D3C990053BABF /* clientid in Resources */ = {isa = PBXBuildFile; fileRef = 40F2260C190D3C990053BABF /* clientid */; };
 		40F3E1E1180F0F4900785F27 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F3E1E0180F0F4900785F27 /* MediaPlayer.framework */; };
 		40F3E1E4180F194A00785F27 /* HistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F3E1E3180F194A00785F27 /* HistoryTableViewController.m */; };
 		40FA0ABA1883489C00EDB8AE /* abu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 40FA0AB91883489C00EDB8AE /* abu.jpg */; };
 		40FA5CF91883CB9D0047C7EA /* RTT.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 40C1659C17EB658A00D4E093 /* RTT.xcdatamodeld */; };
 		40FFC29218A0145A00E5D8D3 /* RTTBaseAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 40FFC29118A0145A00E5D8D3 /* RTTBaseAnnotation.m */; };
+		FE70E7EDE0214FE8A9B88C6F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14BCEDA747894FE089EAE0DF /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -180,12 +187,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		14BCEDA747894FE089EAE0DF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		400522521880207D00B34DAD /* RunInfoSummary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunInfoSummary.h; sourceTree = "<group>"; };
 		400522531880207D00B34DAD /* RunInfoSummary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunInfoSummary.m; sourceTree = "<group>"; };
 		400522551880209600B34DAD /* RunInfoAltitudeGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunInfoAltitudeGraph.h; sourceTree = "<group>"; };
 		400522561880209600B34DAD /* RunInfoAltitudeGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunInfoAltitudeGraph.m; sourceTree = "<group>"; };
+		40110737192BEDF2009E0604 /* RTTBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTTBaseViewController.h; sourceTree = "<group>"; };
+		40110738192BEDF2009E0604 /* RTTBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTTBaseViewController.m; sourceTree = "<group>"; };
+		4011073A192BEE02009E0604 /* RTTBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RTTBackground.png; sourceTree = "<group>"; };
 		4015F4C718888A54006C3DC8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4015F4C918888A5B006C3DC8 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		40174ADF1906CBE900E0BB73 /* GPX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GPX.framework; sourceTree = "<group>"; };
 		4018F50D17F832B9006F990E /* JBKenBurnsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBKenBurnsView.h; sourceTree = "<group>"; };
 		4018F50E17F832B9006F990E /* JBKenBurnsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBKenBurnsView.m; sourceTree = "<group>"; };
 		4018F51917F83903006F990E /* Melbourne.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Melbourne.jpg; sourceTree = "<group>"; };
@@ -370,6 +382,8 @@
 		40A3B3E6185B76CC00BA85BB /* icon-info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-info@2x.png"; sourceTree = "<group>"; };
 		40A3B3E7185B76CC00BA85BB /* icon-success.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-success.png"; sourceTree = "<group>"; };
 		40A3B3E8185B76CC00BA85BB /* icon-success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-success@2x.png"; sourceTree = "<group>"; };
+		40A525131907BE4D00DA4398 /* AFOAuth2Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFOAuth2Client.h; sourceTree = "<group>"; };
+		40A525141907BE4D00DA4398 /* AFOAuth2Client.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFOAuth2Client.m; sourceTree = "<group>"; };
 		40B8E71D17F9EA5F00005F09 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		40B8EF7B18999E140060B6E0 /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
 		40B8EF7C18999E140060B6E0 /* profile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile@2x.png"; sourceTree = "<group>"; };
@@ -424,12 +438,15 @@
 		40E5A2EE185655B100E8E87E /* TTCounterLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTCounterLabel.m; sourceTree = "<group>"; };
 		40E5A2F01856592000E8E87E /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
 		40E5A2F11856592000E8E87E /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
+		40F2260B190D3C990053BABF /* clientsecret */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = clientsecret; sourceTree = "<group>"; };
+		40F2260C190D3C990053BABF /* clientid */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = clientid; sourceTree = "<group>"; };
 		40F3E1E0180F0F4900785F27 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		40F3E1E2180F194900785F27 /* HistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryTableViewController.h; sourceTree = "<group>"; };
 		40F3E1E3180F194A00785F27 /* HistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewController.m; sourceTree = "<group>"; };
 		40FA0AB91883489C00EDB8AE /* abu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = abu.jpg; sourceTree = "<group>"; };
 		40FFC29018A0145A00E5D8D3 /* RTTBaseAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTTBaseAnnotation.h; sourceTree = "<group>"; };
 		40FFC29118A0145A00E5D8D3 /* RTTBaseAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTTBaseAnnotation.m; sourceTree = "<group>"; };
+		D7EA346236F240EC9D7259FB /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -445,6 +462,7 @@
 				4015F4C818888A54006C3DC8 /* QuartzCore.framework in Frameworks */,
 				404D0CE31868297400050BD7 /* libUAirship-3.0.2.a in Frameworks */,
 				40BA42721865E6E1007A6329 /* SystemConfiguration.framework in Frameworks */,
+				40174AE01906CBE900E0BB73 /* GPX.framework in Frameworks */,
 				40C1656517EB637900D4E093 /* CoreGraphics.framework in Frameworks */,
 				40BA419F1865E571007A6329 /* libsqlite3.dylib in Frameworks */,
 				40BA419A1865E4FC007A6329 /* libz.dylib in Frameworks */,
@@ -463,6 +481,7 @@
 				40C1656717EB637900D4E093 /* UIKit.framework in Frameworks */,
 				40C1656317EB637900D4E093 /* Foundation.framework in Frameworks */,
 				40251C6B184E5EFF0088F8C9 /* Crashlytics.framework in Frameworks */,
+				FE70E7EDE0214FE8A9B88C6F /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,11 +509,29 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		40110736192BEDD4009E0604 /* BaseVC */ = {
+			isa = PBXGroup;
+			children = (
+				4011073A192BEE02009E0604 /* RTTBackground.png */,
+				40110737192BEDF2009E0604 /* RTTBaseViewController.h */,
+				40110738192BEDF2009E0604 /* RTTBaseViewController.m */,
+			);
+			name = BaseVC;
+			sourceTree = "<group>";
+		};
 		4015F4631888885D006C3DC8 /* CorePlot */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			name = CorePlot;
+			sourceTree = "<group>";
+		};
+		40174ADE1906CBDB00E0BB73 /* GPXFramework */ = {
+			isa = PBXGroup;
+			children = (
+				40174ADF1906CBE900E0BB73 /* GPX.framework */,
+			);
+			name = GPXFramework;
 			sourceTree = "<group>";
 		};
 		4017D214189F7EB000ADA8B1 /* MapCallouts */ = {
@@ -511,6 +548,9 @@
 		4018F50417F82E26006F990E /* 3rdParty */ = {
 			isa = PBXGroup;
 			children = (
+				40F22607190D3B6A0053BABF /* Strava-Objc */,
+				40A525121907BE3F00DA4398 /* AFOAuth */,
+				40174ADE1906CBDB00E0BB73 /* GPXFramework */,
 				402AB502188AFB5B0068C52C /* GoogleAnalytics */,
 				4015F4631888885D006C3DC8 /* CorePlot */,
 				40D42C9B18702DAB0057DF2D /* YLProgressBar */,
@@ -534,6 +574,7 @@
 		4018F56417F84E0C006F990E /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				40110736192BEDD4009E0604 /* BaseVC */,
 				407710A918453B1D00882BBE /* Profile */,
 				407C4DF3180BF63B00F7B2FE /* Achivements */,
 				407C4DEC180BE3C600F7B2FE /* Settings */,
@@ -848,6 +889,15 @@
 			name = Icons;
 			sourceTree = "<group>";
 		};
+		40A525121907BE3F00DA4398 /* AFOAuth */ = {
+			isa = PBXGroup;
+			children = (
+				40A525131907BE4D00DA4398 /* AFOAuth2Client.h */,
+				40A525141907BE4D00DA4398 /* AFOAuth2Client.m */,
+			);
+			name = AFOAuth;
+			sourceTree = "<group>";
+		};
 		40BA41901865D3A4007A6329 /* UrbanAirship */ = {
 			isa = PBXGroup;
 			children = (
@@ -926,6 +976,7 @@
 				40C1658717EB637900D4E093 /* RunTheTrackTests */,
 				40C1656117EB637900D4E093 /* Frameworks */,
 				40C1656017EB637900D4E093 /* Products */,
+				D7EA346236F240EC9D7259FB /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -967,6 +1018,7 @@
 				40C1656417EB637900D4E093 /* CoreGraphics.framework */,
 				40C1656617EB637900D4E093 /* UIKit.framework */,
 				40C1658117EB637900D4E093 /* XCTest.framework */,
+				14BCEDA747894FE089EAE0DF /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1084,6 +1136,15 @@
 			name = YLProgressBar;
 			sourceTree = "<group>";
 		};
+		40F22607190D3B6A0053BABF /* Strava-Objc */ = {
+			isa = PBXGroup;
+			children = (
+				40F2260B190D3C990053BABF /* clientsecret */,
+				40F2260C190D3C990053BABF /* clientid */,
+			);
+			name = "Strava-Objc";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1091,10 +1152,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 40C1659117EB637900D4E093 /* Build configuration list for PBXNativeTarget "RunTheTrack" */;
 			buildPhases = (
+				3ED6A068AA7040D9BB4A6257 /* Check Pods Manifest.lock */,
 				40C1655B17EB637900D4E093 /* Sources */,
 				40C1655C17EB637900D4E093 /* Frameworks */,
 				40C1655D17EB637900D4E093 /* Resources */,
 				40251C69184E5EE00088F8C9 /* ShellScript */,
+				99DA22F8FD284B49AC8C0009 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1187,6 +1250,7 @@
 				403EA6341897E0CE0042A12E /* Monaco.jpg in Resources */,
 				408B1BD418A67E460021D033 /* temptrack.jpg in Resources */,
 				408167E6189E908C00843B98 /* Icon.png in Resources */,
+				4011073B192BEE02009E0604 /* RTTBackground.png in Resources */,
 				4064EB1118EC6ABA00F1D0E9 /* austria.jpg in Resources */,
 				405E5339185DEED400A8BD45 /* sector2@2x.png in Resources */,
 				408167F3189E910F00843B98 /* Default-568h@2x.png in Resources */,
@@ -1202,6 +1266,7 @@
 				40343AFE18940D6000881CC6 /* barcelona.png in Resources */,
 				40FA0ABA1883489C00EDB8AE /* abu.jpg in Resources */,
 				408167E9189E908C00843B98 /* ios7_app_icon_ipad@2x.png in Resources */,
+				40F2260D190D3C990053BABF /* clientsecret in Resources */,
 				406B253E18954A6100F03B23 /* 86-camera.png in Resources */,
 				4064EB1518EC739B00F1D0E9 /* malaysia.jpg in Resources */,
 				408167EF189E908C00843B98 /* ios7_spotlight_icon@2x.png in Resources */,
@@ -1245,6 +1310,7 @@
 				40343B0E18940D6000881CC6 /* spa.png in Resources */,
 				406EF52918999A0F00193D5C /* singapore.jpg in Resources */,
 				4086419317F71E8A00E15000 /* Tracks.plist in Resources */,
+				40F2260E190D3C990053BABF /* clientid in Resources */,
 				406B8AE918670F65008805C9 /* 31-ipod.png in Resources */,
 				409154CA1852640000CECEEC /* runnerDot@2x.png in Resources */,
 				408B1BD618A67F1E0021D033 /* nurburg.jpg in Resources */,
@@ -1270,6 +1336,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3ED6A068AA7040D9BB4A6257 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		40251C69184E5EE00088F8C9 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1282,6 +1363,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "./Crashlytics.framework/run 52f789dbfeee4af97bac9b49fd6414dc64175c2f";
+		};
+		99DA22F8FD284B49AC8C0009 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1300,6 +1396,7 @@
 				4042CA851889A584005EDEFD /* RunAchievement.m in Sources */,
 				404793A2182F83BA004FEB73 /* RunDetailViewController.m in Sources */,
 				407771E81815B74700A38AA1 /* UIImage+ImageEffects.m in Sources */,
+				40110739192BEDF2009E0604 /* RTTBaseViewController.m in Sources */,
 				40F3E1E4180F194A00785F27 /* HistoryTableViewController.m in Sources */,
 				407C4DF9180BF66500F7B2FE /* AchivementsCollectionViewController.m in Sources */,
 				4018F50F17F832B9006F990E /* JBKenBurnsView.m in Sources */,
@@ -1313,6 +1410,7 @@
 				40E5A2F21856592000E8E87E /* TTTAttributedLabel.m in Sources */,
 				400522541880207D00B34DAD /* RunInfoSummary.m in Sources */,
 				407C4DEF180BE6B700F7B2FE /* TracksCollectionViewController.m in Sources */,
+				40A525151907BE4D00DA4398 /* AFOAuth2Client.m in Sources */,
 				4022963F188A83FA00BF515F /* RunData.m in Sources */,
 				4047939F182F7AEC004FEB73 /* RunCell.m in Sources */,
 				40A2AA6D188F023800F5E263 /* RunSectors.m in Sources */,
@@ -1385,6 +1483,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1417,15 +1516,17 @@
 					"/Airship/**",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(inherited)",
+					"\"$(SRCROOT)\"/**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
 				PROVISIONING_PROFILE = "7835D74B-3777-4D0A-95FE-E1AC16081B25";
 				SDKROOT = iphoneos;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -1433,6 +1534,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1459,6 +1561,7 @@
 					"/Airship/**",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(inherited)",
+					"\"$(SRCROOT)\"/**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = (
@@ -1468,18 +1571,22 @@
 				PROVISIONING_PROFILE = "7835D74B-3777-4D0A-95FE-E1AC16081B25";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
 		};
 		40C1659217EB637900D4E093 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D7EA346236F240EC9D7259FB /* Pods.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Andrew DONNELLY (TV62A7K9VP)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/iphonedev/FacebookSDK,
 					/iphonedev/RunTheTrack,
+					"$(PROJECT_DIR)/RunTheTrack",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RunTheTrack/RunTheTrack-Prefix.pch";
@@ -1493,6 +1600,9 @@
 					"/Users/andrewdonnelly/downloads/libUAirship-latest/Airship",
 					/iphonedev/RunTheTrack/RunTheTrack,
 					/iphonedev/RunTheTrack/RunTheTrack/Airship,
+					"$(PROJECT_DIR)/RunTheTrack",
+					"$(PROJECT_DIR)/Include",
+					"/Users/andrewdonnelly/downloads/strava-objc-api-master/strava-objc/build/Debug-iphoneos",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1506,13 +1616,16 @@
 		};
 		40C1659317EB637900D4E093 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D7EA346236F240EC9D7259FB /* Pods.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Andrew DONNELLY (TV62A7K9VP)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/iphonedev/FacebookSDK,
 					/iphonedev/RunTheTrack,
+					"$(PROJECT_DIR)/RunTheTrack",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RunTheTrack/RunTheTrack-Prefix.pch";
@@ -1526,6 +1639,9 @@
 					"/Users/andrewdonnelly/downloads/libUAirship-latest/Airship",
 					/iphonedev/RunTheTrack/RunTheTrack,
 					/iphonedev/RunTheTrack/RunTheTrack/Airship,
+					"$(PROJECT_DIR)/RunTheTrack",
+					"$(PROJECT_DIR)/Include",
+					"/Users/andrewdonnelly/downloads/strava-objc-api-master/strava-objc/build/Debug-iphoneos",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",

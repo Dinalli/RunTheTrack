@@ -10,7 +10,8 @@
 #import "UIImage+ImageEffects.h"
 #import "RunTrackMapViewController.h"
 #import "CoreDataHelper.h"
-
+#import <AFNetworking/AFNetworking.h>
+#import "AFOAuth2Client.h"
 
 @implementation RunOverviewViewController
 
@@ -19,7 +20,7 @@
     [super viewDidLoad];
     [self.navigationController setNavigationBarHidden:NO];
     
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     runs = [CoreDataHelper getObjectsFromContextWithEntityName:@"RunData" andSortKey:nil andSortAscending:YES withManagedObjectContext:self.managedObjectContext];
     
@@ -141,7 +142,7 @@
     if([self.runData.runtype isEqualToString:@"GPSRun"])
     {
         
-        loginActionSheet = [[UIActionSheet alloc] initWithTitle:@"Share using" delegate:self cancelButtonTitle:@"Cancel"  destructiveButtonTitle:@"share on facebook" otherButtonTitles:@"share on twitter", @"go to track", nil];
+        loginActionSheet = [[UIActionSheet alloc] initWithTitle:@"Share using" delegate:self cancelButtonTitle:@"Cancel"  destructiveButtonTitle:@"share on facebook" otherButtonTitles:@"share on twitter",@"export to strava", @"go to track", nil];
     }
     else
     {
@@ -162,9 +163,257 @@
     {
         if([self.runData.runtype isEqualToString:@"GPSRun"])
         {
-            [self goToTrack];
+            [self exportToStrava];
         }
     }
+    else if (buttonIndex == 3)
+    {
+        [self goToTrack];
+    }
+}
+
+
+-(void)exportToStrava
+{
+    // Export Data to GPX format
+    filePath = [self createGPX];
+    
+    if (filePath) {
+        // Post to Strava
+        
+        [self loginToStrava];
+    }
+}
+
+
+//-(void)loginToStrava:(NSString *)filePath
+//{
+//
+//    //https://www.strava.com/oauth/authorize?response_type=code&redirect_uri=http://127.0.0.1&scope=view_private&approval_prompt=force&client_id=1401
+//    
+//    NSURL *url = [NSURL URLWithString:@"https://www.strava.com/oauth/"];
+//    AFOAuth2Client *client = [AFOAuth2Client clientWithBaseURL:url clientID:@"1401" secret:@"967b9297f6f1c9a0a8fe10a021cf211fa35b4d59"];
+//    
+//    [client authenticateUsingOAuthWithPath:@"authorize" username:@"Dinalli" password:@"BurtonUn1nc" scope:@"write"
+//                                   success:^(AFOAuthCredential *credential) {
+//                                       NSLog(@"Successfully received OAuth credentials %@", credential.accessToken);
+//                                       [AFOAuthCredential storeCredential:credential
+//                                                           withIdentifier:client.serviceProviderIdentifier];
+//                                       [self postToStrava:filePath];
+//                                   }
+//                                   failure:^(NSError *error) {
+//                                       NSLog(@"OAuth Error: %@", error);
+//                                   }];
+//}
+
+-(void)loginToStrava
+{
+    [appDelegate addObserver:self forKeyPath:@"stravaCode"
+                            options:NSKeyValueObservingOptionNew
+                            context:nil];
+    
+    NSURL *url = [NSURL URLWithString:@"https://www.strava.com"];
+    AFOAuth2Client *client = [AFOAuth2Client clientWithBaseURL:url clientID:@"1401" secret:@"967b9297f6f1c9a0a8fe10a021cf211fa35b4d59"];
+    
+    stravaWebView = [[UIWebView alloc] initWithFrame:self.view.frame];
+    stravaWebView.delegate = self;
+    
+    NSString* path = [[NSString stringWithFormat:@"https://strava.com/oauth/authorize?client_id=%@&redirect_uri=%@&response_type=code&scope=view_private write&approval_prompt=force",
+                       client.clientID, @"runthetrack://localhost"] stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
+    NSURL* authUrl = [NSURL URLWithString:path];
+    [stravaWebView loadRequest:[NSURLRequest requestWithURL:authUrl]];
+    
+    [self.view addSubview:stravaWebView];
+    
+//    //https://www.strava.com/oauth/authorize?response_type=code&redirect_uri=http://127.0.0.1&scope=view_private&approval_prompt=force&client_id=1401
+//    
+//    
+//
+//    
+//    NSDictionary *queryParams = @{ @"client_id" : @"1401",
+//                                   @"response_type" : @"code",
+//                                   @"redirect_uri" : @"http://127.0.0.1"};
+//    
+//    [client authenticateUsingOAuthWithPath:@"https://www.strava.com/oauth/authorize"
+//                                parameters:queryParams
+//                                   success:^(AFOAuthCredential *credential) {
+//                                       NSLog(@"Successfully received OAuth credentials %@", credential.accessToken);
+//                                       [AFOAuthCredential storeCredential:credential
+//                                                           withIdentifier:client.serviceProviderIdentifier];
+//                                       
+//                                       [self postToStrava:filePath andIdentifier:client.serviceProviderIdentifier];
+//                                   
+//                                   }
+//                                   failure:^(NSError *error) {
+//                                       NSLog(@"OAuth Error: %@", error);
+//                                   }];
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+    
+    NSLog(@"request url %@", request.URL);
+    return YES;
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+        NSLog(@"web started loading");
+}
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    NSLog(@"web finshied loading");
+}
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+    NSLog(@"Error %@",error.localizedDescription);
+}
+
+-(void)observeValueForKeyPath:(NSString *)keyPath
+                     ofObject:(id)object
+                       change:(NSDictionary *)change
+                      context:(void *)context
+{
+    if ([keyPath isEqualToString:@"stravaCode"]) {
+        
+        [stravaWebView removeFromSuperview];
+        
+        NSDictionary *queryParams = @{ @"code" : appDelegate.stravaCode};
+        
+        NSURL *url = [NSURL URLWithString:@"https://www.strava.com/oauth/"];
+        
+        AFOAuth2Client *client = [AFOAuth2Client clientWithBaseURL:url clientID:@"1401" secret:@"967b9297f6f1c9a0a8fe10a021cf211fa35b4d59"];
+        
+        [client authenticateUsingOAuthWithPath:@"token"
+                                        parameters:queryParams
+                                           success:^(AFOAuthCredential *credential) {
+                                               NSLog(@"Successfully received OAuth credentials %@", credential.accessToken);
+                                               [AFOAuthCredential storeCredential:credential
+                                                                   withIdentifier:client.serviceProviderIdentifier];
+        
+                                               [self postToStravaWithIdentifier:client.serviceProviderIdentifier];
+        
+                                           }
+                                           failure:^(NSError *error) {
+                                               NSLog(@"OAuth Error: %@", error);
+                                           }];
+        
+    }
+}
+
+-(void)postToStravaWithIdentifier:(NSString *)stravaId
+{
+
+    NSURL *url = [NSURL URLWithString:@"http://www.strava.com"];
+    
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
+    
+    NSData *fileData = [NSData dataWithContentsOfFile:filePath];
+    
+    AFOAuthCredential *credential = [AFOAuthCredential retrieveCredentialWithIdentifier:stravaId];
+    
+    NSString *accessToken = credential.accessToken;
+    
+    NSDictionary *parameters = @{@"access_token": accessToken, @"activity_type" : @"ride",@"data_type" : @"fit", @"name" : @"Test", @"stationary" : @"1" };
+    
+    NSMutableURLRequest *request = [httpClient multipartFormRequestWithMethod:@"POST" path:@"/api/v3/uploads" parameters:parameters constructingBodyWithBlock: ^(id <AFMultipartFormData>formData) {
+        [formData appendPartWithFileData:[NSData dataWithContentsOfFile:filePath] name:@"file" fileName:@"TestStrava.gpx" mimeType:@"application/octet-stream"];
+    }];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    
+    [operation setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
+        NSLog(@"Sent %lld of %lld bytes", totalBytesWritten, totalBytesExpectedToWrite);
+    }];
+    
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSLog(@"succss %@", responseObject);
+        
+        // Poll for success and show message
+        [[MessageBarManager sharedInstance] showMessageWithTitle:@"Export Succesful"
+                                                     description:@"Your run has been uploaded"
+                                                            type:MessageBarMessageTypeInfo];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"failure %@ \n\n %@", error, operation);
+        
+    }];
+    
+    [httpClient enqueueHTTPRequestOperation:operation];
+}
+
+- (NSString *)gpxFilePath
+{
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    [formatter setTimeStyle:NSDateFormatterFullStyle];
+    [formatter setDateFormat:@"yyyyMMddHHmmss"];
+    NSString *dateString = [formatter stringFromDate:[NSDate date]];
+    
+    NSString *fileName = [NSString stringWithFormat:@"%@_%@.gpx",self.runData.runtrackname, dateString];
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,     NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *pathToFile = [NSString stringWithFormat:@"%@/%@", documentsDirectory, fileName];
+    
+    return pathToFile;
+    //return [NSTemporaryDirectory() stringByAppendingPathComponent:fileName];
+}
+
+- (NSString *)createGPX
+{
+    // gpx
+    GPXRoot *gpx = [GPXRoot rootWithCreator:@"GPSLogger"];
+    
+    // gpx > trk
+    GPXTrack *gpxTrack = [gpx newTrack];
+    gpxTrack.name = self.runData.runtrackname;
+    
+    // gpx > trk > trkseg > trkpt
+
+    NSMutableArray *points = [[self.runData.runDataLocations allObjects] mutableCopy];
+    
+    [points sortUsingComparator:^NSComparisonResult(id a, id b) {
+        RunLocations *aRunLocation = (RunLocations *)a;
+        RunLocations *bRunLocation = (RunLocations *)b;
+        NSInteger firstInteger = [aRunLocation.locationIndex integerValue];
+        NSInteger secondInteger = [bRunLocation.locationIndex integerValue];
+        
+        if (firstInteger > secondInteger)
+            return NSOrderedAscending;
+        if (firstInteger < secondInteger)
+            return NSOrderedDescending;
+        return [aRunLocation.locationIndex localizedCompare: bRunLocation.locationIndex];
+    }];
+    
+    NSInteger numberOfSteps = points.count;
+    CLLocationCoordinate2D coordinates[numberOfSteps];
+    for (NSInteger index = 0; index < numberOfSteps; index++) {
+        RunLocations *runlocation = (RunLocations *)[points objectAtIndex:index];
+        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([runlocation.lattitude doubleValue], [runlocation.longitude doubleValue]);
+        coordinates[index] = coordinate;
+        
+        GPXTrackPoint *gpxTrackPoint = [gpxTrack newTrackpointWithLatitude:runlocation.lattitude.floatValue longitude:runlocation.longitude.floatValue];
+        gpxTrackPoint.elevation = 0;
+        
+        NSDateFormatter *df = [[NSDateFormatter alloc] init];
+        [df setDateFormat:@"dd/MMM/yyyy HH:mm:ss.SS"];
+        gpxTrackPoint.time =  [df dateFromString:runlocation.locationTimeStamp];
+    }
+    
+    NSString *gpxString = gpx.gpx;
+    
+    // write gpx to file
+    NSError *error;
+    NSString *filePath = [self gpxFilePath];
+    if (![gpxString writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:&error]) {
+        if (error) {
+            NSLog(@"error, %@", error);
+        }
+        
+        return nil;
+    }
+    
+    return filePath;
 }
 
 -(void)goToTrack

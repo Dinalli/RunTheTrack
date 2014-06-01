@@ -33,6 +33,8 @@ extern NSString *const SCSessionStateChangedNotification;
 
 @property (nonatomic) BOOL soundEnabled;
 
+@property NSString *stravaCode;
+
 - (void)openSession;
 
 @end

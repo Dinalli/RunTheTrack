@@ -10,7 +10,7 @@
 #import <Social/Social.h>
 #import "ProfileHeaderView.h"
 
-@interface ProfileViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UIActionSheetDelegate>
+@interface ProfileViewController : RTTBaseViewController <UICollectionViewDataSource, UICollectionViewDelegate, UIActionSheetDelegate>
 {
     NSArray *tracksArray;
     NSMutableArray *trackRunsArray;

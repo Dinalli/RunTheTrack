@@ -21,4 +21,5 @@
     #import "MessageBarManager.h"
     #import "CommonUtils.h"
     #import "RTTBaseAnnotation.h"
+    #import "RTTBaseViewController.h"
 #endif

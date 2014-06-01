@@ -16,7 +16,7 @@
 #import "SectorTickerView.h"
 #import "SectorTicker.h"
 
-@interface RunTrackMapViewController : UIViewController <MKMapViewDelegate, UIActionSheetDelegate, SectorTickerDelegate>
+@interface RunTrackMapViewController : RTTBaseViewController <MKMapViewDelegate, UIActionSheetDelegate, SectorTickerDelegate>
 {
     IBOutlet UILabel *runTime;
     IBOutlet UILabel *runLaps;

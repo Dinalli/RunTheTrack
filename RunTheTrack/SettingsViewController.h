@@ -10,7 +10,7 @@
 #import <FacebookSDK/FacebookSDK.h>
 @class AppDelegate;
 
-@interface SettingsViewController : UIViewController <UIActionSheetDelegate>
+@interface SettingsViewController : RTTBaseViewController <UIActionSheetDelegate>
 {
     IBOutlet UIView *motionView;
     IBOutlet UITextView *m7TextView;

@@ -26,21 +26,21 @@ NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:S
     
     [Crashlytics startWithAPIKey:@"52f789dbfeee4af97bac9b49fd6414dc64175c2f"];
 
-    [GAI sharedInstance].trackUncaughtExceptions = YES;
-    
-    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
-    [GAI sharedInstance].dispatchInterval = 5;
-    
-    // Optional: set Logger to VERBOSE for debug information.
-    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
-    
-    // Initialize tracker.
-    id<GAITracker> tracker __unused = [[GAI sharedInstance] trackerWithTrackingId:@"UA-47282955-1"];
-    
-    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"     // Event category (required)
-                                                          action:@"app_opened"  // Event action (required)
-                                                           label:@"loaded"          // Event label
-                                                           value:nil] build]];
+//    [GAI sharedInstance].trackUncaughtExceptions = YES;
+//    
+//    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
+//    [GAI sharedInstance].dispatchInterval = 5;
+//    
+//    // Optional: set Logger to VERBOSE for debug information.
+//    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+//    
+//    // Initialize tracker.
+//    id<GAITracker> tracker __unused = [[GAI sharedInstance] trackerWithTrackingId:@"UA-47282955-1"];
+//    
+//    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"     // Event category (required)
+//                                                          action:@"app_opened"  // Event action (required)
+//                                                           label:@"loaded"          // Event label
+//                                                           value:nil] build]];
     
     NSBundle* bundle = [NSBundle mainBundle];
     NSString* plistPath = [bundle pathForResource:@"Tracks" ofType:@"plist"];
@@ -72,6 +72,7 @@ NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:S
     
     return YES;
 }
+
 
 -(UIStatusBarStyle)preferredStatusBarStyle
 {
@@ -120,10 +121,35 @@ NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:S
 
 #pragma mark Login Facebook
 
+-(NSDictionary*)splitQuery:(NSString*)query {
+    if(!query||[query length]==0) return nil;
+    NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
+    for(NSString* parameter in [query componentsSeparatedByString:@"&"]) {
+        NSRange range = [parameter rangeOfString:@"="];
+        if(range.location!=NSNotFound)
+            [parameters setValue:[[parameter substringFromIndex:range.location+range.length] stringByReplacingPercentEscapesUsingEncoding:NSASCIIStringEncoding] forKey:[[parameter substringToIndex:range.location] stringByReplacingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
+        else [parameters setValue:[[NSString alloc] init] forKey:[parameter stringByReplacingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
+    }
+    return parameters;
+}
+
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation {
+    
+    NSLog(@"URL OPEN %@", url);
+    NSLog(@"URL Scheme %@", url.scheme);
+    NSLog(@"URL CODE %@", [[self splitQuery:url.query] objectForKey:@"code"]);
+    NSLog(@"Source Application %@", sourceApplication);
+    
+    if([url.scheme isEqualToString:@"runthetrack"])
+    {
+        NSLog(@"CODE %@",[[self splitQuery:url.query] objectForKey:@"code"]);
+        self.stravaCode = [[self splitQuery:url.query] objectForKey:@"code"];
+        return YES;
+    }
+    
     // attempt to extract a token from the url
     return [FBAppCall handleOpenURL:url
                   sourceApplication:sourceApplication

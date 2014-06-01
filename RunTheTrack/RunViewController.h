@@ -14,7 +14,7 @@
 #import "TTCounterLabel.h"
 #import "YLProgressBar.h"
 
-@interface RunViewController : UIViewController<TTCounterLabelDelegate, MPMediaPickerControllerDelegate, CLLocationManagerDelegate, AVSpeechSynthesizerDelegate>
+@interface RunViewController : RTTBaseViewController<TTCounterLabelDelegate, MPMediaPickerControllerDelegate, CLLocationManagerDelegate, AVSpeechSynthesizerDelegate>
 {
     MPMusicPlayerController *musicPlayer;
     
