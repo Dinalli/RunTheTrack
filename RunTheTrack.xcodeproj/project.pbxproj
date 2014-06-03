@@ -50,6 +50,8 @@
 		4042CA881889A585005EDEFD /* RunAltitude.m in Sources */ = {isa = PBXBuildFile; fileRef = 4042CA871889A585005EDEFD /* RunAltitude.m */; };
 		40438EA318A1584500BC6966 /* SectorTicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 40438EA218A1584500BC6966 /* SectorTicker.m */; };
 		40438EA618A15F0D00BC6966 /* SectorTickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40438EA518A15F0D00BC6966 /* SectorTickerView.m */; };
+		4043D81C193B61E80093EE82 /* RTTBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 4043D81A193B61E80093EE82 /* RTTBackground.png */; };
+		4043D81D193B61E80093EE82 /* RTTBackground2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4043D81B193B61E80093EE82 /* RTTBackground2.png */; };
 		4047939F182F7AEC004FEB73 /* RunCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4047939E182F7AEC004FEB73 /* RunCell.m */; };
 		404793A2182F83BA004FEB73 /* RunDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 404793A1182F83BA004FEB73 /* RunDetailViewController.m */; };
 		4048167C1845D7D2000410C7 /* ProfileHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4048167B1845D7D2000410C7 /* ProfileHeaderView.m */; };
@@ -247,6 +249,8 @@
 		40438EA218A1584500BC6966 /* SectorTicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectorTicker.m; sourceTree = "<group>"; };
 		40438EA418A15F0D00BC6966 /* SectorTickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectorTickerView.h; sourceTree = "<group>"; };
 		40438EA518A15F0D00BC6966 /* SectorTickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectorTickerView.m; sourceTree = "<group>"; };
+		4043D81A193B61E80093EE82 /* RTTBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RTTBackground.png; sourceTree = "<group>"; };
+		4043D81B193B61E80093EE82 /* RTTBackground2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RTTBackground2.png; sourceTree = "<group>"; };
 		4047939D182F7AEC004FEB73 /* RunCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunCell.h; sourceTree = "<group>"; };
 		4047939E182F7AEC004FEB73 /* RunCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunCell.m; sourceTree = "<group>"; };
 		404793A0182F83BA004FEB73 /* RunDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunDetailViewController.h; sourceTree = "<group>"; };
@@ -804,6 +808,8 @@
 		407C4E02180BFA6600F7B2FE /* Backgrounds */ = {
 			isa = PBXGroup;
 			children = (
+				4043D81A193B61E80093EE82 /* RTTBackground.png */,
+				4043D81B193B61E80093EE82 /* RTTBackground2.png */,
 			);
 			name = Backgrounds;
 			sourceTree = "<group>";
@@ -1268,10 +1274,12 @@
 				408167E9189E908C00843B98 /* ios7_app_icon_ipad@2x.png in Resources */,
 				40F2260D190D3C990053BABF /* clientsecret in Resources */,
 				406B253E18954A6100F03B23 /* 86-camera.png in Resources */,
+				4043D81C193B61E80093EE82 /* RTTBackground.png in Resources */,
 				4064EB1518EC739B00F1D0E9 /* malaysia.jpg in Resources */,
 				408167EF189E908C00843B98 /* ios7_spotlight_icon@2x.png in Resources */,
 				40BAAD3F18203FB900137E8C /* beep-8.mp3 in Resources */,
 				408167E3189E908C00843B98 /* Icon-Small-50@2x.png in Resources */,
+				4043D81D193B61E80093EE82 /* RTTBackground2.png in Resources */,
 				40A3B3EE185B76CC00BA85BB /* icon-success@2x.png in Resources */,
 				40C5D7F318998B64002BBF14 /* man.png in Resources */,
 				40343B0D18940D6000881CC6 /* singapore.png in Resources */,
@@ -1597,12 +1605,9 @@
 				INFOPLIST_FILE = "RunTheTrack/RunTheTrack-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/andrewdonnelly/downloads/libUAirship-latest/Airship",
 					/iphonedev/RunTheTrack/RunTheTrack,
 					/iphonedev/RunTheTrack/RunTheTrack/Airship,
 					"$(PROJECT_DIR)/RunTheTrack",
-					"$(PROJECT_DIR)/Include",
-					"/Users/andrewdonnelly/downloads/strava-objc-api-master/strava-objc/build/Debug-iphoneos",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1636,12 +1641,9 @@
 				INFOPLIST_FILE = "RunTheTrack/RunTheTrack-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/andrewdonnelly/downloads/libUAirship-latest/Airship",
 					/iphonedev/RunTheTrack/RunTheTrack,
 					/iphonedev/RunTheTrack/RunTheTrack/Airship,
 					"$(PROJECT_DIR)/RunTheTrack",
-					"$(PROJECT_DIR)/Include",
-					"/Users/andrewdonnelly/downloads/strava-objc-api-master/strava-objc/build/Debug-iphoneos",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",

@@ -82,6 +82,7 @@ enum TimerState : NSUInteger {
     UILabel* tlabel=[[UILabel alloc] initWithFrame:CGRectMake(0,0, 300, 40)];
     tlabel.text=self.navigationItem.title;
     tlabel.textAlignment = NSTextAlignmentCenter;
+    tlabel.textColor = [UIColor whiteColor];
     tlabel.backgroundColor =[UIColor clearColor];
     tlabel.adjustsFontSizeToFitWidth=YES;
     
@@ -100,8 +101,6 @@ enum TimerState : NSUInteger {
     sector2savedforLap = NO;
     
     if(runAltitudeArray == nil) runAltitudeArray = [[NSMutableArray alloc] init];
-
-    //[CommonUtils shadowAndRoundView:runInfoView];
     
     [[NSNotificationCenter defaultCenter] removeObserver:@"willEnterForeground"];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fromForeground) name:@"willEnterForeground" object:nil];
@@ -140,7 +139,7 @@ enum TimerState : NSUInteger {
     [self.timeLabel setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:15]];
     
     // Default label properties
-    self.timeLabel.textColor = [UIColor blackColor];
+    //self.timeLabel.textColor = [UIColor blackColor];
     
     // After making any changes we need to call update appearance
     [self.timeLabel updateApperance];

@@ -10,9 +10,11 @@
 #import "AppDelegate.h"
 #import <iAd/iAd.h>
 
-@interface TracksCollectionViewController : UICollectionViewController <UICollectionViewDataSource, UICollectionViewDelegate,ADBannerViewDelegate>
+@interface TracksCollectionViewController : RTTBaseViewController <UICollectionViewDataSource, UICollectionViewDelegate,ADBannerViewDelegate>
 {
     AppDelegate *appDelegate;
     ADBannerView *adView;
+    
+    IBOutlet UICollectionView *collectionView;
 }
 @end
