@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>1C5B7508-977A-49F4-81EB-F89B68289AB0</string>
+	<key>IDESourceControlProjectName</key>
+	<string>RunTheTrack</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>0C6729F0-2ED4-45BB-BEDE-0D52FA0104BD</key>
+		<string>https://github.com/Dinalli/RunTheTrack.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>RunTheTrack.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>0C6729F0-2ED4-45BB-BEDE-0D52FA0104BD</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Dinalli/RunTheTrack.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>0C6729F0-2ED4-45BB-BEDE-0D52FA0104BD</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>0C6729F0-2ED4-45BB-BEDE-0D52FA0104BD</string>
+			<key>IDESourceControlWCCName</key>
+			<string>RunTheTrack</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -57,14 +57,14 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue
                  sender:(id)sender {
     if ([segue.identifier isEqualToString:@"TrackSelectedSegue"]) {
-        NSArray *indexPaths = [self.collectionView indexPathsForSelectedItems];
+        NSArray *indexPaths = [collectionView indexPathsForSelectedItems];
         RunViewController *rvc = segue.destinationViewController;
         
         NSIndexPath *index = [indexPaths objectAtIndex:0];
         NSDictionary *selectedTrackInfo = [appDelegate.tracksArray  objectAtIndex:index.row];
         rvc.TrackInfo = [selectedTrackInfo mutableCopy];
         
-        [self.collectionView
+        [collectionView
          deselectItemAtIndexPath:index animated:YES];
     }
 }
@@ -94,13 +94,7 @@
     cell.totalLaps.text = [NSString stringWithFormat:@"Laps : %@",[TrackInfo objectForKey:@"Laps"]];
     cell.Distance.text = [NSString stringWithFormat:@"Distance : %@ miles",[TrackInfo objectForKey:@"Distance"]];
     
-    cell.kenView.imagesArray = [[NSMutableArray alloc] init];
-    UIImage *trackImage = [UIImage imageNamed:[TrackInfo objectForKey:@"trackimage"]];
-    [cell.kenView.imagesArray addObject:trackImage];
-    [cell.kenView animateWithImages:cell.kenView.imagesArray
-            transitionDuration:30
-                          loop:YES
-                   isLandscape:YES];
+    cell.trackImage.image = [UIImage imageNamed:[TrackInfo objectForKey:@"mapimage"]];
     return cell;
 }
 
@@ -125,7 +119,7 @@
         contentFrame.size.height -= bannerFrame.size.height;
         bannerFrame.origin.y = contentFrame.size.height;
     } else {
-        bannerFrame.origin.y = contentFrame.size.height-100;
+        bannerFrame.origin.y = contentFrame.size.height;
     }
     adView.frame = bannerFrame;
 }

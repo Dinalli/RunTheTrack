@@ -65,7 +65,7 @@
 
 -(void)setUpRunData
 {
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     //Track Info
     trackDistance.text = [self.trackInfo objectForKey:@"Distance"];
@@ -404,7 +404,7 @@
     
     // write gpx to file
     NSError *error;
-    NSString *filePath = [self gpxFilePath];
+    filePath = [self gpxFilePath];
     if (![gpxString writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:&error]) {
         if (error) {
             NSLog(@"error, %@", error);
