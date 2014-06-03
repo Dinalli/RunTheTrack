@@ -118,6 +118,11 @@
 		409154CD1852717300CECEEC /* cheq.png in Resources */ = {isa = PBXBuildFile; fileRef = 409154CB1852717300CECEEC /* cheq.png */; };
 		409154CE1852717300CECEEC /* cheq@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 409154CC1852717300CECEEC /* cheq@2x.png */; };
 		409357A71855F7C6007EE900 /* UIImageView+More.m in Sources */ = {isa = PBXBuildFile; fileRef = 409357A61855F7C6007EE900 /* UIImageView+More.m */; };
+		40A1C440193E553D00E072EE /* Stars@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40A1C43F193E553D00E072EE /* Stars@2x.png */; };
+		40A1C443193E559F00E072EE /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A1C442193E559F00E072EE /* MenuViewController.m */; };
+		40A1C446193E587100E072EE /* RTTRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A1C445193E587100E072EE /* RTTRootViewController.m */; };
+		40A1C449193E5F1600E072EE /* navbar-lbtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 40A1C447193E5F1600E072EE /* navbar-lbtn.png */; };
+		40A1C44A193E5F1600E072EE /* navbar-lbtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40A1C448193E5F1600E072EE /* navbar-lbtn@2x.png */; };
 		40A2AA6D188F023800F5E263 /* RunSectors.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A2AA6C188F023800F5E263 /* RunSectors.m */; };
 		40A3B3E1185B768F00BA85BB /* MessageBarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A3B3E0185B768F00BA85BB /* MessageBarManager.m */; };
 		40A3B3E9185B76CC00BA85BB /* icon-error.png in Resources */ = {isa = PBXBuildFile; fileRef = 40A3B3E3185B76CC00BA85BB /* icon-error.png */; };
@@ -376,6 +381,13 @@
 		409357A51855F7C6007EE900 /* UIImageView+More.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+More.h"; sourceTree = "<group>"; };
 		409357A61855F7C6007EE900 /* UIImageView+More.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+More.m"; sourceTree = "<group>"; };
 		409357AF1855FC6F007EE900 /* Global.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
+		40A1C43F193E553D00E072EE /* Stars@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stars@2x.png"; sourceTree = "<group>"; };
+		40A1C441193E559F00E072EE /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		40A1C442193E559F00E072EE /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		40A1C444193E587100E072EE /* RTTRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTTRootViewController.h; sourceTree = "<group>"; };
+		40A1C445193E587100E072EE /* RTTRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTTRootViewController.m; sourceTree = "<group>"; };
+		40A1C447193E5F1600E072EE /* navbar-lbtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar-lbtn.png"; sourceTree = "<group>"; };
+		40A1C448193E5F1600E072EE /* navbar-lbtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar-lbtn@2x.png"; sourceTree = "<group>"; };
 		40A2AA6B188F023800F5E263 /* RunSectors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunSectors.h; sourceTree = "<group>"; };
 		40A2AA6C188F023800F5E263 /* RunSectors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunSectors.m; sourceTree = "<group>"; };
 		40A3B3DF185B768F00BA85BB /* MessageBarManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageBarManager.h; sourceTree = "<group>"; };
@@ -516,9 +528,16 @@
 		40110736192BEDD4009E0604 /* BaseVC */ = {
 			isa = PBXGroup;
 			children = (
+				40A1C447193E5F1600E072EE /* navbar-lbtn.png */,
+				40A1C448193E5F1600E072EE /* navbar-lbtn@2x.png */,
+				40A1C43F193E553D00E072EE /* Stars@2x.png */,
 				4011073A192BEE02009E0604 /* RTTBackground.png */,
 				40110737192BEDF2009E0604 /* RTTBaseViewController.h */,
 				40110738192BEDF2009E0604 /* RTTBaseViewController.m */,
+				40A1C441193E559F00E072EE /* MenuViewController.h */,
+				40A1C442193E559F00E072EE /* MenuViewController.m */,
+				40A1C444193E587100E072EE /* RTTRootViewController.h */,
+				40A1C445193E587100E072EE /* RTTRootViewController.m */,
 			);
 			name = BaseVC;
 			sourceTree = "<group>";
@@ -1255,6 +1274,7 @@
 				408167ED189E908C00843B98 /* ios7_settings_icon@2x.png in Resources */,
 				403EA6341897E0CE0042A12E /* Monaco.jpg in Resources */,
 				408B1BD418A67E460021D033 /* temptrack.jpg in Resources */,
+				40A1C440193E553D00E072EE /* Stars@2x.png in Resources */,
 				408167E6189E908C00843B98 /* Icon.png in Resources */,
 				4011073B192BEE02009E0604 /* RTTBackground.png in Resources */,
 				4064EB1118EC6ABA00F1D0E9 /* austria.jpg in Resources */,
@@ -1284,6 +1304,7 @@
 				40C5D7F318998B64002BBF14 /* man.png in Resources */,
 				40343B0D18940D6000881CC6 /* singapore.png in Resources */,
 				4064EB1318EC6FB300F1D0E9 /* sochi.jpg in Resources */,
+				40A1C44A193E5F1600E072EE /* navbar-lbtn@2x.png in Resources */,
 				40C1657B17EB637900D4E093 /* Images.xcassets in Resources */,
 				40343B0518940D6000881CC6 /* japan.png in Resources */,
 				405E5336185DEED400A8BD45 /* sector1.png in Resources */,
@@ -1330,6 +1351,7 @@
 				406EF5261899991400193D5C /* settings.png in Resources */,
 				4018F52C17F83903006F990E /* Monza.jpg in Resources */,
 				40C1657617EB637900D4E093 /* Main.storyboard in Resources */,
+				40A1C449193E5F1600E072EE /* navbar-lbtn.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1413,6 +1435,7 @@
 				40C1657317EB637900D4E093 /* AppDelegate.m in Sources */,
 				40E5A2EA1856504300E8E87E /* UIView+More.m in Sources */,
 				40A3B3E1185B768F00BA85BB /* MessageBarManager.m in Sources */,
+				40A1C443193E559F00E072EE /* MenuViewController.m in Sources */,
 				40892C1A1885B336008F7D38 /* RunOverviewViewController.m in Sources */,
 				407C4DF2180BF1C300F7B2FE /* TrackCell.m in Sources */,
 				40E5A2F21856592000E8E87E /* TTTAttributedLabel.m in Sources */,
@@ -1420,6 +1443,7 @@
 				407C4DEF180BE6B700F7B2FE /* TracksCollectionViewController.m in Sources */,
 				40A525151907BE4D00DA4398 /* AFOAuth2Client.m in Sources */,
 				4022963F188A83FA00BF515F /* RunData.m in Sources */,
+				40A1C446193E587100E072EE /* RTTRootViewController.m in Sources */,
 				4047939F182F7AEC004FEB73 /* RunCell.m in Sources */,
 				40A2AA6D188F023800F5E263 /* RunSectors.m in Sources */,
 				40438EA318A1584500BC6966 /* SectorTicker.m in Sources */,
@@ -1491,7 +1515,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
+				ARCHS = (
+					armv7s,
+					armv7,
+				);
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1527,7 +1554,7 @@
 					"\"$(SRCROOT)\"/**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -1542,7 +1569,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
+				ARCHS = (
+					armv7s,
+					armv7,
+				);
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1572,6 +1602,7 @@
 					"\"$(SRCROOT)\"/**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -1615,6 +1646,7 @@
 				);
 				PRODUCT_NAME = RunTheTrack;
 				PROVISIONING_PROFILE = "AB57958E-34D2-46EC-AD29-A7E7331913AF";
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1651,6 +1683,7 @@
 				);
 				PRODUCT_NAME = RunTheTrack;
 				PROVISIONING_PROFILE = "AB57958E-34D2-46EC-AD29-A7E7331913AF";
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
