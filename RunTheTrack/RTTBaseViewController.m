@@ -25,19 +25,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    //[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"RTTBackground2"]]];
-    
-//    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
-//                                                  forBarMetrics:UIBarMetricsDefault];
-//    self.navigationController.navigationBar.shadowImage = [UIImage new];
-//    self.navigationController.navigationBar.translucent = YES;
-//    self.navigationController.view.backgroundColor = [UIColor clearColor];
-//    
-//    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rttMenu];
-//    [self.navigationItem setLeftBarButtonItem:barButtonItem];
-//    [self.navigationItem setTitle:@"Run"];
-//    [self.navigationItem setRightBarButtonItem:barButtonItem];
 }
 
 - (void)didReceiveMemoryWarning
