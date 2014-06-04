@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 
-@interface HistoryTableViewController : UITableViewController
+@interface HistoryTableViewController : RTTBaseViewController <UITableViewDataSource, UITableViewDelegate>
 {
     NSMutableArray *runs;
     AppDelegate *appDelegate;

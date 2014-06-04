@@ -14,19 +14,13 @@
 #import "RunOverviewViewController.h"
 
 @interface HistoryTableViewController ()
+{
+    IBOutlet UITableView *tableView;
+}
 
 @end
 
 @implementation HistoryTableViewController
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
@@ -50,7 +44,7 @@
                                                             type:MessageBarMessageTypeInfo];
     }
     
-    [self.tableView reloadData];
+    [tableView reloadData];
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle
@@ -131,7 +125,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue
                  sender:(id)sender {
     if ([segue.identifier isEqualToString:@"RunDataSegue"]) {
-        NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
+        NSIndexPath *selectedRowIndex = [tableView indexPathForSelectedRow];
         RunData *runData = (RunData *)[runs objectAtIndex:selectedRowIndex.row];
         RunOverviewViewController *rovc = segue.destinationViewController;
         [rovc setRunData:runData];
