@@ -391,6 +391,63 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <view alpha="0.30000001192092896" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OvA-60-Rcp">
+                                            <rect key="frame" x="0.0" y="361" width="320" height="100"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.85000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="14" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" preferredMaxLayoutWidth="40" translatesAutoresizingMaskIntoConstraints="NO" id="UGr-jO-yvf">
+                                                    <rect key="frame" x="18" y="36" width="40" height="44"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <size key="shadowOffset" width="-1" height="1"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.85000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1:45:23.45" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" preferredMaxLayoutWidth="128" translatesAutoresizingMaskIntoConstraints="NO" id="oZm-EB-Kqc">
+                                                    <rect key="frame" x="96" y="36" width="128" height="44"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <size key="shadowOffset" width="-1" height="1"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.85000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="14" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" preferredMaxLayoutWidth="40" translatesAutoresizingMaskIntoConstraints="NO" id="7K8-QM-0Ka">
+                                                    <rect key="frame" x="260" y="36" width="40" height="44"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <size key="shadowOffset" width="-1" height="1"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Complete Laps " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" preferredMaxLayoutWidth="67" translatesAutoresizingMaskIntoConstraints="NO" id="bhl-49-mjF">
+                                                    <rect key="frame" x="5" y="0.0" width="67" height="43"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <size key="shadowOffset" width="-1" height="1"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Complete Distance" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" preferredMaxLayoutWidth="67" translatesAutoresizingMaskIntoConstraints="NO" id="9m2-Uw-0XC">
+                                                    <rect key="frame" x="246" y="0.0" width="67" height="43"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <size key="shadowOffset" width="-1" height="1"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Complete Time" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" preferredMaxLayoutWidth="67" translatesAutoresizingMaskIntoConstraints="NO" id="2FY-tb-HBs">
+                                                    <rect key="frame" x="127" y="0.0" width="67" height="43"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <size key="shadowOffset" width="-1" height="1"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -987,35 +1044,17 @@
                                     <tableViewCell alpha="0.29999999999999999" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="RunCell" rowHeight="186" id="4mo-Qr-hnk" customClass="RunCell">
                                         <rect key="frame" x="0.0" y="22" width="320" height="186"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.29999999999999999" contentMode="center" tableViewCell="4mo-Qr-hnk" id="fPz-Ql-ATv">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4mo-Qr-hnk" id="fPz-Ql-ATv">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="185"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="silverstone.png" translatesAutoresizingMaskIntoConstraints="NO" id="e2u-q5-A69">
                                                     <rect key="frame" x="2" y="0.0" width="145" height="79"/>
                                                 </imageView>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Distance: 8.92km" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sjv-fu-q5K">
-                                                    <rect key="frame" x="5" y="140" width="142" height="45"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
-                                                    <color key="textColor" red="0.90509647650000002" green="0.071859255159999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Time: 1:05:58" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hxp-xe-lMH">
-                                                    <rect key="frame" x="150" y="140" width="137" height="45"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
-                                                    <color key="textColor" red="0.21881998659999999" green="0.81097944629999996" blue="0.27459551329999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Laps 1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8G-g1-KB3">
-                                                    <rect key="frame" x="177" y="82" width="90" height="21"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                                                    <color key="textColor" red="0.44705882349999998" green="0.44705882349999998" blue="0.44705882349999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Date 28/08/1972" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pJh-mC-QCU">
-                                                    <rect key="frame" x="20" y="87" width="198" height="21"/>
+                                                    <rect key="frame" x="144" y="43" width="198" height="21"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                                                    <color key="textColor" red="0.44705882349999998" green="0.44705882349999998" blue="0.44705882349999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Silverstone, UK" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="132" translatesAutoresizingMaskIntoConstraints="NO" id="Fcv-h2-Jtr">
@@ -1027,18 +1066,76 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6dN-bs-RRB">
                                                     <rect key="frame" x="252" y="0.0" width="35" height="35"/>
                                                 </imageView>
+                                                <view alpha="0.59999999999999998" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rbQ-dZ-yoR">
+                                                    <rect key="frame" x="0.0" y="85" width="320" height="100"/>
+                                                    <subviews>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.85000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="14" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" preferredMaxLayoutWidth="40" translatesAutoresizingMaskIntoConstraints="NO" id="tVd-SM-FxI">
+                                                            <rect key="frame" x="18" y="36" width="40" height="44"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <size key="shadowOffset" width="-1" height="1"/>
+                                                        </label>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.85000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1:45:23.45" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" preferredMaxLayoutWidth="128" translatesAutoresizingMaskIntoConstraints="NO" id="KeK-f5-TrU">
+                                                            <rect key="frame" x="96" y="36" width="128" height="44"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <size key="shadowOffset" width="-1" height="1"/>
+                                                        </label>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.85000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="14" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" preferredMaxLayoutWidth="40" translatesAutoresizingMaskIntoConstraints="NO" id="Mbk-bK-CXS">
+                                                            <rect key="frame" x="260" y="36" width="40" height="44"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <size key="shadowOffset" width="-1" height="1"/>
+                                                        </label>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Complete Laps " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" preferredMaxLayoutWidth="67" translatesAutoresizingMaskIntoConstraints="NO" id="y3f-8N-yT4">
+                                                            <rect key="frame" x="5" y="0.0" width="67" height="43"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <size key="shadowOffset" width="-1" height="1"/>
+                                                        </label>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Complete Distance" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" preferredMaxLayoutWidth="67" translatesAutoresizingMaskIntoConstraints="NO" id="pvV-l4-anh">
+                                                            <rect key="frame" x="246" y="0.0" width="67" height="43"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <size key="shadowOffset" width="-1" height="1"/>
+                                                        </label>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Complete Time" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" preferredMaxLayoutWidth="67" translatesAutoresizingMaskIntoConstraints="NO" id="epd-4N-TOs">
+                                                            <rect key="frame" x="127" y="0.0" width="67" height="43"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <size key="shadowOffset" width="-1" height="1"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="runDateLabel" destination="pJh-mC-QCU" id="ho6-Sx-brY"/>
-                                            <outlet property="runDistanceLabel" destination="sjv-fu-q5K" id="Bnm-O5-fbp"/>
-                                            <outlet property="runLaps" destination="W8G-g1-KB3" id="HDY-LR-Afv"/>
-                                            <outlet property="runTimeLabel" destination="Hxp-xe-lMH" id="QdE-2b-rZc"/>
+                                            <outlet property="runDistanceLabel" destination="Mbk-bK-CXS" id="7hW-gb-9Ho"/>
+                                            <outlet property="runLaps" destination="tVd-SM-FxI" id="tb7-Vo-ttn"/>
+                                            <outlet property="runTimeLabel" destination="KeK-f5-TrU" id="Ctn-FM-vlI"/>
                                             <outlet property="runType" destination="6dN-bs-RRB" id="gQn-pn-8L7"/>
                                             <outlet property="trackImage" destination="e2u-q5-A69" id="OP8-y5-ng3"/>
                                             <outlet property="trackLabel" destination="Fcv-h2-Jtr" id="m6B-8T-FRO"/>
+                                            <segue destination="BHh-fI-w3E" kind="push" identifier="RunDataSegue" id="mJ0-qa-4zi"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1051,7 +1148,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Past Runs" id="gfB-RG-cZf">
-                        <barButtonItem key="leftBarButtonItem" image="navbar-lbtn.png" id="Ra2-7h-mNY"/>
+                        <barButtonItem key="leftBarButtonItem" image="navbar-lbtn.png" id="Ra2-7h-mNY">
+                            <connections>
+                                <action selector="presentLeftMenuViewController:" destination="Wta-5i-c1U" id="tlB-U1-ctr"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
@@ -1074,12 +1175,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5mv-zl-s6c">
+                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="RTTBackground2.png" translatesAutoresizingMaskIntoConstraints="NO" id="5mv-zl-s6c">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <gestureRecognizers/>
                             </imageView>
-                            <view alpha="0.80000000000000004" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t2o-Uf-GzO">
-                                <rect key="frame" x="10" y="66" width="300" height="96"/>
+                            <view alpha="0.29999999999999999" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t2o-Uf-GzO">
+                                <rect key="frame" x="0.0" y="66" width="320" height="96"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7UU-jS-0s6">
                                         <rect key="frame" x="0.0" y="74" width="300" height="21"/>
@@ -1088,22 +1189,22 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1:45:23.45" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8DM-pg-lya">
-                                        <rect key="frame" x="0.0" y="9" width="300" height="79"/>
+                                        <rect key="frame" x="-9" y="9" width="318" height="79"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="53"/>
                                         <color key="textColor" red="0.26274509800000001" green="0.1450980392" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
-                            <view alpha="0.80000000000000004" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1qA-K0-mjZ">
-                                <rect key="frame" x="10" y="167" width="300" height="82"/>
+                            <view alpha="0.29999999999999999" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1qA-K0-mjZ">
+                                <rect key="frame" x="0.0" y="167" width="320" height="82"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ecc-cG-nny">
-                                        <rect key="frame" x="0.0" y="-6" width="67" height="68"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="67" height="68"/>
                                     </imageView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Silverstone, UK" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lel-Yd-pzI">
-                                        <rect key="frame" x="75" y="0.0" width="226" height="21"/>
+                                        <rect key="frame" x="75" y="61" width="226" height="21"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14.5"/>
                                         <color key="textColor" red="0.99607843139999996" green="0.51372549020000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1134,10 +1235,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
-                            <view alpha="0.80000000000000004" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6OU-d6-KSJ">
-                                <rect key="frame" x="10" y="253" width="300" height="265"/>
+                            <view alpha="0.29999999999999999" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6OU-d6-KSJ">
+                                <rect key="frame" x="0.0" y="253" width="320" height="265"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Distance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4n5-xQ-CUX">
                                         <rect key="frame" x="7" y="40" width="119" height="30"/>
@@ -1212,7 +1313,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -1251,7 +1352,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ewh-Iz-XFm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="896" y="1370"/>
+            <point key="canvasLocation" x="979" y="1296"/>
         </scene>
     </scenes>
     <resources>

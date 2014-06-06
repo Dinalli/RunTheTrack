@@ -118,7 +118,6 @@
 		409154CD1852717300CECEEC /* cheq.png in Resources */ = {isa = PBXBuildFile; fileRef = 409154CB1852717300CECEEC /* cheq.png */; };
 		409154CE1852717300CECEEC /* cheq@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 409154CC1852717300CECEEC /* cheq@2x.png */; };
 		409357A71855F7C6007EE900 /* UIImageView+More.m in Sources */ = {isa = PBXBuildFile; fileRef = 409357A61855F7C6007EE900 /* UIImageView+More.m */; };
-		40A1C440193E553D00E072EE /* Stars@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40A1C43F193E553D00E072EE /* Stars@2x.png */; };
 		40A1C443193E559F00E072EE /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A1C442193E559F00E072EE /* MenuViewController.m */; };
 		40A1C446193E587100E072EE /* RTTRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A1C445193E587100E072EE /* RTTRootViewController.m */; };
 		40A1C449193E5F1600E072EE /* navbar-lbtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 40A1C447193E5F1600E072EE /* navbar-lbtn.png */; };
@@ -381,7 +380,6 @@
 		409357A51855F7C6007EE900 /* UIImageView+More.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+More.h"; sourceTree = "<group>"; };
 		409357A61855F7C6007EE900 /* UIImageView+More.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+More.m"; sourceTree = "<group>"; };
 		409357AF1855FC6F007EE900 /* Global.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
-		40A1C43F193E553D00E072EE /* Stars@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stars@2x.png"; sourceTree = "<group>"; };
 		40A1C441193E559F00E072EE /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		40A1C442193E559F00E072EE /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		40A1C444193E587100E072EE /* RTTRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTTRootViewController.h; sourceTree = "<group>"; };
@@ -530,7 +528,6 @@
 			children = (
 				40A1C447193E5F1600E072EE /* navbar-lbtn.png */,
 				40A1C448193E5F1600E072EE /* navbar-lbtn@2x.png */,
-				40A1C43F193E553D00E072EE /* Stars@2x.png */,
 				4011073A192BEE02009E0604 /* RTTBackground.png */,
 				40110737192BEDF2009E0604 /* RTTBaseViewController.h */,
 				40110738192BEDF2009E0604 /* RTTBaseViewController.m */,
@@ -597,6 +594,7 @@
 		4018F56417F84E0C006F990E /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				405267261941E57A0048E8DA /* New Group */,
 				40110736192BEDD4009E0604 /* BaseVC */,
 				407710A918453B1D00882BBE /* Profile */,
 				407C4DF3180BF63B00F7B2FE /* Achivements */,
@@ -620,6 +618,13 @@
 				402AB50A188AFB740068C52C /* GAITracker.h */,
 			);
 			name = GoogleAnalytics;
+			sourceTree = "<group>";
+		};
+		405267261941E57A0048E8DA /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
 			sourceTree = "<group>";
 		};
 		4057EB2E18703B9300F52EF4 /* Common */ = {
@@ -1274,7 +1279,6 @@
 				408167ED189E908C00843B98 /* ios7_settings_icon@2x.png in Resources */,
 				403EA6341897E0CE0042A12E /* Monaco.jpg in Resources */,
 				408B1BD418A67E460021D033 /* temptrack.jpg in Resources */,
-				40A1C440193E553D00E072EE /* Stars@2x.png in Resources */,
 				408167E6189E908C00843B98 /* Icon.png in Resources */,
 				4011073B192BEE02009E0604 /* RTTBackground.png in Resources */,
 				4064EB1118EC6ABA00F1D0E9 /* austria.jpg in Resources */,
