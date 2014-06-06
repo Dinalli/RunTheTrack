@@ -27,12 +27,6 @@
     [super viewDidLoad];
     appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.managedObjectContext = appDelegate.managedObjectContext;
-}
-
--(void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    [self.navigationController setNavigationBarHidden:NO];
     
     runs = [CoreDataHelper getObjectsFromContextWithEntityName:@"RunData" andSortKey:nil andSortAscending:YES withManagedObjectContext:self.managedObjectContext];
     runs = [[[runs reverseObjectEnumerator] allObjects] mutableCopy];
@@ -45,6 +39,24 @@
     }
     
     [tableView reloadData];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO];
+    
+//    runs = [CoreDataHelper getObjectsFromContextWithEntityName:@"RunData" andSortKey:nil andSortAscending:YES withManagedObjectContext:self.managedObjectContext];
+//    runs = [[[runs reverseObjectEnumerator] allObjects] mutableCopy];
+//    
+//    if (runs.count == 0)
+//    {
+//        [[MessageBarManager sharedInstance] showMessageWithTitle:@"No past runs available."
+//                                                     description:[NSString stringWithFormat:@"Why not go for a run. You will be able to see details of your past runs here."]
+//                                                            type:MessageBarMessageTypeInfo];
+//    }
+//    
+//    [tableView reloadData];
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle
@@ -72,9 +84,9 @@
     return runs.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)selectedTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    RunCell *cell = (RunCell *)[tableView
+    RunCell *cell = (RunCell *)[selectedTableView
                                       dequeueReusableCellWithIdentifier:@"RunCell"];
     RunData *runData = (RunData *)[runs objectAtIndex:indexPath.row];
     cell.trackLabel.text = runData.runtrackname;
@@ -84,10 +96,10 @@
     }
     else
     {
-        cell.runDistanceLabel.text = [NSString stringWithFormat:@"Distance %.2f miles",[runData.rundistance floatValue] * 0.000621371192];
+        cell.runDistanceLabel.text = [NSString stringWithFormat:@"%.2f miles",[runData.rundistance floatValue] * 0.000621371192];
     }
     
-    cell.runLaps.text = [NSString stringWithFormat:@"Laps :%@", runData.runlaps];
+    cell.runLaps.text = [NSString stringWithFormat:@"%@", runData.runlaps];
     
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"HH:mm:ss.SS"];
@@ -98,7 +110,7 @@
     
     //cell.runTimeLabel.text = [df stringFromDate:runTimeDate];
     NSString *dateString = [CommonUtils timeFormattedStringForValue:(int)[components hour] :(int)[components minute] :(int)[components second]];
-    cell.runTimeLabel.text = [NSString stringWithFormat:@"Time :%@", dateString];
+    cell.runTimeLabel.text = [NSString stringWithFormat:@"%@", dateString];
     cell.runDateLabel.text = runData.rundate;
     
     for (NSDictionary *trackInfo in appDelegate.tracksArray) {
