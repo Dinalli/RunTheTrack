@@ -310,6 +310,31 @@
             </objects>
             <point key="canvasLocation" x="-792" y="-357"/>
         </scene>
+        <!--Stats View Controller-->
+        <scene sceneID="YqK-RR-Rxt">
+            <objects>
+                <viewController storyboardIdentifier="StatsViewController" id="BoJ-Zz-U7y" customClass="StatsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HkR-cd-Nlu"/>
+                        <viewControllerLayoutGuide type="bottom" id="YRC-m1-gll"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SnN-ds-Ieg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="zH1-tc-BzZ">
+                        <barButtonItem key="leftBarButtonItem" image="navbar-lbtn.png" id="hG0-07-yXu">
+                            <connections>
+                                <action selector="presentLeftMenuViewController:" destination="BoJ-Zz-U7y" id="Ix6-gH-5vc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wca-lQ-ABV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-309" y="-1480"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="G7z-4Q-bwS">
             <objects>
@@ -325,6 +350,7 @@
                         <segue destination="wDt-kd-I48" kind="push" id="d0S-b1-iNJ"/>
                         <segue destination="j1Z-Tu-5ah" kind="push" id="IsP-qH-VH3"/>
                         <segue destination="Wta-5i-c1U" kind="push" id="UC3-KH-L5I"/>
+                        <segue destination="BoJ-Zz-U7y" kind="push" id="Rny-rt-Srg"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C1H-RP-BZA" userLabel="First Responder" sceneMemberID="firstResponder"/>
