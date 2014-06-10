@@ -131,6 +131,7 @@
 		40A3B3ED185B76CC00BA85BB /* icon-success.png in Resources */ = {isa = PBXBuildFile; fileRef = 40A3B3E7185B76CC00BA85BB /* icon-success.png */; };
 		40A3B3EE185B76CC00BA85BB /* icon-success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40A3B3E8185B76CC00BA85BB /* icon-success@2x.png */; };
 		40A525151907BE4D00DA4398 /* AFOAuth2Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A525141907BE4D00DA4398 /* AFOAuth2Client.m */; };
+		40AB4B511944AC0F00900FD5 /* HistoryPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AB4B501944AC0F00900FD5 /* HistoryPageViewController.m */; };
 		40B8E71E17F9EA5F00005F09 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40B8E71D17F9EA5F00005F09 /* CoreLocation.framework */; };
 		40B8EF7D18999E140060B6E0 /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B8EF7B18999E140060B6E0 /* profile.png */; };
 		40B8EF7E18999E140060B6E0 /* profile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B8EF7C18999E140060B6E0 /* profile@2x.png */; };
@@ -398,6 +399,8 @@
 		40A3B3E8185B76CC00BA85BB /* icon-success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-success@2x.png"; sourceTree = "<group>"; };
 		40A525131907BE4D00DA4398 /* AFOAuth2Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFOAuth2Client.h; sourceTree = "<group>"; };
 		40A525141907BE4D00DA4398 /* AFOAuth2Client.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFOAuth2Client.m; sourceTree = "<group>"; };
+		40AB4B4F1944AC0F00900FD5 /* HistoryPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryPageViewController.h; sourceTree = "<group>"; };
+		40AB4B501944AC0F00900FD5 /* HistoryPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryPageViewController.m; sourceTree = "<group>"; };
 		40B8E71D17F9EA5F00005F09 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		40B8EF7B18999E140060B6E0 /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
 		40B8EF7C18999E140060B6E0 /* profile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile@2x.png"; sourceTree = "<group>"; };
@@ -594,7 +597,7 @@
 		4018F56417F84E0C006F990E /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				405267261941E57A0048E8DA /* New Group */,
+				405267261941E57A0048E8DA /* Stats */,
 				40110736192BEDD4009E0604 /* BaseVC */,
 				407710A918453B1D00882BBE /* Profile */,
 				407C4DF3180BF63B00F7B2FE /* Achivements */,
@@ -620,11 +623,11 @@
 			name = GoogleAnalytics;
 			sourceTree = "<group>";
 		};
-		405267261941E57A0048E8DA /* New Group */ = {
+		405267261941E57A0048E8DA /* Stats */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = "New Group";
+			name = Stats;
 			sourceTree = "<group>";
 		};
 		4057EB2E18703B9300F52EF4 /* Common */ = {
@@ -805,6 +808,8 @@
 				40892C161885B326008F7D38 /* RunTrackMapViewController.m */,
 				40892C181885B336008F7D38 /* RunOverviewViewController.h */,
 				40892C191885B336008F7D38 /* RunOverviewViewController.m */,
+				40AB4B4F1944AC0F00900FD5 /* HistoryPageViewController.h */,
+				40AB4B501944AC0F00900FD5 /* HistoryPageViewController.m */,
 			);
 			name = History;
 			sourceTree = "<group>";
@@ -1441,6 +1446,7 @@
 				40A3B3E1185B768F00BA85BB /* MessageBarManager.m in Sources */,
 				40A1C443193E559F00E072EE /* MenuViewController.m in Sources */,
 				40892C1A1885B336008F7D38 /* RunOverviewViewController.m in Sources */,
+				40AB4B511944AC0F00900FD5 /* HistoryPageViewController.m in Sources */,
 				407C4DF2180BF1C300F7B2FE /* TrackCell.m in Sources */,
 				40E5A2F21856592000E8E87E /* TTTAttributedLabel.m in Sources */,
 				400522541880207D00B34DAD /* RunInfoSummary.m in Sources */,

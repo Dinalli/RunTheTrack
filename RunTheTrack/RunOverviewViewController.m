@@ -24,29 +24,29 @@
     
     runs = [CoreDataHelper getObjectsFromContextWithEntityName:@"RunData" andSortKey:nil andSortAscending:YES withManagedObjectContext:self.managedObjectContext];
     
-    timeView.layer.masksToBounds = NO;
-    timeView.layer.shadowOffset = CGSizeMake(0,-3);
-    timeView.layer.shadowRadius = 2;
-    timeView.layer.shadowOpacity = 0.7;
-    timeView.layer.cornerRadius = 4;
-    timeView.layer.borderColor = [[UIColor blackColor] CGColor];
-    timeView.layer.borderWidth = 0.5;
-    
-    trackInfoView.layer.masksToBounds = NO;
-    trackInfoView.layer.shadowOffset = CGSizeMake(0,-3);
-    trackInfoView.layer.shadowRadius = 2;
-    trackInfoView.layer.shadowOpacity = 0.7;
-    trackInfoView.layer.cornerRadius = 4;
-    trackInfoView.layer.borderColor = [[UIColor blackColor] CGColor];
-    trackInfoView.layer.borderWidth = 0.5;
-    
-    runDetailsView.layer.masksToBounds = NO;
-    runDetailsView.layer.shadowOffset = CGSizeMake(0,-3);
-    runDetailsView.layer.shadowRadius = 2;
-    runDetailsView.layer.shadowOpacity = 0.7;
-    runDetailsView.layer.cornerRadius = 4;
-    runDetailsView.layer.borderColor = [[UIColor blackColor] CGColor];
-    runDetailsView.layer.borderWidth = 0.5;
+//    timeView.layer.masksToBounds = NO;
+//    timeView.layer.shadowOffset = CGSizeMake(0,-3);
+//    timeView.layer.shadowRadius = 2;
+//    timeView.layer.shadowOpacity = 0.7;
+//    timeView.layer.cornerRadius = 4;
+//    timeView.layer.borderColor = [[UIColor blackColor] CGColor];
+//    timeView.layer.borderWidth = 0.5;
+//    
+//    trackInfoView.layer.masksToBounds = NO;
+//    trackInfoView.layer.shadowOffset = CGSizeMake(0,-3);
+//    trackInfoView.layer.shadowRadius = 2;
+//    trackInfoView.layer.shadowOpacity = 0.7;
+//    trackInfoView.layer.cornerRadius = 4;
+//    trackInfoView.layer.borderColor = [[UIColor blackColor] CGColor];
+//    trackInfoView.layer.borderWidth = 0.5;
+//    
+//    runDetailsView.layer.masksToBounds = NO;
+//    runDetailsView.layer.shadowOffset = CGSizeMake(0,-3);
+//    runDetailsView.layer.shadowRadius = 2;
+//    runDetailsView.layer.shadowOpacity = 0.7;
+//    runDetailsView.layer.cornerRadius = 4;
+//    runDetailsView.layer.borderColor = [[UIColor blackColor] CGColor];
+//    runDetailsView.layer.borderWidth = 0.5;
     
     [self initFlatWithIndicatorProgressBar];
     [self.progressBarFlatWithIndicator setProgress:0.0001 animated:YES];
@@ -91,15 +91,17 @@
     }
     
     runDate.text = [NSString stringWithFormat:@"%@",self.runData.rundate];
-    self.navigationItem.title = self.runData.runtrackname;
+    self.navigationController.navigationItem.title = self.runData.runtrackname;
+    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(showActivityView:)];
+    [self.navigationController.navigationItem setRightBarButtonItem:barButton];
     
-    for (NSMutableDictionary *trackInfoDict in appDelegate.tracksArray) {
-        if([[trackInfoDict objectForKey:@"Race"] isEqualToString:self.runData.runtrackname])
-        {
-            self.trackInfo = trackInfoDict;
-            backgroundImageView.image = [[UIImage imageNamed:[trackInfoDict objectForKey:@"trackimage"]] applyDarkEffect];
-        }
-    }
+//    for (NSMutableDictionary *trackInfoDict in appDelegate.tracksArray) {
+//        if([[trackInfoDict objectForKey:@"Race"] isEqualToString:self.runData.runtrackname])
+//        {
+//            self.trackInfo = trackInfoDict;
+//            backgroundImageView.image = [[UIImage imageNamed:[trackInfoDict objectForKey:@"trackimage"]] applyDarkEffect];
+//        }
+//    }
     
     float laps = 0;
     int trackLapsCount = [[NSString stringWithFormat:@"%@",[self.trackInfo objectForKey:@"Laps"]] intValue];

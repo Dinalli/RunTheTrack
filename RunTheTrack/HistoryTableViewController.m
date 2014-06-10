@@ -11,7 +11,7 @@
 #import "CoreDataHelper.h"
 #import "RunCell.h"
 #import "RunData.h"
-#import "RunOverviewViewController.h"
+#import "HistoryPageViewController.h"
 
 @interface HistoryTableViewController ()
 {
@@ -139,7 +139,7 @@
     if ([segue.identifier isEqualToString:@"RunDataSegue"]) {
         NSIndexPath *selectedRowIndex = [tableView indexPathForSelectedRow];
         RunData *runData = (RunData *)[runs objectAtIndex:selectedRowIndex.row];
-        RunOverviewViewController *rovc = segue.destinationViewController;
+        HistoryPageViewController *rovc = segue.destinationViewController;
         [rovc setRunData:runData];
         [rovc setManagedObjectContext:self.managedObjectContext];
     }
