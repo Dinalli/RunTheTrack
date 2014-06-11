@@ -308,7 +308,7 @@
     
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
     
-    NSData *fileData = [NSData dataWithContentsOfFile:filePath];
+   // NSData *fileData = [NSData dataWithContentsOfFile:filePath];
     
     AFOAuthCredential *credential = [AFOAuthCredential retrieveCredentialWithIdentifier:stravaId];
     

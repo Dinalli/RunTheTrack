@@ -321,6 +321,13 @@
                     <view key="view" contentMode="scaleToFill" id="SnN-ds-Ieg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vlv-qG-ZoM" customClass="CPTGraphHostingView">
+                                <rect key="frame" x="3" y="69" width="314" height="298"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="zH1-tc-BzZ">
@@ -330,6 +337,10 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="graphView" destination="Vlv-qG-ZoM" id="R08-iq-gHp"/>
+                        <outlet property="view" destination="SnN-ds-Ieg" id="qy7-85-I0O"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wca-lQ-ABV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -350,7 +361,7 @@
                         <segue destination="wDt-kd-I48" kind="push" id="d0S-b1-iNJ"/>
                         <segue destination="j1Z-Tu-5ah" kind="push" id="IsP-qH-VH3"/>
                         <segue destination="Wta-5i-c1U" kind="push" id="UC3-KH-L5I"/>
-                        <segue destination="BoJ-Zz-U7y" kind="push" id="Rny-rt-Srg"/>
+                        <segue destination="BoJ-Zz-U7y" kind="push" identifier="StatsSegue" id="Rny-rt-Srg"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C1H-RP-BZA" userLabel="First Responder" sceneMemberID="firstResponder"/>

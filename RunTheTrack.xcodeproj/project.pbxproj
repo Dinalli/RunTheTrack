@@ -10,7 +10,6 @@
 		400522541880207D00B34DAD /* RunInfoSummary.m in Sources */ = {isa = PBXBuildFile; fileRef = 400522531880207D00B34DAD /* RunInfoSummary.m */; };
 		400522571880209600B34DAD /* RunInfoAltitudeGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 400522561880209600B34DAD /* RunInfoAltitudeGraph.m */; };
 		40110739192BEDF2009E0604 /* RTTBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40110738192BEDF2009E0604 /* RTTBaseViewController.m */; };
-		4011073B192BEE02009E0604 /* RTTBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 4011073A192BEE02009E0604 /* RTTBackground.png */; };
 		4015F4C818888A54006C3DC8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4015F4C718888A54006C3DC8 /* QuartzCore.framework */; };
 		4015F4CA18888A5B006C3DC8 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4015F4C918888A5B006C3DC8 /* Accelerate.framework */; };
 		40174AE01906CBE900E0BB73 /* GPX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40174ADF1906CBE900E0BB73 /* GPX.framework */; };
@@ -50,7 +49,6 @@
 		4042CA881889A585005EDEFD /* RunAltitude.m in Sources */ = {isa = PBXBuildFile; fileRef = 4042CA871889A585005EDEFD /* RunAltitude.m */; };
 		40438EA318A1584500BC6966 /* SectorTicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 40438EA218A1584500BC6966 /* SectorTicker.m */; };
 		40438EA618A15F0D00BC6966 /* SectorTickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40438EA518A15F0D00BC6966 /* SectorTickerView.m */; };
-		4043D81C193B61E80093EE82 /* RTTBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 4043D81A193B61E80093EE82 /* RTTBackground.png */; };
 		4043D81D193B61E80093EE82 /* RTTBackground2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4043D81B193B61E80093EE82 /* RTTBackground2.png */; };
 		4047939F182F7AEC004FEB73 /* RunCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4047939E182F7AEC004FEB73 /* RunCell.m */; };
 		404793A2182F83BA004FEB73 /* RunDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 404793A1182F83BA004FEB73 /* RunDetailViewController.m */; };
@@ -119,6 +117,7 @@
 		409154CE1852717300CECEEC /* cheq@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 409154CC1852717300CECEEC /* cheq@2x.png */; };
 		40933D3919477E3A00D77E3E /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 40933D3819477E3A00D77E3E /* libCorePlot-CocoaTouch.a */; };
 		40933D3C1947811B00D77E3E /* StatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40933D3B1947811B00D77E3E /* StatsViewController.m */; };
+		40933D3F1947887100D77E3E /* RTTBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 40933D3E1947887100D77E3E /* RTTBackground.png */; };
 		409357A71855F7C6007EE900 /* UIImageView+More.m in Sources */ = {isa = PBXBuildFile; fileRef = 409357A61855F7C6007EE900 /* UIImageView+More.m */; };
 		40A1C443193E559F00E072EE /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A1C442193E559F00E072EE /* MenuViewController.m */; };
 		40A1C446193E587100E072EE /* RTTRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A1C445193E587100E072EE /* RTTRootViewController.m */; };
@@ -203,7 +202,6 @@
 		400522561880209600B34DAD /* RunInfoAltitudeGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunInfoAltitudeGraph.m; sourceTree = "<group>"; };
 		40110737192BEDF2009E0604 /* RTTBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTTBaseViewController.h; sourceTree = "<group>"; };
 		40110738192BEDF2009E0604 /* RTTBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTTBaseViewController.m; sourceTree = "<group>"; };
-		4011073A192BEE02009E0604 /* RTTBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RTTBackground.png; sourceTree = "<group>"; };
 		4015F4C718888A54006C3DC8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4015F4C918888A5B006C3DC8 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		40174ADF1906CBE900E0BB73 /* GPX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GPX.framework; sourceTree = "<group>"; };
@@ -256,7 +254,6 @@
 		40438EA218A1584500BC6966 /* SectorTicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectorTicker.m; sourceTree = "<group>"; };
 		40438EA418A15F0D00BC6966 /* SectorTickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectorTickerView.h; sourceTree = "<group>"; };
 		40438EA518A15F0D00BC6966 /* SectorTickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectorTickerView.m; sourceTree = "<group>"; };
-		4043D81A193B61E80093EE82 /* RTTBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RTTBackground.png; sourceTree = "<group>"; };
 		4043D81B193B61E80093EE82 /* RTTBackground2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RTTBackground2.png; sourceTree = "<group>"; };
 		4047939D182F7AEC004FEB73 /* RunCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunCell.h; sourceTree = "<group>"; };
 		4047939E182F7AEC004FEB73 /* RunCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunCell.m; sourceTree = "<group>"; };
@@ -461,6 +458,7 @@
 		40933D3819477E3A00D77E3E /* libCorePlot-CocoaTouch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libCorePlot-CocoaTouch.a"; sourceTree = "<group>"; };
 		40933D3A1947811B00D77E3E /* StatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsViewController.h; sourceTree = "<group>"; };
 		40933D3B1947811B00D77E3E /* StatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsViewController.m; sourceTree = "<group>"; };
+		40933D3E1947887100D77E3E /* RTTBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RTTBackground.png; sourceTree = "<group>"; };
 		409357A51855F7C6007EE900 /* UIImageView+More.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+More.h"; sourceTree = "<group>"; };
 		409357A61855F7C6007EE900 /* UIImageView+More.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+More.m"; sourceTree = "<group>"; };
 		409357AF1855FC6F007EE900 /* Global.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
@@ -554,13 +552,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4015F4CA18888A5B006C3DC8 /* Accelerate.framework in Frameworks */,
 				4015F4C818888A54006C3DC8 /* QuartzCore.framework in Frameworks */,
 				40933D3919477E3A00D77E3E /* libCorePlot-CocoaTouch.a in Frameworks */,
 				4064EB1718EC770500F1D0E9 /* iAd.framework in Frameworks */,
 				401F8F1418BD49DC00F67A32 /* FacebookSDK.framework in Frameworks */,
 				4027543A189B94F50015A79F /* AdSupport.framework in Frameworks */,
 				402AB50C188AFB950068C52C /* libGoogleAnalyticsServices.a in Frameworks */,
-				4015F4CA18888A5B006C3DC8 /* Accelerate.framework in Frameworks */,
 				404D0CE31868297400050BD7 /* libUAirship-3.0.2.a in Frameworks */,
 				40BA42721865E6E1007A6329 /* SystemConfiguration.framework in Frameworks */,
 				40174AE01906CBE900E0BB73 /* GPX.framework in Frameworks */,
@@ -615,7 +613,6 @@
 			children = (
 				40A1C447193E5F1600E072EE /* navbar-lbtn.png */,
 				40A1C448193E5F1600E072EE /* navbar-lbtn@2x.png */,
-				4011073A192BEE02009E0604 /* RTTBackground.png */,
 				40110737192BEDF2009E0604 /* RTTBaseViewController.h */,
 				40110738192BEDF2009E0604 /* RTTBaseViewController.m */,
 				40A1C441193E559F00E072EE /* MenuViewController.h */,
@@ -925,7 +922,7 @@
 		407C4E02180BFA6600F7B2FE /* Backgrounds */ = {
 			isa = PBXGroup;
 			children = (
-				4043D81A193B61E80093EE82 /* RTTBackground.png */,
+				40933D3E1947887100D77E3E /* RTTBackground.png */,
 				4043D81B193B61E80093EE82 /* RTTBackground2.png */,
 			);
 			name = Backgrounds;
@@ -1458,7 +1455,6 @@
 				403EA6341897E0CE0042A12E /* Monaco.jpg in Resources */,
 				408B1BD418A67E460021D033 /* temptrack.jpg in Resources */,
 				408167E6189E908C00843B98 /* Icon.png in Resources */,
-				4011073B192BEE02009E0604 /* RTTBackground.png in Resources */,
 				4064EB1118EC6ABA00F1D0E9 /* austria.jpg in Resources */,
 				405E5339185DEED400A8BD45 /* sector2@2x.png in Resources */,
 				408167F3189E910F00843B98 /* Default-568h@2x.png in Resources */,
@@ -1468,6 +1464,7 @@
 				40343B0218940D6000881CC6 /* china.png in Resources */,
 				40BA41A31865E5DB007A6329 /* AirshipConfig.plist in Resources */,
 				408167E4189E908C00843B98 /* Icon-Small.png in Resources */,
+				40933D3F1947887100D77E3E /* RTTBackground.png in Resources */,
 				40343B0418940D6000881CC6 /* india.png in Resources */,
 				40B8EF7D18999E140060B6E0 /* profile.png in Resources */,
 				40343B0118940D6000881CC6 /* canada.png in Resources */,
@@ -1476,7 +1473,6 @@
 				408167E9189E908C00843B98 /* ios7_app_icon_ipad@2x.png in Resources */,
 				40F2260D190D3C990053BABF /* clientsecret in Resources */,
 				406B253E18954A6100F03B23 /* 86-camera.png in Resources */,
-				4043D81C193B61E80093EE82 /* RTTBackground.png in Resources */,
 				4064EB1518EC739B00F1D0E9 /* malaysia.jpg in Resources */,
 				408167EF189E908C00843B98 /* ios7_spotlight_icon@2x.png in Resources */,
 				40BAAD3F18203FB900137E8C /* beep-8.mp3 in Resources */,
@@ -1816,6 +1812,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"/iphonedev/coreplot1_4/**",
 				);
 				INFOPLIST_FILE = "RunTheTrack/RunTheTrack-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
@@ -1853,6 +1850,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"/iphonedev/coreplot1_4/**",
 				);
 				INFOPLIST_FILE = "RunTheTrack/RunTheTrack-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
@@ -1889,6 +1887,7 @@
 				);
 				INFOPLIST_FILE = "RunTheTrackTests/RunTheTrackTests-Info.plist";
 				PRODUCT_NAME = RunTheTrackTests;
+				PROVISIONING_PROFILE = "35BBC4CC-3388-47B7-9D20-C41370BEA5F0";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -1907,6 +1906,7 @@
 				GCC_PREFIX_HEADER = "RunTheTrack/RunTheTrack-Prefix.pch";
 				INFOPLIST_FILE = "RunTheTrackTests/RunTheTrackTests-Info.plist";
 				PRODUCT_NAME = RunTheTrackTests;
+				PROVISIONING_PROFILE = "35BBC4CC-3388-47B7-9D20-C41370BEA5F0";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
