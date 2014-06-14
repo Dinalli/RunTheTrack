@@ -946,10 +946,10 @@
             </objects>
             <point key="canvasLocation" x="2149" y="1229"/>
         </scene>
-        <!--View Controller-->
+        <!--Run Stats View Controller-->
         <scene sceneID="BlK-ey-wW5">
             <objects>
-                <viewController id="dpK-bW-NZc" sceneMemberID="viewController">
+                <viewController id="dpK-bW-NZc" customClass="RunStatsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eKZ-dX-Reo"/>
                         <viewControllerLayoutGuide type="bottom" id="Shs-1n-C8d"/>
@@ -957,10 +957,23 @@
                     <view key="view" contentMode="scaleToFill" id="jiE-mA-ybv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="RTTBackground2.png" translatesAutoresizingMaskIntoConstraints="NO" id="0Pk-I3-kMO">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K5Y-mj-nKq" customClass="CPTGraphHostingView">
+                                <rect key="frame" x="0.0" y="64" width="320" height="447"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Gou-Jv-rif"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="graphView" destination="K5Y-mj-nKq" id="SEj-sP-iWQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h7b-z5-w6Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

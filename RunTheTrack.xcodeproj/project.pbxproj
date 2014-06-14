@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		400522541880207D00B34DAD /* RunInfoSummary.m in Sources */ = {isa = PBXBuildFile; fileRef = 400522531880207D00B34DAD /* RunInfoSummary.m */; };
 		400522571880209600B34DAD /* RunInfoAltitudeGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 400522561880209600B34DAD /* RunInfoAltitudeGraph.m */; };
+		400B709B194C9C00002D2BD0 /* RunStatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 400B709A194C9C00002D2BD0 /* RunStatsViewController.m */; };
 		40110739192BEDF2009E0604 /* RTTBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40110738192BEDF2009E0604 /* RTTBaseViewController.m */; };
 		4015F4C818888A54006C3DC8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4015F4C718888A54006C3DC8 /* QuartzCore.framework */; };
 		4015F4CA18888A5B006C3DC8 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4015F4C918888A5B006C3DC8 /* Accelerate.framework */; };
@@ -200,6 +201,8 @@
 		400522531880207D00B34DAD /* RunInfoSummary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunInfoSummary.m; sourceTree = "<group>"; };
 		400522551880209600B34DAD /* RunInfoAltitudeGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunInfoAltitudeGraph.h; sourceTree = "<group>"; };
 		400522561880209600B34DAD /* RunInfoAltitudeGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunInfoAltitudeGraph.m; sourceTree = "<group>"; };
+		400B7099194C9C00002D2BD0 /* RunStatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunStatsViewController.h; sourceTree = "<group>"; };
+		400B709A194C9C00002D2BD0 /* RunStatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunStatsViewController.m; sourceTree = "<group>"; };
 		40110737192BEDF2009E0604 /* RTTBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTTBaseViewController.h; sourceTree = "<group>"; };
 		40110738192BEDF2009E0604 /* RTTBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTTBaseViewController.m; sourceTree = "<group>"; };
 		4015F4C718888A54006C3DC8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -895,6 +898,8 @@
 				40892C191885B336008F7D38 /* RunOverviewViewController.m */,
 				40AB4B4F1944AC0F00900FD5 /* HistoryPageViewController.h */,
 				40AB4B501944AC0F00900FD5 /* HistoryPageViewController.m */,
+				400B7099194C9C00002D2BD0 /* RunStatsViewController.h */,
+				400B709A194C9C00002D2BD0 /* RunStatsViewController.m */,
 			);
 			name = History;
 			sourceTree = "<group>";
@@ -1612,6 +1617,7 @@
 				400522571880209600B34DAD /* RunInfoAltitudeGraph.m in Sources */,
 				408A7993182AE3AA0088D8AC /* SettingsViewController.m in Sources */,
 				40C1657317EB637900D4E093 /* AppDelegate.m in Sources */,
+				400B709B194C9C00002D2BD0 /* RunStatsViewController.m in Sources */,
 				40E5A2EA1856504300E8E87E /* UIView+More.m in Sources */,
 				40A3B3E1185B768F00BA85BB /* MessageBarManager.m in Sources */,
 				40A1C443193E559F00E072EE /* MenuViewController.m in Sources */,

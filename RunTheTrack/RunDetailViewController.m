@@ -18,6 +18,7 @@
 #import "LapAnnotation.h"
 #import "SectorTicker.h"
 #import "SectorTickerView.h"
+#import "RunStatsViewController.h"
 
 @interface RunDetailViewController ()
 
@@ -444,7 +445,7 @@
 
 -(IBAction)showActivityView:(id)sender
 {
-    UIActionSheet *loginActionSheet = [[UIActionSheet alloc] initWithTitle:@"Share using" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"share on facebook" otherButtonTitles:@"share on twitter", nil];
+    UIActionSheet *loginActionSheet = [[UIActionSheet alloc] initWithTitle:@"Share using" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"share on facebook" otherButtonTitles:@"share on twitter",@"Show stats", nil];
 
     [loginActionSheet showInView:self.view];
 }
@@ -457,8 +458,11 @@
     else if (buttonIndex == 1) {
         [self shareOnTwitter];
     }
+    else if (buttonIndex == 2) {
+        [self showStats];
+    }
 }
-    
+
 -(void)shareOnFacebook
     {
         if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
@@ -480,6 +484,11 @@
             [self composePost:SLServiceTypeTwitter];
         }
     }
+
+-(void)showStats
+{
+    [self performSegueWithIdentifier:@"ShowGraph" sender:self];
+}
     
 -(void)composePost:(NSString *)serviceType
 {
@@ -504,6 +513,18 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue
+                 sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"ShowGraph"]) {
+        RunStatsViewController *rsvc = segue.destinationViewController;
+        [rsvc setRunData:self.runData];
+    }
+    else
+    {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 - (void)dealloc
