@@ -16,4 +16,8 @@
 @property (nonatomic) IBOutlet UILabel *totalLaps;
 @property (nonatomic) IBOutlet UILabel *Distance;
 
+@property (nonatomic) IBOutlet UILabel *completeLaps;
+@property (nonatomic) IBOutlet UILabel *completeTime;
+@property (nonatomic) IBOutlet UILabel *completeDistance;
+
 @end

@@ -9,6 +9,8 @@
 #import "TracksCollectionViewController.h"
 #import "TrackCell.h"
 #import "RunViewController.h"
+#import "CoreDataHelper.h"
+#import "RunData.h"
 
 @interface TracksCollectionViewController ()
 
@@ -95,7 +97,69 @@
     cell.Distance.text = [NSString stringWithFormat:@"Distance : %@ miles",[TrackInfo objectForKey:@"Distance"]];
     
     cell.trackImage.image = [UIImage imageNamed:[TrackInfo objectForKey:@"mapimage"]];
+    
+    NSDictionary *totals = [self calculateTotalsWithTrackInfo:TrackInfo andTrackName:cell.trackName.text];
+    cell.completeDistance.text = [totals objectForKey:@"distance"];
+    cell.completeLaps.text = [totals objectForKey:@"laps"];
+    cell.completeTime.text = [totals objectForKey:@"time"];
     return cell;
+}
+
+
+-(NSDictionary *)calculateTotalsWithTrackInfo:(NSMutableDictionary *)TrackInfo andTrackName:(NSString *)trackName
+{
+    
+    self.managedObjectContext = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).managedObjectContext;
+    
+    runs = [CoreDataHelper getObjectsFromContextWithEntityName:@"RunData" andSortKey:nil andSortAscending:YES withManagedObjectContext:self.managedObjectContext];
+    
+    float laps = 0;
+    float totalDistance;
+    NSString *completedLaps, *completedDistance, *completedTime;
+    
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"HH:mm:ss.SS"];
+    NSDate *totalRunTime = [df dateFromString:@"00:00:00.00"];
+    NSDate *zeroRunTime = [df dateFromString:@"00:00:00.00"];
+    
+    for (RunData *rd in runs) {
+        if([rd.runtrackname isEqualToString:trackName])
+        {
+            laps = laps + [rd.runlaps floatValue];
+            totalDistance = totalDistance + [rd.rundistance floatValue];
+            NSDate *runTimeDate = [df dateFromString:[NSString stringWithFormat:@"%@",rd.runtime]];
+            NSTimeInterval interval = [runTimeDate timeIntervalSinceDate:zeroRunTime];
+            totalRunTime = [totalRunTime dateByAddingTimeInterval:interval];
+        }
+    }
+    
+    completedLaps = [NSString stringWithFormat:@"%f",laps];
+    
+    if([appDelegate useKMasUnits])
+    {
+        completedDistance = [NSString stringWithFormat:@"%.02f km", totalDistance / 1000];
+    }
+    else
+    {
+        completedDistance = [NSString stringWithFormat:@"%.02f miles", totalDistance * 0.000621371192];
+    }
+
+    [df setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0.0]];
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:totalRunTime];
+    NSString *dateString = [CommonUtils timeFormattedStringForValue:(int)[components hour] :(int)[components minute] :(int)[components second]];
+    completedTime = [NSString stringWithFormat:@"Time :%@", dateString];
+    
+//    if(laps > 0)
+//    {
+//        CGFloat progress = (laps / trackLaps);
+//        [cell setProgress:progress animated:YES];
+//    }
+//    else{
+//        [cell setProgress:0.01 animated:YES];
+//    }
+    return @{@"laps": completedLaps, @"distance": completedDistance, @"time": completedTime};
 }
 
 - (IBAction)unwindToTrackSelect:(UIStoryboardSegue *)unwindSegue

@@ -14,7 +14,11 @@
 {
     AppDelegate *appDelegate;
     ADBannerView *adView;
+    NSMutableArray *runs;
     
     IBOutlet UICollectionView *collectionView;
 }
+
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
 @end
