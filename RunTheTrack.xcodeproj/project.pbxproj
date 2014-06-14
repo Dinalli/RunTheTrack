@@ -1800,7 +1800,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Andrew DONNELLY (TV62A7K9VP)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Andrew DONNELLY (TV62A7K9VP)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/iphonedev/FacebookSDK,
@@ -1838,7 +1838,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Andrew DONNELLY (TV62A7K9VP)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Andrew DONNELLY (TV62A7K9VP)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/iphonedev/FacebookSDK,
