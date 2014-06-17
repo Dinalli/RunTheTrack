@@ -44,6 +44,7 @@
 		40343B0D18940D6000881CC6 /* singapore.png in Resources */ = {isa = PBXBuildFile; fileRef = 40343AFA18940D6000881CC6 /* singapore.png */; };
 		40343B0E18940D6000881CC6 /* spa.png in Resources */ = {isa = PBXBuildFile; fileRef = 40343AFB18940D6000881CC6 /* spa.png */; };
 		40343B0F18940D6000881CC6 /* usa.png in Resources */ = {isa = PBXBuildFile; fileRef = 40343AFC18940D6000881CC6 /* usa.png */; };
+		403AEBA219501C8F00F744A8 /* JBChartInformationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 403AEBA119501C8F00F744A8 /* JBChartInformationView.m */; };
 		403EA6341897E0CE0042A12E /* Monaco.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 403EA6331897E0CE0042A12E /* Monaco.jpg */; };
 		4042CA7C1889A584005EDEFD /* RunLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 4042CA7B1889A584005EDEFD /* RunLocations.m */; };
 		4042CA851889A584005EDEFD /* RunAchievement.m in Sources */ = {isa = PBXBuildFile; fileRef = 4042CA841889A584005EDEFD /* RunAchievement.m */; };
@@ -51,6 +52,9 @@
 		40438EA318A1584500BC6966 /* SectorTicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 40438EA218A1584500BC6966 /* SectorTicker.m */; };
 		40438EA618A15F0D00BC6966 /* SectorTickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40438EA518A15F0D00BC6966 /* SectorTickerView.m */; };
 		4043D81D193B61E80093EE82 /* RTTBackground2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4043D81B193B61E80093EE82 /* RTTBackground2.png */; };
+		4044605C194F7FFD00C4F22B /* JBBarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40446057194F7FFD00C4F22B /* JBBarChartView.m */; };
+		4044605D194F7FFD00C4F22B /* JBChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40446059194F7FFD00C4F22B /* JBChartView.m */; };
+		4044605E194F7FFD00C4F22B /* JBLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4044605B194F7FFD00C4F22B /* JBLineChartView.m */; };
 		4047939F182F7AEC004FEB73 /* RunCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4047939E182F7AEC004FEB73 /* RunCell.m */; };
 		404793A2182F83BA004FEB73 /* RunDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 404793A1182F83BA004FEB73 /* RunDetailViewController.m */; };
 		4048167C1845D7D2000410C7 /* ProfileHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4048167B1845D7D2000410C7 /* ProfileHeaderView.m */; };
@@ -170,6 +174,7 @@
 		40D35DC7182540B500D10899 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40D35DC6182540B500D10899 /* CoreData.framework */; };
 		40D35DCA182541E500D10899 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D35DC9182541E500D10899 /* CoreDataHelper.m */; };
 		40D42C9E18702DBD0057DF2D /* YLProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D42C9D18702DBD0057DF2D /* YLProgressBar.m */; };
+		40DA55B9194E15F000D77442 /* RunGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DA55B8194E15F000D77442 /* RunGraphViewController.m */; };
 		40DFDBE9182AE6C100554C58 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40DFDBE8182AE6C100554C58 /* Social.framework */; };
 		40E5A2EA1856504300E8E87E /* UIView+More.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E5A2E91856504300E8E87E /* UIView+More.m */; };
 		40E5A2EC1856538A00E8E87E /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40E5A2EB1856538A00E8E87E /* CoreText.framework */; };
@@ -245,6 +250,8 @@
 		40343AFA18940D6000881CC6 /* singapore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = singapore.png; sourceTree = "<group>"; };
 		40343AFB18940D6000881CC6 /* spa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spa.png; sourceTree = "<group>"; };
 		40343AFC18940D6000881CC6 /* usa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = usa.png; sourceTree = "<group>"; };
+		403AEBA019501C8F00F744A8 /* JBChartInformationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBChartInformationView.h; sourceTree = "<group>"; };
+		403AEBA119501C8F00F744A8 /* JBChartInformationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBChartInformationView.m; sourceTree = "<group>"; };
 		403EA6331897E0CE0042A12E /* Monaco.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Monaco.jpg; sourceTree = "<group>"; };
 		4042CA6A18899F35005EDEFD /* RTT4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RTT4.xcdatamodel; sourceTree = "<group>"; };
 		4042CA7A1889A584005EDEFD /* RunLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunLocations.h; sourceTree = "<group>"; };
@@ -258,6 +265,12 @@
 		40438EA418A15F0D00BC6966 /* SectorTickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectorTickerView.h; sourceTree = "<group>"; };
 		40438EA518A15F0D00BC6966 /* SectorTickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectorTickerView.m; sourceTree = "<group>"; };
 		4043D81B193B61E80093EE82 /* RTTBackground2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RTTBackground2.png; sourceTree = "<group>"; };
+		40446056194F7FFD00C4F22B /* JBBarChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBBarChartView.h; sourceTree = "<group>"; };
+		40446057194F7FFD00C4F22B /* JBBarChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBBarChartView.m; sourceTree = "<group>"; };
+		40446058194F7FFD00C4F22B /* JBChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBChartView.h; sourceTree = "<group>"; };
+		40446059194F7FFD00C4F22B /* JBChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBChartView.m; sourceTree = "<group>"; };
+		4044605A194F7FFD00C4F22B /* JBLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBLineChartView.h; sourceTree = "<group>"; };
+		4044605B194F7FFD00C4F22B /* JBLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBLineChartView.m; sourceTree = "<group>"; };
 		4047939D182F7AEC004FEB73 /* RunCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunCell.h; sourceTree = "<group>"; };
 		4047939E182F7AEC004FEB73 /* RunCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunCell.m; sourceTree = "<group>"; };
 		404793A0182F83BA004FEB73 /* RunDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunDetailViewController.h; sourceTree = "<group>"; };
@@ -531,6 +544,8 @@
 		40D35DC9182541E500D10899 /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
 		40D42C9C18702DBD0057DF2D /* YLProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLProgressBar.h; sourceTree = "<group>"; };
 		40D42C9D18702DBD0057DF2D /* YLProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLProgressBar.m; sourceTree = "<group>"; };
+		40DA55B7194E15F000D77442 /* RunGraphViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunGraphViewController.h; sourceTree = "<group>"; };
+		40DA55B8194E15F000D77442 /* RunGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunGraphViewController.m; sourceTree = "<group>"; };
 		40DFDBE8182AE6C100554C58 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		40E5A2E81856504300E8E87E /* UIView+More.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+More.h"; sourceTree = "<group>"; };
 		40E5A2E91856504300E8E87E /* UIView+More.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+More.m"; sourceTree = "<group>"; };
@@ -657,6 +672,7 @@
 		4018F50417F82E26006F990E /* 3rdParty */ = {
 			isa = PBXGroup;
 			children = (
+				40446055194F7FE300C4F22B /* JBChartView */,
 				40F22607190D3B6A0053BABF /* Strava-Objc */,
 				40A525121907BE3F00DA4398 /* AFOAuth */,
 				40174ADE1906CBDB00E0BB73 /* GPXFramework */,
@@ -707,6 +723,21 @@
 				402AB50A188AFB740068C52C /* GAITracker.h */,
 			);
 			name = GoogleAnalytics;
+			sourceTree = "<group>";
+		};
+		40446055194F7FE300C4F22B /* JBChartView */ = {
+			isa = PBXGroup;
+			children = (
+				403AEBA019501C8F00F744A8 /* JBChartInformationView.h */,
+				403AEBA119501C8F00F744A8 /* JBChartInformationView.m */,
+				40446056194F7FFD00C4F22B /* JBBarChartView.h */,
+				40446057194F7FFD00C4F22B /* JBBarChartView.m */,
+				40446058194F7FFD00C4F22B /* JBChartView.h */,
+				40446059194F7FFD00C4F22B /* JBChartView.m */,
+				4044605A194F7FFD00C4F22B /* JBLineChartView.h */,
+				4044605B194F7FFD00C4F22B /* JBLineChartView.m */,
+			);
+			name = JBChartView;
 			sourceTree = "<group>";
 		};
 		405267261941E57A0048E8DA /* Stats */ = {
@@ -900,6 +931,8 @@
 				40AB4B501944AC0F00900FD5 /* HistoryPageViewController.m */,
 				400B7099194C9C00002D2BD0 /* RunStatsViewController.h */,
 				400B709A194C9C00002D2BD0 /* RunStatsViewController.m */,
+				40DA55B7194E15F000D77442 /* RunGraphViewController.h */,
+				40DA55B8194E15F000D77442 /* RunGraphViewController.m */,
 			);
 			name = History;
 			sourceTree = "<group>";
@@ -1599,9 +1632,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4044605C194F7FFD00C4F22B /* JBBarChartView.m in Sources */,
 				405E5342185E113D00A8BD45 /* StartFinishAnnotation.m in Sources */,
 				405E533C185E10C000A8BD45 /* Sector1Annotaion.m in Sources */,
 				407710AF18453B6E00882BBE /* ProfileCollectionCell.m in Sources */,
+				40DA55B9194E15F000D77442 /* RunGraphViewController.m in Sources */,
+				4044605D194F7FFD00C4F22B /* JBChartView.m in Sources */,
 				40E5A2EF185655B100E8E87E /* TTCounterLabel.m in Sources */,
 				4057264B188FA3FF005DD240 /* LapAnnotation.m in Sources */,
 				4057EB3118703BA800F52EF4 /* CommonUtils.m in Sources */,
@@ -1629,8 +1665,10 @@
 				407C4DEF180BE6B700F7B2FE /* TracksCollectionViewController.m in Sources */,
 				40A525151907BE4D00DA4398 /* AFOAuth2Client.m in Sources */,
 				4022963F188A83FA00BF515F /* RunData.m in Sources */,
+				4044605E194F7FFD00C4F22B /* JBLineChartView.m in Sources */,
 				40A1C446193E587100E072EE /* RTTRootViewController.m in Sources */,
 				4047939F182F7AEC004FEB73 /* RunCell.m in Sources */,
+				403AEBA219501C8F00F744A8 /* JBChartInformationView.m in Sources */,
 				40A2AA6D188F023800F5E263 /* RunSectors.m in Sources */,
 				40438EA318A1584500BC6966 /* SectorTicker.m in Sources */,
 				40D35DCA182541E500D10899 /* CoreDataHelper.m in Sources */,

@@ -11,6 +11,7 @@
 #import "RunData.h"
 #import "CoreDataHelper.h"
 #import "RunAltitude.h"
+#import "RunGraphViewController.h"
 
 @interface RunStatsViewController ()
 {
@@ -93,10 +94,10 @@
     barChart.paddingTop    = 0.0f;
     barChart.paddingBottom = 0.0f;
     
-    barChart.plotAreaFrame.paddingLeft   = 30.0;
-    barChart.plotAreaFrame.paddingTop    = 30.0;
-    barChart.plotAreaFrame.paddingRight  = 30.0;
-    barChart.plotAreaFrame.paddingBottom = 30.0;
+    barChart.plotAreaFrame.paddingLeft   = 70.0;
+    barChart.plotAreaFrame.paddingTop    = 20.0;
+    barChart.plotAreaFrame.paddingRight  = 20.0;
+    barChart.plotAreaFrame.paddingBottom = 80.0;
     
     // Graph title
     NSString *lineOne = self.runData.runtrackname;
@@ -194,6 +195,7 @@
 
 -(NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot
 {
+    NSLog(@"Count %d", altitudePoints.count);
     return altitudePoints.count;
 }
 
@@ -213,7 +215,7 @@
 //                }
                 
                 RunAltitude *runAltitude = (RunAltitude *)[altitudePoints objectAtIndex:index];
-                NSLog(@"Alt %@", runAltitude.altitude);
+                //NSLog(@"Alt %@", runAltitude.altitude);
                 num = [NSDecimalNumber decimalNumberWithString:runAltitude.altitude];
                 
                 break;
@@ -222,6 +224,18 @@
     }
     
     return num;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue
+                 sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"RunGraphSegue"]) {
+        RunGraphViewController *rsvc = segue.destinationViewController;
+        [rsvc setRunData:self.runData];
+    }
+    else
+    {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 

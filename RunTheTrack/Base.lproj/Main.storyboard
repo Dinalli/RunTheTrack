@@ -969,7 +969,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Gou-Jv-rif"/>
+                    <navigationItem key="navigationItem" id="Gou-Jv-rif">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="ZOe-Ms-B3Y">
+                            <connections>
+                                <segue destination="SbB-tK-sO6" kind="push" identifier="RunGraphSegue" id="Q3g-5r-SBD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="graphView" destination="K5Y-mj-nKq" id="SEj-sP-iWQ"/>
@@ -978,6 +984,31 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h7b-z5-w6Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2541" y="1231"/>
+        </scene>
+        <!--Run Graph View Controller-->
+        <scene sceneID="gWa-pc-PJQ">
+            <objects>
+                <viewController id="SbB-tK-sO6" customClass="RunGraphViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eBb-cY-Nta"/>
+                        <viewControllerLayoutGuide type="bottom" id="bpr-Kd-3dg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YFB-7t-PMs">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="RTTBackground2.png" translatesAutoresizingMaskIntoConstraints="NO" id="7wT-X5-zvX">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="dDP-zF-Yy2"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x8a-CZ-QxW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2933" y="1231"/>
         </scene>
         <!--Run Track Map View Controller-->
         <scene sceneID="rLf-cT-i8a">
