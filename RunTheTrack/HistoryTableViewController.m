@@ -139,6 +139,8 @@
     if ([segue.identifier isEqualToString:@"RunDataSegue"]) {
         NSIndexPath *selectedRowIndex = [tableView indexPathForSelectedRow];
         RunData *runData = (RunData *)[runs objectAtIndex:selectedRowIndex.row];
+        [appDelegate setSelectedRun:runData];
+        
         HistoryPageViewController *rovc = segue.destinationViewController;
         [rovc setRunData:runData];
         [rovc setManagedObjectContext:self.managedObjectContext];

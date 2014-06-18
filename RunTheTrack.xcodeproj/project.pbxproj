@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		400522541880207D00B34DAD /* RunInfoSummary.m in Sources */ = {isa = PBXBuildFile; fileRef = 400522531880207D00B34DAD /* RunInfoSummary.m */; };
 		400522571880209600B34DAD /* RunInfoAltitudeGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 400522561880209600B34DAD /* RunInfoAltitudeGraph.m */; };
-		400B709B194C9C00002D2BD0 /* RunStatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 400B709A194C9C00002D2BD0 /* RunStatsViewController.m */; };
 		40110739192BEDF2009E0604 /* RTTBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40110738192BEDF2009E0604 /* RTTBaseViewController.m */; };
 		4015F4C818888A54006C3DC8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4015F4C718888A54006C3DC8 /* QuartzCore.framework */; };
 		4015F4CA18888A5B006C3DC8 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4015F4C918888A5B006C3DC8 /* Accelerate.framework */; };
@@ -175,6 +174,8 @@
 		40D35DCA182541E500D10899 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D35DC9182541E500D10899 /* CoreDataHelper.m */; };
 		40D42C9E18702DBD0057DF2D /* YLProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D42C9D18702DBD0057DF2D /* YLProgressBar.m */; };
 		40DA55B9194E15F000D77442 /* RunGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DA55B8194E15F000D77442 /* RunGraphViewController.m */; };
+		40DAB5C11950E9AB00A2696A /* JBChartTooltipTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DAB5BE1950E9AB00A2696A /* JBChartTooltipTipView.m */; };
+		40DAB5C21950E9AB00A2696A /* JBChartTooltipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DAB5C01950E9AB00A2696A /* JBChartTooltipView.m */; };
 		40DFDBE9182AE6C100554C58 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40DFDBE8182AE6C100554C58 /* Social.framework */; };
 		40E5A2EA1856504300E8E87E /* UIView+More.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E5A2E91856504300E8E87E /* UIView+More.m */; };
 		40E5A2EC1856538A00E8E87E /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40E5A2EB1856538A00E8E87E /* CoreText.framework */; };
@@ -206,8 +207,6 @@
 		400522531880207D00B34DAD /* RunInfoSummary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunInfoSummary.m; sourceTree = "<group>"; };
 		400522551880209600B34DAD /* RunInfoAltitudeGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunInfoAltitudeGraph.h; sourceTree = "<group>"; };
 		400522561880209600B34DAD /* RunInfoAltitudeGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunInfoAltitudeGraph.m; sourceTree = "<group>"; };
-		400B7099194C9C00002D2BD0 /* RunStatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunStatsViewController.h; sourceTree = "<group>"; };
-		400B709A194C9C00002D2BD0 /* RunStatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunStatsViewController.m; sourceTree = "<group>"; };
 		40110737192BEDF2009E0604 /* RTTBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTTBaseViewController.h; sourceTree = "<group>"; };
 		40110738192BEDF2009E0604 /* RTTBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTTBaseViewController.m; sourceTree = "<group>"; };
 		4015F4C718888A54006C3DC8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -546,6 +545,10 @@
 		40D42C9D18702DBD0057DF2D /* YLProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLProgressBar.m; sourceTree = "<group>"; };
 		40DA55B7194E15F000D77442 /* RunGraphViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunGraphViewController.h; sourceTree = "<group>"; };
 		40DA55B8194E15F000D77442 /* RunGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunGraphViewController.m; sourceTree = "<group>"; };
+		40DAB5BD1950E9AB00A2696A /* JBChartTooltipTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBChartTooltipTipView.h; sourceTree = "<group>"; };
+		40DAB5BE1950E9AB00A2696A /* JBChartTooltipTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBChartTooltipTipView.m; sourceTree = "<group>"; };
+		40DAB5BF1950E9AB00A2696A /* JBChartTooltipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBChartTooltipView.h; sourceTree = "<group>"; };
+		40DAB5C01950E9AB00A2696A /* JBChartTooltipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBChartTooltipView.m; sourceTree = "<group>"; };
 		40DFDBE8182AE6C100554C58 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		40E5A2E81856504300E8E87E /* UIView+More.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+More.h"; sourceTree = "<group>"; };
 		40E5A2E91856504300E8E87E /* UIView+More.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+More.m"; sourceTree = "<group>"; };
@@ -728,6 +731,10 @@
 		40446055194F7FE300C4F22B /* JBChartView */ = {
 			isa = PBXGroup;
 			children = (
+				40DAB5BD1950E9AB00A2696A /* JBChartTooltipTipView.h */,
+				40DAB5BE1950E9AB00A2696A /* JBChartTooltipTipView.m */,
+				40DAB5BF1950E9AB00A2696A /* JBChartTooltipView.h */,
+				40DAB5C01950E9AB00A2696A /* JBChartTooltipView.m */,
 				403AEBA019501C8F00F744A8 /* JBChartInformationView.h */,
 				403AEBA119501C8F00F744A8 /* JBChartInformationView.m */,
 				40446056194F7FFD00C4F22B /* JBBarChartView.h */,
@@ -929,8 +936,6 @@
 				40892C191885B336008F7D38 /* RunOverviewViewController.m */,
 				40AB4B4F1944AC0F00900FD5 /* HistoryPageViewController.h */,
 				40AB4B501944AC0F00900FD5 /* HistoryPageViewController.m */,
-				400B7099194C9C00002D2BD0 /* RunStatsViewController.h */,
-				400B709A194C9C00002D2BD0 /* RunStatsViewController.m */,
 				40DA55B7194E15F000D77442 /* RunGraphViewController.h */,
 				40DA55B8194E15F000D77442 /* RunGraphViewController.m */,
 			);
@@ -1632,6 +1637,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40DAB5C21950E9AB00A2696A /* JBChartTooltipView.m in Sources */,
 				4044605C194F7FFD00C4F22B /* JBBarChartView.m in Sources */,
 				405E5342185E113D00A8BD45 /* StartFinishAnnotation.m in Sources */,
 				405E533C185E10C000A8BD45 /* Sector1Annotaion.m in Sources */,
@@ -1653,7 +1659,6 @@
 				400522571880209600B34DAD /* RunInfoAltitudeGraph.m in Sources */,
 				408A7993182AE3AA0088D8AC /* SettingsViewController.m in Sources */,
 				40C1657317EB637900D4E093 /* AppDelegate.m in Sources */,
-				400B709B194C9C00002D2BD0 /* RunStatsViewController.m in Sources */,
 				40E5A2EA1856504300E8E87E /* UIView+More.m in Sources */,
 				40A3B3E1185B768F00BA85BB /* MessageBarManager.m in Sources */,
 				40A1C443193E559F00E072EE /* MenuViewController.m in Sources */,
@@ -1684,6 +1689,7 @@
 				4057146F181D471800D0070B /* RunFinishViewController.m in Sources */,
 				40C1656F17EB637900D4E093 /* main.m in Sources */,
 				40FFC29218A0145A00E5D8D3 /* RTTBaseAnnotation.m in Sources */,
+				40DAB5C11950E9AB00A2696A /* JBChartTooltipTipView.m in Sources */,
 				40892C201885B437008F7D38 /* RunViewController.m in Sources */,
 				4042CA881889A585005EDEFD /* RunAltitude.m in Sources */,
 			);

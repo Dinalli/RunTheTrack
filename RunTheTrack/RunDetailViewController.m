@@ -18,7 +18,7 @@
 #import "LapAnnotation.h"
 #import "SectorTicker.h"
 #import "SectorTickerView.h"
-#import "RunStatsViewController.h"
+#import "RunGraphViewController.h"
 
 @interface RunDetailViewController ()
 
@@ -517,8 +517,9 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue
                  sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"ShowGraph"]) {
-        RunStatsViewController *rsvc = segue.destinationViewController;
+    if ([segue.identifier isEqualToString:@"RunGraphSegue"])
+    {
+        RunGraphViewController *rsvc = segue.destinationViewController;
         [rsvc setRunData:self.runData];
     }
     else

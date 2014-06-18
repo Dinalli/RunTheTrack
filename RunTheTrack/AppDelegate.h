@@ -12,6 +12,7 @@
 #import "GAI.h"
 #import "GAIDictionaryBuilder.h"
 #import <iAd/iAd.h>
+#import "RunData.h"
 
 extern NSString *const SCSessionStateChangedNotification;
 
@@ -34,6 +35,8 @@ extern NSString *const SCSessionStateChangedNotification;
 @property (nonatomic) BOOL soundEnabled;
 
 @property NSString *stravaCode;
+
+@property (nonatomic) RunData *selectedRun;
 
 - (void)openSession;
 
