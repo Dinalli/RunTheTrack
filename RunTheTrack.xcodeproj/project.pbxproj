@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		400522541880207D00B34DAD /* RunInfoSummary.m in Sources */ = {isa = PBXBuildFile; fileRef = 400522531880207D00B34DAD /* RunInfoSummary.m */; };
 		400522571880209600B34DAD /* RunInfoAltitudeGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 400522561880209600B34DAD /* RunInfoAltitudeGraph.m */; };
+		4008B7B21954B34900D168ED /* austria.png in Resources */ = {isa = PBXBuildFile; fileRef = 4008B7B11954B34900D168ED /* austria.png */; };
+		4008B7B41954B35600D168ED /* sochi.png in Resources */ = {isa = PBXBuildFile; fileRef = 4008B7B31954B35600D168ED /* sochi.png */; };
 		40110739192BEDF2009E0604 /* RTTBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40110738192BEDF2009E0604 /* RTTBaseViewController.m */; };
 		4015F4C818888A54006C3DC8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4015F4C718888A54006C3DC8 /* QuartzCore.framework */; };
 		4015F4CA18888A5B006C3DC8 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4015F4C918888A5B006C3DC8 /* Accelerate.framework */; };
@@ -207,6 +209,8 @@
 		400522531880207D00B34DAD /* RunInfoSummary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunInfoSummary.m; sourceTree = "<group>"; };
 		400522551880209600B34DAD /* RunInfoAltitudeGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunInfoAltitudeGraph.h; sourceTree = "<group>"; };
 		400522561880209600B34DAD /* RunInfoAltitudeGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunInfoAltitudeGraph.m; sourceTree = "<group>"; };
+		4008B7B11954B34900D168ED /* austria.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = austria.png; sourceTree = "<group>"; };
+		4008B7B31954B35600D168ED /* sochi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sochi.png; sourceTree = "<group>"; };
 		40110737192BEDF2009E0604 /* RTTBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTTBaseViewController.h; sourceTree = "<group>"; };
 		40110738192BEDF2009E0604 /* RTTBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTTBaseViewController.m; sourceTree = "<group>"; };
 		4015F4C718888A54006C3DC8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -830,6 +834,8 @@
 		405FD4BD17EE3EA6006F141F /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				4008B7B31954B35600D168ED /* sochi.png */,
+				4008B7B11954B34900D168ED /* austria.png */,
 				40343AEA18940D6000881CC6 /* abu.png */,
 				40343AEB18940D6000881CC6 /* barcelona.png */,
 				40343AEC18940D6000881CC6 /* bahrain.png */,
@@ -1511,6 +1517,7 @@
 				40343B0418940D6000881CC6 /* india.png in Resources */,
 				40B8EF7D18999E140060B6E0 /* profile.png in Resources */,
 				40343B0118940D6000881CC6 /* canada.png in Resources */,
+				4008B7B21954B34900D168ED /* austria.png in Resources */,
 				40343AFE18940D6000881CC6 /* barcelona.png in Resources */,
 				40FA0ABA1883489C00EDB8AE /* abu.jpg in Resources */,
 				408167E9189E908C00843B98 /* ios7_app_icon_ipad@2x.png in Resources */,
@@ -1523,6 +1530,7 @@
 				4043D81D193B61E80093EE82 /* RTTBackground2.png in Resources */,
 				40A3B3EE185B76CC00BA85BB /* icon-success@2x.png in Resources */,
 				40C5D7F318998B64002BBF14 /* man.png in Resources */,
+				4008B7B41954B35600D168ED /* sochi.png in Resources */,
 				40343B0D18940D6000881CC6 /* singapore.png in Resources */,
 				4064EB1318EC6FB300F1D0E9 /* sochi.jpg in Resources */,
 				40A1C44A193E5F1600E072EE /* navbar-lbtn@2x.png in Resources */,

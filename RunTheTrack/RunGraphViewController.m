@@ -90,10 +90,11 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 50;
 - (void)loadView
 {
     [super loadView];
+    UIScrollView *chartScroller = [[UIScrollView alloc] initWithFrame:CGRectMake(kJBLineChartViewControllerChartPadding, kJBLineChartViewControllerChartPadding, self.view.bounds.size.width - (kJBLineChartViewControllerChartPadding * 2), kJBLineChartViewControllerChartHeight)];
     
     self.view.backgroundColor = [UIColor redColor];
     lineChartView = [[JBLineChartView alloc] init];
-    lineChartView.frame = CGRectMake(kJBLineChartViewControllerChartPadding, kJBLineChartViewControllerChartPadding, self.view.bounds.size.width - (kJBLineChartViewControllerChartPadding * 2), kJBLineChartViewControllerChartHeight);
+    lineChartView.frame = CGRectMake(kJBLineChartViewControllerChartPadding, kJBLineChartViewControllerChartPadding, self.view.bounds.size.width - (kJBLineChartViewControllerChartPadding * points.count), kJBLineChartViewControllerChartHeight);
     lineChartView.delegate = self;
     lineChartView.dataSource = self;
     lineChartView.headerPadding = kJBLineChartViewControllerChartHeaderPadding;
@@ -120,7 +121,9 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 50;
 //    footerView.sectionCount = [[self largestLineData] count];
 //    lineChartView.footerView = footerView;
     
-    [self.view addSubview:lineChartView];
+    [self.view addSubview:chartScroller];
+    [chartScroller addSubview:lineChartView];
+    [chartScroller setContentSize:lineChartView.frame.size];
     
     self.informationView = [[JBChartInformationView alloc] initWithFrame:CGRectMake(self.view.bounds.origin.x, CGRectGetMaxY(lineChartView.frame), self.view.bounds.size.width, self.view.bounds.size.height - CGRectGetMaxY(lineChartView.frame) - CGRectGetMaxY(self.navigationController.navigationBar.frame))];
     [self.informationView setValueAndUnitTextColor:[UIColor colorWithWhite:1.0 alpha:0.75]];
@@ -275,7 +278,7 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 50;
     [self.informationView setTitleText:@"Altitude"];
     //[self.informationView setTitleText:lineIndex == JBLineChartLineSolid ? kJBStringLabelMetropolitanAverage : kJBStringLabelNationalAverage];
     [self.informationView setHidden:NO animated:YES];
-    [self setTooltipVisible:YES animated:YES atTouchPoint:touchPoint];
+    //[self setTooltipVisible:YES animated:YES atTouchPoint:touchPoint];
     [self.tooltipView setText:[[self.daysOfWeek objectAtIndex:horizontalIndex] uppercaseString]];
 }
 
