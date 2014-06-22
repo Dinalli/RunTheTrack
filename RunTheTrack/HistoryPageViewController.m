@@ -48,12 +48,17 @@
     
     NSArray *viewControllers = [NSArray arrayWithObjects:controller1, nil];
     
-    UIPageControl *pageControl = [UIPageControl appearance];
+    UIPageControl *pageControl = [UIPageControl new];
     pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
     pageControl.currentPageIndicatorTintColor = [UIColor greenColor];
     pageControl.backgroundColor = [UIColor orangeColor];
+    pageControl.frame = CGRectMake(0, self.view.frame.size.height - 30, self.view.frame.size.width,30);
+    pageControl.numberOfPages = viewControllers.count;
+    pageControl.currentPage = 0;
+    [self.view addSubview:pageControl];
     
-    [self setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    [self setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+    [self didMoveToParentViewController:self];
 
 }
 

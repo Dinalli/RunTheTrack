@@ -18,6 +18,7 @@
 #import "LapAnnotation.h"
 #import "SectorTicker.h"
 #import "SectorTickerView.h"
+#import "RunGraphViewController.h"
 
 @interface RunDetailViewController ()
 
@@ -458,7 +459,7 @@
         [self shareOnTwitter];
     }
 }
-    
+
 -(void)shareOnFacebook
     {
         if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])

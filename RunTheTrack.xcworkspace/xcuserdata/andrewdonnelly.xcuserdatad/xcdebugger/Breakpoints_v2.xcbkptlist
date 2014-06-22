@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RunTheTrack/AFOAuth2Client.m"
-            timestampString = "420049358.277876"
+            filePath = "RunTheTrack/PCLineChartView.m"
+            timestampString = "424552065.303175"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
-            landmarkName = "-authenticateUsingOAuthWithPath:parameters:success:failure:"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
+            landmarkName = "-drawRect:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RunTheTrack/AFOAuth2Client.m"
-            timestampString = "422830135.091567"
+            filePath = "RunTheTrack/PCLineChartView.m"
+            timestampString = "424595049.917849"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "187"
-            endingLineNumber = "187"
-            landmarkName = "-authenticateUsingOAuthWithPath:parameters:success:failure:"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
+            landmarkName = "-drawRect:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,13 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RunTheTrack/AFOAuth2Client.m"
-            timestampString = "422830628.235328"
+            filePath = "RunTheTrack/RunGraphViewController.m"
+            timestampString = "425066841.153468"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "349"
-            endingLineNumber = "349"
-            landmarkName = "+retrieveCredentialWithIdentifier:"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "-initWithCoder:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -57,13 +57,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RunTheTrack/RunOverviewViewController.m"
-            timestampString = "424008681.210323"
+            filePath = "RunTheTrack/RunGraphViewController.m"
+            timestampString = "425144010.845882"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "282"
-            endingLineNumber = "282"
-            landmarkName = "-observeValueForKeyPath:ofObject:change:context:"
+            startingLineNumber = "231"
+            endingLineNumber = "231"
+            landmarkName = "-loadGraphData"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -73,61 +73,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RunTheTrack/RunOverviewViewController.m"
-            timestampString = "424008681.210323"
+            filePath = "RunTheTrack/RunGraphViewController.m"
+            timestampString = "425144485.600023"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "317"
-            endingLineNumber = "317"
-            landmarkName = "-postToStravaWithIdentifier:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RunTheTrack/RunOverviewViewController.m"
-            timestampString = "424008681.210323"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "311"
-            endingLineNumber = "311"
-            landmarkName = "-postToStravaWithIdentifier:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RunTheTrack/RunOverviewViewController.m"
-            timestampString = "424008681.210323"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "298"
-            endingLineNumber = "298"
-            landmarkName = "-observeValueForKeyPath:ofObject:change:context:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RunTheTrack/RunOverviewViewController.m"
-            timestampString = "424008681.210323"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "294"
-            endingLineNumber = "294"
-            landmarkName = "-observeValueForKeyPath:ofObject:change:context:"
+            startingLineNumber = "261"
+            endingLineNumber = "261"
+            landmarkName = "-loadGraphData"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -1,26 +1,26 @@
 //
-//  HistoryTableViewController.m
+//  TelemetryTableViewController.m
 //  RunTheTrack
 //
-//  Created by Andrew Donnelly on 16/10/2013.
-//  Copyright (c) 2013 iphonemobileapp. All rights reserved.
+//  Created by Andrew Donnelly on 21/06/2014.
+//  Copyright (c) 2014 iphonemobileapp. All rights reserved.
 //
 
-#import "HistoryTableViewController.h"
-#import "AppDelegate.h"
+#import "TelemetryTableViewController.h"
 #import "CoreDataHelper.h"
 #import "RunCell.h"
 #import "RunData.h"
-#import "HistoryPageViewController.h"
+#import "RunGraphViewController.h"
 
-@interface HistoryTableViewController ()
+@interface TelemetryTableViewController ()
 {
     IBOutlet UITableView *tableView;
 }
 
+
 @end
 
-@implementation HistoryTableViewController
+@implementation TelemetryTableViewController
 
 - (void)viewDidLoad
 {
@@ -87,7 +87,7 @@
 - (UITableViewCell *)tableView:(UITableView *)selectedTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     RunCell *cell = (RunCell *)[selectedTableView
-                                      dequeueReusableCellWithIdentifier:@"RunCell"];
+                                dequeueReusableCellWithIdentifier:@"RunCell"];
     RunData *runData = (RunData *)[runs objectAtIndex:indexPath.row];
     cell.trackLabel.text = runData.runtrackname;
     if([appDelegate useKMasUnits])
@@ -132,20 +132,22 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //NSIndexPath *selectedRowIndex = [tableView indexPathForSelectedRow];
+    RunData *runData = (RunData *)[runs objectAtIndex:indexPath.row];
+    [appDelegate setSelectedRun:runData];
+    [self performSegueWithIdentifier:@"RunDataSegue" sender:self];
+}
+
 #pragma mark Segue Navigation
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue
-                 sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"RunDataSegue"]) {
-        NSIndexPath *selectedRowIndex = [tableView indexPathForSelectedRow];
-        RunData *runData = (RunData *)[runs objectAtIndex:selectedRowIndex.row];
-        [appDelegate setSelectedRun:runData];
-        
-        HistoryPageViewController *rovc = segue.destinationViewController;
-        [rovc setRunData:runData];
-        [rovc setManagedObjectContext:self.managedObjectContext];
-    }
-}
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue
+//                 sender:(id)sender {
+//    if ([segue.identifier isEqualToString:@"RunDataSegue"]) {
+//
+//    }
+//}
 
 - (IBAction)unwindToOverview:(UIStoryboardSegue *)unwindSegue
 {

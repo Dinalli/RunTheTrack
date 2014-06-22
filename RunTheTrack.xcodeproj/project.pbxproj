@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		400522541880207D00B34DAD /* RunInfoSummary.m in Sources */ = {isa = PBXBuildFile; fileRef = 400522531880207D00B34DAD /* RunInfoSummary.m */; };
 		400522571880209600B34DAD /* RunInfoAltitudeGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 400522561880209600B34DAD /* RunInfoAltitudeGraph.m */; };
+		4008B7B21954B34900D168ED /* austria.png in Resources */ = {isa = PBXBuildFile; fileRef = 4008B7B11954B34900D168ED /* austria.png */; };
+		4008B7B41954B35600D168ED /* sochi.png in Resources */ = {isa = PBXBuildFile; fileRef = 4008B7B31954B35600D168ED /* sochi.png */; };
 		40110739192BEDF2009E0604 /* RTTBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40110738192BEDF2009E0604 /* RTTBaseViewController.m */; };
 		4015F4C818888A54006C3DC8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4015F4C718888A54006C3DC8 /* QuartzCore.framework */; };
 		4015F4CA18888A5B006C3DC8 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4015F4C918888A5B006C3DC8 /* Accelerate.framework */; };
@@ -43,6 +45,7 @@
 		40343B0D18940D6000881CC6 /* singapore.png in Resources */ = {isa = PBXBuildFile; fileRef = 40343AFA18940D6000881CC6 /* singapore.png */; };
 		40343B0E18940D6000881CC6 /* spa.png in Resources */ = {isa = PBXBuildFile; fileRef = 40343AFB18940D6000881CC6 /* spa.png */; };
 		40343B0F18940D6000881CC6 /* usa.png in Resources */ = {isa = PBXBuildFile; fileRef = 40343AFC18940D6000881CC6 /* usa.png */; };
+		403AEBA219501C8F00F744A8 /* JBChartInformationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 403AEBA119501C8F00F744A8 /* JBChartInformationView.m */; };
 		403EA6341897E0CE0042A12E /* Monaco.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 403EA6331897E0CE0042A12E /* Monaco.jpg */; };
 		4042CA7C1889A584005EDEFD /* RunLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 4042CA7B1889A584005EDEFD /* RunLocations.m */; };
 		4042CA851889A584005EDEFD /* RunAchievement.m in Sources */ = {isa = PBXBuildFile; fileRef = 4042CA841889A584005EDEFD /* RunAchievement.m */; };
@@ -50,6 +53,9 @@
 		40438EA318A1584500BC6966 /* SectorTicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 40438EA218A1584500BC6966 /* SectorTicker.m */; };
 		40438EA618A15F0D00BC6966 /* SectorTickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40438EA518A15F0D00BC6966 /* SectorTickerView.m */; };
 		4043D81D193B61E80093EE82 /* RTTBackground2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4043D81B193B61E80093EE82 /* RTTBackground2.png */; };
+		4044605C194F7FFD00C4F22B /* JBBarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40446057194F7FFD00C4F22B /* JBBarChartView.m */; };
+		4044605D194F7FFD00C4F22B /* JBChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40446059194F7FFD00C4F22B /* JBChartView.m */; };
+		4044605E194F7FFD00C4F22B /* JBLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4044605B194F7FFD00C4F22B /* JBLineChartView.m */; };
 		4047939F182F7AEC004FEB73 /* RunCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4047939E182F7AEC004FEB73 /* RunCell.m */; };
 		404793A2182F83BA004FEB73 /* RunDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 404793A1182F83BA004FEB73 /* RunDetailViewController.m */; };
 		4048167C1845D7D2000410C7 /* ProfileHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4048167B1845D7D2000410C7 /* ProfileHeaderView.m */; };
@@ -116,9 +122,9 @@
 		409154CD1852717300CECEEC /* cheq.png in Resources */ = {isa = PBXBuildFile; fileRef = 409154CB1852717300CECEEC /* cheq.png */; };
 		409154CE1852717300CECEEC /* cheq@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 409154CC1852717300CECEEC /* cheq@2x.png */; };
 		40933D3919477E3A00D77E3E /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 40933D3819477E3A00D77E3E /* libCorePlot-CocoaTouch.a */; };
-		40933D3C1947811B00D77E3E /* StatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40933D3B1947811B00D77E3E /* StatsViewController.m */; };
 		40933D3F1947887100D77E3E /* RTTBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 40933D3E1947887100D77E3E /* RTTBackground.png */; };
 		409357A71855F7C6007EE900 /* UIImageView+More.m in Sources */ = {isa = PBXBuildFile; fileRef = 409357A61855F7C6007EE900 /* UIImageView+More.m */; };
+		409D08901955D0B900E9AB3C /* TelemetryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 409D088F1955D0B900E9AB3C /* TelemetryTableViewController.m */; };
 		40A1C443193E559F00E072EE /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A1C442193E559F00E072EE /* MenuViewController.m */; };
 		40A1C446193E587100E072EE /* RTTRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A1C445193E587100E072EE /* RTTRootViewController.m */; };
 		40A1C449193E5F1600E072EE /* navbar-lbtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 40A1C447193E5F1600E072EE /* navbar-lbtn.png */; };
@@ -169,6 +175,9 @@
 		40D35DC7182540B500D10899 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40D35DC6182540B500D10899 /* CoreData.framework */; };
 		40D35DCA182541E500D10899 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D35DC9182541E500D10899 /* CoreDataHelper.m */; };
 		40D42C9E18702DBD0057DF2D /* YLProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D42C9D18702DBD0057DF2D /* YLProgressBar.m */; };
+		40DA55B9194E15F000D77442 /* RunGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DA55B8194E15F000D77442 /* RunGraphViewController.m */; };
+		40DAB5C11950E9AB00A2696A /* JBChartTooltipTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DAB5BE1950E9AB00A2696A /* JBChartTooltipTipView.m */; };
+		40DAB5C21950E9AB00A2696A /* JBChartTooltipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DAB5C01950E9AB00A2696A /* JBChartTooltipView.m */; };
 		40DFDBE9182AE6C100554C58 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40DFDBE8182AE6C100554C58 /* Social.framework */; };
 		40E5A2EA1856504300E8E87E /* UIView+More.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E5A2E91856504300E8E87E /* UIView+More.m */; };
 		40E5A2EC1856538A00E8E87E /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40E5A2EB1856538A00E8E87E /* CoreText.framework */; };
@@ -200,6 +209,8 @@
 		400522531880207D00B34DAD /* RunInfoSummary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunInfoSummary.m; sourceTree = "<group>"; };
 		400522551880209600B34DAD /* RunInfoAltitudeGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunInfoAltitudeGraph.h; sourceTree = "<group>"; };
 		400522561880209600B34DAD /* RunInfoAltitudeGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunInfoAltitudeGraph.m; sourceTree = "<group>"; };
+		4008B7B11954B34900D168ED /* austria.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = austria.png; sourceTree = "<group>"; };
+		4008B7B31954B35600D168ED /* sochi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sochi.png; sourceTree = "<group>"; };
 		40110737192BEDF2009E0604 /* RTTBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTTBaseViewController.h; sourceTree = "<group>"; };
 		40110738192BEDF2009E0604 /* RTTBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTTBaseViewController.m; sourceTree = "<group>"; };
 		4015F4C718888A54006C3DC8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -242,6 +253,8 @@
 		40343AFA18940D6000881CC6 /* singapore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = singapore.png; sourceTree = "<group>"; };
 		40343AFB18940D6000881CC6 /* spa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spa.png; sourceTree = "<group>"; };
 		40343AFC18940D6000881CC6 /* usa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = usa.png; sourceTree = "<group>"; };
+		403AEBA019501C8F00F744A8 /* JBChartInformationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBChartInformationView.h; sourceTree = "<group>"; };
+		403AEBA119501C8F00F744A8 /* JBChartInformationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBChartInformationView.m; sourceTree = "<group>"; };
 		403EA6331897E0CE0042A12E /* Monaco.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Monaco.jpg; sourceTree = "<group>"; };
 		4042CA6A18899F35005EDEFD /* RTT4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RTT4.xcdatamodel; sourceTree = "<group>"; };
 		4042CA7A1889A584005EDEFD /* RunLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunLocations.h; sourceTree = "<group>"; };
@@ -255,6 +268,12 @@
 		40438EA418A15F0D00BC6966 /* SectorTickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectorTickerView.h; sourceTree = "<group>"; };
 		40438EA518A15F0D00BC6966 /* SectorTickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectorTickerView.m; sourceTree = "<group>"; };
 		4043D81B193B61E80093EE82 /* RTTBackground2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RTTBackground2.png; sourceTree = "<group>"; };
+		40446056194F7FFD00C4F22B /* JBBarChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBBarChartView.h; sourceTree = "<group>"; };
+		40446057194F7FFD00C4F22B /* JBBarChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBBarChartView.m; sourceTree = "<group>"; };
+		40446058194F7FFD00C4F22B /* JBChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBChartView.h; sourceTree = "<group>"; };
+		40446059194F7FFD00C4F22B /* JBChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBChartView.m; sourceTree = "<group>"; };
+		4044605A194F7FFD00C4F22B /* JBLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBLineChartView.h; sourceTree = "<group>"; };
+		4044605B194F7FFD00C4F22B /* JBLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBLineChartView.m; sourceTree = "<group>"; };
 		4047939D182F7AEC004FEB73 /* RunCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunCell.h; sourceTree = "<group>"; };
 		4047939E182F7AEC004FEB73 /* RunCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunCell.m; sourceTree = "<group>"; };
 		404793A0182F83BA004FEB73 /* RunDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunDetailViewController.h; sourceTree = "<group>"; };
@@ -456,12 +475,12 @@
 		40933D3619477E3A00D77E3E /* NSDecimalNumberExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDecimalNumberExtensions.h; sourceTree = "<group>"; };
 		40933D3719477E3A00D77E3E /* NSNumberExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSNumberExtensions.h; sourceTree = "<group>"; };
 		40933D3819477E3A00D77E3E /* libCorePlot-CocoaTouch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libCorePlot-CocoaTouch.a"; sourceTree = "<group>"; };
-		40933D3A1947811B00D77E3E /* StatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsViewController.h; sourceTree = "<group>"; };
-		40933D3B1947811B00D77E3E /* StatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsViewController.m; sourceTree = "<group>"; };
 		40933D3E1947887100D77E3E /* RTTBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RTTBackground.png; sourceTree = "<group>"; };
 		409357A51855F7C6007EE900 /* UIImageView+More.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+More.h"; sourceTree = "<group>"; };
 		409357A61855F7C6007EE900 /* UIImageView+More.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+More.m"; sourceTree = "<group>"; };
 		409357AF1855FC6F007EE900 /* Global.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
+		409D088E1955D0B900E9AB3C /* TelemetryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TelemetryTableViewController.h; sourceTree = "<group>"; };
+		409D088F1955D0B900E9AB3C /* TelemetryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TelemetryTableViewController.m; sourceTree = "<group>"; };
 		40A1C441193E559F00E072EE /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		40A1C442193E559F00E072EE /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		40A1C444193E587100E072EE /* RTTRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTTRootViewController.h; sourceTree = "<group>"; };
@@ -528,6 +547,12 @@
 		40D35DC9182541E500D10899 /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
 		40D42C9C18702DBD0057DF2D /* YLProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLProgressBar.h; sourceTree = "<group>"; };
 		40D42C9D18702DBD0057DF2D /* YLProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLProgressBar.m; sourceTree = "<group>"; };
+		40DA55B7194E15F000D77442 /* RunGraphViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunGraphViewController.h; sourceTree = "<group>"; };
+		40DA55B8194E15F000D77442 /* RunGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunGraphViewController.m; sourceTree = "<group>"; };
+		40DAB5BD1950E9AB00A2696A /* JBChartTooltipTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBChartTooltipTipView.h; sourceTree = "<group>"; };
+		40DAB5BE1950E9AB00A2696A /* JBChartTooltipTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBChartTooltipTipView.m; sourceTree = "<group>"; };
+		40DAB5BF1950E9AB00A2696A /* JBChartTooltipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBChartTooltipView.h; sourceTree = "<group>"; };
+		40DAB5C01950E9AB00A2696A /* JBChartTooltipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBChartTooltipView.m; sourceTree = "<group>"; };
 		40DFDBE8182AE6C100554C58 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		40E5A2E81856504300E8E87E /* UIView+More.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+More.h"; sourceTree = "<group>"; };
 		40E5A2E91856504300E8E87E /* UIView+More.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+More.m"; sourceTree = "<group>"; };
@@ -654,6 +679,7 @@
 		4018F50417F82E26006F990E /* 3rdParty */ = {
 			isa = PBXGroup;
 			children = (
+				40446055194F7FE300C4F22B /* JBChartView */,
 				40F22607190D3B6A0053BABF /* Strava-Objc */,
 				40A525121907BE3F00DA4398 /* AFOAuth */,
 				40174ADE1906CBDB00E0BB73 /* GPXFramework */,
@@ -680,7 +706,7 @@
 		4018F56417F84E0C006F990E /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				405267261941E57A0048E8DA /* Stats */,
+				405267261941E57A0048E8DA /* Telemetry */,
 				40110736192BEDD4009E0604 /* BaseVC */,
 				407710A918453B1D00882BBE /* Profile */,
 				407C4DF3180BF63B00F7B2FE /* Achivements */,
@@ -706,13 +732,34 @@
 			name = GoogleAnalytics;
 			sourceTree = "<group>";
 		};
-		405267261941E57A0048E8DA /* Stats */ = {
+		40446055194F7FE300C4F22B /* JBChartView */ = {
 			isa = PBXGroup;
 			children = (
-				40933D3A1947811B00D77E3E /* StatsViewController.h */,
-				40933D3B1947811B00D77E3E /* StatsViewController.m */,
+				40DAB5BD1950E9AB00A2696A /* JBChartTooltipTipView.h */,
+				40DAB5BE1950E9AB00A2696A /* JBChartTooltipTipView.m */,
+				40DAB5BF1950E9AB00A2696A /* JBChartTooltipView.h */,
+				40DAB5C01950E9AB00A2696A /* JBChartTooltipView.m */,
+				403AEBA019501C8F00F744A8 /* JBChartInformationView.h */,
+				403AEBA119501C8F00F744A8 /* JBChartInformationView.m */,
+				40446056194F7FFD00C4F22B /* JBBarChartView.h */,
+				40446057194F7FFD00C4F22B /* JBBarChartView.m */,
+				40446058194F7FFD00C4F22B /* JBChartView.h */,
+				40446059194F7FFD00C4F22B /* JBChartView.m */,
+				4044605A194F7FFD00C4F22B /* JBLineChartView.h */,
+				4044605B194F7FFD00C4F22B /* JBLineChartView.m */,
 			);
-			name = Stats;
+			name = JBChartView;
+			sourceTree = "<group>";
+		};
+		405267261941E57A0048E8DA /* Telemetry */ = {
+			isa = PBXGroup;
+			children = (
+				40DA55B7194E15F000D77442 /* RunGraphViewController.h */,
+				40DA55B8194E15F000D77442 /* RunGraphViewController.m */,
+				409D088E1955D0B900E9AB3C /* TelemetryTableViewController.h */,
+				409D088F1955D0B900E9AB3C /* TelemetryTableViewController.m */,
+			);
+			name = Telemetry;
 			sourceTree = "<group>";
 		};
 		4057EB2E18703B9300F52EF4 /* Common */ = {
@@ -789,6 +836,8 @@
 		405FD4BD17EE3EA6006F141F /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				4008B7B31954B35600D168ED /* sochi.png */,
+				4008B7B11954B34900D168ED /* austria.png */,
 				40343AEA18940D6000881CC6 /* abu.png */,
 				40343AEB18940D6000881CC6 /* barcelona.png */,
 				40343AEC18940D6000881CC6 /* bahrain.png */,
@@ -1468,6 +1517,7 @@
 				40343B0418940D6000881CC6 /* india.png in Resources */,
 				40B8EF7D18999E140060B6E0 /* profile.png in Resources */,
 				40343B0118940D6000881CC6 /* canada.png in Resources */,
+				4008B7B21954B34900D168ED /* austria.png in Resources */,
 				40343AFE18940D6000881CC6 /* barcelona.png in Resources */,
 				40FA0ABA1883489C00EDB8AE /* abu.jpg in Resources */,
 				408167E9189E908C00843B98 /* ios7_app_icon_ipad@2x.png in Resources */,
@@ -1480,6 +1530,7 @@
 				4043D81D193B61E80093EE82 /* RTTBackground2.png in Resources */,
 				40A3B3EE185B76CC00BA85BB /* icon-success@2x.png in Resources */,
 				40C5D7F318998B64002BBF14 /* man.png in Resources */,
+				4008B7B41954B35600D168ED /* sochi.png in Resources */,
 				40343B0D18940D6000881CC6 /* singapore.png in Resources */,
 				4064EB1318EC6FB300F1D0E9 /* sochi.jpg in Resources */,
 				40A1C44A193E5F1600E072EE /* navbar-lbtn@2x.png in Resources */,
@@ -1594,9 +1645,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40DAB5C21950E9AB00A2696A /* JBChartTooltipView.m in Sources */,
+				4044605C194F7FFD00C4F22B /* JBBarChartView.m in Sources */,
 				405E5342185E113D00A8BD45 /* StartFinishAnnotation.m in Sources */,
 				405E533C185E10C000A8BD45 /* Sector1Annotaion.m in Sources */,
 				407710AF18453B6E00882BBE /* ProfileCollectionCell.m in Sources */,
+				40DA55B9194E15F000D77442 /* RunGraphViewController.m in Sources */,
+				4044605D194F7FFD00C4F22B /* JBChartView.m in Sources */,
 				40E5A2EF185655B100E8E87E /* TTCounterLabel.m in Sources */,
 				4057264B188FA3FF005DD240 /* LapAnnotation.m in Sources */,
 				4057EB3118703BA800F52EF4 /* CommonUtils.m in Sources */,
@@ -1608,7 +1663,6 @@
 				40F3E1E4180F194A00785F27 /* HistoryTableViewController.m in Sources */,
 				407C4DF9180BF66500F7B2FE /* AchivementsCollectionViewController.m in Sources */,
 				4018F50F17F832B9006F990E /* JBKenBurnsView.m in Sources */,
-				40933D3C1947811B00D77E3E /* StatsViewController.m in Sources */,
 				400522571880209600B34DAD /* RunInfoAltitudeGraph.m in Sources */,
 				408A7993182AE3AA0088D8AC /* SettingsViewController.m in Sources */,
 				40C1657317EB637900D4E093 /* AppDelegate.m in Sources */,
@@ -1623,14 +1677,17 @@
 				407C4DEF180BE6B700F7B2FE /* TracksCollectionViewController.m in Sources */,
 				40A525151907BE4D00DA4398 /* AFOAuth2Client.m in Sources */,
 				4022963F188A83FA00BF515F /* RunData.m in Sources */,
+				4044605E194F7FFD00C4F22B /* JBLineChartView.m in Sources */,
 				40A1C446193E587100E072EE /* RTTRootViewController.m in Sources */,
 				4047939F182F7AEC004FEB73 /* RunCell.m in Sources */,
+				403AEBA219501C8F00F744A8 /* JBChartInformationView.m in Sources */,
 				40A2AA6D188F023800F5E263 /* RunSectors.m in Sources */,
 				40438EA318A1584500BC6966 /* SectorTicker.m in Sources */,
 				40D35DCA182541E500D10899 /* CoreDataHelper.m in Sources */,
 				40D42C9E18702DBD0057DF2D /* YLProgressBar.m in Sources */,
 				407C4DF6180BF65300F7B2FE /* AchivementCell.m in Sources */,
 				4042CA7C1889A584005EDEFD /* RunLocations.m in Sources */,
+				409D08901955D0B900E9AB3C /* TelemetryTableViewController.m in Sources */,
 				4048167C1845D7D2000410C7 /* ProfileHeaderView.m in Sources */,
 				40438EA618A15F0D00BC6966 /* SectorTickerView.m in Sources */,
 				40892C171885B326008F7D38 /* RunTrackMapViewController.m in Sources */,
@@ -1640,6 +1697,7 @@
 				4057146F181D471800D0070B /* RunFinishViewController.m in Sources */,
 				40C1656F17EB637900D4E093 /* main.m in Sources */,
 				40FFC29218A0145A00E5D8D3 /* RTTBaseAnnotation.m in Sources */,
+				40DAB5C11950E9AB00A2696A /* JBChartTooltipTipView.m in Sources */,
 				40892C201885B437008F7D38 /* RunViewController.m in Sources */,
 				4042CA881889A585005EDEFD /* RunAltitude.m in Sources */,
 			);
