@@ -445,7 +445,7 @@
 
 -(IBAction)showActivityView:(id)sender
 {
-    UIActionSheet *loginActionSheet = [[UIActionSheet alloc] initWithTitle:@"Share using" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"share on facebook" otherButtonTitles:@"share on twitter",@"Show stats", nil];
+    UIActionSheet *loginActionSheet = [[UIActionSheet alloc] initWithTitle:@"Share using" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"share on facebook" otherButtonTitles:@"share on twitter", nil];
 
     [loginActionSheet showInView:self.view];
 }
@@ -457,9 +457,6 @@
     }
     else if (buttonIndex == 1) {
         [self shareOnTwitter];
-    }
-    else if (buttonIndex == 2) {
-        [self showStats];
     }
 }
 
@@ -484,11 +481,6 @@
             [self composePost:SLServiceTypeTwitter];
         }
     }
-
--(void)showStats
-{
-    [self performSegueWithIdentifier:@"ShowGraph" sender:self];
-}
     
 -(void)composePost:(NSString *)serviceType
 {
@@ -513,19 +505,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue
-                 sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"RunGraphSegue"])
-    {
-        RunGraphViewController *rsvc = segue.destinationViewController;
-        [rsvc setRunData:self.runData];
-    }
-    else
-    {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }
 }
 
 - (void)dealloc

@@ -122,9 +122,9 @@
 		409154CD1852717300CECEEC /* cheq.png in Resources */ = {isa = PBXBuildFile; fileRef = 409154CB1852717300CECEEC /* cheq.png */; };
 		409154CE1852717300CECEEC /* cheq@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 409154CC1852717300CECEEC /* cheq@2x.png */; };
 		40933D3919477E3A00D77E3E /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 40933D3819477E3A00D77E3E /* libCorePlot-CocoaTouch.a */; };
-		40933D3C1947811B00D77E3E /* StatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40933D3B1947811B00D77E3E /* StatsViewController.m */; };
 		40933D3F1947887100D77E3E /* RTTBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 40933D3E1947887100D77E3E /* RTTBackground.png */; };
 		409357A71855F7C6007EE900 /* UIImageView+More.m in Sources */ = {isa = PBXBuildFile; fileRef = 409357A61855F7C6007EE900 /* UIImageView+More.m */; };
+		409D08901955D0B900E9AB3C /* TelemetryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 409D088F1955D0B900E9AB3C /* TelemetryTableViewController.m */; };
 		40A1C443193E559F00E072EE /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A1C442193E559F00E072EE /* MenuViewController.m */; };
 		40A1C446193E587100E072EE /* RTTRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A1C445193E587100E072EE /* RTTRootViewController.m */; };
 		40A1C449193E5F1600E072EE /* navbar-lbtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 40A1C447193E5F1600E072EE /* navbar-lbtn.png */; };
@@ -475,12 +475,12 @@
 		40933D3619477E3A00D77E3E /* NSDecimalNumberExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDecimalNumberExtensions.h; sourceTree = "<group>"; };
 		40933D3719477E3A00D77E3E /* NSNumberExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSNumberExtensions.h; sourceTree = "<group>"; };
 		40933D3819477E3A00D77E3E /* libCorePlot-CocoaTouch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libCorePlot-CocoaTouch.a"; sourceTree = "<group>"; };
-		40933D3A1947811B00D77E3E /* StatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsViewController.h; sourceTree = "<group>"; };
-		40933D3B1947811B00D77E3E /* StatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsViewController.m; sourceTree = "<group>"; };
 		40933D3E1947887100D77E3E /* RTTBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RTTBackground.png; sourceTree = "<group>"; };
 		409357A51855F7C6007EE900 /* UIImageView+More.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+More.h"; sourceTree = "<group>"; };
 		409357A61855F7C6007EE900 /* UIImageView+More.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+More.m"; sourceTree = "<group>"; };
 		409357AF1855FC6F007EE900 /* Global.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
+		409D088E1955D0B900E9AB3C /* TelemetryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TelemetryTableViewController.h; sourceTree = "<group>"; };
+		409D088F1955D0B900E9AB3C /* TelemetryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TelemetryTableViewController.m; sourceTree = "<group>"; };
 		40A1C441193E559F00E072EE /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		40A1C442193E559F00E072EE /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		40A1C444193E587100E072EE /* RTTRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTTRootViewController.h; sourceTree = "<group>"; };
@@ -706,7 +706,7 @@
 		4018F56417F84E0C006F990E /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				405267261941E57A0048E8DA /* Stats */,
+				405267261941E57A0048E8DA /* Telemetry */,
 				40110736192BEDD4009E0604 /* BaseVC */,
 				407710A918453B1D00882BBE /* Profile */,
 				407C4DF3180BF63B00F7B2FE /* Achivements */,
@@ -751,13 +751,15 @@
 			name = JBChartView;
 			sourceTree = "<group>";
 		};
-		405267261941E57A0048E8DA /* Stats */ = {
+		405267261941E57A0048E8DA /* Telemetry */ = {
 			isa = PBXGroup;
 			children = (
-				40933D3A1947811B00D77E3E /* StatsViewController.h */,
-				40933D3B1947811B00D77E3E /* StatsViewController.m */,
+				40DA55B7194E15F000D77442 /* RunGraphViewController.h */,
+				40DA55B8194E15F000D77442 /* RunGraphViewController.m */,
+				409D088E1955D0B900E9AB3C /* TelemetryTableViewController.h */,
+				409D088F1955D0B900E9AB3C /* TelemetryTableViewController.m */,
 			);
-			name = Stats;
+			name = Telemetry;
 			sourceTree = "<group>";
 		};
 		4057EB2E18703B9300F52EF4 /* Common */ = {
@@ -942,8 +944,6 @@
 				40892C191885B336008F7D38 /* RunOverviewViewController.m */,
 				40AB4B4F1944AC0F00900FD5 /* HistoryPageViewController.h */,
 				40AB4B501944AC0F00900FD5 /* HistoryPageViewController.m */,
-				40DA55B7194E15F000D77442 /* RunGraphViewController.h */,
-				40DA55B8194E15F000D77442 /* RunGraphViewController.m */,
 			);
 			name = History;
 			sourceTree = "<group>";
@@ -1663,7 +1663,6 @@
 				40F3E1E4180F194A00785F27 /* HistoryTableViewController.m in Sources */,
 				407C4DF9180BF66500F7B2FE /* AchivementsCollectionViewController.m in Sources */,
 				4018F50F17F832B9006F990E /* JBKenBurnsView.m in Sources */,
-				40933D3C1947811B00D77E3E /* StatsViewController.m in Sources */,
 				400522571880209600B34DAD /* RunInfoAltitudeGraph.m in Sources */,
 				408A7993182AE3AA0088D8AC /* SettingsViewController.m in Sources */,
 				40C1657317EB637900D4E093 /* AppDelegate.m in Sources */,
@@ -1688,6 +1687,7 @@
 				40D42C9E18702DBD0057DF2D /* YLProgressBar.m in Sources */,
 				407C4DF6180BF65300F7B2FE /* AchivementCell.m in Sources */,
 				4042CA7C1889A584005EDEFD /* RunLocations.m in Sources */,
+				409D08901955D0B900E9AB3C /* TelemetryTableViewController.m in Sources */,
 				4048167C1845D7D2000410C7 /* ProfileHeaderView.m in Sources */,
 				40438EA618A15F0D00BC6966 /* SectorTickerView.m in Sources */,
 				40892C171885B326008F7D38 /* RunTrackMapViewController.m in Sources */,

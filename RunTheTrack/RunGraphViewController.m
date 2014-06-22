@@ -30,7 +30,7 @@
     NSMutableArray *runs;
     AppDelegate *appDelegate;
     NSMutableArray *altitudePoints;
-    NSMutableArray *points;
+    NSMutableArray *graphPoints;
     JBLineChartView *lineChartView;
 }
 
@@ -48,9 +48,9 @@
 
 @implementation RunGraphViewController
 
-CGFloat const kJBLineChartViewControllerChartHeight = 250.0f;
+CGFloat const kJBLineChartViewControllerChartHeight = 350.0f;
 CGFloat const kJBLineChartViewControllerChartPadding = 0.0f;
-CGFloat const kJBLineChartViewControllerChartHeaderHeight = 75.0f;
+CGFloat const kJBLineChartViewControllerChartHeaderHeight = 175.0f;
 CGFloat const kJBLineChartViewControllerChartHeaderPadding = 20.0f;
 CGFloat const kJBLineChartViewControllerChartFooterHeight = 20.0f;
 CGFloat const kJBLineChartViewControllerChartSolidLineWidth = 1.0f;
@@ -62,7 +62,7 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 50;
     self = [super init];
     if (self)
     {
-        [self loadGraphData];
+        [self initFakeData];
     }
     return self;
 }
@@ -82,7 +82,7 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 50;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        [self loadGraphData];
+        [self initFakeData];
     }
     return self;
 }
@@ -94,7 +94,7 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 50;
     
     self.view.backgroundColor = [UIColor redColor];
     lineChartView = [[JBLineChartView alloc] init];
-    lineChartView.frame = CGRectMake(kJBLineChartViewControllerChartPadding, kJBLineChartViewControllerChartPadding, self.view.bounds.size.width - (kJBLineChartViewControllerChartPadding * points.count), kJBLineChartViewControllerChartHeight);
+    lineChartView.frame = CGRectMake(kJBLineChartViewControllerChartPadding, 60, self.view.bounds.size.width, 200);
     lineChartView.delegate = self;
     lineChartView.dataSource = self;
     lineChartView.headerPadding = kJBLineChartViewControllerChartHeaderPadding;
@@ -160,57 +160,40 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 50;
 
 - (NSUInteger)numberOfLinesInLineChartView:(JBLineChartView *)lineChartView
 {
-    return points.count;
+    NSLog(@"no lines %d", [self.chartData count]);
+    return [self.chartData count];
 }
 
 - (NSUInteger)lineChartView:(JBLineChartView *)lineChartView numberOfVerticalValuesAtLineIndex:(NSUInteger)lineIndex
 {
-//    NSLog(@"Points Count %d", points.count);
-    return 1;
+    //NSLog(@"no vertical lines %d", [[self.chartData objectAtIndex:lineIndex] count]);
+    return [[self.chartData objectAtIndex:lineIndex] count];
 }
 
 - (CGFloat)lineChartView:(JBLineChartView *)lineChartView verticalValueForHorizontalIndex:(NSUInteger)horizontalIndex atLineIndex:(NSUInteger)lineIndex
 {
-    NSLog(@"Vertical Value %@ Hor %d - Line Index %d", [points objectAtIndex:lineIndex], horizontalIndex, lineIndex);
-    return [[points objectAtIndex:lineIndex] floatValue];// y-position (y-axis) of point at horizontalIndex (x-axis)
+    //NSLog(@"vertical value %f", [[[self.chartData objectAtIndex:lineIndex] objectAtIndex:horizontalIndex] floatValue]);
+    return [[[self.chartData objectAtIndex:lineIndex] objectAtIndex:horizontalIndex] floatValue];
 }
-
-//- (NSUInteger)numberOfLinesInLineChartView:(JBLineChartView *)lineChartView
-//{
-//    NSLog(@"no lines %d", [self.chartData count]);
-//    return [self.chartData count];
-//}
-
-//- (NSUInteger)lineChartView:(JBLineChartView *)lineChartView numberOfVerticalValuesAtLineIndex:(NSUInteger)lineIndex
-//{
-//    //NSLog(@"no vertical lines %d", [[self.chartData objectAtIndex:lineIndex] count]);
-//    return [[self.chartData objectAtIndex:lineIndex] count];
-//}
-//
-//- (CGFloat)lineChartView:(JBLineChartView *)lineChartView verticalValueForHorizontalIndex:(NSUInteger)horizontalIndex atLineIndex:(NSUInteger)lineIndex
-//{
-//    //NSLog(@"vertical value %f", [[[self.chartData objectAtIndex:lineIndex] objectAtIndex:horizontalIndex] floatValue]);
-//    return [[[self.chartData objectAtIndex:lineIndex] objectAtIndex:horizontalIndex] floatValue];
-//}
 
 - (UIColor *)lineChartView:(JBLineChartView *)lineChartView colorForLineAtLineIndex:(NSUInteger)lineIndex
 {
-    return kJBColorLineChartDefaultSolidLineColor;
+    return [UIColor whiteColor];
 }
 
 - (UIColor *)lineChartView:(JBLineChartView *)lineChartView colorForDotAtHorizontalIndex:(NSUInteger)horizontalIndex atLineIndex:(NSUInteger)lineIndex
 {
-    return [UIColor cyanColor];
+    return [UIColor redColor];
 }
 
 - (CGFloat)lineChartView:(JBLineChartView *)lineChartView widthForLineAtLineIndex:(NSUInteger)lineIndex
 {
-    return kJBLineChartViewControllerChartSolidLineWidth;
+    return 3.0f;
 }
 
 - (CGFloat)lineChartView:(JBLineChartView *)lineChartView dotRadiusForLineAtLineIndex:(NSUInteger)lineIndex
 {
-    return 5.0;
+    return 15.0;
 }
 
 - (UIColor *)verticalSelectionColorForLineChartView:(JBLineChartView *)lineChartView
@@ -250,36 +233,42 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 50;
     
     self.runData = appDelegate.selectedRun;
     
-    runs = [CoreDataHelper getObjectsFromContextWithEntityName:@"RunData" andSortKey:nil andSortAscending:YES withManagedObjectContext:self.managedObjectContext];
-    runs = [[[runs reverseObjectEnumerator] allObjects] mutableCopy];
+    NSArray *runLocationsArray = [self.runData.runDataLocations allObjects];
+    altitudePoints = [[self.runData.runAltitudes allObjects] mutableCopy];
     
-    if (runs.count == 0)
+    NSMutableArray *mutableLineCharts = [NSMutableArray array];
+    for (int lineIndex=0; lineIndex<3; lineIndex++)
     {
-        [[MessageBarManager sharedInstance] showMessageWithTitle:@"No past runs available."
-                                                     description:[NSString stringWithFormat:@"Why not go for a run. You will be able to see details of your past runs here."]
-                                                            type:MessageBarMessageTypeInfo];
+        NSMutableArray *mutableChartData = [NSMutableArray array];
+        for (int i=0; i<kJBLineChartViewControllerMaxNumChartPoints; i++)
+        {
+            switch (lineIndex) {
+                case 0:
+                    [mutableChartData addObject:[runLocationsArray objectAtIndex:i]];
+                    break;
+                case 1:
+                    [mutableChartData addObject:[altitudePoints objectAtIndex:i]];
+                    break;
+                case 2:
+                    [mutableChartData addObject:[altitudePoints objectAtIndex:i]];
+                    break;
+                default:
+                    break;
+            }
+        }
+        [mutableLineCharts addObject:mutableChartData];
     }
-    else{
-        altitudePoints = [[self.runData.runAltitudes allObjects] mutableCopy];
-    }
-    NSMutableArray *xAxisLabels = [NSMutableArray new];
-    points = [NSMutableArray array];
-    for (NSInteger index = 0; index < altitudePoints.count; index++) {
-        RunAltitude *runAltitude = (RunAltitude *)[altitudePoints objectAtIndex:index];
-        [xAxisLabels addObject:runAltitude.altitudeTimeStamp];
-        [points addObject:runAltitude.altitude];
-    }
+    _chartData = [NSArray arrayWithArray:mutableLineCharts];
 }
 
 - (void)lineChartView:(JBLineChartView *)lineChartView didSelectLineAtIndex:(NSUInteger)lineIndex horizontalIndex:(NSUInteger)horizontalIndex touchPoint:(CGPoint)touchPoint
 {
-    NSNumber *valueNumber = [points objectAtIndex:horizontalIndex];
-    [self.informationView setValueText:[NSString stringWithFormat:@"%.2f", [valueNumber floatValue]] unitText:@"m"];
-    [self.informationView setTitleText:@"Altitude"];
-    //[self.informationView setTitleText:lineIndex == JBLineChartLineSolid ? kJBStringLabelMetropolitanAverage : kJBStringLabelNationalAverage];
-    [self.informationView setHidden:NO animated:YES];
-    //[self setTooltipVisible:YES animated:YES atTouchPoint:touchPoint];
-    [self.tooltipView setText:[[self.daysOfWeek objectAtIndex:horizontalIndex] uppercaseString]];
+//    NSNumber *valueNumber = [[self.chartData objectAtIndex:lineIndex] objectAtIndex:horizontalIndex];
+//    [self.informationView setValueText:[NSString stringWithFormat:@"%.2f", [valueNumber floatValue]] unitText:kJBStringLabelMm];
+//    [self.informationView setTitleText:lineIndex == JBLineChartLineSolid ? kJBStringLabelMetropolitanAverage : kJBStringLabelNationalAverage];
+//    [self.informationView setHidden:NO animated:YES];
+//    [self setTooltipVisible:YES animated:YES atTouchPoint:touchPoint];
+//    [self.tooltipView setText:[[self.daysOfWeek objectAtIndex:horizontalIndex] uppercaseString]];
 }
 
 - (void)didReceiveMemoryWarning
