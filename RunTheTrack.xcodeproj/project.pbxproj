@@ -25,6 +25,15 @@
 		4022963F188A83FA00BF515F /* RunData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4022963E188A83FA00BF515F /* RunData.m */; };
 		40251C6B184E5EFF0088F8C9 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40251C6A184E5EFF0088F8C9 /* Crashlytics.framework */; };
 		4027543A189B94F50015A79F /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40275439189B94F50015A79F /* AdSupport.framework */; };
+		4029D7691957323400A6E7A9 /* MTZWhatsNew.m in Sources */ = {isa = PBXBuildFile; fileRef = 4029D7681957323400A6E7A9 /* MTZWhatsNew.m */; };
+		4029D77A195732EA00A6E7A9 /* MTZCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4029D76C195732EA00A6E7A9 /* MTZCollectionView.m */; };
+		4029D77B195732EA00A6E7A9 /* MTZWhatsNewFeatureCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4029D76E195732EA00A6E7A9 /* MTZWhatsNewFeatureCollectionViewCell.m */; };
+		4029D77C195732EA00A6E7A9 /* MTZWhatsNewGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4029D770195732EA00A6E7A9 /* MTZWhatsNewGridViewController.m */; };
+		4029D77D195732EA00A6E7A9 /* MTZWhatsNewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4029D772195732EA00A6E7A9 /* MTZWhatsNewViewController.m */; };
+		4029D77E195732EA00A6E7A9 /* NSLayoutConstraint+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 4029D775195732EA00A6E7A9 /* NSLayoutConstraint+Common.m */; };
+		4029D77F195732EA00A6E7A9 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4029D777195732EA00A6E7A9 /* LICENSE.txt */; };
+		4029D780195732EA00A6E7A9 /* SAMGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4029D779195732EA00A6E7A9 /* SAMGradientView.m */; };
+		4029D7821957338600A6E7A9 /* What's New.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4029D7811957338600A6E7A9 /* What's New.plist */; };
 		402AB50C188AFB950068C52C /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 402AB50B188AFB950068C52C /* libGoogleAnalyticsServices.a */; };
 		40343AFD18940D6000881CC6 /* abu.png in Resources */ = {isa = PBXBuildFile; fileRef = 40343AEA18940D6000881CC6 /* abu.png */; };
 		40343AFE18940D6000881CC6 /* barcelona.png in Resources */ = {isa = PBXBuildFile; fileRef = 40343AEB18940D6000881CC6 /* barcelona.png */; };
@@ -227,6 +236,22 @@
 		4022963E188A83FA00BF515F /* RunData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunData.m; sourceTree = "<group>"; };
 		40251C6A184E5EFF0088F8C9 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		40275439189B94F50015A79F /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		4029D7671957323400A6E7A9 /* MTZWhatsNew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTZWhatsNew.h; sourceTree = "<group>"; };
+		4029D7681957323400A6E7A9 /* MTZWhatsNew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTZWhatsNew.m; sourceTree = "<group>"; };
+		4029D76B195732EA00A6E7A9 /* MTZCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTZCollectionView.h; sourceTree = "<group>"; };
+		4029D76C195732EA00A6E7A9 /* MTZCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTZCollectionView.m; sourceTree = "<group>"; };
+		4029D76D195732EA00A6E7A9 /* MTZWhatsNewFeatureCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTZWhatsNewFeatureCollectionViewCell.h; sourceTree = "<group>"; };
+		4029D76E195732EA00A6E7A9 /* MTZWhatsNewFeatureCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTZWhatsNewFeatureCollectionViewCell.m; sourceTree = "<group>"; };
+		4029D76F195732EA00A6E7A9 /* MTZWhatsNewGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTZWhatsNewGridViewController.h; sourceTree = "<group>"; };
+		4029D770195732EA00A6E7A9 /* MTZWhatsNewGridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTZWhatsNewGridViewController.m; sourceTree = "<group>"; };
+		4029D771195732EA00A6E7A9 /* MTZWhatsNewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTZWhatsNewViewController.h; sourceTree = "<group>"; };
+		4029D772195732EA00A6E7A9 /* MTZWhatsNewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTZWhatsNewViewController.m; sourceTree = "<group>"; };
+		4029D774195732EA00A6E7A9 /* NSLayoutConstraint+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+Common.h"; sourceTree = "<group>"; };
+		4029D775195732EA00A6E7A9 /* NSLayoutConstraint+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+Common.m"; sourceTree = "<group>"; };
+		4029D777195732EA00A6E7A9 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		4029D778195732EA00A6E7A9 /* SAMGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAMGradientView.h; sourceTree = "<group>"; };
+		4029D779195732EA00A6E7A9 /* SAMGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAMGradientView.m; sourceTree = "<group>"; };
+		4029D7811957338600A6E7A9 /* What's New.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "What's New.plist"; sourceTree = "<group>"; };
 		402AB505188AFB740068C52C /* GAI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
 		402AB506188AFB740068C52C /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
 		402AB507188AFB740068C52C /* GAIFields.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
@@ -679,6 +704,7 @@
 		4018F50417F82E26006F990E /* 3rdParty */ = {
 			isa = PBXGroup;
 			children = (
+				4029D7661957321F00A6E7A9 /* WhatsNew */,
 				40446055194F7FE300C4F22B /* JBChartView */,
 				40F22607190D3B6A0053BABF /* Strava-Objc */,
 				40A525121907BE3F00DA4398 /* AFOAuth */,
@@ -716,6 +742,53 @@
 				407C4DE9180BE3B100F7B2FE /* Run */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		4029D7661957321F00A6E7A9 /* WhatsNew */ = {
+			isa = PBXGroup;
+			children = (
+				4029D7811957338600A6E7A9 /* What's New.plist */,
+				4029D76A195732EA00A6E7A9 /* MTZWhatsNewViewController */,
+				4029D7671957323400A6E7A9 /* MTZWhatsNew.h */,
+				4029D7681957323400A6E7A9 /* MTZWhatsNew.m */,
+			);
+			name = WhatsNew;
+			sourceTree = "<group>";
+		};
+		4029D76A195732EA00A6E7A9 /* MTZWhatsNewViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4029D76B195732EA00A6E7A9 /* MTZCollectionView.h */,
+				4029D76C195732EA00A6E7A9 /* MTZCollectionView.m */,
+				4029D76D195732EA00A6E7A9 /* MTZWhatsNewFeatureCollectionViewCell.h */,
+				4029D76E195732EA00A6E7A9 /* MTZWhatsNewFeatureCollectionViewCell.m */,
+				4029D76F195732EA00A6E7A9 /* MTZWhatsNewGridViewController.h */,
+				4029D770195732EA00A6E7A9 /* MTZWhatsNewGridViewController.m */,
+				4029D771195732EA00A6E7A9 /* MTZWhatsNewViewController.h */,
+				4029D772195732EA00A6E7A9 /* MTZWhatsNewViewController.m */,
+				4029D773195732EA00A6E7A9 /* NSLayoutConstraint+Common */,
+				4029D776195732EA00A6E7A9 /* SAMGradientView */,
+			);
+			path = MTZWhatsNewViewController;
+			sourceTree = "<group>";
+		};
+		4029D773195732EA00A6E7A9 /* NSLayoutConstraint+Common */ = {
+			isa = PBXGroup;
+			children = (
+				4029D774195732EA00A6E7A9 /* NSLayoutConstraint+Common.h */,
+				4029D775195732EA00A6E7A9 /* NSLayoutConstraint+Common.m */,
+			);
+			path = "NSLayoutConstraint+Common";
+			sourceTree = "<group>";
+		};
+		4029D776195732EA00A6E7A9 /* SAMGradientView */ = {
+			isa = PBXGroup;
+			children = (
+				4029D777195732EA00A6E7A9 /* LICENSE.txt */,
+				4029D778195732EA00A6E7A9 /* SAMGradientView.h */,
+				4029D779195732EA00A6E7A9 /* SAMGradientView.m */,
+			);
+			path = SAMGradientView;
 			sourceTree = "<group>";
 		};
 		402AB502188AFB5B0068C52C /* GoogleAnalytics */ = {
@@ -1526,6 +1599,7 @@
 				4064EB1518EC739B00F1D0E9 /* malaysia.jpg in Resources */,
 				408167EF189E908C00843B98 /* ios7_spotlight_icon@2x.png in Resources */,
 				40BAAD3F18203FB900137E8C /* beep-8.mp3 in Resources */,
+				4029D7821957338600A6E7A9 /* What's New.plist in Resources */,
 				408167E3189E908C00843B98 /* Icon-Small-50@2x.png in Resources */,
 				4043D81D193B61E80093EE82 /* RTTBackground2.png in Resources */,
 				40A3B3EE185B76CC00BA85BB /* icon-success@2x.png in Resources */,
@@ -1546,6 +1620,7 @@
 				40343B0C18940D6000881CC6 /* silverstone.png in Resources */,
 				408167EB189E908C00843B98 /* ios7_app_icon_iphone@2x.png in Resources */,
 				40343AFF18940D6000881CC6 /* bahrain.png in Resources */,
+				4029D77F195732EA00A6E7A9 /* LICENSE.txt in Resources */,
 				408167E5189E908C00843B98 /* Icon-Small@2x.png in Resources */,
 				40CA9A2F189ACB2F00946124 /* runnerLap.png in Resources */,
 				408735C51896FFAC00C79C06 /* gps.png in Resources */,
@@ -1654,6 +1729,7 @@
 				4044605D194F7FFD00C4F22B /* JBChartView.m in Sources */,
 				40E5A2EF185655B100E8E87E /* TTCounterLabel.m in Sources */,
 				4057264B188FA3FF005DD240 /* LapAnnotation.m in Sources */,
+				4029D77D195732EA00A6E7A9 /* MTZWhatsNewViewController.m in Sources */,
 				4057EB3118703BA800F52EF4 /* CommonUtils.m in Sources */,
 				405E533F185E112A00A8BD45 /* Sector2Annotation.m in Sources */,
 				4042CA851889A584005EDEFD /* RunAchievement.m in Sources */,
@@ -1662,9 +1738,12 @@
 				40110739192BEDF2009E0604 /* RTTBaseViewController.m in Sources */,
 				40F3E1E4180F194A00785F27 /* HistoryTableViewController.m in Sources */,
 				407C4DF9180BF66500F7B2FE /* AchivementsCollectionViewController.m in Sources */,
+				4029D77E195732EA00A6E7A9 /* NSLayoutConstraint+Common.m in Sources */,
 				4018F50F17F832B9006F990E /* JBKenBurnsView.m in Sources */,
+				4029D77C195732EA00A6E7A9 /* MTZWhatsNewGridViewController.m in Sources */,
 				400522571880209600B34DAD /* RunInfoAltitudeGraph.m in Sources */,
 				408A7993182AE3AA0088D8AC /* SettingsViewController.m in Sources */,
+				4029D7691957323400A6E7A9 /* MTZWhatsNew.m in Sources */,
 				40C1657317EB637900D4E093 /* AppDelegate.m in Sources */,
 				40E5A2EA1856504300E8E87E /* UIView+More.m in Sources */,
 				40A3B3E1185B768F00BA85BB /* MessageBarManager.m in Sources */,
@@ -1678,9 +1757,11 @@
 				40A525151907BE4D00DA4398 /* AFOAuth2Client.m in Sources */,
 				4022963F188A83FA00BF515F /* RunData.m in Sources */,
 				4044605E194F7FFD00C4F22B /* JBLineChartView.m in Sources */,
+				4029D77B195732EA00A6E7A9 /* MTZWhatsNewFeatureCollectionViewCell.m in Sources */,
 				40A1C446193E587100E072EE /* RTTRootViewController.m in Sources */,
 				4047939F182F7AEC004FEB73 /* RunCell.m in Sources */,
 				403AEBA219501C8F00F744A8 /* JBChartInformationView.m in Sources */,
+				4029D77A195732EA00A6E7A9 /* MTZCollectionView.m in Sources */,
 				40A2AA6D188F023800F5E263 /* RunSectors.m in Sources */,
 				40438EA318A1584500BC6966 /* SectorTicker.m in Sources */,
 				40D35DCA182541E500D10899 /* CoreDataHelper.m in Sources */,
@@ -1691,6 +1772,7 @@
 				4048167C1845D7D2000410C7 /* ProfileHeaderView.m in Sources */,
 				40438EA618A15F0D00BC6966 /* SectorTickerView.m in Sources */,
 				40892C171885B326008F7D38 /* RunTrackMapViewController.m in Sources */,
+				4029D780195732EA00A6E7A9 /* SAMGradientView.m in Sources */,
 				40FA5CF91883CB9D0047C7EA /* RTT.xcdatamodeld in Sources */,
 				407710AC18453B3900882BBE /* ProfileViewController.m in Sources */,
 				409357A71855F7C6007EE900 /* UIImageView+More.m in Sources */,

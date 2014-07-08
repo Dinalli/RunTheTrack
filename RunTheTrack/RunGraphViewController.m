@@ -12,6 +12,7 @@
 #import "RunAltitude.h"
 #import "JBChartInformationView.h"
 #import "JBChartTooltipView.h"
+#import "RunLocations.h"
 
 
 #define ARC4RANDOM_MAX 0x100000000
@@ -166,14 +167,26 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 50;
 
 - (NSUInteger)lineChartView:(JBLineChartView *)lineChartView numberOfVerticalValuesAtLineIndex:(NSUInteger)lineIndex
 {
-    //NSLog(@"no vertical lines %d", [[self.chartData objectAtIndex:lineIndex] count]);
-    return [[self.chartData objectAtIndex:lineIndex] count];
+    NSLog(@"no vertical lines %d", [[self.chartData objectAtIndex:lineIndex] count]);
+    return [[self.chartData objectAtIndex:lineIndex] count]-1;
 }
 
 - (CGFloat)lineChartView:(JBLineChartView *)lineChartView verticalValueForHorizontalIndex:(NSUInteger)horizontalIndex atLineIndex:(NSUInteger)lineIndex
 {
-    //NSLog(@"vertical value %f", [[[self.chartData objectAtIndex:lineIndex] objectAtIndex:horizontalIndex] floatValue]);
-    return [[[self.chartData objectAtIndex:lineIndex] objectAtIndex:horizontalIndex] floatValue];
+    float valueforpoint = 0.0f;
+    
+    if (lineIndex == 0)
+    {
+        //Distance
+        RunLocations *runLoc = [[self.chartData objectAtIndex:lineIndex] objectAtIndex:horizontalIndex];
+        valueforpoint = 3.0f;
+    }
+    else
+    {
+        valueforpoint = [[[self.chartData objectAtIndex:lineIndex] objectAtIndex:horizontalIndex] floatValue];
+    }
+    NSLog(@"vertical value %f", valueforpoint);
+    return valueforpoint;
 }
 
 - (UIColor *)lineChartView:(JBLineChartView *)lineChartView colorForLineAtLineIndex:(NSUInteger)lineIndex
@@ -247,6 +260,7 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 50;
                     [mutableChartData addObject:[runLocationsArray objectAtIndex:i]];
                     break;
                 case 1:
+                    NSLog(@"%f", [altitudePoints objectAtIndex:i]);
                     [mutableChartData addObject:[altitudePoints objectAtIndex:i]];
                     break;
                 case 2:

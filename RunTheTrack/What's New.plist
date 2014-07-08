@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>1.2</key>
+	<array>
+		<dict>
+			<key>title</key>
+			<string>New Tracks</string>
+			<key>detail</key>
+			<string>New 2014 Austria and Sochi tracks added</string>
+			<key>icon</key>
+			<string>Podcast</string>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>Telemetry</string>
+			<key>detail</key>
+			<string>Analysie your run like F1 data</string>
+			<key>icon</key>
+			<string>Feed</string>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>New Interface</string>
+			<key>detail</key>
+			<string>New redesigned Interface, with better navigation.</string>
+			<key>icon</key>
+			<string>Saved</string>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>Run Reminders</string>
+			<key>detail</key>
+			<string>Set a reminder from the app for your next Run.</string>
+			<key>icon</key>
+			<string>Delete</string>
+		</dict>
+	</array>
+</dict>
+</plist>

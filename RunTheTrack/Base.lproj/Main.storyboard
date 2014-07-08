@@ -825,6 +825,18 @@
                                     <segue destination="Izg-Ga-nPZ" kind="unwind" unwindAction="unwindToTrackSelect:" id="3p1-Iy-PII"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X8L-OV-CoL">
+                                <rect key="frame" x="0.0" y="482" width="320" height="44"/>
+                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="KWJ-6i-frn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="tintColor" red="0.54940488499999995" green="0.52486365909999999" blue="0.69684019180000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Remind Me">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="NNd-7w-FaO">
                                 <rect key="frame" x="0.0" y="-22" width="320" height="548"/>
                                 <connections>
