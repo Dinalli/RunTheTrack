@@ -13,6 +13,7 @@
 #import "JBChartInformationView.h"
 #import "JBChartTooltipView.h"
 #import "RunLocations.h"
+#import "RunAltitude.h"
 
 
 #define ARC4RANDOM_MAX 0x100000000
@@ -56,7 +57,7 @@ CGFloat const kJBLineChartViewControllerChartHeaderPadding = 20.0f;
 CGFloat const kJBLineChartViewControllerChartFooterHeight = 20.0f;
 CGFloat const kJBLineChartViewControllerChartSolidLineWidth = 1.0f;
 CGFloat const kJBLineChartViewControllerChartDashedLineWidth = 2.0f;
-NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 50;
+NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 200;
 
 - (id)init
 {
@@ -95,32 +96,11 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 50;
     
     self.view.backgroundColor = [UIColor redColor];
     lineChartView = [[JBLineChartView alloc] init];
-    lineChartView.frame = CGRectMake(kJBLineChartViewControllerChartPadding, 60, self.view.bounds.size.width, 200);
+    lineChartView.frame = CGRectMake(kJBLineChartViewControllerChartPadding, 60, self.view.bounds.size.width, 320);
     lineChartView.delegate = self;
     lineChartView.dataSource = self;
     lineChartView.headerPadding = kJBLineChartViewControllerChartHeaderPadding;
     lineChartView.backgroundColor = [UIColor lightGrayColor];
-    
-//    JBChartHeaderView *headerView = [[JBChartHeaderView alloc] initWithFrame:CGRectMake(kJBLineChartViewControllerChartPadding, ceil(self.view.bounds.size.height * 0.5) - ceil(kJBLineChartViewControllerChartHeaderHeight * 0.5), self.view.bounds.size.width - (kJBLineChartViewControllerChartPadding * 2), kJBLineChartViewControllerChartHeaderHeight)];
-//    headerView.titleLabel.text = [kJBStringLabelAverageDailyRainfall uppercaseString];
-//    headerView.titleLabel.textColor = kJBColorLineChartHeader;
-//    headerView.titleLabel.shadowColor = [UIColor colorWithWhite:1.0 alpha:0.25];
-//    headerView.titleLabel.shadowOffset = CGSizeMake(0, 1);
-//    headerView.subtitleLabel.text = kJBStringLabel2013;
-//    headerView.subtitleLabel.textColor = kJBColorLineChartHeader;
-//    headerView.subtitleLabel.shadowColor = [UIColor colorWithWhite:1.0 alpha:0.25];
-//    headerView.subtitleLabel.shadowOffset = CGSizeMake(0, 1);
-//    headerView.separatorColor = kJBColorLineChartHeaderSeparatorColor;
-//    lineChartView.headerView = headerView;
-    
-//    JBLineChartFooterView *footerView = [[JBLineChartFooterView alloc] initWithFrame:CGRectMake(kJBLineChartViewControllerChartPadding, ceil(self.view.bounds.size.height * 0.5) - ceil(kJBLineChartViewControllerChartFooterHeight * 0.5), self.view.bounds.size.width - (kJBLineChartViewControllerChartPadding * 2), kJBLineChartViewControllerChartFooterHeight)];
-//    footerView.backgroundColor = [UIColor clearColor];
-//    footerView.leftLabel.text = [[self.daysOfWeek firstObject] uppercaseString];
-//    footerView.leftLabel.textColor = [UIColor whiteColor];
-//    footerView.rightLabel.text = [[self.daysOfWeek lastObject] uppercaseString];;
-//    footerView.rightLabel.textColor = [UIColor whiteColor];
-//    footerView.sectionCount = [[self largestLineData] count];
-//    lineChartView.footerView = footerView;
     
     [self.view addSubview:chartScroller];
     [chartScroller addSubview:lineChartView];
@@ -161,52 +141,67 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 50;
 
 - (NSUInteger)numberOfLinesInLineChartView:(JBLineChartView *)lineChartView
 {
-    NSLog(@"no lines %d", [self.chartData count]);
     return [self.chartData count];
 }
 
 - (NSUInteger)lineChartView:(JBLineChartView *)lineChartView numberOfVerticalValuesAtLineIndex:(NSUInteger)lineIndex
 {
-    NSLog(@"no vertical lines %d", [[self.chartData objectAtIndex:lineIndex] count]);
     return [[self.chartData objectAtIndex:lineIndex] count]-1;
 }
 
 - (CGFloat)lineChartView:(JBLineChartView *)lineChartView verticalValueForHorizontalIndex:(NSUInteger)horizontalIndex atLineIndex:(NSUInteger)lineIndex
 {
     float valueforpoint = 0.0f;
-    
-    if (lineIndex == 0)
-    {
-        //Distance
-        RunLocations *runLoc = [[self.chartData objectAtIndex:lineIndex] objectAtIndex:horizontalIndex];
-        valueforpoint = 3.0f;
-    }
-    else
-    {
-        valueforpoint = [[[self.chartData objectAtIndex:lineIndex] objectAtIndex:horizontalIndex] floatValue];
-    }
-    NSLog(@"vertical value %f", valueforpoint);
+    valueforpoint = [[[self.chartData objectAtIndex:lineIndex] objectAtIndex:horizontalIndex] floatValue];
     return valueforpoint;
 }
 
 - (UIColor *)lineChartView:(JBLineChartView *)lineChartView colorForLineAtLineIndex:(NSUInteger)lineIndex
 {
+    switch (lineIndex) {
+        case 0:
+            return [UIColor whiteColor];
+            break;
+        case 1:
+            return [UIColor greenColor];
+            break;
+        case 2:
+            return [UIColor orangeColor];
+            break;
+            
+        default:
+            break;
+    }
     return [UIColor whiteColor];
 }
 
 - (UIColor *)lineChartView:(JBLineChartView *)lineChartView colorForDotAtHorizontalIndex:(NSUInteger)horizontalIndex atLineIndex:(NSUInteger)lineIndex
 {
+    switch (lineIndex) {
+        case 0:
+                return [UIColor yellowColor];
+            break;
+        case 1:
+                return [UIColor cyanColor];
+            break;
+        case 2:
+                return [UIColor blueColor];
+            break;
+            
+        default:
+            break;
+    }
     return [UIColor redColor];
 }
 
 - (CGFloat)lineChartView:(JBLineChartView *)lineChartView widthForLineAtLineIndex:(NSUInteger)lineIndex
 {
-    return 3.0f;
+    return 2.0f;
 }
 
 - (CGFloat)lineChartView:(JBLineChartView *)lineChartView dotRadiusForLineAtLineIndex:(NSUInteger)lineIndex
 {
-    return 15.0;
+    return 4.0;
 }
 
 - (UIColor *)verticalSelectionColorForLineChartView:(JBLineChartView *)lineChartView
@@ -216,6 +211,20 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 50;
 
 - (UIColor *)lineChartView:(JBLineChartView *)lineChartView selectionColorForLineAtLineIndex:(NSUInteger)lineIndex
 {
+    switch (lineIndex) {
+        case 0:
+            return [UIColor yellowColor];
+            break;
+        case 1:
+            return [UIColor cyanColor];
+            break;
+        case 2:
+            return [UIColor blueColor];
+            break;
+            
+        default:
+            break;
+    }
     return kJBColorLineChartDefaultSolidSelectedLineColor;
 }
 
@@ -241,6 +250,8 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 50;
 
 -(void)loadGraphData
 {
+    CLLocationDistance totalDistance;
+    RunLocations *oldLocation;
     appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.managedObjectContext = appDelegate.managedObjectContext;
     
@@ -255,17 +266,48 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 50;
         NSMutableArray *mutableChartData = [NSMutableArray array];
         for (int i=0; i<kJBLineChartViewControllerMaxNumChartPoints; i++)
         {
+            CLLocation *lastLocation;
             switch (lineIndex) {
                 case 0:
-                    [mutableChartData addObject:[runLocationsArray objectAtIndex:i]];
+                {
+                    RunLocations *runLoc = [runLocationsArray objectAtIndex:i];
+                    if(oldLocation)
+                    {
+                        lastLocation = [[CLLocation alloc] initWithLatitude:[oldLocation.lattitude doubleValue] longitude:[oldLocation.longitude doubleValue]];
+                    }
+                    else
+                    {
+                       lastLocation = [[CLLocation alloc] initWithLatitude:0.0 longitude:0.0];
+                    }
+                    
+                    CLLocation *nextLocation = [[CLLocation alloc] initWithLatitude:[runLoc.lattitude doubleValue] longitude:[runLoc.longitude doubleValue]];
+                    totalDistance = totalDistance + [lastLocation distanceFromLocation:nextLocation];
+                    
+                    if([appDelegate useKMasUnits])
+                    {
+                        [mutableChartData addObject:[NSString stringWithFormat:@"%.2f", totalDistance / 1000]];
+                    }
+                    else
+                    {
+                        [mutableChartData addObject:[NSString stringWithFormat:@"%.2f", totalDistance * 0.00062137119]];
+                    }
+                    
+                    [mutableChartData addObject:[NSString stringWithFormat:@"%f",totalDistance]];
+                    oldLocation = runLoc;
                     break;
+                }
                 case 1:
-                    NSLog(@"%f", [altitudePoints objectAtIndex:i]);
-                    [mutableChartData addObject:[altitudePoints objectAtIndex:i]];
+                {
+                    RunAltitude *ra = (RunAltitude *)[altitudePoints objectAtIndex:i];
+                    [mutableChartData addObject:ra.altitude];
                     break;
+                }
                 case 2:
-                    [mutableChartData addObject:[altitudePoints objectAtIndex:i]];
+                {
+                    RunLocations *runLoc = [runLocationsArray objectAtIndex:i];
+                    [mutableChartData addObject:runLoc.locationTimeStamp];
                     break;
+                }
                 default:
                     break;
             }
@@ -277,12 +319,41 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 50;
 
 - (void)lineChartView:(JBLineChartView *)lineChartView didSelectLineAtIndex:(NSUInteger)lineIndex horizontalIndex:(NSUInteger)horizontalIndex touchPoint:(CGPoint)touchPoint
 {
-//    NSNumber *valueNumber = [[self.chartData objectAtIndex:lineIndex] objectAtIndex:horizontalIndex];
-//    [self.informationView setValueText:[NSString stringWithFormat:@"%.2f", [valueNumber floatValue]] unitText:kJBStringLabelMm];
-//    [self.informationView setTitleText:lineIndex == JBLineChartLineSolid ? kJBStringLabelMetropolitanAverage : kJBStringLabelNationalAverage];
-//    [self.informationView setHidden:NO animated:YES];
-//    [self setTooltipVisible:YES animated:YES atTouchPoint:touchPoint];
-//    [self.tooltipView setText:[[self.daysOfWeek objectAtIndex:horizontalIndex] uppercaseString]];
+    NSNumber *valueNumber;
+    
+    if (lineIndex == 0)
+    {
+        //Distance
+        valueNumber = [[self.chartData objectAtIndex:lineIndex] objectAtIndex:horizontalIndex];
+        
+        if([appDelegate useKMasUnits])
+        {
+            [self.informationView setValueText:[NSString stringWithFormat:@"%.2f", [valueNumber floatValue]/ 1000] unitText:@"miles"];
+        }
+        else
+        {
+            [self.informationView setValueText:[NSString stringWithFormat:@"%.2f", [valueNumber floatValue] * 0.000621371192] unitText:@"miles"];
+        }
+        
+        
+        [self.informationView setTitleText:@"Distance"];
+    }
+    else if(lineIndex == 1)
+    {
+        valueNumber = [[self.chartData objectAtIndex:lineIndex] objectAtIndex:horizontalIndex];
+        [self.informationView setValueText:[NSString stringWithFormat:@"%.2f", [valueNumber floatValue]] unitText:@"ft"];
+        [self.informationView setTitleText:@"Climb"];
+    }
+    else if(lineIndex == 2)
+    {
+        valueNumber = [[self.chartData objectAtIndex:lineIndex] objectAtIndex:horizontalIndex];
+        [self.informationView setValueText:[NSString stringWithFormat:@"%@",[valueNumber stringValue]] unitText:@""];
+        [self.informationView setTitleText:@"Time"];
+    }
+    
+        
+
+    [self.informationView setHidden:NO animated:YES];
 }
 
 - (void)didReceiveMemoryWarning

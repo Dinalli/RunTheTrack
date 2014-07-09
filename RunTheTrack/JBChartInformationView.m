@@ -8,9 +8,9 @@
 
 #import "JBChartInformationView.h"
 
-#define kJBFontInformationTitle [UIFont fontWithName:@"HelveticaNeue" size:20]
-#define kJBFontInformationValue [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:100]
-#define kJBFontInformationUnit [UIFont fontWithName:@"HelveticaNeue" size:60]
+#define kJBFontInformationTitle [UIFont fontWithName:@"HelveticaNeue" size:14]
+#define kJBFontInformationValue [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:38]
+#define kJBFontInformationUnit [UIFont fontWithName:@"HelveticaNeue" size:26]
 
 // Numerics
 CGFloat const kJBChartValueViewPadding = 10.0f;
