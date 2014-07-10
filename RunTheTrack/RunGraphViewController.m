@@ -257,9 +257,24 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 200;
     
     self.runData = appDelegate.selectedRun;
     
-    NSArray *runLocationsArray = [self.runData.runDataLocations allObjects];
+    NSMutableArray *runLocationsArray = [[self.runData.runDataLocations allObjects] mutableCopy];
+    [runLocationsArray sortUsingComparator:^NSComparisonResult(id a, id b) {
+        RunLocations *aLoc = (RunLocations *)a;
+        RunLocations *bLoc = (RunLocations *)b;
+//        NSInteger firstInteger = [aRunSector.lapNumber integerValue];
+//        NSInteger secondInteger = [bRunSector.lapNumber integerValue];
+//        
+//        if (firstInteger > secondInteger)
+//            return NSOrderedDescending;
+//        if (firstInteger < secondInteger)
+//            return NSOrderedAscending;
+        return [aLoc.locationIndex localizedCompare: bLoc.locationIndex];
+    }];
+
+    
     altitudePoints = [[self.runData.runAltitudes allObjects] mutableCopy];
     
+    totalDistance = 0;
     NSMutableArray *mutableLineCharts = [NSMutableArray array];
     for (int lineIndex=0; lineIndex<3; lineIndex++)
     {
@@ -274,24 +289,25 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 200;
                     if(oldLocation)
                     {
                         lastLocation = [[CLLocation alloc] initWithLatitude:[oldLocation.lattitude doubleValue] longitude:[oldLocation.longitude doubleValue]];
+                        
+                        CLLocation *nextLocation = [[CLLocation alloc] initWithLatitude:[runLoc.lattitude doubleValue] longitude:[runLoc.longitude doubleValue]];
+                        CLLocationDistance distance = [nextLocation distanceFromLocation:lastLocation];
+                        totalDistance = totalDistance + distance;
+                        
+                        if([appDelegate useKMasUnits])
+                        {
+                            [mutableChartData addObject:[NSString stringWithFormat:@"%.2f", totalDistance / 1000]];
+                        }
+                        else
+                        {
+                            [mutableChartData addObject:[NSString stringWithFormat:@"%.2f", totalDistance * 0.00062137119]];
+                        }
                     }
                     else
                     {
-                       lastLocation = [[CLLocation alloc] initWithLatitude:0.0 longitude:0.0];
+                        totalDistance = 0;
                     }
-                    
-                    CLLocation *nextLocation = [[CLLocation alloc] initWithLatitude:[runLoc.lattitude doubleValue] longitude:[runLoc.longitude doubleValue]];
-                    totalDistance = totalDistance + [lastLocation distanceFromLocation:nextLocation];
-                    
-                    if([appDelegate useKMasUnits])
-                    {
-                        [mutableChartData addObject:[NSString stringWithFormat:@"%.2f", totalDistance / 1000]];
-                    }
-                    else
-                    {
-                        [mutableChartData addObject:[NSString stringWithFormat:@"%.2f", totalDistance * 0.00062137119]];
-                    }
-                    
+
                     [mutableChartData addObject:[NSString stringWithFormat:@"%f",totalDistance]];
                     oldLocation = runLoc;
                     break;
@@ -328,11 +344,11 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 200;
         
         if([appDelegate useKMasUnits])
         {
-            [self.informationView setValueText:[NSString stringWithFormat:@"%.2f", [valueNumber floatValue]/ 1000] unitText:@"miles"];
+            [self.informationView setValueText:[NSString stringWithFormat:@"%f", [valueNumber floatValue]] unitText:@"miles"];
         }
         else
         {
-            [self.informationView setValueText:[NSString stringWithFormat:@"%.2f", [valueNumber floatValue] * 0.000621371192] unitText:@"miles"];
+            [self.informationView setValueText:[NSString stringWithFormat:@"%f", [valueNumber floatValue]] unitText:@"miles"];
         }
         
         
@@ -350,9 +366,6 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 200;
         [self.informationView setValueText:[NSString stringWithFormat:@"%@",[valueNumber stringValue]] unitText:@""];
         [self.informationView setTitleText:@"Time"];
     }
-    
-        
-
     [self.informationView setHidden:NO animated:YES];
 }
 
