@@ -21,6 +21,10 @@
 		4018F52E17F83903006F990E /* Silverstone.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4018F51D17F83903006F990E /* Silverstone.jpg */; };
 		4018F53017F83903006F990E /* Spa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4018F51F17F83903006F990E /* Spa.jpg */; };
 		4018F56F17F85B7F006F990E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4018F56E17F85B7F006F990E /* MapKit.framework */; };
+		401C1824196E72FD007DEE10 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 401C1823196E72FD007DEE10 /* Parse.framework */; };
+		401C1826196E732E007DEE10 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 401C1825196E732E007DEE10 /* Accounts.framework */; };
+		401C1828196E733B007DEE10 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 401C1827196E733B007DEE10 /* AudioToolbox.framework */; };
+		401C182A196E7377007DEE10 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 401C1829196E7377007DEE10 /* StoreKit.framework */; };
 		401F8F1418BD49DC00F67A32 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40CD535D182C0E2D00352499 /* FacebookSDK.framework */; };
 		4022963F188A83FA00BF515F /* RunData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4022963E188A83FA00BF515F /* RunData.m */; };
 		40251C6B184E5EFF0088F8C9 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40251C6A184E5EFF0088F8C9 /* Crashlytics.framework */; };
@@ -181,6 +185,7 @@
 		40CA9A30189ACB2F00946124 /* runnerLap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40CA9A2E189ACB2F00946124 /* runnerLap@2x.png */; };
 		40CA9A33189B894300946124 /* history.png in Resources */ = {isa = PBXBuildFile; fileRef = 40CA9A31189B894300946124 /* history.png */; };
 		40CA9A34189B894300946124 /* history@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40CA9A32189B894300946124 /* history@2x.png */; };
+		40CC0C81196EB77D0005BD01 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC0C80196EB77D0005BD01 /* LoginViewController.m */; };
 		40D35DC7182540B500D10899 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40D35DC6182540B500D10899 /* CoreData.framework */; };
 		40D35DCA182541E500D10899 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D35DC9182541E500D10899 /* CoreDataHelper.m */; };
 		40D42C9E18702DBD0057DF2D /* YLProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D42C9D18702DBD0057DF2D /* YLProgressBar.m */; };
@@ -232,6 +237,10 @@
 		4018F51D17F83903006F990E /* Silverstone.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Silverstone.jpg; sourceTree = "<group>"; };
 		4018F51F17F83903006F990E /* Spa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Spa.jpg; sourceTree = "<group>"; };
 		4018F56E17F85B7F006F990E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		401C1823196E72FD007DEE10 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		401C1825196E732E007DEE10 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		401C1827196E733B007DEE10 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		401C1829196E7377007DEE10 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		4022963D188A83FA00BF515F /* RunData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunData.h; sourceTree = "<group>"; };
 		4022963E188A83FA00BF515F /* RunData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunData.m; sourceTree = "<group>"; };
 		40251C6A184E5EFF0088F8C9 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -566,6 +575,8 @@
 		40CA9A2E189ACB2F00946124 /* runnerLap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "runnerLap@2x.png"; sourceTree = "<group>"; };
 		40CA9A31189B894300946124 /* history.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = history.png; sourceTree = "<group>"; };
 		40CA9A32189B894300946124 /* history@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "history@2x.png"; sourceTree = "<group>"; };
+		40CC0C7F196EB77D0005BD01 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		40CC0C80196EB77D0005BD01 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		40CD535D182C0E2D00352499 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		40D35DC6182540B500D10899 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		40D35DC8182541E500D10899 /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataHelper.h; sourceTree = "<group>"; };
@@ -602,10 +613,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				401C182A196E7377007DEE10 /* StoreKit.framework in Frameworks */,
+				401C1828196E733B007DEE10 /* AudioToolbox.framework in Frameworks */,
+				401C1826196E732E007DEE10 /* Accounts.framework in Frameworks */,
 				4015F4CA18888A5B006C3DC8 /* Accelerate.framework in Frameworks */,
 				4015F4C818888A54006C3DC8 /* QuartzCore.framework in Frameworks */,
 				40933D3919477E3A00D77E3E /* libCorePlot-CocoaTouch.a in Frameworks */,
 				4064EB1718EC770500F1D0E9 /* iAd.framework in Frameworks */,
+				401C1824196E72FD007DEE10 /* Parse.framework in Frameworks */,
 				401F8F1418BD49DC00F67A32 /* FacebookSDK.framework in Frameworks */,
 				4027543A189B94F50015A79F /* AdSupport.framework in Frameworks */,
 				402AB50C188AFB950068C52C /* libGoogleAnalyticsServices.a in Frameworks */,
@@ -704,6 +719,7 @@
 		4018F50417F82E26006F990E /* 3rdParty */ = {
 			isa = PBXGroup;
 			children = (
+				401C1822196E72EC007DEE10 /* Parse */,
 				4029D7661957321F00A6E7A9 /* WhatsNew */,
 				40446055194F7FE300C4F22B /* JBChartView */,
 				40F22607190D3B6A0053BABF /* Strava-Objc */,
@@ -742,6 +758,14 @@
 				407C4DE9180BE3B100F7B2FE /* Run */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		401C1822196E72EC007DEE10 /* Parse */ = {
+			isa = PBXGroup;
+			children = (
+				401C1823196E72FD007DEE10 /* Parse.framework */,
+			);
+			name = Parse;
 			sourceTree = "<group>";
 		};
 		4029D7661957321F00A6E7A9 /* WhatsNew */ = {
@@ -1319,6 +1343,9 @@
 		40C1656117EB637900D4E093 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				401C1829196E7377007DEE10 /* StoreKit.framework */,
+				401C1827196E733B007DEE10 /* AudioToolbox.framework */,
+				401C1825196E732E007DEE10 /* Accounts.framework */,
 				4064EB1618EC770500F1D0E9 /* iAd.framework */,
 				40275439189B94F50015A79F /* AdSupport.framework */,
 				4015F4C918888A5B006C3DC8 /* Accelerate.framework */,
@@ -1353,6 +1380,7 @@
 		40C1656817EB637900D4E093 /* RunTheTrack */ = {
 			isa = PBXGroup;
 			children = (
+				40CC0C7E196EB4390005BD01 /* Login */,
 				4017D214189F7EB000ADA8B1 /* MapCallouts */,
 				400522511880205100B34DAD /* Views */,
 				4057EB2E18703B9300F52EF4 /* Common */,
@@ -1452,6 +1480,15 @@
 				40A2AA6C188F023800F5E263 /* RunSectors.m */,
 			);
 			name = Classes;
+			sourceTree = "<group>";
+		};
+		40CC0C7E196EB4390005BD01 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				40CC0C7F196EB77D0005BD01 /* LoginViewController.h */,
+				40CC0C80196EB77D0005BD01 /* LoginViewController.m */,
+			);
+			name = Login;
 			sourceTree = "<group>";
 		};
 		40D42C9B18702DAB0057DF2D /* YLProgressBar */ = {
@@ -1752,6 +1789,7 @@
 				40AB4B511944AC0F00900FD5 /* HistoryPageViewController.m in Sources */,
 				407C4DF2180BF1C300F7B2FE /* TrackCell.m in Sources */,
 				40E5A2F21856592000E8E87E /* TTTAttributedLabel.m in Sources */,
+				40CC0C81196EB77D0005BD01 /* LoginViewController.m in Sources */,
 				400522541880207D00B34DAD /* RunInfoSummary.m in Sources */,
 				407C4DEF180BE6B700F7B2FE /* TracksCollectionViewController.m in Sources */,
 				40A525151907BE4D00DA4398 /* AFOAuth2Client.m in Sources */,

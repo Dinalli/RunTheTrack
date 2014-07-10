@@ -26,21 +26,21 @@ NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:S
     
     [Crashlytics startWithAPIKey:@"52f789dbfeee4af97bac9b49fd6414dc64175c2f"];
 
-//    [GAI sharedInstance].trackUncaughtExceptions = YES;
-//    
-//    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
-//    [GAI sharedInstance].dispatchInterval = 5;
-//    
-//    // Optional: set Logger to VERBOSE for debug information.
-//    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
-//    
-//    // Initialize tracker.
-//    id<GAITracker> tracker __unused = [[GAI sharedInstance] trackerWithTrackingId:@"UA-47282955-1"];
-//    
-//    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"     // Event category (required)
-//                                                          action:@"app_opened"  // Event action (required)
-//                                                           label:@"loaded"          // Event label
-//                                                           value:nil] build]];
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    
+    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
+    [GAI sharedInstance].dispatchInterval = 5;
+    
+    // Optional: set Logger to VERBOSE for debug information.
+    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+    
+    // Initialize tracker.
+    id<GAITracker> tracker __unused = [[GAI sharedInstance] trackerWithTrackingId:@"UA-47282955-1"];
+    
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"     // Event category (required)
+                                                          action:@"app_opened"  // Event action (required)
+                                                           label:@"loaded"          // Event label
+                                                           value:nil] build]];
     
     NSBundle* bundle = [NSBundle mainBundle];
     NSString* plistPath = [bundle pathForResource:@"Tracks" ofType:@"plist"];
@@ -69,6 +69,30 @@ NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:S
     
     // Set up for using iAd
     [UIViewController prepareInterstitialAds];
+    
+    
+    //Set Up for Parse
+    [Parse setApplicationId:@"rVf0vPwhdrzKazUVEvYPGKVJBvfg1NH7WHuZRLvz"
+                  clientKey:@"vVfm7AfjoC88w4UnSrVFrMaezEZ9twIxoj8wClkK"];
+    
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    PFUser *user = [PFUser user];
+    user.username = @"Andy";
+    user.password = @"Andys Password";
+    user.email = @"Dinalli@hotmail.com";
+    
+    // other fields can be set if you want to save more information
+    user[@"phone"] = @"650-555-0000";
+    
+    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            // Hooray! Let them use the app now.
+        } else {
+            NSString *errorString = [error userInfo][@"error"];
+            // Show the errorString somewhere and let the user try again.
+        }
+    }];
     
     return YES;
 }

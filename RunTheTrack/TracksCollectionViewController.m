@@ -11,6 +11,7 @@
 #import "RunViewController.h"
 #import "MTZWhatsNew.h"
 #import "MTZWhatsNewGridViewController.h"
+#import "LoginViewController.h"
 
 @interface TracksCollectionViewController ()
 
@@ -72,9 +73,16 @@
 		vc.backgroundGradientTopColor = [UIColor colorWithHue:0.77 saturation:0.77 brightness:0.76 alpha:1];
 		vc.backgroundGradientBottomColor = [UIColor colorWithHue:0.78 saturation:0.6 brightness:0.95 alpha:1];
 		// Presenting the what's new view controller.
-		[self presentViewController:vc animated:NO completion:nil];
-        //		vc.view.superview.frame = CGRectMake(40, 40, 320, 568);
+		[self presentViewController:vc animated:NO completion:^{
+        }];
 	}];
+    
+    PFUser *currentUser = [PFUser currentUser];
+    if (!currentUser) {
+        // show the signup or login screen
+        
+        // Show login message
+    }
 }
 
 #pragma mark - Segue

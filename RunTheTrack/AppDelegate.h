@@ -13,6 +13,7 @@
 #import "GAIDictionaryBuilder.h"
 #import <iAd/iAd.h>
 #import "RunData.h"
+#import <Parse/Parse.h>
 
 extern NSString *const SCSessionStateChangedNotification;
 
