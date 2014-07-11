@@ -110,7 +110,15 @@
         cell.selectedBackgroundView = [[UIView alloc] init];
     }
     
-    NSArray *titles = @[@"Run a Track", @"History", @"Profile", @"Telemetry", @"Settings",@"Login"];
+    NSString *loginTitle = @"Login";
+    
+    PFUser *currentUser = [PFUser currentUser];
+    if (!currentUser) {
+       loginTitle = @"Login";
+    }
+    else { loginTitle = @"Logout"; }
+    
+    NSArray *titles = @[@"Run a Track", @"History", @"Profile", @"Telemetry", @"Settings",loginTitle];
     NSArray *images = @[@"IconHome", @"IconCalendar", @"IconProfile", @"IconStats", @"IconSettings",@"Login"];
     cell.textLabel.text = titles[indexPath.row];
     cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];

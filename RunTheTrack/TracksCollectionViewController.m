@@ -80,7 +80,7 @@
     PFUser *currentUser = [PFUser currentUser];
     if (!currentUser) {
         // show the signup or login screen
-        
+        [[MessageBarManager sharedInstance] showMessageWithTitle:@"No Current User" description:@"Please Login if you wish to use Sharing features of the App." type:MessageBarMessageTypeInfo];
         // Show login message
     }
 }

@@ -76,23 +76,10 @@ NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:S
                   clientKey:@"vVfm7AfjoC88w4UnSrVFrMaezEZ9twIxoj8wClkK"];
     
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    [PFFacebookUtils initializeFacebook];
     
-    PFUser *user = [PFUser user];
-    user.username = @"Andy";
-    user.password = @"Andys Password";
-    user.email = @"Dinalli@hotmail.com";
-    
-    // other fields can be set if you want to save more information
-    user[@"phone"] = @"650-555-0000";
-    
-    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (!error) {
-            // Hooray! Let them use the app now.
-        } else {
-            NSString *errorString = [error userInfo][@"error"];
-            // Show the errorString somewhere and let the user try again.
-        }
-    }];
+    [PFTwitterUtils initializeWithConsumerKey:@"2293480626-V1uhI8C0mI7sOC9PgvJJCPYRu3jJBSt27nSxrfC"
+                               consumerSecret:@"CQt4Azhf2sMfuvm0R7jCcZAuB6T2kLBslHve9jpRWQRmi"];
     
     return YES;
 }
