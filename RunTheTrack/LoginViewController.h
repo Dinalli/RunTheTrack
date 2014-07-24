@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LoginViewController : RTTBaseViewController
+@interface LoginViewController : RTTBaseViewController <UITextFieldDelegate>
 
 @end

@@ -771,6 +771,7 @@
 		4029D7661957321F00A6E7A9 /* WhatsNew */ = {
 			isa = PBXGroup;
 			children = (
+				405F4B6119817880001DA89E /* Images */,
 				4029D7811957338600A6E7A9 /* What's New.plist */,
 				4029D76A195732EA00A6E7A9 /* MTZWhatsNewViewController */,
 				4029D7671957323400A6E7A9 /* MTZWhatsNew.h */,
@@ -866,6 +867,13 @@
 				4057EB3018703BA800F52EF4 /* CommonUtils.m */,
 			);
 			name = Common;
+			sourceTree = "<group>";
+		};
+		405F4B6119817880001DA89E /* Images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 		405FD4B817EE3E72006F141F /* Images */ = {

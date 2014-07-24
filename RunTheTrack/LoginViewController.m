@@ -27,13 +27,23 @@
     if (currentUser) {
         [LoginButton setTitle:@"Logout" forState:UIControlStateNormal];
     }
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
 }
 
--(BOOL)canBecomeFirstResponder
+-(void)dismissKeyboard {
+    [self.view endEditing:YES];
+}
+
+-(BOOL) textFieldShouldReturn: (UITextField *) textField
 {
+    [textField resignFirstResponder];
     return YES;
 }
-
 
 -(PFUser *)createPFUser
 {
@@ -41,7 +51,6 @@
     PFUser *user = [PFUser user];
     user.username = loginName.text;
     user.password = loginPassword.text;
-    //user.email = @"Dinalli@hotmail.com";
     return user;
 }
 
@@ -52,6 +61,11 @@
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
             // Hooray! Let them use the app now.
+            [[MessageBarManager sharedInstance] showMessageWithTitle:@"Success" description:@"Your Login has been created." type:MessageBarMessageTypeInfo];
+            
+            loginPassword.text = @"";
+            loginName.text = @"";
+            
         } else {
             NSString *errorString = [error userInfo][@"error"];
             // Show the errorString somewhere and let the user try again.
