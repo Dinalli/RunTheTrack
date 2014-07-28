@@ -199,6 +199,10 @@
 		40E5A2F21856592000E8E87E /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E5A2F11856592000E8E87E /* TTTAttributedLabel.m */; };
 		40F2260D190D3C990053BABF /* clientsecret in Resources */ = {isa = PBXBuildFile; fileRef = 40F2260B190D3C990053BABF /* clientsecret */; };
 		40F2260E190D3C990053BABF /* clientid in Resources */ = {isa = PBXBuildFile; fileRef = 40F2260C190D3C990053BABF /* clientid */; };
+		40F2C38C1981A50000214B6D /* Calendar-Day.png in Resources */ = {isa = PBXBuildFile; fileRef = 40F2C38B1981A50000214B6D /* Calendar-Day.png */; };
+		40F2C38E1981A53900214B6D /* Clipboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 40F2C38D1981A53900214B6D /* Clipboard.png */; };
+		40F2C3921981A7F700214B6D /* new.png in Resources */ = {isa = PBXBuildFile; fileRef = 40F2C3911981A7F700214B6D /* new.png */; };
+		40F2C3941981A80C00214B6D /* track.png in Resources */ = {isa = PBXBuildFile; fileRef = 40F2C3931981A80C00214B6D /* track.png */; };
 		40F3E1E1180F0F4900785F27 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F3E1E0180F0F4900785F27 /* MediaPlayer.framework */; };
 		40F3E1E4180F194A00785F27 /* HistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F3E1E3180F194A00785F27 /* HistoryTableViewController.m */; };
 		40FA0ABA1883489C00EDB8AE /* abu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 40FA0AB91883489C00EDB8AE /* abu.jpg */; };
@@ -599,6 +603,10 @@
 		40E5A2F11856592000E8E87E /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
 		40F2260B190D3C990053BABF /* clientsecret */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = clientsecret; sourceTree = "<group>"; };
 		40F2260C190D3C990053BABF /* clientid */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = clientid; sourceTree = "<group>"; };
+		40F2C38B1981A50000214B6D /* Calendar-Day.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Calendar-Day.png"; path = "../../../Users/andrewdonnelly/work/Design & Icons/PP - Free iPhone Toolbar Icons/60 Pixel PNG/Calendar-Day.png"; sourceTree = "<group>"; };
+		40F2C38D1981A53900214B6D /* Clipboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Clipboard.png; path = "../../../Users/andrewdonnelly/work/Design & Icons/PP - Free iPhone Toolbar Icons/60 Pixel PNG/Clipboard.png"; sourceTree = "<group>"; };
+		40F2C3911981A7F700214B6D /* new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new.png; sourceTree = "<group>"; };
+		40F2C3931981A80C00214B6D /* track.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = track.png; sourceTree = "<group>"; };
 		40F3E1E0180F0F4900785F27 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		40F3E1E2180F194900785F27 /* HistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryTableViewController.h; sourceTree = "<group>"; };
 		40F3E1E3180F194A00785F27 /* HistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewController.m; sourceTree = "<group>"; };
@@ -872,6 +880,10 @@
 		405F4B6119817880001DA89E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				40F2C3911981A7F700214B6D /* new.png */,
+				40F2C38D1981A53900214B6D /* Clipboard.png */,
+				40F2C3931981A80C00214B6D /* track.png */,
+				40F2C38B1981A50000214B6D /* Calendar-Day.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -1604,6 +1616,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40F2C3921981A7F700214B6D /* new.png in Resources */,
 				40343B0718940D6000881CC6 /* malaysia.png in Resources */,
 				40343AFD18940D6000881CC6 /* abu.png in Resources */,
 				40343B0918940D6000881CC6 /* monaco.png in Resources */,
@@ -1614,6 +1627,7 @@
 				408167EC189E908C00843B98 /* ios7_settings_icon.png in Resources */,
 				405E5337185DEED400A8BD45 /* sector1@2x.png in Resources */,
 				40343B0818940D6000881CC6 /* melbourne.png in Resources */,
+				40F2C38E1981A53900214B6D /* Clipboard.png in Resources */,
 				4018F52A17F83903006F990E /* Melbourne.jpg in Resources */,
 				408167EE189E908C00843B98 /* ios7_spotlight_icon.png in Resources */,
 				4018F52E17F83903006F990E /* Silverstone.jpg in Resources */,
@@ -1633,6 +1647,7 @@
 				408167E4189E908C00843B98 /* Icon-Small.png in Resources */,
 				40933D3F1947887100D77E3E /* RTTBackground.png in Resources */,
 				40343B0418940D6000881CC6 /* india.png in Resources */,
+				40F2C3941981A80C00214B6D /* track.png in Resources */,
 				40B8EF7D18999E140060B6E0 /* profile.png in Resources */,
 				40343B0118940D6000881CC6 /* canada.png in Resources */,
 				4008B7B21954B34900D168ED /* austria.png in Resources */,
@@ -1666,6 +1681,7 @@
 				408167EB189E908C00843B98 /* ios7_app_icon_iphone@2x.png in Resources */,
 				40343AFF18940D6000881CC6 /* bahrain.png in Resources */,
 				4029D77F195732EA00A6E7A9 /* LICENSE.txt in Resources */,
+				40F2C38C1981A50000214B6D /* Calendar-Day.png in Resources */,
 				408167E5189E908C00843B98 /* Icon-Small@2x.png in Resources */,
 				40CA9A2F189ACB2F00946124 /* runnerLap.png in Resources */,
 				408735C51896FFAC00C79C06 /* gps.png in Resources */,

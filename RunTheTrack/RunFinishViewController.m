@@ -278,125 +278,131 @@
 }
 
 
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    
-    [self saveRun];
-}
+//#pragma mark - Navigation
+//
+//// In a story board-based application, you will often want to do a little preparation before navigation
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+//{
+//    // Get the new view controller using [segue destinationViewController].
+//    // Pass the selected object to the new view controller.
+//    [self saveRun];
+//}
 
 #pragma mark Save Run
 
--(void)saveRun
+-(IBAction)saveRun:(id)sender
 {
-    RunData *runData = [NSEntityDescription insertNewObjectForEntityForName:@"RunData" inManagedObjectContext:self.managedObjectContext];
-    NSManagedObjectID *moID = [runData objectID];
+    [self createActivityIndicator];
     
-    [runData setRunid:[[moID URIRepresentation] absoluteString]];
-    [runData setRuntrackname:[self.trackInfo valueForKey:@"Race"]];
-    [runData setRuntime:[self.trackInfo valueForKey:@"runTime"]];
-    [runData setRunlaps:[self.trackInfo valueForKey:@"runLaps"]];
-    [runData setRundistance:[self.trackInfo valueForKey:@"runDistance"]];
-    [runData setRunPace:[self.trackInfo valueForKey:@"runPace"]];
-    [runData setRuntype:[self.trackInfo valueForKey:@"runType"]];
-    [runData setRunSteps:[self.trackInfo valueForKey:@"runSteps"]];
-    [runData setRundate:[CommonUtils formattedStringFromDate:[NSDate date]]];
+    dispatch_async(dispatch_get_main_queue(), ^{
     
-    NSArray *points = [_trackInfo objectForKey:@"runPointArray"];
-    NSInteger numberOfSteps = points.count;
-    
-    CLLocationCoordinate2D coordinates[numberOfSteps];
-    for (NSInteger index = 0; index < numberOfSteps; index++) {
-        CLLocation *location = [points objectAtIndex:index];
-        CLLocationCoordinate2D coordinate = location.coordinate;
-        coordinates[index] = coordinate;
+        RunData *runData = [NSEntityDescription insertNewObjectForEntityForName:@"RunData" inManagedObjectContext:self.managedObjectContext];
+        NSManagedObjectID *moID = [runData objectID];
         
-        RunLocations *runLocation = [NSEntityDescription insertNewObjectForEntityForName:@"RunLocations" inManagedObjectContext:self.managedObjectContext];
-        [runLocation setRunid:runData.runid];
-        [runLocation setLocationIndex:[NSString stringWithFormat:@"%d",(int)index]];
-        [runLocation setLattitude:[NSString stringWithFormat:@"%f",location.coordinate.latitude]];
-        [runLocation setLongitude:[NSString stringWithFormat:@"%f",location.coordinate.longitude]];
-        [runLocation setLocationTimeStamp:[CommonUtils formattedStringFromDate:location.timestamp]];
+        [runData setRunid:[[moID URIRepresentation] absoluteString]];
+        [runData setRuntrackname:[self.trackInfo valueForKey:@"Race"]];
+        [runData setRuntime:[self.trackInfo valueForKey:@"runTime"]];
+        [runData setRunlaps:[self.trackInfo valueForKey:@"runLaps"]];
+        [runData setRundistance:[self.trackInfo valueForKey:@"runDistance"]];
+        [runData setRunPace:[self.trackInfo valueForKey:@"runPace"]];
+        [runData setRuntype:[self.trackInfo valueForKey:@"runType"]];
+        [runData setRunSteps:[self.trackInfo valueForKey:@"runSteps"]];
+        [runData setRundate:[CommonUtils formattedStringFromDate:[NSDate date]]];
         
-        [runData addRunDataLocationsObject:runLocation];
-    }
-    
-    // Add Sectors and Laps to Save
-    
-    NSDictionary *runLapsDict = (NSDictionary *)[_trackInfo objectForKey:@"runLapsInfo"];
-    if(runLapsDict.count > 0)
-    {
-        NSArray *lapKeys = [runLapsDict allKeys];
+        NSArray *points = [_trackInfo objectForKey:@"runPointArray"];
+        NSInteger numberOfSteps = points.count;
         
-        for (NSString *lapNumberKey in lapKeys)
-        {
-            NSDictionary *runLap = [runLapsDict objectForKey:lapNumberKey];
-            RunSectors *runSectors = [NSEntityDescription insertNewObjectForEntityForName:@"RunSectors" inManagedObjectContext:self.managedObjectContext];
+        CLLocationCoordinate2D coordinates[numberOfSteps];
+        for (NSInteger index = 0; index < numberOfSteps; index++) {
+            CLLocation *location = [points objectAtIndex:index];
+            CLLocationCoordinate2D coordinate = location.coordinate;
+            coordinates[index] = coordinate;
             
-            CLLocation *sect1Loc = (CLLocation *)[runLap objectForKey:@"1Loc"];
-            CLLocation *sect2Loc = (CLLocation *)[runLap objectForKey:@"2Loc"];
+            RunLocations *runLocation = [NSEntityDescription insertNewObjectForEntityForName:@"RunLocations" inManagedObjectContext:self.managedObjectContext];
+            [runLocation setRunid:runData.runid];
+            [runLocation setLocationIndex:[NSString stringWithFormat:@"%d",(int)index]];
+            [runLocation setLattitude:[NSString stringWithFormat:@"%f",location.coordinate.latitude]];
+            [runLocation setLongitude:[NSString stringWithFormat:@"%f",location.coordinate.longitude]];
+            [runLocation setLocationTimeStamp:[CommonUtils formattedStringFromDate:location.timestamp]];
             
-            [runSectors setRunId:runData.runid];
-            [runSectors setSector1Time:[runLap objectForKey:@"1"]];
-            [runSectors setSector2Time:[runLap objectForKey:@"2"]];
-            [runSectors setSector3Time:[runLap objectForKey:@"3"]];
-            [runSectors setLapTime:[runLap objectForKey:@"Lap"]];
-            [runSectors setLapPace:[runLap objectForKey:@"LapPace"]];
-            [runSectors setLapLat:[runLap objectForKey:@"LapLat"]];
-            [runSectors setLapLong:[runLap objectForKey:@"LapLong"]];
-            [runSectors setSec1Lat:[NSString stringWithFormat:@"%f",sect1Loc.coordinate.latitude]];
-            [runSectors setSec1Long:[NSString stringWithFormat:@"%f",sect1Loc.coordinate.longitude]];
-            [runSectors setSec2Lat:[NSString stringWithFormat:@"%f",sect2Loc.coordinate.latitude]];
-            [runSectors setSec2Long:[NSString stringWithFormat:@"%f",sect2Loc.coordinate.longitude]];
-            [runSectors setLapNumber:lapNumberKey];
+            [runData addRunDataLocationsObject:runLocation];
+        }
+        
+        // Add Sectors and Laps to Save
+        
+        NSDictionary *runLapsDict = (NSDictionary *)[_trackInfo objectForKey:@"runLapsInfo"];
+        if(runLapsDict.count > 0)
+        {
+            NSArray *lapKeys = [runLapsDict allKeys];
             
-            [runData addRunSectorsObject:runSectors];
+            for (NSString *lapNumberKey in lapKeys)
+            {
+                NSDictionary *runLap = [runLapsDict objectForKey:lapNumberKey];
+                RunSectors *runSectors = [NSEntityDescription insertNewObjectForEntityForName:@"RunSectors" inManagedObjectContext:self.managedObjectContext];
+                
+                CLLocation *sect1Loc = (CLLocation *)[runLap objectForKey:@"1Loc"];
+                CLLocation *sect2Loc = (CLLocation *)[runLap objectForKey:@"2Loc"];
+                
+                [runSectors setRunId:runData.runid];
+                [runSectors setSector1Time:[runLap objectForKey:@"1"]];
+                [runSectors setSector2Time:[runLap objectForKey:@"2"]];
+                [runSectors setSector3Time:[runLap objectForKey:@"3"]];
+                [runSectors setLapTime:[runLap objectForKey:@"Lap"]];
+                [runSectors setLapPace:[runLap objectForKey:@"LapPace"]];
+                [runSectors setLapLat:[runLap objectForKey:@"LapLat"]];
+                [runSectors setLapLong:[runLap objectForKey:@"LapLong"]];
+                [runSectors setSec1Lat:[NSString stringWithFormat:@"%f",sect1Loc.coordinate.latitude]];
+                [runSectors setSec1Long:[NSString stringWithFormat:@"%f",sect1Loc.coordinate.longitude]];
+                [runSectors setSec2Lat:[NSString stringWithFormat:@"%f",sect2Loc.coordinate.latitude]];
+                [runSectors setSec2Long:[NSString stringWithFormat:@"%f",sect2Loc.coordinate.longitude]];
+                [runSectors setLapNumber:lapNumberKey];
+                
+                [runData addRunSectorsObject:runSectors];
+            }
         }
-    }
         
-    NSDictionary *runAchivements = (NSDictionary *)[_trackInfo objectForKey:@"runAchivementsInfo"];
-    if(runAchivements.count > 0)
-    {
-        NSArray *achKeys = [runAchivements allKeys];
+        NSDictionary *runAchivements = (NSDictionary *)[_trackInfo objectForKey:@"runAchivementsInfo"];
+        if(runAchivements.count > 0)
+        {
+            NSArray *achKeys = [runAchivements allKeys];
+            
+            for (NSString *achivementKey in achKeys)
+            {
+                //Add Achivement
+                RunAchievement *runAch = [NSEntityDescription insertNewObjectForEntityForName:@"RunAchievement" inManagedObjectContext:self.managedObjectContext];
+                [runAch setRunId:runData.runid];
+                [runAch setTrackname:runData.runtrackname];
+                [runAch setAchievementTrigger:achivementKey];
+                [runAch setAchievementText:[runAchivements objectForKey:achivementKey]];
+                [runData addRunAchievementObject:runAch];
+            }
+        }
         
-        for (NSString *achivementKey in achKeys)
+        NSArray *runAlitiudes = (NSArray *)[_trackInfo objectForKey:@"runAltitude"];
+        if(runAlitiudes.count > 0)
         {
-            //Add Achivement
-            RunAchievement *runAch = [NSEntityDescription insertNewObjectForEntityForName:@"RunAchievement" inManagedObjectContext:self.managedObjectContext];
-            [runAch setRunId:runData.runid];
-            [runAch setTrackname:runData.runtrackname];
-            [runAch setAchievementTrigger:achivementKey];
-            [runAch setAchievementText:[runAchivements objectForKey:achivementKey]];
-            [runData addRunAchievementObject:runAch];
+            for (NSDictionary *runAltDict in runAlitiudes)
+            {
+                //Add Achivement
+                RunAltitude *runAlt = [NSEntityDescription insertNewObjectForEntityForName:@"RunAltitude" inManagedObjectContext:self.managedObjectContext];
+                [runAlt setRunid:runData.runid];
+                [runAlt setAltitudeTimeStamp:[runAltDict objectForKey:@"time"]];
+                [runAlt setAltitude:[runAltDict objectForKey:@"altitude"]];
+                [runData addRunAltitudesObject:runAlt];
+            }
         }
-    }
-    
-    NSArray *runAlitiudes = (NSArray *)[_trackInfo objectForKey:@"runAltitude"];
-    if(runAlitiudes.count > 0)
-    {
-        for (NSDictionary *runAltDict in runAlitiudes)
-        {
-            //Add Achivement
-            RunAltitude *runAlt = [NSEntityDescription insertNewObjectForEntityForName:@"RunAltitude" inManagedObjectContext:self.managedObjectContext];
-            [runAlt setRunid:runData.runid];
-            [runAlt setAltitudeTimeStamp:[runAltDict objectForKey:@"time"]];
-            [runAlt setAltitude:[runAltDict objectForKey:@"altitude"]];
-            [runData addRunAltitudesObject:runAlt];
-        }
-    }
-    
-    [CoreDataHelper saveManagedObjectContext:self.managedObjectContext];
-    
-    [[MessageBarManager sharedInstance] showMessageWithTitle:@"Run Saved"
-                                                 description:@"Well done, check out your timings now."
-                                                        type:MessageBarMessageTypeSuccess];
-    
+        
+        [CoreDataHelper saveManagedObjectContext:self.managedObjectContext];
+        
+        [[MessageBarManager sharedInstance] showMessageWithTitle:@"Run Saved"
+                                                     description:@"Well done, check out your timings now."
+                                                            type:MessageBarMessageTypeSuccess];
+        
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    });
     
     [self addNotification];
+    [self removeActivityIndicator];
 }
 
 

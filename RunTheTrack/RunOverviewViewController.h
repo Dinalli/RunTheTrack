@@ -38,8 +38,6 @@
     
     NSMutableArray *runs;
     
-    UIWebView *stravaWebView;
-    
     AppDelegate *appDelegate;
     
     NSString *filePath;

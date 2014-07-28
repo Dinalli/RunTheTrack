@@ -11,4 +11,7 @@
 
 @interface RTTBaseViewController : UIViewController 
 
+-(void)createActivityIndicator;
+-(void)removeActivityIndicator;
+
 @end

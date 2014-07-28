@@ -118,8 +118,7 @@
     
     NSMutableDictionary *TrackInfo = (NSMutableDictionary *)[appDelegate.tracksArray objectAtIndex:indexPath.row];
 
-    TrackCell *cell = [cv
-                                  dequeueReusableCellWithReuseIdentifier:@"TrackDetailCell"
+    TrackCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"TrackDetailCell"
                                   forIndexPath:indexPath];
     
     cell.trackName.text = [TrackInfo objectForKey:@"Race"];

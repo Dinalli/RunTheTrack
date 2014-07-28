@@ -64,7 +64,7 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 200;
     self = [super init];
     if (self)
     {
-        [self initFakeData];
+        [self loadGraphData];
     }
     return self;
 }
@@ -84,7 +84,7 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 200;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        [self initFakeData];
+        [self loadGraphData];
     }
     return self;
 }
@@ -276,15 +276,15 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 200;
     
     totalDistance = 0;
     NSMutableArray *mutableLineCharts = [NSMutableArray array];
-    for (int lineIndex=0; lineIndex<3; lineIndex++)
-    {
+//    for (int lineIndex=0; lineIndex<1; lineIndex++)
+//    {
         NSMutableArray *mutableChartData = [NSMutableArray array];
         for (int i=0; i<kJBLineChartViewControllerMaxNumChartPoints; i++)
         {
             CLLocation *lastLocation;
-            switch (lineIndex) {
-                case 0:
-                {
+//            switch (lineIndex) {
+//                case 0:
+//                {
                     RunLocations *runLoc = [runLocationsArray objectAtIndex:i];
                     if(oldLocation)
                     {
@@ -311,23 +311,23 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 200;
                     [mutableChartData addObject:[NSString stringWithFormat:@"%f",totalDistance]];
                     oldLocation = runLoc;
                     break;
-                }
-                case 1:
-                {
-                    RunAltitude *ra = (RunAltitude *)[altitudePoints objectAtIndex:i];
-                    [mutableChartData addObject:ra.altitude];
-                    break;
-                }
-                case 2:
-                {
-                    RunLocations *runLoc = [runLocationsArray objectAtIndex:i];
-                    [mutableChartData addObject:runLoc.locationTimeStamp];
-                    break;
-                }
-                default:
-                    break;
-            }
-        }
+//                }
+//                case 1:
+//                {
+//                    RunAltitude *ra = (RunAltitude *)[altitudePoints objectAtIndex:i];
+//                    [mutableChartData addObject:ra.altitude];
+//                    break;
+//                }
+//                case 2:
+//                {
+//                    RunLocations *runLoc = [runLocationsArray objectAtIndex:i];
+//                    [mutableChartData addObject:runLoc.locationTimeStamp];
+//                    break;
+//                }
+//                default:
+//                    break;
+//            }
+//        }
         [mutableLineCharts addObject:mutableChartData];
     }
     _chartData = [NSArray arrayWithArray:mutableLineCharts];
@@ -337,8 +337,8 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 200;
 {
     NSNumber *valueNumber;
     
-    if (lineIndex == 0)
-    {
+//    if (lineIndex == 0)
+//    {
         //Distance
         valueNumber = [[self.chartData objectAtIndex:lineIndex] objectAtIndex:horizontalIndex];
         
@@ -353,19 +353,19 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 200;
         
         
         [self.informationView setTitleText:@"Distance"];
-    }
-    else if(lineIndex == 1)
-    {
-        valueNumber = [[self.chartData objectAtIndex:lineIndex] objectAtIndex:horizontalIndex];
-        [self.informationView setValueText:[NSString stringWithFormat:@"%.2f", [valueNumber floatValue]] unitText:@"ft"];
-        [self.informationView setTitleText:@"Climb"];
-    }
-    else if(lineIndex == 2)
-    {
-        valueNumber = [[self.chartData objectAtIndex:lineIndex] objectAtIndex:horizontalIndex];
-        [self.informationView setValueText:[NSString stringWithFormat:@"%@",[valueNumber stringValue]] unitText:@""];
-        [self.informationView setTitleText:@"Time"];
-    }
+//    }
+//    else if(lineIndex == 1)
+//    {
+//        valueNumber = [[self.chartData objectAtIndex:lineIndex] objectAtIndex:horizontalIndex];
+//        [self.informationView setValueText:[NSString stringWithFormat:@"%.2f", [valueNumber floatValue]] unitText:@"ft"];
+//        [self.informationView setTitleText:@"Climb"];
+//    }
+//    else if(lineIndex == 2)
+//    {
+//        valueNumber = [[self.chartData objectAtIndex:lineIndex] objectAtIndex:horizontalIndex];
+//        [self.informationView setValueText:[NSString stringWithFormat:@"%@",[valueNumber stringValue]] unitText:@""];
+//        [self.informationView setTitleText:@"Time"];
+//    }
     [self.informationView setHidden:NO animated:YES];
 }
 

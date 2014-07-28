@@ -10,7 +10,7 @@
 			<key>detail</key>
 			<string>New 2014 Austria and Sochi tracks added</string>
 			<key>icon</key>
-			<string>Podcast</string>
+			<string>track</string>
 		</dict>
 		<dict>
 			<key>title</key>
@@ -18,7 +18,7 @@
 			<key>detail</key>
 			<string>Analysie your run like F1 data</string>
 			<key>icon</key>
-			<string>Feed</string>
+			<string>Clipboard</string>
 		</dict>
 		<dict>
 			<key>title</key>
@@ -26,7 +26,7 @@
 			<key>detail</key>
 			<string>New redesigned Interface, with better navigation.</string>
 			<key>icon</key>
-			<string>Saved</string>
+			<string>new</string>
 		</dict>
 		<dict>
 			<key>title</key>
@@ -34,7 +34,7 @@
 			<key>detail</key>
 			<string>Set a reminder from the app for your next Run.</string>
 			<key>icon</key>
-			<string>Delete</string>
+			<string>Calendar-Day</string>
 		</dict>
 	</array>
 </dict>

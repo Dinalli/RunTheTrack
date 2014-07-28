@@ -9,6 +9,9 @@
 #import "RTTBaseViewController.h"
 
 @interface RTTBaseViewController ()
+{
+    UIActivityIndicatorView *activityIndicator;
+}
 @end
 
 @implementation RTTBaseViewController
@@ -28,6 +31,31 @@
     self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
     self.navigationController.navigationBar.translucent = YES;
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+}
+
+#pragma mark - Activity Indicator
+
+-(void)createActivityIndicator
+{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    if ( activityIndicator == nil)
+    {
+        activityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        activityIndicator.frame = CGRectMake(self.view.frame.size.width/2.0 - 25 , self.view.frame.size.height/2.0 - 25, 50, 50);
+        activityIndicator.layer.cornerRadius = 8.0f;
+        activityIndicator.layer.masksToBounds = YES;
+        activityIndicator.backgroundColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.5];
+        [activityIndicator startAnimating];
+        activityIndicator.hidden = NO;
+        [self.view addSubview:activityIndicator];
+    }
+}
+
+-(void)removeActivityIndicator;
+{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    [activityIndicator removeFromSuperview];
+    activityIndicator = nil;
 }
 
 - (void)didReceiveMemoryWarning

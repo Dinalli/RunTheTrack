@@ -154,13 +154,6 @@ NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:S
     NSLog(@"URL CODE %@", [[self splitQuery:url.query] objectForKey:@"code"]);
     NSLog(@"Source Application %@", sourceApplication);
     
-    if([url.scheme isEqualToString:@"runthetrack"])
-    {
-        NSLog(@"CODE %@",[[self splitQuery:url.query] objectForKey:@"code"]);
-        self.stravaCode = [[self splitQuery:url.query] objectForKey:@"code"];
-        return YES;
-    }
-    
     // attempt to extract a token from the url
     return [FBAppCall handleOpenURL:url
                   sourceApplication:sourceApplication
