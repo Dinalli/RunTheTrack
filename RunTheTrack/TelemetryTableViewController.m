@@ -142,12 +142,12 @@
 
 #pragma mark Segue Navigation
 
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue
-//                 sender:(id)sender {
-//    if ([segue.identifier isEqualToString:@"RunDataSegue"]) {
-//
-//    }
-//}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue
+                 sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"RunDataSegue"]) {
+
+    }
+}
 
 - (IBAction)unwindToOverview:(UIStoryboardSegue *)unwindSegue
 {

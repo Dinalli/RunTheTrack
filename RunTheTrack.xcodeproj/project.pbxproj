@@ -26,6 +26,8 @@
 		401C1828196E733B007DEE10 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 401C1827196E733B007DEE10 /* AudioToolbox.framework */; };
 		401C182A196E7377007DEE10 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 401C1829196E7377007DEE10 /* StoreKit.framework */; };
 		401F8F1418BD49DC00F67A32 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40CD535D182C0E2D00352499 /* FacebookSDK.framework */; };
+		402126B21986757F00BD887F /* RunChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 402126B11986757F00BD887F /* RunChartViewController.m */; };
+		402126B61986760400BD887F /* DPlotChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 402126B51986760400BD887F /* DPlotChart.m */; };
 		4022963F188A83FA00BF515F /* RunData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4022963E188A83FA00BF515F /* RunData.m */; };
 		40251C6B184E5EFF0088F8C9 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40251C6A184E5EFF0088F8C9 /* Crashlytics.framework */; };
 		4027543A189B94F50015A79F /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40275439189B94F50015A79F /* AdSupport.framework */; };
@@ -192,6 +194,7 @@
 		40DA55B9194E15F000D77442 /* RunGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DA55B8194E15F000D77442 /* RunGraphViewController.m */; };
 		40DAB5C11950E9AB00A2696A /* JBChartTooltipTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DAB5BE1950E9AB00A2696A /* JBChartTooltipTipView.m */; };
 		40DAB5C21950E9AB00A2696A /* JBChartTooltipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DAB5C01950E9AB00A2696A /* JBChartTooltipView.m */; };
+		40DCC09A1989198900A0D4C5 /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DCC0991989198900A0D4C5 /* XYPieChart.m */; };
 		40DFDBE9182AE6C100554C58 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40DFDBE8182AE6C100554C58 /* Social.framework */; };
 		40E5A2EA1856504300E8E87E /* UIView+More.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E5A2E91856504300E8E87E /* UIView+More.m */; };
 		40E5A2EC1856538A00E8E87E /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40E5A2EB1856538A00E8E87E /* CoreText.framework */; };
@@ -245,6 +248,10 @@
 		401C1825196E732E007DEE10 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		401C1827196E733B007DEE10 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		401C1829196E7377007DEE10 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		402126B01986757F00BD887F /* RunChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunChartViewController.h; sourceTree = "<group>"; };
+		402126B11986757F00BD887F /* RunChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunChartViewController.m; sourceTree = "<group>"; };
+		402126B41986760400BD887F /* DPlotChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPlotChart.h; sourceTree = "<group>"; };
+		402126B51986760400BD887F /* DPlotChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPlotChart.m; sourceTree = "<group>"; };
 		4022963D188A83FA00BF515F /* RunData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunData.h; sourceTree = "<group>"; };
 		4022963E188A83FA00BF515F /* RunData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunData.m; sourceTree = "<group>"; };
 		40251C6A184E5EFF0088F8C9 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -593,6 +600,8 @@
 		40DAB5BE1950E9AB00A2696A /* JBChartTooltipTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBChartTooltipTipView.m; sourceTree = "<group>"; };
 		40DAB5BF1950E9AB00A2696A /* JBChartTooltipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBChartTooltipView.h; sourceTree = "<group>"; };
 		40DAB5C01950E9AB00A2696A /* JBChartTooltipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBChartTooltipView.m; sourceTree = "<group>"; };
+		40DCC0981989198900A0D4C5 /* XYPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPieChart.h; sourceTree = "<group>"; };
+		40DCC0991989198900A0D4C5 /* XYPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPieChart.m; sourceTree = "<group>"; };
 		40DFDBE8182AE6C100554C58 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		40E5A2E81856504300E8E87E /* UIView+More.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+More.h"; sourceTree = "<group>"; };
 		40E5A2E91856504300E8E87E /* UIView+More.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+More.m"; sourceTree = "<group>"; };
@@ -727,6 +736,8 @@
 		4018F50417F82E26006F990E /* 3rdParty */ = {
 			isa = PBXGroup;
 			children = (
+				40DCC0971989197400A0D4C5 /* XYChart */,
+				402126B3198675F800BD887F /* Dplot */,
 				401C1822196E72EC007DEE10 /* Parse */,
 				4029D7661957321F00A6E7A9 /* WhatsNew */,
 				40446055194F7FE300C4F22B /* JBChartView */,
@@ -774,6 +785,15 @@
 				401C1823196E72FD007DEE10 /* Parse.framework */,
 			);
 			name = Parse;
+			sourceTree = "<group>";
+		};
+		402126B3198675F800BD887F /* Dplot */ = {
+			isa = PBXGroup;
+			children = (
+				402126B41986760400BD887F /* DPlotChart.h */,
+				402126B51986760400BD887F /* DPlotChart.m */,
+			);
+			name = Dplot;
 			sourceTree = "<group>";
 		};
 		4029D7661957321F00A6E7A9 /* WhatsNew */ = {
@@ -860,6 +880,8 @@
 		405267261941E57A0048E8DA /* Telemetry */ = {
 			isa = PBXGroup;
 			children = (
+				402126B01986757F00BD887F /* RunChartViewController.h */,
+				402126B11986757F00BD887F /* RunChartViewController.m */,
 				40DA55B7194E15F000D77442 /* RunGraphViewController.h */,
 				40DA55B8194E15F000D77442 /* RunGraphViewController.m */,
 				409D088E1955D0B900E9AB3C /* TelemetryTableViewController.h */,
@@ -1520,6 +1542,15 @@
 			name = YLProgressBar;
 			sourceTree = "<group>";
 		};
+		40DCC0971989197400A0D4C5 /* XYChart */ = {
+			isa = PBXGroup;
+			children = (
+				40DCC0981989198900A0D4C5 /* XYPieChart.h */,
+				40DCC0991989198900A0D4C5 /* XYPieChart.m */,
+			);
+			name = XYChart;
+			sourceTree = "<group>";
+		};
 		40F22607190D3B6A0053BABF /* Strava-Objc */ = {
 			isa = PBXGroup;
 			children = (
@@ -1805,7 +1836,9 @@
 				400522571880209600B34DAD /* RunInfoAltitudeGraph.m in Sources */,
 				408A7993182AE3AA0088D8AC /* SettingsViewController.m in Sources */,
 				4029D7691957323400A6E7A9 /* MTZWhatsNew.m in Sources */,
+				40DCC09A1989198900A0D4C5 /* XYPieChart.m in Sources */,
 				40C1657317EB637900D4E093 /* AppDelegate.m in Sources */,
+				402126B21986757F00BD887F /* RunChartViewController.m in Sources */,
 				40E5A2EA1856504300E8E87E /* UIView+More.m in Sources */,
 				40A3B3E1185B768F00BA85BB /* MessageBarManager.m in Sources */,
 				40A1C443193E559F00E072EE /* MenuViewController.m in Sources */,
@@ -1821,6 +1854,7 @@
 				4044605E194F7FFD00C4F22B /* JBLineChartView.m in Sources */,
 				4029D77B195732EA00A6E7A9 /* MTZWhatsNewFeatureCollectionViewCell.m in Sources */,
 				40A1C446193E587100E072EE /* RTTRootViewController.m in Sources */,
+				402126B61986760400BD887F /* DPlotChart.m in Sources */,
 				4047939F182F7AEC004FEB73 /* RunCell.m in Sources */,
 				403AEBA219501C8F00F744A8 /* JBChartInformationView.m in Sources */,
 				4029D77A195732EA00A6E7A9 /* MTZCollectionView.m in Sources */,

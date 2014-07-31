@@ -8,14 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <Social/Social.h>
-#import "ProfileHeaderView.h"
+#import "XYPieChart.h"
 
-@interface ProfileViewController : RTTBaseViewController <UICollectionViewDataSource, UICollectionViewDelegate, UIActionSheetDelegate>
+@interface ProfileViewController : RTTBaseViewController <UIActionSheetDelegate, XYPieChartDataSource, XYPieChartDelegate>
 {
     NSArray *tracksArray;
     NSMutableArray *trackRunsArray;
     NSMutableArray *runs;
-    ProfileHeaderView *headerView;
 }
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
