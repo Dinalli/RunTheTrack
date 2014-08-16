@@ -10,7 +10,7 @@
 #import "CoreDataHelper.h"
 #import "RunCell.h"
 #import "RunData.h"
-#import "RunGraphViewController.h"
+#import "TelemetryViewController.h"
 
 @interface TelemetryTableViewController ()
 {

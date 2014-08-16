@@ -8,10 +8,6 @@
 
 #import "AppDelegate.h"
 #import <Crashlytics/Crashlytics.h>
-#import "UAirship.h"
-#import "UAConfig.h"
-#import "UAPush.h"
-
 @implementation AppDelegate
 
 NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:SCSessionStateChangedNotification";
@@ -32,7 +28,7 @@ NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:S
     [GAI sharedInstance].dispatchInterval = 5;
     
     // Optional: set Logger to VERBOSE for debug information.
-    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelNone];
     
     // Initialize tracker.
     id<GAITracker> tracker __unused = [[GAI sharedInstance] trackerWithTrackingId:@"UA-47282955-1"];
@@ -50,17 +46,6 @@ NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:S
     
     self.useMotion = NO;
     self.musicIsPlaying = NO;
-    
-    // Populate AirshipConfig.plist with your app's info from https://go.urbanairship.com
-    // or set runtime properties here.
-    UAConfig *config = [UAConfig defaultConfig];
-    
-    // You can also programmatically override the plist values:
-    // config.developmentAppKey = @"YourKey";
-    // etc.
-    
-    // Call takeOff (which creates the UAirship singleton)
-    [UAirship takeOff:config];
     
     [self setUpDefaultsOnLoad];
     

@@ -7,31 +7,27 @@
 //
 
 #import "ProfileViewController.h"
-#import "ProfileCollectionCell.h"
-#import "ProfileHeaderView.h"
 #import "CoreDataHelper.h"
 #import "RunData.h"
 #import "XYPieChart.h"
+#import "StartFinishAnnotation.h"
 
 @interface ProfileViewController ()
 {
     NSMutableArray *slices;
     NSArray        *sliceColors;
+    IBOutlet UILabel       *totalTimeLabel;
+    IBOutlet UILabel       *totalDistanceLabel;
+    IBOutlet UILabel       *totalLapsLabel;
+    NSMutableDictionary *tracksRanData;
+    IBOutlet UILabel    *selectedSliceLabel;
+    int totalRuns;
 }
 
 @property (strong, nonatomic) IBOutlet XYPieChart *pieChartLeft;
 @property (strong, nonatomic) IBOutlet XYPieChart *pieChartRight;
 
 @end
-
-/* 
- - Locations user has run with number of times
- - Locations user has run with total distance
- - Loctions user has run with total time
- - total time
- - total distance
- 
- */
 
 @implementation ProfileViewController
 
@@ -48,23 +44,16 @@
 {
     [super viewDidLoad];
     
-    slices = [NSMutableArray arrayWithCapacity:10];
-    
-    for(int i = 0; i < 5; i ++)
-    {
-        NSNumber *one = [NSNumber numberWithInt:rand()%60+20];
-        [slices addObject:one];
-    }
-    
+    [self.pieChartLeft setDelegate:self];
     [self.pieChartLeft setDataSource:self];
     [self.pieChartLeft setStartPieAngle:M_PI_2];
     [self.pieChartLeft setAnimationSpeed:1.0];
-    [self.pieChartLeft setLabelFont:[UIFont fontWithName:@"DBLCDTempBlack" size:24]];
-    [self.pieChartLeft setLabelRadius:0];
+    [self.pieChartLeft setLabelFont:[UIFont fontWithName:@"DBLCDTempBlack" size:8]];
+    [self.pieChartLeft setLabelRadius:30];
     [self.pieChartLeft setShowPercentage:YES];
     [self.pieChartLeft setPieBackgroundColor:[UIColor colorWithWhite:0.95 alpha:1]];
     [self.pieChartLeft setPieCenter:CGPointMake(75, 75)];
-    [self.pieChartLeft setUserInteractionEnabled:NO];
+    [self.pieChartLeft setUserInteractionEnabled:YES];
     [self.pieChartLeft setLabelShadowColor:[UIColor blackColor]];
     
     [self.pieChartRight setDelegate:self];
@@ -79,6 +68,9 @@
                        [UIColor colorWithRed:62/255.0 green:173/255.0 blue:219/255.0 alpha:1],
                        [UIColor colorWithRed:229/255.0 green:66/255.0 blue:115/255.0 alpha:1],
                        [UIColor colorWithRed:148/255.0 green:141/255.0 blue:139/255.0 alpha:1],nil];
+    
+    tracksRanData = [NSMutableDictionary new];
+    totalRuns = 0;
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -90,7 +82,7 @@
     tracksArray = [[NSArray alloc] initWithContentsOfFile:plistPath];
     trackRunsArray = [[NSMutableArray alloc] initWithCapacity:tracksArray.count];
     
-    self.managedObjectContext = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).managedObjectContext;
+    self.managedObjectContext = self.appDelegate.managedObjectContext;
     
     runs = [CoreDataHelper getObjectsFromContextWithEntityName:@"RunData" andSortKey:nil andSortAscending:YES withManagedObjectContext:self.managedObjectContext];
     
@@ -102,7 +94,60 @@
             {
                 if(![trackRunsArray containsObject:track])
                 {
+                    NSMutableDictionary *currentRunData = [NSMutableDictionary new];
                     [trackRunsArray addObject:track];
+                    NSString *trackName = [track objectForKey:@"Race"];
+                    
+                    // add to map
+                    StartFinishAnnotation *startAnno = [[StartFinishAnnotation alloc] init];
+                    startAnno.coordinate = CLLocationCoordinate2DMake([[track objectForKey:@"Lat"] doubleValue], [[track objectForKey:@"Long"] doubleValue]);
+                    startAnno.title = [track objectForKey:@"Race"];
+                    [mv addAnnotation:startAnno];
+                    
+                    float laps = 0;
+                    float totalDistance;
+                    int trackRuns = 0;
+                    
+                    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+                    [df setDateFormat:@"HH:mm:ss.SS"];
+                    NSDate *totalRunTime = [df dateFromString:@"00:00:00.00"];
+                    NSDate *zeroRunTime = [df dateFromString:@"00:00:00.00"];
+                    
+                    for (RunData *rd in runs) {
+                        if([rd.runtrackname isEqualToString:trackName])
+                        {
+                            totalRuns += 1;
+                            trackRuns += 1;
+                            laps = laps + [rd.runlaps floatValue];
+                            totalDistance = totalDistance + [rd.rundistance floatValue];
+                            NSDate *runTimeDate = [df dateFromString:[NSString stringWithFormat:@"%@",rd.runtime]];
+                            NSTimeInterval interval = [runTimeDate timeIntervalSinceDate:zeroRunTime];
+                            totalRunTime = [totalRunTime dateByAddingTimeInterval:interval];
+                        }
+                    }
+                    
+                    [currentRunData setObject:[NSString stringWithFormat:@"%d", trackRuns] forKey:@"Runs"];
+                    [currentRunData setObject:[NSString stringWithFormat:@"%.2f", laps] forKey:@"Laps"];
+                    
+                    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                    if([appDelegate useKMasUnits])
+                    {
+                        [currentRunData setObject:[NSString stringWithFormat:@"%.02f km", totalDistance / 1000] forKey:@"Distance"];
+                    }
+                    else
+                    {
+                        [currentRunData setObject:[NSString stringWithFormat:@"%.02f miles", totalDistance * 0.000621371192]  forKey:@"Distance"];
+                    }
+                    
+                    
+                    [df setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0.0]];
+                    
+                    NSCalendar *calendar = [NSCalendar currentCalendar];
+                    NSDateComponents *components = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:totalRunTime];
+                    NSString *dateString = [CommonUtils timeFormattedStringForValue:(int)[components hour] :(int)[components minute] :(int)[components second]];
+                    [currentRunData setObject:[NSString stringWithFormat:@"%@", dateString] forKey:@"Time"];
+
+                    [tracksRanData setObject:currentRunData forKey:trackName];
                 }
             }
         }
@@ -114,6 +159,8 @@
                                                      description:[NSString stringWithFormat:@"Why not go for a run. You will see your progress on each track here."]
                                                             type:MessageBarMessageTypeInfo];
     }
+
+    [self getDataTotals];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -130,12 +177,15 @@
 
 - (NSUInteger)numberOfSlicesInPieChart:(XYPieChart *)pieChart
 {
-    return slices.count;
+    return trackRunsArray.count;
 }
 
 - (CGFloat)pieChart:(XYPieChart *)pieChart valueForSliceAtIndex:(NSUInteger)index
 {
-    return [[slices objectAtIndex:index] intValue];
+    NSDictionary *track = [trackRunsArray objectAtIndex:index];
+    NSDictionary *runData = [tracksRanData objectForKey:[track objectForKey:@"Race"]];
+    NSString *runsForTrack = [runData objectForKey:@"Runs"];
+    return [runsForTrack intValue];
 }
 
 - (UIColor *)pieChart:(XYPieChart *)pieChart colorForSliceAtIndex:(NSUInteger)index
@@ -145,160 +195,104 @@
 }
 
 #pragma mark - XYPieChart Delegate
-- (void)pieChart:(XYPieChart *)pieChart willSelectSliceAtIndex:(NSUInteger)index
-{
-    NSLog(@"will select slice at index %d",index);
-}
-- (void)pieChart:(XYPieChart *)pieChart willDeselectSliceAtIndex:(NSUInteger)index
-{
-    NSLog(@"will deselect slice at index %d",index);
-}
 - (void)pieChart:(XYPieChart *)pieChart didDeselectSliceAtIndex:(NSUInteger)index
 {
-    NSLog(@"did deselect slice at index %d",index);
+
 }
+
 - (void)pieChart:(XYPieChart *)pieChart didSelectSliceAtIndex:(NSUInteger)index
 {
-    NSLog(@"did select slice at index %d",index);
-    //self.selectedSliceLabel.text = [NSString stringWithFormat:@"$%@",[self.slices objectAtIndex:index]];
+    NSDictionary *track = [trackRunsArray objectAtIndex:index];
+    selectedSliceLabel.text = [track objectForKey:@"Race"];
+    [selectedSliceLabel setHighlighted:NO];
+    
+    MKCoordinateRegion region;
+    MKCoordinateSpan span;
+    span.latitudeDelta = 0.0200;
+    span.longitudeDelta = 0.0200;
+    region.span = span;
+    region.center.latitude = [[track objectForKey:@"Lat"] doubleValue];
+    region.center.longitude = [[track objectForKey:@"Long"] doubleValue];
+    [mv setRegion:region animated:YES];
+    
+    NSDictionary *runData = [tracksRanData objectForKey:[track objectForKey:@"Race"]];
+    totalDistanceLabel.text = [runData objectForKey:@"Distance"];
+    totalLapsLabel.text = [runData objectForKey:@"Laps"];
+    totalTimeLabel.text = [runData objectForKey:@"Time"];
+}
+
+#pragma mark Map Delegate
+
+- (MKAnnotationView *)mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>)annotation
+{
+    // in case it's the user location, we already have an annotation, so just return nil
+    if ([annotation isKindOfClass:[MKUserLocation class]])
+    {
+        return nil;
+    }
+
+    static NSString *SFAnnotationIdentifier = @"StartFinishID";
+    MKPinAnnotationView *pinView = (MKPinAnnotationView *)[mv dequeueReusableAnnotationViewWithIdentifier:SFAnnotationIdentifier];
+    if (!pinView)
+    {
+        MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation
+                                                                        reuseIdentifier:SFAnnotationIdentifier];
+        
+        UIImage *flagImage = [UIImage imageNamed:@"cheq.png"];
+        // You may need to resize the image here.
+        annotationView.image = flagImage;
+        annotationView.canShowCallout = YES;
+        return annotationView;
+    }
+    else
+    {
+        pinView.annotation = annotation;
+    }
+ 
+    return pinView;
 }
 
 
-//#pragma mark - UICollectionViewDelegate
-//- (void)collectionView:(UICollectionView *)collectionView
-//didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-//}
-//
-//- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
-//{
-//    UICollectionReusableView *reusableview = nil;
-//    
-//    if (kind == UICollectionElementKindSectionHeader) {
-//         headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
-//        reusableview = headerView;
-//        
-//        float laps = 0;
-//        float totalDistance = 0;
-//        
-//        NSDateFormatter *df = [[NSDateFormatter alloc] init];
-//        [df setDateFormat:@"HH:mm:ss.SS"];
-//        NSDate *totalRunTime = [df dateFromString:@"00:00:00.00"];
-//        NSDate *zeroRunTime = [df dateFromString:@"00:00:00.00"];
-//        
-//        for (RunData *rd in runs) {
-//            laps = laps + [rd.runlaps floatValue];
-//            totalDistance = totalDistance + [rd.rundistance floatValue];
-//            
-//            NSDate *runTimeDate = [df dateFromString:[NSString stringWithFormat:@"%@",rd.runtime]];
-//            NSTimeInterval interval = [runTimeDate timeIntervalSinceDate:zeroRunTime];
-//            totalRunTime = [totalRunTime dateByAddingTimeInterval:interval];
-//        }
-//        headerView.totalLaps.text = [NSString stringWithFormat:@"Laps :%.2f", laps];
-//        
-//        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-//        if([appDelegate useKMasUnits])
-//        {
-//            headerView.totalDistance.text = [NSString stringWithFormat:@"%.02f km", totalDistance / 1000];
-//        }
-//        else
-//        {
-//            headerView.totalDistance.text = [NSString stringWithFormat:@"%.02f miles", totalDistance * 0.000621371192];
-//        }
-//
-//        [df setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0.0]];
-//        
-//        NSCalendar *calendar = [NSCalendar currentCalendar];
-//        NSDateComponents *components = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:totalRunTime];
-//        NSString *dateString = [CommonUtils timeFormattedStringForValue:(int)[components hour] :(int)[components minute] :(int)[components second]];
-//        headerView.totalTime.text = [NSString stringWithFormat:@"Time :%@", dateString];
-//        headerView.totalTracks.text = [NSString stringWithFormat:@"Tracks %d", (int)trackRunsArray.count];
-//    }
-//    
-////    if (kind == UICollectionElementKindSectionFooter) {
-////        UICollectionReusableView *footerview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"FooterView" forIndexPath:indexPath];
-////        
-////        reusableview = footerview;
-////    }
-//    
-//    return reusableview;
-//}
-//
-//#pragma mark - UICollectionView Datasource
-//
-//- (NSInteger)collectionView:(UICollectionView *)view
-//     numberOfItemsInSection:(NSInteger)section {
-//    return [trackRunsArray count];
-//}
-//
-//- (NSInteger)numberOfSectionsInCollectionView:
-//(UICollectionView *)collectionView {
-//    return 1;
-//}
-//
-//- (UICollectionViewCell *)collectionView:(UICollectionView *)cv
-//                  cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-//    
-//    NSMutableDictionary *TrackInfo = (NSMutableDictionary *)[trackRunsArray objectAtIndex:indexPath.row];
-//    
-//    ProfileCollectionCell *cell = [cv
-//                       dequeueReusableCellWithReuseIdentifier:@"ProfileCollectionCell"
-//                       forIndexPath:indexPath];
-//    cell.trackName.text = [TrackInfo objectForKey:@"Race"];
-//    cell.imageView.image = [UIImage imageNamed:[TrackInfo objectForKey:@"trackimage"]];
-//    
-//    [cell initFlatWithIndicatorProgressBar];
-//
-//    int trackLaps = [[NSString stringWithFormat:@"%@",[TrackInfo objectForKey:@"Laps"]] intValue];
-//    float laps = 0;
-//    float totalDistance;
-//    
-//    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-//    [df setDateFormat:@"HH:mm:ss.SS"];
-//    NSDate *totalRunTime = [df dateFromString:@"00:00:00.00"];
-//    NSDate *zeroRunTime = [df dateFromString:@"00:00:00.00"];
-//    
-//    for (RunData *rd in runs) {
-//        if([rd.runtrackname isEqualToString:cell.trackName.text])
-//        {
-//            laps = laps + [rd.runlaps floatValue];
-//            totalDistance = totalDistance + [rd.rundistance floatValue];
-//            NSDate *runTimeDate = [df dateFromString:[NSString stringWithFormat:@"%@",rd.runtime]];
-//            NSTimeInterval interval = [runTimeDate timeIntervalSinceDate:zeroRunTime];
-//            totalRunTime = [totalRunTime dateByAddingTimeInterval:interval];
-//        }
-//    }
-//    
-//    cell.totalLaps.text = [NSString stringWithFormat:@"Laps :%f", laps];
-//    
-//    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-//    if([appDelegate useKMasUnits])
-//    {
-//        cell.totalDistance.text = [NSString stringWithFormat:@"%.02f km", totalDistance / 1000];
-//    }
-//    else
-//    {
-//        cell.totalDistance.text = [NSString stringWithFormat:@"%.02f miles", totalDistance * 0.000621371192];
-//    }
-//    
-//    
-//    [df setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0.0]];
-//    
-//    NSCalendar *calendar = [NSCalendar currentCalendar];
-//    NSDateComponents *components = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:totalRunTime];
-//    NSString *dateString = [CommonUtils timeFormattedStringForValue:(int)[components hour] :(int)[components minute] :(int)[components second]];
-//    cell.totalTime.text = [NSString stringWithFormat:@"Time :%@", dateString];
-//    
-//    if(laps > 0)
-//    {
-//        CGFloat progress = (laps / trackLaps);
-//        [cell setProgress:progress animated:YES];
-//    }
-//    else{
-//        [cell setProgress:0.01 animated:YES];
-//    }
-//    
-//    return cell;
-//}
+#pragma mark Data
+
+-(void)getDataTotals
+{
+    float laps = 0;
+    float totalDistance = 0;
+    
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"HH:mm:ss.SS"];
+    NSDate *totalRunTime = [df dateFromString:@"00:00:00.00"];
+    NSDate *zeroRunTime = [df dateFromString:@"00:00:00.00"];
+    
+    for (RunData *rd in runs) {
+        laps = laps + [rd.runlaps floatValue];
+        totalDistance = totalDistance + [rd.rundistance floatValue];
+        
+        NSDate *runTimeDate = [df dateFromString:[NSString stringWithFormat:@"%@",rd.runtime]];
+        NSTimeInterval interval = [runTimeDate timeIntervalSinceDate:zeroRunTime];
+        totalRunTime = [totalRunTime dateByAddingTimeInterval:interval]; 
+    }
+    
+    totalLapsLabel.text = [NSString stringWithFormat:@"%.2f", laps];
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    if([appDelegate useKMasUnits])
+    {
+        totalDistanceLabel.text = [NSString stringWithFormat:@"%.02f km", totalDistance / 1000];
+    }
+    else
+    {
+        totalDistanceLabel.text = [NSString stringWithFormat:@"%.02f miles", totalDistance * 0.000621371192];
+    }
+    
+    [df setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0.0]];
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:totalRunTime];
+    NSString *dateString = [CommonUtils timeFormattedStringForValue:(int)[components hour] :(int)[components minute] :(int)[components second]];
+    totalTimeLabel.text = [NSString stringWithFormat:@"%@", dateString];
+}
 
 - (void)didReceiveMemoryWarning
 {

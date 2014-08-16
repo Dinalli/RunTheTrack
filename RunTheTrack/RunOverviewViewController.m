@@ -10,8 +10,6 @@
 #import "UIImage+ImageEffects.h"
 #import "RunTrackMapViewController.h"
 #import "CoreDataHelper.h"
-#import <AFNetworking/AFNetworking.h>
-#import "AFOAuth2Client.h"
 
 @implementation RunOverviewViewController
 
@@ -181,63 +179,6 @@
     NSString *pathToFile = [NSString stringWithFormat:@"%@/%@", documentsDirectory, fileName];
     
     return pathToFile;
-}
-
-- (NSString *)createGPX
-{
-    // gpx
-    GPXRoot *gpx = [GPXRoot rootWithCreator:@"GPSLogger"];
-    
-    // gpx > trk
-    GPXTrack *gpxTrack = [gpx newTrack];
-    gpxTrack.name = self.runData.runtrackname;
-    
-    // gpx > trk > trkseg > trkpt
-
-    NSMutableArray *points = [[self.runData.runDataLocations allObjects] mutableCopy];
-    
-    [points sortUsingComparator:^NSComparisonResult(id a, id b) {
-        RunLocations *aRunLocation = (RunLocations *)a;
-        RunLocations *bRunLocation = (RunLocations *)b;
-        NSInteger firstInteger = [aRunLocation.locationIndex integerValue];
-        NSInteger secondInteger = [bRunLocation.locationIndex integerValue];
-        
-        if (firstInteger > secondInteger)
-            return NSOrderedAscending;
-        if (firstInteger < secondInteger)
-            return NSOrderedDescending;
-        return [aRunLocation.locationIndex localizedCompare: bRunLocation.locationIndex];
-    }];
-    
-    NSInteger numberOfSteps = points.count;
-    CLLocationCoordinate2D coordinates[numberOfSteps];
-    for (NSInteger index = 0; index < numberOfSteps; index++) {
-        RunLocations *runlocation = (RunLocations *)[points objectAtIndex:index];
-        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([runlocation.lattitude doubleValue], [runlocation.longitude doubleValue]);
-        coordinates[index] = coordinate;
-        
-        GPXTrackPoint *gpxTrackPoint = [gpxTrack newTrackpointWithLatitude:runlocation.lattitude.floatValue longitude:runlocation.longitude.floatValue];
-        gpxTrackPoint.elevation = 0;
-        
-        NSDateFormatter *df = [[NSDateFormatter alloc] init];
-        [df setDateFormat:@"dd/MMM/yyyy HH:mm:ss.SS"];
-        gpxTrackPoint.time =  [df dateFromString:runlocation.locationTimeStamp];
-    }
-    
-    NSString *gpxString = gpx.gpx;
-    
-    // write gpx to file
-    NSError *error;
-    filePath = [self gpxFilePath];
-    if (![gpxString writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:&error]) {
-        if (error) {
-            NSLog(@"error, %@", error);
-        }
-        
-        return nil;
-    }
-    
-    return filePath;
 }
 
 -(void)goToTrack

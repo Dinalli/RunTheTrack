@@ -10,11 +10,13 @@
 #import <Social/Social.h>
 #import "XYPieChart.h"
 
-@interface ProfileViewController : RTTBaseViewController <UIActionSheetDelegate, XYPieChartDataSource, XYPieChartDelegate>
+@interface ProfileViewController : RTTBaseViewController <UIActionSheetDelegate, XYPieChartDataSource, XYPieChartDelegate, MKMapViewDelegate>
 {
     NSArray *tracksArray;
     NSMutableArray *trackRunsArray;
     NSMutableArray *runs;
+    
+    IBOutlet MKMapView *mv;
 }
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;

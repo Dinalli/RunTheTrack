@@ -11,7 +11,6 @@
 #import "AppDelegate.h"
 #import "RunData.h"
 #import <Social/Social.h>
-#import <GPX/GPX.h>
 
 @interface RunOverviewViewController : RTTBaseViewController <UIActionSheetDelegate, UIWebViewDelegate>
 {

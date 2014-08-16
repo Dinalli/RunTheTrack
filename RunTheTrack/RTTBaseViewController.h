@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "RESideMenu.h"
+#import "AppDelegate.h"
 
-@interface RTTBaseViewController : UIViewController 
+@interface RTTBaseViewController : UIViewController
+
+@property (nonatomic, strong) AppDelegate *appDelegate;
 
 -(void)createActivityIndicator;
 -(void)removeActivityIndicator;

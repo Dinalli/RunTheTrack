@@ -28,6 +28,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
     self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
     self.navigationController.navigationBar.translucent = YES;
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];

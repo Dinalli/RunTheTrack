@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
-#import "JBKenBurnsView.h"
 #import "RunData.h"
 #import "RunLocations.h"
 #import "SectorTicker.h"
