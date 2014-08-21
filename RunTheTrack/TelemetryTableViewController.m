@@ -145,7 +145,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue
                  sender:(id)sender {
     if ([segue.identifier isEqualToString:@"RunDataSegue"]) {
-
+        TelemetryViewController *tvc = (TelemetryViewController *)[segue destinationViewController];
+        tvc.runData = appDelegate.selectedRun;
     }
 }
 

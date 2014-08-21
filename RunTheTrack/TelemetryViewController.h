@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JBBaseChartViewController.h"
 
-@interface TelemetryViewController : UIViewController
+@interface TelemetryViewController : JBBaseChartViewController
+
+@property (nonatomic,strong)RunData *runData;
 
 @end

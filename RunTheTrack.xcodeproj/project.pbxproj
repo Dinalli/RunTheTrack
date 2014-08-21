@@ -80,6 +80,10 @@
 		405E5342185E113D00A8BD45 /* StartFinishAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 405E5341185E113D00A8BD45 /* StartFinishAnnotation.m */; };
 		405F873E199F9BA9004AFD03 /* TelemetryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 405F873D199F9BA9004AFD03 /* TelemetryViewController.m */; };
 		405F8741199F9C36004AFD03 /* TelemetryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 405F8740199F9C36004AFD03 /* TelemetryTableViewController.m */; };
+		405F8744199FAEC9004AFD03 /* JBChartHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 405F8743199FAEC9004AFD03 /* JBChartHeaderView.m */; };
+		405F8747199FAEE0004AFD03 /* JBLineChartFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 405F8746199FAEE0004AFD03 /* JBLineChartFooterView.m */; };
+		405F874A199FB039004AFD03 /* JBBaseChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 405F8749199FB039004AFD03 /* JBBaseChartViewController.m */; };
+		405F874D199FB066004AFD03 /* JBBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 405F874C199FB066004AFD03 /* JBBaseViewController.m */; };
 		4064EB1118EC6ABA00F1D0E9 /* austria.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4064EB1018EC6ABA00F1D0E9 /* austria.jpg */; };
 		4064EB1318EC6FB300F1D0E9 /* sochi.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4064EB1218EC6FB300F1D0E9 /* sochi.jpg */; };
 		4064EB1518EC739B00F1D0E9 /* malaysia.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4064EB1418EC739B00F1D0E9 /* malaysia.jpg */; };
@@ -324,6 +328,14 @@
 		405F873D199F9BA9004AFD03 /* TelemetryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TelemetryViewController.m; sourceTree = "<group>"; };
 		405F873F199F9C36004AFD03 /* TelemetryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TelemetryTableViewController.h; sourceTree = "<group>"; };
 		405F8740199F9C36004AFD03 /* TelemetryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TelemetryTableViewController.m; sourceTree = "<group>"; };
+		405F8742199FAEC9004AFD03 /* JBChartHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBChartHeaderView.h; sourceTree = "<group>"; };
+		405F8743199FAEC9004AFD03 /* JBChartHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBChartHeaderView.m; sourceTree = "<group>"; };
+		405F8745199FAEE0004AFD03 /* JBLineChartFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBLineChartFooterView.h; sourceTree = "<group>"; };
+		405F8746199FAEE0004AFD03 /* JBLineChartFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBLineChartFooterView.m; sourceTree = "<group>"; };
+		405F8748199FB039004AFD03 /* JBBaseChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBBaseChartViewController.h; sourceTree = "<group>"; };
+		405F8749199FB039004AFD03 /* JBBaseChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBBaseChartViewController.m; sourceTree = "<group>"; };
+		405F874B199FB066004AFD03 /* JBBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBBaseViewController.h; sourceTree = "<group>"; };
+		405F874C199FB066004AFD03 /* JBBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBBaseViewController.m; sourceTree = "<group>"; };
 		4064EB1018EC6ABA00F1D0E9 /* austria.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = austria.jpg; sourceTree = "<group>"; };
 		4064EB1218EC6FB300F1D0E9 /* sochi.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sochi.jpg; sourceTree = "<group>"; };
 		4064EB1418EC739B00F1D0E9 /* malaysia.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = malaysia.jpg; sourceTree = "<group>"; };
@@ -670,6 +682,14 @@
 		40446055194F7FE300C4F22B /* JBChartView */ = {
 			isa = PBXGroup;
 			children = (
+				405F874B199FB066004AFD03 /* JBBaseViewController.h */,
+				405F874C199FB066004AFD03 /* JBBaseViewController.m */,
+				405F8748199FB039004AFD03 /* JBBaseChartViewController.h */,
+				405F8749199FB039004AFD03 /* JBBaseChartViewController.m */,
+				405F8745199FAEE0004AFD03 /* JBLineChartFooterView.h */,
+				405F8746199FAEE0004AFD03 /* JBLineChartFooterView.m */,
+				405F8742199FAEC9004AFD03 /* JBChartHeaderView.h */,
+				405F8743199FAEC9004AFD03 /* JBChartHeaderView.m */,
 				40DAB5BD1950E9AB00A2696A /* JBChartTooltipTipView.h */,
 				40DAB5BE1950E9AB00A2696A /* JBChartTooltipTipView.m */,
 				40DAB5BF1950E9AB00A2696A /* JBChartTooltipView.h */,
@@ -1462,6 +1482,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				405F8747199FAEE0004AFD03 /* JBLineChartFooterView.m in Sources */,
 				40DAB5C21950E9AB00A2696A /* JBChartTooltipView.m in Sources */,
 				4044605C194F7FFD00C4F22B /* JBBarChartView.m in Sources */,
 				405E5342185E113D00A8BD45 /* StartFinishAnnotation.m in Sources */,
@@ -1499,6 +1520,8 @@
 				407C4DEF180BE6B700F7B2FE /* TracksCollectionViewController.m in Sources */,
 				4022963F188A83FA00BF515F /* RunData.m in Sources */,
 				4044605E194F7FFD00C4F22B /* JBLineChartView.m in Sources */,
+				405F8744199FAEC9004AFD03 /* JBChartHeaderView.m in Sources */,
+				405F874A199FB039004AFD03 /* JBBaseChartViewController.m in Sources */,
 				4029D77B195732EA00A6E7A9 /* MTZWhatsNewFeatureCollectionViewCell.m in Sources */,
 				40A1C446193E587100E072EE /* RTTRootViewController.m in Sources */,
 				4047939F182F7AEC004FEB73 /* RunCell.m in Sources */,
@@ -1514,6 +1537,7 @@
 				40892C171885B326008F7D38 /* RunTrackMapViewController.m in Sources */,
 				4029D780195732EA00A6E7A9 /* SAMGradientView.m in Sources */,
 				40FA5CF91883CB9D0047C7EA /* RTT.xcdatamodeld in Sources */,
+				405F874D199FB066004AFD03 /* JBBaseViewController.m in Sources */,
 				407710AC18453B3900882BBE /* ProfileViewController.m in Sources */,
 				409357A71855F7C6007EE900 /* UIImageView+More.m in Sources */,
 				4057146F181D471800D0070B /* RunFinishViewController.m in Sources */,
