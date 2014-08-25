@@ -384,7 +384,7 @@ enum TimerState : NSUInteger {
                                     [CommonUtils paceFromTimeAndDistanceMiles:(int)[components hour] :(int)[components minute] :(int)[components second] :(totalLocationDistance * 0.000621371192)]];
                 }
                 
-                NSLog(@"Sector 1 time %@",[CommonUtils timeFormattedStringForSpeech:(int)[components hour] :(int)[components minute] :(int)[components second]]);
+               // NSLog(@"Sector 1 time %@",[CommonUtils timeFormattedStringForSpeech:(int)[components hour] :(int)[components minute] :(int)[components second]]);
             }
             else{
                 NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
@@ -412,7 +412,7 @@ enum TimerState : NSUInteger {
                                     [CommonUtils paceFromTimeAndDistanceMiles:(int)[paceComponents hour] :(int)[paceComponents minute] :(int)[paceComponents second] :(totalLocationDistance * 0.000621371192)]];
                 }
                 
-                NSLog(@"Sector 1 time %@",[CommonUtils timeFormattedStringForSpeech:(int)[components hour] :(int)[components minute] :(int)[components second]]);
+                //NSLog(@"Sector 1 time %@",[CommonUtils timeFormattedStringForSpeech:(int)[components hour] :(int)[components minute] :(int)[components second]]);
 
             }
             
@@ -454,7 +454,7 @@ enum TimerState : NSUInteger {
             }
             
             sector2savedforLap = YES;
-            NSLog(@"Sector 2 time %@",[CommonUtils timeFormattedStringForSpeech:(int)[components hour] :(int)[components minute] :(int)[components second]]);
+            //NSLog(@"Sector 2 time %@",[CommonUtils timeFormattedStringForSpeech:(int)[components hour] :(int)[components minute] :(int)[components second]]);
 
         }
         
@@ -562,7 +562,7 @@ enum TimerState : NSUInteger {
     self.timerState = timerStopped;
     btnFinish.hidden = NO;
     finishDate = [NSDate date];
-    NSLog(@"locMan: locationManagerDidPauseLocationUpdates");
+    //NSLog(@"locMan: locationManagerDidPauseLocationUpdates");
 
 }
 
@@ -572,7 +572,7 @@ enum TimerState : NSUInteger {
                                                  description:@"No movement had been detected for a while, so updates were paused."
                                                         type:MessageBarMessageTypeError];
     
-    NSLog(@"locMan: locationManagerDidResumeLocationUpdates");
+   // NSLog(@"locMan: locationManagerDidResumeLocationUpdates");
 }
 
 #pragma mark Segue Navigation

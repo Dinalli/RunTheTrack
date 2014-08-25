@@ -11,12 +11,17 @@
 @implementation LoginViewController
 {
     IBOutlet UILabel *promptLabel;
+    IBOutlet UILabel *userNameLabel;
+    IBOutlet UILabel *passwordLabel;
     IBOutlet UIButton *LoginButton;
     IBOutlet UIButton *twitterButton;
     IBOutlet UIButton *facebookButton;
     IBOutlet UIButton *createUser;
+    IBOutlet UIButton *logincreateUser;
     IBOutlet UITextField *loginName;
     IBOutlet UITextField *loginPassword;
+    IBOutlet UIView *loginView;
+    BOOL parseLogin;
 }
 
 - (void)viewDidLoad
@@ -25,7 +30,11 @@
     
     PFUser *currentUser = [PFUser currentUser];
     if (currentUser) {
-        [LoginButton setTitle:@"Logout" forState:UIControlStateNormal];
+        [self setLoggedInFields];
+    }
+    else
+    {
+        [self setLoggedOutFields];
     }
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
@@ -33,6 +42,36 @@
                                    action:@selector(dismissKeyboard)];
     
     [self.view addGestureRecognizer:tap];
+    parseLogin = YES;
+}
+
+-(void)setLoggedInFields
+{
+    [LoginButton setTitle:@"Logout" forState:UIControlStateNormal];
+    [LoginButton setTag:99];
+    [loginName setHidden:YES];
+    [loginPassword setHidden:YES];
+    [twitterButton setHidden:YES];
+    [facebookButton setHidden:YES];
+    [createUser setHidden:YES];
+    [promptLabel setHidden:YES];
+    [userNameLabel setHidden:YES];
+    [passwordLabel setHidden:YES];
+    [loginView setHidden:YES];
+}
+
+-(void)setLoggedOutFields
+{
+    [LoginButton setTitle:@"Login" forState:UIControlStateNormal];
+    [LoginButton setTag:0];
+    [loginName setHidden:NO];
+    [loginPassword setHidden:NO];
+    [twitterButton setHidden:NO];
+    [facebookButton setHidden:NO];
+    [createUser setHidden:NO];
+    [promptLabel setHidden:NO];
+    [userNameLabel setHidden:NO];
+    [passwordLabel setHidden:NO];
 }
 
 -(void)dismissKeyboard {
@@ -54,7 +93,37 @@
     return user;
 }
 
--(IBAction)createNewAccount:(id)sender
+-(IBAction)createAccountTapped:(id)sender
+{
+    [loginView setHidden:NO];
+    [logincreateUser setTitle:@"Create Account & Login" forState:UIControlStateNormal];
+}
+
+-(IBAction)loginWithAccountTapped:(id)sender
+{
+    if(LoginButton.tag == 99)
+    {
+        [self loginWithParse];
+        return;
+    }
+    
+    [loginView setHidden:NO];
+    [logincreateUser setTitle:@"Login" forState:UIControlStateNormal];
+}
+
+-(IBAction)loginCreateParse:(id)sender
+{
+    if(parseLogin)
+    {
+        [self loginWithParse];
+    }
+    else
+    {
+        [self createNewParseAccount];
+    }
+}
+
+-(void)createNewParseAccount
 {
     // create
     PFUser *user = [self createPFUser];
@@ -66,6 +135,7 @@
             
             loginPassword.text = @"";
             loginName.text = @"";
+            [self setLoggedInFields];
             
         } else {
             NSString *errorString = [error userInfo][@"error"];
@@ -76,14 +146,14 @@
     }];
 }
 
--(IBAction)loginParse:(id)sender
+-(void)loginWithParse
 {
     PFUser *currentUser = [PFUser currentUser];
     if (currentUser)
     {
         [PFUser logOut];
         [[MessageBarManager sharedInstance] showMessageWithTitle:@"Success" description:@"Your have been logged out." type:MessageBarMessageTypeInfo];
-        [LoginButton setTitle:@"Login" forState:UIControlStateNormal];
+        [self setLoggedOutFields];
     }
     else
     {
@@ -94,6 +164,8 @@
                                             if (user) {
                                                 // Do stuff after successful login.
                                                 [[MessageBarManager sharedInstance] showMessageWithTitle:@"Success" description:@"Your have logged in." type:MessageBarMessageTypeInfo];
+                                                [self setLoggedInFields];
+                                                
                                             } else {
                                                 // The login failed. Check error to see why.
                                                 [[MessageBarManager sharedInstance] showMessageWithTitle:@"Login Error" description:error.localizedDescription type:MessageBarMessageTypeError];
@@ -106,7 +178,7 @@
 -(IBAction)loginFacebook:(id)sender
 {
     [self createActivityIndicator];
-    [PFFacebookUtils logInWithPermissions:@[@"public_profile"] block:^(PFUser *user, NSError *error) {
+    [PFFacebookUtils logInWithPermissions:nil block:^(PFUser *user, NSError *error) {
         if (!user) {
             NSLog(@"Uh oh. The user cancelled the Facebook login.");
         } else if (user.isNew) {
@@ -115,6 +187,8 @@
                     if (succeeded) {
                         NSLog(@"Woohoo, user logged in with Facebook!");
                         [[MessageBarManager sharedInstance] showMessageWithTitle:@"Success" description:@"Your have logged in." type:MessageBarMessageTypeInfo];
+                        
+                        [self setLoggedInFields];
                     }
                 }];
             }
@@ -124,6 +198,7 @@
         } else {
             NSLog(@"User logged in through Facebook!");
             [[MessageBarManager sharedInstance] showMessageWithTitle:@"Success" description:@"Your have logged in." type:MessageBarMessageTypeInfo];
+            [self setLoggedInFields];
         }
         
         [self removeActivityIndicator];
@@ -135,8 +210,7 @@
     [self createActivityIndicator];
     [PFTwitterUtils logInWithBlock:^(PFUser *user, NSError *error) {
         if (!user) {
-            NSLog(@"Uh oh. The user cancelled the Twitter login.");
-            return;
+            NSLog(@"Uh oh. The user cancelled the Twitter login. %@ %@", error.localizedDescription, error.debugDescription);
         } else if (user.isNew) {
             NSLog(@"User signed up and logged in with Twitter!");
             [[MessageBarManager sharedInstance] showMessageWithTitle:@"Success" description:@"Your have logged in." type:MessageBarMessageTypeInfo];
@@ -144,12 +218,14 @@
                 [PFTwitterUtils linkUser:user block:^(BOOL succeeded, NSError *error) {
                     if ([PFTwitterUtils isLinkedWithUser:user]) {
                         NSLog(@"Woohoo, user logged in with Twitter!");
+                        [self setLoggedInFields];
                     }
                 }];
             }
         } else {
             NSLog(@"User logged in with Twitter!");
             [[MessageBarManager sharedInstance] showMessageWithTitle:@"Success" description:@"Your have logged in." type:MessageBarMessageTypeInfo];
+            [self setLoggedInFields];
         }
         
         [self removeActivityIndicator];

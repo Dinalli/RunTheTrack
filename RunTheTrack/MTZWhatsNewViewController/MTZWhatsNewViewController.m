@@ -99,7 +99,7 @@
 	self.backgroundGradientBottomColor = [UIColor whiteColor];
 	_style = MTZWhatsNewViewControllerStyleDarkContent;
 	_automaticallySetStyle = YES;
-	self.dismissButtonTitle = NSLocalizedString(@"Get Started", nil);
+	self.dismissButtonTitle = NSLocalizedString(@"Lights Out...", nil);
 }
 
 - (void)reloadButtonHeight

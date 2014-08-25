@@ -36,14 +36,14 @@
 			<key>icon</key>
 			<string>Calendar-Day</string>
 		</dict>
-        <dict>
-            <key>title</key>
-            <string>Health Kit</string>
-            <key>detail</key>
-            <string>Data can be saved to health kit on iOS 8 devices</string>
-            <key>icon</key>
-            <string>Calendar-Day</string>
-        </dict>
+		<dict>
+			<key>title</key>
+			<string>Health Kit</string>
+			<key>detail</key>
+			<string>Data can be saved to health kit on iOS 8 devices</string>
+			<key>icon</key>
+			<string>IOS8</string>
+		</dict>
 	</array>
 </dict>
 </plist>

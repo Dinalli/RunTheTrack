@@ -12,6 +12,8 @@
 		4008B7B21954B34900D168ED /* austria.png in Resources */ = {isa = PBXBuildFile; fileRef = 4008B7B11954B34900D168ED /* austria.png */; };
 		4008B7B41954B35600D168ED /* sochi.png in Resources */ = {isa = PBXBuildFile; fileRef = 4008B7B31954B35600D168ED /* sochi.png */; };
 		40110739192BEDF2009E0604 /* RTTBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40110738192BEDF2009E0604 /* RTTBaseViewController.m */; };
+		4014D8DB19A64C7400A84532 /* IOS8.png in Resources */ = {isa = PBXBuildFile; fileRef = 4014D8DA19A64C7400A84532 /* IOS8.png */; };
+		4014D8DF19A6520100A84532 /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 4014D8DE19A6520100A84532 /* XYPieChart.m */; };
 		4015F4C818888A54006C3DC8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4015F4C718888A54006C3DC8 /* QuartzCore.framework */; };
 		4015F4CA18888A5B006C3DC8 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4015F4C918888A5B006C3DC8 /* Accelerate.framework */; };
 		4018F52A17F83903006F990E /* Melbourne.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4018F51917F83903006F990E /* Melbourne.jpg */; };
@@ -187,7 +189,6 @@
 		40D42C9E18702DBD0057DF2D /* YLProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D42C9D18702DBD0057DF2D /* YLProgressBar.m */; };
 		40DAB5C11950E9AB00A2696A /* JBChartTooltipTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DAB5BE1950E9AB00A2696A /* JBChartTooltipTipView.m */; };
 		40DAB5C21950E9AB00A2696A /* JBChartTooltipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DAB5C01950E9AB00A2696A /* JBChartTooltipView.m */; };
-		40DCC09A1989198900A0D4C5 /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DCC0991989198900A0D4C5 /* XYPieChart.m */; };
 		40DFDBE9182AE6C100554C58 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40DFDBE8182AE6C100554C58 /* Social.framework */; };
 		40E5A2EA1856504300E8E87E /* UIView+More.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E5A2E91856504300E8E87E /* UIView+More.m */; };
 		40E5A2EC1856538A00E8E87E /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40E5A2EB1856538A00E8E87E /* CoreText.framework */; };
@@ -225,6 +226,9 @@
 		4008B7B31954B35600D168ED /* sochi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sochi.png; sourceTree = "<group>"; };
 		40110737192BEDF2009E0604 /* RTTBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTTBaseViewController.h; sourceTree = "<group>"; };
 		40110738192BEDF2009E0604 /* RTTBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTTBaseViewController.m; sourceTree = "<group>"; };
+		4014D8DA19A64C7400A84532 /* IOS8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IOS8.png; sourceTree = "<group>"; };
+		4014D8DD19A6520100A84532 /* XYPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPieChart.h; sourceTree = "<group>"; };
+		4014D8DE19A6520100A84532 /* XYPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPieChart.m; sourceTree = "<group>"; };
 		4015F4C718888A54006C3DC8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4015F4C918888A5B006C3DC8 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		4018F51917F83903006F990E /* Melbourne.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Melbourne.jpg; sourceTree = "<group>"; };
@@ -468,8 +472,6 @@
 		40DAB5BE1950E9AB00A2696A /* JBChartTooltipTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBChartTooltipTipView.m; sourceTree = "<group>"; };
 		40DAB5BF1950E9AB00A2696A /* JBChartTooltipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBChartTooltipView.h; sourceTree = "<group>"; };
 		40DAB5C01950E9AB00A2696A /* JBChartTooltipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBChartTooltipView.m; sourceTree = "<group>"; };
-		40DCC0981989198900A0D4C5 /* XYPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPieChart.h; sourceTree = "<group>"; };
-		40DCC0991989198900A0D4C5 /* XYPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPieChart.m; sourceTree = "<group>"; };
 		40DFDBE8182AE6C100554C58 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		40E5A2E81856504300E8E87E /* UIView+More.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+More.h"; sourceTree = "<group>"; };
 		40E5A2E91856504300E8E87E /* UIView+More.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+More.m"; sourceTree = "<group>"; };
@@ -568,6 +570,15 @@
 			name = BaseVC;
 			sourceTree = "<group>";
 		};
+		4014D8DC19A651EF00A84532 /* XYPieChart */ = {
+			isa = PBXGroup;
+			children = (
+				4014D8DD19A6520100A84532 /* XYPieChart.h */,
+				4014D8DE19A6520100A84532 /* XYPieChart.m */,
+			);
+			name = XYPieChart;
+			sourceTree = "<group>";
+		};
 		4017D214189F7EB000ADA8B1 /* MapCallouts */ = {
 			isa = PBXGroup;
 			children = (
@@ -582,7 +593,7 @@
 		4018F50417F82E26006F990E /* 3rdParty */ = {
 			isa = PBXGroup;
 			children = (
-				40DCC0971989197400A0D4C5 /* XYChart */,
+				4014D8DC19A651EF00A84532 /* XYPieChart */,
 				401C1822196E72EC007DEE10 /* Parse */,
 				4029D7661957321F00A6E7A9 /* WhatsNew */,
 				40446055194F7FE300C4F22B /* JBChartView */,
@@ -729,6 +740,7 @@
 		405F4B6119817880001DA89E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4014D8DA19A64C7400A84532 /* IOS8.png */,
 				40F2C3911981A7F700214B6D /* new.png */,
 				40F2C38D1981A53900214B6D /* Clipboard.png */,
 				40F2C3931981A80C00214B6D /* track.png */,
@@ -1218,15 +1230,6 @@
 			name = YLProgressBar;
 			sourceTree = "<group>";
 		};
-		40DCC0971989197400A0D4C5 /* XYChart */ = {
-			isa = PBXGroup;
-			children = (
-				40DCC0981989198900A0D4C5 /* XYPieChart.h */,
-				40DCC0991989198900A0D4C5 /* XYPieChart.m */,
-			);
-			name = XYChart;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1347,6 +1350,7 @@
 				4018F53017F83903006F990E /* Spa.jpg in Resources */,
 				40343B0A18940D6000881CC6 /* monza.png in Resources */,
 				40343B0218940D6000881CC6 /* china.png in Resources */,
+				4014D8DB19A64C7400A84532 /* IOS8.png in Resources */,
 				408167E4189E908C00843B98 /* Icon-Small.png in Resources */,
 				40933D3F1947887100D77E3E /* RTTBackground.png in Resources */,
 				40343B0418940D6000881CC6 /* india.png in Resources */,
@@ -1505,7 +1509,6 @@
 				400522571880209600B34DAD /* RunInfoAltitudeGraph.m in Sources */,
 				408A7993182AE3AA0088D8AC /* SettingsViewController.m in Sources */,
 				4029D7691957323400A6E7A9 /* MTZWhatsNew.m in Sources */,
-				40DCC09A1989198900A0D4C5 /* XYPieChart.m in Sources */,
 				40C1657317EB637900D4E093 /* AppDelegate.m in Sources */,
 				40E5A2EA1856504300E8E87E /* UIView+More.m in Sources */,
 				40A3B3E1185B768F00BA85BB /* MessageBarManager.m in Sources */,
@@ -1523,6 +1526,7 @@
 				405F8744199FAEC9004AFD03 /* JBChartHeaderView.m in Sources */,
 				405F874A199FB039004AFD03 /* JBBaseChartViewController.m in Sources */,
 				4029D77B195732EA00A6E7A9 /* MTZWhatsNewFeatureCollectionViewCell.m in Sources */,
+				4014D8DF19A6520100A84532 /* XYPieChart.m in Sources */,
 				40A1C446193E587100E072EE /* RTTRootViewController.m in Sources */,
 				4047939F182F7AEC004FEB73 /* RunCell.m in Sources */,
 				403AEBA219501C8F00F744A8 /* JBChartInformationView.m in Sources */,

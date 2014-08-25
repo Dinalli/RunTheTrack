@@ -66,6 +66,9 @@ NSInteger const JBLineChartLineCount = 3;
 NSString * const kJBLineChartViewControllerNavButtonViewKey = @"view";
 
 @interface TelemetryViewController ()  <JBLineChartViewDelegate, JBLineChartViewDataSource>
+{
+    AppDelegate *appDelegate;
+}
 
 @property (nonatomic, strong) JBLineChartView *lineChartView;
 @property (nonatomic, strong) JBChartInformationView *informationView;
@@ -138,10 +141,12 @@ NSString * const kJBLineChartViewControllerNavButtonViewKey = @"view";
     
     NSArray *results = [[self.runData.runDataLocations allObjects] sortedArrayUsingDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"locationTimeStamp" ascending:YES]]];
     CLLocationDistance totalDistance  = 0;
-    for (int lineIndex=0; lineIndex<JBLineChartLineCount; lineIndex++)
-    {
+//    for (int lineIndex=0; lineIndex<JBLineChartLineCount; lineIndex++)
+//    {
         RunLocations *lastLocation = nil;
-        NSMutableArray *mutableChartData = [NSMutableArray array];
+        NSMutableArray *mutabledistanceData = [NSMutableArray array];
+        NSMutableArray *mutableSpeedData = [NSMutableArray array];
+        NSMutableArray *mutableTotalDistanceData = [NSMutableArray array];
 
         for(RunLocations *rl in results)
         {
@@ -151,15 +156,22 @@ NSString * const kJBLineChartViewControllerNavButtonViewKey = @"view";
                 CLLocation *endLocation = [[CLLocation alloc] initWithLatitude:[rl.lattitude doubleValue] longitude:[rl.longitude doubleValue]];
                 CLLocationDistance distance = [endLocation distanceFromLocation:startLocation];
                 
-                switch (lineIndex) {
-                    case 0:
-                    {
+//                switch (lineIndex) {
+//                    case 0:
+//                    {
 
-                       [mutableChartData addObject:[NSString stringWithFormat:@"%f",distance]]; // Distance
-                        break;
-                    }
-                    case 1:
-                    {
+                        if([appDelegate useKMasUnits])
+                        {
+                            [mutabledistanceData addObject:[NSString stringWithFormat:@"%.2f", distance / 1000]];
+                        }
+                        else
+                        {
+                            [mutabledistanceData addObject:[NSString stringWithFormat:@"%.2f",distance * 0.000621371192]];
+                        }
+//                        break;
+//                    }
+//                    case 1:
+//                    {
                         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
                         [dateFormatter setDateFormat:@"dd/MMM/yyyy HH:mm:ss.SS"];
                         [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0.0]];
@@ -172,28 +184,40 @@ NSString * const kJBLineChartViewControllerNavButtonViewKey = @"view";
                         
                         //NSLog(@"%@ - %@ - Speed = %f",lastLocation.locationTimeStamp, rl.locationTimeStamp, speed);
                         
-                        [mutableChartData addObject:[NSString stringWithFormat:@"%f",speed]]; // Speed
-                        break;
-                    }
-                    case 2:
-                    {
+                        [mutableSpeedData addObject:[NSString stringWithFormat:@"%f",speed]]; // Speed
+//                        break;
+//                    }
+//                    case 2:
+//                    {
                         totalDistance = totalDistance + distance;
-                        [mutableChartData addObject:[NSString stringWithFormat:@"%f",totalDistance]]; // Total Distance
-                        break;
-                    }
-                    default:
-                        break;
-                }
+                        
+                        if([appDelegate useKMasUnits])
+                        {
+                            [mutableTotalDistanceData addObject:[NSString stringWithFormat:@"%.2f", totalDistance / 1000]];
+                        }
+                        else
+                        {
+                            [mutableTotalDistanceData addObject:[NSString stringWithFormat:@"%.2f",totalDistance * 0.000621371192]];
+                        }
+//                        break;
+//                    }
+//                    default:
+//                        break;
+//                }
             }
             else
             {
-                [mutableChartData addObject:[NSString stringWithFormat:@"%d",0]]; // Distance, total or speed
+                [mutabledistanceData addObject:[NSString stringWithFormat:@"%d",0]];
+                [mutableSpeedData addObject:[NSString stringWithFormat:@"%d",0]];
+                [mutableTotalDistanceData addObject:[NSString stringWithFormat:@"%d",0]];// Distance, total or speed
             }
             
             lastLocation = rl;
         }
-        [mutableLineCharts addObject:mutableChartData];
-    }
+        [mutableLineCharts addObject:mutabledistanceData];
+        [mutableLineCharts addObject:mutableSpeedData];
+        [mutableLineCharts addObject:mutableTotalDistanceData];
+//    }
     _chartData = [NSArray arrayWithArray:mutableLineCharts];
     
     for (int lineIndex=0; lineIndex<JBLineChartLineCount; lineIndex++)
@@ -224,6 +248,7 @@ NSString * const kJBLineChartViewControllerNavButtonViewKey = @"view";
 - (void)loadView
 {
     [super loadView];
+    appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     [self initRunData];
     
@@ -291,7 +316,15 @@ NSString * const kJBLineChartViewControllerNavButtonViewKey = @"view";
     switch (lineIndex) {
         case 0:
         {
-            [self.informationView setValueText:[NSString stringWithFormat:@"%.2f", [valueNumber floatValue]] unitText:@"meters"];
+            if([appDelegate useKMasUnits])
+            {
+                [self.informationView setValueText:[NSString stringWithFormat:@"%.2f", [valueNumber floatValue] / 1000] unitText:@"km"];
+            }
+            else
+            {
+                [self.informationView setValueText:[NSString stringWithFormat:@"%.2f", [valueNumber floatValue] * 0.000621371192] unitText:@"miles"];
+            }
+            
             [self.informationView setTitleText:@"Distance"];
             break;
         }
@@ -303,7 +336,14 @@ NSString * const kJBLineChartViewControllerNavButtonViewKey = @"view";
         }
         case 2:
         {
-            [self.informationView setValueText:[NSString stringWithFormat:@"%.2f", [valueNumber floatValue]] unitText:@"meters"];
+            if([appDelegate useKMasUnits])
+            {
+                [self.informationView setValueText:[NSString stringWithFormat:@"%.2f", [valueNumber floatValue] / 1000] unitText:@"km"];
+            }
+            else
+            {
+                [self.informationView setValueText:[NSString stringWithFormat:@"%.2f", [valueNumber floatValue] * 0.000621371192] unitText:@"miles"];
+            }
             [self.informationView setTitleText:@"Total Distance "];
             break;
         }

@@ -60,11 +60,13 @@ NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:S
     [Parse setApplicationId:@"rVf0vPwhdrzKazUVEvYPGKVJBvfg1NH7WHuZRLvz"
                   clientKey:@"vVfm7AfjoC88w4UnSrVFrMaezEZ9twIxoj8wClkK"];
     
-    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     [PFFacebookUtils initializeFacebook];
     
-    [PFTwitterUtils initializeWithConsumerKey:@"2293480626-V1uhI8C0mI7sOC9PgvJJCPYRu3jJBSt27nSxrfC"
-                               consumerSecret:@"CQt4Azhf2sMfuvm0R7jCcZAuB6T2kLBslHve9jpRWQRmi"];
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    
+    [PFTwitterUtils initializeWithConsumerKey:@"7Rfb2ByqTzLNCuYkThQ2lGVGG"
+                               consumerSecret:@"kzZzShf66wuTMLRRDlNxLeqXEP4MVHml023KBC5Kyi2K8mfmGo"];
     
     return YES;
 }
@@ -142,7 +144,7 @@ NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:S
     // attempt to extract a token from the url
     return [FBAppCall handleOpenURL:url
                   sourceApplication:sourceApplication
-                        withSession:self.session];
+                        withSession:[PFFacebookUtils session]];
 }
 
 - (void)sessionStateChanged:(FBSession *)session
@@ -209,6 +211,7 @@ NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:S
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     
+    
     [FBSettings setDefaultAppID:@"636662449718679"];
     [FBAppEvents activateApp];
     
@@ -219,7 +222,7 @@ NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:S
     // FBSample logic
     // We need to properly handle activation of the application with regards to SSO
     //  (e.g., returning from iOS 6.0 authorization dialog or from fast app switching).
-    [FBAppCall handleDidBecomeActiveWithSession:self.session];
+    [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
     
     // Check application background refresh
     
