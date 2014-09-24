@@ -21,6 +21,8 @@
     IBOutlet UITextField *loginName;
     IBOutlet UITextField *loginPassword;
     IBOutlet UIView *loginView;
+    IBOutlet UIScrollView *scrollView;
+    UITextField *activeField;
     BOOL parseLogin;
 }
 
@@ -43,6 +45,8 @@
     
     [self.view addGestureRecognizer:tap];
     parseLogin = YES;
+    
+    [self registerForKeyboardNotifications];
 }
 
 -(void)setLoggedInFields
@@ -152,7 +156,7 @@
     if (currentUser)
     {
         [PFUser logOut];
-        [[MessageBarManager sharedInstance] showMessageWithTitle:@"Success" description:@"Your have been logged out." type:MessageBarMessageTypeInfo];
+        [[MessageBarManager sharedInstance] showMessageWithTitle:@"Success" description:@"You have been logged out." type:MessageBarMessageTypeInfo];
         [self setLoggedOutFields];
     }
     else
@@ -163,7 +167,7 @@
                                         block:^(PFUser *user, NSError *error) {
                                             if (user) {
                                                 // Do stuff after successful login.
-                                                [[MessageBarManager sharedInstance] showMessageWithTitle:@"Success" description:@"Your have logged in." type:MessageBarMessageTypeInfo];
+                                                [[MessageBarManager sharedInstance] showMessageWithTitle:@"Success" description:@"You have logged in." type:MessageBarMessageTypeInfo];
                                                 [self setLoggedInFields];
                                                 
                                             } else {
@@ -186,7 +190,7 @@
                 [PFFacebookUtils linkUser:user permissions:nil block:^(BOOL succeeded, NSError *error) {
                     if (succeeded) {
                         NSLog(@"Woohoo, user logged in with Facebook!");
-                        [[MessageBarManager sharedInstance] showMessageWithTitle:@"Success" description:@"Your have logged in." type:MessageBarMessageTypeInfo];
+                        [[MessageBarManager sharedInstance] showMessageWithTitle:@"Success" description:@"You have logged in." type:MessageBarMessageTypeInfo];
                         
                         [self setLoggedInFields];
                     }
@@ -194,10 +198,10 @@
             }
             
             NSLog(@"User signed up and logged in through Facebook!");
-            [[MessageBarManager sharedInstance] showMessageWithTitle:@"Success" description:@"Your have logged in." type:MessageBarMessageTypeInfo];
+            [[MessageBarManager sharedInstance] showMessageWithTitle:@"Success" description:@"You have logged in." type:MessageBarMessageTypeInfo];
         } else {
             NSLog(@"User logged in through Facebook!");
-            [[MessageBarManager sharedInstance] showMessageWithTitle:@"Success" description:@"Your have logged in." type:MessageBarMessageTypeInfo];
+            [[MessageBarManager sharedInstance] showMessageWithTitle:@"Success" description:@"You have logged in." type:MessageBarMessageTypeInfo];
             [self setLoggedInFields];
         }
         
@@ -213,7 +217,7 @@
             NSLog(@"Uh oh. The user cancelled the Twitter login. %@ %@", error.localizedDescription, error.debugDescription);
         } else if (user.isNew) {
             NSLog(@"User signed up and logged in with Twitter!");
-            [[MessageBarManager sharedInstance] showMessageWithTitle:@"Success" description:@"Your have logged in." type:MessageBarMessageTypeInfo];
+            [[MessageBarManager sharedInstance] showMessageWithTitle:@"Success" description:@"You have logged in." type:MessageBarMessageTypeInfo];
             if (![PFTwitterUtils isLinkedWithUser:user]) {
                 [PFTwitterUtils linkUser:user block:^(BOOL succeeded, NSError *error) {
                     if ([PFTwitterUtils isLinkedWithUser:user]) {
@@ -224,12 +228,66 @@
             }
         } else {
             NSLog(@"User logged in with Twitter!");
-            [[MessageBarManager sharedInstance] showMessageWithTitle:@"Success" description:@"Your have logged in." type:MessageBarMessageTypeInfo];
+            [[MessageBarManager sharedInstance] showMessageWithTitle:@"Success" description:@"You have logged in." type:MessageBarMessageTypeInfo];
             [self setLoggedInFields];
         }
         
         [self removeActivityIndicator];
     }];
 
+}
+
+
+#pragma mark TextField Scrolling
+// Call this method somewhere in your view controller setup code.
+- (void)registerForKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardDidShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeHidden:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
+    
+}
+
+// Called when the UIKeyboardDidShowNotification is sent.
+- (void)keyboardWasShown:(NSNotification*)aNotification
+{
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
+    scrollView.contentInset = contentInsets;
+    scrollView.scrollIndicatorInsets = contentInsets;
+    
+    // If active text field is hidden by keyboard, scroll it so it's visible
+    // Your app might not need or want this behavior.
+    CGRect aRect = loginView.frame;
+    aRect.size.height -= kbSize.height;
+    if (!CGRectContainsPoint(aRect, activeField.frame.origin) ) {
+        CGPoint scrollPoint = CGPointMake(0.0, activeField.frame.origin.y+44-(aRect.size.height));
+        [scrollView setContentOffset:scrollPoint animated:YES];
+    }
+}
+
+// Called when the UIKeyboardWillHideNotification is sent
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+    scrollView.contentInset = contentInsets;
+    scrollView.scrollIndicatorInsets = contentInsets;
+    [scrollView setContentOffset:CGPointMake(0.0, 0.0) animated:YES];
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    activeField = textField;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    activeField = nil;
 }
 @end

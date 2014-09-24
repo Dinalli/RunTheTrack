@@ -40,7 +40,6 @@
 
 -(void)createActivityIndicator
 {
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     if ( activityIndicator == nil)
     {
         activityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
@@ -56,7 +55,6 @@
 
 -(void)removeActivityIndicator;
 {
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     [activityIndicator removeFromSuperview];
     activityIndicator = nil;
 }

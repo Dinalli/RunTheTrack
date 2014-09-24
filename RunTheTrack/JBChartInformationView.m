@@ -9,8 +9,8 @@
 #import "JBChartInformationView.h"
 
 #define kJBFontInformationTitle [UIFont fontWithName:@"HelveticaNeue" size:20]
-#define kJBFontInformationValue [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:80]
-#define kJBFontInformationUnit [UIFont fontWithName:@"HelveticaNeue" size:40]
+#define kJBFontInformationValue [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:60]
+#define kJBFontInformationUnit [UIFont fontWithName:@"HelveticaNeue" size:30]
 
 // Numerics
 CGFloat const kJBChartValueViewPadding = 10.0f;
@@ -58,7 +58,7 @@ static UIColor *kJBChartInformationViewShadowColor = nil;
 	if (self == [JBChartInformationView class])
 	{
 		kJBChartViewSeparatorColor = [UIColor whiteColor];
-        kJBChartViewTitleColor = [UIColor whiteColor];
+        kJBChartViewTitleColor = [UIColor orangeColor];
         kJBChartViewShadowColor = [UIColor blackColor];
 	}
 }

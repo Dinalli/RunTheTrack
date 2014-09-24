@@ -539,6 +539,12 @@
                                                             type:MessageBarMessageTypeInfo];
         [self composePost:SLServiceTypeFacebook];
     }
+    else
+    {
+        [[MessageBarManager sharedInstance] showMessageWithTitle:@"Cannot Share on Facebook"
+                                                     description:@"Please make sure you are Logged In"
+                                                            type:MessageBarMessageTypeInfo];
+    }
 }
 
 -(void)shareOnTwitter
@@ -549,6 +555,12 @@
                                                      description:@"Creating the post now"
                                                             type:MessageBarMessageTypeInfo];
         [self composePost:SLServiceTypeTwitter];
+    }
+    else
+    {
+        [[MessageBarManager sharedInstance] showMessageWithTitle:@"Cannot Share on Twitter"
+                                                     description:@"Please make sure you are Logged In"
+                                                            type:MessageBarMessageTypeInfo];
     }
 }
 

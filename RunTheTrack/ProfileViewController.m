@@ -300,4 +300,73 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark social sharing
+
+-(IBAction)showActivityView:(id)sender
+{
+    UIActionSheet *loginActionSheet = [[UIActionSheet alloc] initWithTitle:@"Share using" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"share on facebook" otherButtonTitles:@"share on twitter", nil];
+    
+    [loginActionSheet showInView:self.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if (buttonIndex == 0) {
+        [self shareOnFacebook];
+    }
+    else if (buttonIndex == 1) {
+        [self shareOnTwitter];
+    }
+}
+
+-(void)shareOnFacebook
+{
+    if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
+    {
+        [[MessageBarManager sharedInstance] showMessageWithTitle:@"Share on facebook"
+                                                     description:@"Creating the post now"
+                                                            type:MessageBarMessageTypeInfo];
+        [self composePost:SLServiceTypeFacebook];
+    }
+    else
+    {
+        [[MessageBarManager sharedInstance] showMessageWithTitle:@"Cannot Share on Facebook"
+                                                     description:@"Please make sure you are Logged In"
+                                                            type:MessageBarMessageTypeInfo];
+    }
+}
+
+-(void)shareOnTwitter
+{
+    if([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter])
+    {
+        [[MessageBarManager sharedInstance] showMessageWithTitle:@"Share on twitter"
+                                                     description:@"Creating the post now"
+                                                            type:MessageBarMessageTypeInfo];
+        [self composePost:SLServiceTypeTwitter];
+    }
+    else
+    {
+        [[MessageBarManager sharedInstance] showMessageWithTitle:@"Cannot Share on Twitter"
+                                                     description:@"Please make sure you are Logged In"
+                                                            type:MessageBarMessageTypeInfo];
+    }
+}
+
+-(void)composePost:(NSString *)serviceType
+{
+    SLComposeViewController *composeSheet=[[SLComposeViewController alloc]init];
+    composeSheet=[SLComposeViewController composeViewControllerForServiceType:serviceType];
+    [composeSheet setInitialText:[NSString stringWithFormat:@"Comepleted %d runs on %ld tracks, using @runthetracks", totalRuns, trackRunsArray.count]];
+    
+    UIGraphicsBeginImageContext(self.view.frame.size);
+    CGContextRef currentContext = UIGraphicsGetCurrentContext();
+    [self.view.layer renderInContext:currentContext];
+    UIImage *screenshot = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    [composeSheet addImage:screenshot];
+    [self presentViewController:composeSheet animated:YES completion:nil];
+}
+
 @end

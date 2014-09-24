@@ -460,26 +460,38 @@
 }
 
 -(void)shareOnFacebook
+{
+    if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
     {
-        if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
-        {
-            [[MessageBarManager sharedInstance] showMessageWithTitle:@"Share on facebook"
-                                                         description:@"Creating the post now"
-                                                                type:MessageBarMessageTypeInfo];
-            [self composePost:SLServiceTypeFacebook];
-        }
+        [[MessageBarManager sharedInstance] showMessageWithTitle:@"Share on facebook"
+                                                     description:@"Creating the post now"
+                                                            type:MessageBarMessageTypeInfo];
+        [self composePost:SLServiceTypeFacebook];
     }
-    
+    else
+    {
+        [[MessageBarManager sharedInstance] showMessageWithTitle:@"Cannot Share on Facebook"
+                                                     description:@"Please make sure you are Logged In"
+                                                            type:MessageBarMessageTypeInfo];
+    }
+}
+
 -(void)shareOnTwitter
+{
+    if([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter])
     {
-        if([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter])
-        {
-            [[MessageBarManager sharedInstance] showMessageWithTitle:@"Share on twitter"
-                                                         description:@"Creating the post now"
-                                                                type:MessageBarMessageTypeInfo];
-            [self composePost:SLServiceTypeTwitter];
-        }
+        [[MessageBarManager sharedInstance] showMessageWithTitle:@"Share on twitter"
+                                                     description:@"Creating the post now"
+                                                            type:MessageBarMessageTypeInfo];
+        [self composePost:SLServiceTypeTwitter];
     }
+    else
+    {
+        [[MessageBarManager sharedInstance] showMessageWithTitle:@"Cannot Share on Twitter"
+                                                     description:@"Please make sure you are Logged In"
+                                                            type:MessageBarMessageTypeInfo];
+    }
+}
     
 -(void)composePost:(NSString *)serviceType
 {

@@ -12,6 +12,7 @@
 #import "UIImage+ImageEffects.h"
 #import "CoreDataHelper.h"
 #import "RunAchievement.h"
+#import <AudioToolbox/AudioToolbox.h> 
 
 typedef NS_ENUM(NSInteger, kTTCounter){
     kTTCounterRunning = 0,
@@ -120,7 +121,7 @@ enum TimerState : NSUInteger {
             stepCounter = stepCounter + numberOfSteps;
             
             noOfSteps.hidden = NO;
-            noOfSteps.text = [NSString stringWithFormat:@"Steps %d", numberOfSteps];
+            noOfSteps.text = [NSString stringWithFormat:@"Steps %ld", (long)numberOfSteps];
 
                 CGFloat distance = 0;
                 distance = numberOfSteps * appDelegate.runMotionDistance;
@@ -275,6 +276,11 @@ enum TimerState : NSUInteger {
         [self.locationManager startUpdatingLocation];
         motionActivityIndicator.image = [UIImage imageNamed:@"gps.png"];
         
+        if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)])
+        {
+            [self.locationManager requestWhenInUseAuthorization];
+        }
+        
         if([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied)
         {
             [[MessageBarManager sharedInstance] showMessageWithTitle:@"Location Error" description:@"Location Services for the app is disabled. Please enable this in settings." type:MessageBarMessageTypeInfo duration:5.0];
@@ -318,7 +324,7 @@ enum TimerState : NSUInteger {
                 stepCounter = stepCounter + numberOfSteps;
                 
                 noOfSteps.hidden = NO;
-                noOfSteps.text = [NSString stringWithFormat:@"Steps %d", numberOfSteps];
+                noOfSteps.text = [NSString stringWithFormat:@"Steps %ld", (long)numberOfSteps];
                 
                 if(self.timerState == timerStarted)
                 {
@@ -359,7 +365,8 @@ enum TimerState : NSUInteger {
         //Sector 1
         if (fractional > 0.33333 && !sector1savedforLap)
         {
-            [self playSound:@"beep-8" :@"mp3"];
+            [self playSound:@"beep-2" :@"mp3"];
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
             sector1Date = [NSDate date];
             sector1Loc = [self.runPointArray lastObject];
             if(sector3Date == nil)
@@ -424,7 +431,8 @@ enum TimerState : NSUInteger {
         // Sector 2
         if (fractional > 0.6666 && !sector2savedforLap)
         {
-            [self playSound:@"beep-8" :@"mp3"];
+            [self playSound:@"beep-2" :@"mp3"];
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
             sector2Date = [NSDate date];
             sector2Loc = [self.runPointArray lastObject];
             NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
@@ -462,6 +470,7 @@ enum TimerState : NSUInteger {
         if(lapCounter  != (int)floorf(runLapsFloat))
         {
             [self playSound:@"beep_2" :@"mp3"];
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
             sector3Date = [NSDate date];
             NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
 
@@ -508,10 +517,10 @@ enum TimerState : NSUInteger {
                                      @"LapLong":[NSString stringWithFormat:@"%f",lapLoc.coordinate.longitude]};
 
             
-            [self textToSpeak:[NSString stringWithFormat:@"Lap %d Time %@", lapCounter,[CommonUtils timeFormattedStringForSpeech:(int)[lapComponents hour] :(int)[lapComponents minute] :(int)[lapComponents second]]]];
+            [self textToSpeak:[NSString stringWithFormat:@"Lap %ld Time %@", (long)lapCounter,[CommonUtils timeFormattedStringForSpeech:(int)[lapComponents hour] :(int)[lapComponents minute] :(int)[lapComponents second]]]];
             
             if(runLapsInfoDict == nil) runLapsInfoDict = [[NSMutableDictionary alloc] init];
-            [runLapsInfoDict setObject:runLap forKey:[NSString stringWithFormat:@"%d",lapCounter]];
+            [runLapsInfoDict setObject:runLap forKey:[NSString stringWithFormat:@"%ld",(long)lapCounter]];
             sector1savedforLap = NO;
             sector2savedforLap = NO;
             sector1Time = @"";
@@ -614,7 +623,7 @@ enum TimerState : NSUInteger {
         if(appDelegate.useMotion)
         {
             [self.trackInfo setObject:@"MotionRun" forKey:@"runType"];
-            [self.trackInfo setObject:[NSString stringWithFormat:@"%d", stepCounter] forKey:@"runSteps"];
+            [self.trackInfo setObject:[NSString stringWithFormat:@"%ld", (long)stepCounter] forKey:@"runSteps"];
         }
         else
         {
@@ -642,7 +651,7 @@ enum TimerState : NSUInteger {
             [incompleteLap setObject:sector2Loc forKey:@"2Loc"];
         }
 
-        [runLapsInfoDict setObject:incompleteLap forKey:[NSString stringWithFormat:@"%d",lapCounter+1]];
+        [runLapsInfoDict setObject:incompleteLap forKey:[NSString stringWithFormat:@"%ld",lapCounter+1]];
         
         if (runLapsInfoDict != nil)[self.trackInfo setObject:runLapsInfoDict forKey:@"runLapsInfo"];
         if (runAltitudeArray != nil)[self.trackInfo setObject:runAltitudeArray forKey:@"runAltitude"];

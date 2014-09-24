@@ -24,8 +24,6 @@ extern NSString *const SCSessionStateChangedNotification;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 @property (strong, nonatomic) UIWindow *window;
-
-@property (strong, nonatomic) FBSession *session;
 @property (strong, nonatomic) NSArray *tracksArray;
 
 @property (nonatomic) BOOL useMotion;

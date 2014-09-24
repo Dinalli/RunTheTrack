@@ -42,8 +42,6 @@ NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:S
     NSString* plistPath = [bundle pathForResource:@"Tracks" ofType:@"plist"];
     self.tracksArray = [[NSArray alloc] initWithContentsOfFile:plistPath];
 
-    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert];
-    
     self.useMotion = NO;
     self.musicIsPlaying = NO;
     
@@ -145,49 +143,6 @@ NSString *const SCSessionStateChangedNotification = @"com.facebook.Scrumptious:S
     return [FBAppCall handleOpenURL:url
                   sourceApplication:sourceApplication
                         withSession:[PFFacebookUtils session]];
-}
-
-- (void)sessionStateChanged:(FBSession *)session
-                      state:(FBSessionState) state
-                      error:(NSError *)error
-{
-    switch (state) {
-        case FBSessionStateOpen: {
-
-        }
-            break;
-        case FBSessionStateClosed:
-        case FBSessionStateClosedLoginFailed:
-            [FBSession.activeSession closeAndClearTokenInformation];
-            break;
-        default:
-            break;
-    }
-    
-    [[NSNotificationCenter defaultCenter]
-     postNotificationName:SCSessionStateChangedNotification
-     object:session];
-    
-    if (error) {
-        UIAlertView *alertView = [[UIAlertView alloc]
-                                  initWithTitle:@"Error"
-                                  message:error.localizedDescription
-                                  delegate:nil
-                                  cancelButtonTitle:@"OK"
-                                  otherButtonTitles:nil];
-        [alertView show];
-    }
-}
-
-- (void)openSession
-{
-    [FBSession openActiveSessionWithReadPermissions:@[@"basic_info"]
-                                       allowLoginUI:YES
-                                  completionHandler:
-     ^(FBSession *session,
-       FBSessionState state, NSError *error) {
-         [self sessionStateChanged:session state:state error:error];
-     }];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

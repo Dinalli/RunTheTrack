@@ -129,6 +129,12 @@
 	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>healthkit</string>
+	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We need to use your Location to track your run and calculate the correct distances. </string>
 	<key>UIStatusBarHidden</key>
 	<true/>
 	<key>UISupportedInterfaceOrientations</key>

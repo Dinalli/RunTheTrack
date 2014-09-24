@@ -286,7 +286,7 @@ NSString * const kJBLineChartViewControllerNavButtonViewKey = @"view";
     
     self.informationView = [[JBChartInformationView alloc] initWithFrame:CGRectMake(self.view.bounds.origin.x, CGRectGetMaxY(self.lineChartView.frame), self.view.bounds.size.width, self.view.bounds.size.height - CGRectGetMaxY(self.lineChartView.frame) - CGRectGetMaxY(self.navigationController.navigationBar.frame))];
     [self.informationView setValueAndUnitTextColor:[UIColor colorWithWhite:1.0 alpha:0.75]];
-    [self.informationView setTitleTextColor:kJBColorLineChartHeader];
+    //[self.informationView setTitleTextColor:kJBColorLineChartHeader];
     [self.informationView setTextShadowColor:nil];
     [self.informationView setSeparatorColor:kJBColorLineChartHeaderSeparatorColor];
     [self.view addSubview:self.informationView];
@@ -318,11 +318,11 @@ NSString * const kJBLineChartViewControllerNavButtonViewKey = @"view";
         {
             if([appDelegate useKMasUnits])
             {
-                [self.informationView setValueText:[NSString stringWithFormat:@"%.2f", [valueNumber floatValue] / 1000] unitText:@"km"];
+                [self.informationView setValueText:[NSString stringWithFormat:@"%.2f", [valueNumber floatValue]] unitText:@"km"];
             }
             else
             {
-                [self.informationView setValueText:[NSString stringWithFormat:@"%.2f", [valueNumber floatValue] * 0.000621371192] unitText:@"miles"];
+                [self.informationView setValueText:[NSString stringWithFormat:@"%.2f", [valueNumber floatValue]] unitText:@"miles"];
             }
             
             [self.informationView setTitleText:@"Distance"];
@@ -338,11 +338,11 @@ NSString * const kJBLineChartViewControllerNavButtonViewKey = @"view";
         {
             if([appDelegate useKMasUnits])
             {
-                [self.informationView setValueText:[NSString stringWithFormat:@"%.2f", [valueNumber floatValue] / 1000] unitText:@"km"];
+                [self.informationView setValueText:[NSString stringWithFormat:@"%.2f", [valueNumber floatValue]] unitText:@"km"];
             }
             else
             {
-                [self.informationView setValueText:[NSString stringWithFormat:@"%.2f", [valueNumber floatValue] * 0.000621371192] unitText:@"miles"];
+                [self.informationView setValueText:[NSString stringWithFormat:@"%.2f", [valueNumber floatValue]] unitText:@"miles"];
             }
             [self.informationView setTitleText:@"Total Distance "];
             break;
