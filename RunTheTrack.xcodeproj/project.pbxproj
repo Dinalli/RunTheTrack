@@ -67,7 +67,7 @@
 		4044605C194F7FFD00C4F22B /* JBBarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40446057194F7FFD00C4F22B /* JBBarChartView.m */; };
 		4044605D194F7FFD00C4F22B /* JBChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40446059194F7FFD00C4F22B /* JBChartView.m */; };
 		4044605E194F7FFD00C4F22B /* JBLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4044605B194F7FFD00C4F22B /* JBLineChartView.m */; };
-		4047820819ADF98A00F30726 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4047820719ADF98A00F30726 /* HealthKit.framework */; };
+		4047820819ADF98A00F30726 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4047820719ADF98A00F30726 /* HealthKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		4047939F182F7AEC004FEB73 /* RunCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4047939E182F7AEC004FEB73 /* RunCell.m */; };
 		404793A2182F83BA004FEB73 /* RunDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 404793A1182F83BA004FEB73 /* RunDetailViewController.m */; };
 		40515A5919D334CB0079BE1E /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40515A5819D334CB0079BE1E /* FacebookSDK.framework */; };
@@ -1637,7 +1637,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)\"/**",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1681,7 +1681,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)\"/**",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-ObjC",
